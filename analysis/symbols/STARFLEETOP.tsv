@@ -18527,7 +18527,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0069e160	function	fn_0069e160	tD3DViewMgr				vtable
 0x0069e200	function	fn_0069e200	tD3DViewMgr				vtable
 0x0069e270	function	fn_0069e270	tD3DViewMgr				vtable
-0x0069e2a0	function	fn_0069e2a0					none
+0x0069e2a0	function	fn_0069e2a0		?fn_0069e2a0@@YAXXZ	claim		none
 0x0069e300	function	fn_0069e300					none
 0x0069e3d0	function	fn_0069e3d0					none
 0x0069e490	function	fn_0069e490					none
