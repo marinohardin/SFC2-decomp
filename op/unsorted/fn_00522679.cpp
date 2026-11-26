@@ -334,3 +334,17 @@ int tObject_00522e1b::fn_00522e1b(int param_1)
 	return -1;
 }
 
+// HYPOTHESIS: the container at +0x1b90 of fn_0090bed4_Object; the member returns a pointer
+// to the slot for a key.
+class tObject_00479331 {
+public:
+	int *fn_00479331(char *key);
+};
+
+// FUNCTION: STARFLEETOP 0x00522e6d
+// HYPOTHESIS: a member of fn_0090bed4_Object, a fastcall like its neighbours.
+void __fastcall fn_00522e6d(fn_0090bed4_Object *self, int, char param_1, int param_2)
+{
+	*((tObject_00479331 *)((char *)self + 0x1b90))->fn_00479331(&param_1) = param_2;
+}
+
