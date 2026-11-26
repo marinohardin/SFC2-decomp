@@ -3951,7 +3951,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0047f77c	function	fn_0047f77c		?fn_0047f77c@@YAXXZ	claim		none
 0x0047f79f	function	fn_0047f79f		?fn_0047f79f@@YAPAXXZ	claim		none
 0x0047f7a5	function	fn_0047f7a5	tState_Skirmish	?vfunction13@tState_Skirmish@@UAEPADXZ	claim		vtable
-0x0047f7ab	function	tState_Skirmish::tState_Skirmish	tState_Skirmish				rtti
+0x0047f7ab	function	tState_Skirmish::tState_Skirmish	tState_Skirmish	??0tState_Skirmish@@QAE@XZ	claim		rtti
 0x0047f864	function	tReconnector::tReconnector	tReconnector	??0tReconnector@@QAE@XZ	callers		rtti
 0x0047f8af	function	tConnector::tConnector	tConnector				rtti
 0x0047f8ea	function	tConnector::scalar_deleting_destructor	tConnector				rtti

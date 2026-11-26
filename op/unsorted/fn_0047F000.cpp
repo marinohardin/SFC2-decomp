@@ -226,3 +226,18 @@ char *tState_Skirmish::vfunction13()
 {
     return "skirmish";
 }
+
+// FUNCTION: STARFLEETOP 0x0047f7ab
+tState_Skirmish::tState_Skirmish()
+{
+    // HYPOTHESIS: the vectors at 0x1124, 0x1138 and 0x119c are zeroed by inlined constructors.
+    *(char *)&fUnknown_1124[0] = 0;
+    *(long *)&fUnknown_1124[4] = 0;
+    *(long *)&fUnknown_1124[8] = 0;
+    *(long *)&fUnknown_1124[12] = 0;
+    field_0x1134 = 0;
+    field_0x1154 = 0;
+    field_0x12ac = 0;
+    field_0x1120 = 0;
+    field_0x1121 = 0;
+}

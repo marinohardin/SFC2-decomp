@@ -15,6 +15,14 @@
 // The members are placed by the offsets the constructor (0x0047f7b5) and the recovered bodies use.
 // The object is a static (constructed at 0x00482a0e, pointer kept at 0x00915540), so no
 // allocation size records its size: no size check is written. Members not seen are left as gaps.
+// HYPOTHESIS: the object 0x0046b650 initializes; the original class is not known.
+class fn_0046b650_Object
+{
+public:
+	fn_0046b650_Object();
+	char			fUnknown_00[0x4c];
+};
+
 class tState_Skirmish : public tGameState
 {
 public:
@@ -56,7 +64,7 @@ public:
 	tReconnector	field_0x1158;
 	char			fUnknown_1194[0xd0 - 0x3c];
 	// The object 0x0046b650 initializes (0x4c bytes at least).
-	char			fUnknown_1228[0x4c];
+	fn_0046b650_Object	field_0x1228;
 	char			fUnknown_1274[0x38];
 	unsigned char	field_0x12ac;
 };
