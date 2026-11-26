@@ -198,3 +198,22 @@ void tState_Multiplayer::fn_00470d4c()
 done:
 	fn_00472356();
 }
+
+// HYPOTHESIS: the section and key strings at 0x0083a2fc and 0x00849144 (their text is not recovered).
+extern char g_sz0083a2fc[];
+extern char g_sz00849144[];
+unsigned long fn_00432316();
+char *_itoa( int value, char *str, int radix );
+
+// FUNCTION: STARFLEETOP 0x004714b7
+void tState_Multiplayer::vfunction6( int param_1 )
+{
+	static int value = g_p008cc580->vfunction5( g_sz0083a2fc, g_sz00849144, 0 );
+	if ( value > 0 )
+	{
+		char buffer[ 0x34 ];
+		double now = (double)(unsigned long)fn_00432316();
+		tString text( _itoa( (int)now, buffer, 10 ) );
+		field_e24 = text;
+	}
+}
