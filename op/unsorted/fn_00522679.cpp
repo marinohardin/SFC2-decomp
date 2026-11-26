@@ -274,3 +274,10 @@ void __fastcall fn_00522c66(fn_0090bed4_Object *self, int, tEntity *pEntity)
 	}
 }
 
+// FUNCTION: STARFLEETOP 0x00522c86
+// HYPOTHESIS: stores a float setting at +0x1b8c; its use is not known.
+void __fastcall fn_00522c86(fn_0090bed4_Object *self, int, float param_1)
+{
+	*(float *)((char *)self + 0x1b8c) = param_1;
+}
+
