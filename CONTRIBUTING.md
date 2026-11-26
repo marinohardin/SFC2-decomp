@@ -76,6 +76,9 @@ Rules:
   A range that overlaps an open `reserved` issue fails.
 - Stay inside your claim. The guard fails a pull request that adds, changes or removes an
   annotation outside the claimed ranges.
+- The guard binds annotation addresses only. It does not see an edit to the body of an
+  unclaimed function or to a shared header; the build review and the maintainer's reading of
+  the diff catch those, and a pull request that makes one is sent back.
 - A claim with no activity for 14 days is closed; a reminder comes at 10 days. A comment on the
   claim issue counts as activity. Close your claim yourself if you stop.
 

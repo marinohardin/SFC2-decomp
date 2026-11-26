@@ -22,6 +22,10 @@ each reason, when the pull request (the changes from the merge base of <base> an
   `range: 0x<first>-0x<last>`, each inside one unit of the base's op/UNITS.tsv that the issue
   names (`op/<unit>`), and none overlapping an open `reserved` issue.
 
+What it binds is annotation addresses: it does not see an edit to the body of an unclaimed
+function or to a shared header. The maintainer's build review (tools/verify_pr.py, which
+rebuilds every claim) and reading of the diff catch those.
+
 The claim issues come from `--claims`, a JSON list of issues as `gh api` prints them, or else
 from `gh api repos/$GITHUB_REPOSITORY/issues/<n>`. With `--pr <number>` and `gh` it also warns,
 without failing, when another open pull request annotates one of the same addresses.
