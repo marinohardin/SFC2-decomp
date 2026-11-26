@@ -120,3 +120,31 @@ void __fastcall fn_004afa4e(void *self, int, const tPoint4 *head, int a, int b, 
 	e[5] = b;
 	e[6] = c;
 }
+
+// HYPOTHESIS: appends to the same growable array; the element's first four words and then its
+// next two words come from the first argument, the last word is the second argument.
+// FUNCTION: STARFLEETOP 0x004afac9
+void __fastcall fn_004afac9(void *self, int, const tPoint4 *head, int c)
+{
+	int *array = (int *)self;
+	if (array[1] + 1 >= array[2])
+	{
+		int capacity = array[2] + 10;
+		int *data = (int *)operator new( capacity * 0x1c );
+		if (data == 0)
+			return;
+		if (array[0] != 0)
+		{
+			memcpy( data, (void *)array[0], array[1] * 0x1c );
+			operator delete( (void *)array[0] );
+		}
+		array[2] = capacity;
+		array[0] = (int)data;
+	}
+	int *e = (int *)(array[1] * 0x1c + array[0]);
+	array[1]++;
+	*(tPoint4 *)e = *head;
+	e[4] = ((const int *)head)[0];
+	e[5] = ((const int *)head)[1];
+	e[6] = c;
+}
