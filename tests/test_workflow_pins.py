@@ -81,66 +81,147 @@ def test_setup_action_checks_docker_only_for_the_docker_compiler():
 
 
 WORKFLOWS = ROOT / ".github" / "workflows"
-# Events whose workflow file or payload a stranger can influence.
-UNSAFE_EVENTS = {"pull_request", "pull_request_target", "issue_comment", "pull_request_review",
-                 "pull_request_review_comment", "workflow_run"}
+# A workflow with a job on the owner's machine may only be started by one of these.
+SELF_HOSTED_TRIGGERS = {"push", "schedule", "workflow_dispatch"}
+SELF_HOSTED_WORDS = ("self-hosted", "sfcop-mac")
+
+
+def indent(line):
+    return len(line) - len(line.lstrip(" "))
+
+
+def meaningful(line):
+    return bool(line.strip()) and not line.strip().startswith("#")
+
+
+def block_after(lines, i):
+    """The lines under lines[i] that are indented deeper than it (comments and blanks skipped)."""
+    base, out = indent(lines[i]), []
+    for nxt in lines[i + 1:]:
+        if not meaningful(nxt):
+            continue
+        if indent(nxt) <= base:
+            break
+        out.append(nxt)
+    return out
 
 
 def triggers(text):
-    """The event names in a workflow's top-level `on:` (block, list or single-name form)."""
+    """The event names in a workflow's top-level `on:`: a name, a [list], a `- name` list or a block."""
     lines = text.splitlines()
     for i, line in enumerate(lines):
         m = re.match(r"^(?:on|\"on\"|'on'):\s*(.*?)\s*(?:#.*)?$", line)
         if not m:
             continue
-        inline = m.group(1)
-        if inline:
-            return set(re.findall(r"[a-z_]+", inline.strip("[]")))
+        if m.group(1):
+            return set(re.findall(r"[a-z_]+", m.group(1).strip("[]")))
+        body = block_after(lines, i)
+        if not body:
+            return set()
+        top = min(indent(l) for l in body)
         found = set()
-        for nxt in lines[i + 1:]:
-            if nxt.strip() and not nxt.startswith(" ") and not nxt.startswith("#"):
-                break
-            k = re.match(r"^  ([a-z_]+):", nxt)
-            if k:
-                found.add(k.group(1))
+        for l in body:
+            if indent(l) == top:
+                k = re.match(r"^\s*(?:-\s*)?([a-z_]+)\s*:?\s*(?:#.*)?$", l) or \
+                    re.match(r"^\s*([a-z_]+):", l)
+                if k:
+                    found.add(k.group(1))
         return found
     return set()
 
 
 def self_hosted_jobs(text):
-    """Names of the jobs whose `runs-on:` mentions self-hosted."""
-    out, job = [], None
-    for line in text.splitlines():
-        m = re.match(r"^  ([\w-]+):\s*$", line)
-        if m:
-            job = m.group(1)
-        r = re.match(r"^    runs-on:(.*)$", line)
-        if r and job and "self-hosted" in r.group(1):
-            out.append(job)
+    """Names of the jobs with any `runs-on` value (inline, list, or labels:/group: block) that
+    names self-hosted or the owner's runner label."""
+    lines = text.splitlines()
+    out = []
+    for i, line in enumerate(lines):
+        if not re.match(r"^jobs:\s*$", line):
+            continue
+        body = block_after(lines, i)
+        top = min(indent(l) for l in body)
+        job = None
+        for j, l in enumerate(body):
+            if indent(l) == top and re.match(r"^\s*[\w-]+:\s*$", l):
+                job = l.strip().rstrip(":")
+            r = re.match(r"^\s*runs-on:(.*)$", l)
+            if r and job:
+                value = r.group(1) + " ".join(block_after(body, j))
+                if any(w in value for w in SELF_HOSTED_WORDS) and job not in out:
+                    out.append(job)
     return out
 
 
-def unsafe_self_hosted(text):
-    """Self-hosted jobs of a workflow that an unsafe event triggers."""
-    return self_hosted_jobs(text) if triggers(text) & UNSAFE_EVENTS else []
+def disallowed_self_hosted(text):
+    """The triggers a workflow with a self-hosted job may not have."""
+    return triggers(text) - SELF_HOSTED_TRIGGERS if self_hosted_jobs(text) else set()
 
 
-def test_trigger_and_job_parsers_on_hand_written_text():
-    block = "name: x\non:\n  pull_request:\n    types: [opened]\n  workflow_dispatch:\npermissions: {}\n"
-    assert triggers(block) == {"pull_request", "workflow_dispatch"}
-    assert triggers("on: [push, workflow_run]\n") == {"push", "workflow_run"}
+def run_blocks(text):
+    """The text of every `run:` step: its inline value and the lines under it."""
+    lines, out = text.splitlines(), []
+    for i, l in enumerate(lines):
+        m = re.match(r"^\s*(?:-\s*)?run:(.*)$", l)
+        if m:
+            out.append(m.group(1) + "\n" + "\n".join(block_after(lines, i)))
+    return out
+
+
+def test_trigger_parser_forms():
+    assert triggers("on:\n  pull_request:\n    types: [opened]\n  workflow_dispatch:\npermissions: {}\n") \
+        == {"pull_request", "workflow_dispatch"}
+    assert triggers("on: [push, workflow_run]\njobs: {}\n") == {"push", "workflow_run"}
     assert triggers("on: push\n") == {"push"}
-    jobs = "jobs:\n  a:\n    runs-on: ubuntu-latest\n  b:\n    runs-on: [self-hosted, x]\n"
-    assert self_hosted_jobs(jobs) == ["b"]
-    assert unsafe_self_hosted("on:\n  pull_request:\n" + jobs) == ["b"]
-    assert unsafe_self_hosted("on:\n  push:\n" + jobs) == []
+    assert triggers("on:\n  - push\n  - pull_request_target\njobs:\n") == {"push", "pull_request_target"}
+    assert triggers("on:\n    push:\n      branches: [x]\n    schedule:\n      - cron: '0 3 * * 0'\n") \
+        == {"push", "schedule"}
 
 
-def test_no_self_hosted_job_runs_on_an_event_a_stranger_can_influence():
+def test_self_hosted_parser_forms():
+    def doc(runs_on):
+        return "jobs:\n  a:\n    runs-on: ubuntu-latest\n  b:\n" + runs_on
+    assert self_hosted_jobs(doc("    runs-on: [self-hosted, x]\n")) == ["b"]
+    assert self_hosted_jobs(doc("    runs-on: sfcop-mac\n")) == ["b"]
+    assert self_hosted_jobs(doc("    runs-on:\n      - self-hosted\n      - mac\n")) == ["b"]
+    assert self_hosted_jobs(doc("    runs-on:\n      labels: [sfcop-mac]\n")) == ["b"]
+    assert self_hosted_jobs(doc("    runs-on:\n      group: self-hosted-pool\n")) == ["b"]
+    assert self_hosted_jobs(doc("    runs-on: ubuntu-latest\n")) == []
+    assert self_hosted_jobs("jobs:\n    c:\n        runs-on: [self-hosted]\n") == ["c"]
+
+
+def test_disallowed_self_hosted_triggers():
+    jobs = "jobs:\n  b:\n    runs-on: [self-hosted, x]\n"
+    assert disallowed_self_hosted("on:\n  pull_request:\n" + jobs) == {"pull_request"}
+    assert disallowed_self_hosted("on: [push, issues]\n" + jobs) == {"issues"}
+    assert disallowed_self_hosted("on:\n  - push\n  - workflow_run\n" + jobs) == {"workflow_run"}
+    assert disallowed_self_hosted("on:\n  push:\n  workflow_dispatch:\n" + jobs) == set()
+    hosted = "jobs:\n  b:\n    runs-on: ubuntu-latest\n"
+    assert disallowed_self_hosted("on:\n  pull_request:\n" + hosted) == set()
+
+
+def test_run_block_parser():
+    text = "steps:\n  - run: echo ${{ x }}\n  - name: n\n    run: |\n      a\n      b\n  - uses: u\n"
+    blocks = run_blocks(text)
+    assert len(blocks) == 2 and "echo" in blocks[0] and "a" in blocks[1] and "u" not in blocks[1]
+
+
+def test_only_push_schedule_and_dispatch_start_a_self_hosted_job():
     files = sorted(WORKFLOWS.glob("*.yml"))
     assert files, "no workflow files found"
-    bad = {f.name: unsafe_self_hosted(f.read_text()) for f in files}
-    assert {n: j for n, j in bad.items() if j} == {}
+    with_job = {f.name for f in files if self_hosted_jobs(f.read_text())}
+    assert {"check.yml", "docker-audit.yml"} <= with_job, "the parser lost the self-hosted jobs"
+    bad = {f.name: disallowed_self_hosted(f.read_text()) for f in files}
+    assert {n: t for n, t in bad.items() if t} == {}
+
+
+def test_check_refuses_an_outside_commit_before_it_runs_any_local_script():
+    text = (WORKFLOWS / "check.yml").read_text()
+    lines = text.splitlines()
+    refuse = next(i for i, l in enumerate(lines) if "git branch -r --contains HEAD" in l)
+    local = [i for i, l in enumerate(lines) if re.match(r"^\s*(?:-\s*)?uses:\s*\./", l)]
+    assert local and refuse < min(local)
+    assert "fetch-depth: 0" in code_lines(".github", "workflows", "check.yml")
+    assert not [b for b in run_blocks(text) if "inputs." in b]
 
 
 def test_check_runs_on_push_and_dispatch_only():
