@@ -379,6 +379,22 @@ void tEntityShip::vfunction13(tID aID)
 		fn_004160c2();
 }
 
+// FUNCTION: STARFLEETOP 0x00416085
+bool tEntityShip::fn_00416085()
+{
+	bool found = false;
+	fn_00416085_Object *ids = field_ad4->vfunction88();
+	if (ids)
+	{
+		for (int i = 0; i < 4; i++)
+		{
+			if (ids->vfunction116(i) == fTargetID)
+				found = true;
+		}
+	}
+	return found;
+}
+
 // FUNCTION: STARFLEETOP 0x004162b9
 void tEntityShip::vfunction4(tObject_00413ac3_arg *aObject)
 {
