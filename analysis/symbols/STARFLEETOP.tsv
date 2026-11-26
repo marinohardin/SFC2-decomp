@@ -3688,7 +3688,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00473194	function	fn_00473194		?fn_00473194@@YGPADPAVtState_Multiplayer@tState_Namespace_Multiplayer@@@Z	add		none
 0x004731cb	function	fn_004731cb					none
 0x00473243	function	tNetMsg_kSetPlayerBPVLimit::~tNetMsg_kSetPlayerBPVLimit	tNetMsg_kSetPlayerBPVLimit				rtti
-0x0047328b	function	fn_0047328b					none
+0x0047328b	function	fn_0047328b		?fn_0047328b@tState_Multiplayer@tState_Namespace_Multiplayer@@QAEXXZ	claim		none
 0x00473302	function	tNetMsg::~tNetMsg	tNetMsg				rtti
 0x0047339f	function	fn_0047339f					none
 0x004733f4	function	tNetMsg_kPlayerInfo::~tNetMsg_kPlayerInfo	tNetMsg_kPlayerInfo				rtti

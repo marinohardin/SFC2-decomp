@@ -51,6 +51,7 @@ public:
 	// HYPOTHESIS: 0x00472e88 makes an object (stored through the first argument) and returns its index.
 	int fn_00472e88( char **param_1, int param_2 );
 	void fn_00472356();
+	void fn_0047328b();
 	void fn_00470d4c();
 
 	int field_0c;

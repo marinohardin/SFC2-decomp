@@ -26,7 +26,13 @@ int __stdcall FUN_0047301e(int param_1)
 
 #include "unsorted/tState_Multiplayer.h"
 
+#include "unsorted/tObject_0090b730.h"
+#include "unsorted/tObject_0092deb4.h"
+
 using namespace tState_Namespace_Multiplayer;
+
+extern const char *g_00847e78;	// HYPOTHESIS: the name of the "HostSettings" control group
+void fn_004d3340( const char *pszName );
 
 char *__stdcall fn_00473194( tState_Multiplayer *param_1 );
 
@@ -62,4 +68,18 @@ int __stdcall FUN_0047316a( tState_Multiplayer *param_1 )
 			count++;
 	}
 	return count;
+}
+
+// FUNCTION: STARFLEETOP 0x0047328b
+void tState_Multiplayer::fn_0047328b()
+{
+	gObject_0090b730.fn_0060ca42( 2 );
+	field_1f78[0] = 0;
+	fn_004d3340( g_00847e78 );
+	fn_00472356();
+	int count = gObject_0092deb4->vfunction9();
+	for ( int i = 0; i < count; i++ )
+	{
+		gObject_0092deb4->vfunction10( i, 0, 0 );
+	}
 }
