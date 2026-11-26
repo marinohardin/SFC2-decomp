@@ -184,6 +184,17 @@ short tEntityShip::vfunction66(char param_1)
 	}
 	return 0;
 }
+
+// HYPOTHESIS: forwards two arguments to slot 17 of the object at +0x14.
+// FUNCTION: STARFLEETOP 0x00415628
+void tEntityShip::fn_00415628(int param_1, int param_2)
+{
+	if (fField14)
+	{
+		typedef void (tEntityShip::*tSlot17)(int, int);
+		(((tEntityShip *)fField14)->*(*(tSlot17 *)(*(void ***)fField14 + 0x44 / 4)))(param_1, param_2);
+	}
+}
 // FUNCTION: STARFLEETOP 0x00414b8f
 // FUNCTION: STARFLEETOP 0x004158c1
 tEntityShip::~tEntityShip()
