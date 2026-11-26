@@ -20508,10 +20508,10 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00703920	function	nDatabase::tDatabase::tLockInfo::operator<	nDatabase::tDatabase::tLockInfo	??MtLockInfo@tDatabase@nDatabase@@QBE_NK@Z	mangled		mangled
 0x00703930	function	nDatabase::tDatabase::tLockInfo::operator==	nDatabase::tDatabase::tLockInfo	??8tLockInfo@tDatabase@nDatabase@@QBE_NK@Z	mangled		mangled
 0x00703940	function	nDatabase::tDatabase::tDatabase	nDatabase::tDatabase	??0tDatabase@nDatabase@@QAE@PAVtDatabaseStorage@1@@Z	mangled		mangled
-0x00703af0	function	nDatabase::tDatabase::`scalar_deleting_destructor'	nDatabase::tDatabase	??_GtDatabase@nDatabase@@UAEPAXI@Z	mangled		mangled
+0x00703af0	function	nDatabase::tDatabase::`scalar_deleting_destructor'	nDatabase::tDatabase	??_GtDatabase@nDatabase@@UAEPAXI@Z	claim		mangled
 0x00703b10	function	fn_00703b10					none
 0x00703be0	function	fn_00703be0					none
-0x00703cb0	function	nDatabase::tDatabase::~tDatabase	nDatabase::tDatabase	??1tDatabase@nDatabase@@UAE@XZ	mangled		mangled
+0x00703cb0	function	nDatabase::tDatabase::~tDatabase	nDatabase::tDatabase	??1tDatabase@nDatabase@@UAE@XZ	claim		mangled
 0x00703ea0	function	nDatabase::tDatabase::OnTick	nDatabase::tDatabase	?OnTick@tDatabase@nDatabase@@IAEXK@Z	mangled		mangled
 0x00704120	function	nDatabase::tDatabase::GetObjectA	nDatabase::tDatabase	?GetObjectA@tDatabase@nDatabase@@MBEPBVtDatabaseObject@2@ABVtID@2@@Z	mangled		mangled
 0x00704290	function	nDatabase::tDatabase::Flush	nDatabase::tDatabase	?Flush@tDatabase@nDatabase@@UAEXXZ	mangled		mangled
