@@ -159,3 +159,42 @@ unsigned int __stdcall fn_00470d1b( tState_Multiplayer *param_1, unsigned int pa
 	}
 	return param_2;
 }
+
+long fn_004d338b( long arg1 );
+
+// HYPOTHESIS: a table of pointers the new object is entered in.
+extern char **g_0090b73c;
+
+// FUNCTION: STARFLEETOP 0x00470d4c
+void tState_Multiplayer::fn_00470d4c()
+{
+	char *p;
+	if ( !fn_004d338b( 0x1003d ) )
+		p = field_1fa4;
+	else
+	{
+		char *entry;
+		int index = fn_00472e88( &entry, *(int *)&field_1f78[ 0xc ] );
+		if ( !entry )
+			goto done;
+		p = entry + 0x40;
+		g_0090b73c[ index ] = entry;
+	}
+	if ( p )
+	{
+		unsigned int i;
+		char *dst = p + 0x30;
+		tValueI< tString > *src = field_af8;
+		for ( i = 0; i < 6; i++, src++, dst += 0x5c )
+		{
+			*(tString *)dst = *src;
+			if ( p == field_1fa4 )
+			{
+				void ( tObject_0092deb4::*f )( void *, int ) = (void ( tObject_0092deb4::* )( void *, int ))&tObject_0092deb4::vfunction20;
+				( gObject_0092deb4->*f )( dst, i );
+			}
+		}
+	}
+done:
+	fn_00472356();
+}

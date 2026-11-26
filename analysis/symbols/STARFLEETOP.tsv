@@ -3645,7 +3645,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00470b59	function	fn_00470b59		?fn_00470b59@tState_Multiplayer@tState_Namespace_Multiplayer@@QAEXE@Z	claim		none
 0x00470c38	function	fn_00470c38		?fn_00470c38@tState_Multiplayer@tState_Namespace_Multiplayer@@QAEXE@Z	claim		none
 0x00470d1b	function	fn_00470d1b		?fn_00470d1b@@YGIPAVtState_Multiplayer@tState_Namespace_Multiplayer@@I@Z	claim		none
-0x00470d4c	function	fn_00470d4c					none
+0x00470d4c	function	fn_00470d4c		?fn_00470d4c@tState_Multiplayer@tState_Namespace_Multiplayer@@QAEXXZ	claim		none
 0x00470e13	function	fn_00470e13					none
 0x004714b7	function	fn_004714b7	tState_Namespace_Multiplayer::tState_Multiplayer				vtable
 0x0047156b	function	fn_0047156b	tState_Namespace_Multiplayer::tState_Multiplayer				vtable
@@ -3660,7 +3660,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00471f15	function	fn_00471f15					none
 0x00472136	function	fn_00472136					none
 0x00472161	function	fn_00472161					none
-0x00472356	function	fn_00472356					none
+0x00472356	function	fn_00472356		?fn_00472356@tState_Multiplayer@tState_Namespace_Multiplayer@@QAEXXZ	add		none
 0x00472518	function	fn_00472518					none
 0x00472581	function	fn_00472581					none
 0x004725e5	function	fn_004725e5					none
@@ -3677,7 +3677,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00472ce4	function	fn_00472ce4					none
 0x00472d0e	function	fn_00472d0e					none
 0x00472deb	function	fn_00472deb					none
-0x00472e88	function	fn_00472e88					none
+0x00472e88	function	fn_00472e88		?fn_00472e88@tState_Multiplayer@tState_Namespace_Multiplayer@@QAEHPAPADH@Z	add		none
 0x00472f2e	function	fn_00472f2e					none
 0x0047301e	function	fn_0047301e					none
 0x00473049	function	fn_00473049		?fn_00473049@tState_Multiplayer@tState_Namespace_Multiplayer@@QAEDPAX@Z	add		none

@@ -48,6 +48,10 @@ public:
 	void fn_00470c38( unsigned char param_1 );
 	// HYPOTHESIS: 0x00473049 is a method taking a pointer to a list entry of field_e64.
 	char fn_00473049( void *entry );
+	// HYPOTHESIS: 0x00472e88 makes an object (stored through the first argument) and returns its index.
+	int fn_00472e88( char **param_1, int param_2 );
+	void fn_00472356();
+	void fn_00470d4c();
 
 	int field_0c;
 	unsigned char field_10;
