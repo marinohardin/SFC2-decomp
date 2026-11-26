@@ -7,5 +7,5 @@
 void fn_005e80ef( tMetaClientMapPanel* panel )
 {
 	tOptex::tGuard guard( &panel->field_dc );
-	nLog::info << "x" << nLog::report;
+	nLog::debug << "The map server is not responding, please try again in a few minutes." << nLog::report;
 }
