@@ -14457,7 +14457,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005e7f60	function	fn_005e7f60		?fn_005e7f60@tMetaClientMapPanel@@QAEXPBUtPoint@@PBUtRect@@@Z	callers		none
 0x005e800f	function	fn_005e800f		?fn_005e800f@tMetaClientMapPanel@@QAEXPBUtPoint@@PBUtRect@@@Z	callers		none
 0x005e80ef	function	fn_005e80ef		?fn_005e80ef@@YAXPAVtMetaClientMapPanel@@@Z	claim		none
-0x005e8140	function	fn_005e8140					none
+0x005e8140	function	fn_005e8140		?fn_005e8140@@YGXPAVtMetaClientMapPanel@@JABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z	claim		none
 0x005e818f	function	fn_005e818f					none
 0x005e81db	function	fn_005e81db					none
 0x005e8376	function	fn_005e8376					none
