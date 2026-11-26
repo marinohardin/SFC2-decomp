@@ -20,34 +20,26 @@ namespace tState_Namespace_Multiplayer
 // methods use; the gaps the original never touches in those two are char arrays.
 //
 // The vtable at 0x0079f32c overrides slot 0 (0x004739e8) and slots 1, 2, 3, 5, 12 and 14; every
-// other slot keeps tGameState's. Slots 4, 6 to 11 and 13 are declared only to keep the others
-// in place (MATCH-ONLY): the original inherits them.
+// other slot keeps tGameState's. The virtual functions are named as the vtable export names them
+// (slot N is vfunctionN+1).
 class tState_Multiplayer : public tGameState
 {
 public:
 	tState_Multiplayer();
 	virtual ~tState_Multiplayer();
 
-	// 0x0046ed6a
-	virtual void vfunction1();
-	// 0x0046f292, 6,108 bytes
-	virtual void vfunction2();
-	// 0x0046f197
+	// 0x0046ed6a (slot 1)
+	virtual bool vfunction2();
+	// 0x0046f292, 6,108 bytes (slot 2)
 	virtual void vfunction3();
-	virtual void vfunction4();
-	// 0x004714b7
-	virtual void vfunction5();
-	virtual void vfunction6();
-	virtual void vfunction7();
-	virtual void vfunction8();
-	virtual void vfunction9();
-	virtual void vfunction10();
-	virtual void vfunction11();
+	// 0x0046f197 (slot 3)
+	virtual bool vfunction4();
+	// 0x004714b7 (slot 5)
+	virtual void vfunction6(int param_1);
 	// 0x0046ed64: six bytes, so it returns a constant (the name slot of the other states).
-	virtual char *vfunction12();
-	virtual void vfunction13();
-	// 0x0047156b
-	virtual void vfunction14();
+	virtual char *vfunction13();
+	// 0x0047156b (slot 14)
+	virtual void vfunction15(c_0046aa10_message *param_1);
 
 	int field_0c;
 	unsigned char field_10;

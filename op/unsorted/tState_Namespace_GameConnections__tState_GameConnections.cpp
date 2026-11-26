@@ -770,7 +770,7 @@ bool tState_GameConnections::fn_004690a5(int id)
 		{
 			result = gNetControl.fn_004325a9(5);
 			fn_0040fa40(std::string("http://www.gamespyarcade.com/launch/launch.asp?gamename=strfltcmd2"), 1);
-			vfunction3();
+			vfunction4();
 			gNetControl.fn_00431821();
 			fn_0046aa58();
 		}
