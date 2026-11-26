@@ -12,6 +12,19 @@ public:
     void fn_006773e0(unsigned int index);
 };
 
+// HYPOTHESIS: element type unknown; 0x34 bytes per element, vector at this+0.
+struct fn_00677b60_Element
+{
+    char pad[0x34];
+};
+
+class fn_00677b60_Owner
+{
+public:
+    std::vector<fn_00677b60_Element> field_0;
+    int fn_00677b60();
+};
+
 void fn_00695180( void *p ) throw();
 
 // FUNCTION: STARFLEETOP 0x00677060
@@ -55,4 +68,10 @@ void fn_00677060_Owner::fn_006773e0(unsigned int index)
             }
         }
     }
+}
+
+// FUNCTION: STARFLEETOP 0x00677b60
+int fn_00677b60_Owner::fn_00677b60()
+{
+    return field_0.size();
 }

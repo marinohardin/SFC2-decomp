@@ -17667,7 +17667,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x006777f0	function	fn_006777f0					none
 0x00677940	function	std::vector<tCoopThread*,std::allocator<tCoopThread*>_>::size	std::vector<tCoopThread*,std::allocator<tCoopThread*>_>	?size@?$vector@PAVtCoopThread@@V?$allocator@PAVtCoopThread@@@std@@@std@@QBEIXZ	mangled		mangled
 0x00677960	function	fn_00677960					none
-0x00677b60	function	fn_00677b60					none
+0x00677b60	function	fn_00677b60		?fn_00677b60@fn_00677b60_Owner@@QAEHXZ	claim		none
 0x00677b90	function	fn_00677b90					none
 0x00677bc0	function	fn_00677bc0	tFileStream				vtable
 0x00677bd0	function	fn_00677bd0					none
