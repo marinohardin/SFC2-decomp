@@ -143,3 +143,12 @@ void c_0047f439_Owner::fn_0047f4ff()
     }
     gObject_0090b730.fn_0060ca42(0);
 }
+
+void fn_004d32c4(const char *name);
+extern const char *g_0084a4c4;
+
+// FUNCTION: STARFLEETOP 0x0047f621
+void fn_0047f621()
+{
+    fn_004d32c4(g_0084a4c4);
+}
