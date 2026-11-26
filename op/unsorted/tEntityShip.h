@@ -230,7 +230,8 @@ public:
 	// HYPOTHESIS: the original returns a 16-bit angle (0x004155ed ends with xor ax, ax).
 	virtual short vfunction66(char param_1);
 	virtual void vfunction67(void *param_1);
-	virtual void vfunction68();
+	// HYPOTHESIS: a truth value: 0x004160ee ends in mov al, 1 or xor al, al.
+	virtual bool vfunction68();
 	virtual void vfunction69(int param_1);
 	// HYPOTHESIS: returns the dword at 0x878.
 	virtual int vfunction70();

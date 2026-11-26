@@ -53,6 +53,7 @@ bool __stdcall fn_00414bab(int aCenter, short aAngle, int aSpan)
 
 extern double g_00c7c148;
 extern double g_00797040;
+extern float g_00796ebc;
 
 // HYPOTHESIS: the message's angle (short at +4) and flag (byte at +6) are read through a cast; the
 // view of the message at 0x00414bfa is not declared yet. The result of slot 33's class is read
@@ -405,6 +406,15 @@ void tEntityShip::fn_004160c2()
 		for (int i = 0; i < 4; i++)
 			ids->vfunction116(i);
 	}
+}
+
+// FUNCTION: STARFLEETOP 0x004160ee
+bool tEntityShip::vfunction68()
+{
+	tObject_00413a8d_arg *&object = field_0x88;
+	if (object->vfunction25() - object->vfunction26() > g_00796ebc && field_870 != 4 && field_870 != 5)
+		return false;
+	return true;
 }
 
 // FUNCTION: STARFLEETOP 0x004162b9

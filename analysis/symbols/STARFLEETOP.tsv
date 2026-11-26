@@ -826,7 +826,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00416067	function	fn_00416067	tEntityShip	?vfunction13@tEntityShip@@UAEXJ@Z	claim		vtable
 0x00416085	function	fn_00416085		?fn_00416085@tEntityShip@@QAE_NXZ	claim		none
 0x004160c2	function	fn_004160c2		?fn_004160c2@tEntityShip@@QAEXXZ	claim		none
-0x004160ee	function	fn_004160ee	tEntityShip				vtable
+0x004160ee	function	fn_004160ee	tEntityShip	?vfunction68@tEntityShip@@UAE_NXZ	claim		vtable
 0x0041613e	function	fn_0041613e		?fn_0041613e@@YA?AUtPoint3@@PAVtObject_00413ac3_arg@@ABU1@@Z	callers		none
 0x004161da	function	fn_004161da	tEntityShip				vtable
 0x004162b9	function	fn_004162b9	tEntityShip	?vfunction4@tEntityShip@@UAEXPAVtObject_00413ac3_arg@@@Z	claim		none
