@@ -150,20 +150,18 @@ void tBitmapFontEx::vfunction8( int name )
     FILE *fp = fopen((const char *)name, "wb");
     fwrite(&field_10, 4, 1, fp);
     fwrite(&field_14, 4, 1, fp);
-    int *count = &field_0C;
-    fwrite(count, 4, 1, fp);
-    int offset = 0;
-    for (name = 0; name < *count; name++) {
-        fwrite((char *)field_08 + 0x10 + offset, 4, 1, fp);
-        fwrite((char *)field_08 + 0x14 + offset, 4, 1, fp);
-        fwrite((char *)field_08 + 4 + offset, 4, 1, fp);
-        fwrite((char *)field_08 + 8 + offset, 4, 1, fp);
-        fwrite((char *)field_08 + 0xc + offset, 4, 1, fp);
-        int *p = (int *)((char *)field_08 + offset);
+    fwrite(&field_0C, 4, 1, fp);
+    int i;
+    for (i = 0; i < field_0C; i++) {
+        int *p = (int *)((char *)field_08 + i * 0x18);
+        fwrite(&p[4], 4, 1, fp);
+        fwrite(&p[5], 4, 1, fp);
+        fwrite(&p[1], 4, 1, fp);
+        fwrite(&p[2], 4, 1, fp);
+        fwrite(&p[3], 4, 1, fp);
         if (p[3] * p[2] != 0) {
             fwrite((void *)p[0], 1, p[3] * p[2], fp);
         }
-        offset += 0x18;
     }
     fflush(fp);
     fclose(fp);
