@@ -251,6 +251,9 @@ different definition in sight (a hand definition in the claiming unit against th
 others) or a different compile profile: the SDK profile's `/O2` makes other code than the game
 profile's `/O1` from the same header. The original's own libraries carried such copies as well, so
 a copy of the other profile can be the original's state and not a fault; it stays on the baseline.
+The `basic_string` rows of SDK-profile units are such: each of those copies was compared with the
+copy the SDK's static libraries carry for the same symbol and is identical to it, which is why
+rows of that kind were added with the owner's approval, the one way the baseline grows.
 Such a row is safe only if a consumer keeps the claiming unit's copy (by linking that object first,
 as the original's link order did); the check assumes this and nothing here verifies it. A copy that
 cannot be compared at all is reported as differing, with the reason. Known cases are listed in
