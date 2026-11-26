@@ -10,8 +10,8 @@ each reason, when the pull request (the changes from the merge base of <base> an
 - changes a path outside op/, or changes op/port/, op/UNITS.tsv or op/manifest.tsv, or a file
   under op/ that is not source (.cpp, .h, .inl: the suffixes op/ holds);
 - changes a symlink, a submodule or a file mode, or adds a binary file or one over 256 KB;
-- adds an #include that is absolute, names a drive letter, uses `..` to leave op/ or names no
-  file (a macro), or adds an #import, a #line, a #pragma include_alias, or a #pragma or _Pragma
+- adds an #include that is absolute, names a drive letter, uses `..` to leave op/ (a quoted
+  one) or at all (an angle-bracket one), or names no file (a macro), or adds an #import, a #line, a #pragma include_alias, or a #pragma or _Pragma
   holding a quoted string (a path the compiler could open);
 - adds a line ending in a backslash: a splice can join a line to the next one past every check
   here, so a contributor writes a multi-line macro on one line, or asks the maintainer;
@@ -142,6 +142,9 @@ def include_problem(path, line):
         return f'adds an absolute #include: {name!r}'
     if re.match(r'^[A-Za-z]:', name):
         return f'adds an #include with a drive letter: {name!r}'
+    if q.group(2) is not None and '..' in name.split('/'):
+        # An angle include is searched in the /I folders, not beside the file: no `..` at all.
+        return f"adds an #include <...> with '..': {name!r}"
     if '..' in name.split('/'):
         where = posixpath.normpath(posixpath.join(posixpath.dirname(path), name))
         if not where.startswith('op/'):

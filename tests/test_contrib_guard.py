@@ -317,3 +317,17 @@ def test_plus_and_minus_lines_inside_a_hunk_are_scanned(tmp_path):
     added, removed = guard.diff_lines(str(repo), 'HEAD~1', 'HEAD', 'op/unsorted/a.cpp')
     assert added == ['++ // FUNCTION: STARFLEETOP 0x00700010']
     assert removed == ['-- // FUNCTION: STARFLEETOP 0x00700000']
+
+
+def test_dot_dot_in_an_angle_include_fails_anywhere(tmp_path):
+    repo = _repo(tmp_path)
+    _write(repo, 'op/unsorted/a.cpp', '#include "a.h"\n'
+           '#include <../Common/x.h>\n'
+           '#include <sys/../types.h>\n'
+           '#include "../Common/ok.h"\n'
+           'void f() {}\n')
+    _commit(repo)
+    assert _check(repo).failures == [
+        "op/unsorted/a.cpp: adds an #include <...> with '..': '../Common/x.h'",
+        "op/unsorted/a.cpp: adds an #include <...> with '..': 'sys/../types.h'",
+    ]
