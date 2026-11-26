@@ -154,3 +154,18 @@ def test_an_unreadable_object_is_named_in_a_warning(tmp_path, monkeypatch):
     assert rep.lines[0][1] == ('b.cpp: its object cannot be read (file too short for a COFF '
                                'header), so its copies are not compared with the original and '
                                'its baseline rows read as gone')
+
+
+def test_a_copy_that_cannot_be_compared_is_a_finding_not_a_crash(tmp_path, monkeypatch):
+    from harness.lib import target
+
+    def broken(*a, **k):
+        raise coff.CoffError('symbol is not defined in the object')
+    monkeypatch.setattr(target, 'build', broken)
+    errors, _, found = findings(tmp_path, {'b.cpp': SAME})
+    assert found == [('b.cpp', SYM)]
+    assert errors == [
+        f"b.cpp: its copy of {SYM} differs from the original at 0x00401000, which a.cpp claims "
+        "exact: 10 bytes against the original's 10, it could not be compared (symbol is not "
+        "defined in the object) (a linker keeps the first copy it sees, so a consumer that links "
+        "the objects may place this one; give the unit the definition the claim matches)"]

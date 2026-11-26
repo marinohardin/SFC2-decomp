@@ -22,6 +22,7 @@ import hashlib
 import io
 import json
 import os
+import struct
 import subprocess
 import threading
 import sys
@@ -644,6 +645,9 @@ def run(ids, check_all=False, behavioural=False, record=False, now=None, base=No
         report_object_clashes(rep, table=table)
         if exe is not None:
             report_exe_copies(rep, exe, index)
+        else:
+            rep.add('INFO', 'copies of exact claims in other objects not compared with the '
+                    'original: the exe was not read (no unit was built)')
     report_claim_symbols(rep, data, load_reloc_baseline(RELOC_BASELINE), check_all,
                          symtab.load_claims(), index)
     report_table_breaks(rep, claimed_symbols(rep.results, data, symtab.load_claims()), table,
@@ -841,10 +845,17 @@ def exe_copy_compare(exe, index):
     """compare(obj, symbol, address) for objclash.exe_copy_findings: target.build's strict check
     of the copy of `symbol` in `obj` against the exe at `address`, the same relocation rules as a
     claim's own score (functions.csv size, extended up to the next function for a longer copy).
-    The original's size reported is the functions.csv size."""
+    The original's size reported is the functions.csv size. A copy that cannot be compared (an
+    error reading it) is reported as differing, with the reason."""
     def compare(obj, symbol, address):
         fn = index.by_address.get(address)
-        t = target.build(address, fn.size if fn else 0, obj, symbol, exe, index)
+        try:
+            t = target.build(address, fn.size if fn else 0, obj, symbol, exe, index)
+        except (coff.CoffError, KeyError, IndexError, ValueError, struct.error) as e:
+            # a copy that cannot be compared is not taken as equal: it is a finding
+            sym = obj.by_name.get(symbol)
+            size = len(obj.sections[sym.section].data) if sym and sym.section > 0 else 0
+            return False, size, fn.size if fn else 0, f', it could not be compared ({e})'
         exe_size = (fn.size if fn else 0) or len(t['target'])
         if t['strict']:
             return True, len(t['base']), exe_size, ''
