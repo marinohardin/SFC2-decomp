@@ -20353,7 +20353,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x006fd920	function	fn_006fd920					none
 0x006fd930	function	fn_006fd930					none
 0x006fd940	function	tCRC32::tCRC32	tCRC32	??0tCRC32@@QAE@XZ	mangled		mangled
-0x006fd960	function	tCRC32::~tCRC32	tCRC32				sdk
+0x006fd960	function	tCRC32::~tCRC32	tCRC32	??1tCRC32@@UAE@XZ	callers		sdk
 0x006fd970	function	tCRC32::GenerateCRCTable	tCRC32	?GenerateCRCTable@tCRC32@@IAEXXZ	claim		claim
 0x006fd9b0	function	tCRC32::UpdateCRC	tCRC32	?UpdateCRC@tCRC32@@QAEKKPBDJ@Z	claim		claim
 0x006fd9f0	function	tCRC32::CalcFileCRC	tCRC32	?CalcFileCRC@tCRC32@@QAEKABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@K@Z	mangled		mangled
@@ -21815,7 +21815,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0073ac85	function	fn_0073ac85					none
 0x0073ace0	function	__aulldiv		__aulldiv	callers		fid
 0x0073ad48	function	fn_0073ad48					none
-0x0073ae52	function	fn_0073ae52					none
+0x0073ae52	function	fn_0073ae52		__beginthreadex	callers		none
 0x0073aebd	function	fn_0073aebd					none
 0x0073af3a	function	fn_0073af3a					none
 0x0073af4e	function	fn_0073af4e					none
