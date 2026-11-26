@@ -59,7 +59,7 @@ class fn_0069f510_Device {
 public:
 	virtual void v0();
 	virtual void v1();
-	virtual void v2();
+	virtual void *v2();
 	virtual void v3();
 	virtual void v4();
 	virtual bool v5(void (__stdcall *)(void *, int), int);
@@ -147,6 +147,12 @@ bool tSWView3D::vfunction2(int a, int b)
 	return result;
 }
 
+// HYPOTHESIS: the texture slots hold objects with a virtual destructor, called with the delete flag.
+class tTexInfo {
+public:
+	virtual ~tTexInfo();
+};
+
 // FUNCTION: STARFLEETOP 0x0069f850
 bool tSWView3D::vfunction3(int a, int b, int c, int d, RECT *rect, bool f)
 {
@@ -180,6 +186,33 @@ bool tSWView3D::vfunction4(int a, int b, RECT *rect, bool f)
 		local[3] = h;
 	}
 	return fn_0069f600(a, b, w, h, rect, f, false);
+}
+
+// FUNCTION: STARFLEETOP 0x0069f900
+bool tSWView3D::vfunction6()
+{
+	tView3DExt::vfunction6();
+	if (field_5fb4) {
+		delete field_5fb4;
+		field_5fb4 = 0;
+		field_5fb8 = 0;
+		field_5fbc = 0;
+		field_5fc0 = 0;
+	}
+	for (int i = 0; i < 0x1000; i++) {
+		if (field_1f6c[i]) {
+			delete field_1f6c[i];
+			field_1f6c[i] = 0;
+		}
+	}
+	if (field_1f68) {
+		((fn_0069f510_Device *)field_1f68)->v9();
+		field_1f68 = ((fn_0069f510_Device *)field_1f68)->v2();
+	}
+	field_5fa8 = 0;
+	field_5fac = 0;
+	field_5fb0 = 0;
+	return true;
 }
 
 // FUNCTION: STARFLEETOP 0x0069fb90
