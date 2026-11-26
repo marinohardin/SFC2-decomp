@@ -574,3 +574,11 @@ void tClientCharacter::StreamIn(nDataStore::tInput &input)
 		>> (int32s &)m_98 >> *(bool *)&m_9c;
 
 }
+
+// The same folded Lock (0x0042c709, claimed in unsorted/fn_0042C000.cpp on the vector's wrapper)
+// for the wrapper at +0xcc. MATCH-ONLY: defined here so that the calls above resolve to a body.
+template<> tSingleAccessWrapper<tObject_005391b0>::iPtr tSingleAccessWrapper<tObject_005391b0>::Lock()
+{
+	fPointerOptex.Enter();
+	return iPtr( fpPointer, this );
+}
