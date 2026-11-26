@@ -9,6 +9,7 @@ tCampaignInfo::~tCampaignInfo()
 }
 
 #include <vector>
+#include <stdlib.h>
 #include <string>
 
 void fn_004064d5(std::string* _P, const std::string& _V);
@@ -81,4 +82,14 @@ fn_00461875_Iterator fn_00461875(fn_00461875_Element* _F, fn_00461875_Element* _
         _P->fn_vfunction2(_F);
     }
     return _O;
+}
+
+// HYPOTHESIS: the atexit registration of a global whose destructor wrapper is the
+// one-byte function at 0x004bd431.
+void fn_004bd431();
+
+// FUNCTION: STARFLEETOP 0x00461903
+void fn_00461903()
+{
+    atexit(fn_004bd431);
 }
