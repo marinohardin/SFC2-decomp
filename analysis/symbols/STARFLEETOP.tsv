@@ -4988,7 +4988,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004afbeb	function	fn_004afbeb		?fn_004afbeb@@YIXPAXHHPBUtPoint4@@@Z	claim		none
 0x004afc63	function	fn_004afc63		?fn_004afc63@@YIPAXPAXHI@Z	claim		none
 0x004afc87	function	fn_004afc87		?fn_004afc87@@YIXPAXHHH@Z	claim		none
-0x004afcf1	function	fn_004afcf1					none
+0x004afcf1	function	fn_004afcf1		?fn_004afcf1@@YIXPAX@Z	claim		none
 0x004afd4d	function	fn_004afd4d					none
 0x004afdb6	function	fn_004afdb6					none
 0x004afec0	function	fn_004afec0					none
@@ -21750,7 +21750,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00739360	function	fn_00739360					none
 0x00739374	function	fn_00739374					none
 0x0073937d	function	fn_0073937d					none
-0x00739412	function	fn_00739412					none
+0x00739412	function	fn_00739412		_qsort	add		none
 0x00739566	function	fn_00739566					none
 0x007395b4	function	fn_007395b4					none
 0x007395e0	function	fn_007395e0					none

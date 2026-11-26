@@ -6,6 +6,7 @@
 #include "Tiger/tvectormath.h"
 #include "unsorted/tValueBase.h"
 #include "unsorted/fn_004D3143.h"
+#include <stdlib.h>
 #include <string.h>
 
 // HYPOTHESIS: builds a look-at (view) matrix from an eye position, a target and an up vector.
@@ -257,4 +258,18 @@ void __fastcall fn_004afc87(void *self, int, int first, int second)
 	((int *)array[0])[array[1] * 2] = first;
 	((int *)array[0])[array[1] * 2 + 1] = second;
 	array[1]++;
+}
+
+// HYPOTHESIS: orders two elements of the 8-byte growable array for the sort below.
+static int __cdecl fn_004afd06(const void *a, const void *b)
+{
+	return *(const int *)a - *(const int *)b;
+}
+
+// HYPOTHESIS: sorts the 8-byte growable array of 0x004afc63.
+// FUNCTION: STARFLEETOP 0x004afcf1
+void __fastcall fn_004afcf1(void *self)
+{
+	int *array = (int *)self;
+	qsort( (void *)array[0], array[1], 8, fn_004afd06 );
 }
