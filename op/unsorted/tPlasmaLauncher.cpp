@@ -34,6 +34,15 @@ int tPlasmaLauncher::fn_004e770a()
     return banks;
 }
 
+// FUNCTION: STARFLEETOP 0x004e775b
+unsigned tPlasmaLauncher::mStreamOutSystemSpecificData(tSFCStream &s, unsigned aFlags, unsigned mode)
+{
+    tBaseWeapon::mStreamOutSystemSpecificData(s, aFlags, mode);
+    if ((aFlags & 8) > 0 || ((aFlags & 0x20) <= 0 && (aFlags & 0x80) > 0))
+        aFlags = vfunction24(s, aFlags, mode);
+    return aFlags;
+}
+
 // FUNCTION: STARFLEETOP 0x004e80b0
 void tPlasmaLauncher::vfunction125(int aValue)
 {

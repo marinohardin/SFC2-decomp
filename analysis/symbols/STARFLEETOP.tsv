@@ -7000,7 +7000,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004e72e7	function	fn_004e72e7					none
 0x004e72fd	function	fn_004e72fd	tPlasmaLauncher				vtable
 0x004e770a	function	fn_004e770a		?fn_004e770a@tPlasmaLauncher@@QAEHXZ	claim		none
-0x004e775b	function	fn_004e775b	tPlasmaLauncher				vtable
+0x004e775b	function	fn_004e775b	tPlasmaLauncher	?mStreamOutSystemSpecificData@tPlasmaLauncher@@UAEIAAVtSFCStream@@II@Z	claim		vtable
 0x004e779b	function	fn_004e779b	tPlasmaLauncher				vtable
 0x004e7869	function	fn_004e7869	tPlasmaLauncher				vtable
 0x004e7949	function	tPlasmaLauncher::tPlasmaLauncher	tPlasmaLauncher				rtti
