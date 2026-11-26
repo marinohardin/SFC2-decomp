@@ -15274,7 +15274,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00600857	function	fn_00600857		?fn_00600857@tMessageDialog@@QAEXPAX@Z	add		none
 0x00600922	function	fn_00600922		?fn_00600922@tMessageDialog@@QAEXPAX@Z	add		none
 0x006009ed	function	fn_006009ed	tMessageDialog	?fn_006009ed@tMessageDialog@@QAEXXZ	claim		none
-0x00600a4c	function	fn_00600a4c	tMessageDialog				vtable
+0x00600a4c	function	fn_00600a4c	tMessageDialog	?vfunction1@tMessageDialog@@UAEXXZ	claim		vtable
 0x00600a82	function	fn_00600a82					none
 0x00600a91	function	fn_00600a91					none
 0x00600ab8	function	fn_00600ab8		?fn_00600ab8@@YGPAVfn_00600b4a_class@@HHH@Z	add		none

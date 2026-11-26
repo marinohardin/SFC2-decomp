@@ -106,3 +106,12 @@ void tMessageDialog::fn_006009ed()
 		fn_00607d61()->fn_00609e57( field_24 );
 	fn_004d32c4( g_00c39ea0.c_str() );
 }
+
+void fn_004d335e( long arg1 );
+
+// FUNCTION: STARFLEETOP 0x00600a4c
+void tMessageDialog::vfunction1()
+{
+	fn_004d335e( (long) g_00c39ea0.c_str() );
+	fn_004d3331( g_00c39ea0.c_str() );
+}
