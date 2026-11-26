@@ -102,3 +102,26 @@ void fn_0046daf2()
 
 	fn_0046db16( name );
 }
+
+#include <windows.h>
+
+// HYPOTHESIS: the owner of 0x0046de63 is a reference-counted object with a virtual
+// destructor at slot 0 and its count at +4; its real class is not known yet.
+class fn_0046de63_Object
+{
+public:
+	virtual ~fn_0046de63_Object();
+	void fn_0046de63();
+
+private:
+	LONG fRefCount;
+};
+
+// FUNCTION: STARFLEETOP 0x0046de63
+void fn_0046de63_Object::fn_0046de63()
+{
+	if( ::InterlockedDecrement( &fRefCount ) <= 0 )
+	{
+		delete this;
+	}
+}

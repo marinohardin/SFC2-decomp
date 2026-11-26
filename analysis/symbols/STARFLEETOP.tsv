@@ -3623,7 +3623,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0046db16	function	fn_0046db16		?fn_0046db16@@YAXPAD@Z	add		none
 0x0046db64	function	fn_0046db64					none
 0x0046de28	function	fn_0046de28					none
-0x0046de63	function	fn_0046de63					none
+0x0046de63	function	fn_0046de63		?fn_0046de63@fn_0046de63_Object@@QAEXXZ	claim		none
 0x0046de82	function	fn_0046de82					none
 0x0046e178	function	fn_0046e178	tState_MetaLogon				vtable
 0x0046eae8	function	fn_0046eae8					none
