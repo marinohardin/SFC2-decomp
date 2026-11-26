@@ -27,12 +27,12 @@ public:
 	// vfunction28: tObjBase
 	// vfunction29: tObjBase
 	virtual void vfunction30();
-	virtual void vfunction31();
-	virtual void vfunction32();
-	virtual void vfunction33();
-	virtual void vfunction34();
-	virtual void vfunction35();
-	virtual void vfunction36();
+	virtual bool vfunction31( c_tListBox_Base_Event *event );
+	virtual void vfunction32( const tRect *area );
+	virtual void vfunction33( tRect *area );
+	virtual tRect vfunction34( tRect r );
+	virtual void vfunction35( c_tObjBase_Field10 *target );
+	virtual bool vfunction36( int x, int y );
 	virtual void vfunction37();
 	virtual void vfunction38();
 	virtual void vfunction39();

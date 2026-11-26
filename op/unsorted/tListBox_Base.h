@@ -5,6 +5,7 @@
 #define tListBox_Base_h 1
 
 #include "unsorted/tSurface.h"
+#include "unsorted/tBitmapFontEx.h"
 #include "unsorted/tNetControl.h"	// tString
 
 #include <map>
@@ -27,7 +28,7 @@ struct c_tListBox_Base_Colors
 };
 
 // HYPOTHESIS: draws a run of text clipped to a rectangle (0x005381a3); its arguments are not known.
-void fn_005381a3( int a, tObjBase *font, int width, int x, int y, int color, int style, int b, unsigned short *text, int length, RECT *clip, int c, int d );
+void fn_005381a3( int a, tBitmapFontEx *font, int width, int x, int y, int color, int style, int b, unsigned short *text, int length, RECT *clip, int c, int d );
 
 // HYPOTHESIS: the object at 0x00c68c24; vfunction44 passes what 0x00673840 returns to 0x005381a3.
 class c_00c68c24_Object
@@ -39,7 +40,7 @@ public:
 extern c_00c68c24_Object *g_p00c68c24;
 
 // HYPOTHESIS: returns the font of a size (it formats "Arial%d").
-tObjBase *fn_004be773( int a, int size );
+tBitmapFontEx *fn_004be773( int a, int size );
 
 // HYPOTHESIS: what 0x00677060 returns; +0x8 is its name.
 struct c_00677060_Result
@@ -93,18 +94,6 @@ struct c_tListBox_Base_DrawItem
 	c_tListBox_Base_Item *field_14;
 };
 
-// HYPOTHESIS: the event 0x004c63dd handles; type 0xd comes from a tScrollBar.
-struct c_tListBox_Base_Event
-{
-	int field_00;	// the event type
-	int field_04;	// HYPOTHESIS: the x of a mouse event
-	int field_08;	// HYPOTHESIS: the y of a mouse event
-	unsigned char field_0C[ 0x10 - 0x0c ];
-	tObjBase *field_10;	// the sender
-	int field_14;	// the scroll action, 1 to 9
-	int field_18;	// the position for action 3
-	tObjBase *field_1C;	// the object the event is for
-};
 
 class tListBox_Base : public tVisObject
 {
@@ -131,10 +120,10 @@ public:
 	virtual void vfunction30();
 	// HYPOTHESIS: +0x78 handles the events of the list box's tScrollBar; true when handled.
 	virtual bool vfunction31( c_tListBox_Base_Event *event );
-	virtual void vfunction32();
-	virtual void vfunction33();
-	virtual void vfunction34();
-	virtual void vfunction35();
+	virtual void vfunction32( const tRect *area );
+	virtual void vfunction33( tRect *area );
+	virtual tRect vfunction34( tRect r );
+	virtual void vfunction35( c_tObjBase_Field10 *target );
 	// HYPOTHESIS: +0x8c is true when a point lies on the list box.
 	virtual bool vfunction36( int x, int y );
 	// HYPOTHESIS: +0x90 sets up the list box from the asset that describes it.
@@ -222,7 +211,7 @@ public:
 	int field_A8;	// HYPOTHESIS: the items scrolled by one page
 	bool field_AC;	// HYPOTHESIS: a flag; vfunction49 returns it
 	unsigned char field_AD[ 0xb0 - 0xad ];
-	tObjBase *field_B0;	// HYPOTHESIS: a tObjBase; the destructor calls its slot at +0x2c
+	tBitmapFontEx *field_B0;	// the font (not a tObjBase); the destructor releases it through its slot at +0x2c
 	int field_B4;	// HYPOTHESIS: the font style, 0x80 to 0x83
 	std::map< int, c_tListBox_Base_Colors > field_B8;
 };

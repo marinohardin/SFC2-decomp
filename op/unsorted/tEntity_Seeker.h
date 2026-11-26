@@ -13,13 +13,14 @@
 // 20 to 23, 25, 30, 62, 65 and 66 (0x0041e0ad, 0x0041f5f5, 0x0041e74f, 0x0041eaf9, 0x0041e64f,
 // 0x004203d5, 0x0041e0a9, 0x0042167b, 0x00420447, 0x0041e93f, 0x0041e94d, 0x0041e79a,
 // 0x0041e627, 0x0041e09b, 0x0041e95a, 0x0041e0c9); their declarations are written with the
-// functions, since several return types in tPhysicalEntity's header are placeholders (slot 62
-// returns a float here, for one).
+// functions; slot 62 is declared, as its type is now known.
 class tEntity_Seeker : public tEntity_Weapon
 {
 public:
 	tEntity_Seeker();
 
+	// HYPOTHESIS: slot 62, returns the float at +0x260 (0x0041e09b).
+	virtual float vfunction63();
 	// HYPOTHESIS: returns a one-byte member at +0x275.
 	virtual bool vfunction70();
 	// HYPOTHESIS: returns the int at +0x270.

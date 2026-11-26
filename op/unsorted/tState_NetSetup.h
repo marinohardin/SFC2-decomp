@@ -21,21 +21,13 @@ class tState_NetSetup : public tGameState
 public:
 	tState_NetSetup();
 	// No destructor declared: the implicit one is the original's (0x004777f3).
-	virtual void vfunction1();
+	// The virtual functions are named as the vftable names them (slot N is vfunctionN+1); this
+	// state overrides slots 1, 2, 3, 12 and 14 of tGameState's.
 	virtual bool vfunction2();
 	virtual void vfunction3();
 	virtual bool vfunction4();
-	virtual void vfunction5();
-	virtual void vfunction6();
-	virtual void vfunction7();
-	virtual void vfunction8();
-	virtual void vfunction9();
-	virtual void vfunction10();
-	virtual void vfunction11();
-	virtual void vfunction12();
 	// HYPOTHESIS: returns the state's name.
 	virtual char *vfunction13();
-	virtual void vfunction14();
 	virtual void vfunction15(c_0046aa10_message *msg);
 
 	void fn_004764bd();

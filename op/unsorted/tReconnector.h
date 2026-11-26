@@ -25,6 +25,8 @@ public:
 
 	fn_004832b3_object m2c;
 };
+// The constructor (0x0047f864) writes up to the byte at +0x38; the member at +0x2c is 0x10 bytes.
+typedef char tReconnector_size_is_0x3c[ sizeof( tReconnector ) == 0x3c ? 1 : -1 ];
 
 // The original inlines this into its owners' destructors (0x0049640b); 0x0047f906 is the
 // out-of-line copy.

@@ -179,17 +179,17 @@ def test_the_run_fails_on_a_build_path_and_on_a_clashing_claimed_copy(tmp_path, 
                                                ('s1', b'/src/./X.h\0', DATA, 2, [])]),
             'b.cpp': write(tmp_path, 'b.obj', [(GET, b'\x90\xc3', CODE, 2, [])])}
     monkeypatch.setattr(verify, 'claimed_keys', lambda: {'0x0042a31c'})
-    results = [{'address': '0x0042a31c', 'symbol': GET}]
+    results = [{'address': '0x0042a31c', 'symbol': GET, 'unit': 'a.cpp'}]
     rep = Rep(objs, results)
-    verify.report_object_clashes(rep, str(tmp_path / 'none.tsv'))
+    verify.report_object_clashes(rep, str(tmp_path / 'none.tsv'), table={})
     assert rep.failed and [lv for lv, _ in rep.lines] == ['ERROR', 'ERROR']
     rep = Rep({'b.cpp': objs['b.cpp']}, results)
-    verify.report_object_clashes(rep, str(tmp_path / 'none.tsv'))
+    verify.report_object_clashes(rep, str(tmp_path / 'none.tsv'), table={})
     assert not rep.failed and rep.lines == []
 
 
 def test_a_missing_baseline_is_no_debt_and_a_bad_row_is_refused(tmp_path):
-    assert objclash.load_baseline(str(tmp_path / 'none.tsv')) == (set(), set())
+    assert objclash.load_baseline(str(tmp_path / 'none.tsv')) == (set(), set(), set())
     bad = tmp_path / 'bad.tsv'
     bad.write_text('other\tx\ty\n')
     try:
@@ -203,7 +203,7 @@ def test_a_missing_baseline_is_no_debt_and_a_bad_row_is_refused(tmp_path):
 def test_baseline_matching_does_not_read_the_message_text(tmp_path, monkeypatch):
     objs = {'a.cpp': write(tmp_path, 'a.obj', used(b'/a/./X.h\0') + [(GET + 'x', b'\x90', CODE, 2, [])]),
             'b.cpp': write(tmp_path, 'b.obj', [(GET + 'x', b'\xc3', CODE, 2, [])])}
-    base = (frozenset({('a.cpp', GET)}), frozenset({GET + 'x'}))
+    base = (frozenset({('a.cpp', GET)}), frozenset({GET + 'x'}), frozenset())
     assert objclash.check(objs, {GET + 'x'}, baseline=base) == ([], [])
     real_copies, real_paths = objclash.copy_findings, objclash.path_findings
     monkeypatch.setattr(objclash, 'copy_findings',
@@ -219,4 +219,139 @@ def test_a_baseline_file_with_crlf_and_comments_loads(tmp_path):
     f = tmp_path / 'b.tsv'
     f.write_bytes(b'# note\r\nkind\tunit\tsymbol\r\n\r\npath\ta.cpp\t?f@@YAXXZ\r\n'
                   b'# another\r\ncopy\t-\t?g@@YAXXZ\r\n')
-    assert objclash.load_baseline(str(f)) == ({('a.cpp', '?f@@YAXXZ')}, {'?g@@YAXXZ'})
+    assert objclash.load_baseline(str(f)) == ({('a.cpp', '?f@@YAXXZ')}, {'?g@@YAXXZ'}, set())
+
+
+CTOR = '??0tPhysicalEntity@@QAE@XZ'
+OTHER = '?Other@tPhysicalEntity@@QAEXXZ'
+
+
+def unclaimed(tmp_path, sections, addresses, claims, unit='a.cpp', baseline=None):
+    objs = {unit: write(tmp_path, 'u.obj', sections)}
+    return objclash.check(objs, set(), baseline=baseline or (frozenset(),) * 3,
+                          symbol_addresses=addresses, unit_claims=claims)
+
+
+def test_a_body_under_an_originals_symbol_without_a_claim_is_an_error(tmp_path):
+    errors, stale = unclaimed(tmp_path, [(CTOR, b'\xc3', CODE, 1, [])],
+                              {CTOR: {0x412f67}}, {'a.cpp': {0x401000}})
+    assert stale == [] and errors == [
+        f"a.cpp: {CTOR} is defined here, and the symbol table places it at 0x00412f67, but no "
+        "// FUNCTION: claim in this unit covers that address, so the body is not held to the "
+        "original's bytes while it carries the original's symbol: claim the function as a real "
+        "attempt at the original's code, remove the body, or give it a placeholder name (not the "
+        "original's symbol)"]
+
+
+def test_a_claim_in_the_unit_at_any_address_of_the_symbol_covers_it(tmp_path):
+    body = [(CTOR, b'\xc3', CODE, 1, [])]
+    # the symbol is known at a folded copy and at the claimed address
+    assert unclaimed(tmp_path, body, {CTOR: {0x412f67, 0x500000}}, {'a.cpp': {0x500000}}) == ([], [])
+    # a claim of that address in another unit does not cover this unit's body
+    errors, _ = unclaimed(tmp_path, body, {CTOR: {0x412f67}}, {'b.cpp': {0x412f67}})
+    assert len(errors) == 1 and '0x00412f67' in errors[0]
+
+
+def test_comdat_copies_undecorated_and_unknown_symbols_are_not_read(tmp_path):
+    secs = [(CTOR, b'\xc3', CODE, 2, []),                       # inline or template copy (selection any)
+            ('_main', b'\xc3', CODE, 1, []),   # not decorated
+            (OTHER, b'\xc3', CODE, 1, []),     # not in the table
+            ('data', b'\x00', DATA, 1, [])]    # not a function
+    addrs = {CTOR: {0x412f67}, '_main': {0x401000}, 'data': {0x500000}}
+    assert unclaimed(tmp_path, secs, addrs, {}) == ([], [])
+
+
+def test_the_unclaimed_baseline_hides_a_row_and_a_gone_row_is_stale(tmp_path):
+    body = [(CTOR, b'\xc3', CODE, 1, [])]
+    base = (frozenset(), frozenset(), frozenset({('a.cpp', CTOR), ('a.cpp', OTHER)}))
+    assert unclaimed(tmp_path, body, {CTOR: {0x412f67}}, {}, baseline=base) == (
+        [], [f'unclaimed\ta.cpp\t{OTHER}'])
+    # the same symbol in another unit is a new case
+    errors, _ = unclaimed(tmp_path, body, {CTOR: {0x412f67}}, {}, unit='b.cpp', baseline=base)
+    assert len(errors) == 1
+
+
+def test_the_unclaimed_baseline_loads_and_the_check_is_off_without_a_table(tmp_path):
+    f = tmp_path / 'b.tsv'
+    f.write_text(f'kind\tunit\tsymbol\nunclaimed\ta.cpp\t{CTOR}\n')
+    assert objclash.load_baseline(str(f)) == (set(), set(), {('a.cpp', CTOR)})
+    objs = {'a.cpp': write(tmp_path, 'a.obj', [(CTOR, b'\xc3', CODE, 1, [])])}
+    assert objclash.check(objs, set(), baseline=objclash.load_baseline(str(f))) == ([], [])
+
+
+def test_the_inputs_come_from_the_table_and_the_results():
+    from harness.lib import verify
+    table = {'0x00412f67': (CTOR, 'mangled'), '0x00500000': (OTHER, 'callers'),
+             '0x00600000': ('?Stale@@YAXXZ', 'claim'), '0x00700000': ('?Cl@@YAXXZ', 'claim'),
+             '0x00800000': ('?Add@@YAXXZ', 'add')}
+    results = [{'address': '0x00700000', 'symbol': '?Cl@@YAXXZ', 'unit': 'a.cpp'},
+               {'address': '0x00900000', 'unit': 'a.cpp'},
+               {'address': '0x00a00000', 'symbol': '?New@@YAXXZ', 'unit': 'b.cpp'}]
+    addrs, units = verify.unclaimed_inputs(results, table)
+    assert addrs == {CTOR: {0x412f67}, '?Cl@@YAXXZ': {0x700000}, '?Add@@YAXXZ': {0x800000},
+                     '?New@@YAXXZ': {0xa00000}}
+    assert units == {'a.cpp': {0x700000, 0x900000}, 'b.cpp': {0xa00000}}
+
+
+def test_the_run_fails_on_an_unclaimed_original(tmp_path, monkeypatch):
+    from harness.lib import verify
+
+    class Rep:
+        def __init__(self, objects, results):
+            self.objects, self.results, self.lines, self.failed = objects, results, [], False
+
+        def add(self, level, text):
+            self.lines.append((level, text))
+    objs = {'a.cpp': write(tmp_path, 'a.obj', [(CTOR, b'\xc3', CODE, 1, [])])}
+    monkeypatch.setattr(verify, 'claimed_keys', lambda: set())
+    table = {'0x00412f67': (CTOR, 'mangled')}
+    rep = Rep(objs, [])
+    verify.report_object_clashes(rep, str(tmp_path / 'none.tsv'), table=table)
+    assert rep.failed and [lv for lv, _ in rep.lines] == ['ERROR']
+    base = tmp_path / 'base.tsv'
+    base.write_text(f'unclaimed\ta.cpp\t{CTOR}\nunclaimed\ta.cpp\t{OTHER}\n')
+    rep = Rep(objs, [])
+    verify.report_object_clashes(rep, str(base), table=table)
+    assert not rep.failed and [lv for lv, _ in rep.lines] == ['WARN']
+
+
+def test_a_function_outside_a_comdat_is_read_too(tmp_path):
+    errors, _ = unclaimed(tmp_path, [(CTOR, b'\xc3', CODE & ~coff.SCN_LNK_COMDAT, 0, [])],
+                          {CTOR: {0x412f67}}, {})
+    assert len(errors) == 1
+
+
+def test_a_claim_row_claimed_in_another_unit_still_reports_this_unit():
+    from harness.lib import verify
+    table = {'0x00412f67': (CTOR, 'claim')}
+    results = [{'address': '0x00412f67', 'symbol': CTOR, 'unit': 'b.cpp'}]
+    addrs, units = verify.unclaimed_inputs(results, table)
+    assert addrs == {CTOR: {0x412f67}} and units == {'b.cpp': {0x412f67}}
+
+
+def test_a_claim_row_claimed_elsewhere_reports_the_unit_that_does_not_claim_it(tmp_path):
+    objs = {'a.cpp': write(tmp_path, 'a.obj', [(CTOR, b'\xc3', CODE, 1, [])]),
+            'b.cpp': write(tmp_path, 'b.obj', [(CTOR, b'\xc3', CODE, 1, [])])}
+    errors, _ = objclash.check(objs, set(), symbol_addresses={CTOR: {0x412f67}},
+                               unit_claims={'b.cpp': {0x412f67}})
+    assert len(errors) == 1 and errors[0].startswith(f'a.cpp: {CTOR} is defined here')
+
+
+def test_an_unreadable_table_is_an_error_and_the_check_goes_on(tmp_path, monkeypatch):
+    from harness.lib import verify, symtab
+
+    class Rep:
+        def __init__(self):
+            self.objects, self.results, self.lines, self.failed = {}, [], [], False
+
+        def add(self, level, text):
+            self.lines.append((level, text))
+
+    def broken():
+        raise symtab.TableError('bad table')
+    monkeypatch.setattr(verify, 'claimed_keys', lambda: set())
+    monkeypatch.setattr(symtab, 'load_table', broken)
+    rep = Rep()
+    verify.report_object_clashes(rep, str(tmp_path / 'none.tsv'))
+    assert rep.failed and rep.lines == [
+        ('ERROR', 'unclaimed originals not checked: bad table')]
