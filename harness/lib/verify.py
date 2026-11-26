@@ -42,7 +42,7 @@ OBJECT_BASELINE = paths.env_path('HARNESS_OBJECT_BASELINE', os.path.join(
 EXE_COPY_BASELINE = paths.env_path('HARNESS_EXE_COPY_BASELINE', os.path.join(
     paths.REPO, 'analysis', 'results', 'exe_copy_baseline.tsv'))
 EXE_COPIES_FILE = 'exe_copies.tsv'
-RELOC_BASELINE_FIELDS =('function', 'offset', 'symbol', 'target', 'claimed')
+RELOC_BASELINE_FIELDS = ('function', 'offset', 'symbol', 'target', 'claimed')
 # A relocation that names another symbol than the claim at its target is of one class
 # (classify_break): the first three fail the run, the last two are listed only.
 CLASS_ERRORS = ('other-object', 'other-address', 'wrong-function')
@@ -873,8 +873,9 @@ def report_exe_copies(rep, exe, index, baseline_path=None):
     for unit, obj_path in rep.objects.items():
         try:
             objs[unit] = unit_object(obj_path)[0]
-        except (OSError, coff.CoffError):
-            continue
+        except (OSError, coff.CoffError) as e:
+            rep.add('WARN', f'{unit}: its object cannot be read ({e}), so its copies are not '
+                    'compared with the original and its baseline rows read as gone')
     errors, stale, found = objclash.exe_copy_check(objs, claims, exe_copy_compare(exe, index),
                                                    objclash.load_exe_copy_baseline(path))
     rep.exe_copies = found

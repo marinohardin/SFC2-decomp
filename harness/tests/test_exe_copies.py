@@ -134,3 +134,23 @@ def test_the_run_fails_on_a_new_copy_and_keeps_every_finding(tmp_path, monkeypat
     verify.report_exe_copies(rep, exe, index, str(base))
     assert not rep.failed and [lv for lv, _ in rep.lines] == ['WARN', 'INFO']
     assert f'the row "c.cpp\t{SYM}" no longer occurs' in rep.lines[0][1]
+
+
+def test_an_unreadable_object_is_named_in_a_warning(tmp_path, monkeypatch):
+    class Rep:
+        def __init__(self, objects):
+            self.objects, self.results, self.lines, self.failed = objects, [], [], False
+            self.exe_copies = None
+
+        def add(self, level, text):
+            self.lines.append((level, text))
+    bad = tmp_path / 'b.obj'
+    bad.write_bytes(b'not an object')
+    monkeypatch.setattr(verify, 'claimed_keys', lambda: set())
+    exe, index = fixture()
+    rep = Rep({'b.cpp': str(bad)})
+    verify.report_exe_copies(rep, exe, index, str(tmp_path / 'none.tsv'))
+    assert not rep.failed and [lv for lv, _ in rep.lines] == ['WARN', 'INFO']
+    assert rep.lines[0][1] == ('b.cpp: its object cannot be read (file too short for a COFF '
+                               'header), so its copies are not compared with the original and '
+                               'its baseline rows read as gone')
