@@ -7,6 +7,9 @@
 #include "unsorted/tApplication.h"
 
 class tBmpSurf;
+class tMatrix;
+struct tPoint2;
+struct tPoint3;
 struct tagRECT;
 typedef tagRECT RECT;
 
@@ -23,7 +26,7 @@ struct fn_0040105e_Vector {
 // tView3D); only the vtable offsets the units use are evidenced.
 class tView3D {
 public:
-	virtual void vfunction1();
+	virtual ~tView3D();
 	virtual void vfunction2();
 	// HYPOTHESIS: +0x08 and +0x0c open the view (with and without a display mode, as
 	// tApp3dBase::vfunction7 calls them); the trailing bool lets the view try its best setting first.
@@ -31,7 +34,7 @@ public:
 	virtual bool vfunction4(int, int, RECT *, bool);    // +0x0c
 	// HYPOTHESIS: +0x10 takes the "3D" "driver" setting.
 	virtual void vfunction5(int);    // +0x10
-	virtual void vfunction6();    // +0x14
+	virtual bool vfunction6();    // +0x14
 	virtual void vfunction7();
 	// HYPOTHESIS: +0x1c reports whether the view can draw this frame (tSfcApp3d::vfunction4
 	// tests it).
@@ -40,18 +43,18 @@ public:
 	virtual void vfunction10();
 	virtual void vfunction11();
 	virtual void vfunction12();
-	virtual void vfunction13(void (*)(), void *);    // +0x30
-	virtual void vfunction14();
-	virtual void vfunction15(void (*)(), void *);    // +0x38
-	virtual void vfunction16();
-	virtual void vfunction17();
-	virtual void vfunction18();
-	virtual void vfunction19();
-	virtual void vfunction20();
-	virtual void vfunction21();
-	virtual void vfunction22();
-	virtual void vfunction23();
-	virtual void vfunction24();
+	virtual void (*vfunction13(void (*)(), void *))();    // +0x30
+	virtual void (*vfunction14())();
+	virtual void (*vfunction15(void (*)(), void *))();    // +0x38
+	virtual void (*vfunction16())();
+	virtual void vfunction17(int, int, int, int);
+	virtual void vfunction18(int *, int *, int *, int *);
+	virtual int vfunction19(int);
+	virtual int vfunction20();
+	virtual int vfunction21(int);
+	virtual int vfunction22();
+	virtual int vfunction23(int);
+	virtual int vfunction24();
 	virtual void vfunction25();
 	virtual void vfunction26();
 	virtual void vfunction27();
@@ -59,22 +62,22 @@ public:
 	virtual void vfunction29();
 	virtual void vfunction30();
 	virtual void vfunction31();
-	virtual void vfunction32();
-	virtual void vfunction33();
-	virtual void vfunction34();
+	virtual int vfunction32();
+	virtual void vfunction33(unsigned int, const void *);
+	virtual void vfunction34(unsigned int, void *);
 	virtual void vfunction35(fn_0040105e_Vector *);    // +0x88
-	virtual void vfunction36();
-	virtual void vfunction37();
-	virtual void vfunction38();
-	virtual void vfunction39();
+	virtual fn_0040105e_Vector *vfunction36();
+	virtual bool vfunction37(bool);
+	virtual bool vfunction38();
+	virtual bool vfunction39(unsigned int, bool);
 	virtual void vfunction40();
 	virtual void vfunction41();
 	virtual void vfunction42();
 	virtual void vfunction43();
 	virtual void vfunction44();
-	virtual void vfunction45();
-	virtual void vfunction46();
-	virtual void vfunction47();
+	virtual void vfunction45(float);
+	virtual float vfunction46();
+	virtual bool vfunction47(bool);
 	virtual void vfunction48();
 	virtual void vfunction49();
 	virtual void vfunction50();
@@ -82,33 +85,33 @@ public:
 	virtual void vfunction52();
 	virtual void vfunction53();
 	virtual void vfunction54();
-	virtual void vfunction55();
-	virtual void vfunction56();
-	virtual void vfunction57();
-	virtual void vfunction58();
-	virtual void vfunction59();
-	virtual void vfunction60();
-	virtual void vfunction61();
+	virtual void vfunction55(tMatrix *);
+	virtual tMatrix *vfunction56();
+	virtual void vfunction57(tPoint3 *);
+	virtual void vfunction58(tMatrix *);
+	virtual tMatrix *vfunction59();
+	virtual void vfunction60(tMatrix *);
+	virtual tMatrix *vfunction61();
 	virtual void vfunction62(float, float, float);    // +0xf4
-	virtual void vfunction63();
+	virtual void vfunction63(float, float, float, float, float, float);
 	virtual void vfunction64(float, float);    // +0xfc
-	virtual void vfunction65();
-	virtual void vfunction66();
-	virtual void vfunction67();
-	virtual void vfunction68();
+	virtual void vfunction65(tMatrix *, float, float, float);
+	virtual void vfunction66(tMatrix *, float, float);
+	virtual void vfunction67(tMatrix *, float, float, float, float, float, float);
+	virtual bool vfunction68(int);
 	virtual void vfunction69();
-	virtual void vfunction70();
-	virtual void vfunction71();
-	virtual void vfunction72();
-	virtual void vfunction73();
-	virtual void vfunction74();
-	virtual void vfunction75();
-	virtual void vfunction76();
-	virtual void vfunction77();
-	virtual void vfunction78();
-	virtual void vfunction79();
-	virtual void vfunction80();
-	virtual void vfunction81();
+	virtual void vfunction70(float, float, float);
+	virtual void vfunction71(tPoint3 *);
+	virtual void vfunction72(float, float, float);
+	virtual void vfunction73(tPoint3 *);
+	virtual void vfunction74(float, float);
+	virtual void vfunction75(tPoint2 *);
+	virtual void vfunction76(unsigned int);
+	virtual void vfunction77(float, float, float);
+	virtual void vfunction78(unsigned int);
+	virtual void vfunction79(int, int);
+	virtual void vfunction80(void *);
+	virtual void vfunction81(int, void **, bool);
 	virtual void vfunction82();
 	virtual void vfunction83();
 	virtual void vfunction84();
