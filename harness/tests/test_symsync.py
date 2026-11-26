@@ -123,6 +123,7 @@ def test_scratch_check_syncs_a_copy_and_leaves_the_committed_table_alone(tmp_pat
     build = tmp_path / 'state' / 'build'
     build.mkdir(parents=True)
     symtab.write_claims(str(build / 'symbols.tsv'), [])
+    symtab.write_identity(str(build), str(tmp_path / 'op'))     # a build of this tree
     assert symsync.scratch_check() == 0
     assert table.read_text() == before
     copy = (tmp_path / 'state' / 'wholetree-symbols.tsv').read_text()
@@ -174,6 +175,7 @@ def test_a_refused_claim_is_a_warning_in_the_sync_and_an_error_in_the_whole_tree
     paths_.setattr(paths, 'SRC_ROOT', src)
     (tmp_path / 'build').mkdir()
     symtab.write_claims(str(tmp_path / 'build' / 'symbols.tsv'), [('0x00401000', '?new@@YAXXZ', 'a.cpp')])
+    symtab.write_identity(str(tmp_path / 'build'), src)
     capsys.readouterr()
     assert symsync.scratch_check() == 1
     shown = capsys.readouterr().out

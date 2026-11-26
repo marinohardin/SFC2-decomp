@@ -511,6 +511,13 @@ def read_result_symbols(path):
     return {a: sym for a, sym, _ in verify.symbol_table_rows(results)}
 
 
+# `claim` exit codes beyond 0 and 1 (harness/landing.sh tells its failures apart by them).
+EXIT_REFUSED = 3
+EXIT_STALE = 4
+STALE_BUILD = ('ERROR the last build was not made from the current source tree: its symbols are not '
+               'claimed (run harness/build-and-verify.sh --all first)')
+
+
 def cmd_claim(a):
     table = a.table or default_table()
     build, src_root = a.build, a.src_root
@@ -529,6 +536,11 @@ def cmd_claim(a):
             return 0
     else:
         built = read_build_symbols(build)
+        if built is not None:
+            from harness.lib import symtab
+            if not symtab.build_is_current(build, src_root):
+                print(STALE_BUILD)
+                return EXIT_STALE
     if built is None:
         print(f'ERROR no symbols.tsv in {build}: run harness/build-and-verify.sh --all first')
         return 1
@@ -552,7 +564,7 @@ def cmd_claim(a):
     if new != lines:
         write_atomic(table, '\n'.join(new))
     print(f'{len(messages)} rows changed' + (f', {len(refusals)} refused' if refusals else ''))
-    return 1 if refusals else 0
+    return EXIT_REFUSED if refusals else 0
 
 
 def cmd_show(a):

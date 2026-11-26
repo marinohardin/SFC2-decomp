@@ -171,3 +171,30 @@ def test_a_source_file_name_under_the_original_build_folder_is_accepted():
 def test_a_different_file_name_is_still_a_mismatch():
     t = build_with_constants(POINT_TWO, b'tsay.cpp\0', POINT_TWO, b'D:\\build\\Tiger\\tpart.cpp\0')
     assert statuses(t)[1] == (STRING, 'mismatch')
+
+
+def build_self_call(call_target):
+    """A recursive function: call itself ; ret. The exe's call goes to `call_target`."""
+    base = bytes.fromhex('e800000000c3')
+    obj = coff.CoffObject(coff.write_object(base, '?f@@YAXXZ', [(1, '?f@@YAXXZ', coff.REL_REL32)]))
+    rel = (call_target - (FN + 5)) & 0xFFFFFFFF
+    exe = coff.PeImage(make_pe(b'\xe8' + struct.pack('<I', rel) + b'\xc3' + b'\xcc' * 32))
+    return target.build(FN, 6, obj, '?f@@YAXXZ', exe, FakeIndex({}, []))
+
+
+def test_a_call_to_the_function_itself_is_strict_and_stays_a_relocation_for_objdiff():
+    t = build_self_call(FN)
+    assert statuses(t) == [('?f@@YAXXZ', 'ok')]
+    assert t['strict'] is True
+    tobj = coff.CoffObject(t['object'])
+    (_, idx, _), = tobj.sections[1].relocs
+    assert tobj.symbols[idx].name == '?f@@YAXXZ'
+
+
+def test_a_call_to_another_address_than_the_function_itself_is_a_mismatch():
+    t = build_self_call(FN + 0x40)
+    assert statuses(t) == [('?f@@YAXXZ', 'mismatch')]
+    assert t['strict'] is False
+    tobj = coff.CoffObject(t['object'])
+    (_, idx, _), = tobj.sections[1].relocs
+    assert tobj.symbols[idx].name == f'$exe_{FN + 0x40:08x}'

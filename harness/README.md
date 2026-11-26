@@ -90,6 +90,25 @@ An interrupted run (Ctrl-C) stops the compiles it started, in every worker, and 
    ok and unverified fields are masked so objdiff sees them equal; a mismatch keeps the exe bytes
    and points at a symbol named after the exe address, so objdiff counts it. Identical opcodes
    calling the wrong function therefore do not pass.
+   **Claimed addresses.** A symbol is known at the addresses the evidence gives it
+   (`functions.csv`, the SDK tables). A relocation naming symbol S that reaches address A is also
+   accepted when a `// FUNCTION:` annotation claims A and the symbol table's row for A carries
+   exactly S with evidence `claim` (`FunctionIndex.add_claims`, called by `verify.py` once per
+   run). This is for a function the executable holds twice: the original's own copy is claimed
+   under its own symbol while the evidence knows that symbol only at the SDK library's folded
+   copy. The credit is an extra accept only: it is a separate record (`claimed`), never added to
+   `known` or `names_at`, so it cannot turn any relocation that passed into a mismatch, and a
+   claim under another symbol gives no credit to S. What stops a session claiming an address
+   under the wrong symbol to make its callers pass: a `mangled` or `add` row, or a row with
+   another symbol, gives no credit (only `claim` rows count, and `tools/symbols.py claim` refuses
+   to replace a `mangled` or `add` symbol); an address the evidence already names with another
+   mangled symbol gives no credit; each address has one row and so one symbol; and the stand-in
+   checks of step 8 still reject a caller naming a claimed address by another symbol. Nothing
+   proves the claimed address holds a copy of S's function (the known copy may be folded with
+   another function, so no byte-equality test is made), so every credit is listed: `--all` (and
+   so `harness/landing.sh`) prints one `claimed address credited` line per pair and writes
+   `claimed_credits.tsv` (symbol, claimed address, known addresses, relocations using it) in the
+   build folder beside `reloc_breaks.tsv`. **A reviewer reads this list.**
    **Thread-local variables (`__declspec(thread)`).** Their access is a relocation of type
    `0x0B` (SECREL): the field holds the variable's offset inside the thread-local block. The
    harness turns the exe's field into an address (`tls_start` of the exe's TLS directory, plus the
@@ -106,6 +125,11 @@ An interrupted run (Ctrl-C) stops the compiles it started, in every worker, and 
    relocation, so objdiff sees the pair equal). Nothing else changes in the copies, the
    result's `relocs` keep the type `SECREL`, `objdiff_rewrites` counts the records rewritten that belong to this function (both sides: its own relocations in the rebuilt object and in the target object, not the unit's), and
    the report prints a line for each function that has such a relocation.
+   **A function that refers to itself** (a recursive call, the address of its own callback) has a
+   relocation to its own symbol. The target object points that relocation at the function's
+   symbol, as the rebuilt object does, so objdiff sees a relocation on both sides and the pair
+   equal; the strict check resolves it as an own-section label (the exe's field must reach this
+   function's own address, else it is a mismatch).
 5. Runs `objdiff-cli diff` for the score, and a strict byte comparison of the masked bytes.
    **Exact** means objdiff 100% and the strict check equal.
 6. Re-scores every other recorded function in the same unit (a header or shared edit can break
@@ -510,7 +534,10 @@ its unit compiled for it and the claiming file (`lib/symtab.py`), and beside it 
 a hash of every file under the source root the run saw (a run that failed removes it). `tools/symbols.py
 check` compares the table with `symbols.tsv` only when `symbols.id` equals the hash of the tree it is
 checking; a build folder left by another commit (a CI runner's, between runs) gives an `INFO` line and
-no comparison, so a stale record can neither fail nor pass a check. `scripts/check.sh` runs `check`
+no comparison, so a stale record can neither fail nor pass a check. `tools/symbols.py claim` asks the
+same question and refuses (exit 1, "run `--all` first") when the build folder is not of the current tree; with `--results` (the
+symbols of one run's own output, as the loop's `symsync` uses it) the folder is not read, so no identity applies. `landing.sh` names
+which of three it was by `claim`'s exit code (3 a refused replacement, 4 a stale build, else other): a refused replacement of a `mangled`/`add` symbol, a stale build, or another failure (printed as it came). `scripts/check.sh` runs `check`
 before the rebuild (format and coverage) and again after it, when the comparison is this tree's. With `functions.csv`'s mangled
 names and single SDK labels it answers, for an original address, which symbol a call to it must
 name; `python3 -m harness.lib.symtab [<address>...]` prints the rows with the calling convention.

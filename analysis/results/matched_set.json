@@ -4704,8 +4704,8 @@
    "symbol": "?fn_00425066@fn_00425066_tree@@QAEXPAUnode@1@@Z",
    "unit": "unsorted/fn_00425000.cpp",
    "size": 56,
-   "score": 99.792,
-   "exact": false,
+   "score": 100.0,
+   "exact": true,
    "recorded": "2026-11-25"
   },
   "0x0042509e": {
@@ -4722,8 +4722,8 @@
    "symbol": "?fn_004250ee@fn_00425066_tree@@QAEXPAUnode@1@@Z",
    "unit": "unsorted/fn_00425000.cpp",
    "size": 48,
-   "score": 99.773,
-   "exact": false,
+   "score": 100.0,
+   "exact": true,
    "recorded": "2026-11-25"
   },
   "0x0042511e": {
@@ -4947,7 +4947,7 @@
    "symbol": "?fn_00425fef@@YAXPAI0H@Z",
    "unit": "unsorted/fn_00425000.cpp",
    "size": 181,
-   "score": 96.25,
+   "score": 96.375,
    "exact": false,
    "recorded": "2026-11-25"
   },
@@ -5541,9 +5541,9 @@
    "symbol": "??1tClientCharacter@@UAE@XZ",
    "unit": "unsorted/tClientCharacter.cpp",
    "size": 248,
-   "score": 99.776,
-   "exact": false,
-   "recorded": "2026-11-11"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x004296c8": {
    "name": "FUN_004296c8",
@@ -5586,9 +5586,9 @@
    "symbol": "?fn_0042984d@tClientCharacter@@QAEAAV1@ABV1@@Z",
    "unit": "unsorted/tClientCharacter.cpp",
    "size": 459,
-   "score": 99.847,
-   "exact": false,
-   "recorded": "2026-11-16"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x00429a18": {
    "name": "FUN_00429a18",
@@ -5622,9 +5622,9 @@
    "symbol": "?fn_00429d06@tClientCharacter@@QAEXPBVtObject_00543551@@@Z",
    "unit": "unsorted/tClientCharacter.cpp",
    "size": 519,
-   "score": 99.906,
+   "score": 99.969,
    "exact": false,
-   "recorded": "2026-11-16"
+   "recorded": "2026-11-25"
   },
   "0x00429f0d": {
    "name": "tClientCharacter::vfunction2",
@@ -5883,9 +5883,9 @@
    "symbol": "?FUN_0042a8b7@fn_0042a480_object@@QAEXABVtMetaMapHex@@@Z",
    "unit": "unsorted/fn_0042A000.cpp",
    "size": 120,
-   "score": 99.857,
-   "exact": false,
-   "recorded": "2026-11-19"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x0042a92f": {
    "name": "FUN_0042a92f",
@@ -6000,9 +6000,9 @@
    "symbol": "?FUN_0042ab25@fn_0042a480_object@@QAEXAAV?$vector@VtID@nDatabase@@V?$allocator@VtID@nDatabase@@@std@@@std@@@Z",
    "unit": "unsorted/fn_0042A000.cpp",
    "size": 191,
-   "score": 99.918,
-   "exact": false,
-   "recorded": "2026-11-24"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x0042abe4": {
    "name": "FUN_0042abe4",
@@ -6054,18 +6054,18 @@
    "symbol": "?fn_0042c053@fn_0042c053_Tree@@QAEPAUfn_0042c053_Node@@PAU2@0@Z",
    "unit": "unsorted/fn_0042C000.cpp",
    "size": 129,
-   "score": 99.808,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x0042c0d4": {
    "name": "FUN_0042c0d4",
    "symbol": "?fn_0042c0d4@fn_0042c053_Tree@@QAEXPAUfn_0042c053_Node@@@Z",
    "unit": "unsorted/fn_0042C000.cpp",
    "size": 56,
-   "score": 99.792,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x0042c10c": {
    "name": "FUN_0042c10c",
@@ -10779,9 +10779,9 @@
    "symbol": "?fn_00455942@tObject_00455897@@QAEXPAVtObject_0045565f@@H@Z",
    "unit": "Source/shipsys/tractor.cpp",
    "size": 117,
-   "score": 99.884,
-   "exact": false,
-   "recorded": "2026-11-16"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x004559b7": {
    "name": "FUN_004559b7",
@@ -11166,27 +11166,27 @@
    "symbol": "?fn_00460e3e@fn_00460acb_class@@QAEXPAUfn_00460acb_node@@@Z",
    "unit": "unsorted/fn_00460000.cpp",
    "size": 56,
-   "score": 99.792,
-   "exact": false,
-   "recorded": "2026-11-16"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x00460e76": {
    "name": "FUN_00460e76",
    "symbol": "?fn_00460e76@fn_00460b03_class@@QAEXPAUfn_00460acb_node@@@Z",
    "unit": "unsorted/fn_00460000.cpp",
    "size": 48,
-   "score": 99.773,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x00460ea6": {
    "name": "FUN_00460ea6",
    "symbol": "?fn_00460ea6@fn_00460b3b_class@@QAEXPAUfn_00460acb_node@@@Z",
    "unit": "unsorted/fn_00460000.cpp",
    "size": 56,
-   "score": 99.792,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x00460ede": {
    "name": "FUN_00460ede",
@@ -13227,9 +13227,9 @@
    "symbol": "?fn_004bd8d4@c_004bd805_Object@@QAEXPAVtString@@H@Z",
    "unit": "unsorted/fn_004BD43E.cpp",
    "size": 318,
-   "score": 99.946,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x004bda12": {
    "name": "FUN_004bda12",
@@ -13443,9 +13443,9 @@
    "symbol": "?fn_004bde26@c_004bdd0d_Object@@QAEXPAVtString@@H@Z",
    "unit": "unsorted/fn_004BD43E.cpp",
    "size": 318,
-   "score": 99.946,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x004bdf64": {
    "name": "FUN_004bdf64",
@@ -14424,9 +14424,9 @@
    "symbol": "??1tSFCPlayer@@UAE@XZ",
    "unit": "unsorted/tSFCPlayer.cpp",
    "size": 358,
-   "score": 99.905,
-   "exact": false,
-   "recorded": "2026-11-16"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x004cfb31": {
    "name": "tSFCPlayer::vfunction2",
@@ -16053,9 +16053,9 @@
    "symbol": "?fn_004d3951@fn_004d38a5_list@@QAEXPAPAH@Z",
    "unit": "unsorted/fn_004D3143.cpp",
    "size": 56,
-   "score": 99.792,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x004d39aa": {
    "name": "FUN_004d39aa",
@@ -19365,9 +19365,9 @@
    "symbol": "??1tMetaMapHex@@UAE@XZ",
    "unit": "unsorted/tMetaMapHex.cpp",
    "size": 144,
-   "score": 99.868,
-   "exact": false,
-   "recorded": "2026-11-16"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x005394f4": {
    "name": "tMetaMapHex::tMetaMapHex",
@@ -19797,36 +19797,36 @@
    "symbol": "?fn_0053ab16@tree@fn_0053a6cc_map@@QAEPAUnode@2@PAU32@0@Z",
    "unit": "unsorted/tMetaMapHex.cpp",
    "size": 132,
-   "score": 99.815,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x0053ab9a": {
    "name": "FUN_0053ab9a",
    "symbol": "?fn_0053ab9a@tree@fn_0053a6cc_map@@QAEXPAUnode@2@@Z",
    "unit": "unsorted/tMetaMapHex.cpp",
    "size": 48,
-   "score": 99.773,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x0053abca": {
    "name": "FUN_0053abca",
    "symbol": "?fn_0053abca@tree@fn_0053a73a_map@@QAEPAUnode@2@PAU32@0@Z",
    "unit": "unsorted/tMetaMapHex.cpp",
    "size": 132,
-   "score": 99.815,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x0053ac4e": {
    "name": "FUN_0053ac4e",
    "symbol": "?fn_0053ac4e@tree@fn_0053a73a_map@@QAEXPAUnode@2@@Z",
    "unit": "unsorted/tMetaMapHex.cpp",
    "size": 48,
-   "score": 99.773,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x0053ac7e": {
    "name": "tClassAllocator<tMetaMapHex>::tClassAllocator<tMetaMapHex>",
@@ -20193,9 +20193,9 @@
    "symbol": "?fn_00541499@tTeamSlot@@QAEXPAVtServCharacter@@@Z",
    "unit": "Meta/MetaDatabase/Objects/MissionObjects/TeamSlot.cpp",
    "size": 308,
-   "score": 99.949,
-   "exact": false,
-   "recorded": "2026-11-19"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x005430ad": {
    "name": "FUN_005430ad",
@@ -20643,36 +20643,36 @@
    "symbol": "?fn_0054372f@fn_005430ad_owner@@QAE_NPAVfn_0054385d_source@@@Z",
    "unit": "unsorted/fn_00543000.cpp",
    "size": 118,
-   "score": 99.861,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x005437a5": {
    "name": "FUN_005437a5",
    "symbol": "?fn_005437a5@fn_005430ad_owner@@QAEXABVtID@nDatabase@@@Z",
    "unit": "unsorted/fn_00543000.cpp",
    "size": 184,
-   "score": 99.911,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x0054385d": {
    "name": "FUN_0054385d",
    "symbol": "?fn_0054385d@fn_005430ad_owner@@QAEXPAVfn_0054385d_source@@@Z",
    "unit": "unsorted/fn_00543000.cpp",
    "size": 231,
-   "score": 99.929,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x00543944": {
    "name": "FUN_00543944",
    "symbol": "?fn_00543944@fn_005430ad_owner@@QBE_NABVtID@nDatabase@@@Z",
    "unit": "unsorted/fn_00543000.cpp",
    "size": 160,
-   "score": 99.898,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x005439e4": {
    "name": "FUN_005439e4",
@@ -20841,9 +20841,9 @@
    "symbol": "?SQLFillInsertStream@fn_005430ad_owner@@UAEXPAV?$basic_stringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z",
    "unit": "unsorted/fn_00543000.cpp",
    "size": 1248,
-   "score": 99.941,
+   "score": 99.964,
    "exact": false,
-   "recorded": "2026-11-17"
+   "recorded": "2026-11-25"
   },
   "0x00544b5c": {
    "name": "tAuctionItem::tAuctionItem",
@@ -25395,9 +25395,9 @@
    "symbol": "?FUN_005bc570@fn_005bc161_tree@@QAEXPAUnode@1@@Z",
    "unit": "unsorted/fn_005BC000.cpp",
    "size": 48,
-   "score": 99.773,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x005bc5a0": {
    "name": "FUN_005bc5a0",
@@ -25422,9 +25422,9 @@
    "symbol": "?FUN_005bc8b0@fn_005bc1d5_tree@@QAEXPAUnode@1@@Z",
    "unit": "unsorted/fn_005BC000.cpp",
    "size": 56,
-   "score": 99.792,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x005bc8e8": {
    "name": "FUN_005bc8e8",
@@ -25458,27 +25458,27 @@
    "symbol": "?FUN_005bcd91@fn_005bc161_tree@@QAEXPAUnode@1@@Z",
    "unit": "unsorted/fn_005BC000.cpp",
    "size": 48,
-   "score": 99.773,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x005bcdc1": {
    "name": "FUN_005bcdc1",
    "symbol": "?FUN_005bcdc1@fn_005bc161_tree@@QAEXPAUnode@1@@Z",
    "unit": "unsorted/fn_005BC000.cpp",
    "size": 48,
-   "score": 99.773,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x005bcdf1": {
    "name": "FUN_005bcdf1",
    "symbol": "?FUN_005bcdf1@fn_005bc161_tree@@QAEXPAUnode@1@@Z",
    "unit": "unsorted/fn_005BC000.cpp",
    "size": 48,
-   "score": 99.773,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x005bce21": {
    "name": "FUN_005bce21",
@@ -26835,18 +26835,18 @@
    "symbol": "?fn_005d9411@fn_005d9281_tree@@QAEXPAUnode@1@@Z",
    "unit": "unsorted/fn_005D913F.cpp",
    "size": 48,
-   "score": 99.773,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x005d96ac": {
    "name": "FUN_005d96ac",
    "symbol": "?fn_005d96ac@fn_005d92b9_object@@QAEXPAUnode@fn_005d9281_tree@@@Z",
    "unit": "unsorted/fn_005D913F.cpp",
    "size": 56,
-   "score": 99.792,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x005d9750": {
    "name": "FUN_005d9750",
@@ -27240,27 +27240,27 @@
    "symbol": "?_Sort@std@@YAXPAPAVtNewsStory@@0Ufn_005de0cf_Pred@@0@Z",
    "unit": "unsorted/fn_005DE000.cpp",
    "size": 136,
-   "score": 99.839,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x005deb34": {
    "name": "FUN_005deb34",
    "symbol": "?_Sort@std@@YAXPAPAVtNewsStory@@0Ufn_005de1b8_Pred@@0@Z",
    "unit": "unsorted/fn_005DE000.cpp",
    "size": 136,
-   "score": 99.839,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x005debbc": {
    "name": "FUN_005debbc",
    "symbol": "?_Sort@std@@YAXPAPAVtNewsStory@@0Ufn_005de222_Pred@@0@Z",
    "unit": "unsorted/fn_005DE000.cpp",
    "size": 136,
-   "score": 99.839,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x005dec44": {
    "name": "FUN_005dec44",
@@ -27456,18 +27456,18 @@
    "symbol": "?vfunction5@tRequestLogonInformation@nAsyncClientMapProcedures@@UAEXXZ",
    "unit": "Source/MetaClient/MetaClientMap/AsyncClientMapProcedures/AsyncClientMapProcedures_RequestLogonInformation.cpp",
    "size": 322,
-   "score": 99.898,
+   "score": 99.949,
    "exact": false,
-   "recorded": "2026-11-19"
+   "recorded": "2026-11-25"
   },
   "0x005e189d": {
    "name": "FUN_005e189d",
    "symbol": "?fn_005e189d@tUpdateFleetIcons@nAsyncClientMapProcedures@@QAEXPBVtBuffer@nDataStore@@@Z",
    "unit": "Source/MetaClient/MetaClientMap/AsyncClientMapProcedures/AsyncClientMapProcedures_UpdateFleetIcons.cpp",
    "size": 341,
-   "score": 99.904,
+   "score": 99.952,
    "exact": false,
-   "recorded": "2026-11-19"
+   "recorded": "2026-11-25"
   },
   "0x005e2501": {
    "name": "FUN_005e2501",
@@ -28536,9 +28536,9 @@
    "symbol": "?fn_005e5d7a@tMetaClientMapPanel@@QAE?AVtHexPoint@@XZ",
    "unit": "Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp",
    "size": 100,
-   "score": 99.828,
-   "exact": false,
-   "recorded": "2026-11-19"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x005e5dde": {
    "name": "FUN_005e5dde",
@@ -28590,9 +28590,9 @@
    "symbol": "?fn_005e5ef4@tMetaClientMapPanel@@QAEXXZ",
    "unit": "Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp",
    "size": 413,
-   "score": 99.958,
-   "exact": false,
-   "recorded": "2026-11-19"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x005e6091": {
    "name": "FUN_005e6091",
@@ -28617,18 +28617,18 @@
    "symbol": "?fn_005e62c4@tMetaClientMapPanel@@QAEXABUfn_005ea9ce_elem@@@Z",
    "unit": "Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp",
    "size": 244,
-   "score": 98.015,
+   "score": 98.088,
    "exact": false,
-   "recorded": "2026-11-19"
+   "recorded": "2026-11-25"
   },
   "0x005e6469": {
    "name": "FUN_005e6469",
    "symbol": "?fn_005e6469@tMetaClientMapPanel@@QAEXJ@Z",
    "unit": "Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp",
    "size": 129,
-   "score": 99.865,
-   "exact": false,
-   "recorded": "2026-11-19"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x005e64ea": {
    "name": "FUN_005e64ea",
@@ -28662,45 +28662,45 @@
    "symbol": "?fn_005e6642@tMetaClientMapPanel@@QAE_NABVfn_005e6642_record@@@Z",
    "unit": "Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp",
    "size": 117,
-   "score": 99.868,
-   "exact": false,
-   "recorded": "2026-11-19"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x005e66b7": {
    "name": "FUN_005e66b7",
    "symbol": "?fn_005e66b7@tMetaClientMapPanel@@QAEXABUfn_005ea9ce_elem@@@Z",
    "unit": "Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp",
    "size": 241,
-   "score": 99.934,
-   "exact": false,
-   "recorded": "2026-11-19"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x005e67a8": {
    "name": "FUN_005e67a8",
    "symbol": "?fn_005e67a8@tMetaClientMapPanel@@QAEXABVtID@nDatabase@@ABVtHexPoint@@JV23@@Z",
    "unit": "Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp",
    "size": 489,
-   "score": 99.858,
-   "exact": false,
-   "recorded": "2026-11-19"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x005e6991": {
    "name": "FUN_005e6991",
    "symbol": "?fn_005e6991@tMetaClientMapPanel@@QAEXABVtID@nDatabase@@ABVtHexPoint@@@Z",
    "unit": "Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp",
    "size": 176,
-   "score": 99.907,
-   "exact": false,
-   "recorded": "2026-11-19"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x005e6a41": {
    "name": "FUN_005e6a41",
    "symbol": "?fn_005e6a41@tMetaClientMapPanel@@QAEXXZ",
    "unit": "Source/MetaClient/MetaClientMap/MetaViewPortHandler.cpp",
    "size": 170,
-   "score": 99.904,
-   "exact": false,
-   "recorded": "2026-11-19"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x005e6d7c": {
    "name": "tMetaMapNormalHex::tMetaMapNormalHex",
@@ -28752,9 +28752,9 @@
    "symbol": "?fn_005ea469@tTree_005ea14b@@QAEXPAUtNode@1@@Z",
    "unit": "unsorted/fn_005EA000.cpp",
    "size": 56,
-   "score": 99.792,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x005ea4a1": {
    "name": "FUN_005ea4a1",
@@ -29292,9 +29292,9 @@
    "symbol": "?_Erase@?$_Tree@HU?$pair@$$CBHH@std@@U_Kfn@?$map@HHU?$less@H@std@@V?$allocator@H@2@@2@U?$less@H@2@V?$allocator@H@2@@std@@IAEXPAU_Node@12@@Z",
    "unit": "unsorted/fn_005FB000.cpp",
    "size": 48,
-   "score": 99.773,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x005fb3df": {
    "name": "FUN_005fb3df",
@@ -29319,9 +29319,9 @@
    "symbol": "?_Erase@?$_Tree@HU?$pair@$$CBHV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@std@@U_Kfn@?$map@HV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@H@2@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@2@U?$less@H@2@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@IAEXPAU_Node@12@@Z",
    "unit": "unsorted/fn_005FB000.cpp",
    "size": 56,
-   "score": 99.792,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x005fb867": {
    "name": "FUN_005fb867",
@@ -41901,9 +41901,9 @@
    "symbol": "?fn_00690480@@YAPAVtBrowser@@PAVtObjBase@@@Z",
    "unit": "unsorted/tSession.cpp",
    "size": 80,
-   "score": 99.815,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x006904d0": {
    "name": "FUN_006904d0",
@@ -44862,9 +44862,9 @@
    "symbol": "?WinTimerCallback@tWinTimer@@KGXIIKKK@Z",
    "unit": "Common/Timer/WinTimer.cpp",
    "size": 128,
-   "score": 99.974,
-   "exact": false,
-   "recorded": "2026-11-24"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-25"
   },
   "0x0070fc80": {
    "name": "tTimer::tTimer",

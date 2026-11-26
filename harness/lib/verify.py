@@ -54,6 +54,7 @@ class Report:
         self.claim_breaks = []
         self.standins = []
         self.table_breaks = []   # report_table_breaks
+        self.claimed_credits = []   # claimed_credits
         self.objects = {}      # unit (as in a result's `unit`) -> its object file, for step 8
 
     def add(self, tag, text):
@@ -381,6 +382,11 @@ def _units_for(addresses, annotations, src_root, units_tsv=None):
     return out, missing, unplaced
 
 
+def annotations_claimed(annotations):
+    """The addresses a FUNCTION annotation claims, from source.scan_annotations."""
+    return {a for a, anns in annotations.items() if any(x.kind == 'FUNCTION' for x in anns)}
+
+
 def claimed_keys(cfg=None):
     """The matched-set keys of every address a FUNCTION annotation in op/ claims."""
     cfg = cfg or source.load_units()
@@ -568,6 +574,7 @@ def run(ids, check_all=False, behavioural=False, record=False, now=None, base=No
         rep.add('ERROR', f'the symbol table cannot be read: {e}')
         rep.failed = True
         return rep
+    index.add_claims(annotations_claimed(annotations), table)
     if by_unit:
         exe = check_exe(rep)
 
@@ -634,6 +641,7 @@ def run(ids, check_all=False, behavioural=False, record=False, now=None, base=No
     report_table_breaks(rep, claimed_symbols(rep.results, data, symtab.load_claims()), table,
                         check_all, {f'0x{a:08x}' for a in claimed_addrs}, index)
     if check_all:
+        report_claimed_credits(rep, index)
         report_renamed_exact(rep)
 
     if behavioural:
@@ -1052,6 +1060,36 @@ def report_line_notes(rep, check_all, own):
 
 TABLE_EVIDENCE = ('mangled', 'add', 'callers')
 TABLE_BREAKS_FILE = 'table_breaks.tsv'
+CLAIMED_CREDITS_FILE = 'claimed_credits.tsv'
+
+
+def claimed_credits(results, index):
+    """[(symbol, claimed address, known addresses, relocations that used the credit)] for every
+    address the source claims that the evidence index credits to a symbol it knows elsewhere
+    (funcs.FunctionIndex.add_claims) and that a relocation used, sorted. Nothing proves such an address holds a copy of the
+    symbol's function (the known copy may be folded with another function), so a reviewer reads
+    this list."""
+    used = {}
+    for res in results:
+        for r in res.get('relocs') or []:
+            if r['detail'] == 'claimed address':
+                key = (r['symbol'], int(r['exe_address'], 16))
+                used[key] = used.get(key, 0) + 1
+    out = []
+    for sym, addrs in index.claimed.items():
+        known = ' '.join(f'0x{a:08x}' for a in sorted(index.known.get(sym, ())))
+        for a in sorted(addrs):
+            if used.get((sym, a)):      # a credit no relocation uses changes nothing
+                out.append((sym, f'0x{a:08x}', known, used[(sym, a)]))
+    return sorted(out, key=lambda t: (t[1], t[0]))
+
+
+def report_claimed_credits(rep, index):
+    """One INFO line per credited pair, and the rows for claimed_credits.tsv in rep."""
+    rep.claimed_credits = claimed_credits(rep.results, index)
+    for sym, addr, known, n in rep.claimed_credits:
+        rep.add('INFO', f'claimed address credited: {sym} at {addr} (known at {known or "nowhere"}); '
+                f'{n} relocations use it')
 
 
 def table_targets(rows, claims):
@@ -1260,11 +1298,20 @@ def main(argv=None):
     if a.all and rep.results:
         # Every claim was rebuilt: the symbol table of the claims (harness/lib/symtab.py).
         write_symbol_table(rep, tree=built_tree)
+    if not (a.all and rep.results):
+        # No full run: a list left by an earlier --all would be stale.
+        try:
+            os.remove(os.path.join(paths.BUILD, CLAIMED_CREDITS_FILE))
+        except OSError:
+            pass
     if a.all and rep.results:
         # Every claim was rebuilt: what the relocation baseline would hold today.
         out = os.path.join(paths.BUILD, 'reloc_breaks.tsv')
         with open(out, 'w') as f:
             f.write(reloc_baseline_text(rep.claim_breaks, classes=True))
+        with open(os.path.join(paths.BUILD, CLAIMED_CREDITS_FILE), 'w') as f:
+            f.write('symbol\taddress\tknown\trelocations\n')
+            f.writelines('\t'.join(map(str, row)) + '\n' for row in rep.claimed_credits)
         with open(os.path.join(paths.BUILD, TABLE_BREAKS_FILE), 'w') as f:
             f.write(reloc_baseline_text(rep.table_breaks, classes=True))
         by_class = {c: sum(1 for b in rep.claim_breaks if b['class'] == c)
