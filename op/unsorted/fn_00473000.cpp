@@ -108,3 +108,11 @@ int __stdcall FUN_0047378b( int param_1 )
 {
 	return param_1;
 }
+
+// FUNCTION: STARFLEETOP 0x00473792
+long __stdcall FUN_00473792( long param_1 )
+{
+	if ( param_1 < 0x1000e || param_1 > 0x10013 )
+		return -1;
+	return fn_004d338b( param_1 );
+}

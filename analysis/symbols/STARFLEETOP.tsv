@@ -3694,7 +3694,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004733f4	function	tNetMsg_kPlayerInfo::~tNetMsg_kPlayerInfo	tNetMsg_kPlayerInfo				rtti
 0x004734c7	function	tNetMsg_kSetPlayerTeam::~tNetMsg_kSetPlayerTeam	tNetMsg_kSetPlayerTeam				rtti
 0x0047378b	function	fn_0047378b		?FUN_0047378b@@YGHH@Z	claim		none
-0x00473792	function	fn_00473792					none
+0x00473792	function	fn_00473792		?FUN_00473792@@YGJJ@Z	claim		none
 0x004737bd	function	fn_004737bd					none
 0x004737c7	function	tState_Namespace_Multiplayer::tState_Multiplayer::tState_Multiplayer	tState_Namespace_Multiplayer::tState_Multiplayer				rtti
 0x004739e8	function	tState_Namespace_Multiplayer::tState_Multiplayer::scalar_deleting_destructor	tState_Namespace_Multiplayer::tState_Multiplayer				rtti
