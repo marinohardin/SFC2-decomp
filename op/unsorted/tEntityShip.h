@@ -203,6 +203,7 @@ public:
 	void fn_0041563f(int param_1);
 	void fn_00415652(int param_1);
 	int fn_00415672(int param_1);
+	int fn_004156b8(int param_1);
 	void fn_00419e4a(int param_1);
 
 	// 0x1bc is cleared by the constructor.

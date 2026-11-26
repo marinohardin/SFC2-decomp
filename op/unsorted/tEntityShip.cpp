@@ -243,6 +243,23 @@ int tEntityShip::fn_00415672(int param_1)
 	}
 	return 0;
 }
+
+// HYPOTHESIS: same chain as fn_00415672, returning slot 97's result ungraded.
+// MATCH-ONLY: the second call goes through the vtable by hand until that object's class is declared.
+// FUNCTION: STARFLEETOP 0x004156b8
+int tEntityShip::fn_004156b8(int param_1)
+{
+	if (field_ad4)
+	{
+		void *obj = field_ad4->vfunction93();
+		if (obj)
+		{
+			typedef int (tEntityShip::*tSlot97)(int);
+			return (((tEntityShip *)obj)->*(*(tSlot97 *)(*(void ***)obj + 0x184 / 4)))(param_1);
+		}
+	}
+	return 0;
+}
 // FUNCTION: STARFLEETOP 0x00414b8f
 // FUNCTION: STARFLEETOP 0x004158c1
 tEntityShip::~tEntityShip()
