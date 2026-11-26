@@ -5,6 +5,12 @@
 
 #include <string.h>
 #include "unsorted/tSWView3D.h"
+#include "Tiger/tinifile.h"
+
+namespace tBasicFileCRTNamespace {
+class tBasicFile;
+tBasicFile *_NewBasicFileCRT();
+}
 
 // HYPOTHESIS: field_1f68 is an object whose slot +0x2c returns an object with a slot +0x48 that
 // takes the 16-bit value at field_1f5c and the clipped rectangle.
@@ -47,6 +53,29 @@ public:
 	virtual fn_0069fb90_Fill *Get();
 };
 
+// HYPOTHESIS: the device built by 0x006b3260 or 0x006b4fe0; only the slots 0x0069f510 calls are
+// named (slot 5 takes a callback and a value, slots 9 and 2 are called when this function made it).
+class fn_0069f510_Device {
+public:
+	virtual void v0();
+	virtual void v1();
+	virtual void v2();
+	virtual void v3();
+	virtual void v4();
+	virtual bool v5(void (__stdcall *)(void *, int), int);
+	virtual void v6();
+	virtual void v7();
+	virtual void v8();
+	virtual void v9();
+};
+
+extern char *g_008846b4;
+extern char *g_008846b8;
+extern int g_00c7c10c;
+void __stdcall fn_0069f5d0(void *, int);
+void *fn_006b3260();
+void *fn_006b4fe0();
+
 // FUNCTION: STARFLEETOP 0x0069f3b0
 tSWView3D::tSWView3D()
 {
@@ -82,6 +111,42 @@ tSWView3D::~tSWView3D()
 	// HYPOTHESIS: the inlined ~tGLPixFmt of the member at +0x5f6c resets its vtable (0x007959d8).
 	// MATCH-ONLY: stored as a raw address, the class is not in a shared header.
 	*(unsigned long *)field_5f6c = 0x007959d8;
+}
+
+// FUNCTION: STARFLEETOP 0x0069f510
+bool tSWView3D::vfunction2(int a, int b)
+{
+	fn_0069f510_Device *device = (fn_0069f510_Device *)field_1f68;
+	bool created = false;
+	if (!device) {
+		bool debug = false;
+		created = true;
+		tINIFile *ini = tINIFile::mNewINIFile(g_008846b4, (tBasicFile *(*)())tBasicFileCRTNamespace::_NewBasicFileCRT);
+		if (ini) {
+			tINISection *section = ini->mGetSection(g_008846b8, 0);
+			if (section) {
+				unsigned long value = section->mGetInt32u("debug", 0xffffffff);
+				if (value != 0xffffffff && value > 0)
+					debug = true;
+			}
+			ini->mRelease();
+		}
+		void *made = 0;
+		if (!(ini && debug))
+			made = fn_006b4fe0();
+		if (!made)
+			made = fn_006b3260();
+		device = (fn_0069f510_Device *)made;
+	}
+	if (!device)
+		return false;
+	g_00c7c10c = a;
+	bool result = device->v5(fn_0069f5d0, b);
+	if (created) {
+		device->v9();
+		device->v2();
+	}
+	return result;
 }
 
 // FUNCTION: STARFLEETOP 0x0069fb90
