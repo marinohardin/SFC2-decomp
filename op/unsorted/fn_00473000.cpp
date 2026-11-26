@@ -117,5 +117,6 @@ long __stdcall FUN_00473792( long param_1 )
 	return fn_004d338b( param_1 );
 }
 
+// FUNCTION: STARFLEETOP 0x00473c1e
 // FUNCTION: STARFLEETOP 0x004737bd
 tState_Namespace_Multiplayer::tState_Multiplayer g_tState_Multiplayer;
