@@ -1,27 +1,21 @@
-// HYPOTHESIS: owning class unknown; this+0x174/0x178 is a begin/end pointer pair (a vector of pointers).
+#include <vector>
+
+// HYPOTHESIS: owning class unknown; this+0x170 is a vector of pointers, as tCastMgr holds there.
 class fn_00677060_Owner
 {
 public:
-    char pad[0x174];
-    void** m_begin;
-    void** m_end;
-    unsigned int size() const;
-    void** begin() const { return m_begin; }
+    char pad[0x170];
+    std::vector<void *> field_170;
     void* fn_00677060(unsigned int index);
 };
-
-inline unsigned int fn_00677060_Owner::size() const
-{
-    return m_begin == 0 ? 0 : m_end - m_begin;
-}
 
 // FUNCTION: STARFLEETOP 0x00677060
 void* fn_00677060_Owner::fn_00677060(unsigned int index)
 {
     if (index != 0)
     {
-        if (index <= size())
-            return *(begin() + index - 1);
+        if (index <= field_170.size())
+            return field_170[index - 1];
     }
     return 0;
 }
