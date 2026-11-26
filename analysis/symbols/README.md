@@ -64,3 +64,36 @@ address, kind or a symbol. `--evidence` is required; the table has no column for
 printed and belongs in the commit message. It refuses a row with `mangled` evidence, and a claimed
 row, or a row that has a symbol (it still encodes the old class until rebuilt and claimed), unless `--force` is given. A repeat is a
 no-op.
+
+## The data symbols: `STARFLEETOP.data.tsv`
+
+`STARFLEETOP.tsv` has function rows only. Objects built from `op/` that define a polymorphic class's
+constructor or destructor also emit run-time type information, and the table gives a program that
+places symbols by evidence from the executable no address for it. `STARFLEETOP.data.tsv` holds
+those addresses. Like the table, it is not part of the declared interface (`docs/INTERFACE.md`);
+it joins it on the same footing, and a program that builds on this repository may use it to place
+data symbols.
+
+Tab-separated, `#` comment lines first, then one header line (`address`, `kind`, `symbol`,
+`evidence`), sorted by address, LF, no quoting.
+
+| Column | Meaning |
+| --- | --- |
+| `address` | `0x` and 8 lowercase hex digits |
+| `kind` | `type_descriptor` (`??_R0`: the record starting with the `type_info` vftable pointer) or `vftable` (`??_7`: address of the first slot) |
+| `symbol` | The decorated symbol an object's definition has: `??_R0` + the descriptor's name string without its dot + `@8` (`.?AVfoo@@` gives `??_R0?AVfoo@@@8`; builtin and enum names derive the same way); `??_7<class>@@6B@`, or `??_7<class>@@6B<base>@@@` for a class's vftable at a nonzero offset |
+| `evidence` | `rtti`: found in the executable by structure, not by a name list |
+
+Not in it: `??_R1` to `??_R4` (the records an object defines for itself; their addresses are
+derivable, but their decorated names are not written yet), the exception type tables
+(`__TI...`), and any vftable whose name cannot be derived with certainty: a class with several
+vftables gets a row for the one at offset 0 and for one at another offset only when exactly one
+base of the class's `??_R2` array sits at that offset without a virtual base; the rest are left out
+(99 of 2149 at the time of writing, all at nonzero offsets, plus one vftable that two places
+reference). A class the original has no descriptor for has no row, whatever a source file
+declares (a placeholder class, or `struct` where the original has `class`).
+
+`python3 tools/rtti_symbols.py generate` writes it from the executable (after checking the
+executable's hash against `analysis/results/retail_hashes.sha256`); `python3 tools/rtti_symbols.py
+check` regenerates it in memory and fails when the committed file differs, and prints an INFO line
+and passes where there is no install. `scripts/check.sh` runs `check`.
