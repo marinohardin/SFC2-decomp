@@ -25,27 +25,12 @@ public:
 	// No destructor declared: the exe's (0x004696e0) destroys the members and calls ~tGameState
 	// without storing the vtable first, as only VC6's implicit destructor does. Slot 0 holds the
 	// scalar deleting destructor (0x00469900). Neither has a source line to claim.
-	// NAMING: the bodies are named as the analysis names them (vfunctionN is slot N-1 of the
-	// vftable 0x0079ebec: 0x0046667a is slot 1 but is called vfunction2), but written code calls
-	// slots by this class's own numbers (0x004690a5 calls vfunction3() and the exe calls slot 3,
-	// 0x0046691b, which is named vfunction4). The placeholder vfunction1 keeps the calls right,
-	// so the bodies named vfunction2, 4, 13 and 15 sit one slot late in this declaration; only
-	// a symbol-table rename of those four (they are exact) can reconcile the two. Slots 15 to
-	// 18 are tGameState's and not declared.
-	virtual void vfunction1();
+	// The virtual functions are named as the vftable 0x0079ebec names them (slot N is
+	// vfunctionN+1). The vftable overrides slots 1, 2, 3, 12 and 14 of tGameState's.
 	virtual bool vfunction2();
 	virtual void vfunction3();
 	virtual bool vfunction4();
-	virtual void vfunction5();
-	virtual void vfunction6();
-	virtual void vfunction7();
-	virtual void vfunction8();
-	virtual void vfunction9();
-	virtual void vfunction10();
-	virtual void vfunction11();
-	virtual void vfunction12();
 	virtual char *vfunction13();
-	virtual void vfunction14();
 	virtual void vfunction15(c_0046aa10_message *msg);
 
 	void fn_004682c7();

@@ -8,6 +8,7 @@
 #include "unsorted/tValueI.h"
 #include "unsorted/tValueBase.h"
 #include "unsorted/tGameState.h"
+#include "unsorted/tShipUI.h"
 #include "unsorted/fn_005717f7_vector.h"
 
 namespace tState_Namespace_Multiplayer
@@ -20,34 +21,26 @@ namespace tState_Namespace_Multiplayer
 // methods use; the gaps the original never touches in those two are char arrays.
 //
 // The vtable at 0x0079f32c overrides slot 0 (0x004739e8) and slots 1, 2, 3, 5, 12 and 14; every
-// other slot keeps tGameState's. Slots 4, 6 to 11 and 13 are declared only to keep the others
-// in place (MATCH-ONLY): the original inherits them.
+// other slot keeps tGameState's. The virtual functions are named as the vtable export names them
+// (slot N is vfunctionN+1).
 class tState_Multiplayer : public tGameState
 {
 public:
 	tState_Multiplayer();
 	virtual ~tState_Multiplayer();
 
-	// 0x0046ed6a
-	virtual void vfunction1();
-	// 0x0046f292, 6,108 bytes
-	virtual void vfunction2();
-	// 0x0046f197
+	// 0x0046ed6a (slot 1)
+	virtual bool vfunction2();
+	// 0x0046f292, 6,108 bytes (slot 2)
 	virtual void vfunction3();
-	virtual void vfunction4();
-	// 0x004714b7
-	virtual void vfunction5();
-	virtual void vfunction6();
-	virtual void vfunction7();
-	virtual void vfunction8();
-	virtual void vfunction9();
-	virtual void vfunction10();
-	virtual void vfunction11();
+	// 0x0046f197 (slot 3)
+	virtual bool vfunction4();
+	// 0x004714b7 (slot 5)
+	virtual void vfunction6(int param_1);
 	// 0x0046ed64: six bytes, so it returns a constant (the name slot of the other states).
-	virtual char *vfunction12();
-	virtual void vfunction13();
-	// 0x0047156b
-	virtual void vfunction14();
+	virtual char *vfunction13();
+	// 0x0047156b (slot 14)
+	virtual void vfunction15(c_0046aa10_message *param_1);
 
 	int field_0c;
 	unsigned char field_10;
@@ -82,9 +75,8 @@ public:
 	int field_d90;
 	char field_d94[0x90];
 	tValueI< tString > field_e24;
-	// HYPOTHESIS: a tShipUI (0x004cd034, destroyed by 0x004cd115), which has no header yet. Its
-	// size is where the next member starts.
-	char field_e64[0x1104];
+	// A tShipUI (0x004cd034, destroyed by 0x004cd115); its size is where the next member starts.
+	tShipUI field_e64;
 	// The destructor (0x00571a7a) is the one shared by every vector of pointers.
 	fn_005717f7_vector field_1f68;
 	// +0x1f7c to +0x1f8c are ints the methods compare and store; +0x1f90, +0x1f98 and +0x1fa0 are

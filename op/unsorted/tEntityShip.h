@@ -16,13 +16,9 @@
 // tShipSpecs's at 0x0040891d there), 0x6ac bytes, so 0x86c is the next member, the one the
 // ship systems read through their owner pointer.
 //
-// Not declared, because tPhysicalEntity (or tEntity) declares the slot with another return
-// type or arguments and a derived declaration of a different signature would add a virtual
-// instead of overriding one: slot 5 (vfunction6, 0x00417bc6, one float argument), 23
-// (vfunction24, 0x00416c17, returns a float), 24 (vfunction25, 0x00419cc4, one argument),
-// 30 to 32 (vfunction31 to vfunction33, 0x00416d41, 0x00416d75, 0x00416da2, return a byte),
-// 62 and 63 (vfunction63, 0x00415b6b and vfunction64, 0x00414b31, return a float; 0x00410667
-// is tPhysicalEntity's exact vfunction64 as a void).
+// The slots whose base declaration was wrong are declared now that tPhysicalEntity and tEntity
+// type them: 5 (0x00417bc6), 23 (0x00416c17), 24 (0x00419cc4), 30 to 32 (0x00416d41, 0x00416d75,
+// 0x00416da2) and 62 to 65 (0x00415b6b, 0x00414b31, 0x00414b38, 0x004155ed).
 class tEntityShip : public tPhysicalEntity
 {
 public:
@@ -32,21 +28,37 @@ public:
 	virtual void vfunction3();
 	virtual void vfunction4(tObject_00413ac3_arg *aObject);
 	virtual void vfunction5();
+	// HYPOTHESIS: takes a float (0x00417bc6 subtracts it from the member at 0xa90).
+	virtual void vfunction6(float aValue);
 	virtual void vfunction7(tObject_0041018e_arg *param_1, int param_2);
 	virtual void vfunction11(tSFCStream &s, int32u mode);
 	virtual void vfunction13(tID aID);
 	virtual void vfunction17();
 	virtual int vfunction23();
+	// HYPOTHESIS: returns a float: 0x00416c17 ends in fld of one of two constants.
+	virtual float vfunction24();
+	// HYPOTHESIS: takes an entity ID and indexes the entity table with it (0x00419cc4).
+	virtual void vfunction25(tID aID);
 	virtual void vfunction26(short a1, int a2, int a3, int a4, int a5);
 	virtual tMatrix *vfunction28(bool aValue);
+	// HYPOTHESIS: slots 30 and 31 return a truth value (0x00416d41 ends in mov al, 1; 0x00416d75
+	// in setne al); slot 32 (0x00416da2) jumps to a slot of the object at 0xad4 and returns
+	// its result, or 0.
+	virtual bool vfunction31();
+	virtual bool vfunction32();
+	virtual void *vfunction33();
 	virtual void vfunction38(int aID, bool aValue);
 	virtual void vfunction39(int aID);
 
-	// Slots 64 to 75 are new in this class (tPhysicalEntity's vftable ends at slot 63).
+	// Slots 62 to 65 override tPhysicalEntity's (0x00415b6b divides by the float at 0x8a4 after
+	// a call through slot 54; 0x00414b31 returns the float at 0xac8); slots 66 to 75 are new in
+	// this class (tPhysicalEntity's vftable ends at slot 65).
+	virtual float vfunction63();
+	virtual float vfunction64();
 	// HYPOTHESIS: slot 64 returns the float at 0x8a8.
 	virtual float vfunction65();
 	// HYPOTHESIS: the original returns a 16-bit angle (0x004155ed ends with xor ax, ax).
-	virtual unsigned short vfunction66(char param_1);
+	virtual short vfunction66(char param_1);
 	virtual void vfunction67(void *param_1);
 	virtual void vfunction68();
 	virtual void vfunction69(int param_1);

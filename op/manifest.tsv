@@ -384,7 +384,7 @@ address	size	symbol	source	modes	decorated
 0x00410650	7	tPhysicalEntity::vfunction59()	unsorted/tPhysicalEntity.cpp	vc6 guest	?vfunction59@tPhysicalEntity@@UAEHXZ
 0x00410657	8	tPhysicalEntity::vfunction61()	unsorted/tPhysicalEntity.cpp	vc6 guest	?vfunction61@tPhysicalEntity@@UAEXXZ
 0x0041065f	8	tPhysicalEntity::vfunction62()	unsorted/tPhysicalEntity.cpp	vc6 guest	?vfunction62@tPhysicalEntity@@UAEXXZ
-0x00410667	8	tPhysicalEntity::vfunction64()	unsorted/tPhysicalEntity.cpp	vc6 guest	?vfunction64@tPhysicalEntity@@UAEXXZ
+0x00410667	8	tPhysicalEntity::vfunction64()	unsorted/tPhysicalEntity.cpp	vc6 guest	?vfunction64@tPhysicalEntity@@UAEMXZ
 0x00410a46	6	tNetMsg_kKillEntity::mGetMap() const	unsorted/tNetMsg_kKillEntity.cpp	vc6 guest	?mGetMap@tNetMsg_kKillEntity@@UBEPBUtMapItem@tNetMsg@@XZ
 0x00413153	640	tPhysicalEntity::vfunction11(tSFCStream &,int32u)	Source/entity/entity_physical.cpp	vc6 guest	?vfunction11@tPhysicalEntity@@UAEXAAVtSFCStream@@K@Z
 0x004133d3	117	tMemoryPart::Search_tMemoryPart()	Source/entity/entity_physical.cpp	vc6 guest	?Search_tMemoryPart@tMemoryPart@@SAPAV1@XZ
@@ -1205,9 +1205,9 @@ address	size	symbol	source	modes	decorated
 0x00455a40	25	tObject_00455897::fn_00455a40(int)	Source/shipsys/tractor.cpp	vc6 guest	?fn_00455a40@tObject_00455897@@QAEPAVtObject_0045565f@@H@Z
 0x00455a59	199	tObject_00455897::fn_00455a59()	Source/shipsys/tractor.cpp	vc6 guest	?fn_00455a59@tObject_00455897@@QAEPAVtObject_0045565f@@XZ
 0x0045da31	15	tCampaignState::vfunction4()	unsorted/tCampaignState.cpp	vc6 guest	?vfunction4@tCampaignState@@UAE_NXZ
-0x0045da40	410	tState_Campaign::vfunction3()	unsorted/tCampaignState.cpp	partial	?vfunction3@tState_Campaign@@UAEXXZ
+0x0045da40	410	tState_Campaign::vfunction3()	unsorted/tCampaignState.cpp	vc6 guest	?vfunction3@tState_Campaign@@UAEXXZ
 0x0045dbda	81	tState_Campaign::vfunction6(int)	unsorted/tCampaignState.cpp	vc6 guest	?vfunction6@tState_Campaign@@UAEXH@Z
-0x0045dc2b	110	tState_Campaign::vfunction15(int *)	unsorted/tCampaignState.cpp	vc6 guest	?vfunction15@tState_Campaign@@UAEXPAH@Z
+0x0045dc2b	110	tCampaignState::vfunction15(c_0046aa10_message *)	unsorted/tCampaignState.cpp	vc6 guest	?vfunction15@tCampaignState@@UAEXPAUc_0046aa10_message@@@Z
 0x0045dc99	105	tState_Campaign::fn_0045dc99(int)	unsorted/tCampaignState.cpp	vc6 guest	?fn_0045dc99@tState_Campaign@@QAEXH@Z
 0x0045dd02	180	tState_Campaign::fn_0045dd02()	unsorted/tCampaignState.cpp	vc6 guest	?fn_0045dd02@tState_Campaign@@QAE_NXZ
 0x0045ddc0	10	g_0090bfd8 (dynamic initializer)	unsorted/tCampaignState.cpp	vc6	
@@ -1285,7 +1285,7 @@ address	size	symbol	source	modes	decorated
 0x00469dfd	5	tGameState::vfunction14(int)	unsorted/tGameState.cpp	vc6 guest	?vfunction14@tGameState@@UAE_NH@Z
 0x00469e02	10	tGameState::vfunction16(int *)	unsorted/tGameState.cpp	vc6 guest	?vfunction16@tGameState@@UAEXPAH@Z
 0x00469e0c	30	tGameState::fn_00469e0c(const char *)	unsorted/tGameState.cpp	vc6 guest	?fn_00469e0c@tGameState@@QAE_NPBD@Z
-0x00469e2a	10	tGameState::vfunction18()	unsorted/tGameState.cpp	vc6 guest	?vfunction18@tGameState@@UAEXXZ
+0x00469e2a	10	tGameState::fn_00469e2a()	unsorted/tGameState.cpp	vc6 guest	?fn_00469e2a@tGameState@@QAEXXZ
 0x00469e34	10	fn_00469e34()	unsorted/tGameState.cpp	vc6 guest	?fn_00469e34@@YAXXZ
 0x00469e3e	15	fn_00469e3e(int)	unsorted/tGameState.cpp	vc6 guest	?fn_00469e3e@@YAXH@Z
 0x00469e4d	40	fn_00469e4d()	unsorted/tGameState.cpp	vc6 guest	?fn_00469e4d@@YAXXZ
@@ -1332,7 +1332,7 @@ address	size	symbol	source	modes	decorated
 0x0046abd1	33	fn_0046abd1(int *,int *)	unsorted/tGameState.cpp	vc6 guest	?fn_0046abd1@@YAXPAH0@Z
 0x0046abf2	227	fn_0046abf2()	unsorted/tGameState.cpp	vc6 guest	?fn_0046abf2@@YAPADXZ
 0x0046acd5	120	fn_0046acd5(char *)	unsorted/tGameState.cpp	vc6 guest	?fn_0046acd5@@YAXPAD@Z
-0x0046ad4d	20	fn_0046ad4d_owner::fn_0046ad4d(int *)	unsorted/tGameState.cpp	vc6 guest	?fn_0046ad4d@fn_0046ad4d_owner@@QAEXPAH@Z
+0x0046ad4d	20	tGameState::vfunction18(int *)	unsorted/tGameState.cpp	vc6 guest	?vfunction18@tGameState@@UAEXPAH@Z
 0x00475095	6	tState_NetSetup::vfunction13()	unsorted/tState_Namespace_NetSetup__tState_NetSetup.cpp	vc6 guest	?vfunction13@tState_NetSetup@tState_Namespace_NetSetup@@UAEPADXZ
 0x0047509b	357	tState_NetSetup::vfunction2()	unsorted/tState_Namespace_NetSetup__tState_NetSetup.cpp	vc6 guest	?vfunction2@tState_NetSetup@tState_Namespace_NetSetup@@UAE_NXZ
 0x00475201	167	tState_NetSetup::vfunction4()	unsorted/tState_Namespace_NetSetup__tState_NetSetup.cpp	vc6 guest	?vfunction4@tState_NetSetup@tState_Namespace_NetSetup@@UAE_NXZ
@@ -1571,7 +1571,7 @@ address	size	symbol	source	modes	decorated
 0x004c8439	158	tScrollBar::vfunction8(const tRect *)	unsorted/tScrollBar.cpp	vc6 guest	?vfunction8@tScrollBar@@UAEXPBUtRect@@@Z
 0x004c84d7	135	tScrollBar::fn_004c84d7(int,int)	unsorted/tScrollBar.cpp	vc6 guest	?fn_004c84d7@tScrollBar@@QAEHHH@Z
 0x004c855e	41	tRect::mPointInside(int,int) const	unsorted/tScrollBar.cpp	vc6 guest	?mPointInside@tRect@@QBEEHH@Z
-0x004c8587	505	tScrollBar::vfunction31(c_tListBox_Base_Event *)	unsorted/tScrollBar.cpp	vc6 guest	?vfunction31@tScrollBar@@UAEEPAUc_tListBox_Base_Event@@@Z
+0x004c8587	505	tScrollBar::vfunction31(c_tListBox_Base_Event *)	unsorted/tScrollBar.cpp	vc6 guest	?vfunction31@tScrollBar@@UAE_NPAUc_tListBox_Base_Event@@@Z
 0x004c8780	539	tScrollBar::mLoad(tAsset *)	unsorted/tScrollBar.cpp	partial	?mLoad@tScrollBar@@QAEXPAVtAsset@@@Z
 0x004c899b	115	tScrollBar::vfunction41(int,int,unsigned char)	unsorted/tScrollBar.cpp	vc6 guest	?vfunction41@tScrollBar@@UAEEHHE@Z
 0x004c8a0e	31	tScrollBar::vfunction42(int *,int *)	unsorted/tScrollBar.cpp	vc6 guest	?vfunction42@tScrollBar@@UAEEPAH0@Z
@@ -1845,7 +1845,7 @@ address	size	symbol	source	modes	decorated
 0x004e22f5	23	tPhaserBank::vfunction105(int)	unsorted/tPhaserBank.cpp	vc6 guest	?vfunction105@tPhaserBank@@UAEXH@Z
 0x004e230c	169	tPhaserBank::vfunction102()	unsorted/tPhaserBank.cpp	vc6 guest	?vfunction102@tPhaserBank@@UAEXXZ
 0x004e23b5	169	tPhaserBank::vfunction74(float,float)	unsorted/tPhaserBank.cpp	vc6 guest	?vfunction74@tPhaserBank@@UAEMMM@Z
-0x004e245e	82	tPhaserBank::vfunction143(float,float)	unsorted/tPhaserBank.cpp	vc6 guest	?vfunction143@tPhaserBank@@UAEMMM@Z
+0x004e245e	82	tPhaserBank::vfunction143(char,unsigned char)	unsorted/tPhaserBank.cpp	vc6 guest	?vfunction143@tPhaserBank@@UAEMDE@Z
 0x004e24b0	146	tPhaserBank::vfunction135(unsigned char)	unsorted/tPhaserBank.cpp	partial	?vfunction135@tPhaserBank@@UAEME@Z
 0x004e2542	126	tPhaserBank::vfunction80()	unsorted/tPhaserBank.cpp	vc6 guest	?vfunction80@tPhaserBank@@UAEXXZ
 0x004e25c0	337	tPhaserBank::vfunction114(unsigned char,int,int)	unsorted/tPhaserBank.cpp	vc6 guest	?vfunction114@tPhaserBank@@UAEMEHH@Z
@@ -1867,7 +1867,7 @@ address	size	symbol	source	modes	decorated
 0x004e5615	22	tPhaserXBank::vfunction149(int)	unsorted/tPhaserXBank.cpp	vc6 guest	?vfunction149@tPhaserXBank@@UAEMH@Z
 0x004e562b	97	tPhaserXBank::vfunction65(char)	unsorted/tPhaserXBank.cpp	vc6 guest	?vfunction65@tPhaserXBank@@UAEXD@Z
 0x004e568c	80	tPhaserBank::vfunction70()	unsorted/tPhaserBank.cpp	vc6 guest	?vfunction70@tPhaserBank@@UAEMXZ
-0x004e56dc	82	tPhaserXBank::vfunction143(float,float)	unsorted/tPhaserXBank.cpp	vc6 guest	?vfunction143@tPhaserXBank@@UAEMMM@Z
+0x004e56dc	82	tPhaserXBank::vfunction143(char,unsigned char)	unsorted/tPhaserXBank.cpp	vc6 guest	?vfunction143@tPhaserXBank@@UAEMDE@Z
 0x004e572e	146	tPhaserXBank::vfunction135(unsigned char)	unsorted/tPhaserXBank.cpp	partial	?vfunction135@tPhaserXBank@@UAEME@Z
 0x004e57c0	137	tPhaserXBank::vfunction74(float,float)	unsorted/tPhaserXBank.cpp	vc6 guest	?vfunction74@tPhaserXBank@@UAEMMM@Z
 0x004e5849	31	tPhaserXBank::vfunction80()	unsorted/tPhaserXBank.cpp	vc6 guest	?vfunction80@tPhaserXBank@@UAEXXZ
@@ -3138,7 +3138,7 @@ address	size	symbol	source	modes	decorated
 0x005e3f1d	101	tMetaMapControl::fn_005e3f1d()	unsorted/tMetaMapControl.cpp	vc6 guest	?fn_005e3f1d@tMetaMapControl@@QAEXXZ
 0x005e3f82	91	tMetaMapControl::fn_005e3f82(const std::string &,int)	unsorted/tMetaMapControl.cpp	vc6 guest	?fn_005e3f82@tMetaMapControl@@QAEPAUc_tScrollBar_FieldA8@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@Z
 0x005e3fdd	172	tMetaMapControl::vfunction8(const tRect *)	unsorted/tMetaMapControl.cpp	vc6 guest	?vfunction8@tMetaMapControl@@UAEXPBUtRect@@@Z
-0x005e4089	301	tMetaMapControl::vfunction30()	unsorted/tMetaMapControl.cpp	vc6 guest	?vfunction30@tMetaMapControl@@QAEXXZ
+0x005e4089	301	tMetaMapControl::vfunction30()	unsorted/tMetaMapControl.cpp	vc6 guest	?vfunction30@tMetaMapControl@@UAEXXZ
 0x005e41b6	54	fn_005eb3c5_class::~fn_005eb3c5_class()	unsorted/tMetaMapControl.cpp	vc6	??1fn_005eb3c5_class@@QAE@XZ
 0x005e41ec	37	tMetaMapControl::fn_005e41ec()	unsorted/tMetaMapControl.cpp	vc6 guest	?fn_005e41ec@tMetaMapControl@@QAEXXZ
 0x005e4211	37	tMetaMapControl::fn_005e4211()	unsorted/tMetaMapControl.cpp	vc6 guest	?fn_005e4211@tMetaMapControl@@QAEXXZ
@@ -3155,7 +3155,7 @@ address	size	symbol	source	modes	decorated
 0x005e4426	47	tMetaMapControl::fn_005e4426(long *)	unsorted/tMetaMapControl.cpp	vc6 guest	?fn_005e4426@tMetaMapControl@@QAEXPAJ@Z
 0x005e4455	19	tMetaMapControl::fn_005e4455()	unsorted/tMetaMapControl.cpp	vc6 guest	?fn_005e4455@tMetaMapControl@@QAEXXZ
 0x005e4468	8	tMetaMapControl::fn_005e4468()	unsorted/tMetaMapControl.cpp	vc6 guest	?fn_005e4468@tMetaMapControl@@QAEXXZ
-0x005e4470	193	tMetaMapControl::vfunction31(c_tListBox_Base_Event *)	unsorted/tMetaMapControl.cpp	vc6 guest	?vfunction31@tMetaMapControl@@QAE_NPAUc_tListBox_Base_Event@@@Z
+0x005e4470	193	tMetaMapControl::vfunction31(c_tListBox_Base_Event *)	unsorted/tMetaMapControl.cpp	vc6 guest	?vfunction31@tMetaMapControl@@UAE_NPAUc_tListBox_Base_Event@@@Z
 0x005e4531	16	tMetaMapControl::vfunction43(int)	unsorted/tMetaMapControl.cpp	vc6 guest	?vfunction43@tMetaMapControl@@QAEXH@Z
 0x005e45a0	51	~vector()	unsorted/tMetaMapControl.cpp	vc6 guest	??1?$vector@VtMetaMapNormalHex@@V?$allocator@VtMetaMapNormalHex@@@std@@@std@@QAE@XZ
 0x005e45d3	51	~vector()	unsorted/tMetaMapControl.cpp	vc6 guest	??1?$vector@Ufn_005e381f_entry@@V?$allocator@Ufn_005e381f_entry@@@std@@@std@@QAE@XZ
@@ -3385,8 +3385,8 @@ address	size	symbol	source	modes	decorated
 0x006085b5	308	tPanelMgr::fn_006085bf()	unsorted/tPanelMgr.cpp	vc6 guest	?fn_006085bf@tPanelMgr@@QAEXXZ
 0x006086e9	125	tPanelMgr::fn_006086e9()	unsorted/tPanelMgr.cpp	vc6 guest	?fn_006086e9@tPanelMgr@@QAEXXZ
 0x00608766	73	tPanelMgr::fn_00608766()	unsorted/tPanelMgr.cpp	vc6 guest	?fn_00608766@tPanelMgr@@QAEXXZ
-0x00608b4e	121	tPanelMgr::vfunction4()	unsorted/tPanelMgr.cpp	vc6 guest	?vfunction4@tPanelMgr@@QAE_NXZ
-0x00609077	6	tPanelMgr::vfunction13()	unsorted/tPanelMgr.cpp	vc6 guest	?vfunction13@tPanelMgr@@QAEPADXZ
+0x00608b4e	121	tPanelMgr::vfunction4()	unsorted/tPanelMgr.cpp	vc6 guest	?vfunction4@tPanelMgr@@UAE_NXZ
+0x00609077	6	tPanelMgr::vfunction13()	unsorted/tPanelMgr.cpp	vc6 guest	?vfunction13@tPanelMgr@@UAEPADXZ
 0x0060b6d0	69	c_0060b6d0::fn_0060b6d0(int)	Source/TokenizedStrings/ResponseStrings.cpp	vc6 guest	?fn_0060b6d0@c_0060b6d0@@QAEXH@Z
 0x0060b715	223	c_0060b6d0::fn_0060b715()	Source/TokenizedStrings/ResponseStrings.cpp	vc6 guest	?fn_0060b715@c_0060b6d0@@QAEXXZ
 0x0060c159	15	g_00c3a7c0 (dynamic initializer)	unsorted/fn_0060C000.cpp	vc6	
@@ -4643,7 +4643,7 @@ address	size	symbol	source	modes	decorated
 0x0067dc30	103	tVisGroup::~tVisGroup()	unsorted/tVisGroup.cpp	vc6	??1tVisGroup@@UAE@XZ
 0x0067dcb0	60	tSeqScene::vfunction43()	unsorted/tSeqScene.cpp	vc6 guest	?vfunction43@tSeqScene@@UAEXXZ
 0x0067dcf0	14	tVisGroup::vfunction40()	unsorted/tVisGroup.cpp	vc6 guest	?vfunction40@tVisGroup@@UAEXXZ
-0x0067dd00	50	tVisGroup::vfunction31(int *)	unsorted/tVisGroup.cpp	vc6 guest	?vfunction31@tVisGroup@@UAE_NPAH@Z
+0x0067dd00	50	tVisGroup::vfunction31(c_tListBox_Base_Event *)	unsorted/tVisGroup.cpp	vc6 guest	?vfunction31@tVisGroup@@UAE_NPAUc_tListBox_Base_Event@@@Z
 0x0067dd40	65	tSeqScene::vfunction40()	unsorted/tSeqScene.cpp	vc6 guest	?vfunction40@tSeqScene@@UAEXXZ
 0x0067dd90	15	tSeqScene::fn_0067dd90()	unsorted/tSeqScene.cpp	vc6 guest	?fn_0067dd90@tSeqScene@@QAEXXZ
 0x0067dda0	54	tSeqScene::fn_0067dda0()	unsorted/tSeqScene.cpp	vc6 guest	?fn_0067dda0@tSeqScene@@QAEXXZ

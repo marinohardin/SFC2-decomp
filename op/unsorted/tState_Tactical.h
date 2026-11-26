@@ -6,6 +6,7 @@
 
 #include "Tiger/tvectormath.h"
 #include "unsorted/tGameState.h"
+#include "unsorted/tTacticalSubStateMan.h"
 
 namespace tState_Namespace_Tactical
 {
@@ -16,31 +17,25 @@ namespace tState_Namespace_Tactical
 // Base: tGameState (constructor 0x00469cd7 called first, vtable 0x0079ec4c), 0xc bytes.
 // Members are placed by the offsets the constructor and the slot bodies use; a member is typed
 // only where a use proves it, the rest is left as bytes under its offset.
-// Slots 4, 11, 13, 15 and 17 are tGameState's own stubs (0x005d0311, 0x005e8efe, 0x00469dfd,
-// 0x00469e02, 0x0046ad4d) and are declared only to keep the slot order. Slot names follow the
-// symbol table (slot n is vfunction(n+1)); parameter types are the one use each slot's body shows.
+// The slots this state does not declare are tGameState's own. Slot names follow the symbol table
+// (slot n is vfunction(n+1)); parameter types are the base's.
 class tState_Tactical : public tGameState
 {
 public:
 	tState_Tactical();
 	// No destructor declared: the implicit one is the original's (0x004ab015).
-	virtual void vfunction2();	// 0x004ab0f1
+	virtual bool vfunction2();	// 0x004ab0f1
 	virtual void vfunction3();	// 0x004abadd, the per-frame update (6690 bytes)
-	virtual void vfunction4();	// 0x004ab70a
-	virtual void vfunction5();	// tGameState stub
-	virtual void vfunction6(void *param_1);	// 0x004b66a8
-	virtual void vfunction7(void *param_1);	// 0x004b714d: clears field_240, then calls 0x004b6642 on 0x00919f00
-	virtual void vfunction8(void *param_1);	// 0x004b99f7: calls slots 26 and 29 of its argument
-	virtual void vfunction9(void *param_1);	// 0x004b9a3a: copies the argument's matrix (slot 55) into field_294
-	virtual void vfunction10(void *param_1);	// 0x004b6647
-	virtual void vfunction11(void *param_1);	// 0x004b9dd6
-	virtual char *vfunction12();	// tGameState stub
+	virtual bool vfunction4();	// 0x004ab70a
+	virtual void vfunction6(int param_1);	// 0x004b66a8
+	virtual void vfunction7(int param_1);	// 0x004b714d: clears field_240, then calls 0x004b6642 on 0x00919f00
+	virtual void vfunction8(int *param_1);	// 0x004b99f7: calls slots 26 and 29 of its argument
+	virtual void vfunction9(int *param_1);	// 0x004b9a3a: copies the argument's matrix (slot 55) into field_294
+	virtual void vfunction10(int param_1);	// 0x004b6647
+	virtual void vfunction11(int param_1);	// 0x004b9dd6
 	virtual char *vfunction13();	// 0x004adc4c: returns the state's name
-	virtual bool vfunction14(int param_1);	// tGameState stub
-	virtual void vfunction15(void *param_1);	// 0x004b2f8b
-	virtual void vfunction16(int *param_1);	// tGameState stub
-	virtual void vfunction17(void *param_1);	// 0x004b3809
-	virtual void vfunction18();	// tGameState stub
+	virtual void vfunction15(c_0046aa10_message *param_1);	// 0x004b2f8b
+	virtual void vfunction17(int *param_1);	// 0x004b3809
 	virtual void *vfunction19();	// 0x004af807: returns a constant address
 
 	int field_0c;	// 0x1e
@@ -96,7 +91,7 @@ public:
 	unsigned char field_474;
 	unsigned char field_475[3];
 	// A tTacticalSubStateMan (constructor 0x004bc911): vtable pointer and one pointer, 8 bytes.
-	unsigned char field_478[8];
+	tTacticalSubStateMan field_478;
 	unsigned char field_480;
 	unsigned char field_481[3];
 	int field_484;

@@ -9,3 +9,15 @@ address	base symbol	new symbol
 0x005e3935	?fn_005e3935@tMetaMapControl@@QAEKPAUfn_005e374b_entry@@@Z	?fn_005e3935@tMetaMapControl@@QAEKPAVtMetaMapSprite@@@Z
 0x005e3a37	?fn_005e3a37@tMetaMapControl@@QAEXPAUfn_005e374b_entry@@PAK@Z	?fn_005e3a37@tMetaMapControl@@QAEXPAVtMetaMapSprite@@PAK@Z
 0x005e45a0	??1?$vector@Ufn_005e36cd_entry@@V?$allocator@Ufn_005e36cd_entry@@@std@@@std@@QAE@XZ	??1?$vector@VtMetaMapNormalHex@@V?$allocator@VtMetaMapNormalHex@@@std@@@std@@QAE@XZ
+0x00410667	?vfunction64@tPhysicalEntity@@UAEXXZ	?vfunction64@tPhysicalEntity@@UAEMXZ
+0x004e245e	?vfunction143@tPhaserBank@@UAEMMM@Z	?vfunction143@tPhaserBank@@UAEMDE@Z
+0x004e56dc	?vfunction143@tPhaserXBank@@UAEMMM@Z	?vfunction143@tPhaserXBank@@UAEMDE@Z
+0x00469e2a	?vfunction18@tGameState@@UAEXXZ	?fn_00469e2a@tGameState@@QAEXXZ
+0x0046ad4d	?fn_0046ad4d@fn_0046ad4d_owner@@QAEXPAH@Z	?vfunction18@tGameState@@UAEXPAH@Z
+0x0045dc2b	?vfunction15@tState_Campaign@@UAEXPAH@Z	?vfunction15@tCampaignState@@UAEXPAUc_0046aa10_message@@@Z
+0x00608b4e	?vfunction4@tPanelMgr@@QAE_NXZ	?vfunction4@tPanelMgr@@UAE_NXZ
+0x00609077	?vfunction13@tPanelMgr@@QAEPADXZ	?vfunction13@tPanelMgr@@UAEPADXZ
+0x004c8587	?vfunction31@tScrollBar@@UAEEPAUc_tListBox_Base_Event@@@Z	?vfunction31@tScrollBar@@UAE_NPAUc_tListBox_Base_Event@@@Z
+0x005e4089	?vfunction30@tMetaMapControl@@QAEXXZ	?vfunction30@tMetaMapControl@@UAEXXZ
+0x005e4470	?vfunction31@tMetaMapControl@@QAE_NPAUc_tListBox_Base_Event@@@Z	?vfunction31@tMetaMapControl@@UAE_NPAUc_tListBox_Base_Event@@@Z
+0x0067dd00	?vfunction31@tVisGroup@@UAE_NPAH@Z	?vfunction31@tVisGroup@@UAE_NPAUc_tListBox_Base_Event@@@Z
