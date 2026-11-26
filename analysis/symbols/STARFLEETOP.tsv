@@ -4892,7 +4892,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004aa818	function	tShuttleConvertToAdmin::~tShuttleConvertToAdmin	tShuttleConvertToAdmin				rtti
 0x004aa865	function	fn_004aa865					none
 0x004aa875	function	fn_004aa875					none
-0x004aae0f	function	tState_Namespace_Tactical::tState_Tactical::tState_Tactical	tState_Namespace_Tactical::tState_Tactical				rtti
+0x004aae0f	function	tState_Namespace_Tactical::tState_Tactical::tState_Tactical	tState_Namespace_Tactical::tState_Tactical	??0tState_Tactical@tState_Namespace_Tactical@@QAE@XZ	add		rtti
 0x004aaff4	thunk	fn_004aaff4					none
 0x004aaff9	function	tState_Namespace_Tactical::tState_Tactical::scalar_deleting_destructor	tState_Namespace_Tactical::tState_Tactical	??_GtState_Tactical@tState_Namespace_Tactical@@UAEPAXI@Z	claim		rtti
 0x004ab015	function	tState_Namespace_Tactical::tState_Tactical::~tState_Tactical	tState_Namespace_Tactical::tState_Tactical	??1tState_Tactical@tState_Namespace_Tactical@@UAE@XZ	claim		rtti
