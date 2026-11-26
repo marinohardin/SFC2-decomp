@@ -33,3 +33,25 @@ long __fastcall fn_005c7f5d(tCurrentTime* param_1)
     }
     return param_1->fn_0055f269() / divisor;
 }
+
+// HYPOTHESIS: really a tCurrentTime member taking one stack argument; tCurrentTime.h (outside
+// this lane) has no declaration for it, so a free function stands in.
+long __fastcall fn_005c7fbb(tCurrentTime* param_1, long param_2);
+
+// FUNCTION: STARFLEETOP 0x005c7f7c
+long __fastcall fn_005c7f7c(tCurrentTime* param_1)
+{
+    long i = 0;
+    do
+    {
+        fn_005c7f5d(param_1);
+        fn_005c7fbb(param_1, i);
+        if (fn_005c7f5d(param_1) <= fn_005c7fbb(param_1, i))
+        {
+            return i;
+        }
+        i++;
+    } while (i < 3);
+    return i;
+}
+
