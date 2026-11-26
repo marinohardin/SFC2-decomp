@@ -290,11 +290,11 @@ public:
 
 // HYPOTHESIS: a member of tAIUnitDataList (declared only in fn_00520AB2.cpp), reached as a
 // fastcall like fn_00522e1b there; the original passes the third argument as a float.
-void __fastcall fn_00520dad(char *self, int, int a, int b, int c, int d);
+void __fastcall fn_00520dad(char *self, int, int a, int b, float c, int d);
 
 // FUNCTION: STARFLEETOP 0x00522dc6
 // HYPOTHESIS: a member of fn_0090bed4_Object, a fastcall like its neighbours.
-char __fastcall fn_00522dc6(fn_0090bed4_Object *self, int, int param_1, int param_2, int param_3, int param_4)
+char __fastcall fn_00522dc6(fn_0090bed4_Object *self, int, int param_1, int param_2, int param_3, float param_4)
 {
 	tObject_0051bfce *pObject = (tObject_0051bfce *)self->fn_00523543(param_1);
 	if (pObject != 0) {
