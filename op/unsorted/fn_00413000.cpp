@@ -20,8 +20,6 @@ tPoint3 tPhysicalEntity::fn_004130f1()
 // FUNCTION: STARFLEETOP 0x00413112
 void tEntity::fn_00413112(const tPoint3 &aPoint)
 {
-	tPoint3 *cur = (tPoint3 *)((char *)this + 0xe6);
-	tPoint3 *prev = (tPoint3 *)((char *)this + 0xf2);
-	*prev = *cur;
-	*cur = aPoint;
+	*(tPoint3 *)((char *)this + 0xf2) = *(tPoint3 *)((char *)this + 0xe6);
+	*(tPoint3 *)((char *)this + 0xe6) = aPoint;
 }
