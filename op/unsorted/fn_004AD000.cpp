@@ -11,3 +11,13 @@ int *tState_Tactical::fn_004ad878()
 		return 0;
 	return rect;
 }
+
+// HYPOTHESIS: returns the rectangle at +0x278 when it is non-empty and field_290 is not negative.
+// FUNCTION: STARFLEETOP 0x004ad89d
+int *tState_Tactical::fn_004ad89d()
+{
+	int *rect = field_278;
+	if ( rect[0] >= rect[2] || rect[1] >= rect[3] || field_290 < 0 )
+		return 0;
+	return rect;
+}
