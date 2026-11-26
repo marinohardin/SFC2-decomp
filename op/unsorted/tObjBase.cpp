@@ -125,3 +125,22 @@ void tVisObject::fn_0067ce90()
 	for ( tVisObject *child = field_24; child; child = child->field_04 )
 		child->fn_0067ce90();
 }
+
+// HYPOTHESIS: the object at 0x00c690d0; 0x00674980 takes the object.
+class fn_00674980_Owner
+{
+public:
+	void fn_00674980( tObjBase *object );
+};
+
+extern fn_00674980_Owner *g_00c690d0;
+
+// FUNCTION: STARFLEETOP 0x0067cee0
+void tObjBase::fn_0067cee0()
+{
+	field_40 |= 0x20;
+	if ( field_0C )
+		field_0C->vfunction6( this, 1 );
+	if ( g_00c690d0 )
+		g_00c690d0->fn_00674980( this );
+}
