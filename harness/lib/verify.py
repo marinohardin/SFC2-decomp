@@ -54,6 +54,7 @@ class Report:
         self.claim_breaks = []
         self.standins = []
         self.table_breaks = []   # report_table_breaks
+        self.claimed_credits = []   # claimed_credits
         self.objects = {}      # unit (as in a result's `unit`) -> its object file, for step 8
 
     def add(self, tag, text):
@@ -573,8 +574,7 @@ def run(ids, check_all=False, behavioural=False, record=False, now=None, base=No
         rep.add('ERROR', f'the symbol table cannot be read: {e}')
         rep.failed = True
         return rep
-    if hasattr(index, 'add_claims'):       # test doubles of the index have none
-        index.add_claims(annotations_claimed(annotations), table)
+    index.add_claims(annotations_claimed(annotations), table)
     if by_unit:
         exe = check_exe(rep)
 
@@ -640,6 +640,8 @@ def run(ids, check_all=False, behavioural=False, record=False, now=None, base=No
                          symtab.load_claims(), index)
     report_table_breaks(rep, claimed_symbols(rep.results, data, symtab.load_claims()), table,
                         check_all, {f'0x{a:08x}' for a in claimed_addrs}, index)
+    if check_all:
+        report_claimed_credits(rep, index)
 
     if behavioural:
         _behavioural(rep, claimed)
@@ -1057,6 +1059,35 @@ def report_line_notes(rep, check_all, own):
 
 TABLE_EVIDENCE = ('mangled', 'add', 'callers')
 TABLE_BREAKS_FILE = 'table_breaks.tsv'
+CLAIMED_CREDITS_FILE = 'claimed_credits.tsv'
+
+
+def claimed_credits(results, index):
+    """[(symbol, claimed address, known addresses, relocations that used the credit)] for every
+    address the source claims that the evidence index credits to a symbol it knows elsewhere
+    (funcs.FunctionIndex.add_claims), sorted. Nothing proves such an address holds a copy of the
+    symbol's function (the known copy may be folded with another function), so a reviewer reads
+    this list."""
+    used = {}
+    for res in results:
+        for r in res.get('relocs') or []:
+            if r['detail'] == 'claimed address':
+                key = (r['symbol'], r['exe_address'])
+                used[key] = used.get(key, 0) + 1
+    out = []
+    for sym, addrs in index.claimed.items():
+        known = ' '.join(f'0x{a:08x}' for a in sorted(index.known.get(sym, ())))
+        for a in sorted(addrs):
+            out.append((sym, f'0x{a:08x}', known, used.get((sym, a), 0)))
+    return sorted(out, key=lambda t: (t[1], t[0]))
+
+
+def report_claimed_credits(rep, index):
+    """One INFO line per credited pair, and the rows for claimed_credits.tsv in rep."""
+    rep.claimed_credits = claimed_credits(rep.results, index)
+    for sym, addr, known, n in rep.claimed_credits:
+        rep.add('INFO', f'claimed address credited: {sym} at {addr} (known at {known or "nowhere"}); '
+                f'{n} relocations use it')
 
 
 def table_targets(rows, claims):
@@ -1251,6 +1282,9 @@ def main(argv=None):
         out = os.path.join(paths.BUILD, 'reloc_breaks.tsv')
         with open(out, 'w') as f:
             f.write(reloc_baseline_text(rep.claim_breaks, classes=True))
+        with open(os.path.join(paths.BUILD, CLAIMED_CREDITS_FILE), 'w') as f:
+            f.write('symbol\taddress\tknown\trelocations\n')
+            f.writelines('\t'.join(map(str, row)) + '\n' for row in rep.claimed_credits)
         with open(os.path.join(paths.BUILD, TABLE_BREAKS_FILE), 'w') as f:
             f.write(reloc_baseline_text(rep.table_breaks, classes=True))
         by_class = {c: sum(1 for b in rep.claim_breaks if b['class'] == c)

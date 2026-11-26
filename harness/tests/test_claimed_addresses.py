@@ -75,3 +75,20 @@ def test_only_claim_rows_of_claimed_addresses_count(tmp_path):
     assert idx.add_claims(set(), table(SYM)) == 0           # no annotation claims the address
     assert idx.add_claims({CALLEE}, table('fn_00401200')) == 0   # not a decorated symbol
     assert idx.claimed == {}
+
+
+def test_a_claim_where_the_symbol_is_already_known_is_not_recorded(tmp_path):
+    idx = index(tmp_path, [(CALLEE, 'real', SYM)])
+    assert idx.add_claims({CALLEE}, table(SYM)) == 0
+    assert idx.claimed == {}
+    assert first_status(idx) == ('ok', 'known address')
+
+
+def test_the_credit_list_names_the_pair_the_known_addresses_and_the_uses(tmp_path):
+    from harness.lib import verify
+    idx = index(tmp_path, [(0x700000, 'folded', SYM)])
+    idx.add_claims({CALLEE}, table(SYM))
+    results = [{'relocs': [{'detail': 'claimed address', 'symbol': SYM, 'exe_address': CALLEE},
+                           {'detail': 'known address', 'symbol': SYM, 'exe_address': 0x700000},
+                           {'detail': 'claimed address', 'symbol': SYM, 'exe_address': CALLEE}]}]
+    assert verify.claimed_credits(results, idx) == [(SYM, '0x00401200', '0x00700000', 2)]

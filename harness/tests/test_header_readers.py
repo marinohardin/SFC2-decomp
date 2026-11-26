@@ -11,6 +11,11 @@ A, B, C = 0x00401000, 0x00401010, 0x00401020
 
 
 class Index:
+    claimed = {}
+
+    def add_claims(self, addresses, table):
+        return 0
+
     def __init__(self):
         self.by_address = {a: SimpleNamespace(address=a, name=f'f{i}', size=16)
                            for i, a in enumerate((A, B, C))}

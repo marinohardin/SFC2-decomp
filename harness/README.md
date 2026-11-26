@@ -103,7 +103,12 @@ An interrupted run (Ctrl-C) stops the compiles it started, in every worker, and 
    another symbol, gives no credit (only `claim` rows count, and `tools/symbols.py claim` refuses
    to replace a `mangled` or `add` symbol); an address the evidence already names with another
    mangled symbol gives no credit; each address has one row and so one symbol; and the stand-in
-   checks of step 8 still reject a caller naming a claimed address by another symbol.
+   checks of step 8 still reject a caller naming a claimed address by another symbol. Nothing
+   proves the claimed address holds a copy of S's function (the known copy may be folded with
+   another function, so no byte-equality test is made), so every credit is listed: `--all` (and
+   so `harness/landing.sh`) prints one `claimed address credited` line per pair and writes
+   `claimed_credits.tsv` (symbol, claimed address, known addresses, relocations using it) in the
+   build folder beside `reloc_breaks.tsv`. **A reviewer reads this list.**
    **Thread-local variables (`__declspec(thread)`).** Their access is a relocation of type
    `0x0B` (SECREL): the field holds the variable's offset inside the thread-local block. The
    harness turns the exe's field into an address (`tls_start` of the exe's TLS directory, plus the
