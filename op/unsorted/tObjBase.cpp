@@ -285,3 +285,18 @@ bool tObjBase::vfunction3()
 	}
 	return true;
 }
+
+// FUNCTION: STARFLEETOP 0x0067d400
+void tObjBase::vfunction15( bool a )
+{
+	tVisObject *child = field_24;
+	char flag = a;
+	tVisObject *parent;
+	if ( flag == 1 && ( parent = field_0C ) != 0 && ( field_2C != 0 || parent->field_2C == this ) )
+	{
+		parent->fn_0067d310( this );
+		field_2C = 0;
+	}
+	for ( ; child != 0; child = child->field_04 )
+		child->vfunction15( a );
+}
