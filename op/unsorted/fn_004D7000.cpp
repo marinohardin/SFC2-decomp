@@ -80,3 +80,9 @@ int tBaseWeapon::vfunction108()
 {
     return field_104 + 1;
 }
+
+// FUNCTION: STARFLEETOP 0x004d730c
+float tBaseWeapon::vfunction109()
+{
+    return field_dc;
+}
