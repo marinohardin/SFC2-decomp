@@ -15,3 +15,28 @@ void tState_Skirmish::fn_0047feb1()
 	gObject_0092deb4->vfunction86();
 	gObject_0092deb4->vfunction109();
 }
+
+// FUNCTION: STARFLEETOP 0x0047ff4e
+void tState_Skirmish::fn_0047ff4e()
+{
+	int *p = (int *)((char *)this + 0x11d8);
+	for (int n = 5; n != 0; n--)
+	{
+		p[15] = 1;
+		p[0] = 0;
+		p[5] = 2;
+		p[10] = 0;
+		p[-5] = 0;
+		p++;
+	}
+	for (int i = 0; i < 6; i++)
+	{
+		for (int j = 0; j < 3; j++)
+			fn_00482ed3(i, j, -1);
+	}
+	fn_00482ed3(0, 0, 0);
+	field_0x10 = 0;
+	gObject_0092deb4->vfunction38();
+	fn_00482ed3(1, 0, 1);
+	*(int *)((char *)this + 0x11c4) = 2;
+}

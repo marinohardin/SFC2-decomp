@@ -3961,7 +3961,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0047f979	function	tState_Skirmish::~tState_Skirmish	tState_Skirmish	??1tState_Skirmish@@UAE@XZ	claim		rtti
 0x0047fa30	function	fn_0047fa30	tState_Skirmish				vtable
 0x0047feb1	function	fn_0047feb1		?fn_0047feb1@tState_Skirmish@@QAEXXZ	claim		none
-0x0047ff4e	function	fn_0047ff4e					none
+0x0047ff4e	function	fn_0047ff4e		?fn_0047ff4e@tState_Skirmish@@QAEXXZ	claim		none
 0x0047ffe0	function	fn_0047ffe0					none
 0x00480016	function	fn_00480016	tState_Skirmish				vtable
 0x004800f2	function	fn_004800f2	tState_Skirmish				vtable
