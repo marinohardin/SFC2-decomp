@@ -7006,7 +7006,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004e7949	function	tPlasmaLauncher::tPlasmaLauncher	tPlasmaLauncher				rtti
 0x004e7bb8	function	fn_004e7bb8	tPlasmaLauncher	?vfunction80@tPlasmaLauncher@@UAEXXZ	claim		vtable
 0x004e7be1	thunk	fn_004e7be1	tBaseWeapon				vtable
-0x004e7be6	function	fn_004e7be6	tPlasmaLauncher				vtable
+0x004e7be6	function	fn_004e7be6	tPlasmaLauncher	?vfunction105@tPlasmaLauncher@@UAEXH@Z	claim		vtable
 0x004e7bf2	thunk	fn_004e7bf2	tPlasmaLauncher				vtable
 0x004e7bf7	function	fn_004e7bf7	tPlasmaLauncher				vtable
 0x004e80b0	function	fn_004e80b0	tPlasmaLauncher	?vfunction125@tPlasmaLauncher@@UAEXH@Z	claim		none

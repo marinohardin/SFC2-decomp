@@ -155,6 +155,12 @@ void tPlasmaLauncher::vfunction80()
         tBaseWeapon::vfunction80();
 }
 
+// FUNCTION: STARFLEETOP 0x004e7be6
+void tPlasmaLauncher::vfunction105(int param_1)
+{
+    tBaseWeapon::vfunction105(param_1);
+}
+
 // FUNCTION: STARFLEETOP 0x004e80b0
 void tPlasmaLauncher::vfunction125(int aValue)
 {
