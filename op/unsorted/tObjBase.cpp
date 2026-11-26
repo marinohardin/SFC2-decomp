@@ -45,3 +45,25 @@ void tObjBase::vfunction33( tRect *area )
 			child->vfunction33( area );
 	}
 }
+
+// MATCH-ONLY: the original inlined this test; it has no address of its own.
+inline bool fn_RectNotEmpty( const tRect *r )
+{
+	return r->left < r->right && r->top < r->bottom;
+}
+
+// FUNCTION: STARFLEETOP 0x0067cc70
+void tObjBase::vfunction9( short left, short top, short right, short bottom )
+{
+	if ( field_0C && fn_RectNotEmpty( &field_34 ) )
+		field_0C->vfunction32( &field_34 );
+	tRect *r = &field_34;
+	tRect nr( left, top, right, bottom );
+	*r = nr;
+	if ( field_0C )
+	{
+		*r = field_0C->vfunction34( *r );
+		if ( field_0C && fn_RectNotEmpty( r ) )
+			field_0C->vfunction32( r );
+	}
+}

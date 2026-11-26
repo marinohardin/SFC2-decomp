@@ -17801,7 +17801,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0067cbf0	function	fn_0067cbf0	tObjBase	?vfunction32@tObjBase@@UAEXPBUtRect@@@Z	claim		vtable
 0x0067cc10	function	fn_0067cc10	tObjBase	?vfunction33@tObjBase@@UAEXPAUtRect@@@Z	claim		vtable
 0x0067cc50	function	fn_0067cc50					none
-0x0067cc70	function	fn_0067cc70	tObjBase				vtable
+0x0067cc70	function	fn_0067cc70	tObjBase	?vfunction9@tObjBase@@UAEXFFFF@Z	claim		vtable
 0x0067cd50	function	fn_0067cd50	tObjBase				vtable
 0x0067cd70	function	fn_0067cd70					none
 0x0067ce20	function	fn_0067ce20	tObjBase				vtable
