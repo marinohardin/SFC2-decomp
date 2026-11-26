@@ -316,3 +316,15 @@ void tObjBase::vfunction35( c_tObjBase_Field10 *target )
 			field_14 = 0;
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x0067d4a0
+void tObjBase::fn_0067d4a0( tSurface *surface )
+{
+	if ( field_14 != surface )
+	{
+		tVisObject *child = field_24;
+		field_14 = surface;
+		for ( ; child != 0; child = child->field_04 )
+			child->fn_0067d4a0( surface );
+	}
+}

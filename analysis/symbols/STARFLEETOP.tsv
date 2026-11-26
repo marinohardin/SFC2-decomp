@@ -17819,7 +17819,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0067d3a0	function	fn_0067d3a0	tObjBase	?vfunction3@tObjBase@@UAE_NXZ	claim		vtable
 0x0067d400	function	fn_0067d400	tObjBase	?vfunction15@tObjBase@@UAEX_N@Z	claim		vtable
 0x0067d450	function	fn_0067d450	tObjBase	?vfunction35@tObjBase@@UAEXPAVc_tObjBase_Field10@@@Z	claim		vtable
-0x0067d4a0	function	fn_0067d4a0					none
+0x0067d4a0	function	fn_0067d4a0		?fn_0067d4a0@tObjBase@@QAEXPAVtSurface@@@Z	claim		none
 0x0067d4d0	function	fn_0067d4d0	tObjBase				vtable
 0x0067d590	function	fn_0067d590	tObjBase				vtable
 0x0067d660	function	fn_0067d660					none
