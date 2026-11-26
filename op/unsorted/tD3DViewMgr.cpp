@@ -35,8 +35,11 @@ class tD3DViewMgr_State
 {
 public:
 	int fn_0069e490(int mode);
+	char fn_0069e670();
 
-	char field_0[0x1f4c];
+	char field_0[0x1ed8];
+	char field_1ed8;
+	char field_1ed9_pad[0x1f4c - 0x1ed9];
 	tD3DViewMgr_Sub field_1f4c;
 	char field_3bfc_pad[0x3c34 - 0x1f4c - sizeof(tD3DViewMgr_Sub)];
 	int field_3c34;
@@ -69,4 +72,10 @@ int tD3DViewMgr_State::fn_0069e490(int mode)
 	if (field_7f64->vtbl->SetState(field_7f64, 8, value) == 0)
 		field_3c34 = mode;
 	return old;
+}
+
+// FUNCTION: STARFLEETOP 0x0069e670
+char tD3DViewMgr_State::fn_0069e670()
+{
+	return field_1ed8;
 }
