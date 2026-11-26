@@ -199,8 +199,19 @@ int fn_005e89fd_layout::fn_005e8f29()
 
 // HYPOTHESIS: the original is the out-of-line copy of operator[] of a std::map whose mapped
 // type is tHexPoint; the key type (a 4-byte value) is not known.
+// MATCH-ONLY: the explicit specialization carries the library template's body so the claim
+// has a line of its own.
 // FUNCTION: STARFLEETOP 0x005e8f2d
-tHexPoint& fn_005e8f2d( std::map<int, tHexPoint>& m, const int& key )
+template<>
+tHexPoint& std::map<int, tHexPoint>::operator[]( const int& _Kv )
+{
+	iterator _P = insert( value_type( _Kv, tHexPoint() ) ).first;
+	return ( (*_P).second );
+}
+
+// MATCH-ONLY: the original's caller of 0x005e8f2d is not known; this use makes the unit emit
+// the out-of-line copy it claims. Not a function of the original.
+tHexPoint& fn_emit_005e8f2d( std::map<int, tHexPoint>& m, const int& key )
 {
 	tHexPoint& ( std::map<int, tHexPoint>::*f )( const int& ) = &std::map<int, tHexPoint>::operator[];
 	return ( m.*f )( key );

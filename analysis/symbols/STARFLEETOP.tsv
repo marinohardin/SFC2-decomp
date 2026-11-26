@@ -12870,12 +12870,12 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005b6902	function	fn_005b6902					none
 0x005b693b	function	tHexPoint::tHexPoint	tHexPoint	??0tHexPoint@@QAE@XZ	callers		rtti
 0x005b6957	function	tHexPoint::scalar_deleting_destructor	tHexPoint				rtti
-0x005b6973	function	tHexPoint::tHexPoint	tHexPoint				rtti
+0x005b6973	function	tHexPoint::tHexPoint	tHexPoint	??0tHexPoint@@QAE@ABV0@@Z	add		rtti
 0x005b69b0	function	fn_005b69b0					none
 0x005b69d7	function	fn_005b69d7		??9tHexPoint@@QBE_NABV0@@Z	callers		none
 0x005b69e9	function	fn_005b69e9					none
 0x005b6a12	function	tHexPoint::tHexPoint	tHexPoint	??0tHexPoint@@QAE@HH@Z	callers		rtti
-0x005b6a36	function	tHexPoint::~tHexPoint	tHexPoint				rtti
+0x005b6a36	function	tHexPoint::~tHexPoint	tHexPoint	??1tHexPoint@@UAE@XZ	add		rtti
 0x005b6a41	function	fn_005b6a41	tCompressedPosition				vtable
 0x005b6a5c	function	fn_005b6a5c					none
 0x005b6a8b	function	fn_005b6a8b					none
@@ -14475,7 +14475,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005e8f21	function	fn_005e8f21	tBitmapFontEx	?fn_005e8f21@tHexPoint@@QBEJXZ	claim		vtable
 0x005e8f25	function	fn_005e8f25	tBitmapFontEx	?fn_005e8f25@fn_005e89fd_layout@@QAEHXZ	claim		vtable
 0x005e8f29	function	fn_005e8f29		?fn_005e8f29@fn_005e89fd_layout@@QAEHXZ	claim		none
-0x005e8f2d	function	fn_005e8f2d		?fn_005e8f2d@@YAAAVtHexPoint@@AAV?$map@HVtHexPoint@@U?$less@H@std@@V?$allocator@VtHexPoint@@@3@@std@@ABH@Z	claim		none
+0x005e8f2d	function	fn_005e8f2d		??A?$map@HVtHexPoint@@U?$less@H@std@@V?$allocator@VtHexPoint@@@3@@std@@QAEAAVtHexPoint@@ABH@Z	claim		none
 0x005e8f9a	function	fn_005e8f9a					none
 0x005e8fd2	function	fn_005e8fd2					none
 0x005e9002	function	fn_005e9002		?push_back@?$vector@Ufn_005e36cd_entry@@V?$allocator@Ufn_005e36cd_entry@@@std@@@std@@QAEXABUfn_005e36cd_entry@@@Z	callers		none
@@ -14502,7 +14502,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005e971b	function	fn_005e971b					none
 0x005e9771	function	fn_005e9771					none
 0x005e9797	function	fn_005e9797					none
-0x005e980b	function	fn_005e980b					none
+0x005e980b	function	fn_005e980b		?insert@?$_Tree@HU?$pair@$$CBHVtHexPoint@@@std@@U_Kfn@?$map@HVtHexPoint@@U?$less@H@std@@V?$allocator@VtHexPoint@@@3@@2@U?$less@H@2@V?$allocator@VtHexPoint@@@2@@std@@QAE?AU?$pair@Viterator@?$_Tree@HU?$pair@$$CBHVtHexPoint@@@std@@U_Kfn@?$map@HVtHexPoint@@U?$less@H@std@@V?$allocator@VtHexPoint@@@3@@2@U?$less@H@2@V?$allocator@VtHexPoint@@@2@@std@@_N@2@ABU?$pair@$$CBHVtHexPoint@@@2@@Z	add		none
 0x005e98a6	function	fn_005e98a6					none
 0x005e9b11	function	fn_005e9b11					none
 0x005e9b49	function	fn_005e9b49					none
