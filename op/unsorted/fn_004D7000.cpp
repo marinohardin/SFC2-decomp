@@ -64,3 +64,13 @@ void tBaseWeapon::vfunction52()
         vfunction62();
     }
 }
+
+// FUNCTION: STARFLEETOP 0x004d72dc
+void tBaseWeapon::vfunction54(int param_1)
+{
+    ((tRepairableShipSystem *)this)->tRepairableShipSystem::vfunction54(param_1);
+    if (vfunction106())
+    {
+        vfunction62();
+    }
+}

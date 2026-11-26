@@ -6409,7 +6409,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004d7270	function	fn_004d7270	tBaseWeapon				vtable
 0x004d7292	function	fn_004d7292	tBaseWeapon	?vfunction52@tBaseWeapon@@UAEXXZ	claim		vtable
 0x004d72b4	function	fn_004d72b4	tBaseWeapon				vtable
-0x004d72dc	function	fn_004d72dc	tBaseWeapon				vtable
+0x004d72dc	function	fn_004d72dc	tBaseWeapon	?vfunction54@tBaseWeapon@@UAEXH@Z	claim		vtable
 0x004d7304	function	fn_004d7304	tBaseWeapon				vtable
 0x004d730c	function	fn_004d730c	tBaseWeapon				vtable
 0x004d7313	function	fn_004d7313	tBaseWeapon				vtable
