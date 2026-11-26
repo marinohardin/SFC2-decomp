@@ -50,7 +50,21 @@ public:
     // HYPOTHESIS: constructed from a stream at 0x005486ff; 0x0042cd23 builds one from the
     // campaign file.
     tCampaignInfo(std::istream &in);
+    // HYPOTHESIS: 0x00461528 copies a campaign info through the base's copy constructor
+    // (0x006fa6d0) and then each text member.
+    tCampaignInfo(const tCampaignInfo &other);
     ~tCampaignInfo();
+    // Overrides, as the SDK's tDatabaseObject declares them; the executable's vtables hold
+    // tCampaignInfo's own code at: tStreamable's StreamOut 0x00548cf8 and StreamIn 0x00548e75
+    // (slot 0 of that vtable, 0x00461927, is the destructor's thunk), and the allocated-class
+    // vtable's SQLFillInsertStream 0x005492dc, SQLFillUpdateStream 0x005497c3, SQLTableName
+    // 0x00549d84 and SQLFieldNames 0x00549d8a.
+    virtual void StreamOut(nDataStore::tOutput &output) const;
+    virtual void StreamIn(nDataStore::tInput &input);
+    virtual void SQLFillInsertStream(std::stringstream *SQL, bool lastOne = false);
+    virtual void SQLFillUpdateStream(std::stringstream *SQL, bool lastOne = false);
+    virtual const char *SQLTableName() const;
+    virtual const char *SQLFieldNames() const;
     tCampaignInfo &operator=(const tCampaignInfo &other);
     // HYPOTHESIS: 0x0054a8d4 lies in tCampaignInfo's own code and returns a text member.
     const std::string &fn_0054a8d4();
@@ -78,5 +92,9 @@ public:
     std::string m_148;
     std::string m_158;
 };
+
+// The size comes from the stack layout in 0x0046062e (see above); the members end with the
+// string at 0x158.
+typedef char tCampaignInfo_size_is_0x168[sizeof(tCampaignInfo) == 0x168 ? 1 : -1];
 
 #endif
