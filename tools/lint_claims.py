@@ -57,8 +57,9 @@ address-order
 
 non-source
     A file under op/ that is not a source or header (`.cpp`, `.c`, `.h`, `.inl`), a `README.md`,
-    or one of the tables at op/'s root (`UNITS.tsv`, `manifest.tsv`). Names beginning with `.`
-    are not read (a desktop's `.DS_Store` is not the tree's).
+    or one of the tables at op/'s root (`UNITS.tsv`, `manifest.tsv`), or one of the original's
+    standard-library headers named in ROOT_LIBRARY_HEADERS at op/'s root (`xtree`). Names
+    beginning with `.` are not read (a desktop's `.DS_Store` is not the tree's).
 
 The baseline, analysis/results/lint_baseline.tsv, lists the breaks develop had when the check
 started (columns check, path, address, reason; `-` for a file-level break's address). A break in
@@ -105,6 +106,9 @@ MATCH_ONLY = re.compile(r'//\s*MATCH-ONLY:\s*\S')
 SOURCE_EXTS = ('.cpp', '.c')
 HEADER_EXTS = ('.h', '.inl')
 ROOT_TABLES = ('UNITS.tsv', 'manifest.tsv')
+# The original's copies of standard-library headers, kept at op/'s root under the library's own
+# extensionless name so that the library's `#include <name>` reaches them first. Named one by one.
+ROOT_LIBRARY_HEADERS = ('xtree',)
 FRAGMENT_KINDS = ('body-fragment', 'library-instance')
 JOINED_TAG = 'eh-prolog-joined'
 BASELINE_COLUMNS = ('check', 'path', 'address', 'reason')
@@ -449,7 +453,7 @@ def check_files(op_root, repo):
             p = os.path.join(d, name)
             if name.lower().endswith(SOURCE_EXTS + HEADER_EXTS) or name == 'README.md':
                 continue
-            if d == op_root and name in ROOT_TABLES:
+            if d == op_root and name in ROOT_TABLES + ROOT_LIBRARY_HEADERS:
                 continue
             rel = os.path.relpath(p, repo).replace(os.sep, '/')
             out.append(Break('non-source', rel, 1, '-',
