@@ -273,3 +273,29 @@ void __fastcall fn_004afcf1(void *self)
 	int *array = (int *)self;
 	qsort( (void *)array[0], array[1], 8, fn_004afd06 );
 }
+
+// HYPOTHESIS: clears eight floats and four dwords at +0x10 and three blocks after them,
+// returning the object as a constructor does.
+// FUNCTION: STARFLEETOP 0x004afd4d
+void * __fastcall fn_004afd4d(void *self)
+{
+	float *values = (float *)self;
+	int *block = (int *)self;
+	values[4] = 0.0f;
+	values[5] = 0.0f;
+	values[6] = 0.0f;
+	values[7] = 0.0f;
+	values[8] = 0.0f;
+	values[9] = 0.0f;
+	values[10] = 0.0f;
+	values[11] = 0.0f;
+	int *counts = &block[12];
+	counts[0] = 0;
+	counts[1] = 0;
+	counts[2] = 0;
+	counts[3] = 0;
+	memset( &block[16], 0, 0x30 );
+	memset( &block[28], 0, 0x30 );
+	memset( &block[40], 0, 0x10 );
+	return self;
+}

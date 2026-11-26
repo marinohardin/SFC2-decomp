@@ -4989,7 +4989,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004afc63	function	fn_004afc63		?fn_004afc63@@YIPAXPAXHI@Z	claim		none
 0x004afc87	function	fn_004afc87		?fn_004afc87@@YIXPAXHHH@Z	claim		none
 0x004afcf1	function	fn_004afcf1		?fn_004afcf1@@YIXPAX@Z	claim		none
-0x004afd4d	function	fn_004afd4d					none
+0x004afd4d	function	fn_004afd4d		?fn_004afd4d@@YIPAXPAX@Z	claim		none
 0x004afdb6	function	fn_004afdb6					none
 0x004afec0	function	fn_004afec0					none
 0x004aff50	function	fn_004aff50					none
