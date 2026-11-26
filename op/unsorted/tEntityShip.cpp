@@ -29,6 +29,37 @@ bool __stdcall fn_004274b8(tID aID, int aValue);
 // untyped in entity_physical.h, so the call goes through this member pointer (HEADER REQUEST).
 typedef void *(tObject_00413ac3_arg::*tSlot58)(int aSize);
 
+// FUNCTION: STARFLEETOP 0x00414b8f
+// FUNCTION: STARFLEETOP 0x004158c1
+tEntityShip::~tEntityShip()
+{
+	// HYPOTHESIS: only the releases at the tail of the original are written; its opening part
+	// (a loop of 0x19 steps over locals, calls through an object at -0x40) is not recovered yet.
+	if (field_1bc)
+	{
+		delete field_1bc;
+		field_1bc = 0;
+	}
+	if (field_a44)
+	{
+		delete field_a44;
+		field_a44 = 0;
+	}
+	for (int i = 0; i < 10; i++)
+	{
+		if (field_a54[i])
+			delete field_a54[i];
+	}
+	if (field_a18)
+		delete field_a18;
+	if (field_a1c)
+		delete field_a1c;
+	if (field_a20)
+		delete field_a20;
+	if (field_a24)
+		delete field_a24;
+}
+
 // FUNCTION: STARFLEETOP 0x004162b9
 void tEntityShip::vfunction4(tObject_00413ac3_arg *aObject)
 {

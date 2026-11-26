@@ -790,7 +790,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00414b7c	function	tNetMsg_kMoveInDirection::mGetMap	tNetMsg_kMoveInDirection	?mGetMap@tNetMsg_kMoveInDirection@@UBEPBUtMapItem@tNetMsg@@XZ	claim		claim
 0x00414b82	function	tNetMsg_kMoveTo::mGetMap	tNetMsg_kMoveTo	?mGetMap@tNetMsg_kMoveTo@@UBEPBUtMapItem@tNetMsg@@XZ	claim		claim
 0x00414b88	function	tNetMsg_kOrbit::mGetMap	tNetMsg_kOrbit	?mGetMap@tNetMsg_kOrbit@@UBEPBUtMapItem@tNetMsg@@XZ	claim		claim
-0x00414b8f	function	tEntityShip::scalar_deleting_destructor	tEntityShip				rtti
+0x00414b8f	function	tEntityShip::scalar_deleting_destructor	tEntityShip	??_GtEntityShip@@UAEPAXI@Z	claim		rtti
 0x00414bab	function	fn_00414bab					none
 0x00414bfa	function	fn_00414bfa					none
 0x00414cad	function	fn_00414cad					none
@@ -816,7 +816,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004156f9	function	fn_004156f9					none
 0x004157ee	function	fn_004157ee					none
 0x0041584e	function	fn_0041584e					none
-0x004158c1	function	tEntityShip::~tEntityShip	tEntityShip				rtti
+0x004158c1	function	tEntityShip::~tEntityShip	tEntityShip	??1tEntityShip@@UAE@XZ	claim		rtti
 0x00415ad9	function	fn_00415ad9					none
 0x00415aed	function	fn_00415aed					none
 0x00415b6b	function	fn_00415b6b	tEntityShip				vtable
