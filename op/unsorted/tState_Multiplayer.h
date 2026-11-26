@@ -51,6 +51,8 @@ public:
 	// HYPOTHESIS: 0x00472e88 makes an object (stored through the first argument) and returns its index.
 	int fn_00472e88( char **param_1, int param_2 );
 	void fn_00472356();
+	// HYPOTHESIS: a method that ignores this; 0x0047339f loads this into ecx before calling it.
+	int FUN_0047316a( tState_Multiplayer *param_1 );
 	void fn_0047328b();
 	void fn_0047339f();
 	void fn_00470d4c();

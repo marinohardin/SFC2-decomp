@@ -54,7 +54,7 @@ int __stdcall FUN_00473141( tState_Multiplayer *param_1 )
 }
 
 // FUNCTION: STARFLEETOP 0x0047316a
-int __stdcall FUN_0047316a( tState_Multiplayer *param_1 )
+int tState_Multiplayer::FUN_0047316a( tState_Multiplayer *param_1 )
 {
 	int count = 0;
 	char *p = fn_00473194( param_1 );
@@ -96,9 +96,9 @@ void tState_Multiplayer::fn_0047339f()
 	else
 		p = *(tState_Multiplayer **)&field_1f78[ 0xc ];
 	bool enable;
-	if ( FUN_0047316a( p ) != 0 )
-		enable = ( ~(unsigned char)field_2200 & 1 ) != 0;
-	else
+	if ( FUN_0047316a( p ) == 0 )
 		enable = true;
+	else
+		enable = ( ~(unsigned char)field_2200 & 1 ) != 0;
 	fn_004d34c5( 0x10062, enable );
 }
