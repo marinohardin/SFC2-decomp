@@ -519,6 +519,7 @@ unsigned char tState_Tactical::fn_004adc52()
 	return field_48e;
 }
 
+// FUNCTION: STARFLEETOP 0x004adc6d
 // FUNCTION: STARFLEETOP 0x004adc63
 tState_Tactical g_tState_Tactical;
 
