@@ -13316,7 +13316,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005c7e00	function	fn_005c7e00	tCurrentTime				vtable
 0x005c7e54	function	fn_005c7e54	tCurrentTime				vtable
 0x005c7eac	function	fn_005c7eac		?fn_005c7eac@@YI_NPAD@Z	claim		none
-0x005c7eb6	function	fn_005c7eb6					none
+0x005c7eb6	function	fn_005c7eb6		?fn_005c7eb6@@YI?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVtCurrentTime@@@Z	claim		none
 0x005c7f5d	function	fn_005c7f5d					none
 0x005c7f7c	function	fn_005c7f7c					none
 0x005c7fb3	function	fn_005c7fb3					none
