@@ -6,6 +6,7 @@
 
 #include "Tiger/tvectormath.h"
 #include "unsorted/tGameState.h"
+#include "unsorted/tTacticalSubStateMan.h"
 
 namespace tState_Namespace_Tactical
 {
@@ -96,7 +97,7 @@ public:
 	unsigned char field_474;
 	unsigned char field_475[3];
 	// A tTacticalSubStateMan (constructor 0x004bc911): vtable pointer and one pointer, 8 bytes.
-	unsigned char field_478[8];
+	tTacticalSubStateMan field_478;
 	unsigned char field_480;
 	unsigned char field_481[3];
 	int field_484;

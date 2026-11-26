@@ -5962,17 +5962,17 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004ccfdb	function	fn_004ccfdb					none
 0x004ccffb	function	fn_004ccffb					none
 0x004cd014	function	fn_004cd014					none
-0x004cd034	function	tShipUI::tShipUI	tShipUI				rtti
+0x004cd034	function	tShipUI::tShipUI	tShipUI	??0tShipUI@@QAE@XZ	callers		rtti
 0x004cd0f9	function	tShipUI::scalar_deleting_destructor	tShipUI				rtti
 0x004cd115	function	tShipUI::~tShipUI	tShipUI				rtti
-0x004cd1db	function	fn_004cd1db					none
-0x004cd2c9	function	fn_004cd2c9					none
-0x004cd2f6	function	fn_004cd2f6					none
+0x004cd1db	function	fn_004cd1db		?fn_004cd1db@tShipUI@@QAEXHHH@Z	callers		none
+0x004cd2c9	function	fn_004cd2c9		?fn_004cd2c9@tShipUI@@QAEXXZ	callers		none
+0x004cd2f6	function	fn_004cd2f6		?fn_004cd2f6@tShipUI@@QAEXXZ	callers		none
 0x004cd323	function	fn_004cd323					none
 0x004cd396	function	fn_004cd396					none
 0x004cd48a	function	fn_004cd48a					none
 0x004cd4fe	function	fn_004cd4fe					none
-0x004cd739	function	fn_004cd739					none
+0x004cd739	function	fn_004cd739		?fn_004cd739@tShipUI@@QAEXXZ	callers		none
 0x004cd766	function	fn_004cd766					none
 0x004ce194	function	fn_004ce194					none
 0x004ce1d0	function	fn_004ce1d0					none

@@ -1205,7 +1205,7 @@ address	size	symbol	source	modes	decorated
 0x00455a40	25	tObject_00455897::fn_00455a40(int)	Source/shipsys/tractor.cpp	vc6 guest	?fn_00455a40@tObject_00455897@@QAEPAVtObject_0045565f@@H@Z
 0x00455a59	199	tObject_00455897::fn_00455a59()	Source/shipsys/tractor.cpp	vc6 guest	?fn_00455a59@tObject_00455897@@QAEPAVtObject_0045565f@@XZ
 0x0045da31	15	tCampaignState::vfunction4()	unsorted/tCampaignState.cpp	vc6 guest	?vfunction4@tCampaignState@@UAE_NXZ
-0x0045da40	410	tState_Campaign::vfunction3()	unsorted/tCampaignState.cpp	partial	?vfunction3@tState_Campaign@@UAEXXZ
+0x0045da40	410	tState_Campaign::vfunction3()	unsorted/tCampaignState.cpp	vc6 guest	?vfunction3@tState_Campaign@@UAEXXZ
 0x0045dbda	81	tState_Campaign::vfunction6(int)	unsorted/tCampaignState.cpp	vc6 guest	?vfunction6@tState_Campaign@@UAEXH@Z
 0x0045dc2b	110	tState_Campaign::vfunction15(int *)	unsorted/tCampaignState.cpp	vc6 guest	?vfunction15@tState_Campaign@@UAEXPAH@Z
 0x0045dc99	105	tState_Campaign::fn_0045dc99(int)	unsorted/tCampaignState.cpp	vc6 guest	?fn_0045dc99@tState_Campaign@@QAEXH@Z
