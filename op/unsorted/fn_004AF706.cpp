@@ -221,3 +221,15 @@ void __fastcall fn_004afbeb(void *self, int, int key, const tPoint4 *value)
 	*(tPoint4 *)((int *)array[0] + array[1] * 5 + 1) = *value;
 	array[1]++;
 }
+
+// HYPOTHESIS: constructor of a growable array {data, count, capacity} with 8-byte elements;
+// the capacity is at least 10, like 0x004afbc4.
+// FUNCTION: STARFLEETOP 0x004afc63
+void *__fastcall fn_004afc63(void *self, int, unsigned capacity)
+{
+	if (capacity < 10)
+		capacity = 10;
+	((unsigned *)self)[2] = capacity;
+	((void **)self)[0] = operator new( capacity * 8 );
+	return self;
+}
