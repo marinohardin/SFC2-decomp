@@ -7009,8 +7009,8 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004e7be6	function	fn_004e7be6	tPlasmaLauncher				vtable
 0x004e7bf2	thunk	fn_004e7bf2	tPlasmaLauncher				vtable
 0x004e7bf7	function	fn_004e7bf7	tPlasmaLauncher				vtable
-0x004e80b0	function	fn_004e80b0	tPlasmaLauncher				vtable
-0x004e824a	function	fn_004e824a					none
+0x004e80b0	function	fn_004e80b0	tPlasmaLauncher	?vfunction125@tPlasmaLauncher@@UAEXH@Z	claim		vtable
+0x004e824a	function	fn_004e824a		?fn_004e824a@@YAPAVtMessageSink@@XZ	add		none
 0x004e82bf	function	fn_004e82bf	tPlasmaLauncher				vtable
 0x004e82f0	function	fn_004e82f0	tPlasmaLauncher				vtable
 0x004e83ab	function	fn_004e83ab	tPlasmaLauncher				vtable
