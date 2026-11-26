@@ -9618,7 +9618,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00548e75	function	fn_00548e75	tCampaignInfo				vtable
 0x005492dc	function	fn_005492dc	tCampaignInfo				vtable
 0x005497c3	function	fn_005497c3	tCampaignInfo				vtable
-0x00549d84	function	fn_00549d84	tCampaignInfo				vtable
+0x00549d84	function	fn_00549d84	tCampaignInfo	?SQLTableName@tCampaignInfo@@UBEPBDXZ	claim		vtable
 0x00549d8a	function	fn_00549d8a	tCampaignInfo				vtable
 0x00549d90	function	fn_00549d90					none
 0x00549df6	function	fn_00549df6					none
