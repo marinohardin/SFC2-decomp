@@ -155,18 +155,20 @@ def remove_worktree(repo, tree, state):
     subprocess.run(['git', 'worktree', 'prune'], cwd=repo, capture_output=True)
 
 
-def gh_body(number, repo):
-    cmd = ['gh', 'pr', 'view', str(number), '--json', 'body', '-q', '.body']
+def gh_pull_request(number, repo):
+    """(description, author login) of the pull request, through gh."""
+    cmd = ['gh', 'pr', 'view', str(number), '--json', 'body,author']
     if repo:
         cmd += ['--repo', repo]
     r = subprocess.run(cmd, capture_output=True, text=True)
     if r.returncode != 0:
         raise contrib_guard.GitError(f'gh pr view {number}: {r.stderr.strip()}')
-    return r.stdout
+    d = json.loads(r.stdout)
+    return d.get('body') or '', (d.get('author') or {}).get('login')
 
 
 def verify(repo, number, sha, remote='origin', body=None, issues=None, gh_repo=None,
-           report_path=None, keep=False, log=print):
+           report_path=None, keep=False, log=print, author=None):
     """Steps 1 to 6; returns the exit status."""
     base = f'{remote}/develop'
     git(repo, 'fetch', '-q', remote, f'+refs/heads/develop:refs/remotes/{remote}/develop')
@@ -176,8 +178,8 @@ def verify(repo, number, sha, remote='origin', body=None, issues=None, gh_repo=N
         log(f'verify: refused: pull/{number}/head is {head}, not {sha}')
         return 3
     if body is None:
-        body = gh_body(number, gh_repo)
-    res = contrib_guard.check(repo, base, sha, body, issues, gh_repo)
+        body, author = gh_pull_request(number, gh_repo)
+    res = contrib_guard.check(repo, base, sha, body, issues, gh_repo, author)
     if res.failures:
         for f in res.failures:
             log(f'FAIL {f}')
@@ -235,6 +237,7 @@ def main(argv=None):
     ap.add_argument('--remote', default='origin')
     ap.add_argument('--repo', help='owner/name for gh (default: the current repository)')
     ap.add_argument('--body', help='a file holding the description, instead of gh')
+    ap.add_argument('--author', help="the pull request author's login, with --body")
     ap.add_argument('--claims', help='a JSON file of claim issues, instead of gh')
     ap.add_argument('--keep', action='store_true', help='keep the worktree afterwards')
     a = ap.parse_args(argv)
@@ -250,7 +253,8 @@ def main(argv=None):
     repo = git(os.getcwd(), 'rev-parse', '--show-toplevel').strip()
     try:
         return verify(repo, a.number, a.sha, a.remote, body, issues, a.repo,
-                      os.path.abspath(a.report) if a.report else None, a.keep)
+                      os.path.abspath(a.report) if a.report else None, a.keep,
+                      author=a.author)
     except (contrib_guard.GitError, subprocess.CalledProcessError) as e:
         print(f'verify: {e}')
         return 2

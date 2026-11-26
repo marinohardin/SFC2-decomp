@@ -46,10 +46,12 @@ jobs:
           HEAD_SHA: ${{ github.event.pull_request.head.sha }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
           PR_BODY: ${{ github.event.pull_request.body }}
+          PR_AUTHOR: ${{ github.event.pull_request.user.login }}
         run: |
           printf '%s\n' "$PR_BODY" > "$RUNNER_TEMP/body.md"
           python3 -I tools/contrib_guard.py "base/$BASE_REF" "$HEAD_SHA" \
-            --body "$RUNNER_TEMP/body.md" --repo "$GITHUB_REPOSITORY" --pr "$PR_NUMBER"
+            --body "$RUNNER_TEMP/body.md" --repo "$GITHUB_REPOSITORY" --pr "$PR_NUMBER" \
+            --author "$PR_AUTHOR"
 
   # Every pull request: the definition of done without the rebuild, which needs the game. Its
   # last line says NOT VERIFIED. The tests job (pull-request.yml) has run the tests.

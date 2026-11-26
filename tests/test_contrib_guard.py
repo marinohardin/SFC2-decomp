@@ -16,14 +16,22 @@ guard = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(guard)
 
 ISSUES = [
-    {'number': 7, 'state': 'open', 'labels': [{'name': 'claim'}],
-     'body': '### Ranges\n\nrange: 0x00401000-0x004010ff\nrange: 0x00402000-0x00402010\n'},
-    {'number': 8, 'state': 'closed', 'labels': [{'name': 'claim'}],
-     'body': 'range: 0x00500000-0x00500fff\n'},
-    {'number': 9, 'state': 'open', 'labels': [{'name': 'question'}],
-     'body': 'range: 0x00500000-0x00500fff\n'},
+    {'number': 7, 'state': 'open', 'labels': [{'name': 'claim'}], 'user': {'login': 'ann'},
+     'body': '### Units\n\nop/unsorted/a.cpp\nop/unsorted/b.cpp\n\n'
+             '### Ranges\n\nrange: 0x00401000-0x004010ff\nrange: 0x00402000-0x00402010\n'},
+    {'number': 8, 'state': 'closed', 'labels': [{'name': 'claim'}], 'user': {'login': 'ann'},
+     'body': 'op/unsorted/c.cpp\nrange: 0x00500000-0x00500fff\n'},
+    {'number': 9, 'state': 'open', 'labels': [{'name': 'question'}], 'user': {'login': 'ann'},
+     'body': 'op/unsorted/c.cpp\nrange: 0x00500000-0x00500fff\n'},
+    {'number': 11, 'state': 'OPEN', 'labels': [{'name': 'reserved'}], 'author': {'login': 'own'},
+     'body': 'Batch 9\nrange: 0x00600000-0x006000ff\n'},
 ]
 BODY = 'Some text.\n\nClaim: #7\n'
+UNITS = ('unit\tfirst\tlast\tfunctions\tevidence\tprofile\theader\n'
+         'unsorted/a.cpp\t0x00401000\t0x004010ff\t3\tpage\tgame-release\t\n'
+         'unsorted/b.cpp\t0x00402000\t0x00402fff\t3\tpage\tgame-release\t\n'
+         'unsorted/c.cpp\t0x00500000\t0x00500fff\t3\tpage\tgame-release\t\n'
+         'unsorted/d.cpp\t0x00600000\t0x00600fff\t3\tpage\tgame-release\t\n')
 
 
 def _git(repo, *args):
@@ -49,6 +57,7 @@ def _repo(tmp_path):
     _write(repo, 'op/unsorted/a.cpp', '#include "a.h"\n\nvoid f() {}\n')
     _write(repo, 'op/unsorted/a.h', 'void f();\n')
     _write(repo, 'tools/x.py', 'print(1)\n')
+    _write(repo, 'op/UNITS.tsv', UNITS)
     _git(repo, 'add', '-A')
     _git(repo, 'commit', '-q', '-m', 'base')
     _git(repo, 'checkout', '-q', '-b', 'contrib/7-a')
@@ -60,8 +69,8 @@ def _commit(repo):
     _git(repo, 'commit', '-q', '-m', 'change')
 
 
-def _check(repo, body=BODY, issues=ISSUES):
-    return guard.check(str(repo), 'develop', 'HEAD', body, issues)
+def _check(repo, body=BODY, issues=ISSUES, author='ann'):
+    return guard.check(str(repo), 'develop', 'HEAD', body, issues, author=author)
 
 
 def test_a_claimed_source_change_passes(tmp_path):
@@ -130,6 +139,7 @@ def test_an_existing_include_is_not_judged_again(tmp_path):
     repo.mkdir()
     _git(repo, 'init', '-q', '-b', 'develop')
     _write(repo, 'op/a.cpp', '#include MACRO\nvoid f() {}\n')
+    _write(repo, 'op/UNITS.tsv', UNITS)
     _commit(repo)
     _git(repo, 'checkout', '-q', '-b', 'contrib/7-a')
     _write(repo, 'op/a.cpp', '#include MACRO\n// FUNCTION: STARFLEETOP 0x00402000\nvoid f() {}\n')
@@ -194,7 +204,8 @@ def test_the_command_line_prints_failures_and_exits_1(tmp_path, capsys, monkeypa
     body = tmp_path / 'body.md'
     body.write_text(BODY)
     monkeypatch.chdir(repo)
-    assert guard.main(['develop', 'HEAD', '--body', str(body), '--claims', str(claims)]) == 1
+    assert guard.main(['develop', 'HEAD', '--body', str(body), '--claims', str(claims),
+                       '--author', 'ann']) == 1
     assert capsys.readouterr().out == (
         'FAIL tools/x.py: outside op/\n'
         'guard: 1 problems; see CONTRIBUTING.md, "Find and claim work"\n')
@@ -212,3 +223,44 @@ def test_an_out_of_claim_vtable_line_fails(tmp_path):
 def test_the_annotation_pattern_is_the_harness_guards():
     text = (ROOT / 'harness/lib/guard.py').read_text()
     assert f"CLAIM_LINE = re.compile(r'{guard.ANNOTATION.pattern}')" in text
+
+
+def _claim(body, login='ann', number=20):
+    return {'number': number, 'state': 'open', 'labels': [{'name': 'claim'}],
+            'user': {'login': login}, 'body': body}
+
+
+def test_a_claim_opened_by_someone_else_fails(tmp_path):
+    repo = _repo(tmp_path)
+    _write(repo, 'op/unsorted/a.cpp', 'void f() { }\n')
+    _commit(repo)
+    assert _check(repo, author='bob').failures == [
+        "claim #7: opened by ann, not by the pull request's author (bob)",
+    ]
+    assert _check(repo, author=None).failures == [
+        "claim #7: opened by ann, not by the pull request's author (unknown)",
+    ]
+
+
+def test_a_range_must_lie_in_one_unit_the_issue_names(tmp_path):
+    repo = _repo(tmp_path)
+    _write(repo, 'op/unsorted/a.cpp', 'void f() { }\n')
+    _commit(repo)
+    issues = [_claim('op/unsorted/a.cpp\nrange: 0x00401000-0x00402010\n'
+                     'range: 0x00402000-0x00402010\nrange: 0x00700000-0x00700001\n')]
+    assert _check(repo, body='Claim: #20', issues=issues).failures == [
+        'claim #20: range 0x00401000-0x00402010 is not inside one unit of op/UNITS.tsv',
+        'claim #20: range 0x00402000-0x00402010 is in op/unsorted/b.cpp, which the issue does '
+        'not name',
+        'claim #20: range 0x00700000-0x00700001 is not inside one unit of op/UNITS.tsv',
+    ]
+
+
+def test_a_claim_overlapping_a_reserved_issue_fails(tmp_path):
+    repo = _repo(tmp_path)
+    _write(repo, 'op/unsorted/a.cpp', 'void f() { }\n')
+    _commit(repo)
+    issues = ISSUES + [_claim('op/unsorted/d.cpp\nrange: 0x006000f0-0x00600200\n')]
+    assert _check(repo, body='Claim: #20', issues=issues).failures == [
+        'range 0x006000f0-0x00600200 overlaps reserved issue #11 (0x00600000-0x006000ff)',
+    ]

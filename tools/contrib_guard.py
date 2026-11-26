@@ -14,7 +14,9 @@ each reason, when the pull request (the changes from the merge base of <base> an
 - adds, changes or removes a `// FUNCTION:`, `// STUB:` or `// VTABLE:` address outside its
   claim's ranges;
 - names no claim: the body needs a line `Claim: #<issue>`, and that issue (open, labelled
-  `claim`) holds one or more lines `range: 0x<first>-0x<last>`.
+  `claim`, opened by the pull request's author) holds one or more lines
+  `range: 0x<first>-0x<last>`, each inside one unit of the base's op/UNITS.tsv that the issue
+  names (`op/<unit>`), and none overlapping an open `reserved` issue.
 
 The claim issues come from `--claims`, a JSON list of issues as `gh api` prints them, or else
 from `gh api repos/$GITHUB_REPOSITORY/issues/<n>`. With `--pr <number>` and `gh` it also warns,
@@ -134,6 +136,36 @@ def labels(issue):
     return {(x['name'] if isinstance(x, dict) else x) for x in issue.get('labels', [])}
 
 
+def issue_author(issue):
+    """The login that opened the issue: `user` from gh api, `author` from gh issue list."""
+    who = issue.get('user') or issue.get('author') or {}
+    return who.get('login') if isinstance(who, dict) else None
+
+
+def base_units(cwd, base):
+    """[(first, last, 'op/<unit>')] from the base's op/UNITS.tsv (never the pull request's)."""
+    try:
+        text = git(cwd, 'show', f'{base}:op/UNITS.tsv')
+    except GitError:
+        return []
+    out = []
+    for line in text.splitlines()[1:]:
+        cells = line.split('\t')
+        if len(cells) >= 3:
+            out.append((int(cells[1], 16), int(cells[2], 16), 'op/' + cells[0]))
+    return out
+
+
+def fetch_reserved(repo=None):
+    repo = repo or os.environ.get('GITHUB_REPOSITORY')
+    r = subprocess.run(['gh', 'issue', 'list', '--repo', repo, '--state', 'open', '--label',
+                        'reserved', '--limit', '200', '--json', 'number,body,labels,state'],
+                       capture_output=True, text=True)
+    if r.returncode != 0:
+        raise GitError(f'gh issue list --label reserved: {r.stderr.strip()}')
+    return json.loads(r.stdout)
+
+
 def fetch_issue(number, repo=None):
     repo = repo or os.environ.get('GITHUB_REPOSITORY')
     if not repo:
@@ -156,9 +188,10 @@ class Result:
         self.failures.append(text)
 
 
-def check(cwd, base, head, body, issues=None, repo=None):
-    """Check the pull request `base`...`head` whose description is `body`. `issues` is a list
-    of issue objects; None fetches each claim with gh. Returns a Result."""
+def check(cwd, base, head, body, issues=None, repo=None, author=None):
+    """Check the pull request `base`...`head` whose description is `body`, opened by `author`.
+    `issues` is a list of issue objects (the claims and the open `reserved` issues); None
+    fetches them with gh. Returns a Result."""
     res = Result()
     mb, chs = changes(cwd, base, head)
     res.merge_base, res.changes = mb, chs
@@ -198,7 +231,7 @@ def check(cwd, base, head, body, issues=None, repo=None):
                 res.fail(f'{p}: {why}')
         res.added.update(_addresses(added))
         res.removed.update(_addresses(removed))
-    _check_claims(res, body, issues, repo)
+    _check_claims(res, body, issues, repo, author, base_units(cwd, base))
     return res
 
 
@@ -206,7 +239,7 @@ def _addresses(lines):
     return {int(m.group(3), 16) for m in map(ANNOTATION.match, lines) if m}
 
 
-def _check_claims(res, body, issues, repo):
+def _check_claims(res, body, issues, repo, author, units):
     numbers = claim_numbers(body)
     if not numbers:
         res.fail(f'the description names no claim (a line `Claim: #<issue>`); {CONTRIBUTING}')
@@ -224,12 +257,34 @@ def _check_claims(res, body, issues, repo):
         if 'claim' not in labels(issue):
             res.fail(f'claim #{n}: the issue is not labelled `claim`')
             continue
+        if not author or issue_author(issue) != author:
+            res.fail(f'claim #{n}: opened by {issue_author(issue) or "unknown"}, not by the pull '
+                     f'request\'s author ({author or "unknown"})')
+            continue
         got = parse_ranges(issue.get('body'))
         if not got:
             res.fail(f'claim #{n}: the issue has no `range: 0x<first>-0x<last>` line')
+        named = set(re.findall(r'(?<![\w/])op/\S+', issue.get('body') or ''))
+        for lo, hi in got:
+            unit = [u for first, last, u in units if first <= lo and hi <= last]
+            if not unit:
+                res.fail(f'claim #{n}: range 0x{lo:08x}-0x{hi:08x} is not inside one unit of '
+                         'op/UNITS.tsv')
+            elif unit[0] not in named:
+                res.fail(f'claim #{n}: range 0x{lo:08x}-0x{hi:08x} is in {unit[0]}, which the '
+                         'issue does not name')
         ranges += got
     if not ranges:
         return
+    reserved = issues if issues is not None else fetch_reserved(repo)
+    for r in reserved:
+        if 'reserved' not in labels(r) or str(r.get('state', 'open')).lower() != 'open':
+            continue
+        for lo, hi in parse_ranges(r.get('body')):
+            for a, b in ranges:
+                if a <= hi and lo <= b:
+                    res.fail(f'range 0x{a:08x}-0x{b:08x} overlaps reserved issue #{r["number"]} '
+                             f'(0x{lo:08x}-0x{hi:08x})')
     for a in sorted(res.added | res.removed):
         if not any(lo <= a <= hi for lo, hi in ranges):
             what = 'adds or changes' if a in res.added else 'removes'
@@ -273,6 +328,7 @@ def main(argv=None):
     ap.add_argument('--claims', help='a JSON file: the claim issues, as gh api prints them')
     ap.add_argument('--repo', help='owner/name (default $GITHUB_REPOSITORY)')
     ap.add_argument('--pr', type=int, help='this pull request, for the overlap warning')
+    ap.add_argument('--author', help="the pull request author's login")
     a = ap.parse_args(argv)
     body = ''
     if a.body:
@@ -283,7 +339,7 @@ def main(argv=None):
         with open(a.claims, encoding='utf-8') as f:
             issues = json.load(f)
     try:
-        res = check(os.getcwd(), a.base, a.head, body, issues, a.repo)
+        res = check(os.getcwd(), a.base, a.head, body, issues, a.repo, a.author)
     except GitError as e:
         print(f'guard: {e}')
         return 2

@@ -14,8 +14,8 @@ _spec = importlib.util.spec_from_file_location('verify_pr', ROOT / 'tools/verify
 verify_pr = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(verify_pr)
 
-ISSUES = [{'number': 7, 'state': 'open', 'labels': [{'name': 'claim'}],
-           'body': 'range: 0x00401000-0x004010ff\n'}]
+ISSUES = [{'number': 7, 'state': 'open', 'labels': [{'name': 'claim'}], 'user': {'login': 'ann'},
+           'body': 'op/a.cpp\nrange: 0x00401000-0x004010ff\n'}]
 BODY = 'Claim: #7\n\n- Claimed exact: 2 (0x00401010, 0x00401020)\n'
 STUB = r'''#!/bin/sh
 printf '\033[32mOK\033[0m    0x00401010 tFoo::Bar 100.00%% exact (8 bytes original, 8 rebuilt; 0 relocations, 0 unverified); matched_set.json has 50.00%%\n'
@@ -48,6 +48,8 @@ def _setup(tmp_path, monkeypatch, change):
     _write(origin, 'analysis/results/matched_set.json',
            '{"version": 1, "functions": {"0x00401010": {"score": 50.0, "exact": false}}}\n')
     _write(origin, 'op/a.cpp', 'void f() {}\n')
+    _write(origin, 'op/UNITS.tsv', 'unit\tfirst\tlast\n'
+           'a.cpp\t0x00401000\t0x004010ff\ngone.cpp\t0x00402000\t0x004020ff\n')
     _write(origin, 'op/gone.cpp', 'void g() {}\n')
     _git(origin, 'add', '-A')
     _git(origin, 'commit', '-q', '-m', 'base')
@@ -72,7 +74,8 @@ def _source_change(origin):
 def test_a_clean_pull_request_is_rebuilt_and_reported(tmp_path, monkeypatch):
     main, sha = _setup(tmp_path, monkeypatch, _source_change)
     lines = []
-    assert verify_pr.verify(str(main), 5, sha, body=BODY, issues=ISSUES, log=lines.append) == 0
+    assert verify_pr.verify(str(main), 5, sha, body=BODY, issues=ISSUES, log=lines.append,
+                            author='ann') == 0
     work = tmp_path / 'work' / 'verify'
     assert not (work / '5').exists() and not (work / '5.state').exists()
     assert subprocess.run(['git', 'worktree', 'list'], cwd=main, capture_output=True,
@@ -98,7 +101,7 @@ def test_a_head_that_is_not_the_reviewed_sha_is_refused(tmp_path, monkeypatch):
     lines = []
     other = '0' * 40
     assert verify_pr.verify(str(main), 5, other, body=BODY, issues=ISSUES,
-                            log=lines.append) == 3
+                            log=lines.append, author='ann') == 3
     assert lines == [f'verify: refused: pull/5/head is {sha}, not {other}']
     assert not (tmp_path / 'work' / 'verify').exists()
 
@@ -109,7 +112,8 @@ def test_a_pull_request_the_guard_fails_is_refused_before_any_build(tmp_path, mo
         _write(origin, 'harness/build-and-verify.sh', '#!/bin/sh\necho planted\n')
     main, sha = _setup(tmp_path, monkeypatch, change)
     lines = []
-    assert verify_pr.verify(str(main), 5, sha, body=BODY, issues=ISSUES, log=lines.append) == 3
+    assert verify_pr.verify(str(main), 5, sha, body=BODY, issues=ISSUES, log=lines.append,
+                            author='ann') == 3
     assert lines == ['FAIL harness/build-and-verify.sh: outside op/',
                      'verify: refused by the guard']
     assert not (tmp_path / 'work' / 'verify').exists()

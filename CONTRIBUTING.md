@@ -71,6 +71,9 @@ range, because the `unsorted/` page units can be split again later.
 Rules:
 
 - Keep one or two claims open at a time.
+- Open the claim yourself, from the account that will open the pull request; the guard checks.
+- Each `range:` line lies inside one unit of `op/UNITS.tsv`, and the issue names that unit's path.
+  A range that overlaps an open `reserved` issue fails.
 - Stay inside your claim. The guard fails a pull request that adds, changes or removes an
   annotation outside the claimed ranges.
 - A claim with no activity for 14 days is closed; a reminder comes at 10 days. A comment on the
