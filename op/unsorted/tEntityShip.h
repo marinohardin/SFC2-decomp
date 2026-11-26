@@ -196,6 +196,7 @@ public:
 	int fn_00414d69();
 	tPoint3 fn_00415479();
 	void fn_0041553a(tPoint3 *aPoint, char *aFlag);
+	void fn_004155c1(tPoint3 *aPoint);
 
 	// 0x1bc is cleared by the constructor.
 	tObject_00426563_1bc *field_1bc;

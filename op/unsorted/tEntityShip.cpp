@@ -152,6 +152,21 @@ tPoint3 tEntityShip::fn_00415479()
 	}
 }
 
+// HYPOTHESIS: the object at +0x14 has no declared class with this slot; slot 18 takes the point by value.
+// MATCH-ONLY: the call goes through the vtable by hand until the class of fField14 is declared.
+// FUNCTION: STARFLEETOP 0x004155c1
+void tEntityShip::fn_004155c1(tPoint3 *aPoint)
+{
+	if (fField14)
+	{
+		typedef void (tEntityShip::*tSlot18)(tPoint3);
+		union { void *p; tSlot18 f; } u;
+		void **vtable = *(void ***)fField14;
+		u.p = vtable[0x48 / 4];
+		(((tEntityShip *)fField14)->*(u.f))(*aPoint);
+	}
+}
+
 // FUNCTION: STARFLEETOP 0x00414b8f
 // FUNCTION: STARFLEETOP 0x004158c1
 tEntityShip::~tEntityShip()
