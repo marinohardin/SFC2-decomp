@@ -17,3 +17,9 @@ void tPhysicalEntity::vfunction47(int aID)
 		}
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x004141fe
+int tPhysicalEntity::vfunction23()
+{
+	return field_0x1b4;
+}
