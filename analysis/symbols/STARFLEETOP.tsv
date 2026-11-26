@@ -7014,7 +7014,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004e82bf	function	fn_004e82bf	tPlasmaLauncher				vtable
 0x004e82f0	function	fn_004e82f0	tPlasmaLauncher				vtable
 0x004e83ab	function	fn_004e83ab	tPlasmaLauncher	?vfunction114@tPlasmaLauncher@@UAEMEHH@Z	claim		vtable
-0x004e83d8	function	fn_004e83d8	tPlasmaLauncher				vtable
+0x004e83d8	function	fn_004e83d8	tPlasmaLauncher	?vfunction118@tPlasmaLauncher@@UAEME@Z	claim		vtable
 0x004e83f3	function	fn_004e83f3	tPlasmaLauncher				vtable
 0x004e8423	function	fn_004e8423	tPlasmaLauncher				vtable
 0x004e861e	function	fn_004e861e	tPlasmaLauncher				vtable
