@@ -4,6 +4,7 @@
 // Profile:   game-release (harness/units.json)
 
 #include "unsorted/tState_Skirmish.h"
+#include "unsorted/c_0046aa10_msg.h"
 #include "unsorted/tObject_0092deb4.h"
 #include "unsorted/tValueBase.h"
 #include "unsorted/fn_004D3143.h"
@@ -135,4 +136,18 @@ void tState_Skirmish::vfunction20()
 void tState_Skirmish::vfunction6( int param_1 )
 {
 	field_0x1228.fn_0046b995();
+}
+
+// FUNCTION: STARFLEETOP 0x004817b7
+void tState_Skirmish::vfunction15( c_0046aa10_message *param_1 )
+{
+	switch ( param_1->m_04 )
+	{
+	case 0x102:
+		param_1->id = 0x103;
+		break;
+	case 0x103:
+		param_1->id = field_0x1118 == "CustomSkmsh" ? 0x10022 : 0x104;
+		break;
+	}
 }
