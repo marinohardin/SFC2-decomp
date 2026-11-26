@@ -20,6 +20,7 @@ public:
 	virtual void vfunction1(int *param_1);
 	tPoint3 fn_004fa526(unsigned int param_2, unsigned int param_3);
 	tPoint2 fn_004fa58f(unsigned int param_2, unsigned int param_3);
+	void fn_004fa662(tPoint3 *param_1, float param_2, char param_3);
 	void fn_004fa6ec();
 
 	int field_04;	// N
