@@ -67,16 +67,17 @@ void tPlasmaLauncher::vfunction125(int aValue)
         local_8 = 0.5f;
     else
     {
+        // MATCH-ONLY: mixing the local and the member in the tests keeps the original's repeated compares.
         int iVar4 = field_4a8;
         if (iVar4 == 0 && param_1 == 1)
             local_8 = 0.8888889f;
-        else if (iVar4 == 0 && param_1 == 2)
+        else if (field_4a8 == 0 && param_1 == 2)
             local_8 = 0.7777778f;
-        else if (iVar4 == 0 && param_1 == 3)
+        else if (field_4a8 == 0 && param_1 == 3)
             local_8 = 0.5555556f;
         else if (iVar4 == 1 && param_1 == 2)
             local_8 = 0.875f;
-        else if (iVar4 == 1 && param_1 == 3)
+        else if (field_4a8 == 1 && param_1 == 3)
             local_8 = 0.625f;
         else if (iVar4 == 2 && param_1 == 3)
             local_8 = 0.71428573f;
