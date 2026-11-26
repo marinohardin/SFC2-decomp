@@ -4,6 +4,7 @@
 #ifndef tState_Skirmish_h
 #define tState_Skirmish_h 1
 
+#include <vector>
 #include "unsorted/tGameState.h"
 #include "unsorted/tShipUI.h"
 #include "unsorted/tReconnector.h"
@@ -21,6 +22,16 @@ class fn_0046b650_Object
 public:
 	fn_0046b650_Object();
 	char			fUnknown_00[0x4c];
+};
+
+// HYPOTHESIS: 0x14 bytes at 0x1124 and 0x1138: a vector then a word the constructor zeroes;
+// the original class is not known.
+class fn_0047f7ab_VectorAndWord
+{
+public:
+	fn_0047f7ab_VectorAndWord() : fWord( 0 ) {}
+	std::vector<int>	fVector;
+	long				fWord;
 };
 
 class tState_Skirmish : public tGameState
@@ -53,20 +64,21 @@ public:
 	char			fUnknown_1122[0x2];
 	// HYPOTHESIS: the constructor zeroes these as two empty vectors (an allocator byte then
 	// three pointers), the first at 0x1124 and the second at 0x1138, each followed by a word.
-	char			fUnknown_1124[0x10];
-	long			field_0x1134;
-	char			fUnknown_1138[0x10];
-	long			field_0x1148;
+	fn_0047f7ab_VectorAndWord	field_0x1124;
+	fn_0047f7ab_VectorAndWord	field_0x1138;
 	char			fUnknown_114c[0x8];
 	// HYPOTHESIS: an object the destructor deletes through its virtual destructor.
 	void *			field_0x1154;
 	// A tReconnector (constructed by 0x0047f864 at 0x1158, 0x3c bytes); the rest up to the next member is not recovered.
 	tReconnector	field_0x1158;
-	char			fUnknown_1194[0xd0 - 0x3c];
+	char			fUnknown_1194[0x8];
+	// HYPOTHESIS: a third std::vector, built the same way.
+	std::vector<int>	field_0x119c;
+	char			fUnknown_11ac[0xd0 - 0x3c - 0x8 - 0x10];
 	// The object 0x0046b650 initializes (0x4c bytes at least).
 	fn_0046b650_Object	field_0x1228;
-	char			fUnknown_1274[0x38];
-	unsigned char	field_0x12ac;
+	char			fUnknown_1274[0x28];
+	unsigned char	field_0x129c;
 };
 
 #endif	// tState_Skirmish_h
