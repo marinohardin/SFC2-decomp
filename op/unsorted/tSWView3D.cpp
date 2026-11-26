@@ -275,6 +275,16 @@ int tSWView3D::vfunction26()
 	return 10;
 }
 
+// FUNCTION: STARFLEETOP 0x0069fa70
+void tSWView3D::vfunction17(int a, int b, int c, int d)
+{
+	tView3DExt::vfunction17(a, b, c, d);
+	field_1f50 = d;
+	field_1f4c = c;
+	field_1f54 = a + c;
+	field_1f58 = b + d;
+}
+
 // FUNCTION: STARFLEETOP 0x0069fb90
 bool tSWView3D::vfunction29(int a, int b, int c, int d, bool e, bool f)
 {
