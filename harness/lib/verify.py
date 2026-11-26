@@ -633,6 +633,8 @@ def run(ids, check_all=False, behavioural=False, record=False, now=None, base=No
                          symtab.load_claims(), index)
     report_table_breaks(rep, claimed_symbols(rep.results, data, symtab.load_claims()), table,
                         check_all, {f'0x{a:08x}' for a in claimed_addrs}, index)
+    if check_all:
+        report_renamed_exact(rep)
 
     if behavioural:
         _behavioural(rep, claimed)
@@ -1067,6 +1069,17 @@ def startup_table_breaks():
                     for r in csv.DictReader(f, delimiter='\t')}
     except (OSError, KeyError):
         return None
+
+
+def report_renamed_exact(rep, base=None):
+    """An ERROR for each function exact at the branch's base whose symbol in this run's build
+    differs from the base's symbol table (harness/lib/renames.py); no compile of its own."""
+    from . import renames, standins
+    base = base or standins.base_ref()
+    built = {a: sym for a, sym, _ in symbol_table_rows(rep.results)}
+    for f in renames.findings(built, base):
+        rep.add('ERROR', renames.line(f, base))
+        rep.failed = True
 
 
 def report_table_breaks(rep, claims, rows, check_all, own, evidence):
