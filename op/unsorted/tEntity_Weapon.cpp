@@ -19,3 +19,9 @@ short tEntity_Weapon::vfunction66( char aValue )
 {
 	return 0;
 }
+
+// FUNCTION: STARFLEETOP 0x0041c242
+tID tEntity_Weapon::vfunction68()
+{
+	return field_0x1c4;
+}
