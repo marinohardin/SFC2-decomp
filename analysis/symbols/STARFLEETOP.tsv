@@ -3975,7 +3975,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00480abf	function	nDataStore::tStreamable::~tStreamable	nDataStore::tStreamable				rtti
 0x00480ba3	function	fn_00480ba3	tState_Skirmish				vtable
 0x0048179b	function	fn_0048179b		?fn_0048179b@fn_0048179b_Object@@QAEPADXZ	claim		none
-0x004817a9	function	fn_004817a9	tState_Skirmish				vtable
+0x004817a9	function	fn_004817a9	tState_Skirmish	?vfunction6@tState_Skirmish@@UAEXH@Z	claim		vtable
 0x004817b7	function	fn_004817b7	tState_Skirmish				vtable
 0x004817ef	function	fn_004817ef					none
 0x004819a4	function	fn_004819a4					none

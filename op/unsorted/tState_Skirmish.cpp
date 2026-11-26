@@ -130,3 +130,9 @@ void tState_Skirmish::vfunction20()
 	tNetMsg_kSetPlayerReady msg;
 	gNetControl.mQueueMsg(&msg, 0x29, -1, -1.0);
 }
+
+// FUNCTION: STARFLEETOP 0x004817a9
+void tState_Skirmish::vfunction6( int param_1 )
+{
+	field_0x1228.fn_0046b995();
+}
