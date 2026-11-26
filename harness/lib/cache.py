@@ -110,7 +110,41 @@ def include_dirs(cmd, env):
     return dirs
 
 
-def dependencies(unit_path, dirs, missing=None):
+def compiler_include_dir(cl, version):
+    """The compiler's own include folder, or None when it cannot be told from here (the image's
+    headers are not on this machine): then the closure stops at the headers it cannot find, as
+    before. compiler_id hashes this folder's files, so their content is not hashed again."""
+    if os.path.basename(cl) != 'cl-native':
+        return None
+    d = os.path.join(os.environ.get('SFCOP_TOOLS') or paths.TOOLS, 'msvc6', f'msvc{version}',
+                     'Include')
+    return d if os.path.isdir(d) else None
+
+
+def _includes(p, fixed):
+    """The (delimiter, name) of every #include line of file `p`, or None when a line names no file.
+    A file of the compiler's folder (`fixed`) is scanned once, and a macro include in it is
+    skipped, not fatal."""
+    def compute():
+        try:
+            with open(p, encoding='latin1') as f:
+                lines = f.readlines()
+        except OSError:
+            return ()
+        out = []
+        for line in lines:
+            if not ANY_INCLUDE.match(line):
+                continue
+            m = INCLUDE.match(line)
+            if m:
+                out.append((m.group(1), m.group(2)))
+            elif not fixed:
+                return None
+        return tuple(out)
+    return _memoized(('scan', p), compute) if fixed else compute()
+
+
+def dependencies(unit_path, dirs, missing=None, fixed_dir=None):
     """Every file the unit reads that can be found: itself and what it includes, directly or
     through other files, following every #include line. None when an #include line names no
     file (a macro include): such a unit cannot be keyed.
@@ -118,27 +152,22 @@ def dependencies(unit_path, dirs, missing=None):
     A quoted include is looked for as MSVC does: beside the including file, then beside each
     file that included it, back to the unit, then on `dirs`; an angle include only on `dirs`.
     Each path looked at before the one found (every path, when none is) is added to `missing`,
-    so a header that later appears earlier on the search changes the key."""
+    so a header that later appears earlier on the search changes the key. `dirs` ends with the
+    compiler's own folder `fixed_dir`, when it is known: the closure follows into it, so a header
+    of `dirs` that a compiler header includes, or that shadows one, is found."""
     seen, todo = set(), [(os.path.realpath(unit_path), ())]
     while todo:
         p, parents = todo.pop()
         if p in seen:
             continue
         seen.add(p)
-        try:
-            with open(p, encoding='latin1') as f:
-                lines = f.readlines()
-        except OSError:
-            continue
+        fixed = bool(fixed_dir) and p.startswith(os.path.realpath(fixed_dir) + os.sep)
+        incs = _includes(p, fixed)
+        if incs is None:
+            return None
         chain = (os.path.dirname(p),) + parents
-        for line in lines:
-            if not ANY_INCLUDE.match(line):
-                continue
-            m = INCLUDE.match(line)
-            if not m:
-                return None
-            name = m.group(2)
-            search = (list(chain) if m.group(1) == '"' else []) + list(dirs)
+        for delim, name in incs:
+            search = (list(chain) if delim == '"' else []) + list(dirs)
             found = None
             for d in search:
                 cand = os.path.join(d, name)
@@ -162,9 +191,14 @@ def build_key(cmd, cwd, env, unit_path):
         return None
     dirs = [d if os.path.isabs(d) else os.path.join(cwd, d) for d in include_dirs(cmd, env)]
     missing = []
-    deps = dependencies(unit_path, dirs, missing)
+    fixed = compiler_include_dir(cmd[0], version)
+    deps = dependencies(unit_path, dirs + ([fixed] if fixed else []), missing, fixed)
     if deps is None:
         return None
+    if fixed:
+        # compiler_id already covers the compiler's own files.
+        root = os.path.realpath(fixed) + os.sep
+        deps = [d for d in deps if not d.startswith(root)]
     h = hashlib.sha256(b'build 2\0' + comp.encode() + b'\0' + cwd.encode() + b'\0')
     h.update('\0'.join(cmd).encode() + b'\0')
     for v in KEY_ENV:

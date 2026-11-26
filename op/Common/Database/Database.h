@@ -12,6 +12,8 @@
 #include "Common/BaseTypes.h"
 #include "Common/DynamicAllocator.h"
 #include "Common/Thread/Optex.h"
+#include "Common/Timer/Timer.h"
+#include "Common/MemberCallback.h"
 
 namespace nDatabase
 {
@@ -21,8 +23,12 @@ class tDatabaseObjectUpdate;
 
 // HYPOTHESIS: minimal declarations; the constructors are those called at 0x007036b2 and
 // 0x0070b30e.
+// HYPOTHESIS: the destructor deletes the storage through its vtable slot 0 (0x00703cb0), so the
+// class has a virtual destructor.
 class tDatabaseStorage
 {
+public:
+	virtual ~tDatabaseStorage();
 };
 
 class tStreamDatabaseStorage : public tDatabaseStorage
@@ -63,7 +69,13 @@ protected:
 	tOptex					fAccess;
 	char					fPad_after_access[0x40 - 4 - sizeof( tOptex )];
 	tDatabaseStorage*		fDatabaseStorage;
-	char					fPad_after_storage[0x68 - 0x44];
+	int32u					fNextLockID;
+	// HYPOTHESIS: fLocks (the SDK's deque of tLockInfo) sits here; the destructor (0x00703cb0)
+	// releases a container at +0x48 with its count at +0x58, not modelled yet.
+	char					fPad_locks[0x5c - 0x48];
+	tTimer*					fAlarm;
+	tMemberCallback< tDatabase, int32u >*	fAlarmCB;
+	bool					fSingleThreaded;
 };
 
 typedef char tDatabase_size_is_0x68[sizeof( tDatabase ) == 0x68 ? 1 : -1];

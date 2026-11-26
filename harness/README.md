@@ -268,7 +268,7 @@ A second run does only the work that changed (`lib/cache.py`):
   following every `#include` line whatever `#if` surrounds it, searched as MSVC searches (a
   quoted include beside its file, then beside each file above it, then the `/I` folders), and
   every path searched before the one found, so a header that appears earlier on the search
-  rebuilds the unit; also the environment the compiler reads (`CL`, `_CL_`, `INCLUDE`, `LIB`). A unit with an `#include` naming no file (a macro) is always rebuilt. The key is kept in
+  rebuilds the unit; also the environment the compiler reads (`CL`, `_CL_`, `INCLUDE`, `LIB`). The closure also follows into the native compiler's own include folder, so a header of the unit's `/I` folders that a compiler header includes (an `xtree` that `<map>` includes), or that newly shadows one, is keyed; the compiler's files themselves are covered by its id. With no such folder on the machine (the image) the closure is as before. A unit with an `#include` naming no file (a macro) is always rebuilt. The key is kept in
   the unit's build folder, `build.key`, and a reused build prints "unchanged, not rebuilt".
 - **Score cache.** A function is rescored only when its score key changes: its object (COFF
   timestamp masked), the symbol scored, its address and size, the judge's own code (every module of `lib/`) and objdiff,
@@ -448,6 +448,14 @@ non-zero exit of that startup `--all` used to be a warning and now stops the loo
 out of it is a failure that names it, the ones after it reported as not run. With a cold build
 cache the `--all` alone is a full build (189 s here), so run the loop's start once before
 sessions.
+
+### Correcting a wrong class in the symbol table
+
+The table's `class` column is seeded and can be wrong. `python3 tools/symbols.py reclass <address>
+<class> --evidence TEXT [--force]` corrects it (and the class in the name), never touching the
+address, kind or symbol; see `analysis/symbols/README.md`. The note is printed only (the table has
+no column for it): put it in the commit message. `mangled` rows are refused; claimed rows need
+`--force`.
 
 ### New stand-in classes
 

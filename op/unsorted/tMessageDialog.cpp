@@ -10,6 +10,24 @@
 // HYPOTHESIS: the "General_Error" string defined in unsorted/fn_00600208.cpp.
 extern std::string g_00c39ea0;
 
+#include "unsorted/tMessageDialog.h"
+
+// FUNCTION: STARFLEETOP 0x006005aa
+tMessageDialog::tMessageDialog()
+{
+	field_28 = 0;
+}
+
+void fn_006006b3();
+
+// FUNCTION: STARFLEETOP 0x00600620
+tMessageDialog::tMessageDialog( const std::string &aFirst, const std::string &aSecond )
+	: field_04( aFirst ), field_14( aSecond )
+{
+	fn_006006b3();
+	fn_0060072f( 5, 1 );
+}
+
 // FUNCTION: STARFLEETOP 0x006006b3
 void fn_006006b3()
 {
@@ -40,15 +58,14 @@ fn_00607d61_class* fn_00607d61();
 fn_004bcfd3_class* fn_004bcfd3();
 bool fn_004d31b2( long param_1, long param_2 );
 
-#include "unsorted/tMessageDialog.h"
-
-
-
-
-
-
-
-
+// MATCH-ONLY: empty body; the bytes are only the implicit member and base destruction.
+// FUNCTION: STARFLEETOP 0x00600604
+// FUNCTION: STARFLEETOP 0x006006ef
+tMessageDialog::~tMessageDialog()
+{
+	// Evidence: the original's 64 bytes are exactly the implicit destruction of
+	// field_14, field_04 and the tTopmostWindow base; the body has no statement of its own.
+}
 
 
 
@@ -88,4 +105,13 @@ void tMessageDialog::fn_006009ed()
 	if ( field_28 != 0 )
 		fn_00607d61()->fn_00609e57( field_24 );
 	fn_004d32c4( g_00c39ea0.c_str() );
+}
+
+void fn_004d335e( long arg1 );
+
+// FUNCTION: STARFLEETOP 0x00600a4c
+void tMessageDialog::vfunction1()
+{
+	fn_004d335e( (long) g_00c39ea0.c_str() );
+	fn_004d3331( g_00c39ea0.c_str() );
 }

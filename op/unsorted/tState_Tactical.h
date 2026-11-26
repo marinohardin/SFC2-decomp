@@ -38,6 +38,11 @@ public:
 	virtual void vfunction17(int *param_1);	// 0x004b3809
 	virtual void *vfunction19();	// 0x004af807: returns a constant address
 
+	void fn_004ba05b(int *param_1);
+	void fn_004ba5ea(int *param_1);
+	void fn_004ba7c7(int *param_1);
+	void fn_004ba9eb(int *param_1);
+
 	int field_0c;	// 0x1e
 	float field_10;
 	float field_14;

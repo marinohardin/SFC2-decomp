@@ -1,6 +1,6 @@
 {
  "schema": 3,
- "generated_at": "2026-11-25T20:42:09Z",
+ "generated_at": "2026-11-26T17:37:36Z",
  "text_bytes": 3751936,
  "inputs": {
   "functions_csv": {
@@ -41,7 +41,7 @@
   "matched_set": {
    "path": "analysis/results/matched_set.json",
    "present": true,
-   "sha256": "e25324c9afde52aa92c572b1a33e9c68df649d9f0fbe623a81a447f82dbbdc01"
+   "sha256": "78e56ab39bd65ecd1dfa5bfb6621afb00724bda865dce67a254a49cb3ff52791"
   },
   "functional_set": {
    "path": "harness/functional_set.json",
@@ -51,7 +51,7 @@
   "manifest": {
    "path": "op/manifest.tsv",
    "present": true,
-   "sha256": "fa046d336c3aa2cc0786c9285e6c9e8153e3154fb4d13ec73a970c046ffee891"
+   "sha256": "b9eec4ed530d919827a9d473cd7a4db24e23f51cce9978d0ca690b5f95286b4d"
   }
  },
  "function_kinds": {
@@ -84,13 +84,13 @@
    "bytes": 3473841,
    "status": {
     "exact": {
-     "functions": 4590,
-     "pct_functions": 19.8951,
-     "function_bytes": 542690,
-     "funclet_bytes": 11995,
-     "bytes": 554685,
-     "pct_bytes": 15.9675,
-     "pct_text": 14.784
+     "functions": 4790,
+     "pct_functions": 20.762,
+     "function_bytes": 561344,
+     "funclet_bytes": 13386,
+     "bytes": 574730,
+     "pct_bytes": 16.5445,
+     "pct_text": 15.3182
     },
     "functional": {
      "functions": 0,
@@ -102,13 +102,13 @@
      "pct_text": 0.0
     },
     "partial": {
-     "functions": 476,
-     "pct_functions": 2.0632,
-     "function_bytes": 172088,
-     "funclet_bytes": 10030,
-     "bytes": 182118,
-     "pct_bytes": 5.2426,
-     "pct_text": 4.854
+     "functions": 468,
+     "pct_functions": 2.0285,
+     "function_bytes": 172843,
+     "funclet_bytes": 9383,
+     "bytes": 182226,
+     "pct_bytes": 5.2457,
+     "pct_text": 4.8569
     },
     "lifted": {
      "functions": 0,
@@ -120,13 +120,13 @@
      "pct_text": 0.0
     },
     "original-x86": {
-     "functions": 18005,
-     "pct_functions": 78.0417,
-     "function_bytes": 2591522,
-     "funclet_bytes": 145516,
-     "bytes": 2737038,
-     "pct_bytes": 78.79,
-     "pct_text": 72.95
+     "functions": 17813,
+     "pct_functions": 77.2095,
+     "function_bytes": 2572113,
+     "funclet_bytes": 144772,
+     "bytes": 2716885,
+     "pct_bytes": 78.2098,
+     "pct_text": 72.4129
     }
    },
    "named": {
@@ -161,28 +161,28 @@
      "pct_functions": 0.0
     },
     "claim": {
-     "functions": 523,
-     "function_bytes": 62710,
-     "pct_functions": 2.2669
+     "functions": 554,
+     "function_bytes": 65444,
+     "pct_functions": 2.4013
     },
     "rtti-class": {
-     "functions": 7346,
-     "function_bytes": 975513,
-     "pct_functions": 31.8408
+     "functions": 7324,
+     "function_bytes": 973374,
+     "pct_functions": 31.7455
     },
     "none": {
-     "functions": 12544,
-     "function_bytes": 1763860,
-     "pct_functions": 54.3713
+     "functions": 12535,
+     "function_bytes": 1763265,
+     "pct_functions": 54.3323
     }
    },
    "named_real_symbol": {
-    "functions": 3181,
-    "pct_functions": 13.7879
+    "functions": 3212,
+    "pct_functions": 13.9222
    },
    "named_with_class": {
-    "functions": 10527,
-    "pct_functions": 45.6287
+    "functions": 10536,
+    "pct_functions": 45.6677
    }
   },
   "game": {
@@ -192,12 +192,12 @@
    "bytes": 3330800,
    "status": {
     "exact": {
-     "functions": 4590,
-     "pct_functions": 20.7093,
-     "function_bytes": 542690,
-     "funclet_bytes": 11995,
-     "bytes": 554685,
-     "pct_bytes": 16.6532
+     "functions": 4790,
+     "pct_functions": 21.6116,
+     "function_bytes": 561344,
+     "funclet_bytes": 13386,
+     "bytes": 574730,
+     "pct_bytes": 17.255
     },
     "functional": {
      "functions": 0,
@@ -208,12 +208,12 @@
      "pct_bytes": 0.0
     },
     "partial": {
-     "functions": 476,
-     "pct_functions": 2.1476,
-     "function_bytes": 172088,
-     "funclet_bytes": 10030,
-     "bytes": 182118,
-     "pct_bytes": 5.4677
+     "functions": 468,
+     "pct_functions": 2.1115,
+     "function_bytes": 172843,
+     "funclet_bytes": 9383,
+     "bytes": 182226,
+     "pct_bytes": 5.4709
     },
     "lifted": {
      "functions": 0,
@@ -224,12 +224,12 @@
      "pct_bytes": 0.0
     },
     "original-x86": {
-     "functions": 17098,
-     "pct_functions": 77.1431,
-     "function_bytes": 2456666,
-     "funclet_bytes": 137331,
-     "bytes": 2593997,
-     "pct_bytes": 77.8791
+     "functions": 16906,
+     "pct_functions": 76.2768,
+     "function_bytes": 2437257,
+     "funclet_bytes": 136587,
+     "bytes": 2573844,
+     "pct_bytes": 77.274
     }
    },
    "named": {
@@ -264,28 +264,28 @@
      "pct_functions": 0.0
     },
     "claim": {
-     "functions": 523,
-     "function_bytes": 62710,
-     "pct_functions": 2.3597
+     "functions": 554,
+     "function_bytes": 65444,
+     "pct_functions": 2.4995
     },
     "rtti-class": {
-     "functions": 7012,
-     "function_bytes": 931936,
-     "pct_functions": 31.6369
+     "functions": 6990,
+     "function_bytes": 929797,
+     "pct_functions": 31.5376
     },
     "none": {
-     "functions": 12543,
-     "function_bytes": 1763832,
-     "pct_functions": 56.5918
+     "functions": 12534,
+     "function_bytes": 1763237,
+     "pct_functions": 56.5512
     }
    },
    "named_real_symbol": {
-    "functions": 2609,
-    "pct_functions": 11.7713
+    "functions": 2640,
+    "pct_functions": 11.9112
    },
    "named_with_class": {
-    "functions": 9621,
-    "pct_functions": 43.4082
+    "functions": 9630,
+    "pct_functions": 43.4488
    }
   }
  },
@@ -933,12 +933,20 @@
    "name": "tMouseMgr_Ex::scalar_deleting_destructor"
   },
   {
+   "address": "0040bdb1",
+   "name": "tMouseMgr_Ex::~tMouseMgr_Ex"
+  },
+  {
    "address": "0040bdf3",
    "name": "tSfcMouseMgr::~tSfcMouseMgr"
   },
   {
    "address": "0040be17",
    "name": "tSfcMouseMgr_Ex::scalar_deleting_destructor"
+  },
+  {
+   "address": "0040be9b",
+   "name": "tSfcMouseMgr_Ex::vfunction2"
   },
   {
    "address": "0040c016",
@@ -1961,6 +1969,10 @@
    "name": "tNetMsg_kUpdateCloakStatus::vfunction1"
   },
   {
+   "address": "0041e64f",
+   "name": "tEntity_Seeker::vfunction11"
+  },
+  {
    "address": "0041eeaf",
    "name": "tNetMsg_kCreateSeekerAtPoint::~tNetMsg_kCreateSeekerAtPoint"
   },
@@ -2257,8 +2269,16 @@
    "name": "FUN_00424ea9"
   },
   {
+   "address": "00425066",
+   "name": "FUN_00425066"
+  },
+  {
    "address": "0042509e",
    "name": "FUN_0042509e"
+  },
+  {
+   "address": "004250ee",
+   "name": "FUN_004250ee"
   },
   {
    "address": "0042511e",
@@ -2569,6 +2589,10 @@
    "name": "nException::tOutOfBounds::tOutOfBounds"
   },
   {
+   "address": "004295d0",
+   "name": "tMetaClientPlayerListPanel::tRemoveItem::~tRemoveItem"
+  },
+  {
    "address": "004296c8",
    "name": "FUN_004296c8"
   },
@@ -2583,6 +2607,10 @@
   {
    "address": "004297fa",
    "name": "tOptex::Leave"
+  },
+  {
+   "address": "0042984d",
+   "name": "FUN_0042984d"
   },
   {
    "address": "00429a18",
@@ -2697,6 +2725,10 @@
    "name": "FUN_0042a7b2"
   },
   {
+   "address": "0042a8b7",
+   "name": "FUN_0042a8b7"
+  },
+  {
    "address": "0042a92f",
    "name": "FUN_0042a92f"
   },
@@ -2745,6 +2777,10 @@
    "name": "FUN_0042ab08"
   },
   {
+   "address": "0042ab25",
+   "name": "FUN_0042ab25"
+  },
+  {
    "address": "0042abe4",
    "name": "FUN_0042abe4"
   },
@@ -2759,6 +2795,14 @@
   {
    "address": "0042ade3",
    "name": "FUN_0042ade3"
+  },
+  {
+   "address": "0042c053",
+   "name": "FUN_0042c053"
+  },
+  {
+   "address": "0042c0d4",
+   "name": "FUN_0042c0d4"
   },
   {
    "address": "0042c10c",
@@ -2787,6 +2831,10 @@
   {
    "address": "0042c69f",
    "name": "FUN_0042c69f"
+  },
+  {
+   "address": "0042c709",
+   "name": "FUN_0042c709"
   },
   {
    "address": "0042c80a",
@@ -4757,6 +4805,10 @@
    "name": "FUN_004558fb"
   },
   {
+   "address": "00455942",
+   "name": "FUN_00455942"
+  },
+  {
    "address": "004559b7",
    "name": "FUN_004559b7"
   },
@@ -4775,6 +4827,10 @@
   {
    "address": "0045da31",
    "name": "tCampaignState::vfunction4"
+  },
+  {
+   "address": "0045da40",
+   "name": "tState_Campaign::vfunction3"
   },
   {
    "address": "0045dbda",
@@ -4907,6 +4963,42 @@
   {
    "address": "00460e13",
    "name": "FUN_00460e13"
+  },
+  {
+   "address": "00460e3e",
+   "name": "FUN_00460e3e"
+  },
+  {
+   "address": "00460e76",
+   "name": "FUN_00460e76"
+  },
+  {
+   "address": "00460ea6",
+   "name": "FUN_00460ea6"
+  },
+  {
+   "address": "004617f1",
+   "name": "tCampaignInfo::scalar_deleting_destructor"
+  },
+  {
+   "address": "0046180d",
+   "name": "FUN_0046180d"
+  },
+  {
+   "address": "00461875",
+   "name": "FUN_00461875"
+  },
+  {
+   "address": "00461903",
+   "name": "FUN_00461903"
+  },
+  {
+   "address": "0046190f",
+   "name": "FUN_0046190f"
+  },
+  {
+   "address": "0046191b",
+   "name": "FUN_0046191b"
   },
   {
    "address": "00466674",
@@ -5253,6 +5345,130 @@
    "name": "tGameState::vfunction18"
   },
   {
+   "address": "0046c408",
+   "name": "tObjBase::vfunction1"
+  },
+  {
+   "address": "0046c436",
+   "name": "tObjBase::vfunction10"
+  },
+  {
+   "address": "0046c452",
+   "name": "tObjBase::vfunction23"
+  },
+  {
+   "address": "0046c458",
+   "name": "tObjBase::vfunction29"
+  },
+  {
+   "address": "0046c464",
+   "name": "tObjBase::vfunction28"
+  },
+  {
+   "address": "0046c477",
+   "name": "tObjBase::vfunction34"
+  },
+  {
+   "address": "0046d2a4",
+   "name": "tState_MetaLogon::vfunction13_for_tGameState"
+  },
+  {
+   "address": "0046d2aa",
+   "name": "FUN_0046d2aa"
+  },
+  {
+   "address": "0046d370",
+   "name": "tState_MetaLogon::vfunction1_for_tStatusAccess"
+  },
+  {
+   "address": "0046d38c",
+   "name": "FUN_0046d38c"
+  },
+  {
+   "address": "0046d3c8",
+   "name": "FUN_0046d3c8"
+  },
+  {
+   "address": "0046d468",
+   "name": "FUN_0046d468"
+  },
+  {
+   "address": "0046d480",
+   "name": "FUN_0046d480"
+  },
+  {
+   "address": "0046daf2",
+   "name": "FUN_0046daf2"
+  },
+  {
+   "address": "0046de63",
+   "name": "FUN_0046de63"
+  },
+  {
+   "address": "0046ed64",
+   "name": "tState_Namespace_Multiplayer::tState_Multiplayer::vfunction13"
+  },
+  {
+   "address": "0046f160",
+   "name": "FUN_0046f160"
+  },
+  {
+   "address": "0046f24b",
+   "name": "FUN_0046f24b"
+  },
+  {
+   "address": "00470b59",
+   "name": "FUN_00470b59"
+  },
+  {
+   "address": "00470c38",
+   "name": "FUN_00470c38"
+  },
+  {
+   "address": "00470d1b",
+   "name": "FUN_00470d1b"
+  },
+  {
+   "address": "0047156b",
+   "name": "tState_Namespace_Multiplayer::tState_Multiplayer::vfunction15"
+  },
+  {
+   "address": "0047301e",
+   "name": "FUN_0047301e"
+  },
+  {
+   "address": "00473141",
+   "name": "FUN_00473141"
+  },
+  {
+   "address": "0047316a",
+   "name": "FUN_0047316a"
+  },
+  {
+   "address": "0047339f",
+   "name": "FUN_0047339f"
+  },
+  {
+   "address": "0047378b",
+   "name": "FUN_0047378b"
+  },
+  {
+   "address": "00473792",
+   "name": "FUN_00473792"
+  },
+  {
+   "address": "004737bd",
+   "name": "FUN_004737bd"
+  },
+  {
+   "address": "00473c1e",
+   "name": "FUN_00473c1e"
+  },
+  {
+   "address": "00473c34",
+   "name": "FUN_00473c34"
+  },
+  {
    "address": "00475095",
    "name": "tState_Namespace_NetSetup::tState_NetSetup::vfunction13"
   },
@@ -5371,6 +5587,70 @@
   {
    "address": "0047ebca",
    "name": "FUN_0047ebca"
+  },
+  {
+   "address": "0047f05d",
+   "name": "FUN_0047f05d"
+  },
+  {
+   "address": "0047f4ff",
+   "name": "FUN_0047f4ff"
+  },
+  {
+   "address": "0047f621",
+   "name": "FUN_0047f621"
+  },
+  {
+   "address": "0047f720",
+   "name": "FUN_0047f720"
+  },
+  {
+   "address": "0047f764",
+   "name": "FUN_0047f764"
+  },
+  {
+   "address": "0047f770",
+   "name": "FUN_0047f770"
+  },
+  {
+   "address": "0047f77c",
+   "name": "FUN_0047f77c"
+  },
+  {
+   "address": "0047f79f",
+   "name": "FUN_0047f79f"
+  },
+  {
+   "address": "0047f7a5",
+   "name": "tState_Skirmish::vfunction13"
+  },
+  {
+   "address": "0047f7ab",
+   "name": "tState_Skirmish::tState_Skirmish"
+  },
+  {
+   "address": "0047f95d",
+   "name": "tState_Skirmish::scalar_deleting_destructor"
+  },
+  {
+   "address": "0047ffe0",
+   "name": "FUN_0047ffe0"
+  },
+  {
+   "address": "00480152",
+   "name": "tState_Skirmish::vfunction20"
+  },
+  {
+   "address": "0048179b",
+   "name": "FUN_0048179b"
+  },
+  {
+   "address": "004817a9",
+   "name": "tState_Skirmish::vfunction6"
+  },
+  {
+   "address": "004817b7",
+   "name": "tState_Skirmish::vfunction15"
   },
   {
    "address": "0048612c",
@@ -5793,6 +6073,10 @@
    "name": "FUN_004bd805"
   },
   {
+   "address": "004bd8d4",
+   "name": "FUN_004bd8d4"
+  },
+  {
    "address": "004bda12",
    "name": "FUN_004bda12"
   },
@@ -5885,6 +6169,10 @@
    "name": "FUN_004bddaa"
   },
   {
+   "address": "004bde26",
+   "name": "FUN_004bde26"
+  },
+  {
    "address": "004bdf64",
    "name": "FUN_004bdf64"
   },
@@ -5895,6 +6183,14 @@
   {
    "address": "004bdf97",
    "name": "FUN_004bdf97"
+  },
+  {
+   "address": "004c000f",
+   "name": "FUN_004c000f"
+  },
+  {
+   "address": "004c00a8",
+   "name": "tVisObject::vfunction37"
   },
   {
    "address": "004c265f",
@@ -6197,6 +6493,18 @@
    "name": "tScrollBar::vfunction43"
   },
   {
+   "address": "004cd034",
+   "name": "tShipUI::tShipUI"
+  },
+  {
+   "address": "004cd0f9",
+   "name": "tShipUI::scalar_deleting_destructor"
+  },
+  {
+   "address": "004cd115",
+   "name": "tShipUI::~tShipUI"
+  },
+  {
    "address": "004cf692",
    "name": "tSFCPlayer::~tSFCPlayer"
   },
@@ -6307,6 +6615,10 @@
   {
    "address": "004cf9b3",
    "name": "FUN_004cf9b3"
+  },
+  {
+   "address": "004cf9cb",
+   "name": "tSFCPlayer::~tSFCPlayer"
   },
   {
    "address": "004cfb31",
@@ -7009,6 +7321,10 @@
    "name": "FUN_004d38dd"
   },
   {
+   "address": "004d3951",
+   "name": "FUN_004d3951"
+  },
+  {
    "address": "004d39aa",
    "name": "FUN_004d39aa"
   },
@@ -7357,6 +7673,10 @@
    "name": "tPhaserXBank::vfunction118"
   },
   {
+   "address": "004e80b0",
+   "name": "tPlasmaLauncher::vfunction125"
+  },
+  {
    "address": "0050037b",
    "name": "FUN_0050037b"
   },
@@ -7479,6 +7799,10 @@
   {
    "address": "0050ede8",
    "name": "tSndMgr_Miles::~tSndMgr_Miles"
+  },
+  {
+   "address": "0050eea7",
+   "name": "tSndMgr_Miles::vfunction2"
   },
   {
    "address": "0050f0f7",
@@ -8277,6 +8601,50 @@
    "name": "FUN_00534e70"
   },
   {
+   "address": "00537bc2",
+   "name": "FUN_00537bc2"
+  },
+  {
+   "address": "00537bd8",
+   "name": "FUN_00537bd8"
+  },
+  {
+   "address": "00537bfd",
+   "name": "FUN_00537bfd"
+  },
+  {
+   "address": "00537c4a",
+   "name": "FUN_00537c4a"
+  },
+  {
+   "address": "00537cf5",
+   "name": "FUN_00537cf5"
+  },
+  {
+   "address": "00537d66",
+   "name": "FUN_00537d66"
+  },
+  {
+   "address": "0053805e",
+   "name": "FUN_0053805e"
+  },
+  {
+   "address": "00538062",
+   "name": "FUN_00538062"
+  },
+  {
+   "address": "00538093",
+   "name": "FUN_00538093"
+  },
+  {
+   "address": "00538098",
+   "name": "FUN_00538098"
+  },
+  {
+   "address": "0053860e",
+   "name": "FUN_0053860e"
+  },
+  {
    "address": "00538cca",
    "name": "tMetaMapDesc::tMetaMapDesc"
   },
@@ -8327,6 +8695,10 @@
   {
    "address": "0053943e",
    "name": "tMetaMapHex::scalar_deleting_destructor"
+  },
+  {
+   "address": "00539464",
+   "name": "tMetaMapHex::~tMetaMapHex"
   },
   {
    "address": "005394f4",
@@ -8497,6 +8869,22 @@
    "name": "FUN_0053aab4"
   },
   {
+   "address": "0053ab16",
+   "name": "FUN_0053ab16"
+  },
+  {
+   "address": "0053ab9a",
+   "name": "FUN_0053ab9a"
+  },
+  {
+   "address": "0053abca",
+   "name": "FUN_0053abca"
+  },
+  {
+   "address": "0053ac4e",
+   "name": "FUN_0053ac4e"
+  },
+  {
    "address": "0053ac7e",
    "name": "tClassAllocator<tMetaMapHex>::tClassAllocator<tMetaMapHex>"
   },
@@ -8655,6 +9043,10 @@
   {
    "address": "0053ffd7",
    "name": "FUN_0053ffd7"
+  },
+  {
+   "address": "00541499",
+   "name": "FUN_00541499"
   },
   {
    "address": "005430ad",
@@ -8845,6 +9237,22 @@
    "name": "FUN_00543720"
   },
   {
+   "address": "0054372f",
+   "name": "FUN_0054372f"
+  },
+  {
+   "address": "005437a5",
+   "name": "FUN_005437a5"
+  },
+  {
+   "address": "0054385d",
+   "name": "FUN_0054385d"
+  },
+  {
+   "address": "00543944",
+   "name": "FUN_00543944"
+  },
+  {
    "address": "005439e4",
    "name": "FUN_005439e4"
   },
@@ -8915,6 +9323,54 @@
   {
    "address": "00543bdd",
    "name": "FUN_00543bdd"
+  },
+  {
+   "address": "00544719",
+   "name": "tServCharacter::vfunction8_for_tAllocatedClass"
+  },
+  {
+   "address": "0054471f",
+   "name": "tServCharacter::vfunction9_for_tAllocatedClass"
+  },
+  {
+   "address": "00544725",
+   "name": "FUN_00544725"
+  },
+  {
+   "address": "0054477b",
+   "name": "FUN_0054477b"
+  },
+  {
+   "address": "005447d0",
+   "name": "FUN_005447d0"
+  },
+  {
+   "address": "005447ff",
+   "name": "FUN_005447ff"
+  },
+  {
+   "address": "0054491b",
+   "name": "FUN_0054491b"
+  },
+  {
+   "address": "00544b06",
+   "name": "FUN_00544b06"
+  },
+  {
+   "address": "00544b12",
+   "name": "FUN_00544b12"
+  },
+  {
+   "address": "00544b1e",
+   "name": "FUN_00544b1e"
+  },
+  {
+   "address": "00544b3c",
+   "name": "FUN_00544b3c"
+  },
+  {
+   "address": "00544b46",
+   "name": "FUN_00544b46"
   },
   {
    "address": "00544b5c",
@@ -9243,6 +9699,14 @@
   {
    "address": "0054841d",
    "name": "tClassAllocator<tBattles>::vfunction3"
+  },
+  {
+   "address": "00549d84",
+   "name": "tCampaignInfo::vfunction8_for_tAllocatedClass"
+  },
+  {
+   "address": "00549d8a",
+   "name": "tCampaignInfo::vfunction9_for_tAllocatedClass"
   },
   {
    "address": "0054bd73",
@@ -9855,6 +10319,22 @@
   {
    "address": "0056ffe3",
    "name": "FUN_0056ffe3"
+  },
+  {
+   "address": "00571018",
+   "name": "FUN_00571018"
+  },
+  {
+   "address": "0057118e",
+   "name": "FUN_0057118e"
+  },
+  {
+   "address": "00571304",
+   "name": "FUN_00571304"
+  },
+  {
+   "address": "0057147a",
+   "name": "FUN_0057147a"
   },
   {
    "address": "005715f0",
@@ -10841,12 +11321,20 @@
    "name": "nDatabase::tID::tID"
   },
   {
+   "address": "005bc570",
+   "name": "FUN_005bc570"
+  },
+  {
    "address": "005bc5a0",
    "name": "FUN_005bc5a0"
   },
   {
    "address": "005bc645",
    "name": "FUN_005bc645"
+  },
+  {
+   "address": "005bc8b0",
+   "name": "FUN_005bc8b0"
   },
   {
    "address": "005bc8e8",
@@ -10859,6 +11347,18 @@
   {
    "address": "005bcb5b",
    "name": "FUN_005bcb5b"
+  },
+  {
+   "address": "005bcd91",
+   "name": "FUN_005bcd91"
+  },
+  {
+   "address": "005bcdc1",
+   "name": "FUN_005bcdc1"
+  },
+  {
+   "address": "005bcdf1",
+   "name": "FUN_005bcdf1"
   },
   {
    "address": "005bce21",
@@ -11341,6 +11841,26 @@
    "name": "FUN_005c4ff4"
   },
   {
+   "address": "005c7eac",
+   "name": "FUN_005c7eac"
+  },
+  {
+   "address": "005c7f5d",
+   "name": "FUN_005c7f5d"
+  },
+  {
+   "address": "005c7fb3",
+   "name": "FUN_005c7fb3"
+  },
+  {
+   "address": "005c7fb7",
+   "name": "FUN_005c7fb7"
+  },
+  {
+   "address": "005c7fc6",
+   "name": "FUN_005c7fc6"
+  },
+  {
    "address": "005d913f",
    "name": "FUN_005d913f"
   },
@@ -11375,6 +11895,14 @@
   {
    "address": "005d939d",
    "name": "FUN_005d939d"
+  },
+  {
+   "address": "005d9411",
+   "name": "FUN_005d9411"
+  },
+  {
+   "address": "005d96ac",
+   "name": "FUN_005d96ac"
   },
   {
    "address": "005d9750",
@@ -11531,6 +12059,18 @@
   {
    "address": "005dea09",
    "name": "FUN_005dea09"
+  },
+  {
+   "address": "005deaac",
+   "name": "FUN_005deaac"
+  },
+  {
+   "address": "005deb34",
+   "name": "FUN_005deb34"
+  },
+  {
+   "address": "005debbc",
+   "name": "FUN_005debbc"
   },
   {
    "address": "005dec44",
@@ -12081,6 +12621,10 @@
    "name": "FUN_005e5ced"
   },
   {
+   "address": "005e5d7a",
+   "name": "FUN_005e5d7a"
+  },
+  {
    "address": "005e5dde",
    "name": "FUN_005e5dde"
   },
@@ -12101,12 +12645,20 @@
    "name": "FUN_005e5ee7"
   },
   {
+   "address": "005e5ef4",
+   "name": "FUN_005e5ef4"
+  },
+  {
    "address": "005e6091",
    "name": "FUN_005e6091"
   },
   {
    "address": "005e620c",
    "name": "FUN_005e620c"
+  },
+  {
+   "address": "005e6469",
+   "name": "FUN_005e6469"
   },
   {
    "address": "005e64ea",
@@ -12121,6 +12673,26 @@
    "name": "FUN_005e65e5"
   },
   {
+   "address": "005e6642",
+   "name": "FUN_005e6642"
+  },
+  {
+   "address": "005e66b7",
+   "name": "FUN_005e66b7"
+  },
+  {
+   "address": "005e67a8",
+   "name": "FUN_005e67a8"
+  },
+  {
+   "address": "005e6991",
+   "name": "FUN_005e6991"
+  },
+  {
+   "address": "005e6a41",
+   "name": "FUN_005e6a41"
+  },
+  {
    "address": "005e6d7c",
    "name": "tMetaMapNormalHex::tMetaMapNormalHex"
   },
@@ -12133,12 +12705,64 @@
    "name": "FUN_005e78c6"
   },
   {
+   "address": "005e8be0",
+   "name": "FUN_005e8be0"
+  },
+  {
+   "address": "005e8e55",
+   "name": "FUN_005e8e55"
+  },
+  {
+   "address": "005e8ee6",
+   "name": "FUN_005e8ee6"
+  },
+  {
+   "address": "005e8ef0",
+   "name": "FUN_005e8ef0"
+  },
+  {
+   "address": "005e8efa",
+   "name": "FUN_005e8efa"
+  },
+  {
+   "address": "005e8f02",
+   "name": "FUN_005e8f02"
+  },
+  {
+   "address": "005e8f21",
+   "name": "FUN_005e8f21"
+  },
+  {
+   "address": "005e8f25",
+   "name": "FUN_005e8f25"
+  },
+  {
+   "address": "005e8f29",
+   "name": "FUN_005e8f29"
+  },
+  {
+   "address": "005e8f2d",
+   "name": "FUN_005e8f2d"
+  },
+  {
+   "address": "005e8f9a",
+   "name": "FUN_005e8f9a"
+  },
+  {
+   "address": "005e8fd2",
+   "name": "FUN_005e8fd2"
+  },
+  {
    "address": "005ea14b",
    "name": "FUN_005ea14b"
   },
   {
    "address": "005ea1fe",
    "name": "FUN_005ea1fe"
+  },
+  {
+   "address": "005ea469",
+   "name": "FUN_005ea469"
   },
   {
    "address": "005ea4a1",
@@ -12313,12 +12937,20 @@
    "name": "FUN_005fb1c2"
   },
   {
+   "address": "005fb3af",
+   "name": "FUN_005fb3af"
+  },
+  {
    "address": "005fb3df",
    "name": "FUN_005fb3df"
   },
   {
    "address": "005fb47a",
    "name": "FUN_005fb47a"
+  },
+  {
+   "address": "005fb6e5",
+   "name": "FUN_005fb6e5"
   },
   {
    "address": "005fb867",
@@ -12497,8 +13129,16 @@
    "name": "FUN_00600581"
   },
   {
+   "address": "00600604",
+   "name": "tMessageDialog::scalar_deleting_destructor"
+  },
+  {
    "address": "006006b3",
    "name": "FUN_006006b3"
+  },
+  {
+   "address": "006006ef",
+   "name": "tMessageDialog::~tMessageDialog"
   },
   {
    "address": "0060072f",
@@ -12507,6 +13147,10 @@
   {
    "address": "006009ed",
    "name": "FUN_006009ed"
+  },
+  {
+   "address": "00600a4c",
+   "name": "tMessageDialog::vfunction1"
   },
   {
    "address": "00600a82",
@@ -17145,6 +17789,34 @@
    "name": "tCastMgr::vfunction1"
   },
   {
+   "address": "00677060",
+   "name": "FUN_00677060"
+  },
+  {
+   "address": "00677380",
+   "name": "FUN_00677380"
+  },
+  {
+   "address": "006773e0",
+   "name": "FUN_006773e0"
+  },
+  {
+   "address": "00677b60",
+   "name": "FUN_00677b60"
+  },
+  {
+   "address": "00677b90",
+   "name": "FUN_00677b90"
+  },
+  {
+   "address": "00677bd0",
+   "name": "FUN_00677bd0"
+  },
+  {
+   "address": "00677bf0",
+   "name": "FUN_00677bf0"
+  },
+  {
    "address": "00677d20",
    "name": "tCastItem::vfunction5"
   },
@@ -17171,6 +17843,14 @@
   {
    "address": "00678250",
    "name": "tBoundAsset::scalar_deleting_destructor"
+  },
+  {
+   "address": "006786d0",
+   "name": "FUN_006786d0"
+  },
+  {
+   "address": "00678aa0",
+   "name": "FUN_00678aa0"
   },
   {
    "address": "00678ae0",
@@ -17215,6 +17895,82 @@
   {
    "address": "0067b590",
    "name": "tVisGroupAsset::vfunction2"
+  },
+  {
+   "address": "0067cb70",
+   "name": "tObjBase::tObjBase"
+  },
+  {
+   "address": "0067cbf0",
+   "name": "tObjBase::vfunction32"
+  },
+  {
+   "address": "0067cc10",
+   "name": "tObjBase::vfunction33"
+  },
+  {
+   "address": "0067cc70",
+   "name": "tObjBase::vfunction9"
+  },
+  {
+   "address": "0067cd50",
+   "name": "tObjBase::vfunction7"
+  },
+  {
+   "address": "0067ce20",
+   "name": "tObjBase::vfunction18"
+  },
+  {
+   "address": "0067ce90",
+   "name": "FUN_0067ce90"
+  },
+  {
+   "address": "0067cee0",
+   "name": "FUN_0067cee0"
+  },
+  {
+   "address": "0067cf70",
+   "name": "FUN_0067cf70"
+  },
+  {
+   "address": "0067d160",
+   "name": "tObjBase::vfunction30"
+  },
+  {
+   "address": "0067d2d0",
+   "name": "FUN_0067d2d0"
+  },
+  {
+   "address": "0067d310",
+   "name": "FUN_0067d310"
+  },
+  {
+   "address": "0067d350",
+   "name": "tObjBase::vfunction2"
+  },
+  {
+   "address": "0067d3a0",
+   "name": "tObjBase::vfunction3"
+  },
+  {
+   "address": "0067d400",
+   "name": "tObjBase::vfunction15"
+  },
+  {
+   "address": "0067d450",
+   "name": "tObjBase::vfunction35"
+  },
+  {
+   "address": "0067d4a0",
+   "name": "FUN_0067d4a0"
+  },
+  {
+   "address": "0067d4d0",
+   "name": "tObjBase::vfunction5"
+  },
+  {
+   "address": "0067d590",
+   "name": "tObjBase::vfunction6"
   },
   {
    "address": "0067dba0",
@@ -17269,6 +18025,14 @@
    "name": "tSeqScene::vfunction30"
   },
   {
+   "address": "00687060",
+   "name": "tNotifiee::~tNotifiee"
+  },
+  {
+   "address": "006896d0",
+   "name": "tTableAsset::tTableAsset"
+  },
+  {
    "address": "00690180",
    "name": "FUN_00690180"
   },
@@ -17291,6 +18055,10 @@
   {
    "address": "00690400",
    "name": "FUN_00690400"
+  },
+  {
+   "address": "00690480",
+   "name": "FUN_00690480"
   },
   {
    "address": "00690900",
@@ -17367,6 +18135,10 @@
   {
    "address": "00691510",
    "name": "FUN_00691510"
+  },
+  {
+   "address": "00693fc0",
+   "name": "FUN_00693fc0"
   },
   {
    "address": "006a2dc0",
@@ -17459,6 +18231,10 @@
   {
    "address": "006ad410",
    "name": "GetDXVersion"
+  },
+  {
+   "address": "006b23c0",
+   "name": "tSWView3D::vfunction85"
   },
   {
    "address": "006b32c0",
@@ -18293,6 +19069,10 @@
    "name": "FUN_006ff700"
   },
   {
+   "address": "00703af0",
+   "name": "nDatabase::tDatabase::`scalar_deleting_destructor'"
+  },
+  {
    "address": "00707e80",
    "name": "nDatabase::tFileDatabaseMgr::tDatabaseInfo::tDatabaseInfo"
   },
@@ -18409,6 +19189,10 @@
    "name": "tWinTimer::TimePassedSinceStart"
   },
   {
+   "address": "0070f940",
+   "name": "tWinTimer::WinTimerCallback"
+  },
+  {
    "address": "0070fc80",
    "name": "tTimer::tTimer"
   },
@@ -18443,6 +19227,22 @@
   {
    "address": "0070fdb0",
    "name": "tTimer::SignalTimerEvent"
+  },
+  {
+   "address": "0071c8a0",
+   "name": "nSwitch::tDataHandler::scalar_deleting_destructor"
+  },
+  {
+   "address": "0071d010",
+   "name": "nSwitch::tDataHandler::vfunction7"
+  },
+  {
+   "address": "0071d090",
+   "name": "FUN_0071d090"
+  },
+  {
+   "address": "0071d220",
+   "name": "FUN_0071d220"
   },
   {
    "address": "00757250",
@@ -18756,16 +19556,8 @@
    "name": "tGLPixFmt::scalar_deleting_destructor"
   },
   {
-   "address": "0040bdb1",
-   "name": "tMouseMgr_Ex::~tMouseMgr_Ex"
-  },
-  {
    "address": "0040bdfa",
    "name": "tSfcMouseMgr::scalar_deleting_destructor"
-  },
-  {
-   "address": "0040be9b",
-   "name": "tSfcMouseMgr_Ex::vfunction2"
   },
   {
    "address": "0040c3ba",
@@ -18790,6 +19582,18 @@
   {
    "address": "00413ea8",
    "name": "tPhysicalEntity::vfunction49"
+  },
+  {
+   "address": "004162b9",
+   "name": "tEntityShip::vfunction4"
+  },
+  {
+   "address": "00416a0e",
+   "name": "tEntityShip::vfunction26"
+  },
+  {
+   "address": "0041e79a",
+   "name": "tEntity_Seeker::vfunction26"
   },
   {
    "address": "0041ef62",
@@ -18830,14 +19634,6 @@
   {
    "address": "00424b90",
    "name": "tStrMgrCore::tStrMgrCore"
-  },
-  {
-   "address": "00425066",
-   "name": "FUN_00425066"
-  },
-  {
-   "address": "004250ee",
-   "name": "FUN_004250ee"
   },
   {
    "address": "00425501",
@@ -18892,14 +19688,6 @@
    "name": "tTransporterHoldItem::tTransporterHoldItem"
   },
   {
-   "address": "004295d0",
-   "name": "tMetaClientPlayerListPanel::tRemoveItem::~tRemoveItem"
-  },
-  {
-   "address": "0042984d",
-   "name": "FUN_0042984d"
-  },
-  {
    "address": "00429d06",
    "name": "FUN_00429d06"
   },
@@ -18920,24 +19708,8 @@
    "name": "FUN_0042a7bf"
   },
   {
-   "address": "0042a8b7",
-   "name": "FUN_0042a8b7"
-  },
-  {
-   "address": "0042ab25",
-   "name": "FUN_0042ab25"
-  },
-  {
    "address": "0042ac56",
    "name": "FUN_0042ac56"
-  },
-  {
-   "address": "0042c053",
-   "name": "FUN_0042c053"
-  },
-  {
-   "address": "0042c0d4",
-   "name": "FUN_0042c0d4"
   },
   {
    "address": "0042c6da",
@@ -19036,14 +19808,6 @@
    "name": "FUN_0044ea7e"
   },
   {
-   "address": "00455942",
-   "name": "FUN_00455942"
-  },
-  {
-   "address": "0045da40",
-   "name": "tState_Campaign::vfunction3"
-  },
-  {
    "address": "0045ddf7",
    "name": "tState_Campaign::~tState_Campaign"
   },
@@ -19056,18 +19820,6 @@
    "name": "FUN_00460539"
   },
   {
-   "address": "00460e3e",
-   "name": "FUN_00460e3e"
-  },
-  {
-   "address": "00460e76",
-   "name": "FUN_00460e76"
-  },
-  {
-   "address": "00460ea6",
-   "name": "FUN_00460ea6"
-  },
-  {
    "address": "00460ede",
    "name": "FUN_00460ede"
   },
@@ -19076,24 +19828,76 @@
    "name": "FUN_0046a46a"
   },
   {
+   "address": "0046d0b0",
+   "name": "tState_MetaLogon::tState_MetaLogon"
+  },
+  {
+   "address": "00470d4c",
+   "name": "FUN_00470d4c"
+  },
+  {
+   "address": "004714b7",
+   "name": "tState_Namespace_Multiplayer::tState_Multiplayer::vfunction6"
+  },
+  {
+   "address": "0047328b",
+   "name": "FUN_0047328b"
+  },
+  {
+   "address": "0047f439",
+   "name": "FUN_0047f439"
+  },
+  {
+   "address": "0047f6b1",
+   "name": "FUN_0047f6b1"
+  },
+  {
+   "address": "0047f979",
+   "name": "tState_Skirmish::~tState_Skirmish"
+  },
+  {
+   "address": "0047feb1",
+   "name": "FUN_0047feb1"
+  },
+  {
+   "address": "0047ff4e",
+   "name": "FUN_0047ff4e"
+  },
+  {
+   "address": "00480016",
+   "name": "tState_Skirmish::vfunction4"
+  },
+  {
+   "address": "004800f2",
+   "name": "tState_Skirmish::vfunction22"
+  },
+  {
+   "address": "004819a4",
+   "name": "FUN_004819a4"
+  },
+  {
+   "address": "00481a1c",
+   "name": "FUN_00481a1c"
+  },
+  {
    "address": "00496253",
    "name": "FUN_00496253"
+  },
+  {
+   "address": "004ab70a",
+   "name": "tState_Namespace_Tactical::tState_Tactical::vfunction4"
   },
   {
    "address": "004b0e1b",
    "name": "FUN_004b0e1b"
   },
   {
+   "address": "004b9a3a",
+   "name": "tState_Namespace_Tactical::tState_Tactical::vfunction9"
+  },
+  {
    "address": "004bd443",
    "name": "FUN_004bd443"
-  },
-  {
-   "address": "004bd8d4",
-   "name": "FUN_004bd8d4"
-  },
-  {
-   "address": "004bde26",
-   "name": "FUN_004bde26"
   },
   {
    "address": "004c71fc",
@@ -19102,10 +19906,6 @@
   {
    "address": "004c8780",
    "name": "tScrollBar::vfunction37"
-  },
-  {
-   "address": "004cf9cb",
-   "name": "tSFCPlayer::~tSFCPlayer"
   },
   {
    "address": "004d0ab3",
@@ -19128,10 +19928,6 @@
    "name": "FUN_004d269b"
   },
   {
-   "address": "004d3951",
-   "name": "FUN_004d3951"
-  },
-  {
    "address": "004d82fb",
    "name": "tBaseWeapon::vfunction74"
   },
@@ -19146,6 +19942,10 @@
   {
    "address": "004e572e",
    "name": "tPhaserXBank::vfunction135"
+  },
+  {
+   "address": "004e8a69",
+   "name": "tPlasmaLauncher::vfunction65"
   },
   {
    "address": "00500872",
@@ -19170,10 +19970,6 @@
   {
    "address": "00506f07",
    "name": "FUN_00506f07"
-  },
-  {
-   "address": "0050eea7",
-   "name": "tSndMgr_Miles::vfunction2"
   },
   {
    "address": "005102ab",
@@ -19280,8 +20076,24 @@
    "name": "FUN_005344a3"
   },
   {
-   "address": "00539464",
-   "name": "tMetaMapHex::~tMetaMapHex"
+   "address": "00537c73",
+   "name": "FUN_00537c73"
+  },
+  {
+   "address": "00537cbe",
+   "name": "FUN_00537cbe"
+  },
+  {
+   "address": "00537d0f",
+   "name": "FUN_00537d0f"
+  },
+  {
+   "address": "00537f66",
+   "name": "FUN_00537f66"
+  },
+  {
+   "address": "005387ee",
+   "name": "FUN_005387ee"
   },
   {
    "address": "0053963a",
@@ -19304,48 +20116,12 @@
    "name": "FUN_0053a7d1"
   },
   {
-   "address": "0053ab16",
-   "name": "FUN_0053ab16"
-  },
-  {
-   "address": "0053ab9a",
-   "name": "FUN_0053ab9a"
-  },
-  {
-   "address": "0053abca",
-   "name": "FUN_0053abca"
-  },
-  {
-   "address": "0053ac4e",
-   "name": "FUN_0053ac4e"
-  },
-  {
-   "address": "00541499",
-   "name": "FUN_00541499"
-  },
-  {
    "address": "0054313e",
    "name": "FUN_0054313e"
   },
   {
    "address": "00543294",
    "name": "FUN_00543294"
-  },
-  {
-   "address": "0054372f",
-   "name": "FUN_0054372f"
-  },
-  {
-   "address": "005437a5",
-   "name": "FUN_005437a5"
-  },
-  {
-   "address": "0054385d",
-   "name": "FUN_0054385d"
-  },
-  {
-   "address": "00543944",
-   "name": "FUN_00543944"
   },
   {
    "address": "00543c70",
@@ -19408,22 +20184,6 @@
    "name": "nAsyncDatabaseProcedure::tAsyncDatabaseSingle::vfunction2"
   },
   {
-   "address": "00571018",
-   "name": "FUN_00571018"
-  },
-  {
-   "address": "0057118e",
-   "name": "FUN_0057118e"
-  },
-  {
-   "address": "00571304",
-   "name": "FUN_00571304"
-  },
-  {
-   "address": "0057147a",
-   "name": "FUN_0057147a"
-  },
-  {
    "address": "00571676",
    "name": "FUN_00571676"
   },
@@ -19450,26 +20210,6 @@
   {
    "address": "005a4220",
    "name": "FUN_005a4220"
-  },
-  {
-   "address": "005bc570",
-   "name": "FUN_005bc570"
-  },
-  {
-   "address": "005bc8b0",
-   "name": "FUN_005bc8b0"
-  },
-  {
-   "address": "005bcd91",
-   "name": "FUN_005bcd91"
-  },
-  {
-   "address": "005bcdc1",
-   "name": "FUN_005bcdc1"
-  },
-  {
-   "address": "005bcdf1",
-   "name": "FUN_005bcdf1"
   },
   {
    "address": "005c19a3",
@@ -19556,12 +20296,16 @@
    "name": "FUN_005c558a"
   },
   {
-   "address": "005d9411",
-   "name": "FUN_005d9411"
+   "address": "005c7eb6",
+   "name": "FUN_005c7eb6"
   },
   {
-   "address": "005d96ac",
-   "name": "FUN_005d96ac"
+   "address": "005c7f7c",
+   "name": "FUN_005c7f7c"
+  },
+  {
+   "address": "005c7fbb",
+   "name": "FUN_005c7fbb"
   },
   {
    "address": "005d9cd3",
@@ -19580,18 +20324,6 @@
    "name": "tCallback<tMetaClientNewsCtlrC::tMenuItem::eType>::scalar_deleting_destructor"
   },
   {
-   "address": "005deaac",
-   "name": "FUN_005deaac"
-  },
-  {
-   "address": "005deb34",
-   "name": "FUN_005deb34"
-  },
-  {
-   "address": "005debbc",
-   "name": "FUN_005debbc"
-  },
-  {
    "address": "005dfb86",
    "name": "FUN_005dfb86"
   },
@@ -19608,44 +20340,24 @@
    "name": "FUN_005e189d"
   },
   {
-   "address": "005e5d7a",
-   "name": "FUN_005e5d7a"
-  },
-  {
-   "address": "005e5ef4",
-   "name": "FUN_005e5ef4"
-  },
-  {
    "address": "005e62c4",
    "name": "FUN_005e62c4"
   },
   {
-   "address": "005e6469",
-   "name": "FUN_005e6469"
+   "address": "005e80ef",
+   "name": "FUN_005e80ef"
   },
   {
-   "address": "005e6642",
-   "name": "FUN_005e6642"
+   "address": "005e8140",
+   "name": "FUN_005e8140"
   },
   {
-   "address": "005e66b7",
-   "name": "FUN_005e66b7"
+   "address": "005e8376",
+   "name": "FUN_005e8376"
   },
   {
-   "address": "005e67a8",
-   "name": "FUN_005e67a8"
-  },
-  {
-   "address": "005e6991",
-   "name": "FUN_005e6991"
-  },
-  {
-   "address": "005e6a41",
-   "name": "FUN_005e6a41"
-  },
-  {
-   "address": "005ea469",
-   "name": "FUN_005ea469"
+   "address": "005e89fd",
+   "name": "FUN_005e89fd"
   },
   {
    "address": "005ea7f8",
@@ -19712,14 +20424,6 @@
    "name": "FUN_005fb377"
   },
   {
-   "address": "005fb3af",
-   "name": "FUN_005fb3af"
-  },
-  {
-   "address": "005fb6e5",
-   "name": "FUN_005fb6e5"
-  },
-  {
    "address": "00600035",
    "name": "FUN_00600035"
   },
@@ -19734,6 +20438,14 @@
   {
    "address": "006001a8",
    "name": "tPlayerRelayCCreator::vfunction3"
+  },
+  {
+   "address": "006005aa",
+   "name": "tMessageDialog::tMessageDialog"
+  },
+  {
+   "address": "00600620",
+   "name": "tMessageDialog::tMessageDialog"
   },
   {
    "address": "00601165",
@@ -20312,6 +21024,18 @@
    "name": "FUN_00676a30"
   },
   {
+   "address": "00678500",
+   "name": "FUN_00678500"
+  },
+  {
+   "address": "006785c0",
+   "name": "FUN_006785c0"
+  },
+  {
+   "address": "00678600",
+   "name": "FUN_00678600"
+  },
+  {
    "address": "00678ea0",
    "name": "FUN_00678ea0"
   },
@@ -20328,16 +21052,20 @@
    "name": "tVisGroupAsset::vfunction3"
   },
   {
+   "address": "0067cd70",
+   "name": "FUN_0067cd70"
+  },
+  {
+   "address": "0067cf10",
+   "name": "tObjBase::vfunction36"
+  },
+  {
    "address": "0067da80",
    "name": "tVisGroup::tVisGroup"
   },
   {
    "address": "0068ff60",
    "name": "tSession::~tSession"
-  },
-  {
-   "address": "00690480",
-   "name": "FUN_00690480"
   },
   {
    "address": "006904d0",
@@ -20356,6 +21084,14 @@
    "name": "tSession::~tSession"
   },
   {
+   "address": "00693ef0",
+   "name": "FUN_00693ef0"
+  },
+  {
+   "address": "0069fb90",
+   "name": "tSWView3D::vfunction29"
+  },
+  {
    "address": "006a5a20",
    "name": "tTexBmp::vfunction7"
   },
@@ -20370,6 +21106,18 @@
   {
    "address": "006a8930",
    "name": "FUN_006a8930"
+  },
+  {
+   "address": "006aa550",
+   "name": "tView3DExt::vfunction58"
+  },
+  {
+   "address": "006ac5a0",
+   "name": "tView3DExt::vfunction81"
+  },
+  {
+   "address": "006b1050",
+   "name": "tSWView3D::vfunction98"
   },
   {
    "address": "006b3e10",
@@ -20508,6 +21256,10 @@
    "name": "FUN_006ff710"
   },
   {
+   "address": "00703cb0",
+   "name": "nDatabase::tDatabase::~tDatabase"
+  },
+  {
    "address": "00708140",
    "name": "nDatabase::tFileDatabaseMgr::tDatabaseInfo::StreamIn"
   },
@@ -20536,8 +21288,24 @@
    "name": "nDatabase::tFileDatabaseMgr::Load"
   },
   {
-   "address": "0070f940",
-   "name": "tWinTimer::WinTimerCallback"
+   "address": "0071c8c0",
+   "name": "nSwitch::tDataHandler::~tDataHandler"
+  },
+  {
+   "address": "0071d0a0",
+   "name": "FUN_0071d0a0"
+  },
+  {
+   "address": "0071d170",
+   "name": "FUN_0071d170"
+  },
+  {
+   "address": "0071d1a0",
+   "name": "nSwitch::tDataHandler::vfunction8"
+  },
+  {
+   "address": "0071d1f0",
+   "name": "nSwitch::tDataHandler::vfunction10"
   },
   {
    "address": "00757310",

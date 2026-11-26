@@ -1,6 +1,13 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/tCampaignInfo.cpp
-// Functions: 0x005484bd to 0x00549d8a, 10 in op/UNITS.tsv
-// Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   game-release (harness/units.json)
+#include "unsorted/tCampaignInfo.h"
+
+// FUNCTION: STARFLEETOP 0x00549d84
+const char *tCampaignInfo::SQLTableName() const
+{
+    return "CampaignInfo";
+}
+
+// FUNCTION: STARFLEETOP 0x00549d8a
+const char *tCampaignInfo::SQLFieldNames() const
+{
+    return " ( ID, Locked, LockID, TemplateName, Description, EarlyMapName, MidMapName, LateMapName, MissionListSize, MissionList, RaceListSize, RaceList, CampaignEra, CampaignDifficulty, TriggerPrestige, TriggerMission, CampaignName, CharacterName, CharacterRace, ServerPassword, CurrentTimeSize, CurrentTime, PlayersCurrent, PlayersMax, PlayersLoggedOnCurrent, PlayersLoggedOnMax, ServerVersion, ValidClientVersion ) ";
+}

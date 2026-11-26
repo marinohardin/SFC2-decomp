@@ -19,12 +19,8 @@
 #include "Common/Thread/Thread.h"
 #include "unsorted/nSwitch__tAddress.h"
 
-namespace nSwitch
-{
-
-	// 0xb4 bytes, as the constructor (STARFLEETOP 0x0071c7b0) fills them and tObjectDirectory
-	// puts its tRefCount base at +0xb4.
-	class tDataHandler
+// 0xb4 bytes, as the constructor fills them and tObjectDirectory puts its tRefCount base at +0xb4.
+namespace nSwitch { class tDataHandler
 	{
 	public:
 		// The slots are the exe's vtable at 0x007bb7b8 in order; the slot numbers count from 0.
@@ -32,7 +28,8 @@ namespace nSwitch
 		// guard at +0x04.
 		virtual void	fn_slot0( int32u arg );
 		// Slots 1 and 2 (0x0071cc20, 0x0071cdf0) take no argument; both lock the guard at +0x04.
-		virtual void	fn_slot1( void );
+		// HYPOTHESIS: slot 1 returns a bool; slot 6 tests it (0x0071d010).
+		virtual bool	fn_slot1( void );
 		virtual void	fn_slot2( void );
 		// Slot 3 (0x00637810) returns true; slot 4 (0x006c9980) does nothing. Both are shared
 		// with other classes' vtables.
@@ -56,6 +53,18 @@ namespace nSwitch
 
 		tDataHandler();
 
+		// Not in the vtable (0x0071d090): forwards its argument to the member at +0x7c.
+		void	fn_0071d090( int32u arg );
+
+		// Not in the vtable (0x0071d0a0): sets the flag at +0x58 and the smart pointer at +0xac.
+		void	fn_0071d0a0( tSmartPtr<tAddress> address );
+
+		// Not in the vtable (0x0071d170): calls 0x005d8e25, then drops the smart pointer at +0xac.
+		void	fn_0071d170( void );
+
+		// Not in the vtable (0x0071d220): the work item the callback at +0x78 runs for slot 6.
+		void	fn_0071d220( tRefCount* packet );
+
 	protected:
 		// +0x04: the spin-counted guard slots 0 to 2 lock, built as tOptex( use, 4000 ).
 		tOptex						f_04;
@@ -73,7 +82,8 @@ namespace nSwitch
 		// +0xac: the smart pointer slots 7 and 9 return.
 		tSmartPtr<tAddress>			f_ac;
 		// +0xb0: the argument slot 0 stores; the constructor clears it.
-		int32u						f_b0;
+		// HYPOTHESIS: the destructor sets the byte it points to (0x0071c8c0), so it is a pointer.
+		bool						*f_b0;
 	};
 
 	typedef char tDataHandler_size_is_0xb4[sizeof(tDataHandler) == 0xb4 ? 1 : -1];

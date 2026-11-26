@@ -8,6 +8,7 @@ class tScrollBar;
 class tObjBase;
 class tVisObject;
 class tString;
+class tAsset;
 
 // The original takes tRect from tbasic.h. The unit map has no place for a header without a unit of
 // its own yet, so the part of it these units need is kept here. The members the compiler did not
@@ -36,6 +37,8 @@ struct tRect
 		bottom	= (short)ey;
 	};
 	inline tRect( const tRect &T ) { left = T.left; top = T.top; right = T.right; bottom = T.bottom; }
+	// 0x006985f0: takes the rectangle given into this one.
+	void fn_006985f0( const tRect *r );
 	inline void mSet( int sx, int sy, int ex, int ey )
 	{
 		left	= (short)sx;
@@ -79,6 +82,9 @@ struct tRect
 	};
 
 	void mMakeClippedRect( const tRect *pClip, tRect *pNewRect ) const;
+
+	// HYPOTHESIS: grows this rectangle to cover pR (the union); the original name is unknown.
+	void fn_004c000f( const tRect *pR );
 
 	// Out of line in the exe at 0x004c855e (defined in tScrollBar.cpp); tScrollBar::fn_004c84d7
 	// (0x004c84d7) calls it.
@@ -147,6 +153,10 @@ struct c_tObjBase_Field4C
 	short field_06;
 };
 
+// HYPOTHESIS: 0x00696b40 tests whether the point (relative to the object) hits the shape; a
+// free function, since 0x0067cf10 pushes the shape as its first argument and pops all three.
+bool fn_00696b40( c_tObjBase_Field4C *shape, int x, int y );
+
 // HYPOTHESIS: the event record that tObjBase::vfunction31 (slot 30, 0x0067d1c0) takes: the
 // type is read first (0x0067d1c0 handles types 1 to 7 as mouse events with the x at +0x4 and the
 // y at +0x8, and hands the other types on), tVisGroup compares it with 0x15 and passes the
@@ -211,17 +221,21 @@ public:
 	virtual void vfunction8( const tRect *area );
 	// 0x0067cc70: sets the rectangle at +0x34 and tells the parent.
 	virtual void vfunction9( short left, short top, short right, short bottom );
-	virtual bool vfunction10();	// 0x0046c436
+	virtual int vfunction10();	// 0x0046c436
 	virtual void vfunction11();
 	virtual void vfunction12();	// +0x2c
-	virtual void vfunction13(); virtual bool vfunction14(); virtual void vfunction15( bool a ); virtual void vfunction16(); virtual void vfunction17(); virtual void vfunction18(); virtual void vfunction19(); virtual int vfunction20(); virtual void vfunction21( int n );	// HYPOTHESIS: +0x4c reads a control's value and +0x50 sets its state (the fleet entry's 0x004c27a8)
+	virtual void vfunction13(); virtual bool vfunction14();
+	virtual void vfunction15( bool a );
+	virtual void vfunction16(); virtual void vfunction17();
+	virtual void vfunction18();	// 0x0067ce20: hides the object and its children, tells the parent, gives up the capture
+	virtual void vfunction19(); virtual int vfunction20(); virtual void vfunction21( int n );	// HYPOTHESIS: +0x4c reads a control's value and +0x50 sets its state (the fleet entry's 0x004c27a8)
 	virtual void vfunction22();
 	virtual void *vfunction23();	// 0x0046c452: returns the address 0x00c692a8
 	virtual void vfunction24( const tString &s );	// 0x00401038 (an empty function with one argument); tFleetEntry's classes pass a tString
 	virtual void vfunction25();
 	virtual void vfunction26();
 	virtual void vfunction27();
-	virtual bool vfunction28( int a, void *b );	// 0x0046c464: puts a string in the second argument, returns false
+	virtual bool vfunction28( int a, tString *b );	// 0x0046c464: puts a string in the second argument, returns false
 	virtual bool vfunction29( int a, int *b );	// 0x0046c458: clears *b, returns false
 	// 0x0067d160: walks the children, calling a child's +0x58 handler (when bit 3 of its +0x40
 	// is set) and its slot 29 (+0x74).
@@ -284,6 +298,10 @@ public:
 		field_60 = 0;
 	}
 	virtual ~tVisObject();
+	// HYPOTHESIS: slot 37 of the vftable (0x004c00a8: takes +0x48 from the asset's +0x4). Declared
+	// non-virtual here until tScrollBar, tVisGroup, tSeqScene and the others that declare their own
+	// vfunction37 with other signatures are given the same one; a virtual would shift their slots.
+	void vfunction37( tAsset *asset );
 	// HYPOTHESIS: a member of tVisObject or tObjBase; it lies in the SDK library range.
 	void fn_006849d0( int a );
 	// HYPOTHESIS: a member of tVisObject; tListBox_Base::vfunction31 calls it directly after scrolling.

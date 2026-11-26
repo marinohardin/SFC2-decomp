@@ -6,6 +6,7 @@
 #define tAsset_h 1
 
 #include "unsorted/tNetControl.h"	// tString
+#include <vector>
 
 class tStream;
 
@@ -294,7 +295,16 @@ public:
 	virtual ~tTableAsset();
 
 	// HYPOTHESIS: field names and types unknown.
-	unsigned char field_5C[ 0x7c - 0x5c ];
+	short field_5C;
+	short field_5E;
+	short field_60;
+	short field_62;
+	short field_64;
+	short field_66;
+	int field_68;
+	// HYPOTHESIS: the element type is unknown; the constructor shows a vector's allocator byte
+	// and three null pointers.
+	std::vector<int> field_6C;
 };
 
 #endif	// tAsset_h
