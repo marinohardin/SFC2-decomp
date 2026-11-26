@@ -214,6 +214,26 @@ tState_Tactical::~tState_Tactical()
 		delete g_00919b44;
 }
 
+}	// namespace tState_Namespace_Tactical
+
+// HYPOTHESIS: a member of an int rectangle {left, top, right, bottom}: it grows the first two
+// fields and shrinks the last two toward the rectangle given.
+// FUNCTION: STARFLEETOP 0x004ab4c3
+void __fastcall fn_004ab4c3( int *self, int unused, int *other )
+{
+	if ( self[0] < other[0] )
+		self[0] = other[0];
+	if ( self[1] < other[1] )
+		self[1] = other[1];
+	if ( self[2] > other[2] )
+		self[2] = other[2];
+	if ( self[3] > other[3] )
+		self[3] = other[3];
+}
+
+namespace tState_Namespace_Tactical
+{
+
 // FUNCTION: STARFLEETOP 0x004ab70a
 bool tState_Tactical::vfunction4()
 {
