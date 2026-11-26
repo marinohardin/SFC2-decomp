@@ -217,3 +217,31 @@ void tState_Multiplayer::vfunction6( int param_1 )
 		field_e24 = text;
 	}
 }
+
+#include "unsorted/c_0046aa10_msg.h"
+
+bool fn_0046a9e2();
+
+// FUNCTION: STARFLEETOP 0x0047156b
+void tState_Multiplayer::vfunction15( c_0046aa10_message *param_1 )
+{
+	switch ( param_1->m_04 )
+	{
+	case 'C':
+	case 'c':
+		if ( fn_0046a9e2() )
+			param_1->id = 0x10004;
+		break;
+	case 'V':
+	case 'v':
+		if ( fn_0046a9e2() )
+			param_1->id = 0x10003;
+		break;
+	case 0x102:
+		param_1->id = 0x10020;
+		break;
+	case 0x103:
+		param_1->id = 0x10006;
+		break;
+	}
+}
