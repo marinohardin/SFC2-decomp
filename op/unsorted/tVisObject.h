@@ -80,6 +80,9 @@ struct tRect
 
 	void mMakeClippedRect( const tRect *pClip, tRect *pNewRect ) const;
 
+	// HYPOTHESIS: grows this rectangle to cover pR (the union); the original name is unknown.
+	void fn_004c000f( const tRect *pR );
+
 	// Out of line in the exe at 0x004c855e (defined in tScrollBar.cpp); tScrollBar::fn_004c84d7
 	// (0x004c84d7) calls it.
 	unsigned char mPointInside( int x, int y ) const;

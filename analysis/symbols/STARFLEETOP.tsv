@@ -5347,7 +5347,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004bfc74	function	fn_004bfc74	tDragBar				vtable
 0x004bfd72	function	fn_004bfd72	tDragBar				vtable
 0x004bfde4	function	fn_004bfde4					none
-0x004c000f	function	fn_004c000f					none
+0x004c000f	function	fn_004c000f		?fn_004c000f@tRect@@QAEXPBU1@@Z	claim		none
 0x004c004b	function	fn_004c004b	tRectShape				vtable
 0x004c0067	function	fn_004c0067					none
 0x004c00a1	function	tObjBase::~tObjBase	tObjBase				rtti
