@@ -89,3 +89,11 @@ void nSwitch::tDataHandler::fn_0071d0a0( tSmartPtr<tAddress> address )
 	// declares it without a body, so the build calls it out of line.
 	f_ac = address.Get();
 }
+
+// FUNCTION: STARFLEETOP 0x0071d170
+void nSwitch::tDataHandler::fn_0071d170( void )
+{
+	f_58 = false;
+	// The original inlines the smart pointer's assignment: release if set, then clear.
+	f_ac = NULL;
+}

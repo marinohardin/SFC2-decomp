@@ -59,6 +59,9 @@ namespace nSwitch { class tDataHandler
 		// Not in the vtable (0x0071d0a0): sets the flag at +0x58 and the smart pointer at +0xac.
 		void	fn_0071d0a0( tSmartPtr<tAddress> address );
 
+		// Not in the vtable (0x0071d170): calls 0x005d8e25, then drops the smart pointer at +0xac.
+		void	fn_0071d170( void );
+
 	protected:
 		// +0x04: the spin-counted guard slots 0 to 2 lock, built as tOptex( use, 4000 ).
 		tOptex						f_04;

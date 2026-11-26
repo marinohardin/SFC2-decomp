@@ -13887,7 +13887,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005d8d1d	function	fn_005d8d1d					none
 0x005d8d47	function	fn_005d8d47					none
 0x005d8e02	function	fn_005d8e02					none
-0x005d8e25	function	fn_005d8e25					none
+0x005d8e25	function	fn_005d8e25		??4?$tInterlockedScalar@_N@@QAE_N_N@Z	add		none
 0x005d8e6f	function	fn_005d8e6f					none
 0x005d8e72	function	fn_005d8e72	tWONMemberCallback<tWONInterSwitchConnection,WONAPI::SmartPtr<WONAPI::AsyncOp>_>				vtable
 0x005d8ec8	function	tInterlockedScalar<bool>::scalar_deleting_destructor	tInterlockedScalar<bool>				rtti
@@ -21025,7 +21025,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0071d010	function	fn_0071d010	nSwitch::tDataHandler	?fn_slot6@tDataHandler@nSwitch@@UAEXK@Z	claim		vtable
 0x0071d090	function	fn_0071d090		?fn_0071d090@tDataHandler@nSwitch@@QAEXK@Z	claim		none
 0x0071d0a0	function	fn_0071d0a0		?fn_0071d0a0@tDataHandler@nSwitch@@QAEXV?$tSmartPtr@VtAddress@nSwitch@@@@@Z	claim		none
-0x0071d170	function	fn_0071d170					none
+0x0071d170	function	fn_0071d170		?fn_0071d170@tDataHandler@nSwitch@@QAEXXZ	claim		none
 0x0071d1a0	function	fn_0071d1a0	nSwitch::tDataHandler				vtable
 0x0071d1e0	function	tThread::GetCallstack	tThread	?GetCallstack@tThread@@QAEAAVtCallStack@@XZ	mangled		mangled
 0x0071d1f0	function	fn_0071d1f0	nSwitch::tDataHandler				vtable
