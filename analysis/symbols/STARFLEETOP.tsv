@@ -5264,9 +5264,9 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004be365	function	fn_004be365					none
 0x004be3e3	function	fn_004be3e3					none
 0x004be461	function	fn_004be461					none
-0x004be4df	function	fn_004be4df					none
-0x004be55e	function	fn_004be55e					none
-0x004be5e0	function	fn_004be5e0					none
+0x004be4df	function	fn_004be4df		?fn_004be4df@@YAHXZ	callers		none
+0x004be55e	function	fn_004be55e		?fn_004be55e@@YAHPAVtString@@@Z	callers		none
+0x004be5e0	function	fn_004be5e0		?fn_004be5e0@@YAHPAVtString@@H@Z	callers		none
 0x004be687	function	fn_004be687					none
 0x004be6ec	function	fn_004be6ec					none
 0x004be736	function	tListBox_Chat_Session::scalar_deleting_destructor	tListBox_Chat_Session				rtti
