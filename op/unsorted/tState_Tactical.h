@@ -139,14 +139,103 @@ public:
 
 typedef char tState_Tactical_size_is_0x4b0[ sizeof( tState_Tactical ) == 0x4b0 ? 1 : -1 ];
 
+// A camera (RTTI); the base of the five camera kinds. Destructor 0x004af2cd.
+// HYPOTHESIS: only the vtable pointer is known; the size of 0x10 is the smallest gap between two
+// cameras in tCameraMgrEx.
+class tCamera
+{
+public:
+	virtual ~tCamera();
+	unsigned char field_04[0xc];
+};
+
+inline tCamera::~tCamera()
+{
+}
+
+// The base of tCameraMgrEx (RTTI). Destructor 0x004af1bc.
+// HYPOTHESIS: the layout up to +0x50 is not recovered yet.
+class tCameraMgr
+{
+public:
+	virtual ~tCameraMgr();
+	unsigned char field_04[0x50 - 0x04];
+};
+
+inline tCameraMgr::~tCameraMgr()
+{
+}
+
+// The five camera kinds (RTTI). Each derives from tCamera: the destructor 0x004add41 leaves
+// tCamera's vtable in every camera member, which needs a derived destructor inlined before it.
+// HYPOTHESIS: each derives from tCamera directly; their own members are not recovered yet.
+class tCamera_CenteredShip : public tCamera
+{
+public:
+	virtual ~tCamera_CenteredShip();
+};
+
+inline tCamera_CenteredShip::~tCamera_CenteredShip()
+{
+}
+
+class tCamera_TopDownAutoZoom : public tCamera
+{
+public:
+	virtual ~tCamera_TopDownAutoZoom();
+};
+
+inline tCamera_TopDownAutoZoom::~tCamera_TopDownAutoZoom()
+{
+}
+
+class tCamera_OverTheShoulder : public tCamera
+{
+public:
+	virtual ~tCamera_OverTheShoulder();
+};
+
+inline tCamera_OverTheShoulder::~tCamera_OverTheShoulder()
+{
+}
+
+class tCamera_ReverseOverTheShoulder : public tCamera
+{
+public:
+	virtual ~tCamera_ReverseOverTheShoulder();
+};
+
+inline tCamera_ReverseOverTheShoulder::~tCamera_ReverseOverTheShoulder()
+{
+}
+
+class tCamera_TopDownOrthographic : public tCamera
+{
+public:
+	virtual ~tCamera_TopDownOrthographic();
+};
+
+inline tCamera_TopDownOrthographic::~tCamera_TopDownOrthographic()
+{
+}
+
 // The camera manager (RTTI). Constructor 0x004aefd4, deleting destructor 0x004af2d4; one static
-// object at 0x00918890. HYPOTHESIS: the layout is not recovered yet; only the members the
-// matched code uses are declared.
-class tCameraMgrEx
+// object at 0x00918890. Its destructor 0x004add41 resets five cameras at +0x50, +0x60, +0x8c,
+// +0xc8 and +0xf4. HYPOTHESIS: which kind sits at which offset follows the order of the kinds'
+// functions in the exe; the bytes after each camera's tCamera part are not recovered yet.
+class tCameraMgrEx : public tCameraMgr
 {
 public:
 	tCameraMgrEx();
 	virtual ~tCameraMgrEx();
+	tCamera_CenteredShip field_50;
+	tCamera_TopDownAutoZoom field_60;
+	unsigned char field_70[0x8c - 0x70];
+	tCamera_OverTheShoulder field_8c;
+	unsigned char field_9c[0xc8 - 0x9c];
+	tCamera_ReverseOverTheShoulder field_c8;
+	unsigned char field_d8[0xf4 - 0xd8];
+	tCamera_TopDownOrthographic field_f4;
 };
 
 }	// namespace tState_Namespace_Tactical

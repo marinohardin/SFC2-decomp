@@ -4925,7 +4925,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004adc89	function	fn_004adc89					none
 0x004add21	function	fn_004add21					none
 0x004add2b	function	fn_004add2b					none
-0x004add41	function	fn_004add41					none
+0x004add41	function	fn_004add41		??1tCameraMgrEx@tState_Namespace_Tactical@@UAE@XZ	claim		none
 0x004add65	function	tState_Namespace_Tactical::tCameraMgr::scalar_deleting_destructor	tState_Namespace_Tactical::tCameraMgr				rtti
 0x004add82	function	tState_Namespace_Tactical::tCamera::scalar_deleting_destructor	tState_Namespace_Tactical::tCamera				rtti
 0x004addaf	function	fn_004addaf					none

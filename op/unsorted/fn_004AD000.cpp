@@ -26,3 +26,8 @@ int *tState_Tactical::fn_004ad89d()
 // FUNCTION: STARFLEETOP 0x004add2b
 // FUNCTION: STARFLEETOP 0x004add21
 tCameraMgrEx g_00918890;
+
+// FUNCTION: STARFLEETOP 0x004add41
+tCameraMgrEx::~tCameraMgrEx()
+{
+}
