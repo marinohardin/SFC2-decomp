@@ -18530,7 +18530,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0069e2a0	function	fn_0069e2a0		?fn_0069e2a0@@YAXXZ	claim		none
 0x0069e300	function	fn_0069e300					none
 0x0069e3d0	function	fn_0069e3d0					none
-0x0069e490	function	fn_0069e490					none
+0x0069e490	function	fn_0069e490		?fn_0069e490@tD3DViewMgr_State@@QAEHH@Z	claim		none
 0x0069e670	function	fn_0069e670	tSWView3D				vtable
 0x0069e8ea	function	fn_0069e8ea					none
 0x0069e950	function	fn_0069e950					none
@@ -18820,7 +18820,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x006aae20	function	fn_006aae20					none
 0x006ab280	function	fn_006ab280					none
 0x006ab2f0	function	fn_006ab2f0					none
-0x006ab380	function	fn_006ab380					none
+0x006ab380	function	fn_006ab380		?fn_006ab380@tD3DViewMgr_Sub@@QAEXXZ	add		none
 0x006abe00	function	tView3DExt::mAssertVtxCache	tView3DExt	?mAssertVtxCache@tView3DExt@@QAEXH@Z	claim		claim
 0x006abeb0	function	fn_006abeb0					none
 0x006abf80	function	fn_006abf80	tView3DExt				vtable
