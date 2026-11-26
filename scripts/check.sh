@@ -90,8 +90,9 @@ fi
 base_ref() {
     if [ -n "${SFCOP_BASE_REF:-}" ]; then
         echo "$SFCOP_BASE_REF"
-    elif [ "${GITHUB_ACTIONS:-}" = true ] && git rev-parse --verify --quiet HEAD^2 >/dev/null; then
-        git rev-parse HEAD^1                                    # CI: the merge's base side
+    elif [ "${GITHUB_ACTIONS:-}" = true ] && [ "${GITHUB_EVENT_NAME:-}" = pull_request ] \
+            && git rev-parse --verify --quiet HEAD^2 >/dev/null; then
+        git rev-parse HEAD^1                                    # CI pull request: the merge's base side
     elif git rev-parse --verify --quiet origin/develop >/dev/null \
             && [ "$(git rev-parse HEAD)" != "$(git rev-parse origin/develop)" ]; then
         git merge-base HEAD origin/develop                     # a branch: where it left develop
