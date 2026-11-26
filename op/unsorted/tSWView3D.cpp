@@ -311,6 +311,14 @@ bool tSWView3D::vfunction27(unsigned char r, unsigned char g, unsigned char b)
 	return true;
 }
 
+// FUNCTION: STARFLEETOP 0x0069fb50
+bool tSWView3D::vfunction30(bool e, bool f)
+{
+	int width = (int)field_0x764;
+	int height = (int)field_0x768;
+	return vfunction29(0, 0, width, height, e, f);
+}
+
 // FUNCTION: STARFLEETOP 0x0069fb90
 bool tSWView3D::vfunction29(int a, int b, int c, int d, bool e, bool f)
 {
