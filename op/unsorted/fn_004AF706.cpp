@@ -196,3 +196,28 @@ void *__fastcall fn_004afbc4(void *self, int, unsigned capacity)
 	((void **)self)[0] = operator new( capacity * 0x14 );
 	return self;
 }
+
+// HYPOTHESIS: appends to the 20-byte growable array of 0x004afbc4, growing it by ten when full;
+// the element is one word followed by four words copied from the second argument.
+// FUNCTION: STARFLEETOP 0x004afbeb
+void __fastcall fn_004afbeb(void *self, int, int key, const tPoint4 *value)
+{
+	int *array = (int *)self;
+	if (array[1] + 1 >= array[2])
+	{
+		int capacity = array[2] + 10;
+		int *data = (int *)operator new( capacity * 0x14 );
+		if (data == 0)
+			return;
+		if (array[0] != 0)
+		{
+			memcpy( data, (void *)array[0], array[1] * 0x14 );
+			operator delete( (void *)array[0] );
+		}
+		array[2] = capacity;
+		array[0] = (int)data;
+	}
+	((int *)array[0])[array[1] * 5] = key;
+	*(tPoint4 *)((int *)array[0] + array[1] * 5 + 1) = *value;
+	array[1]++;
+}
