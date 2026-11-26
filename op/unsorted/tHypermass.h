@@ -16,6 +16,7 @@ class tHypermass
 public:
 	tHypermass();
 	virtual void vfunction1(int *param_1);
+	void fn_004fa6ec();
 
 	int field_04;	// N
 	float field_08;	// 1 / 12 in the first instance
