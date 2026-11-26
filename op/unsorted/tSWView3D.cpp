@@ -72,12 +72,10 @@ bool tSWView3D::vfunction29(int a, int b, int c, int d, bool e, bool f)
 		fill->Fill(field_1f5c, rect);
 	}
 	if (f && field_5fb4) {
-		int width = field_5fb8;
 		unsigned int pitch = field_5fc0;
-		unsigned short *p = field_5fb4 + (width * rect[1] + rect[0]);
+		unsigned short *p = field_5fb4 + (field_5fb8 * rect[1] + rect[0]);
 		int rows = rect[3] - rect[1];
-		if (rows < 0)
-			rows = 0;
+		rows &= (rows < 0) - 1;
 		for (; rows > 0; rows--) {
 			memset(p, 0, pitch);
 			p = (unsigned short *)((char *)p + pitch);
