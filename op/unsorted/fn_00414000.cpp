@@ -29,3 +29,20 @@ float tPhysicalEntity::vfunction24()
 {
 	return (float)field_0x1b4 / field_0x1b8;
 }
+
+// HYPOTHESIS: tEntity_Placeholder is the RTTI name; no header declares it yet. Size 0x1c8 from
+// the operator new argument, constructor (0x00414278) arguments unknown.
+class tEntity_Placeholder
+{
+public:
+	tEntity_Placeholder(int a, int b);
+
+	char	pad00[0x1c8];
+};
+
+// FUNCTION: STARFLEETOP 0x0041455b
+tEntity_Placeholder* fn_0041455b(int a, int b)
+{
+	tEntity_Placeholder* p = new tEntity_Placeholder(a, b);
+	return p;
+}
