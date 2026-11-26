@@ -40,6 +40,10 @@ public:
     virtual void vfunction148();
     virtual int vfunction149(char param_1, int param_2);
 
+    // 0x004e770a: counts the timers (field_3c, field_dc, field_e0, field_e4) at or above field_38,
+    // limited to the bank count vfunction106 gives.
+    int fn_004e770a();
+
     // Offsets 0x04 to 0x14b are tBaseWeapon's members.
     char pad14c[0x470 - 0x14c];
     // HYPOTHESIS: a flag, cleared by the constructor.

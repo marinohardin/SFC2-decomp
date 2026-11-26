@@ -16,6 +16,24 @@ public:
 
 tMessageSink *fn_004e824a();
 
+// FUNCTION: STARFLEETOP 0x004e770a
+int tPlasmaLauncher::fn_004e770a()
+{
+    int count = 0;
+    if (field_3c >= field_38)
+        count = 1;
+    if (field_dc >= field_38)
+        count++;
+    if (field_e0 >= field_38)
+        count++;
+    if (field_e4 >= field_38)
+        count++;
+    char banks = vfunction106();
+    if (count <= banks)
+        return count;
+    return banks;
+}
+
 // FUNCTION: STARFLEETOP 0x004e80b0
 void tPlasmaLauncher::vfunction125(int aValue)
 {
