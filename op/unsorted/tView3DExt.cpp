@@ -82,6 +82,23 @@ int tView3DExt::vfunction22()
 	return field_0x1ecc;
 }
 
+// HYPOTHESIS: the original returns the previous level as a float (it loads field_0x1ed4 first and
+// leaves it on the FPU stack; 0x006a9540 pops the result); tView3D declares the slot void.
+// FUNCTION: STARFLEETOP 0x006a9710
+void tView3DExt::vfunction45(float level)
+{
+	if (level < 0.0f) {
+		field_0x1ed4 = 0.0f;
+	} else if (level > 1.0f) {
+		field_0x1ed4 = 1.0f;
+	} else {
+		field_0x1ed4 = level;
+	}
+	// The byte copy is rounded by adding 1.5 * 2^23 and keeping the low mantissa byte.
+	level = field_0x1ed4 * 255.0f + 12582912.0f;
+	field_0x1ed9 = *(unsigned char *)&level;
+}
+
 // HYPOTHESIS: the original calls 0x0069cc40 (another tMatrix member taking an output point and an
 // input point) where this body calls fn_0069cbc0 three times; tMatrix declares no member for it yet.
 // FUNCTION: STARFLEETOP 0x006aa550
