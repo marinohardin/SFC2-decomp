@@ -730,7 +730,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004130b4	function	tPhysicalEntity::scalar_deleting_destructor	tPhysicalEntity				rtti
 0x004130d0	function	fn_004130d0		?fn_004130d0@tPhysicalEntity@@QAE?AUtPoint3@@XZ	claim		none
 0x004130f1	function	fn_004130f1		?fn_004130f1@tPhysicalEntity@@QAE?AUtPoint3@@XZ	claim		none
-0x00413112	function	fn_00413112					none
+0x00413112	function	fn_00413112		?fn_00413112@tEntity@@QAEXABUtPoint3@@@Z	claim		none
 0x00413153	function	fn_00413153	tPhysicalEntity	?vfunction11@tPhysicalEntity@@UAEXAAVtSFCStream@@K@Z	claim		none
 0x004133d3	function	tMemoryPart::Search_tMemoryPart	tMemoryPart	?Search_tMemoryPart@tMemoryPart@@SAPAV1@XZ	claim		claim
 0x00413448	function	fn_00413448	tPhysicalEntity	?vfunction3@tPhysicalEntity@@UAEXXZ	claim		none
