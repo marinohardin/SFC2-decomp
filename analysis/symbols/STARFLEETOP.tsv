@@ -18869,7 +18869,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x006b05f0	function	fn_006b05f0					none
 0x006b0b00	function	fn_006b0b00					none
 0x006b0b60	function	fn_006b0b60					none
-0x006b1050	function	fn_006b1050	tSWView3D				vtable
+0x006b1050	function	fn_006b1050	tSWView3D	?vfunction98@tSWView3D@@UAE_NHHH_N@Z	claim		vtable
 0x006b11a0	function	fn_006b11a0					none
 0x006b1230	function	fn_006b1230	tSWView3D				vtable
 0x006b1660	function	fn_006b1660	tSWView3D				vtable
