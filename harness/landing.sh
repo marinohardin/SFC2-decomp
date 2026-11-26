@@ -30,10 +30,21 @@ repo=$(dirname "$here")
 base=${1:-origin/develop}
 cd "$repo" || exit 2
 PYTHONPATH="$repo" python3 -m harness.lib.verify --land --base "$base" || exit $?
-python3 tools/symbols.py claim || {
-    echo "ERROR a claim tried to replace a symbol the table holds with evidence mangled or add: make the claim compile the table's symbol (or, if the table is wrong, run tools/symbols.py claim --replace-evidence <address>)" >&2
+claim_out=$(mktemp "${TMPDIR:-/tmp}/claim-out.XXXXXX") || exit 2
+if ! python3 tools/symbols.py claim > "$claim_out" 2>&1; then
+    cat "$claim_out" >&2
+    if grep -q 'not replaced (the claim must compile' "$claim_out"; then
+        echo "ERROR a claim tried to replace a symbol the table holds with evidence mangled or add: make the claim compile the table's symbol (or, if the table is wrong, run tools/symbols.py claim --replace-evidence <address>)" >&2
+    elif grep -q 'not made from the current source tree' "$claim_out"; then
+        echo "ERROR the build folder's symbols are not of this source tree (an edit after the build, or a build that failed): run harness/build-and-verify.sh --all, then claim again" >&2
+    else
+        echo "ERROR tools/symbols.py claim failed for a reason other than a refused replacement or a stale build; what it printed is above" >&2
+    fi
+    rm -f "$claim_out"
     exit 2
-}
+fi
+cat "$claim_out"
+rm -f "$claim_out"
 # Rows still empty are filled from the exact callers that agree on a symbol (evidence callers);
 # existing values are kept: no --reseed.
 report=$(mktemp "${TMPDIR:-/tmp}/seed-report.XXXXXX") || exit 2
