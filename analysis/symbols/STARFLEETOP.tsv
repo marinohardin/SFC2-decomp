@@ -3948,7 +3948,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0047f720	function	fn_0047f720		?fn_0047f720@@YAPADXZ	claim		none
 0x0047f764	function	fn_0047f764		?fn_0047f764@@YAXXZ	claim		none
 0x0047f770	function	fn_0047f770		?fn_0047f770@@YAXXZ	claim		none
-0x0047f77c	function	fn_0047f77c					none
+0x0047f77c	function	fn_0047f77c		?fn_0047f77c@@YAXXZ	claim		none
 0x0047f79f	function	fn_0047f79f					none
 0x0047f7a5	function	fn_0047f7a5	tState_Skirmish				vtable
 0x0047f7ab	function	tState_Skirmish::tState_Skirmish	tState_Skirmish				rtti
