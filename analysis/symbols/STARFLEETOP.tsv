@@ -3204,7 +3204,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0045da31	function	fn_0045da31	tCampaignState	?vfunction4@tCampaignState@@UAE_NXZ	claim		none
 0x0045da40	function	fn_0045da40	tState_Campaign	?vfunction3@tState_Campaign@@UAEXXZ	claim		none
 0x0045dbda	function	fn_0045dbda	tState_Campaign	?vfunction6@tState_Campaign@@UAEXH@Z	claim		none
-0x0045dc2b	function	fn_0045dc2b	tState_Campaign	?vfunction15@tState_Campaign@@UAEXPAH@Z	claim		none
+0x0045dc2b	function	fn_0045dc2b	tCampaignState	?vfunction15@tCampaignState@@UAEXPAUc_0046aa10_message@@@Z	claim		none
 0x0045dc99	function	fn_0045dc99	tState_Campaign	?fn_0045dc99@tState_Campaign@@QAEXH@Z	claim		none
 0x0045dd02	function	fn_0045dd02	tState_Campaign	?fn_0045dd02@tState_Campaign@@QAE_NXZ	claim		none
 0x0045ddc0	function	fn_0045ddc0					none
@@ -3475,7 +3475,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00469dfd	function	fn_00469dfd	tGameState	?vfunction14@tGameState@@UAE_NH@Z	claim		none
 0x00469e02	function	fn_00469e02	tGameState	?vfunction16@tGameState@@UAEXPAH@Z	claim		none
 0x00469e0c	function	fn_00469e0c	tGameState	?fn_00469e0c@tGameState@@QAE_NPBD@Z	claim		none
-0x00469e2a	function	fn_00469e2a	tGameState	?vfunction18@tGameState@@UAEXXZ	claim		none
+0x00469e2a	function	fn_00469e2a	tGameState	?fn_00469e2a@tGameState@@QAEXXZ	claim		none
 0x00469e34	function	fn_00469e34		?fn_00469e34@@YAXXZ	claim		none
 0x00469e3e	function	fn_00469e3e		?fn_00469e3e@@YAXH@Z	claim		none
 0x00469e4d	function	fn_00469e4d		?fn_00469e4d@@YAXXZ	claim		none
@@ -3522,7 +3522,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0046abd1	function	fn_0046abd1		?fn_0046abd1@@YAXPAH0@Z	claim		none
 0x0046abf2	function	fn_0046abf2		?fn_0046abf2@@YAPADXZ	claim		none
 0x0046acd5	function	fn_0046acd5		?fn_0046acd5@@YAXPAD@Z	claim		none
-0x0046ad4d	function	fn_0046ad4d	tGameState	?fn_0046ad4d@fn_0046ad4d_owner@@QAEXPAH@Z	claim		vtable
+0x0046ad4d	function	fn_0046ad4d	tGameState	?vfunction18@tGameState@@UAEXPAH@Z	claim		none
 0x0046ad61	function	fn_0046ad61					none
 0x0046ad85	function	fn_0046ad85		?insert@?$list@HV?$allocator@H@std@@@std@@QAE?AViterator@12@V312@ABH@Z	add		none
 0x0046adf5	function	fn_0046adf5	tState_HotKeys				vtable
@@ -15549,9 +15549,9 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x006086e9	function	fn_006086e9	tPanelMgr	?fn_006086e9@tPanelMgr@@QAEXXZ	claim		none
 0x00608766	function	fn_00608766	tPanelMgr	?fn_00608766@tPanelMgr@@QAEXXZ	claim		none
 0x006087af	function	fn_006087af	tPanelMgr				vtable
-0x00608b4e	function	fn_00608b4e	tPanelMgr	?vfunction4@tPanelMgr@@QAE_NXZ	claim		none
+0x00608b4e	function	fn_00608b4e	tPanelMgr	?vfunction4@tPanelMgr@@UAE_NXZ	claim		none
 0x00608bc7	function	fn_00608bc7	tPanelMgr				vtable
-0x00609077	function	fn_00609077	tPanelMgr	?vfunction13@tPanelMgr@@QAEPADXZ	claim		none
+0x00609077	function	fn_00609077	tPanelMgr	?vfunction13@tPanelMgr@@UAEPADXZ	claim		none
 0x0060907d	function	fn_0060907d					none
 0x00609107	function	fn_00609107					none
 0x0060918d	function	fn_0060918d		?fn_0060918d@tPanelMgr@@QAEXXZ	callers		none

@@ -1206,7 +1206,7 @@ address	size	symbol	source	modes	decorated
 0x0045da31	15	tCampaignState::vfunction4()	unsorted/tCampaignState.cpp	vc6 guest	?vfunction4@tCampaignState@@UAE_NXZ
 0x0045da40	410	tState_Campaign::vfunction3()	unsorted/tCampaignState.cpp	partial	?vfunction3@tState_Campaign@@UAEXXZ
 0x0045dbda	81	tState_Campaign::vfunction6(int)	unsorted/tCampaignState.cpp	vc6 guest	?vfunction6@tState_Campaign@@UAEXH@Z
-0x0045dc2b	110	tState_Campaign::vfunction15(int *)	unsorted/tCampaignState.cpp	vc6 guest	?vfunction15@tState_Campaign@@UAEXPAH@Z
+0x0045dc2b	110	tCampaignState::vfunction15(c_0046aa10_message *)	unsorted/tCampaignState.cpp	vc6 guest	?vfunction15@tCampaignState@@UAEXPAUc_0046aa10_message@@@Z
 0x0045dc99	105	tState_Campaign::fn_0045dc99(int)	unsorted/tCampaignState.cpp	vc6 guest	?fn_0045dc99@tState_Campaign@@QAEXH@Z
 0x0045dd02	180	tState_Campaign::fn_0045dd02()	unsorted/tCampaignState.cpp	vc6 guest	?fn_0045dd02@tState_Campaign@@QAE_NXZ
 0x0045ddc0	10	g_0090bfd8 (dynamic initializer)	unsorted/tCampaignState.cpp	vc6	
@@ -1284,7 +1284,7 @@ address	size	symbol	source	modes	decorated
 0x00469dfd	5	tGameState::vfunction14(int)	unsorted/tGameState.cpp	vc6 guest	?vfunction14@tGameState@@UAE_NH@Z
 0x00469e02	10	tGameState::vfunction16(int *)	unsorted/tGameState.cpp	vc6 guest	?vfunction16@tGameState@@UAEXPAH@Z
 0x00469e0c	30	tGameState::fn_00469e0c(const char *)	unsorted/tGameState.cpp	vc6 guest	?fn_00469e0c@tGameState@@QAE_NPBD@Z
-0x00469e2a	10	tGameState::vfunction18()	unsorted/tGameState.cpp	vc6 guest	?vfunction18@tGameState@@UAEXXZ
+0x00469e2a	10	tGameState::fn_00469e2a()	unsorted/tGameState.cpp	vc6 guest	?fn_00469e2a@tGameState@@QAEXXZ
 0x00469e34	10	fn_00469e34()	unsorted/tGameState.cpp	vc6 guest	?fn_00469e34@@YAXXZ
 0x00469e3e	15	fn_00469e3e(int)	unsorted/tGameState.cpp	vc6 guest	?fn_00469e3e@@YAXH@Z
 0x00469e4d	40	fn_00469e4d()	unsorted/tGameState.cpp	vc6 guest	?fn_00469e4d@@YAXXZ
@@ -1331,7 +1331,7 @@ address	size	symbol	source	modes	decorated
 0x0046abd1	33	fn_0046abd1(int *,int *)	unsorted/tGameState.cpp	vc6 guest	?fn_0046abd1@@YAXPAH0@Z
 0x0046abf2	227	fn_0046abf2()	unsorted/tGameState.cpp	vc6 guest	?fn_0046abf2@@YAPADXZ
 0x0046acd5	120	fn_0046acd5(char *)	unsorted/tGameState.cpp	vc6 guest	?fn_0046acd5@@YAXPAD@Z
-0x0046ad4d	20	fn_0046ad4d_owner::fn_0046ad4d(int *)	unsorted/tGameState.cpp	vc6 guest	?fn_0046ad4d@fn_0046ad4d_owner@@QAEXPAH@Z
+0x0046ad4d	20	tGameState::vfunction18(int *)	unsorted/tGameState.cpp	vc6 guest	?vfunction18@tGameState@@UAEXPAH@Z
 0x00475095	6	tState_NetSetup::vfunction13()	unsorted/tState_Namespace_NetSetup__tState_NetSetup.cpp	vc6 guest	?vfunction13@tState_NetSetup@tState_Namespace_NetSetup@@UAEPADXZ
 0x0047509b	357	tState_NetSetup::vfunction2()	unsorted/tState_Namespace_NetSetup__tState_NetSetup.cpp	vc6 guest	?vfunction2@tState_NetSetup@tState_Namespace_NetSetup@@UAE_NXZ
 0x00475201	167	tState_NetSetup::vfunction4()	unsorted/tState_Namespace_NetSetup__tState_NetSetup.cpp	vc6 guest	?vfunction4@tState_NetSetup@tState_Namespace_NetSetup@@UAE_NXZ
@@ -3384,8 +3384,8 @@ address	size	symbol	source	modes	decorated
 0x006085b5	308	tPanelMgr::fn_006085bf()	unsorted/tPanelMgr.cpp	vc6 guest	?fn_006085bf@tPanelMgr@@QAEXXZ
 0x006086e9	125	tPanelMgr::fn_006086e9()	unsorted/tPanelMgr.cpp	vc6 guest	?fn_006086e9@tPanelMgr@@QAEXXZ
 0x00608766	73	tPanelMgr::fn_00608766()	unsorted/tPanelMgr.cpp	vc6 guest	?fn_00608766@tPanelMgr@@QAEXXZ
-0x00608b4e	121	tPanelMgr::vfunction4()	unsorted/tPanelMgr.cpp	vc6 guest	?vfunction4@tPanelMgr@@QAE_NXZ
-0x00609077	6	tPanelMgr::vfunction13()	unsorted/tPanelMgr.cpp	vc6 guest	?vfunction13@tPanelMgr@@QAEPADXZ
+0x00608b4e	121	tPanelMgr::vfunction4()	unsorted/tPanelMgr.cpp	vc6 guest	?vfunction4@tPanelMgr@@UAE_NXZ
+0x00609077	6	tPanelMgr::vfunction13()	unsorted/tPanelMgr.cpp	vc6 guest	?vfunction13@tPanelMgr@@UAEPADXZ
 0x0060b6d0	69	c_0060b6d0::fn_0060b6d0(int)	Source/TokenizedStrings/ResponseStrings.cpp	vc6 guest	?fn_0060b6d0@c_0060b6d0@@QAEXH@Z
 0x0060b715	223	c_0060b6d0::fn_0060b715()	Source/TokenizedStrings/ResponseStrings.cpp	vc6 guest	?fn_0060b715@c_0060b6d0@@QAEXXZ
 0x0060c159	15	g_00c3a7c0 (dynamic initializer)	unsorted/fn_0060C000.cpp	vc6	

@@ -1,0 +1,6 @@
+address	base_symbol	new_symbol
+0x00469e2a	?vfunction18@tGameState@@UAEXXZ	?fn_00469e2a@tGameState@@QAEXXZ
+0x0046ad4d	?fn_0046ad4d@fn_0046ad4d_owner@@QAEXPAH@Z	?vfunction18@tGameState@@UAEXPAH@Z
+0x0045dc2b	?vfunction15@tState_Campaign@@UAEXPAH@Z	?vfunction15@tCampaignState@@UAEXPAUc_0046aa10_message@@@Z
+0x00608b4e	?vfunction4@tPanelMgr@@QAE_NXZ	?vfunction4@tPanelMgr@@UAE_NXZ
+0x00609077	?vfunction13@tPanelMgr@@QAEPADXZ	?vfunction13@tPanelMgr@@UAEPADXZ
