@@ -154,3 +154,10 @@ void __fastcall fn_005e8ee6( void* self, int unused, long value )
 {
 	*(long*)( (char*)self + 0x1c ) = value;
 }
+
+// HYPOTHESIS: a setter of the long at 0x20 in the same not yet declared class.
+// FUNCTION: STARFLEETOP 0x005e8ef0
+void __fastcall fn_005e8ef0( void* self, int unused, long value )
+{
+	*(long*)( (char*)self + 0x20 ) = value;
+}
