@@ -9424,7 +9424,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00544150	function	fn_00544150	tServCharacter				vtable
 0x00544719	function	fn_00544719	tServCharacter	?SQLTableName@tServCharacter@@UBEPBDXZ	claim		vtable
 0x0054471f	function	fn_0054471f	tServCharacter	?SQLFieldNames@tServCharacter@@UBEPBDXZ	claim		vtable
-0x00544725	function	fn_00544725					none
+0x00544725	function	fn_00544725		?erase@?$vector@Vfn_00544725_elem@@V?$allocator@Vfn_00544725_elem@@@std@@@std@@QAEPAVfn_00544725_elem@@PAV3@@Z	claim		none
 0x0054477b	function	fn_0054477b		?erase@?$vector@Vfn_005419e4_entry@@V?$allocator@Vfn_005419e4_entry@@@std@@@std@@QAEPAVfn_005419e4_entry@@PAV3@@Z	callers		none
 0x005447d0	function	fn_005447d0					none
 0x005447ff	function	fn_005447ff					none
