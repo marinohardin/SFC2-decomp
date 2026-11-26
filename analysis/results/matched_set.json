@@ -10842,9 +10842,9 @@
    "symbol": "?vfunction3@tState_Campaign@@UAEXXZ",
    "unit": "unsorted/tCampaignState.cpp",
    "size": 410,
-   "score": 97.405,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-26"
   },
   "0x0045dbda": {
    "name": "tState_Campaign::vfunction6",
