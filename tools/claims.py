@@ -9,8 +9,9 @@ analysis/results/matched_set.json, leaving out every unit that overlaps the `ran
 open issue labelled `claim` or `reserved` (the owner's grind batches). Library functions, thunks,
 EH funclets and the boundary errors are not counted. Smallest unmatched bytes first.
 
-`expire` handles claims that have gone quiet. Activity is the issue's creation or any comment
-other than this tool's own. At 10 days without activity it posts one reminder; at 14 it closes
+`expire` handles claims that have gone quiet. Activity is the issue's creation or a comment by
+the issue's author or a maintainer (author association OWNER, MEMBER or COLLABORATOR); a
+reminder counts only from the workflow's account (github-actions). At 10 days without activity it posts one reminder; at 14 it closes
 the issue with a comment. `reserved` issues are never touched. Without `--apply` it only prints
 what it would do. The workflow .github/workflows/claim-expiry.yml passes the date.
 
@@ -35,7 +36,9 @@ UNITS_TSV = os.path.join(REPO, 'op', 'UNITS.tsv')
 FUNCTIONS_CSV = os.path.join(REPO, 'ghidra', 'exports', 'functions.csv')
 MATCHED_SET = os.path.join(REPO, 'analysis', 'results', 'matched_set.json')
 BOUNDARIES = os.path.join(REPO, 'analysis', 'results', 'boundary_errors.tsv')
-FIELDS = 'number,title,body,labels,state,createdAt,comments'
+FIELDS = 'number,title,body,labels,state,createdAt,comments,author'
+MAINTAINERS = ('OWNER', 'MEMBER', 'COLLABORATOR')
+BOT_LOGINS = ('github-actions', 'github-actions[bot]')
 MARKER = '<!-- claims.py expire -->'
 REMIND_DAYS, CLOSE_DAYS = 10, 14
 
@@ -106,6 +109,11 @@ def parse_time(text):
     return datetime.datetime.fromisoformat(text.replace('Z', '+00:00'))
 
 
+def login(item):
+    who = item.get('author') or item.get('user') or {}
+    return who.get('login') if isinstance(who, dict) else None
+
+
 def expiry_plan(issues, now):
     """[(action, number, idle days)]: 'remind' or 'close' for each quiet claim."""
     out = []
@@ -116,11 +124,13 @@ def expiry_plan(issues, now):
             continue
         times = [parse_time(i['createdAt'])]
         reminded = None
+        owner = login(i)
         for c in i.get('comments', []):
             t = parse_time(c['createdAt'])
-            if MARKER in (c.get('body') or ''):
+            who = login(c)
+            if who in BOT_LOGINS and MARKER in (c.get('body') or ''):
                 reminded = t if reminded is None or t > reminded else reminded
-            else:
+            elif (owner and who == owner) or c.get('authorAssociation') in MAINTAINERS:
                 times.append(t)
         last = max(times)
         idle = (now - last).days
