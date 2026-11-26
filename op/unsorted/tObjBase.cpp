@@ -208,3 +208,21 @@ void tObjBase::vfunction30()
 	}
 	field_18 = 0;
 }
+
+// FUNCTION: STARFLEETOP 0x0067d2d0
+bool tVisObject::fn_0067d2d0( tVisObject *object )
+{
+	if ( field_2C != 0 )
+		return false;
+	if ( field_0C != 0 )
+	{
+		if ( field_0C->fn_0067d2d0( this ) )
+		{
+			field_2C = object;
+			return true;
+		}
+		return false;
+	}
+	field_2C = object;
+	return true;
+}
