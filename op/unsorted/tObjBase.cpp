@@ -65,3 +65,9 @@ void tObjBase::vfunction9( short left, short top, short right, short bottom )
 			field_0C->vfunction32( &field_34 );
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x0067cd50
+void tObjBase::vfunction7( int x, int y )
+{
+	fn_0067cd70( x - field_3C.x, y - field_3C.y );
+}
