@@ -46,12 +46,13 @@ def test_a_symbol_with_no_known_address_is_unchanged_by_its_claim(tmp_path):
     idx = index(tmp_path, [])
     idx.add_claims({CALLEE}, table(SYM))
     assert first_status(idx)[0] == 'unverified'
+    assert idx.claimed == {}
 
 
 def test_a_claim_gives_no_credit_to_another_symbol(tmp_path):
-    idx = index(tmp_path, [])
-    idx.add_claims({CALLEE}, table(OTHER))
-    assert first_status(idx)[0] == 'unverified'
+    idx = index(tmp_path, [(0x700000, 'folded', SYM), (0x700100, 'other', OTHER)])
+    assert idx.add_claims({CALLEE}, table(OTHER)) == 1
+    assert first_status(idx)[0] == 'mismatch'
     assert SYM not in idx.claimed and idx.claimed[OTHER] == {CALLEE}
 
 

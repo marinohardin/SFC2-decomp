@@ -69,9 +69,9 @@ class FunctionIndex:
         `known` or `names_at`, so it can refuse nothing that passed before. A claim is not
         credited when its row is not a `claim` row (`mangled`, `add` and `callers` rows are
         evidence of their own or provisional), or when the evidence already names the address
-        with another mangled name (the claim contradicts it). Returns how many addresses were
-        recorded as claimed: an address where the symbol is already known is not (it needs no
-        credit)."""
+        with another mangled name (the claim contradicts it). Only a symbol known at other
+        addresses is credited (one known nowhere needs none: target._check does not mismatch
+        it), and not at an address where it is already known. Returns how many were credited."""
         n = 0
         for a in addresses:
             row = table.get(f'0x{a:08x}')
@@ -80,7 +80,7 @@ class FunctionIndex:
             sym = row[0]
             if any(x.startswith('?') and x != sym for x in self.names_at.get(a, ())):
                 continue
-            if a not in self.known.get(sym, ()):
+            if self.known.get(sym) and a not in self.known[sym]:
                 self.claimed.setdefault(sym, set()).add(a)
                 n += 1
         return n
