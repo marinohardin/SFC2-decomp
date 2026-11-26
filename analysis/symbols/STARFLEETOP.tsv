@@ -18373,7 +18373,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00696250	function	fn_00696250					none
 0x00696350	function	fn_00696350					none
 0x006966e0	function	fn_006966e0					none
-0x006969c0	function	fn_006969c0					none
+0x006969c0	function	fn_006969c0		?fn_006969c0@@YAXHHHHHHHHHHHDH@Z	add		none
 0x00696ab0	function	fn_00696ab0		?fn_00696ab0@@YAXHHHHHPAXHHE@Z	callers		none
 0x00696b40	function	fn_00696b40		?fn_00696b40@@YA_NPAUc_tObjBase_Field4C@@HH@Z	add		none
 0x00696c20	function	fn_00696c20					none

@@ -37,7 +37,7 @@ bool fn_00693ef0_Owner::fn_00693ef0( void *arg )
 }
 
 // HYPOTHESIS: the callee's real class and parameter types are not recovered.
-void fn_006969c0( int a, int b, int c, int d, int e, int f, int g, int h, int i, int j, int k, int l, int m );
+void fn_006969c0( int a, int b, int c, int d, int e, int f, int g, int h, int i, int j, int k, char l, int m );
 
 // FUNCTION: STARFLEETOP 0x00693fc0
 void fn_00693ef0_Owner::fn_00693fc0( int a, int b, int c, int d, short *r, int m )
@@ -47,9 +47,8 @@ void fn_00693ef0_Owner::fn_00693fc0( int a, int b, int c, int d, short *r, int m
 		char *p = m14;
 		if ( p != 0 )
 		{
-			unsigned int w = *(short *)( p + 0x6a ) - *(short *)( p + 0x66 );
-			w = ( ( (int)w < 0 ) - 1 ) & w;
-			fn_006969c0( a, b, c, d, r[0], r[1], r[2], r[3], *(int *)( p + 0x60 ), *(int *)( p + 0x70 ), w, *(unsigned char *)( p + 0x74 ), m );
+			int w = *(short *)( p + 0x6a ) - *(short *)( p + 0x66 );
+			fn_006969c0( a, b, c, d, r[0], r[1], r[2], r[3], *(int *)( p + 0x60 ), *(int *)( p + 0x70 ), w < 0 ? 0 : w, *(char *)( p + 0x74 ), m );
 		}
 	}
 }
