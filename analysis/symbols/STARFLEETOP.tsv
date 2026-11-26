@@ -665,7 +665,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004116af	function	fn_004116af	tEntity_Astral_Hypermass				vtable
 0x004116cc	function	fn_004116cc	tEntity_Astral_WormHole				vtable
 0x00411790	function	fn_00411790	tPhysicalEntity	?vfunction41@tPhysicalEntity@@UAEXH@Z	claim		vtable
-0x004117a5	function	fn_004117a5					none
+0x004117a5	function	fn_004117a5		??0tEntity_Astral_Fissure@@QAE@XZ	claim		none
 0x004117e9	function	fn_004117e9	tEntity_Astral_Fissure				vtable
 0x004117ed	function	tEntity_Astral_Fissure::scalar_deleting_destructor	tEntity_Astral_Fissure				rtti
 0x00411809	function	tEntity_Astral_Fissure::~tEntity_Astral_Fissure	tEntity_Astral_Fissure				rtti
@@ -726,7 +726,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00412f08	function	fn_00412f08		??0tPoint3@@QAE@ABU0@@Z	add		none
 0x00412f21	function	fn_00412f21		?fn_00412f21@@YAMXZ	callers		none
 0x00412f28	function	fn_00412f28					none
-0x00412f67	function	tPhysicalEntity::tPhysicalEntity	tPhysicalEntity				rtti
+0x00412f67	function	tPhysicalEntity::tPhysicalEntity	tPhysicalEntity	??0tPhysicalEntity@@QAE@XZ	add		rtti
 0x004130b4	function	tPhysicalEntity::scalar_deleting_destructor	tPhysicalEntity				rtti
 0x004130d0	function	fn_004130d0					none
 0x004130f1	function	fn_004130f1					none
@@ -7277,7 +7277,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004f3c55	function	fn_004f3c55	tFx_Corpses				vtable
 0x004f3c7d	function	fn_004f3c7d	tFx_Fissure				vtable
 0x004f3c84	function	fn_004f3c84	tFx_Fissure				vtable
-0x004f3eda	function	fn_004f3eda					none
+0x004f3eda	function	fn_004f3eda		?fn_004f3eda@@YAHXZ	add		none
 0x004f3f44	thunk	fn_004f3f44					none
 0x004f3f49	function	fn_004f3f49					none
 0x004f3f54	function	fn_004f3f54					none

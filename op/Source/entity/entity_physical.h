@@ -151,6 +151,7 @@ public:
 	// HYPOTHESIS: the slots not yet recovered are placeholders that keep the vftable order;
 	// vfunctionN is slot N-1 of the vftable; slot 0 is the scalar deleting destructor. Slots 1
 	// to 21 are tEntity's; the ones this class overrides are declared here.
+	tPhysicalEntity();
 	virtual ~tPhysicalEntity();
 	virtual void vfunction3();
 	// HYPOTHESIS: draws the model through the object passed in; its type is not known.

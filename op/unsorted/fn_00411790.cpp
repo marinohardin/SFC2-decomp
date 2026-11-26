@@ -12,3 +12,30 @@ void tPhysicalEntity::vfunction41(int aValue)
 {
 	fn_007364c0((char *)&field_0x11c, (const char *)aValue);
 }
+
+int fn_004f3eda();
+
+// HYPOTHESIS: no header declares the astral entities yet; the names are the exe's RTTI.
+class tEntity_Astral : public tPhysicalEntity
+{
+public:
+	// HYPOTHESIS: the original inlines this constructor into every derived one and it does
+	// the work written in the Fissure constructor below; written there, VC6 keeps it inline.
+	tEntity_Astral() {}
+	virtual ~tEntity_Astral();
+	int field_0x1bc;
+};
+
+class tEntity_Astral_Fissure : public tEntity_Astral
+{
+public:
+	tEntity_Astral_Fissure();
+	virtual ~tEntity_Astral_Fissure();
+};
+
+// FUNCTION: STARFLEETOP 0x004117a5
+tEntity_Astral_Fissure::tEntity_Astral_Fissure()
+{
+	field_0x1bc = fn_004f3eda();
+	fProperties |= 3;
+}
