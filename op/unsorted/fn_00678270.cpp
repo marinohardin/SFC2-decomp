@@ -93,3 +93,33 @@ void fn_006786d0_Tree::fn_006786d0(fn_006786d0_Node* node)
         operator delete(node);
     }
 }
+
+// HYPOTHESIS: the original is a std::map<tString, int> tree's Erase(node); the node holds
+// the string at +0xc, the nil node is at +8 of the tree.
+struct fn_00678aa0_Node
+{
+    fn_00678aa0_Node* left;
+    fn_00678aa0_Node* parent;
+    fn_00678aa0_Node* right;
+    std::pair<const tString, int> value;
+};
+
+class fn_00678aa0_Tree
+{
+public:
+    int field_0;
+    int field_4;
+    fn_00678aa0_Node* field_8;
+    void fn_00678aa0(fn_00678aa0_Node* node);
+};
+
+// FUNCTION: STARFLEETOP 0x00678aa0
+void fn_00678aa0_Tree::fn_00678aa0(fn_00678aa0_Node* node)
+{
+    for (fn_00678aa0_Node* y = node; y != field_8; node = y) {
+        fn_00678aa0(y->right);
+        y = y->left;
+        node->value.~pair();
+        operator delete(node);
+    }
+}
