@@ -136,6 +136,31 @@ void tView3DExt::vfunction33(unsigned int index, const void *light)
 	}
 }
 
+// FUNCTION: STARFLEETOP 0x006a9ba0
+void tView3DExt::vfunction34(unsigned int index, void *light)
+{
+	if (index < 0x40) {
+		const int *src = (const int *)field_0x778[index];
+		int *dst = (int *)light;
+		dst[0] = src[0];
+		dst[1] = src[1];
+		dst[2] = src[2];
+		dst[3] = src[3];
+		dst[4] = src[4];
+		dst[5] = src[5];
+		dst[6] = src[6];
+		dst[7] = src[7];
+		dst[8] = src[8];
+		dst[9] = src[9];
+		dst[10] = src[10];
+		dst[11] = src[11];
+		dst[12] = src[12];
+		dst[13] = src[13];
+		dst[14] = src[14];
+		dst[15] = src[15];
+	}
+}
+
 // HYPOTHESIS: the original calls 0x0069cc40 (another tMatrix member taking an output point and an
 // input point) where this body calls fn_0069cbc0 three times; tMatrix declares no member for it yet.
 // FUNCTION: STARFLEETOP 0x006aa550
