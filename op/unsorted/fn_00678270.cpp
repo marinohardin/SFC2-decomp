@@ -87,9 +87,9 @@ public:
 // FUNCTION: STARFLEETOP 0x006786d0
 void fn_006786d0_Tree::fn_006786d0(fn_006786d0_Node* node)
 {
-    for (fn_006786d0_Node* x = node; x != Nil(); x = node) {
-        fn_006786d0(x->right);
-        node = x->left;
-        operator delete(x);
+    for (fn_006786d0_Node* y = node; y != Nil(); node = y) {
+        fn_006786d0(y->right);
+        y = y->left;
+        operator delete(node);
     }
 }
