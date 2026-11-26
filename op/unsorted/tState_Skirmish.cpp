@@ -7,6 +7,7 @@
 #include "unsorted/tObject_0092deb4.h"
 #include "unsorted/tValueBase.h"
 #include "unsorted/fn_004D3143.h"
+#include "unsorted/tObject_0090b730.h"
 
 // HYPOTHESIS: partial. The original also loops i = 0..2 over a tShipSystemMask copied from slot 85
 // of *0x0092deb4 and handed to 0x00482f3b on the object at this+0x1154; the copy constructor
@@ -91,4 +92,16 @@ bool tState_Skirmish::vfunction4()
 	int w2 = v2->fWord;
 	fn_0045df74( local, ((int *)v2)[3], v2, w2 + ((int *)v2)[3], v2 );
 	return true;
+}
+
+// HYPOTHESIS: partial. After fn_0060ca42 the original calls slot 114 of *0x0092deb4 with 0, then
+// for i below slot 9's count calls slot 10 with two arguments: i plus the value of the method at
+// 0x005e8f45 on the object at 0x008e1060 (given i and 0), and 0. Neither slot 114, the two-argument
+// slot 10 nor that method is declared in a header this lane may edit.
+// FUNCTION: STARFLEETOP 0x004800f2
+void tState_Skirmish::vfunction22()
+{
+	vfunction20();
+	gObject_0090b730.fn_0060ca42( 1 );
+	gObject_0092deb4->vfunction9();
 }
