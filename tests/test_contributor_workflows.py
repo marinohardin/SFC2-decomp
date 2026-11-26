@@ -25,19 +25,39 @@ def test_the_contributor_gate_runs_on_hosted_runners_only():
     assert perms == ['contents: read', 'pull-requests: read', 'issues: read']
 
 
+def _job(lines, name):
+    """The code lines of one job, from `name:` to the next job or the end."""
+    i = lines.index(f'{name}:')
+    nxt = [j for j, l in enumerate(lines) if j > i and l in ('build-review:', 'post:')]
+    return lines[i:nxt[0] if nxt else len(lines)]
+
+
 def test_the_build_review_is_started_by_hand_and_checks_out_develop():
     lines = code_lines('build-review.yml')
     on = lines[lines.index('on:') + 1]
     assert on == 'workflow_dispatch:'
     assert 'pull_request:' not in lines and 'pull_request_target:' not in lines
-    assert 'runs-on: [self-hosted, sfcop-mac]' in lines
-    assert 'ref: develop' in lines and 'persist-credentials: false' in lines
-    assert 'compiler: native' in lines and 'HARNESS_COMPILER: native' in lines
-    assert 'timeout-minutes: 60' in lines
-    i = lines.index('permissions:')
-    assert lines[i + 1:i + 6] == ['contents: read', 'issues: read', 'pull-requests: write',
-                                  'statuses: write', 'actions: write']
-    assert any('tools/verify_pr.py "$PR" --sha "$SHA"' in l for l in lines)
+    top = lines.index('permissions:')
+    assert lines[top + 1:top + 3] == ['contents: read', 'concurrency:']
+    build = _job(lines, 'build-review')
+    assert 'runs-on: [self-hosted, sfcop-mac]' in build
+    assert 'ref: develop' in build and 'persist-credentials: false' in build
+    assert 'compiler: native' in build and 'HARNESS_COMPILER: native' in build
+    assert 'timeout-minutes: 60' in build
+    i = build.index('permissions:')
+    assert build[i + 1:i + 3] == ['contents: read', 'outputs:']
+    assert not [l for l in build if l.endswith(': write')]
+    assert any('tools/verify_pr.py "$PR" --sha "$SHA"' in l for l in build)
+    assert not [l for l in build if l.startswith('gh ')]
+
+
+def test_only_the_hosted_post_job_can_write():
+    post = _job(code_lines('build-review.yml'), 'post')
+    assert 'needs: build-review' in post and 'runs-on: ubuntu-latest' in post
+    i = post.index('permissions:')
+    assert post[i + 1:i + 4] == ['pull-requests: write', 'statuses: write', 'actions: write']
+    assert not [l for l in post if 'actions/checkout' in l or 'verify_pr' in l]
+    assert any(l.startswith('gh pr comment') for l in post)
 
 
 def test_claim_expiry_is_hosted_and_passes_the_date():

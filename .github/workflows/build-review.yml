@@ -4,6 +4,10 @@ name: Build review
 # Started by hand only, by someone with write access, with the head SHA they reviewed. It runs
 # develop's copy of this file, the harness and tools/verify_pr.py; the pull request's op/ files
 # are copied in as text and compiled, and nothing from the pull request is run.
+#
+# Two jobs. The build compiles the contributor's source on the owner's runner with a read-only
+# token. Only the second job, on a hosted runner, which compiles nothing, can write: it posts the
+# report, the status and starts the automated review.
 on:
   workflow_dispatch:
     inputs:
@@ -16,10 +20,6 @@ on:
 
 permissions:
   contents: read
-  issues: read
-  pull-requests: write
-  statuses: write
-  actions: write
 
 # One build review at a time on the runner; a running one is never cancelled.
 concurrency:
@@ -30,6 +30,11 @@ jobs:
   build-review:
     runs-on: [self-hosted, sfcop-mac]
     timeout-minutes: 60
+    permissions:
+      contents: read
+    outputs:
+      rc: ${{ steps.verify.outputs.rc }}
+      report: ${{ steps.verify.outputs.report }}
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
         with:
@@ -45,6 +50,8 @@ jobs:
       - name: Re-verify with develop's harness
         id: verify
         env:
+          # Read-only (contents: read), for gh to read the description and the claims;
+          # verify_pr.py also removes every *TOKEN* variable from the compiler's environment.
           GH_TOKEN: ${{ github.token }}
           PR: ${{ inputs.pr }}
           SHA: ${{ inputs.sha }}
@@ -60,26 +67,39 @@ jobs:
           python3 -I tools/verify_pr.py "$PR" --sha "$SHA" --report "$report" || rc=$?
           [ -f "$report" ] || printf 'Build review of #%s refused or failed before the build (exit %s); see the run log.\n' "$PR" "$rc" > "$report"
           echo "rc=$rc" >> "$GITHUB_OUTPUT"
-          echo "report=$report" >> "$GITHUB_OUTPUT"
+          # A pull request comment holds at most 65,536 characters; base64 keeps it one line.
+          echo "report=$(head -c 60000 "$report" | base64 | tr -d '\n')" >> "$GITHUB_OUTPUT"
 
+  post:
+    needs: build-review
+    if: always() && needs.build-review.outputs.report != ''
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      pull-requests: write
+      statuses: write
+      actions: write
+    steps:
       - name: Post the report and the status
-        if: always() && steps.verify.outputs.report != ''
         env:
           GH_TOKEN: ${{ github.token }}
           PR: ${{ inputs.pr }}
           SHA: ${{ inputs.sha }}
-          RC: ${{ steps.verify.outputs.rc }}
-          REPORT: ${{ steps.verify.outputs.report }}
+          RC: ${{ needs.build-review.outputs.rc }}
+          REPORT: ${{ needs.build-review.outputs.report }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
           set -eu
+          printf '%s' "$PR" | grep -Eqx '[0-9]+'
+          printf '%s' "$SHA" | grep -Eqx '[0-9a-f]{40}'
+          printf '%s' "$REPORT" | base64 -d > "$RUNNER_TEMP/build-review.md"
           case "$RC" in
             0) state=success; text="rebuilt with develop's harness: nothing regressed" ;;
             1) state=failure; text="rebuilt with develop's harness: a step failed or a function regressed" ;;
             3) state=failure; text="refused: head moved or the guard failed" ;;
             *) state=error; text="the build review could not run" ;;
           esac
-          gh pr comment "$PR" --repo "$GITHUB_REPOSITORY" --body-file "$REPORT"
+          gh pr comment "$PR" --repo "$GITHUB_REPOSITORY" --body-file "$RUNNER_TEMP/build-review.md"
           gh api "repos/$GITHUB_REPOSITORY/statuses/$SHA" -f state="$state" \
             -f context=build-review -f description="$text" -f target_url="$RUN_URL" >/dev/null
           if [ "$RC" = 0 ] || [ "$RC" = 1 ]; then

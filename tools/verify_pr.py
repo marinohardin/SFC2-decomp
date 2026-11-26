@@ -19,7 +19,8 @@ imported: its op/ files are copied in as text and compiled by develop's harness.
 5. Writes a Markdown report (default $SFCOP_WORK/verify/<number>-report.md): the SHAs, each
    function the pull request annotates with its old and new score, regressions, each command's
    exit status, and "claimed N exact, verified M" from the evidence block in the description.
-   Escape characters are stripped and the home directory masked.
+   Escape characters are stripped, the home directory masked, log lines fenced as code, and
+   every @ neutralised so the posted report mentions no one.
 6. Removes the worktree and its harness state, build output included, keeping the report
    and the harness output beside it.
 
@@ -126,11 +127,14 @@ def report(number, sha, base_sha, mb, res, runs, old, body):
         name, score, exact = new.get(a, ('(not scored)', None, False))
         was = '%.2f%%' % o['score'] if o else '-'
         now = '%.2f%%' % score if score is not None else '-'
+        name = name.replace('|', '\\|')
         out.append(f'| 0x{a:08x} | {name} | {was} | {now} | {"yes" if exact else "no"} |')
     for a in sorted(res.removed - res.added):
         out.append(f'| 0x{a:08x} | (annotation removed) | - | - | - |')
     regress = [l for l in build.splitlines() if 'REGRESSION' in l]
-    out += ['', f'Regressions: {len(regress)}'] + [f'    {l}' for l in regress[:50]]
+    out += ['', f'Regressions: {len(regress)}']
+    if regress:
+        out += fenced(regress[:50])
     out += ['', '| Command | Exit |', '| --- | --- |']
     for label, code, _ in runs:
         out.append(f'| `{label}` | {code} |')
@@ -146,7 +150,17 @@ def report(number, sha, base_sha, mb, res, runs, old, body):
         short = [a for a in addrs if a not in verified]
         if short:
             out.append('Claimed exact but not verified: ' + ', '.join(f'0x{a:08x}' for a in short))
-    return evidence.mask(clean('\n'.join(out) + '\n'))
+    return quiet(evidence.mask(clean('\n'.join(out) + '\n')))
+
+
+def fenced(lines):
+    """Log lines as a code block that no line can close."""
+    return ['````text'] + [re.sub('`{3,}', "'''", l) for l in lines] + ['````']
+
+
+def quiet(text):
+    """`text` with every @ followed by a zero-width space, so a posted report mentions no one."""
+    return text.replace('@', '@\u200b')
 
 
 def copied(changes):

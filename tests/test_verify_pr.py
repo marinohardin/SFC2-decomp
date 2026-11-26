@@ -151,3 +151,16 @@ def test_only_source_files_under_op_are_copied():
              'op/b.cpp.orig']
     assert [c.path for c in verify_pr.copied([change(p) for p in paths])] == \
         ['op/a.cpp', 'op/a.h', 'op/a.inl']
+
+
+def test_the_report_fences_log_lines_and_mentions_no_one():
+    res = verify_pr.contrib_guard.Result()
+    res.added = {0x00401010}
+    build = ('ERROR 0x00401010 tA::f|@owner 90.00% partial (8 bytes) REGRESSION: ```x``` @someone\n'
+             'RESULT ERROR regression\n')
+    text = verify_pr.report(5, 'a' * 40, 'b' * 40, 'c' * 40, res,
+                            [('build', 1, build)], {}, 'Claim: #7')
+    assert '@' not in text.replace('@​', '')
+    assert '| 0x00401010 | tA::f\\|@​owner | - | 90.00% | no |' in text
+    assert ('````text\nERROR 0x00401010 tA::f|@​owner 90.00% partial (8 bytes) '
+            "REGRESSION: '''x''' @​someone\n````") in text
