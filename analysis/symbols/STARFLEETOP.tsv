@@ -17662,7 +17662,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00677060	function	fn_00677060		?fn_00677060@fn_00677060_Owner@@QAEPAXI@Z	claim		none
 0x006770a0	function	fn_006770a0					none
 0x00677380	function	fn_00677380		?fn_00677380@fn_00677060_Owner@@QAEHI@Z	claim		none
-0x006773e0	function	fn_006773e0					none
+0x006773e0	function	fn_006773e0		?fn_006773e0@fn_00677060_Owner@@QAEXI@Z	claim		none
 0x00677460	function	fn_00677460					none
 0x006777f0	function	fn_006777f0					none
 0x00677940	function	std::vector<tCoopThread*,std::allocator<tCoopThread*>_>::size	std::vector<tCoopThread*,std::allocator<tCoopThread*>_>	?size@?$vector@PAVtCoopThread@@V?$allocator@PAVtCoopThread@@@std@@@std@@QBEIXZ	mangled		mangled

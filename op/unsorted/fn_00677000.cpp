@@ -9,7 +9,10 @@ public:
     std::vector<void *> field_170;
     void* fn_00677060(unsigned int index);
     int fn_00677380(unsigned int index);
+    void fn_006773e0(unsigned int index);
 };
+
+void fn_00695180( void *p ) throw();
 
 // FUNCTION: STARFLEETOP 0x00677060
 void* fn_00677060_Owner::fn_00677060(unsigned int index)
@@ -35,4 +38,21 @@ int fn_00677060_Owner::fn_00677380(unsigned int index)
         }
     }
     return 0;
+}
+
+// FUNCTION: STARFLEETOP 0x006773e0
+void fn_00677060_Owner::fn_006773e0(unsigned int index)
+{
+    if (index != 0)
+    {
+        if (index <= field_170.size())
+        {
+            tCastItem* item = dynamic_cast<tCastItem*>(static_cast<tAsset*>(field_170[index - 1]));
+            if (item && item->field_60 != 0 && --item->field_60 == 0 && item->field_66 != 0)
+            {
+                fn_00695180((void*)item->field_66);
+                item->field_66 = 0;
+            }
+        }
+    }
 }
