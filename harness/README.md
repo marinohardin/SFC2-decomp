@@ -401,8 +401,9 @@ Once the function itself is judged good, the Stop hook runs six checks on the wh
 (`lib/wholetree.py`), and `loop.sh` runs them again before it commits the round, so the session
 that causes a problem is told while it still has the context:
 
-1. `build-and-verify.sh --all --json`: a regression or an `ERROR` in any unit, the relocation
-   and claim-symbol steps included. Warm, unchanged units are neither recompiled nor rescored.
+1. `build-and-verify.sh --all --json`: a regression or an `ERROR` in any unit, the relocation,
+   claim-symbol and renamed-exact steps included (an exact function at the base compiling another
+   symbol; below). Warm, unchanged units are neither recompiled nor rescored.
 2. `tools/manifest.py`, written to a scratch file in the harness state: a claim on a non-function,
    a class declared twice or a declaration it cannot read. The loop never regenerates
    `op/manifest.tsv`; the landing step does.
@@ -512,6 +513,21 @@ status, blocking header). It is advice for the integrator: `guard.py` is unchang
 list the launcher is given.
 
 ### Symbol table and stand-ins
+
+**An exact function keeps its symbol.** A header-only layout pass that renames a virtual function
+which is exact at the branch's base is consistent inside the lane and breaks only at landing (the
+symbol table's row and other units' calls still name the old symbol). `--all` therefore compares,
+for every address the base's `matched_set.json` records as exact, the symbol this run's build gives
+it with the base's `analysis/symbols/STARFLEETOP.tsv` (`lib/renames.py`, `verify.report_renamed_exact`;
+the base is the stand-in check's: `HARNESS_STANDIN_BASE`, else the merge base with `origin/develop`).
+A difference is an `ERROR` naming the address and both symbols, and the run fails, so the whole-tree
+checks (step 1) and a layout pass both see it. No compile of its own; an address the build gave no
+symbol, a function not exact at the base, or no base is not an error. After a build,
+`python3 -m harness.lib.renames [--base REF]` repeats the comparison from `<build>/symbols.tsv`.
+A deliberate, evidenced rename goes in `analysis/results/rename_baseline.tsv` (`HARNESS_RENAME_BASELINE`;
+`address`, base symbol and new symbol, tab-separated, all three must match) in the integrator's own
+pull request. A function session can neither set the variable (the guard refuses environment
+assignments) nor edit the file (`analysis/` is protected).
 
 Every `build-and-verify.sh --all` writes `<build>/symbols.tsv`: each claim's address, the symbol
 its unit compiled for it and the claiming file (`lib/symtab.py`), and beside it `<build>/symbols.id`,

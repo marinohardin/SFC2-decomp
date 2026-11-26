@@ -642,6 +642,7 @@ def run(ids, check_all=False, behavioural=False, record=False, now=None, base=No
                         check_all, {f'0x{a:08x}' for a in claimed_addrs}, index)
     if check_all:
         report_claimed_credits(rep, index)
+        report_renamed_exact(rep)
 
     if behavioural:
         _behavioural(rep, claimed)
@@ -1106,6 +1107,25 @@ def startup_table_breaks():
                     for r in csv.DictReader(f, delimiter='\t')}
     except (OSError, KeyError):
         return None
+
+
+def report_renamed_exact(rep, base=None):
+    """An ERROR for each function exact at the branch's base whose symbol in this run's build
+    differs from the base's symbol table (harness/lib/renames.py); no compile of its own."""
+    from . import renames, standins
+    base = base or standins.base_ref()
+    if base is None:
+        rep.add('WARN', 'no base commit found (HARNESS_STANDIN_BASE, origin/develop): the rename '
+                'guard for exact functions did not run')
+        return
+    built = {a: sym for a, sym, _ in symbol_table_rows(rep.results)}
+    warn = []
+    found = renames.findings(built, base, warn=warn)
+    for w in warn:
+        rep.add('WARN', w)
+    for f in found:
+        rep.add('ERROR', renames.line(f, base))
+        rep.failed = True
 
 
 def report_table_breaks(rep, claims, rows, check_all, own, evidence):
