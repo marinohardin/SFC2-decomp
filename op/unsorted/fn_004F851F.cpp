@@ -28,3 +28,12 @@ tHypermass<12>::tHypermass()
 {
 	fn_004fa6ec();
 }
+
+// FUNCTION: STARFLEETOP 0x004f8a02
+template<>
+tHypermass<16>::tHypermass()
+	: field_04(16), field_08(1.0f / 16), field_0c((float) sqrt(512.0)),
+	  field_10(field_08 * 64.0f), field_14(32.0f), field_18(0.03125f)
+{
+	fn_004fa6ec();
+}
