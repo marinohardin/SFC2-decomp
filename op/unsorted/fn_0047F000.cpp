@@ -1,4 +1,5 @@
 #include <string>
+#include "unsorted/tState_Skirmish.h"
 
 // HYPOTHESIS: free function (hidden return slot, one stack argument); the owner class is unknown.
 // FUNCTION: STARFLEETOP 0x0047f05d
@@ -218,4 +219,10 @@ extern void *g_00915540;
 void *fn_0047f79f()
 {
     return g_00915540;
+}
+
+// FUNCTION: STARFLEETOP 0x0047f7a5
+char *tState_Skirmish::vfunction13()
+{
+    return "skirmish";
 }
