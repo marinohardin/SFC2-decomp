@@ -183,3 +183,9 @@ long tHexPoint::fn_005e8f21() const
 {
 	return m_10;
 }
+
+// FUNCTION: STARFLEETOP 0x005e8f25
+int fn_005e89fd_layout::fn_005e8f25()
+{
+	return *(int*)( (char*)this + 0x14 );
+}
