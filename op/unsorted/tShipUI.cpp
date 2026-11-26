@@ -44,3 +44,26 @@ tShipUI::tShipUI()
 	}
 	while ((int)n < 0x00854fec);	// HYPOTHESIS: the end is the address after the table, as a constant
 }
+
+// FUNCTION: STARFLEETOP 0x004cd0f9
+// FUNCTION: STARFLEETOP 0x004cd115
+tShipUI::~tShipUI()
+{
+	fn_004d35bf("VariantText", false);
+	fn_004d35bf("ShipIndex", false);
+	fn_004d35bf("VesselStats", false);
+	fn_004d35bf("VesselName", false);
+	fn_004d35bf("cVesselProfile", false);
+	fn_004d35bf("cTurnClass", false);
+	fn_004d35bf("cMoveCost", false);
+	const char** n = g_00854fd4;
+	do
+	{
+		fn_004d35bf(*n, false);
+		n++;
+	}
+	while ((int)n < 0x00854fec);	// HYPOTHESIS: the end is the address after the table, as a constant
+	if (m_1018) { delete m_1018; m_1018 = 0; }
+	if (m_101c) { delete m_101c; m_101c = 0; }
+	if (m_1020) { delete m_1020; m_1020 = 0; }
+}

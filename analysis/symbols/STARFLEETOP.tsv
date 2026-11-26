@@ -5963,8 +5963,8 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004ccffb	function	fn_004ccffb					none
 0x004cd014	function	fn_004cd014					none
 0x004cd034	function	tShipUI::tShipUI	tShipUI	??0tShipUI@@QAE@XZ	claim		rtti
-0x004cd0f9	function	tShipUI::scalar_deleting_destructor	tShipUI				rtti
-0x004cd115	function	tShipUI::~tShipUI	tShipUI				rtti
+0x004cd0f9	function	tShipUI::scalar_deleting_destructor	tShipUI	??_GtShipUI@@UAEPAXI@Z	claim		rtti
+0x004cd115	function	tShipUI::~tShipUI	tShipUI	??1tShipUI@@UAE@XZ	claim		rtti
 0x004cd1db	function	fn_004cd1db		?fn_004cd1db@tShipUI@@QAEXHHH@Z	callers		none
 0x004cd2c9	function	fn_004cd2c9		?fn_004cd2c9@tShipUI@@QAEXXZ	callers		none
 0x004cd2f6	function	fn_004cd2f6		?fn_004cd2f6@tShipUI@@QAEXXZ	callers		none
