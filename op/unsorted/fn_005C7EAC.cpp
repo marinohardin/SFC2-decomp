@@ -55,3 +55,9 @@ long __fastcall fn_005c7f7c(tCurrentTime* param_1)
     return i;
 }
 
+// FUNCTION: STARFLEETOP 0x005c7fb3
+long __fastcall fn_005c7fb3(char* param_1)
+{
+    return *(long*)(param_1 + 0x18);
+}
+
