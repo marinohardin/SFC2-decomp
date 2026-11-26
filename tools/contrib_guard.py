@@ -22,7 +22,8 @@ each reason, when the pull request (the changes from the merge base of <base> an
 - names no claim: the body needs a line `Claim: #<issue>`, and that issue (open, labelled
   `claim`, opened by the pull request's author) holds one or more lines
   `range: 0x<first>-0x<last>`, each inside one unit of the base's op/UNITS.tsv that the issue
-  names (`op/<unit>`), and none overlapping an open `reserved` issue.
+  names (`op/<unit>`), and none overlapping an open `reserved` issue or another author's open
+  `claim` issue.
 
 What it binds is annotation addresses: it does not see an edit to the body of an unclaimed
 function or to a shared header. The maintainer's build review (tools/verify_pr.py, which
@@ -232,14 +233,18 @@ def base_units(cwd, base):
     return out
 
 
-def fetch_reserved(repo=None):
+def fetch_open(repo=None, kinds=('reserved', 'claim')):
+    """The open issues labelled `reserved` or `claim`, through gh."""
     repo = repo or os.environ.get('GITHUB_REPOSITORY')
-    r = subprocess.run(['gh', 'issue', 'list', '--repo', repo, '--state', 'open', '--label',
-                        'reserved', '--limit', '200', '--json', 'number,body,labels,state'],
-                       capture_output=True, text=True)
-    if r.returncode != 0:
-        raise GitError(f'gh issue list --label reserved: {r.stderr.strip()}')
-    return json.loads(r.stdout)
+    out = []
+    for label in kinds:
+        r = subprocess.run(['gh', 'issue', 'list', '--repo', repo, '--state', 'open', '--label',
+                            label, '--limit', '1000', '--json', 'number,body,labels,state,author'],
+                           capture_output=True, text=True)
+        if r.returncode != 0:
+            raise GitError(f'gh issue list --label {label}: {r.stderr.strip()}')
+        out += json.loads(r.stdout)
+    return out
 
 
 def fetch_issue(number, repo=None):
@@ -355,14 +360,20 @@ def _check_claims(res, body, issues, repo, author, units):
         ranges += got
     if not ranges:
         return
-    reserved = issues if issues is not None else fetch_reserved(repo)
-    for r in reserved:
-        if 'reserved' not in labels(r) or str(r.get('state', 'open')).lower() != 'open':
+    others = issues if issues is not None else fetch_open(repo)
+    for r in others:
+        if str(r.get('state', 'open')).lower() != 'open':
+            continue
+        if 'reserved' in labels(r):
+            what = f'reserved issue #{r["number"]}'
+        elif 'claim' in labels(r) and issue_author(r) != author:
+            what = f'open claim #{r["number"]} by {issue_author(r) or "unknown"}'
+        else:
             continue
         for lo, hi in parse_ranges(r.get('body')):
             for a, b in ranges:
                 if a <= hi and lo <= b:
-                    res.fail(f'range 0x{a:08x}-0x{b:08x} overlaps reserved issue #{r["number"]} '
+                    res.fail(f'range 0x{a:08x}-0x{b:08x} overlaps {what} '
                              f'(0x{lo:08x}-0x{hi:08x})')
     for a in sorted(res.added | res.removed):
         if not any(lo <= a <= hi for lo, hi in ranges):

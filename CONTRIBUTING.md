@@ -73,7 +73,8 @@ Rules:
 - Keep one or two claims open at a time.
 - Open the claim yourself, from the account that will open the pull request; the guard checks.
 - Each `range:` line lies inside one unit of `op/UNITS.tsv`, and the issue names that unit's path.
-  A range that overlaps an open `reserved` issue fails.
+  A range that overlaps an open `reserved` issue, or another contributor's open claim, fails.
+  Before the build review, the maintainer checks the claim issue's edit history.
 - Stay inside your claim. The guard fails a pull request that adds, changes or removes an
   annotation outside the claimed ranges.
 - The guard binds annotation addresses only. It does not see an edit to the body of an

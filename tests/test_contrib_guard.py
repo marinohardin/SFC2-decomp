@@ -354,3 +354,16 @@ def test_comments_around_a_directive_do_not_hide_it(tmp_path):
         'op/unsorted/a.cpp: adds a # after a comment that ends on its line; write the directive '
         'on a line of its own',
     ]
+
+
+def test_a_claim_overlapping_another_authors_open_claim_fails(tmp_path):
+    repo = _repo(tmp_path)
+    _write(repo, 'op/unsorted/a.cpp', 'void f() { }\n')
+    _commit(repo)
+    bob = _claim('op/unsorted/b.cpp\nrange: 0x00402008-0x00402100\n', login='bob', number=21)
+    mine = _claim('op/unsorted/b.cpp\nrange: 0x00402000-0x00402010\n', number=22)
+    closed = dict(_claim('op/unsorted/b.cpp\nrange: 0x00402000-0x00402fff\n', login='cy',
+                         number=23), state='closed')
+    assert _check(repo, issues=ISSUES + [bob, mine, closed]).failures == [
+        'range 0x00402000-0x00402010 overlaps open claim #21 by bob (0x00402008-0x00402100)',
+    ]
