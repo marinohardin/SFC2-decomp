@@ -185,5 +185,6 @@ class tAuctionItem;
 
 // HYPOTHESIS: the SDK's allocator idiom (tClassAllocator<tX> gXAllocator;) for the auction item
 // class; the global sits at 0x00c384d4 and its constructor is 0x0054560f.
+// FUNCTION: STARFLEETOP 0x00544b46
 // FUNCTION: STARFLEETOP 0x00544b3c
 tClassAllocator<tAuctionItem> g_00c384d4;
