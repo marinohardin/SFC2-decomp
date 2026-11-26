@@ -21029,7 +21029,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0071d1a0	function	fn_0071d1a0	nSwitch::tDataHandler	?fn_slot7@tDataHandler@nSwitch@@UAE?AV?$tSmartPtr@VtAddress@nSwitch@@@@XZ	claim		vtable
 0x0071d1e0	function	tThread::GetCallstack	tThread	?GetCallstack@tThread@@QAEAAVtCallStack@@XZ	mangled		mangled
 0x0071d1f0	function	fn_0071d1f0	nSwitch::tDataHandler	?fn_slot9@tDataHandler@nSwitch@@UAE?AV?$tSmartPtr@VtAddress@nSwitch@@@@XZ	claim		vtable
-0x0071d220	function	fn_0071d220					none
+0x0071d220	function	fn_0071d220		?fn_0071d220@tDataHandler@nSwitch@@QAEXPAVtRefCount@@@Z	claim		none
 0x0071d2d0	function	fn_0071d2d0					none
 0x0071d2e0	function	fn_0071d2e0					none
 0x0071d310	function	fn_0071d310					none
