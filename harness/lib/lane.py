@@ -3,9 +3,11 @@ source only"), so its manifest and matched set stay as on develop until the land
 
 One order, used by scripts/check.sh and tests/test_manifest.py alike:
   1. SFCOP_LANE=1 (the loop exports it);
-  2. GITHUB_HEAD_REF starts with grind/ (CI checks out a detached merge commit, where the branch
-     name reads HEAD; GitHub sets this on pull_request events);
-  3. the checked-out branch starts with grind/.
+  2. GITHUB_HEAD_REF starts with grind/ or contrib/ (CI checks out a detached merge commit, where
+     the branch name reads HEAD; GitHub sets this on pull_request events);
+  3. the checked-out branch starts with grind/ or contrib/.
+
+An outside contributor's branch (contrib/, CONTRIBUTING.md) is one lane, so it commits source only.
 
 `python3 -m harness.lib.lane` exits 0 on a lane and 1 otherwise.
 """
@@ -13,7 +15,7 @@ import os
 import subprocess
 import sys
 
-PREFIX = 'grind/'
+PREFIX = ('grind/', 'contrib/')
 
 
 def on_lane(environ=None, branch=None):

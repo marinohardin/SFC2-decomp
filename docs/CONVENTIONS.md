@@ -130,7 +130,7 @@ Branches follow §7.1. Commit scopes are the top-level directory or the componen
 1. Find it in `ghidra/exports/functions.csv`; take the unit path from its evidence, or `op/unsorted/`.
 2. Write it at its address position in the unit with its `// FUNCTION:` line and the original identifiers.
 3. `harness/build-and-verify.sh 0x<address>` until exact, or until the harness's stop rule ends the run; the harness lists it outside the repository (harness/README.md, "Model tiers and the stop rule").
-4. By hand: `harness/update-matched-set.sh 0x<address>`; `python3 scripts/progress.py --gate`. A grind lane commits source only, with a `Harness-Score:` trailer, and skips this: the integration branch runs `harness/landing.sh` once after merging lanes (harness/README.md, "Lanes commit source only").
+4. Who records the score depends on who did the work. A grind lane, and an outside contributor's `contrib/` branch (CONTRIBUTING.md), commit source only, with a `Harness-Score:` trailer, and skip this step: the maintainer runs `harness/landing.sh` once after merging them (harness/README.md, "Lanes commit source only"). Only the owner's own by-hand work outside a lane runs `harness/update-matched-set.sh 0x<address>` and `python3 scripts/progress.py --gate` here.
 5. Commit: `feat(op/<dir>): decompile <Class>::<Method>`; by hand, the matched set change in the same commit.
 
 **Closing a grind batch**

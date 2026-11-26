@@ -2,6 +2,10 @@
 
 A matching decompilation of Star Trek Starfleet Command II, verified byte for byte against the original executables with the original compiler. Orion Pirates 2.5.5.2 (`op/`) is the current target; Empires at War (`eaw/`) is a later second module. No retail file or asset is included; bring your own game.
 
+## If you are an outside contributor
+
+If you are an outside contributor, or an agent working for one, read `CONTRIBUTING.md`; where the two differ for you, it wins. The roles below are the owner's.
+
 ## Read before writing code
 
 | Document | Read |
@@ -28,6 +32,13 @@ If the documents and your task disagree, stop and say so. Do not pick one silent
   The integrator coordinates. It does not write a work package's code, and it does not merge unless the owner says so.
 
 Unless your task says you are the integrator, you are not.
+
+### Contributor pull requests (the maintainer's side)
+
+- A pull request from a fork is merged only after a build review of the head SHA you read: `build-review.yml` (started by hand) or `python3 tools/verify_pr.py <number> --sha <sha>`.
+- At the start of each grind batch, post one issue labelled `reserved` with the `range:` lines of the units on the lanes' file lists; close it when the batch is closed.
+- When planning lanes, leave out units an open `claim` issue covers; `python3 tools/claims.py free` gives both sides the same answer.
+- Land merged contributor work with `harness/landing.sh`, as for lanes.
 
 ## Baseline workflow
 
@@ -150,9 +161,9 @@ Heavy jobs (the VC6 rebuild, Ghidra) run one at a time under `nice`; keep builds
 
 This section is the project's memory. Every time an agent breaks a rule that the documents state, or a rule the documents should have stated, the integrator adds one line here, concrete enough to test against, with the reason. Reasons that cite pull requests refer to the private repository this one was split from.
 
-- **A pull request that adds or removes `// FUNCTION:` annotations, or changes `analysis/results/matched_set.json`, runs `python3 tools/manifest.py` and commits what it changes**, and so does the merge that brings two such pull requests together. A grind lane (`grind/` branch) is the exception: it commits source only, and the integration branch runs `harness/landing.sh` once after merging lanes, which records the scores and regenerates the manifest. A function enters a consumer's build once the matched set records it exact, so a newly exact function changes its manifest mode, and `tests/test_manifest.py` fails until the manifest is regenerated. Reason: one pull request merged after another without regenerating and broke the next check; the manifest reads the matched set.
-- **A grind batch is closed lane by lane, and no next batch is proposed until it is.** Every lane branch ends in a merged pull request or a written disposition, in the pull request or in `op/`, naming the branch and why it stays; each open lane is carried forward by name until then. Before proposing the next batch, `git fetch` and then `python3 tools/unlanded.py`, with `--disposed <branch>` for each branch that has such a disposition, exits 0 (it reads a lane's `Harness-Score:` trailers, since lanes no longer commit the matched set). Reason: six of batch 1's eight lanes (364 exact functions) sat unpushed on local branches for three days, forgotten, while the next batch was being offered.
-- **No claim sits on a body that is not the original's code.** A `// FUNCTION:` annotation is never placed on an empty body, a stub, or a placeholder kept only to hold an address: write the function from the executable, or leave it unclaimed so a consumer keeps the original's bytes (an address that only separates its neighbours for the harness goes on `analysis/results/boundary_errors.tsv` instead). An honest partial, a real attempt at the original's code, is fine at any score; this is not a demand that functions be exact. A function that scores 100% but is not exact is checked for a wrong symbol or relocation before its pull request. Such a body blocks the lane's pull request; it is not a follow-up. Reason: Wave 2 merged 24 placeholders and 10 empty definitions; they counted as claimed and named, held four deleting destructors at 6-25%, bound one destructor symbol to two exe addresses, and took a correctness pass of three pull requests to remove.
+- **A pull request that adds or removes `// FUNCTION:` annotations, or changes `analysis/results/matched_set.json`, runs `python3 tools/manifest.py` and commits what it changes**, and so does the merge that brings two such pull requests together. A grind lane (`grind/` branch) is the exception: it commits source only, and the integration branch runs `harness/landing.sh` once after merging lanes, which records the scores and regenerates the manifest. So is an outside contributor's pull request (a `contrib/` branch from a fork): it commits source only, as a lane does, and is landed the same way after it is merged. A function enters a consumer's build once the matched set records it exact, so a newly exact function changes its manifest mode, and `tests/test_manifest.py` fails until the manifest is regenerated. Reason: one pull request merged after another without regenerating and broke the next check; the manifest reads the matched set.
+- **A grind batch is closed lane by lane, and no next batch is proposed until it is.** Every lane branch ends in a merged pull request or a written disposition, in the pull request or in `op/`, naming the branch and why it stays; each open lane is carried forward by name until then. Before proposing the next batch, `git fetch` and then `python3 tools/unlanded.py`, with `--disposed <branch>` for each branch that has such a disposition, exits 0 (it reads a lane's `Harness-Score:` trailers, since lanes no longer commit the matched set). Reason: in an early batch, six of the eight lanes (364 exact functions) sat unpushed on local branches for three days, forgotten, while the next batch was being offered.
+- **No claim sits on a body that is not the original's code.** A `// FUNCTION:` annotation is never placed on an empty body, a stub, or a placeholder kept only to hold an address: write the function from the executable, or leave it unclaimed so a consumer keeps the original's bytes (an address that only separates its neighbours for the harness goes on `analysis/results/boundary_errors.tsv` instead). An honest partial, a real attempt at the original's code, is fine at any score; this is not a demand that functions be exact. A function that scores 100% but is not exact is checked for a wrong symbol or relocation before its pull request. Such a body blocks the lane's pull request; it is not a follow-up. Reason: an early batch merged 24 placeholders and 10 empty definitions; they counted as claimed and named, held four deleting destructors at 6-25%, bound one destructor symbol to two exe addresses, and took a correctness pass of three pull requests to remove.
 
 ## Original work
 

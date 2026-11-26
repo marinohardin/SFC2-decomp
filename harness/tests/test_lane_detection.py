@@ -24,6 +24,12 @@ def test_the_branch_name_decides_last():
     assert lane.on_lane({}, branch='feat/lanes') is False
 
 
+def test_a_contributors_branch_is_a_lane():
+    assert lane.on_lane({'GITHUB_HEAD_REF': 'contrib/12-tiger-sound'}, branch='HEAD') is True
+    assert lane.on_lane({}, branch='contrib/12-tiger-sound') is True
+    assert lane.on_lane({}, branch='contributor-notes') is False
+
+
 def test_the_command_line_that_check_sh_runs_exits_0_on_a_lane():
     env = {k: v for k, v in os.environ.items() if k not in ('SFCOP_LANE', 'GITHUB_HEAD_REF')}
     cmd = [sys.executable, '-m', 'harness.lib.lane']

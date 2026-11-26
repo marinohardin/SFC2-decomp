@@ -13,6 +13,15 @@
 <!-- For a change to op/ or the harness: the `RESULT` line of `sh harness/build-and-verify.sh`
      and the exact count before and after. For a progress chart: the image. -->
 
+## From a fork
+
+<!-- Outside contributors only (CONTRIBUTING.md); delete this section otherwise.
+     1. The claim issue, on a line of its own: Claim: #<number>
+     2. The RESULT line of `sh harness/build-and-verify.sh <unit>` for your units.
+     3. The output of `python3 tools/evidence.py --log <saved harness output>`. -->
+
+Claim: #
+
 <!--
 Delete what does not apply:
 

@@ -9,6 +9,8 @@ with the original compiler.
 No game file is in this repository. You bring your own retail install; the tools read it in
 place and never write to it.
 
+**Want to help?** Read [CONTRIBUTING.md](CONTRIBUTING.md): how to set up, claim a unit and send it.
+
 
 
 ## Orion Pirates (2.5.5.2)
@@ -54,8 +56,14 @@ The one contract with programs that build on this code is [docs/INTERFACE.md](do
 ## Getting started
 
 You need your own Orion Pirates install patched to 2.5.5.2 (its modding SDK comes with it),
-Docker, Python 3.9 or later with pytest, and a Mac with Apple silicon (the tools are written for
-any Unix; another platform needs its objdiff build added to `toolchain/calibrate.sh`).
+Docker, and Python 3.9 or later with pytest, on one of these
+([CONTRIBUTING.md](CONTRIBUTING.md#what-you-need) has the details):
+
+- macOS on Apple silicon: tested, with the native compiler;
+- Linux x86-64: the compiler in the Docker image; untested;
+- Windows: WSL2 with a Linux distribution and Docker, then the Linux steps; untested.
+
+Linux and Windows have not been run end to end.
 Clone into a folder of its own: generated data and downloaded tools go in `work/` and `tools/`
 beside the clone.
 
@@ -79,10 +87,9 @@ sh harness/build-and-verify.sh <unit or address>
 
 ## Contributing
 
-`AGENTS.md` is the contract for everyone who commits here, people and coding agents alike;
-`docs/CONVENTIONS.md` says how the source is written. Pull requests go to `develop`. A pull
-request from a fork runs the tests on a hosted runner; matching needs the retail files, so run
-`sh scripts/check.sh` locally and say so in the description.
+Outside contributors, and coding agents working for them, start with
+[CONTRIBUTING.md](CONTRIBUTING.md). `AGENTS.md` holds the owner's own roles and rules;
+`docs/CONVENTIONS.md` says how the source is written. Pull requests go to `develop`.
 
 ## Status and legal
 

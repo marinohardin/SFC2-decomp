@@ -21,7 +21,8 @@
 #      recorded scores are compared
 #
 # A step whose inputs are absent on this machine prints `skip: <why>` and does not fail; it is
-# never left to pass silently. The base branch's copies are read with `git show <base>:<path>`;
+# never left to pass silently; when step 7 rebuilt nothing, the last line says NOT VERIFIED (the exit
+# status is still 0). The base branch's copies are read with `git show <base>:<path>`;
 # the base is $SFCOP_BASE_REF if set, else the base side of CI's merge checkout, else the merge
 # base with origin/develop, else (on develop itself) the commit before.
 #
@@ -129,6 +130,7 @@ else
     echo "compiler: the sfcop-msvc6 image (toolchain/bin/cl)"
 fi
 scope=rebuild
+rebuilt=
 if [ -n "$base" ]; then
     scope=$(python3 scripts/rebuild_scope.py "$base" 2>/dev/null || echo rebuild)
 fi
@@ -136,6 +138,7 @@ if [ -z "$base" ]; then
     skip "no base commit to compare with (set SFCOP_BASE_REF)"
 elif [ -n "$have_install" ] && [ -n "$have_image" ] && [ "$scope" != skip ]; then
     sh harness/build-and-verify.sh --all --base "$base"
+    rebuilt=1
     if [ -f analysis/symbols/STARFLEETOP.tsv ]; then
         echo "== symbol table against the build just made (tools/symbols.py check)"
         python3 tools/symbols.py check
@@ -186,4 +189,9 @@ print('ok: %d entries held to %s' % (len(base['functions']), label))
 EOF
 fi
 
-echo "check: ok"
+# A run that rebuilt nothing says so on its last line, so that "ok" is never read as a match.
+if [ "$rebuilt" = 1 ]; then
+    echo "check: ok"
+else
+    echo "check: ok (NOT VERIFIED: no function was rebuilt or compared with the original)"
+fi

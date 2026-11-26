@@ -1,0 +1,131 @@
+name: Build review
+
+# The maintainer's re-verification of an outside contributor's pull request (CONTRIBUTING.md).
+# Started by hand only, by someone with write access, with the head SHA they reviewed. It runs
+# develop's copy of this file, the harness and tools/verify_pr.py; the pull request's op/ files
+# are copied in as text and compiled, and nothing from the pull request is run.
+#
+# Two jobs. The build compiles the contributor's source on the owner's runner with a read-only
+# token. Only the second job, on a hosted runner, which compiles nothing, can write: it posts the
+# report, the status and starts the automated review. A third, `no-report`, sets the status to
+# error when the build stopped before it handed over a report.
+on:
+  workflow_dispatch:
+    inputs:
+      pr:
+        description: "Pull request number"
+        required: true
+      sha:
+        description: "The full head SHA you reviewed"
+        required: true
+
+permissions:
+  contents: read
+
+# One build review at a time on the runner; a running one is never cancelled.
+concurrency:
+  group: build-review
+  cancel-in-progress: false
+
+jobs:
+  build-review:
+    runs-on: [self-hosted, sfcop-mac]
+    timeout-minutes: 60
+    permissions:
+      contents: read
+    outputs:
+      rc: ${{ steps.verify.outputs.rc }}
+      report: ${{ steps.verify.outputs.report }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          ref: develop
+          fetch-depth: 0
+          # The compiler reads the contributor's source: no token is left in .git/config.
+          persist-credentials: false
+
+      - uses: ./.github/actions/setup
+        with:
+          compiler: native
+
+      - name: Re-verify with develop's harness
+        id: verify
+        env:
+          # Read-only (contents: read), for gh to read the description and the claims;
+          # verify_pr.py also removes every *TOKEN* variable from the compiler's environment.
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ inputs.pr }}
+          SHA: ${{ inputs.sha }}
+          # As the check job: the native compiler, the image staying the compiler of record.
+          # verify_pr.py sets HARNESS_NO_CACHE=1 and runs each step under nice -n 5.
+          HARNESS_COMPILER: native
+        run: |
+          set -u
+          printf '%s' "$PR" | grep -Eqx '[0-9]+' || { echo "pr must be a number"; exit 2; }
+          printf '%s' "$SHA" | grep -Eqx '[0-9a-f]{40}' || { echo "sha must be 40 hex digits"; exit 2; }
+          report="$RUNNER_TEMP/build-review.md"
+          rc=0
+          python3 -I tools/verify_pr.py "$PR" --sha "$SHA" --report "$report" || rc=$?
+          [ -f "$report" ] || printf 'Build review of #%s refused or failed before the build (exit %s); see the run log.\n' "$PR" "$rc" > "$report"
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+          # A pull request comment holds at most 65,536 characters; base64 keeps it one line.
+          echo "report=$(head -c 60000 "$report" | base64 | tr -d '\n')" >> "$GITHUB_OUTPUT"
+
+  post:
+    needs: build-review
+    if: always() && needs.build-review.outputs.report != ''
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      pull-requests: write
+      statuses: write
+      actions: write
+    steps:
+      - name: Post the report and the status
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ inputs.pr }}
+          SHA: ${{ inputs.sha }}
+          RC: ${{ needs.build-review.outputs.rc }}
+          REPORT: ${{ needs.build-review.outputs.report }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          set -eu
+          printf '%s' "$PR" | grep -Eqx '[0-9]+'
+          printf '%s' "$SHA" | grep -Eqx '[0-9a-f]{40}'
+          printf '%s' "$REPORT" | base64 -d > "$RUNNER_TEMP/build-review.md"
+          case "$RC" in
+            0) state=success; text="rebuilt with develop's harness: nothing regressed" ;;
+            1) state=failure; text="rebuilt with develop's harness: a step failed or a function regressed" ;;
+            3) state=failure; text="refused: head moved or the guard failed" ;;
+            *) state=error; text="the build review could not run" ;;
+          esac
+          gh pr comment "$PR" --repo "$GITHUB_REPOSITORY" --body-file "$RUNNER_TEMP/build-review.md"
+          gh api "repos/$GITHUB_REPOSITORY/statuses/$SHA" -f state="$state" \
+            -f context=build-review -f description="$text" -f target_url="$RUN_URL" >/dev/null
+          if [ "$RC" = 0 ] || [ "$RC" = 1 ]; then
+            gh workflow run claude-code-review.yml --repo "$GITHUB_REPOSITORY" --ref develop -f pr="$PR"
+          fi
+          [ "$RC" = 0 ]
+
+  # The build job failed or was cancelled before it handed over a report: the pull request
+  # still gets a status, pointing at this run.
+  no-report:
+    needs: build-review
+    if: always() && needs.build-review.outputs.report == ''
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      statuses: write
+    steps:
+      - name: Set the build-review status to error
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SHA: ${{ inputs.sha }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          set -eu
+          printf '%s' "$SHA" | grep -Eqx '[0-9a-f]{40}'
+          gh api "repos/$GITHUB_REPOSITORY/statuses/$SHA" -f state=error -f context=build-review \
+            -f description="the build review stopped before it wrote a report" \
+            -f target_url="$RUN_URL" >/dev/null
