@@ -322,6 +322,19 @@ tEntityShip::~tEntityShip()
 		delete field_a24;
 }
 
+// FUNCTION: STARFLEETOP 0x00415aed
+bool tEntityShip::fn_00415aed(tEntityShip *aOther)
+{
+	float theirs = aOther->vfunction14() / (aOther->vfunction63() + 1e-5);
+	float mine = vfunction14() / (vfunction63() + 1e-5);
+	if (aOther && theirs >= mine)
+	{
+		if (aOther->vfunction14() != fRadius || aOther->fID >= fID)
+			return true;
+	}
+	return false;
+}
+
 // FUNCTION: STARFLEETOP 0x004162b9
 void tEntityShip::vfunction4(tObject_00413ac3_arg *aObject)
 {

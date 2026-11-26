@@ -216,6 +216,8 @@ public:
 	int fn_004156b8(int param_1);
 	fn_004288d1_Object *fn_004156e3();
 	int fn_004157ee(int param_1, int param_2, int param_3);
+	// HYPOTHESIS: orders two ships by the ratio of slot 13 to slot 62, then by radius and ID.
+	bool fn_00415aed(tEntityShip *aOther);
 	void fn_00419e4a(int param_1);
 
 	// 0x1bc is cleared by the constructor.
