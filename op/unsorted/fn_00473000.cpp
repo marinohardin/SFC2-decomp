@@ -83,3 +83,22 @@ void tState_Multiplayer::fn_0047328b()
 		gObject_0092deb4->vfunction10( i, 0, 0 );
 	}
 }
+
+long fn_004d338b( long arg1 );
+void fn_004d34c5( int id, bool enable );
+
+// FUNCTION: STARFLEETOP 0x0047339f
+void tState_Multiplayer::fn_0047339f()
+{
+	tState_Multiplayer *p;
+	if ( fn_004d338b( 0x1003d ) == 0 )
+		p = *(tState_Multiplayer **)&field_1f78[ 8 ];
+	else
+		p = *(tState_Multiplayer **)&field_1f78[ 0xc ];
+	bool enable;
+	if ( FUN_0047316a( p ) != 0 )
+		enable = ( ~(unsigned char)field_2200 & 1 ) != 0;
+	else
+		enable = true;
+	fn_004d34c5( 0x10062, enable );
+}

@@ -3690,7 +3690,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00473243	function	tNetMsg_kSetPlayerBPVLimit::~tNetMsg_kSetPlayerBPVLimit	tNetMsg_kSetPlayerBPVLimit				rtti
 0x0047328b	function	fn_0047328b		?fn_0047328b@tState_Multiplayer@tState_Namespace_Multiplayer@@QAEXXZ	claim		none
 0x00473302	function	tNetMsg::~tNetMsg	tNetMsg				rtti
-0x0047339f	function	fn_0047339f					none
+0x0047339f	function	fn_0047339f		?fn_0047339f@tState_Multiplayer@tState_Namespace_Multiplayer@@QAEXXZ	claim		none
 0x004733f4	function	tNetMsg_kPlayerInfo::~tNetMsg_kPlayerInfo	tNetMsg_kPlayerInfo				rtti
 0x004734c7	function	tNetMsg_kSetPlayerTeam::~tNetMsg_kSetPlayerTeam	tNetMsg_kSetPlayerTeam				rtti
 0x0047378b	function	fn_0047378b					none
