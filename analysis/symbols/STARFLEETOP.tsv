@@ -17803,7 +17803,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0067cc50	function	fn_0067cc50					none
 0x0067cc70	function	fn_0067cc70	tObjBase	?vfunction9@tObjBase@@UAEXFFFF@Z	claim		vtable
 0x0067cd50	function	fn_0067cd50	tObjBase	?vfunction7@tObjBase@@UAEXHH@Z	claim		vtable
-0x0067cd70	function	fn_0067cd70		?fn_0067cd70@tObjBase@@QAEXHH@Z	add		none
+0x0067cd70	function	fn_0067cd70		?fn_0067cd70@tObjBase@@QAEXHH@Z	claim		none
 0x0067ce20	function	fn_0067ce20	tObjBase				vtable
 0x0067ce90	function	fn_0067ce90					none
 0x0067cee0	function	fn_0067cee0					none

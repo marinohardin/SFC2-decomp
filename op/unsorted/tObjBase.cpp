@@ -71,3 +71,25 @@ void tObjBase::vfunction7( int x, int y )
 {
 	fn_0067cd70( x - field_3C.x, y - field_3C.y );
 }
+
+// FUNCTION: STARFLEETOP 0x0067cd70
+void tObjBase::fn_0067cd70( int dx, int dy )
+{
+	if ( dy || dx )
+	{
+		if ( field_0C && fn_RectNotEmpty( &field_34 ) )
+			field_0C->vfunction32( &field_34 );
+		field_3C.x += (short)dx;
+		field_3C.y += (short)dy;
+		field_34.left += (short)dx;
+		field_34.right += (short)dx;
+		field_34.top += (short)dy;
+		field_34.bottom += (short)dy;
+		for ( tVisObject *child = field_24; child; child = child->field_04 )
+			child->fn_0067cd70( dx, dy );
+		tRect *r = &field_34;
+		tVisObject *parent = field_0C;
+		if ( parent && fn_RectNotEmpty( r ) )
+			parent->vfunction32( r );
+	}
+}
