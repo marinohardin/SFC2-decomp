@@ -561,7 +561,8 @@ template<> inline tSingleAccessWrapper<std::vector<int> >::~tSingleAccessWrapper
 	Delete();
 }
 
-// Unclaimed: 0x0042c709 is the folded Lock of several wrappers (0x0042aaeb, 0x0042ab08, 0x005434dd).
+// 0x0042c709 is the folded Lock of several wrappers (0x0042aaeb, 0x0042ab08, 0x005434dd, both members of tClientCharacter).
+// FUNCTION: STARFLEETOP 0x0042c709
 template<> tSingleAccessWrapper<std::vector<int> >::iPtr tSingleAccessWrapper<std::vector<int> >::Lock()
 {
 	fPointerOptex.Enter();
@@ -579,6 +580,14 @@ class tObject_005391b0;
 template<> inline tSingleAccessWrapper<tObject_005391b0>::~tSingleAccessWrapper()
 {
 	Delete();
+}
+
+// The same folded Lock (0x0042c709) for this wrapper; unclaimed, the claim is on the vector's.
+// MATCH-ONLY: defined here so that tClientCharacter's call to it resolves to a body.
+template<> tSingleAccessWrapper<tObject_005391b0>::iPtr tSingleAccessWrapper<tObject_005391b0>::Lock()
+{
+	fPointerOptex.Enter();
+	return iPtr( fpPointer, this );
 }
 
 // The game's out-of-line copy of the SDK's inline tAccessPointer destructor.
