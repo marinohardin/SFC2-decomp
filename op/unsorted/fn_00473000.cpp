@@ -46,3 +46,20 @@ int __stdcall FUN_00473141( tState_Multiplayer *param_1 )
 	}
 	return count;
 }
+
+// FUNCTION: STARFLEETOP 0x0047316a
+int __stdcall FUN_0047316a( tState_Multiplayer *param_1 )
+{
+	int count = 0;
+	char *p = fn_00473194( param_1 );
+	unsigned int i;
+	int *q;
+	for ( i = 0, q = (int *)( p + 4 ); i < 6; i++, q += 0x17 )
+	{
+		if ( p == 0 )
+			break;
+		if ( *q != -1 )
+			count++;
+	}
+	return count;
+}
