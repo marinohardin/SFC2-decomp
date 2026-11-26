@@ -177,3 +177,9 @@ int fn_005e89fd_layout::fn_005e8f02( const tHexPoint& position )
 		return ( (tCurrentTime*) this )->fn_0055f269();
 	return 0;
 }
+
+// FUNCTION: STARFLEETOP 0x005e8f21
+long tHexPoint::fn_005e8f21() const
+{
+	return m_10;
+}
