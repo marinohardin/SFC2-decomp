@@ -13,3 +13,9 @@ tEntity_Weapon::tEntity_Weapon()
 	field_0x244 = 0;
 	field_0x245 = 0;
 }
+
+// FUNCTION: STARFLEETOP 0x0041c23c
+short tEntity_Weapon::vfunction66( char aValue )
+{
+	return 0;
+}
