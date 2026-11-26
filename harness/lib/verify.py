@@ -1320,9 +1320,10 @@ def _report_function(rep, data, fn, res, released=None):
     """released: the released-function list (matched.load_released). A listed address that
     scores lower than its recorded entry, or is no longer exact, is not a regression here: one
     INFO line gives the list's date and reason, as the base gate does. So is a listed address
-    that objdiff could not finish on (not_scored), unless it is recorded exact: without a score
-    its exact status cannot be shown. Its entry is left as recorded, since no result means none
-    is written. Any other error stays one, listed or not."""
+    that objdiff could not finish on (not_scored), when it is recorded and not exact: without a
+    score an exact status cannot be shown, and an address with no entry has nothing to keep. Its
+    entry is left as recorded, since no result means none is written. Any other error stays
+    one, listed or not."""
     a = fn.address
     head = f'{res["address"]} {fn.name}'
     if res.get('found_by') == 'line':
@@ -1331,14 +1332,17 @@ def _report_function(rep, data, fn, res, released=None):
         if res.get('not_scored'):
             old = matched.recorded(data, a)
             listed = (released or {}).get(matched.key(a))
-            if listed and not (old and old.get('exact')):
-                was = (f'matched_set.json left at {old["score"]:.2f}%' if old
-                       else 'not in matched_set.json')
+            if listed and old and not old.get('exact'):
                 rep.add('INFO', f'{head} released ({listed[0]}): {listed[1]}; not scored: '
-                        f'{res["error"].removeprefix("objdiff failed: ")}; {was}')
+                        f'{res["error"].removeprefix("objdiff failed: ")}; matched_set.json '
+                        f'left at {old["score"]:.2f}%')
                 return
-            why = (' (on analysis/results/released.tsv, but recorded exact, which a function '
-                   'that is not scored cannot show)' if listed else '')
+            why = ''
+            if listed:
+                why = (' (on analysis/results/released.tsv, but recorded exact, which a function '
+                       'that is not scored cannot show)' if old else
+                       ' (on analysis/results/released.tsv, but not in matched_set.json: there '
+                       'is no recorded entry to keep)')
             rep.add('ERROR', f'{head}: could not be scored: {res["error"]}{why}; see '
                     'harness/README.md, "Released functions"')
         else:

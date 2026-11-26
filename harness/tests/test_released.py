@@ -306,3 +306,17 @@ def test_a_listed_function_whose_rebuild_fails_otherwise_is_an_error(landing):
     assert 'ERROR 0x00427366 g: objdiff failed: error: cannot read object' in rep.lines
     assert not any('released (' in ln for ln in rep.lines)
     assert landing.path.read_text() == before
+
+
+def test_a_listed_function_with_no_entry_that_objdiff_does_not_finish_on_is_an_error(landing):
+    """Nothing is recorded, so there is no entry to keep."""
+    landing.base = {'version': 1, 'functions': {'0x00401000': _recorded(50.0)}}
+    matched.save(paths.MATCHED_SET, json_copy(landing.base))
+    before = landing.path.read_text()
+    landing.errors[LISTED] = TIMEOUT
+    rep = landing.run()
+    assert rep.regressions == [] and rep.failed
+    assert ('ERROR 0x00427366 g: could not be scored: objdiff failed: objdiff did not finish in '
+            '300 s (on analysis/results/released.tsv, but not in matched_set.json: there is no '
+            'recorded entry to keep); see harness/README.md, "Released functions"' in rep.lines)
+    assert landing.path.read_text() == before
