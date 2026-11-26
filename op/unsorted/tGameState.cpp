@@ -1,6 +1,5 @@
 // Unit:      unsorted/tGameState.cpp
 // Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-#define tGameState_DECLARE_SLOTS
 #include "unsorted/tGameState.h"
 #include "unsorted/tApplication.h"
 
@@ -145,7 +144,7 @@ public:
 extern fn_0090db88_owner g_0090db88;
 
 // FUNCTION: STARFLEETOP 0x00469e2a
-void tGameState::vfunction18()
+void tGameState::fn_00469e2a()
 {
 	g_0090db88.fn_0046995a();
 }
@@ -611,33 +610,21 @@ void fn_0046a46a(tGameState *param_1)
 	try
 	{
 		fn_004bcfd3()->fn_004bd088();
-		param_1->vfunction2();
+		param_1->vfunction3();
 	}
 	catch (...)
 	{
 	}
 }
 
-// HYPOTHESIS: the argument is a tView3D (the caller passes one); slot 4 of the state is unnamed.
+// HYPOTHESIS: the argument is a tView3D (the caller passes one).
 // FUNCTION: STARFLEETOP 0x0046a4a8
 void fn_0046a4a8(tView3D *param_1)
 {
 	tGameState *state = fn_0046a59a();
 	if (state != 0)
-		state->vfunction4(param_1);
+		state->vfunction5(param_1);
 }
-
-// HYPOTHESIS: slot 5 of the state takes one argument here; the header declares it without one.
-class fn_0046a4bd_state
-{
-public:
-	virtual void v00();
-	virtual void v01();
-	virtual void v02();
-	virtual void v03();
-	virtual void v04();
-	virtual void vfunction5(int param_1);
-};
 
 extern unsigned int g_0090dba0;
 // HYPOTHESIS: the key string at 0x008458f4 (its text is not recovered; it is shared with other uses).
@@ -666,7 +653,7 @@ void fn_0046a4bd(int param_1)
 {
 	tGameState *state = fn_0046a59a();
 	if (state != 0)
-		((fn_0046a4bd_state *)state)->vfunction5(param_1);
+		state->vfunction6(param_1);
 	if (g_0090e004 == 0)
 		g_0090db70.fn_00672f80(param_1);
 	if ((int)g_0090dba0 < 0)
@@ -675,47 +662,20 @@ void fn_0046a4bd(int param_1)
 		fn_0046aa9a(param_1);
 }
 
-// HYPOTHESIS: slot 6 of the state takes one argument here; the header declares it without one.
-class fn_0046a51f_state
-{
-public:
-	virtual void v00();
-	virtual void v01();
-	virtual void v02();
-	virtual void v03();
-	virtual void v04();
-	virtual void v05();
-	virtual void vfunction6(int param_1);
-};
-
 // FUNCTION: STARFLEETOP 0x0046a51f
 void fn_0046a51f(int param_1)
 {
 	tGameState *state = fn_0046a59a();
 	if (state != 0)
-		((fn_0046a51f_state *)state)->vfunction6(param_1);
+		state->vfunction7(param_1);
 }
-
-// HYPOTHESIS: slot 7 of the state takes one argument here; the header declares it without one.
-class fn_0046a534_state
-{
-public:
-	virtual void v00();
-	virtual void v01();
-	virtual void v02();
-	virtual void v03();
-	virtual void v04();
-	virtual void v05();
-	virtual void v06();
-	virtual void vfunction7(int param_1);
-};
 
 // FUNCTION: STARFLEETOP 0x0046a534
 void fn_0046a534(int param_1)
 {
 	tGameState *state = fn_0046a59a();
 	if (state != 0)
-		((fn_0046a534_state *)state)->vfunction7(param_1);
+		state->vfunction8((int *)param_1);	// HYPOTHESIS: the word is passed on unchanged (0x0046a53f); int is the original's type, the cast follows vfunction8's guessed int *
 }
 
 // FUNCTION: STARFLEETOP 0x0046a549
@@ -723,26 +683,10 @@ void fn_0046a549(int *param_1)
 {
 	tGameState *state = fn_0046a59a();
 	if (state != 0)
-		state->vfunction8(param_1);
+		state->vfunction9(param_1);
 }
 
 int g_0090db98;
-
-// HYPOTHESIS: slot 9 of the state takes one argument here; the header declares it without one.
-class fn_0046a55e_state
-{
-public:
-	virtual void v00();
-	virtual void v01();
-	virtual void v02();
-	virtual void v03();
-	virtual void v04();
-	virtual void v05();
-	virtual void v06();
-	virtual void v07();
-	virtual void v08();
-	virtual void vfunction9(int param_1);
-};
 
 // FUNCTION: STARFLEETOP 0x0046a55e
 void fn_0046a55e(int param_1)
@@ -750,25 +694,8 @@ void fn_0046a55e(int param_1)
 	g_0090db98 = param_1;
 	tGameState *state = fn_0046a59a();
 	if (state != 0)
-		((fn_0046a55e_state *)state)->vfunction9(param_1);
+		state->vfunction10(param_1);
 }
-
-// HYPOTHESIS: slot 10 of the state takes one argument.
-class fn_0046a57c_state
-{
-public:
-	virtual void v00();
-	virtual void v01();
-	virtual void v02();
-	virtual void v03();
-	virtual void v04();
-	virtual void v05();
-	virtual void v06();
-	virtual void v07();
-	virtual void v08();
-	virtual void v09();
-	virtual void vfunction10(int param_1);
-};
 
 // FUNCTION: STARFLEETOP 0x0046a57c
 void fn_0046a57c(int param_1)
@@ -776,7 +703,7 @@ void fn_0046a57c(int param_1)
 	g_0090db98 = param_1;
 	tGameState *state = fn_0046a59a();
 	if (state != 0)
-		((fn_0046a57c_state *)state)->vfunction10(param_1);
+		state->vfunction11(param_1);
 }
 
 // FUNCTION: STARFLEETOP 0x0046a59a
@@ -841,7 +768,7 @@ tGameState *fn_0046a5f6(char *param_1)
 	tGameState *s = g_0090db24;
 	for (; s; s = s->m_04)
 	{
-		if (fn_0040f9ea(s->vfunction12(), param_1) == 0)
+		if (fn_0040f9ea(s->vfunction13(), param_1) == 0)
 			break;
 	}
 	return s;
@@ -1340,15 +1267,8 @@ void fn_0046acd5(char *param_1)
 	tCommandLineArgs::Instance()->Setup(commandLine);
 }
 
-// HYPOTHESIS: a state class overriding the event slot (Ghidra files it under tGameState).
-class fn_0046ad4d_owner
-{
-public:
-	void fn_0046ad4d(int *param_1);
-};
-
 // FUNCTION: STARFLEETOP 0x0046ad4d
-void fn_0046ad4d_owner::fn_0046ad4d(int *param_1)
+void tGameState::vfunction18(int *param_1)
 {
 	if (*param_1 == 0x102)
 		fn_0046aa58();

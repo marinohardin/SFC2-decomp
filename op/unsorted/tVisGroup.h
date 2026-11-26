@@ -143,13 +143,13 @@ public:
 	// vfunction28: tObjBase
 	// vfunction29: tObjBase
 	virtual void vfunction30();
-	// HYPOTHESIS: the event handler of tObjBase (slot 31), as in tListBox_Base; 0x0067d1c0 is the base's.
-	virtual bool vfunction31( int *event );	// 0x0067dd00
-	virtual void vfunction32();
-	virtual void vfunction33();
-	virtual void vfunction34();
-	virtual void vfunction35();
-	virtual void vfunction36();
+	// The event handler of tObjBase (vfunction31, slot 30); 0x0067d1c0 is the base's.
+	virtual bool vfunction31( c_tListBox_Base_Event *event );	// 0x0067dd00
+	virtual void vfunction32( const tRect *area );
+	virtual void vfunction33( tRect *area );
+	virtual tRect vfunction34( tRect r );
+	virtual void vfunction35( c_tObjBase_Field10 *target );
+	virtual bool vfunction36( int x, int y );
 	virtual void vfunction37();	// 0x0067e340
 	virtual void vfunction38();
 	virtual void vfunction39();
@@ -166,9 +166,6 @@ public:
 	virtual void vfunction47();
 	virtual void vfunction48( bool b );
 	virtual void vfunction49( bool b );
-
-	// HYPOTHESIS: tObjBase::vfunction31 (0x0067d1c0), which tObjBase.h does not declare yet.
-	bool fn_0067d1c0( int *event );
 
 	int field_64;	// HYPOTHESIS: the constructor never writes it
 	// The same type sits at tButton +0x74, whose destructor runs 0x0067f490 too.

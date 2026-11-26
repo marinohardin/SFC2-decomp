@@ -3459,7 +3459,7 @@
   },
   "0x00410667": {
    "name": "tPhysicalEntity::vfunction64",
-   "symbol": "?vfunction64@tPhysicalEntity@@UAEXXZ",
+   "symbol": "?vfunction64@tPhysicalEntity@@UAEMXZ",
    "unit": "unsorted/tPhysicalEntity.cpp",
    "size": 8,
    "score": 100.0,
@@ -10842,9 +10842,9 @@
    "symbol": "?vfunction3@tState_Campaign@@UAEXXZ",
    "unit": "unsorted/tCampaignState.cpp",
    "size": 410,
-   "score": 97.405,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-26"
   },
   "0x0045dbda": {
    "name": "tState_Campaign::vfunction6",
@@ -10857,7 +10857,7 @@
   },
   "0x0045dc2b": {
    "name": "tCampaignState::vfunction15",
-   "symbol": "?vfunction15@tState_Campaign@@UAEXPAH@Z",
+   "symbol": "?vfunction15@tCampaignState@@UAEXPAUc_0046aa10_message@@@Z",
    "unit": "unsorted/tCampaignState.cpp",
    "size": 110,
    "score": 100.0,
@@ -11559,7 +11559,7 @@
   },
   "0x00469e2a": {
    "name": "FUN_00469e2a",
-   "symbol": "?vfunction18@tGameState@@UAEXXZ",
+   "symbol": "?fn_00469e2a@tGameState@@QAEXXZ",
    "unit": "unsorted/tGameState.cpp",
    "size": 10,
    "score": 100.0,
@@ -11982,7 +11982,7 @@
   },
   "0x0046ad4d": {
    "name": "tGameState::vfunction18",
-   "symbol": "?fn_0046ad4d@fn_0046ad4d_owner@@QAEXPAH@Z",
+   "symbol": "?vfunction18@tGameState@@UAEXPAH@Z",
    "unit": "unsorted/tGameState.cpp",
    "size": 20,
    "score": 100.0,
@@ -14133,7 +14133,7 @@
   },
   "0x004c8587": {
    "name": "tScrollBar::vfunction31",
-   "symbol": "?vfunction31@tScrollBar@@UAEEPAUc_tListBox_Base_Event@@@Z",
+   "symbol": "?vfunction31@tScrollBar@@UAE_NPAUc_tListBox_Base_Event@@@Z",
    "unit": "unsorted/tScrollBar.cpp",
    "size": 505,
    "score": 100.0,
@@ -16599,7 +16599,7 @@
   },
   "0x004e245e": {
    "name": "tPhaserBank::vfunction143",
-   "symbol": "?vfunction143@tPhaserBank@@UAEMMM@Z",
+   "symbol": "?vfunction143@tPhaserBank@@UAEMDE@Z",
    "unit": "unsorted/tPhaserBank.cpp",
    "size": 82,
    "score": 100.0,
@@ -16797,7 +16797,7 @@
   },
   "0x004e56dc": {
    "name": "tPhaserXBank::vfunction143",
-   "symbol": "?vfunction143@tPhaserXBank@@UAEMMM@Z",
+   "symbol": "?vfunction143@tPhaserXBank@@UAEMDE@Z",
    "unit": "unsorted/tPhaserXBank.cpp",
    "size": 82,
    "score": 100.0,
@@ -28227,7 +28227,7 @@
   },
   "0x005e4089": {
    "name": "tMetaMapControl::vfunction30_for_tButton",
-   "symbol": "?vfunction30@tMetaMapControl@@QAEXXZ",
+   "symbol": "?vfunction30@tMetaMapControl@@UAEXXZ",
    "unit": "unsorted/tMetaMapControl.cpp",
    "size": 301,
    "score": 100.0,
@@ -28380,7 +28380,7 @@
   },
   "0x005e4470": {
    "name": "tMetaMapControl::vfunction31_for_tButton",
-   "symbol": "?vfunction31@tMetaMapControl@@QAE_NPAUc_tListBox_Base_Event@@@Z",
+   "symbol": "?vfunction31@tMetaMapControl@@UAE_NPAUc_tListBox_Base_Event@@@Z",
    "unit": "unsorted/tMetaMapControl.cpp",
    "size": 193,
    "score": 100.0,
@@ -30450,7 +30450,7 @@
   },
   "0x00608b4e": {
    "name": "tPanelMgr::vfunction4",
-   "symbol": "?vfunction4@tPanelMgr@@QAE_NXZ",
+   "symbol": "?vfunction4@tPanelMgr@@UAE_NXZ",
    "unit": "unsorted/tPanelMgr.cpp",
    "size": 121,
    "score": 100.0,
@@ -30459,7 +30459,7 @@
   },
   "0x00609077": {
    "name": "tPanelMgr::vfunction13",
-   "symbol": "?vfunction13@tPanelMgr@@QAEPADXZ",
+   "symbol": "?vfunction13@tPanelMgr@@UAEPADXZ",
    "unit": "unsorted/tPanelMgr.cpp",
    "size": 6,
    "score": 100.0,
@@ -41772,7 +41772,7 @@
   },
   "0x0067dd00": {
    "name": "tVisGroup::vfunction31",
-   "symbol": "?vfunction31@tVisGroup@@UAE_NPAH@Z",
+   "symbol": "?vfunction31@tVisGroup@@UAE_NPAUc_tListBox_Base_Event@@@Z",
    "unit": "unsorted/tVisGroup.cpp",
    "size": 64,
    "score": 100.0,

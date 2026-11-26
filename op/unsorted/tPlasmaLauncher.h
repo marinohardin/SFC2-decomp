@@ -11,12 +11,7 @@
 // HYPOTHESIS: only the slots the launcher overrides are declared; each signature is read from
 // its body (the arguments it takes from the stack and the register it returns in) and is
 // checked against tBaseWeapon's declaration of the same slot, since a mismatch would add a
-// virtual instead of overriding one. Slot 124 (vfunction125, 0x004e80b0, one int argument),
-// slot 141 (vfunction142, 0x004e779b, two signed bytes, returns a float) are not declared
-// either: tBaseWeapon.h declares both as void with no arguments (placeholders, unclaimed);
-// fixing them is a tBaseWeapon.h edit left to the integrator. Slot 142 (0x004e7869, vfunction143) is not declared:
-// tPhaserBank's exact override of it takes two floats, while this one reads a signed byte as
-// its first argument, so the base's signature is not settled.
+// virtual instead of overriding one.
 class tPlasmaLauncher : public tBaseWeapon
 {
 public:
@@ -33,12 +28,15 @@ public:
     virtual float vfunction114(unsigned char param_1, int param_2, int param_3);
     virtual float vfunction118(unsigned char param_1);
     virtual void vfunction124(int param_1);
+    virtual void vfunction125(int param_1);
     virtual bool vfunction134();
     virtual int vfunction136(char param_1);
+    virtual float vfunction142(char param_1, unsigned char param_2);
+    virtual float vfunction143(char param_1, unsigned char param_2);
     virtual void vfunction137();
-    // The two slots past the end of tBaseWeapon's vftable: 0x004e83f3 resets the part at 0x148
-    // and fills it with a table of one entry (300.0f); 0x004e88c6 takes a flag byte and a value
-    // and returns an int, a count or 0x20, 4 or 8.
+    // 0x004e83f3 (slot 147, declared by tBaseWeapon) resets the part at 0x148 and fills it with
+    // a table of one entry (300.0f); 0x004e88c6, the one slot past the end of tBaseWeapon's
+    // vftable, takes a flag byte and a value and returns an int, a count or 0x20, 4 or 8.
     virtual void vfunction148();
     virtual int vfunction149(char param_1, int param_2);
 

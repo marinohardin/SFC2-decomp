@@ -16,6 +16,13 @@ class tState_CampaignSelector : public tGameState
 public:
 	tState_CampaignSelector();
 	virtual ~tState_CampaignSelector();
+	// The vtable at 0x0079e8cc overrides slots 1, 2, 3, 12 and 14 of tGameState's (named as the
+	// vtable export names them: slot N is vfunctionN+1); the rest are inherited.
+	virtual bool vfunction2();
+	virtual void vfunction3();
+	virtual bool vfunction4();
+	virtual char *vfunction13();
+	virtual void vfunction15(c_0046aa10_message *param_1);
 };
 
 }
