@@ -220,7 +220,9 @@ public:
 	virtual int vfunction10();	// 0x0046c436
 	virtual void vfunction11();
 	virtual void vfunction12();	// +0x2c
-	virtual void vfunction13(); virtual bool vfunction14(); virtual void vfunction15( bool a ); virtual void vfunction16(); virtual void vfunction17(); virtual void vfunction18(); virtual void vfunction19(); virtual int vfunction20(); virtual void vfunction21( int n );	// HYPOTHESIS: +0x4c reads a control's value and +0x50 sets its state (the fleet entry's 0x004c27a8)
+	virtual void vfunction13(); virtual bool vfunction14(); virtual void vfunction15( bool a ); virtual void vfunction16(); virtual void vfunction17();
+	virtual void vfunction18();	// 0x0067ce20: hides the object and its children, tells the parent, gives up the capture
+	virtual void vfunction19(); virtual int vfunction20(); virtual void vfunction21( int n );	// HYPOTHESIS: +0x4c reads a control's value and +0x50 sets its state (the fleet entry's 0x004c27a8)
 	virtual void vfunction22();
 	virtual void *vfunction23();	// 0x0046c452: returns the address 0x00c692a8
 	virtual void vfunction24( const tString &s );	// 0x00401038 (an empty function with one argument); tFleetEntry's classes pass a tString
