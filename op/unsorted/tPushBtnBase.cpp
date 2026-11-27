@@ -79,3 +79,10 @@ void tPushBtnBase::vfunction44( tPoint pt )
 	( (tControl *)(tVisObject *)this )->fn_00685ee0( pt );
 }
 
+// FUNCTION: STARFLEETOP 0x00686720
+void tPushBtnBase::vfunction45( tPoint pt )
+{
+	*(int *)( (unsigned char *)this + 0x70 ) = 0;
+	( (tControl *)(tVisObject *)this )->fn_00685f10( pt );
+}
+
