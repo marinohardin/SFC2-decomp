@@ -54,6 +54,21 @@ public:
 	virtual void vfunction19(tETrait_Explosion *trait);
 };
 
+// FUNCTION: STARFLEETOP 0x0041e042
+tEntity_Seeker::tEntity_Seeker()
+{
+	fClassification |= 0x20;
+	field_0x278 = -1;
+	field_0x280 = 0.0;
+	field_0x274 = 0;
+	field_0x270 = 0x100;
+	field_0x268 = 0x100;
+	field_0x264 = 0.0f;
+	field_0x275 = 1;
+	field_0x27c = 0;
+	field_0x26c = 0;
+}
+
 // HYPOTHESIS: the member layout from +0x248 on, as the stream calls address it.
 // FUNCTION: STARFLEETOP 0x0041e64f
 void tEntity_Seeker::vfunction11(tSFCStream &s, int32u mode)

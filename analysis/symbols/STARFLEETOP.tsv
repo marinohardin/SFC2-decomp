@@ -962,7 +962,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0041c008	function	tEntity_Transporter::~tEntity_Transporter	tEntity_Transporter				rtti
 0x0041c055	function	fn_0041c055	tEntity_Transporter				vtable
 0x0041c0b9	function	fn_0041c0b9	tEntity_Transporter				vtable
-0x0041c1ef	function	tEntity_Weapon::tEntity_Weapon	tEntity_Weapon				rtti
+0x0041c1ef	function	tEntity_Weapon::tEntity_Weapon	tEntity_Weapon	??0tEntity_Weapon@@QAE@XZ	add		rtti
 0x0041c23c	function	fn_0041c23c	tEntity_Placeholder				vtable
 0x0041c242	function	fn_0041c242	tEntity_Weapon				vtable
 0x0041c249	function	fn_0041c249	tEntity_Weapon				vtable
@@ -1005,7 +1005,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0041de27	function	fn_0041de27	tEntity_ESG				vtable
 0x0041dea0	function	fn_0041dea0	tEntity_ESG				vtable
 0x0041df7a	function	fn_0041df7a	tEntity_ESG				vtable
-0x0041e042	function	tEntity_Seeker::tEntity_Seeker	tEntity_Seeker				rtti
+0x0041e042	function	tEntity_Seeker::tEntity_Seeker	tEntity_Seeker	??0tEntity_Seeker@@QAE@XZ	claim		rtti
 0x0041e09b	function	fn_0041e09b	tEntity_Seeker				vtable
 0x0041e0a2	function	fn_0041e0a2	tEntity_Seeker				vtable
 0x0041e0a9	function	fn_0041e0a9	tEntity_Seeker				vtable
