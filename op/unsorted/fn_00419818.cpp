@@ -40,3 +40,18 @@ void tEntityShip::fn_004198e0()
 	tObject_00416d41_bounds *record = object->vfunction27();
 	object->vfunction22((int)(record->field_18 + 1.5f));
 }
+
+// HYPOTHESIS: a tEntityShip member; when the float at 0x18 of slot 27's record of the object at
+// 0xad4 is above zero, it lowers it by 0.5 and hands it, cut to a whole number, to slot 22.
+// FUNCTION: STARFLEETOP 0x0041994b
+void tEntityShip::fn_0041994b()
+{
+	static tObject_0040ce21 marker("Whoa!");
+
+	tObject_00416d41_ad4 *&object = field_ad4;
+	tObject_00416d41_bounds *record = object->vfunction27();
+	if (record->field_18 > 0.0f)
+	{
+		object->vfunction22((int)(record->field_18 - 0.5f));
+	}
+}
