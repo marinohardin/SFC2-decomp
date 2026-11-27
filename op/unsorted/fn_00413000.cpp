@@ -1,6 +1,25 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/fn_00413000.cpp
-// Functions: 0x004130b4 to 0x00413112, 4 in op/UNITS.tsv
-// Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
-// Profile:   game-release (harness/units.json)
+#include "Source/entity/entity_physical.h"
+
+// HYPOTHESIS: returns by value the three dwords at +0xe6 (unaligned, inside field_0xe0).
+// FUNCTION: STARFLEETOP 0x004130d0
+tPoint3 tPhysicalEntity::fn_004130d0()
+{
+	tPoint3 *p = (tPoint3 *)((char *)this + 0xe6);
+	return *p;
+}
+
+// HYPOTHESIS: returns by value the three dwords at +0xf2.
+// FUNCTION: STARFLEETOP 0x004130f1
+tPoint3 tPhysicalEntity::fn_004130f1()
+{
+	tPoint3 *p = (tPoint3 *)((char *)this + 0xf2);
+	return *p;
+}
+
+// HYPOTHESIS: keeps the previous three dwords at +0xe6 in +0xf2 and stores the point there.
+// FUNCTION: STARFLEETOP 0x00413112
+void tEntity::fn_00413112(const tPoint3 &aPoint)
+{
+	*(tPoint3 *)((char *)this + 0xf2) = *(tPoint3 *)((char *)this + 0xe6);
+	*(tPoint3 *)((char *)this + 0xe6) = aPoint;
+}

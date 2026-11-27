@@ -1,6 +1,11 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/fn_004E5C2F.cpp
-// Functions: 0x004e5c2f to 0x004e5e8c, 5 in op/UNITS.tsv
-// Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
-// Profile:   game-release (harness/units.json)
+// HYPOTHESIS: the first entry of the table tPhaserXBank.cpp hands to fn_004d6f22.
+extern const float g_00856fa0[];
+
+// HYPOTHESIS: the original ends in ret 4, so this is a member taking one unused
+// argument, likely a float (unsigned char) virtual of tPhaserXBank, whose class is
+// declared only in tPhaserXBank.cpp; written free until it can move there.
+// FUNCTION: STARFLEETOP 0x004e5e83
+float fn_004e5e83()
+{
+    return g_00856fa0[0];
+}

@@ -89,8 +89,22 @@ public:
 	virtual void vfunction3(); virtual void vfunction4(); virtual void vfunction5();
 	// HYPOTHESIS: (object, float, flag); 0x00413ac3 passes the object it was given, 0.0 and 0.
 	virtual void vfunction6(tObject_00413ac3_arg *aObject, float aValue, int aFlag);
-	virtual void vfunction7(); virtual void vfunction8();
+	// HYPOTHESIS: (object, float, float, flag); 0x004162b9 passes the object, the result of
+	// tEntityShip's slot 73, 0.0 or 1.0 minus a ratio, and a flag.
+	virtual void vfunction7(tObject_00413ac3_arg *aObject, float aValue1, float aValue2, int aFlag);
+	virtual void vfunction8();
 	virtual float vfunction9();
+	// HYPOTHESIS: looks up a named point ("HardPoint%d") and returns whether it was found;
+	// 0x004199f4 passes a tPoint3 to fill and the name.
+	virtual bool vfunction10(tPoint3 *aPoint, const char *aName);
+	virtual void vfunction11(); virtual void vfunction12();
+	virtual void vfunction13(); virtual void vfunction14(); virtual void vfunction15();
+	virtual void vfunction16(); virtual void vfunction17(); virtual void vfunction18();
+	virtual void vfunction19(); virtual void vfunction20(); virtual void vfunction21();
+	virtual void vfunction22(); virtual void vfunction23(); virtual void vfunction24();
+	// HYPOTHESIS: slots 25 and 26 return floats; 0x004160ee subtracts the second from the first.
+	virtual float vfunction25();
+	virtual float vfunction26();
 };
 
 // HYPOTHESIS: the object at 0x8c of the entity; the destructor 0x00413de0 disposes of it
@@ -151,6 +165,7 @@ public:
 	// HYPOTHESIS: the slots not yet recovered are placeholders that keep the vftable order;
 	// vfunctionN is slot N-1 of the vftable; slot 0 is the scalar deleting destructor. Slots 1
 	// to 21 are tEntity's; the ones this class overrides are declared here.
+	tPhysicalEntity();
 	virtual ~tPhysicalEntity();
 	virtual void vfunction3();
 	// HYPOTHESIS: draws the model through the object passed in; its type is not known.
@@ -267,6 +282,8 @@ public:
 	// HYPOTHESIS: the base entity's override of the same slot (tEntity::vfunction3), called
 	// directly.
 	void fn_004101d3();
+	tPoint3 fn_004130d0();
+	tPoint3 fn_004130f1();
 
 	// HYPOTHESIS: a member of the list at 0x1a4, one per tractor beam: the beam entity's ID
 	// and the target's, as 0x00413614 fills them; the two links are cleared on construction.

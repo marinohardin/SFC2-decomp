@@ -18,6 +18,27 @@
 // also holds tPlayerShadow's constructor inline. vfunctionN is slot N-1; the one-argument
 // functions take a pointer to an object whose slots 0x200 and 0x228 they call (a ship), so
 // the argument is a void pointer here.
+
+// tShadowFloat (RTTI, vtable 0x007a0e44, constructor 0x004a03bc): a 12-byte shadow of one value.
+// Its slot names are not known; vfunctionN is slot N-1.
+class tShadowFloat
+{
+public:
+	tShadowFloat();
+	virtual void vfunction1();
+	virtual void vfunction2();
+	// HYPOTHESIS: slot 2 sets the shadowed value; tActualPlayer::vfunction27 passes 0 to it.
+	virtual void vfunction3(int aValue);
+
+	int field_0x4;
+	int field_0x8;
+};
+
+// tShadowDragBar (RTTI, vtable 0x007a0e34): a tShadowFloat of the same size.
+class tShadowDragBar : public tShadowFloat
+{
+};
+
 class tActualPlayer : public tPlayerShadow
 {
 public:
@@ -51,19 +72,19 @@ public:
 	char field_0x2c[0x8];  // after tConnector (0x2c bytes); the first member starts at 0x34
 	char field_0x34[0xc];  // tShadowFloat (RTTI, vtable 0x007a0e44; stored inline, 12 bytes)
 	char field_0x40[0xc];  // tShadowFloat (RTTI, vtable 0x007a0e44; stored inline, 12 bytes)
-	char field_0x4c[0xc];  // tShadowDragBar (RTTI, vtable 0x007a0e34; a tShadowFloat)
+	tShadowDragBar field_0x4c;
 	char field_0x58[0x54];  // tShadowGaugeStr (RTTI, vtable 0x007a0e20; a tShadowFloat)
 	char field_0xac[0xc];  // tShadowFloat (RTTI, vtable 0x007a0e44; stored inline, 12 bytes)
-	char field_0xb8[0xc];  // tShadowFloat (RTTI, vtable 0x007a0e44; stored inline, 12 bytes)
+	tShadowFloat field_0xb8;
 	char field_0xc4[0xc];  // tShadowFloat (RTTI, vtable 0x007a0e44; stored inline, 12 bytes)
 	char field_0xd0[0xc];  // tShadowFloat (RTTI, vtable 0x007a0e44; stored inline, 12 bytes)
-	char field_0xdc[0xc];  // tShadowFloat (RTTI, vtable 0x007a0e44; stored inline, 12 bytes)
-	char field_0xe8[0xc];  // tShadowFloat (RTTI, vtable 0x007a0e44; stored inline, 12 bytes)
+	tShadowFloat field_0xdc;
+	tShadowFloat field_0xe8;
 	char field_0xf4[0x54];  // tShadowGaugeStr (RTTI, vtable 0x007a0e20; a tShadowFloat)
 	char field_0x148[0xc];  // tShadowFloat (RTTI, vtable 0x007a0e44; stored inline, 12 bytes)
 	char field_0x154[0x54];  // tShadowGaugeStr (RTTI, vtable 0x007a0e20; a tShadowFloat)
 	char field_0x1a8[0xc];  // tShadowFloat (RTTI, vtable 0x007a0e44; stored inline, 12 bytes)
-	char field_0x1b4[0xc];  // tShadowFloat (RTTI, vtable 0x007a0e44; stored inline, 12 bytes)
+	tShadowFloat field_0x1b4;
 	char field_0x1c0[0x54];  // tShadowGaugeStr (RTTI, vtable 0x007a0e20; a tShadowFloat)
 	char field_0x214[0x54];  // tShadowGaugeStr (RTTI, vtable 0x007a0e20; a tShadowFloat)
 	char field_0x268[0x54];  // tShadowGaugeStr (RTTI, vtable 0x007a0e20; a tShadowFloat)
@@ -75,9 +96,9 @@ public:
 	char field_0x388[0xc];  // tShadowFloat (RTTI, vtable 0x007a0e44; stored inline, 12 bytes)
 	char field_0x394[0x54];  // tShadowGaugeStr (RTTI, vtable 0x007a0e20; a tShadowFloat)
 	char field_0x3e8[0xc];  // tShadowFloat (RTTI, vtable 0x007a0e44; stored inline, 12 bytes)
-	char field_0x3f4[0xc];  // tShadowFloat (RTTI, vtable 0x007a0e44; stored inline, 12 bytes)
+	tShadowFloat field_0x3f4;
 	char field_0x400[0xc];  // tShadowFloat (RTTI, vtable 0x007a0e44; stored inline, 12 bytes)
-	char field_0x40c[0xc];  // tShadowFloat (RTTI, vtable 0x007a0e44; stored inline, 12 bytes)
+	tShadowFloat field_0x40c;
 	char field_0x418[0xc];  // tShadowFloat (RTTI, vtable 0x007a0e44; stored inline, 12 bytes)
 	char field_0x424[0xc];  // tShadowFloat (RTTI, vtable 0x007a0e44; stored inline, 12 bytes)
 	char field_0x430[0x54];  // tShadowGaugeStr (RTTI, vtable 0x007a0e20; a tShadowFloat)
@@ -85,7 +106,10 @@ public:
 	char field_0x490[0x50];  // tShadowTStr (RTTI, vtable 0x007a0dbc, constructor 0x004a03cd)
 	char field_0x4e0[0x14];
 	char field_0x4f4[0x14];
-	char field_0x508[0x14];
+	char field_0x508[0x8];
+	// HYPOTHESIS: an int; vfunction13 stores the result of the object's slot 138 here.
+	int field_0x510;
+	char field_0x514[0x8];
 	char field_0x51c[0x10];
 	char field_0x52c[0x1c];  // a value object, constructed by tValueBase (0x00436633) and given its own vtable
 	char field_0x548[0xc];  // tShadowFloat (RTTI, vtable 0x007a0e44; stored inline, 12 bytes)
@@ -100,7 +124,13 @@ public:
 	tMinMaxFloat field_0x6cc;
 	tMinMaxFloat field_0x6f0;
 	char field_0x714[0x1c];  // a value object, constructed by tValueBase (0x00436633) and given its own vtable
-	char field_0x730[0x18];  // tShadowFloat (RTTI, vtable 0x007a0e44; stored inline, 12 bytes)
+	char field_0x730[0xc];  // tShadowFloat (RTTI, vtable 0x007a0e44; stored inline, 12 bytes)
+	// HYPOTHESIS: the object vfunction9 is given; it reads ints at +0x47c and +0x480 through it.
+	void *field_0x73c;
+	// HYPOTHESIS: the object vfunction15 is given; it reads ints at +0x490 and +0x47c through it.
+	void *field_0x740;
+	// HYPOTHESIS: the object vfunction16 is given; it reads ints at +0x494 and +0x47c through it.
+	void *field_0x744;
 	char field_0x748[0x50];  // tShadowTStr (RTTI, vtable 0x007a0dbc, constructor 0x004a03cd)
 	char field_0x798[0xc];  // tShadowFloat (RTTI, vtable 0x007a0e44; stored inline, 12 bytes)
 	char field_0x7a4[0xc];  // tShadowInt (RTTI, vtable 0x007a0df0)
@@ -127,8 +157,9 @@ public:
 	tMinMaxFloat *field_0xbf0;
 	tMinMaxFloat *field_0xbf4;
 	tMinMaxFloat *field_0xbf8;
-	char field_0xbfc[0x1c];  // a value object, constructed by tValueBase (0x00436633) and given its own vtable
-	char field_0xc18[0x1c];  // a value object, constructed by tValueBase (0x00436633) and given its own vtable
+	// HYPOTHESIS: tValue<long>: vfunction5 stores at +0x18 and then notifies with (3, 0).
+	tValue<long> field_0xbfc;
+	tValue<long> field_0xc18;
 	tMinMaxFloat field_0xc34;
 	tMinMaxFloat field_0xc58;
 	tMinMaxFloat field_0xc7c;
@@ -170,9 +201,12 @@ public:
 	tMinMaxFloat field_0x118c;
 	tMinMaxFloat field_0x11b0;
 	tMinMaxFloat field_0x11d4;
-	char field_0x11f8[0x28];
-	char field_0x1220[0x1c];  // a value object, constructed by tValueBase (0x00436633) and given its own vtable
-	char field_0x123c[0x1c];  // a value object, constructed by tValueBase (0x00436633) and given its own vtable
+	tMinMaxFloat field_0x11f8;
+	// HYPOTHESIS: the object vfunction17 is given; the two values after it are set from it.
+	void *field_0x121c;
+	// HYPOTHESIS: tValue<long>: vfunction17 stores at +0x18 and then notifies with (3, 0).
+	tValue<long> field_0x1220;
+	tValue<long> field_0x123c;
 	char field_0x1258[0x50];  // tShadowTStr (RTTI, vtable 0x007a0dbc, constructor 0x004a03cd)
 	char field_0x12a8[0x50];  // tShadowTStr (RTTI, vtable 0x007a0dbc, constructor 0x004a03cd)
 	tMinMaxFloat field_0x12f8;
@@ -206,14 +240,17 @@ public:
 	tMinMaxFloat field_0x16e8;
 	tMinMaxFloat field_0x170c;
 	tMinMaxFloat field_0x1730;
-	char field_0x1754[0x28];
+	tMinMaxFloat field_0x1754;
+	char field_0x1778[0x4];
 	char field_0x177c[0xc];  // tShadowFloat (RTTI, vtable 0x007a0e44; stored inline, 12 bytes)
-	char field_0x1788[0x1c];  // a value object, constructed by tValueBase (0x00436633) and given its own vtable
-	char field_0x17a4[0x1c];  // a value object, constructed by tValueBase (0x00436633) and given its own vtable
-	char field_0x17c0[0x1c];  // a value object, constructed by tValueBase (0x00436633) and given its own vtable
+	// HYPOTHESIS: tValue<long>, the next three: vfunction9 stores at +0x18 and notifies with (3, 0).
+	tValue<long> field_0x1788;
+	tValue<long> field_0x17a4;
+	tValue<long> field_0x17c0;
 	char field_0x17dc[0x1c];  // a value object, constructed by tValueBase (0x00436633) and given its own vtable
-	char field_0x17f8[0x1c];  // a value object, constructed by tValueBase (0x00436633) and given its own vtable
-	char field_0x1814[0x1c];  // a value object, constructed by tValueBase (0x00436633) and given its own vtable
+	// HYPOTHESIS: tValue<long>, the next two: vfunction15 stores at +0x18 and notifies with (3, 0).
+	tValue<long> field_0x17f8;
+	tValue<long> field_0x1814;
 	tValue<long> field_0x1830;
 	tValue<long> field_0x184c;
 	tValue<long> field_0x1868;
@@ -270,5 +307,9 @@ public:
 };
 
 typedef char tActualPlayer_size_is_0x201c[ sizeof( tActualPlayer ) == 0x201c ? 1 : -1 ];
+
+// HYPOTHESIS: a cdecl free function of the object tActualPlayer::vfunction5 is given; returns
+// the value vfunction5 stores in field_0xc18.
+int fn_004a6f3d(void *aObject);
 
 #endif	// tActualPlayer_h
