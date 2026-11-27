@@ -856,7 +856,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004177c8	function	fn_004177c8	tEntityControlShip				vtable
 0x004177cb	function	fn_004177cb					none
 0x00417b2a	function	fn_00417b2a	tEntityShip				vtable
-0x00417b57	function	fn_00417b57	tEntityShip				vtable
+0x00417b57	function	fn_00417b57	tEntityShip	?vfunction38@tEntityShip@@UAEXH_N@Z	claim		vtable
 0x00417b92	function	fn_00417b92	tEntityShip				vtable
 0x00417bc6	function	fn_00417bc6	tEntityShip				vtable
 0x00417d3f	function	fn_00417d3f					none
@@ -2995,7 +2995,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004546d3	thunk	fn_004546d3	tTractorSystem				vtable
 0x004546d8	function	fn_004546d8	tTractorSystem				vtable
 0x004546e1	function	fn_004546e1					none
-0x004546f0	function	fn_004546f0					none
+0x004546f0	function	fn_004546f0		?fn_004546f0@tTractorSystem@@QAE_NH_N@Z	add		none
 0x004547a9	function	fn_004547a9	tTractorSystem				vtable
 0x00454803	function	fn_00454803					none
 0x00454851	function	fn_00454851					none

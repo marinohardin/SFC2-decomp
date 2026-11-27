@@ -751,3 +751,13 @@ float tEntityShip::vfunction74()
 		return 0.2f;
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x00417b57
+void tEntityShip::vfunction38(int aID, bool aValue)
+{
+	tTractorSystem *tractor = field_ad4->vfunction75();
+	if (!tractor)
+		tPhysicalEntity::vfunction38(aID, aValue);
+	else if (tractor->fn_004546f0(aID, aValue))
+		tPhysicalEntity::vfunction38(aID, aValue);
+}

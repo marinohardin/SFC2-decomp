@@ -8,9 +8,20 @@
 
 #include "Source/entity/entity_physical.h"
 #include "unsorted/tShipSpecs.h"
+#include "unsorted/tIndividualShipSystem.h"
 
 class tCloakSystem;
 class tSensorGroupSystem;
+
+// HYPOTHESIS: tTractorSystem (RTTI, vftable 0x0079e2a4, base tRepairableShipSystem) has no header
+// of its own yet; only the method the ship calls is declared, until one is written.
+class tTractorSystem : public tRepairableShipSystem
+{
+public:
+	// HYPOTHESIS: a test tEntityShip::vfunction38 (0x00417b57) makes with its two arguments
+	// before handing them on.
+	bool fn_004546f0(int aID, bool aValue);
+};
 
 // HYPOTHESIS: the record slot 34 (offset 0x88) of the object at 0xad4 returns; 0x004162b9 reads
 // three floats from it, at 0x18, 0x1c and 0x20.
@@ -133,7 +144,11 @@ public:
 	virtual void vfunction65(); virtual void vfunction66(); virtual void vfunction67();
 	virtual void vfunction68(); virtual void vfunction69(); virtual void vfunction70();
 	virtual void vfunction71(); virtual void vfunction72(); virtual void vfunction73();
-	virtual void vfunction74(); virtual void vfunction75(); virtual void vfunction76();
+	virtual void vfunction74();
+	// HYPOTHESIS: returns the ship's tractor system or 0; tEntityShip::vfunction38 (0x00417b57)
+	// calls 0x004546f0, in tTractorSystem's range, on it.
+	virtual tTractorSystem *vfunction75();
+	virtual void vfunction76();
 	virtual void vfunction77(); virtual void vfunction78(); virtual void vfunction79();
 	virtual void vfunction80(); virtual void vfunction81(); virtual void vfunction82();
 	// HYPOTHESIS: returns a system or 0; 0x00416944 calls 0x00437d8d on it.
