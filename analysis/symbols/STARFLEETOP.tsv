@@ -6959,7 +6959,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004e5c2f	function	fn_004e5c2f		?fn_004e5c2f@tPhaserXBank@@QAEHHH@Z	callers		none
 0x004e5c80	function	tNetMsg_kCreateDirect::~tNetMsg_kCreateDirect	tNetMsg_kCreateDirect				rtti
 0x004e5d4b	function	fn_004e5d4b	tPhaserXBank				vtable
-0x004e5e83	function	fn_004e5e83					none
+0x004e5e83	function	fn_004e5e83		?fn_004e5e83@@YAMXZ	claim		none
 0x004e5e8c	function	fn_004e5e8c	tPhaserXBank				vtable
 0x004e6461	function	fn_004e6461					none
 0x004e64a2	function	fn_004e64a2					none
@@ -7113,14 +7113,14 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004eb4cd	function	fn_004eb4cd	tTRBeam				vtable
 0x004eb517	function	fn_004eb517	tTRBeam				vtable
 0x004eb55f	function	fn_004eb55f	tTRBeam				vtable
-0x004eb5a7	function	fn_004eb5a7					none
+0x004eb5a7	function	fn_004eb5a7		?fn_004eb5a7@tTRBeam@@QAEHXZ	add		none
 0x004eb76a	function	fn_004eb76a	tTRBeam				vtable
 0x004eb79a	function	fn_004eb79a	tTRBeam				vtable
-0x004eb7f9	function	tNetMsg_kCreateDirect::~tNetMsg_kCreateDirect	tNetMsg_kCreateDirect				rtti
+0x004eb7f9	function	tNetMsg_kCreateDirect::~tNetMsg_kCreateDirect	tNetMsg_kCreateDirect	?fn_004eb7f9@tTRBeam@@QAEXM@Z	claim		rtti
 0x004eb8c2	function	fn_004eb8c2	tTRBeam				vtable
 0x004eb9da	function	fn_004eb9da					none
 0x004eb9e4	function	fn_004eb9e4					none
-0x004eb9fa	function	tTRBeamLight_Creator::tTRBeamLight_Creator	tTRBeamLight_Creator				rtti
+0x004eb9fa	function	tTRBeamLight_Creator::tTRBeamLight_Creator	tTRBeamLight_Creator	??0tTRBeamLight_Creator@@QAE@XZ	add		rtti
 0x004eba0c	function	fn_004eba0c	tTRBeamLight_Creator				vtable
 0x004eba12	function	fn_004eba12	tTRBeamLight_Creator				vtable
 0x004ebaa9	function	fn_004ebaa9					none
