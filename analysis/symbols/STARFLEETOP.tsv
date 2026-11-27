@@ -4739,7 +4739,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004a3afc	function	fn_004a3afc	tActualPlayer	?vfunction18@tActualPlayer@@UAEXPAX@Z	claim		vtable
 0x004a3b7a	function	fn_004a3b7a	tActualPlayer	?vfunction19@tActualPlayer@@UAEXPAX@Z	claim		vtable
 0x004a3bf8	function	fn_004a3bf8	tActualPlayer	?vfunction20@tActualPlayer@@UAEXPAX@Z	claim		vtable
-0x004a3c76	function	fn_004a3c76	tActualPlayer				vtable
+0x004a3c76	function	fn_004a3c76	tActualPlayer	?vfunction21@tActualPlayer@@UAEXPAX@Z	claim		vtable
 0x004a3cf4	function	fn_004a3cf4	tActualPlayer				vtable
 0x004a3d72	function	fn_004a3d72	tActualPlayer				vtable
 0x004a3df0	function	fn_004a3df0	tActualPlayer				vtable
