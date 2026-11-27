@@ -96,7 +96,10 @@ public:
 	virtual void vfunction17();
 	// HYPOTHESIS: takes two values; 0x004168cc forwards its two arguments.
 	virtual void vfunction18(int param_1, int param_2);
-	virtual void vfunction19(); virtual void vfunction20();
+	virtual void vfunction19();
+	// HYPOTHESIS: a yes/no question; 0x004168e2 forwards its argument and the fleet entry's
+	// 0x004c3a36 reads the result.
+	virtual unsigned char vfunction20(int param_1);
 	virtual void vfunction21(); virtual void vfunction22(); virtual void vfunction23();
 	virtual void vfunction24(); virtual void vfunction25(); virtual void vfunction26();
 	virtual void vfunction27();
@@ -288,6 +291,7 @@ public:
 	double fn_0041689a(int param_1);
 	void fn_004168b5(double param_1, int param_2);
 	void fn_004168cc(int param_1, int param_2);
+	unsigned char fn_004168e2(int param_1);
 
 	// 0x1bc is cleared by the constructor.
 	tObject_00426563_1bc *field_1bc;

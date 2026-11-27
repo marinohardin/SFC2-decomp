@@ -539,6 +539,12 @@ void tEntityShip::fn_004168cc(int param_1, int param_2)
 	field_ad4->vfunction18(param_1, param_2);
 }
 
+// FUNCTION: STARFLEETOP 0x004168e2
+unsigned char tEntityShip::fn_004168e2(int param_1)
+{
+	return field_ad4->vfunction20(param_1);
+}
+
 // FUNCTION: STARFLEETOP 0x00416a0e
 void tEntityShip::vfunction26(short a1, int a2, int a3, int a4, int a5)
 {
