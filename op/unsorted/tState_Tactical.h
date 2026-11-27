@@ -63,6 +63,7 @@ public:
 	void fn_004b35db(long *event);
 	void fn_004b3758(long *event);
 	void fn_004b3793(long *event);
+	void fn_004b37ce(long *event);
 	void fn_004bc55a(long x, long y, char *out);
 	void fn_004ba05b(int *param_1);
 	void fn_004ba5ea(int *param_1);
