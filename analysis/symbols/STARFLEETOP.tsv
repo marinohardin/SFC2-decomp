@@ -5049,7 +5049,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004b2f8b	function	fn_004b2f8b	tState_Namespace_Tactical::tState_Tactical				vtable
 0x004b2fe6	function	fn_004b2fe6		?fn_004b2fe6@@YAXXZ	claim		none
 0x004b3055	function	fn_004b3055		?fn_004b3055@@YAXXZ	add		none
-0x004b35db	function	fn_004b35db					none
+0x004b35db	function	fn_004b35db		?fn_004b35db@tState_Tactical@tState_Namespace_Tactical@@QAEXPAJ@Z	claim		none
 0x004b362e	function	fn_004b362e					none
 0x004b3758	function	fn_004b3758					none
 0x004b3793	function	fn_004b3793					none
@@ -5166,7 +5166,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004bc3e1	function	fn_004bc3e1					none
 0x004bc53a	function	fn_004bc53a					none
 0x004bc544	function	fn_004bc544					none
-0x004bc55a	function	fn_004bc55a					none
+0x004bc55a	function	fn_004bc55a		?fn_004bc55a@tState_Tactical@tState_Namespace_Tactical@@QAEXJJPAD@Z	add		none
 0x004bc5fc	function	tNetMsg_kMoveInDirection::tNetMsg_kMoveInDirection_Constructor_or_Destructor	tNetMsg_kMoveInDirection				rtti
 0x004bc67e	function	fn_004bc67e					none
 0x004bc712	function	fn_004bc712					none

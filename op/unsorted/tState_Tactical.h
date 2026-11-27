@@ -58,6 +58,10 @@ public:
 	virtual void vfunction17(int *param_1);	// 0x004b3809
 	virtual void *vfunction19();	// 0x004af807: returns a constant address
 
+	// HYPOTHESIS: 0x004b35db keeps ecx live up to its call of 0x004bc55a, which it makes
+	// without loading ecx: both are members of one class, and the class is only a guess.
+	void fn_004b35db(long *event);
+	void fn_004bc55a(long x, long y, char *out);
 	void fn_004ba05b(int *param_1);
 	void fn_004ba5ea(int *param_1);
 	void fn_004ba7c7(int *param_1);

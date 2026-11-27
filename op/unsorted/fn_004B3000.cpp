@@ -1,6 +1,32 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/fn_004B3000.cpp
-// Functions: 0x004b3055 to 0x004b3f79, 8 in op/UNITS.tsv
-// Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
-// Profile:   game-release (harness/units.json)
+#include "unsorted/tState_Tactical.h"
+
+// HYPOTHESIS: an input event record: a kind at +0x00, flags at +0x14 and two longs at +0x18
+// and +0x1c; the kind is rewritten in place. 0x004bc55a takes the two longs and fills a
+// 12-byte buffer on the caller's stack.
+
+namespace tState_Namespace_Tactical
+{
+
+// FUNCTION: STARFLEETOP 0x004b35db
+void tState_Tactical::fn_004b35db( long *event )
+{
+	switch ( event[0] )
+	{
+	case 2:
+		if ( event[5] & 1 )
+			event[0] = 0x10025;
+		else
+			event[0] = ( event[5] & 2 ) ? 0x10024 : 0x10023;
+		break;
+	case 6:
+		event[0] = 0x10027;
+		if ( event[5] & 1 )
+		{
+			char buffer[12];
+			fn_004bc55a( event[6], event[7], buffer );
+		}
+		break;
+	}
+}
+
+}	// namespace tState_Namespace_Tactical
