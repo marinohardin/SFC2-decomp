@@ -5104,7 +5104,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004b723e	function	fn_004b723e					none
 0x004b7430	function	fn_004b7430					none
 0x004b7509	function	fn_004b7509					none
-0x004b7f9e	function	fn_004b7f9e					none
+0x004b7f9e	function	fn_004b7f9e		?fn_004b7f9e@fn_004b7f9e_Rect@@QAEXPBU1@@Z	claim		none
 0x004b7fce	function	fn_004b7fce					none
 0x004b802d	function	fn_004b802d					none
 0x004b8115	function	fn_004b8115					none
