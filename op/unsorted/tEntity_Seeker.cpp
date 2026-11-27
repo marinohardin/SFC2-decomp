@@ -1,3 +1,4 @@
+#include "unsorted/tNetMsg_kKillEntity.h"
 #include "Tiger/tvectormath.h"
 #include "unsorted/sfcstreams.h"
 #include "unsorted/tEntity_Seeker.h"
@@ -12,6 +13,10 @@ void fn_0040eb35(float *value, tSFCStream &s, unsigned char flags, char *name);
 void fn_0040eb6e(tPoint3 *value, tSFCStream &s, unsigned char flags, char *name);
 
 #include <stdio.h>
+#include "unsorted/tEntityMgr.h"
+#include "unsorted/tNetControl.h"
+
+extern tEntityMgr g_008e1060;
 
 void fn_004d88e9(const char *param_1);
 void *FUN_0040fe6c(const char *name);
@@ -54,6 +59,60 @@ public:
 	virtual void vfunction19(tETrait_Explosion *trait);
 };
 
+// FUNCTION: STARFLEETOP 0x0041e042
+tEntity_Seeker::tEntity_Seeker()
+{
+	fClassification |= 0x20;
+	field_0x278 = -1;
+	field_0x280 = 0.0;
+	field_0x274 = 0;
+	field_0x270 = 0x100;
+	field_0x268 = 0x100;
+	field_0x264 = 0.0f;
+	field_0x275 = 1;
+	field_0x27c = 0;
+	field_0x26c = 0;
+}
+
+// FUNCTION: STARFLEETOP 0x0041e09b
+float tEntity_Seeker::vfunction63()
+{
+	return field_0x260;
+}
+
+// FUNCTION: STARFLEETOP 0x0041e0a2
+char tEntity_Seeker::vfunction70()
+{
+	return field_0x275;
+}
+
+// FUNCTION: STARFLEETOP 0x0041e0a9
+int tEntity_Seeker::vfunction18()
+{
+	return 0xc;
+}
+
+// FUNCTION: STARFLEETOP 0x0041e627
+bool tEntity_Seeker::vfunction31()
+{
+	switch (*(int *)&field_0x1bc[0])
+	{
+	case 0x25:
+	case 0x26:
+	case 0x27:
+	case 0x29:
+	case 0x2a:
+	case 0x2b:
+	case 0x2c:
+	case 0x2d:
+	case 0x2e:
+	case 0x2f:
+	case 0x30:
+		return field_0x194 == -1 ? true : false;
+	}
+	return false;
+}
+
 // HYPOTHESIS: the member layout from +0x248 on, as the stream calls address it.
 // FUNCTION: STARFLEETOP 0x0041e64f
 void tEntity_Seeker::vfunction11(tSFCStream &s, int32u mode)
@@ -73,6 +132,21 @@ void tEntity_Seeker::vfunction11(tSFCStream &s, int32u mode)
 	fn_0040eafc((unsigned char *)&field_0x275, s, mode, "fActive");
 	fn_0040e9df((long *)&field_0x278, s, mode, "fLastWeasel");
 	fn_0040e691(s);
+}
+
+// FUNCTION: STARFLEETOP 0x0041e74f
+void tEntity_Seeker::vfunction5()
+{
+	if (fIsAlive)
+	{
+		fIsAlive = 0;
+		if (g_008e1060.fn_004235fa(fTargetID))
+		{
+			tNetMsg_kKillEntity msg;
+			msg.field_0x4 = true;
+			gNetControl.mQueueMsg(&msg, tNetMsg::kKillEntity, fID, 0.0);
+		}
+	}
 }
 
 // FUNCTION: STARFLEETOP 0x0041e79a
@@ -142,4 +216,104 @@ void tEntity_Seeker::vfunction26(short a1, int a2, int a3, int a4, int a5)
 			vfunction5();
 		}
 	}
+}
+
+// FUNCTION: STARFLEETOP 0x0041e93f
+int tEntity_Seeker::vfunction23()
+{
+	return field_0x268;
+}
+
+// FUNCTION: STARFLEETOP 0x0041e946
+int tEntity_Seeker::vfunction71()
+{
+	return field_0x270;
+}
+
+// FUNCTION: STARFLEETOP 0x0041e94d
+float tEntity_Seeker::vfunction24()
+{
+	return (float)field_0x268 / field_0x270;
+}
+
+extern float g_00c6c004[];
+extern float g_00c6a004[];
+
+// MATCH-ONLY: the original reads the two tables through inline functions returning float
+// (fld/fstp rather than a dword copy); their names are not known.
+inline float fn_inline_cos(tAngle aAngle)
+{
+	return g_00c6c004[aAngle & 0x1fff];
+}
+
+inline float fn_inline_sin(tAngle aAngle)
+{
+	return g_00c6a004[aAngle & 0x1fff];
+}
+
+// HYPOTHESIS: places a point just ahead of an entity along its heading; the third
+// argument is not read. It has no known caller and pops its four arguments (ret 0x10)
+// without using ecx, so it is taken as __stdcall.
+// FUNCTION: STARFLEETOP 0x0041ea2c
+void __stdcall fn_0041ea2c(tPoint3 *aPoint, tEntity *aEntity, int aUnused, int aFlag)
+{
+	tPoint3 offset;
+	offset.x = 0.0f;
+	offset.y = 0.0f;
+	offset.z = 0.0f;
+	if (aEntity != 0)
+	{
+		tPhysicalEntity *entity = (tPhysicalEntity *)g_008e1060.fn_004249c0(aEntity);
+		*aPoint = entity->fCurrPos;
+		float scale;
+		if (aFlag == 0)
+		{
+			scale = entity->vfunction14();
+			if (scale > 2.0f)
+				scale = 2.0f;
+		}
+		else
+			scale = 0.25f;
+		tAngle angle = entity->field_0x90;
+		offset.x = fn_inline_cos(angle);
+		offset.y = fn_inline_sin(angle);
+		if (aFlag == 0)
+			offset.z = -0.25f;
+		offset = offset * scale;
+		*aPoint += offset;
+	}
+}
+
+// FUNCTION: STARFLEETOP 0x004203d5
+float tEntity_Seeker::vfunction14()
+{
+	float r = 1.0f - field_0x264;
+	if (r <= 0.0f)
+		return 0.0f;
+	return r * fRadius;
+}
+
+// FUNCTION: STARFLEETOP 0x00420447
+void tEntity_Seeker::vfunction22(unsigned aIndex, void *aRecord)
+{
+	if (aIndex < vfunction21())
+	{
+		int32 *record = (int32 *)aRecord;
+		record[0] = 5;
+		*(tPoint3 *)&record[4] = fCurrPos;
+		((float *)record)[10] = 20.0f;
+		// MATCH-ONLY: tEntity_Weapon.h does not yet declare the point at +0x220 (header request).
+		*(tPoint3 *)&record[7] = *(tPoint3 *)&field_0x1f8[0x28];
+	}
+}
+
+// FUNCTION: STARFLEETOP 0x00420493
+bool tEntity_Seeker::fn_00420493()
+{
+	// MATCH-ONLY: tEntity_Weapon.h does not yet declare the int at +0x1bc and the byte at
+	// +0x1c0 (header request).
+	int kind = *(int *)&field_0x1bc[0];
+	if (kind >= 15 && kind <= 17 && field_0x1bc[4] == 3)
+		return true;
+	return false;
 }

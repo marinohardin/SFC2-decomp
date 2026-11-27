@@ -871,9 +871,9 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004197a1	function	tNetMsg_kBreakDown::mGetMap	tNetMsg_kBreakDown	?mGetMap@tNetMsg_kBreakDown@@UBEPBUtMapItem@tNetMsg@@XZ	claim		claim
 0x004197a7	function	tNetMsg_kWarpOut::mGetMap	tNetMsg_kWarpOut	?mGetMap@tNetMsg_kWarpOut@@UBEPBUtMapItem@tNetMsg@@XZ	claim		claim
 0x004197ad	function	tNetMsg_kCorrectPos::mGetMap	tNetMsg_kCorrectPos	?mGetMap@tNetMsg_kCorrectPos@@UBEPBUtMapItem@tNetMsg@@XZ	claim		claim
-0x004197b3	function	fn_004197b3	tNetMsg_kCreateDirect				vtable
+0x004197b3	function	fn_004197b3	tNetMsg_kCreateDirect	?mGetMap@tNetMsg_kCreateDirect@@UBEPBUtMapItem@tNetMsg@@XZ	claim		vtable
 0x004197b9	function	tNetMsg_kCreateESG::mGetMap	tNetMsg_kCreateESG	?mGetMap@tNetMsg_kCreateESG@@UBEPBUtMapItem@tNetMsg@@XZ	claim		claim
-0x004197bf	function	fn_004197bf	tNetMsg_kCreateSeeker				vtable
+0x004197bf	function	fn_004197bf	tNetMsg_kCreateSeeker	?mGetMap@tNetMsg_kCreateSeeker@@UBEPBUtMapItem@tNetMsg@@XZ	claim		vtable
 0x004197c5	function	fn_004197c5	tNetMsg_kCreateSeekerAtPoint				vtable
 0x004197cb	function	fn_004197cb	tNetMsg_kEnableShipModeChange				vtable
 0x004197d1	function	tNetMsg_kLayMine::mGetMap	tNetMsg_kLayMine	?mGetMap@tNetMsg_kLayMine@@UBEPBUtMapItem@tNetMsg@@XZ	claim		claim
@@ -1005,21 +1005,21 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0041de27	function	fn_0041de27	tEntity_ESG				vtable
 0x0041dea0	function	fn_0041dea0	tEntity_ESG				vtable
 0x0041df7a	function	fn_0041df7a	tEntity_ESG				vtable
-0x0041e042	function	tEntity_Seeker::tEntity_Seeker	tEntity_Seeker				rtti
-0x0041e09b	function	fn_0041e09b	tEntity_Seeker				vtable
-0x0041e0a2	function	fn_0041e0a2	tEntity_Seeker				vtable
-0x0041e0a9	function	fn_0041e0a9	tEntity_Seeker				vtable
+0x0041e042	function	tEntity_Seeker::tEntity_Seeker	tEntity_Seeker	??0tEntity_Seeker@@QAE@XZ	claim		rtti
+0x0041e09b	function	fn_0041e09b	tEntity_Seeker	?vfunction63@tEntity_Seeker@@UAEMXZ	claim		vtable
+0x0041e0a2	function	fn_0041e0a2	tEntity_Seeker	?vfunction70@tEntity_Seeker@@UAEDXZ	claim		vtable
+0x0041e0a9	function	fn_0041e0a9	tEntity_Seeker	?vfunction18@tEntity_Seeker@@UAEHXZ	claim		vtable
 0x0041e0ad	function	tEntity_Seeker::scalar_deleting_destructor	tEntity_Seeker				rtti
 0x0041e0c9	function	fn_0041e0c9	tEntity_Seeker				vtable
-0x0041e627	function	fn_0041e627	tEntity_Seeker				vtable
+0x0041e627	function	fn_0041e627	tEntity_Seeker	?vfunction31@tEntity_Seeker@@UAE_NXZ	claim		vtable
 0x0041e64f	function	fn_0041e64f	tEntity_Seeker	?vfunction11@tEntity_Seeker@@UAEXAAVtSFCStream@@K@Z	claim		none
-0x0041e74f	function	fn_0041e74f	tEntity_Seeker				vtable
+0x0041e74f	function	fn_0041e74f	tEntity_Seeker	?vfunction5@tEntity_Seeker@@UAEXXZ	claim		vtable
 0x0041e79a	function	fn_0041e79a	tEntity_Seeker	?vfunction26@tEntity_Seeker@@UAEXFHHHH@Z	claim		none
-0x0041e93f	function	fn_0041e93f	tEntity_Seeker				vtable
-0x0041e946	function	fn_0041e946	tEntity_Seeker				vtable
-0x0041e94d	function	fn_0041e94d	tEntity_Seeker				vtable
+0x0041e93f	function	fn_0041e93f	tEntity_Seeker	?vfunction23@tEntity_Seeker@@UAEHXZ	claim		vtable
+0x0041e946	function	fn_0041e946	tEntity_Seeker	?vfunction71@tEntity_Seeker@@UAEHXZ	claim		vtable
+0x0041e94d	function	fn_0041e94d	tEntity_Seeker	?vfunction24@tEntity_Seeker@@UAEMXZ	claim		vtable
 0x0041e95a	function	fn_0041e95a	tEntity_Seeker				vtable
-0x0041ea2c	function	fn_0041ea2c					none
+0x0041ea2c	function	fn_0041ea2c		?fn_0041ea2c@@YGXPAUtPoint3@@PAVtEntity@@HH@Z	claim		none
 0x0041eaf9	function	fn_0041eaf9	tEntity_Seeker				vtable
 0x0041ee42	function	fn_0041ee42		?fn_0041ee42@tEntity_Seeker@@QAEXPAEPAD1@Z	callers		none
 0x0041eeaf	function	tNetMsg_kCreateSeekerAtPoint::~tNetMsg_kCreateSeekerAtPoint	tNetMsg_kCreateSeekerAtPoint	?fn_0041eeaf@tEntity_Seeker@@QAEXXZ	claim		rtti
@@ -1029,11 +1029,11 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0041f089	function	fn_0041f089					none
 0x0041f114	function	fn_0041f114					none
 0x0041f5f5	function	fn_0041f5f5	tEntity_Seeker				vtable
-0x004203d5	function	fn_004203d5	tEntity_Seeker				vtable
+0x004203d5	function	fn_004203d5	tEntity_Seeker	?vfunction14@tEntity_Seeker@@UAEMXZ	claim		vtable
 0x004203f5	function	tEntity_HellboreSeeker::~tEntity_HellboreSeeker	tEntity_HellboreSeeker				rtti
-0x00420447	function	fn_00420447	tEntity_Seeker				vtable
-0x00420493	function	fn_00420493					none
-0x004204b2	function	fn_004204b2	tEntity_HellboreSeeker				vtable
+0x00420447	function	fn_00420447	tEntity_Seeker	?vfunction22@tEntity_Seeker@@UAEXIPAX@Z	claim		vtable
+0x00420493	function	fn_00420493		?fn_00420493@tEntity_Seeker@@QAE_NXZ	claim		none
+0x004204b2	function	fn_004204b2	tEntity_HellboreSeeker	?vfunction5@tEntity_HellboreSeeker@@UAEXXZ	claim		vtable
 0x00420572	function	tEntity_DriftingSeeker::tEntity_DriftingSeeker	tEntity_DriftingSeeker	??0tEntity_DriftingSeeker@@QAE@XZ	add		rtti
 0x00420588	function	fn_00420588	tEntity_DriftingSeeker				vtable
 0x0042058c	function	tEntity_HellboreSeeker::scalar_deleting_destructor	tEntity_HellboreSeeker				rtti
@@ -1073,7 +1073,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00421228	function	fn_00421228	tEntity_MineBlast				vtable
 0x0042128c	function	fn_0042128c	tEntity_MineBlast				vtable
 0x004212d7	function	fn_004212d7	tEntity_MineBlast				vtable
-0x0042135f	function	tEntity_HellboreBlast::tEntity_HellboreBlast	tEntity_HellboreBlast				rtti
+0x0042135f	function	tEntity_HellboreBlast::tEntity_HellboreBlast	tEntity_HellboreBlast	??0tEntity_HellboreBlast@@QAE@JH@Z	add		rtti
 0x004214be	function	fn_004214be	tEntity_HellboreBlast				vtable
 0x004214c2	function	tEntity_HellboreBlast::scalar_deleting_destructor	tEntity_HellboreBlast				rtti
 0x004214de	function	tEntity_HellboreBlast::~tEntity_HellboreBlast	tEntity_HellboreBlast				rtti
@@ -4720,30 +4720,30 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004a1284	function	tPlayerShadow::scalar_deleting_destructor	tPlayerShadow				rtti
 0x004a12a0	function	tPlayerShadow::~tPlayerShadow	tPlayerShadow				rtti
 0x004a12ba	function	fn_004a12ba	tActualPlayer				vtable
-0x004a203a	function	fn_004a203a	tActualPlayer				vtable
+0x004a203a	function	fn_004a203a	tActualPlayer	?vfunction27@tActualPlayer@@UAEXXZ	claim		vtable
 0x004a20ad	function	fn_004a20ad					none
 0x004a282c	function	fn_004a282c					none
-0x004a2e75	function	fn_004a2e75	tActualPlayer				vtable
-0x004a2ef3	function	fn_004a2ef3	tActualPlayer				vtable
-0x004a2f71	function	fn_004a2f71	tActualPlayer				vtable
-0x004a2fef	function	fn_004a2fef	tActualPlayer				vtable
-0x004a306d	function	fn_004a306d	tActualPlayer				vtable
+0x004a2e75	function	fn_004a2e75	tActualPlayer	?vfunction5@tActualPlayer@@UAEXPAX@Z	claim		vtable
+0x004a2ef3	function	fn_004a2ef3	tActualPlayer	?vfunction6@tActualPlayer@@UAEXPAX@Z	claim		vtable
+0x004a2f71	function	fn_004a2f71	tActualPlayer	?vfunction7@tActualPlayer@@UAEXPAX@Z	claim		vtable
+0x004a2fef	function	fn_004a2fef	tActualPlayer	?vfunction8@tActualPlayer@@UAEXPAX@Z	claim		vtable
+0x004a306d	function	fn_004a306d	tActualPlayer	?vfunction9@tActualPlayer@@UAEXPAX@Z	claim		vtable
 0x004a3150	function	fn_004a3150	tActualPlayer				vtable
-0x004a368d	function	fn_004a368d	tActualPlayer				vtable
-0x004a36f9	function	fn_004a36f9	tActualPlayer				vtable
-0x004a3777	function	fn_004a3777	tActualPlayer				vtable
-0x004a3817	function	fn_004a3817	tActualPlayer				vtable
-0x004a38ee	function	fn_004a38ee	tActualPlayer				vtable
-0x004a39c5	function	fn_004a39c5	tActualPlayer				vtable
-0x004a3a43	function	fn_004a3a43	tActualPlayer				vtable
-0x004a3afc	function	fn_004a3afc	tActualPlayer				vtable
-0x004a3b7a	function	fn_004a3b7a	tActualPlayer				vtable
-0x004a3bf8	function	fn_004a3bf8	tActualPlayer				vtable
-0x004a3c76	function	fn_004a3c76	tActualPlayer				vtable
-0x004a3cf4	function	fn_004a3cf4	tActualPlayer				vtable
-0x004a3d72	function	fn_004a3d72	tActualPlayer				vtable
-0x004a3df0	function	fn_004a3df0	tActualPlayer				vtable
-0x004a3e6e	function	fn_004a3e6e	tActualPlayer				vtable
+0x004a368d	function	fn_004a368d	tActualPlayer	?vfunction11@tActualPlayer@@UAEXPAX@Z	claim		vtable
+0x004a36f9	function	fn_004a36f9	tActualPlayer	?vfunction12@tActualPlayer@@UAEXPAX@Z	claim		vtable
+0x004a3777	function	fn_004a3777	tActualPlayer	?vfunction13@tActualPlayer@@UAEXPAX@Z	claim		vtable
+0x004a3817	function	fn_004a3817	tActualPlayer	?vfunction15@tActualPlayer@@UAEXPAX@Z	claim		vtable
+0x004a38ee	function	fn_004a38ee	tActualPlayer	?vfunction16@tActualPlayer@@UAEXPAX@Z	claim		vtable
+0x004a39c5	function	fn_004a39c5	tActualPlayer	?vfunction14@tActualPlayer@@UAEXPAX@Z	claim		vtable
+0x004a3a43	function	fn_004a3a43	tActualPlayer	?vfunction17@tActualPlayer@@UAEXPAX@Z	claim		vtable
+0x004a3afc	function	fn_004a3afc	tActualPlayer	?vfunction18@tActualPlayer@@UAEXPAX@Z	claim		vtable
+0x004a3b7a	function	fn_004a3b7a	tActualPlayer	?vfunction19@tActualPlayer@@UAEXPAX@Z	claim		vtable
+0x004a3bf8	function	fn_004a3bf8	tActualPlayer	?vfunction20@tActualPlayer@@UAEXPAX@Z	claim		vtable
+0x004a3c76	function	fn_004a3c76	tActualPlayer	?vfunction21@tActualPlayer@@UAEXPAX@Z	claim		vtable
+0x004a3cf4	function	fn_004a3cf4	tActualPlayer	?vfunction22@tActualPlayer@@UAEXPAX@Z	claim		vtable
+0x004a3d72	function	fn_004a3d72	tActualPlayer	?vfunction23@tActualPlayer@@UAEXPAX@Z	claim		vtable
+0x004a3df0	function	fn_004a3df0	tActualPlayer	?vfunction24@tActualPlayer@@UAEXPAX@Z	claim		vtable
+0x004a3e6e	function	fn_004a3e6e	tActualPlayer	?vfunction25@tActualPlayer@@UAEXPAX@Z	claim		vtable
 0x004a3eec	function	fn_004a3eec	tActualPlayer				vtable
 0x004a46cd	function	fn_004a46cd					none
 0x004a46e6	function	tValue<float>::tValue<float>	tValue<float>				rtti
@@ -4795,7 +4795,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004a6c14	function	fn_004a6c14					none
 0x004a6c3e	function	fn_004a6c3e	tShadowTrans				vtable
 0x004a6cd1	function	fn_004a6cd1					none
-0x004a6f3d	function	fn_004a6f3d					none
+0x004a6f3d	function	fn_004a6f3d		?fn_004a6f3d@@YAHPAX@Z	add		none
 0x004a6fd8	function	fn_004a6fd8					none
 0x004a703d	function	tShadowBase::tShadowBase	tShadowBase				rtti
 0x004a7151	function	fn_004a7151					none
@@ -6677,14 +6677,14 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004ddf73	function	fn_004ddf73	tESGLance				vtable
 0x004ddfb9	function	fn_004ddfb9	tESGLance				vtable
 0x004ddfec	function	fn_004ddfec	tESGLance				vtable
-0x004de01f	function	fn_004de01f					none
+0x004de01f	function	fn_004de01f		?fn_004de01f@tESGLance@@QAEHXZ	add		none
 0x004de023	function	fn_004de023	tESGLance				vtable
 0x004de02c	function	fn_004de02c	tESGLance				vtable
-0x004de035	function	tNetMsg_kCreateDirect::~tNetMsg_kCreateDirect	tNetMsg_kCreateDirect				rtti
+0x004de035	function	tNetMsg_kCreateDirect::~tNetMsg_kCreateDirect	tNetMsg_kCreateDirect	?fn_004de035@tESGLance@@QAEXM@Z	claim		rtti
 0x004de0fe	function	fn_004de0fe	tESGLance				vtable
 0x004de200	function	fn_004de200					none
 0x004de20a	function	fn_004de20a					none
-0x004de220	function	tESGLance_Creator::tESGLance_Creator	tESGLance_Creator				rtti
+0x004de220	function	tESGLance_Creator::tESGLance_Creator	tESGLance_Creator	??0tESGLance_Creator@@QAE@XZ	add		rtti
 0x004de232	function	fn_004de232	tESGLance_Creator				vtable
 0x004de238	function	fn_004de238	tESGLance_Creator				vtable
 0x004de2c5	function	fn_004de2c5					none
@@ -6904,14 +6904,14 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004e46ae	function	fn_004e46ae	tPhaserA				vtable
 0x004e46f4	function	fn_004e46f4	tPhaserA				vtable
 0x004e4727	function	fn_004e4727	tPhaserA				vtable
-0x004e475a	function	fn_004e475a					none
+0x004e475a	function	fn_004e475a		?fn_004e475a@tPhaserA@@QAEHXZ	add		none
 0x004e48cc	function	fn_004e48cc	tPhaserA				vtable
 0x004e48e4	function	fn_004e48e4	tPhaserA				vtable
-0x004e492c	function	tNetMsg_kCreateDirect::~tNetMsg_kCreateDirect	tNetMsg_kCreateDirect				rtti
+0x004e492c	function	tNetMsg_kCreateDirect::~tNetMsg_kCreateDirect	tNetMsg_kCreateDirect	?fn_004e492c@tPhaserA@@QAEXM@Z	claim		rtti
 0x004e49f5	function	fn_004e49f5	tPhaserA				vtable
 0x004e4b0c	function	fn_004e4b0c					none
 0x004e4b16	function	fn_004e4b16					none
-0x004e4b2c	function	tPhaserA_Creator::tPhaserA_Creator	tPhaserA_Creator				rtti
+0x004e4b2c	function	tPhaserA_Creator::tPhaserA_Creator	tPhaserA_Creator	??0tPhaserA_Creator@@QAE@XZ	add		rtti
 0x004e4b3e	function	fn_004e4b3e	tPhaserA_Creator				vtable
 0x004e4b44	function	fn_004e4b44	tPhaserA_Creator				vtable
 0x004e4bd1	function	fn_004e4bd1					none
@@ -6923,14 +6923,14 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004e4da4	function	fn_004e4da4	tPhaserB				vtable
 0x004e4dea	function	fn_004e4dea	tPhaserB				vtable
 0x004e4e1d	function	fn_004e4e1d	tPhaserB				vtable
-0x004e4e50	function	fn_004e4e50					none
+0x004e4e50	function	fn_004e4e50		?fn_004e4e50@tPhaserB@@QAEHXZ	add		none
 0x004e4fc2	function	fn_004e4fc2	tPhaserB				vtable
 0x004e4fda	function	fn_004e4fda	tPhaserB				vtable
-0x004e5022	function	tNetMsg_kCreateDirect::~tNetMsg_kCreateDirect	tNetMsg_kCreateDirect				rtti
+0x004e5022	function	tNetMsg_kCreateDirect::~tNetMsg_kCreateDirect	tNetMsg_kCreateDirect	?fn_004e5022@tPhaserB@@QAEXM@Z	claim		rtti
 0x004e50eb	function	fn_004e50eb	tPhaserB				vtable
 0x004e5218	function	fn_004e5218					none
 0x004e5222	function	fn_004e5222					none
-0x004e5238	function	tPhaserB_Creator::tPhaserB_Creator	tPhaserB_Creator				rtti
+0x004e5238	function	tPhaserB_Creator::tPhaserB_Creator	tPhaserB_Creator	??0tPhaserB_Creator@@QAE@XZ	add		rtti
 0x004e524a	function	fn_004e524a	tPhaserB_Creator				vtable
 0x004e5250	function	fn_004e5250	tPhaserB_Creator				vtable
 0x004e52dd	function	fn_004e52dd					none
@@ -17531,7 +17531,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00671130	function	_GetCharHeight		?_GetCharHeight@@YAKKG@Z	claim		claim
 0x006711b0	function	_GetTypefacebyName		?_GetTypefacebyName@@YA?AW4eTypeface@@ABVtString@@@Z	mangled		mangled
 0x006711c0	function	tNotifier::~tNotifier	tNotifier	??1tNotifier@@UAE@XZ	callers		rtti
-0x006712c0	function	fn_006712c0					none
+0x006712c0	function	fn_006712c0		?fn_006712c0@tNotifier@@QAEXJJ@Z	add		none
 0x00671300	function	fn_00671300					none
 0x00671410	function	fn_00671410					none
 0x00671520	function	fn_00671520					none

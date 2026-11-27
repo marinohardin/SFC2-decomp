@@ -1,6 +1,41 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/tEntity_HellboreSeeker.cpp
-// Functions: 0x004203f5 to 0x0042058c, 7 in op/UNITS.tsv
-// Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
-// Profile:   game-release (harness/units.json)
+#include "unsorted/tEntity_Seeker.h"
+#include "unsorted/tEntityMgr.h"
+#include "unsorted/tObject_0040ce21.h"
+
+extern tEntityMgr g_008e1060;
+
+// HYPOTHESIS: the object tEntity_Weapon keeps at +0x1f0 (declared there as an int); only its
+// virtual slot 10, called without arguments, is known.
+class fn_004204b2_Object
+{
+public:
+	virtual void vfunction1();
+	virtual void vfunction2();
+	virtual void vfunction3();
+	virtual void vfunction4();
+	virtual void vfunction5();
+	virtual void vfunction6();
+	virtual void vfunction7();
+	virtual void vfunction8();
+	virtual void vfunction9();
+	virtual void vfunction10();
+	virtual void vfunction11();
+};
+
+// FUNCTION: STARFLEETOP 0x004204b2
+void tEntity_HellboreSeeker::vfunction5()
+{
+	fn_004204b2_Object *object = (fn_004204b2_Object *)field_0x1f0;
+	if (object)
+		object->vfunction11();
+	tEntity_HellboreBlast *blast = new tEntity_HellboreBlast(fTargetID, field_0x26c);
+	if (blast)
+	{
+		static tObject_0040ce21 marker("Let em Have it!");
+		blast->fID = g_008e1060.mGetNextPlayerID();
+		blast->fn_0041089e(&fCurrPos);
+		blast->vfunction13(fTargetID);
+		g_008e1060.mAddEntity(blast);
+	}
+	tEntity_Seeker::vfunction5();
+}
