@@ -6684,7 +6684,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004de0fe	function	fn_004de0fe	tESGLance				vtable
 0x004de200	function	fn_004de200					none
 0x004de20a	function	fn_004de20a					none
-0x004de220	function	tESGLance_Creator::tESGLance_Creator	tESGLance_Creator				rtti
+0x004de220	function	tESGLance_Creator::tESGLance_Creator	tESGLance_Creator	??0tESGLance_Creator@@QAE@XZ	add		rtti
 0x004de232	function	fn_004de232	tESGLance_Creator				vtable
 0x004de238	function	fn_004de238	tESGLance_Creator				vtable
 0x004de2c5	function	fn_004de2c5					none

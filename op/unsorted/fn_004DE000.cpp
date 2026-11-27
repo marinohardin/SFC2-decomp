@@ -36,3 +36,15 @@ void tESGLance::fn_004de035(float param_1)
 	unsigned int frame = (int)(count * g_00799f68 / source->field_20);
 	gNetControl.mQueueMsg(&msg, 6, vfunction37(), param_1 * 3.0f + (frame + 1) * 50);
 }
+
+// HYPOTHESIS: tESGLance_Creator (RTTI) registers itself like tETrait_Creator; its constructor
+// is 0x004de220 in its own unit. It has no shared header yet, so it is declared here.
+class tESGLance_Creator
+{
+public:
+	tESGLance_Creator();
+	virtual ~tESGLance_Creator();
+};
+
+// FUNCTION: STARFLEETOP 0x004de200
+tESGLance_Creator g_0092ec98;
