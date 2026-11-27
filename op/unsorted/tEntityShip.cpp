@@ -517,6 +517,15 @@ void tEntityShip::fn_0041687b()
 	field_8a0 = field_ad4->vfunction28()->field_18 * 10.0;
 }
 
+// FUNCTION: STARFLEETOP 0x0041689a
+// HYPOTHESIS: the table at 0xa98 holds seven doubles; the bound reaches past field_a98[5].
+double tEntityShip::fn_0041689a(int param_1)
+{
+	if (param_1 < 7)
+		return field_a98[param_1];
+	return 0.0;
+}
+
 // FUNCTION: STARFLEETOP 0x00416a0e
 void tEntityShip::vfunction26(short a1, int a2, int a3, int a4, int a5)
 {
