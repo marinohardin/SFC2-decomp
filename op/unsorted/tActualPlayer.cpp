@@ -148,6 +148,16 @@ public:
 	virtual void vfunction127();
 	virtual void vfunction128();
 	virtual int vfunction129();
+	virtual void vfunction130();
+	virtual void vfunction131();
+	virtual void vfunction132();
+	virtual void vfunction133();
+	virtual void vfunction134();
+	virtual void vfunction135();
+	virtual void vfunction136();
+	virtual void vfunction137();
+	virtual void vfunction138();
+	virtual int vfunction139();
 };
 
 // FUNCTION: STARFLEETOP 0x004a2e75
@@ -242,4 +252,26 @@ void tActualPlayer::vfunction12(void *aObject)
 	field_0xbf8 = &field_0x1048;
 	field_0xc18 = fn_004a6f3d(aObject);
 	field_0xbfc = ((fn_004a2e75_Object *)aObject)->vfunction129();
+}
+
+// HYPOTHESIS: the member at +0x7f8 has no known class; only the non-virtual 0x004a68e2 is called
+// on it, with an address inside the vfunction5 family's object.
+class fn_004a68e2_Object
+{
+public:
+	void fn_004a68e2(void *aArg);
+};
+
+// FUNCTION: STARFLEETOP 0x004a3777
+void tActualPlayer::vfunction13(void *aObject)
+{
+	field_0xbec = &field_0xf28;
+	field_0xbf0 = &field_0xf4c;
+	field_0xbf4 = &field_0xf70;
+	field_0xbe8 = aObject;
+	field_0xbf8 = &field_0xf94;
+	field_0xc18 = fn_004a6f3d(aObject);
+	field_0xbfc = ((fn_004a2e75_Object *)aObject)->vfunction129();
+	field_0x510 = ((fn_004a2e75_Object *)aObject)->vfunction139();
+	((fn_004a68e2_Object *)field_0x7f8)->fn_004a68e2((char *)aObject + 0x9c);
 }

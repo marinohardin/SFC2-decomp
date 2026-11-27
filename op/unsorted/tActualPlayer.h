@@ -106,7 +106,10 @@ public:
 	char field_0x490[0x50];  // tShadowTStr (RTTI, vtable 0x007a0dbc, constructor 0x004a03cd)
 	char field_0x4e0[0x14];
 	char field_0x4f4[0x14];
-	char field_0x508[0x14];
+	char field_0x508[0x8];
+	// HYPOTHESIS: an int; vfunction13 stores the result of the object's slot 138 here.
+	int field_0x510;
+	char field_0x514[0x8];
 	char field_0x51c[0x10];
 	char field_0x52c[0x1c];  // a value object, constructed by tValueBase (0x00436633) and given its own vtable
 	char field_0x548[0xc];  // tShadowFloat (RTTI, vtable 0x007a0e44; stored inline, 12 bytes)
