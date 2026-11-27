@@ -107,6 +107,14 @@ public:
 	bool fn_00437d8d();
 };
 
+// HYPOTHESIS: one of the 25 hardpoint entries slot 57 of the object at 0xad4 returns; 0x004199f4
+// calls 0x00419a83 on each with the point found for it, passed by value (three dwords pushed).
+class fn_00419a83_Object
+{
+public:
+	void fn_00419a83(tPoint3 aPoint);
+};
+
 // HYPOTHESIS: the object at 0xad4 (0x00416da2 calls through it); only slots 34 and 86 are called
 // by 0x004162b9, the slots before them are not known.
 class tObject_00416d41_ad4
@@ -147,7 +155,10 @@ public:
 	virtual void vfunction47(); virtual void vfunction48(); virtual void vfunction49();
 	virtual void vfunction50(); virtual void vfunction51(); virtual void vfunction52();
 	virtual void vfunction53(); virtual void vfunction54(); virtual void vfunction55();
-	virtual void vfunction56(); virtual void vfunction57(); virtual void vfunction58();
+	virtual void vfunction56();
+	// HYPOTHESIS: returns 25 hardpoint entries, 0 where none is mounted (0x004199f4).
+	virtual fn_00419a83_Object **vfunction57();
+	virtual void vfunction58();
 	virtual void vfunction59(); virtual void vfunction60(); virtual void vfunction61();
 	virtual void vfunction62(); virtual void vfunction63(); virtual void vfunction64();
 	virtual void vfunction65(); virtual void vfunction66(); virtual void vfunction67();
@@ -303,6 +314,7 @@ public:
 	void fn_00419873(short param_1, short param_2, short param_3);
 	void fn_004198e0();
 	void fn_0041994b();
+	void fn_004199f4();
 	// HYPOTHESIS: takes the ID of the entity 0x00416a0e acted for; the symbol table names 0x00419e84
 	// a destructor of tNetMsg_kSendVoice, which its callers' use contradicts.
 	void fn_00419e84(int aID);

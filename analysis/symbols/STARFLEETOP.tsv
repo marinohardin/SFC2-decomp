@@ -891,7 +891,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004198e0	function	fn_004198e0		?fn_004198e0@tEntityShip@@QAEXXZ	claim		none
 0x0041994b	function	fn_0041994b		?fn_0041994b@tEntityShip@@QAEXXZ	claim		none
 0x004199c4	function	fn_004199c4	tEntityShip				vtable
-0x004199f4	function	fn_004199f4					none
+0x004199f4	function	fn_004199f4		?fn_004199f4@tEntityShip@@QAEXXZ	claim		none
 0x00419a83	function	fn_00419a83					none
 0x00419aa0	function	fn_00419aa0					none
 0x00419bd3	function	fn_00419bd3					none

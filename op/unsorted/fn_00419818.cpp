@@ -1,5 +1,6 @@
 #include "unsorted/tEntityShip.h"
 #include "unsorted/tObject_0040ce21.h"
+#include <stdio.h>
 
 // HYPOTHESIS: a tEntityShip member; it writes the three points at 0x8e8, 0x8f4 and 0x900 of the
 // ship's layout, clearing the first and setting the other two from the point given.
@@ -53,5 +54,33 @@ void tEntityShip::fn_0041994b()
 	if (record->field_18 > 0.0f)
 	{
 		object->vfunction22((int)(record->field_18 - 0.5f));
+	}
+}
+
+// HYPOTHESIS: a tEntityShip member; for each of 25 hardpoints the object at 0xad4 reports, it
+// looks up "HardPoint<n>" on the object at 0x88 and hands the point found to 0x00419a83.
+// FUNCTION: STARFLEETOP 0x004199f4
+void tEntityShip::fn_004199f4()
+{
+	if (field_0x88 && field_ad4)
+	{
+		fn_00419a83_Object **entries = field_ad4->vfunction57();
+		if (entries)
+		{
+			for (int i = 0; i < 25; i++)
+			{
+				fn_00419a83_Object *entry = entries[i];
+				if (entry)
+				{
+					tPoint3 point;
+					char name[80];
+					sprintf(name, "HardPoint%d", i + 1);
+					if (field_0x88->vfunction10(&point, name))
+					{
+						entry->fn_00419a83(point);
+					}
+				}
+			}
+		}
 	}
 }

@@ -94,7 +94,10 @@ public:
 	virtual void vfunction7(tObject_00413ac3_arg *aObject, float aValue1, float aValue2, int aFlag);
 	virtual void vfunction8();
 	virtual float vfunction9();
-	virtual void vfunction10(); virtual void vfunction11(); virtual void vfunction12();
+	// HYPOTHESIS: looks up a named point ("HardPoint%d") and returns whether it was found;
+	// 0x004199f4 passes a tPoint3 to fill and the name.
+	virtual bool vfunction10(tPoint3 *aPoint, const char *aName);
+	virtual void vfunction11(); virtual void vfunction12();
 	virtual void vfunction13(); virtual void vfunction14(); virtual void vfunction15();
 	virtual void vfunction16(); virtual void vfunction17(); virtual void vfunction18();
 	virtual void vfunction19(); virtual void vfunction20(); virtual void vfunction21();
