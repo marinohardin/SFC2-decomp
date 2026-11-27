@@ -50,6 +50,34 @@ struct fn_004b7f9e_Rect {
 	void fn_004b99a4(fn_004b7f9e_Rect *out, const fn_004b7f9e_Rect *other) const;
 };
 
+// HYPOTHESIS: the 0xb0-byte object built by 0x004afd4d (tState_Tactical's field_360, and the
+// global at 0x0092f478 that the three matrices at 0x0092f528 to 0x0092f5b8 follow). The member
+// split follows 0x004afd4d's stores and 0x004b9d12's copy, which copies +0x40 and +0x70 as
+// four 12-byte elements each.
+class fn_0092f478_object
+{
+public:
+	void fn_004afec0( tPoint3 *point, int kind, tMatrix *matrix );
+	fn_0092f478_object &fn_004b9d12( fn_0092f478_object *other );
+	int field_00;
+	int field_04;
+	int field_08;
+	int field_0c;
+	float field_10;
+	float field_14;
+	float field_18;
+	float field_1c;
+	float field_20;
+	float field_24;
+	float field_28;
+	float field_2c;
+	// HYPOTHESIS: a rectangle: 0x004b9d12 copies these four dwords as one plain struct.
+	fn_004b7f9e_Rect field_30;
+	tPoint3 field_40[4];
+	tPoint3 field_70[4];
+	float field_a0[4];
+};
+
 namespace tState_Namespace_Tactical
 {
 

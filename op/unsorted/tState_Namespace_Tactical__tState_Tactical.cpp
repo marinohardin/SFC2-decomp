@@ -126,15 +126,15 @@ extern fn_0084b47c_object *g_0084b47c;
 
 
 
-// HYPOTHESIS: the 0xb0-byte object built by 0x004afd4d (tState_Tactical's field_360, and the
-// global at 0x0092f478 that the three matrices at 0x0092f528 to 0x0092f5b8 follow).
-class fn_0092f478_object
-{
-public:
-	void fn_004afec0( tPoint3 *point, int kind, tMatrix *matrix );
-	void fn_004b9d12( fn_0092f478_object *other );
-	unsigned char m_data[0xb0];
-};
+// fn_0092f478_object is declared in unsorted/tState_Tactical.h.
+
+
+
+
+
+
+
+
 
 // HYPOTHESIS: the list head at tState_Tactical's field_1ac.
 class fn_004bc3e1_owner

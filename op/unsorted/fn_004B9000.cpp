@@ -29,3 +29,31 @@ void fn_004b7f9e_Rect::fn_004b99a4(fn_004b7f9e_Rect *out, const fn_004b7f9e_Rect
 	else
 		out->bottom = bottom;
 }
+
+// HYPOTHESIS: the class's implicit assignment operator, out of line; written memberwise as the
+// compiler generates it (the point arrays element by element through tPoint3's operator=).
+// FUNCTION: STARFLEETOP 0x004b9d12
+fn_0092f478_object &fn_0092f478_object::fn_004b9d12( fn_0092f478_object *other )
+{
+	field_00 = other->field_00;
+	field_04 = other->field_04;
+	field_08 = other->field_08;
+	field_0c = other->field_0c;
+	field_10 = other->field_10;
+	field_14 = other->field_14;
+	field_18 = other->field_18;
+	field_1c = other->field_1c;
+	field_20 = other->field_20;
+	field_24 = other->field_24;
+	field_28 = other->field_28;
+	field_2c = other->field_2c;
+	field_30 = other->field_30;
+	int i;
+	for ( i = 0; i < 4; i++ )
+		field_40[i] = other->field_40[i];
+	for ( i = 0; i < 4; i++ )
+		field_70[i] = other->field_70[i];
+	for ( i = 0; i < 4; i++ )
+		field_a0[i] = other->field_a0[i];
+	return *this;
+}
