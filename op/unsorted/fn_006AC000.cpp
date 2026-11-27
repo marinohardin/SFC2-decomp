@@ -15,9 +15,9 @@ void fn_006ac780_State::fn_006ac780()
 	field_0x10.x = 1.0f;
 	field_0x10.y = 1.0f;
 	field_0x10.z = 1.0f;
-	field_0x1c = 1.0f;
-	field_0x20 = 1.0f;
-	field_0x24 = 1.0f;
+	field_0x1c.x = 1.0f;
+	field_0x1c.y = 1.0f;
+	field_0x1c.z = 1.0f;
 	field_0x28 = 1.0f;
 	field_0x2c = 1.0f;
 	field_0x30 = 1.0f;

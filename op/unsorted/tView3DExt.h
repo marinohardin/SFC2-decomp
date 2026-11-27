@@ -50,9 +50,8 @@ struct fn_006ac780_State
 	float				field_0x0c;
 	// HYPOTHESIS: a point; vfunction73 takes a tPoint3 * and vfunction68 sets it with tPoint3::mSet
 	tPoint3				field_0x10;    // vfunction73
-	float				field_0x1c;    // vfunction77, vfunction76
-	float				field_0x20;
-	float				field_0x24;
+	// HYPOTHESIS: a colour point; vfunction77 sets it with tPoint3::mSet (the store order shows it)
+	tPoint3				field_0x1c;    // vfunction77, vfunction76
 	float				field_0x28;
 	float				field_0x2c;
 	float				field_0x30;
