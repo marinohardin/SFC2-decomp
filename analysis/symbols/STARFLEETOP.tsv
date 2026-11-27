@@ -18807,7 +18807,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x006aa6c0	function	fn_006aa6c0	tView3DExt	?vfunction59@tView3DExt@@UAEPAVtMatrix@@XZ	claim		vtable
 0x006aa6d0	function	fn_006aa6d0	tView3DExt	?vfunction5@tView3DExt@@UAEXH@Z	claim		vtable
 0x006aa6e0	function	fn_006aa6e0	tView3DExt	?vfunction87@tView3DExt@@UAEXXZ	claim		vtable
-0x006aa720	function	fn_006aa720	tView3DExt				vtable
+0x006aa720	function	fn_006aa720	tView3DExt	?vfunction88@tView3DExt@@UAEHXZ	claim		vtable
 0x006aa730	function	fn_006aa730	tView3DExt				vtable
 0x006aa740	function	fn_006aa740	tView3DExt				vtable
 0x006aa750	function	fn_006aa750	tView3DExt				vtable

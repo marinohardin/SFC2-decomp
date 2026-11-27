@@ -470,6 +470,12 @@ void tView3DExt::vfunction87()
 	field_0x1f2c[5] = 0;
 }
 
+// FUNCTION: STARFLEETOP 0x006aa720
+int tView3DExt::vfunction88()
+{
+	return field_0x1f2c[0];
+}
+
 // HYPOTHESIS: tView3D declares vfunction41/42/53/54 without the arguments this function passes
 // (HEADER REQUEST pending); the member-pointer casts give those calls their real shapes.
 typedef bool (tView3D::*tVFn41)(bool);
