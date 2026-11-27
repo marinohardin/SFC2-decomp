@@ -7583,7 +7583,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00504412	function	fn_00504412					none
 0x00504426	function	fn_00504426					none
 0x0050442e	thunk	fn_0050442e					none
-0x00504433	function	fn_00504433		?fn_00504433@@YAMXZ	claim		none
+0x00504433	function	fn_00504433					none
 0x00504442	function	fn_00504442					none
 0x00504456	function	fn_00504456					none
 0x0050446a	function	fn_0050446a					none
@@ -7597,7 +7597,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00504af2	function	fn_00504af2	tFx_ProximityDetonation				vtable
 0x00504b65	function	fn_00504b65		?fn_00504b65@@YAPAVtFx_ProximityDetonation@@XZ	claim		none
 0x00504bfa	thunk	fn_00504bfa					none
-0x00504bff	function	fn_00504bff		?fn_00504bff@@YAXXZ	claim		none
+0x00504bff	function	fn_00504bff					none
 0x00504c0a	function	fn_00504c0a					none
 0x00504c1e	function	fn_00504c1e					none
 0x00504c32	function	fn_00504c32					none
@@ -17872,7 +17872,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0067f5d0	function	fn_0067f5d0					none
 0x0067f6e0	function	fn_0067f6e0					none
 0x0067f7a0	function	fn_0067f7a0					none
-0x0067f830	function	fn_0067f830					none
+0x0067f830	function	fn_0067f830		?fn_0067f830@@YAXPAVtVisObject@@PBDHHH@Z	callers		none
 0x0067fc40	function	fn_0067fc40					none
 0x0067fe30	function	fn_0067fe30					none
 0x0067ff90	function	fn_0067ff90					none
@@ -17957,10 +17957,10 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00685bd0	function	fn_00685bd0	tVisStateObject				vtable
 0x00685c40	function	fn_00685c40	tControl				vtable
 0x00685c80	function	fn_00685c80	tControl				vtable
-0x00685ee0	function	fn_00685ee0	tControl				vtable
-0x00685f10	function	fn_00685f10	tControl				vtable
-0x00685f40	function	fn_00685f40	tControl				vtable
-0x00685f80	function	fn_00685f80	tControl				vtable
+0x00685ee0	function	fn_00685ee0	tControl	?fn_00685ee0@tControl@@QAEXUtPoint@@@Z	callers		vtable
+0x00685f10	function	fn_00685f10	tControl	?fn_00685f10@tControl@@QAEXUtPoint@@@Z	callers		vtable
+0x00685f40	function	fn_00685f40	tControl	?fn_00685f40@tControl@@QAEXXZ	callers		vtable
+0x00685f80	function	fn_00685f80	tControl	?fn_00685f80@tControl@@QAEXXZ	callers		vtable
 0x00685fc0	function	fn_00685fc0					none
 0x00686060	function	fn_00686060					none
 0x00686080	function	fn_00686080	tControl				vtable
@@ -17970,12 +17970,12 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00686220	function	fn_00686220	tButton				vtable
 0x006863b0	function	fn_006863b0	tPushBtn				vtable
 0x006865c0	function	fn_006865c0	tPushRect				vtable
-0x00686640	function	fn_00686640	tPushBtnBase				vtable
-0x006866f0	function	fn_006866f0	tPushBtnBase				vtable
-0x00686720	function	fn_00686720	tPushBtnBase				vtable
-0x00686750	function	fn_00686750	tPushBtnBase				vtable
-0x00686770	function	fn_00686770	tPushBtnBase				vtable
-0x00686780	function	fn_00686780	tPushBtnBase				vtable
+0x00686640	function	fn_00686640	tPushBtnBase	?vfunction43@tPushBtnBase@@UAEXUtPoint@@@Z	claim		none
+0x006866f0	function	fn_006866f0	tPushBtnBase	?vfunction44@tPushBtnBase@@UAEXUtPoint@@@Z	claim		none
+0x00686720	function	fn_00686720	tPushBtnBase	?vfunction45@tPushBtnBase@@UAEXUtPoint@@@Z	claim		none
+0x00686750	function	fn_00686750	tPushBtnBase	?vfunction47@tPushBtnBase@@UAEXXZ	claim		none
+0x00686770	function	fn_00686770	tPushBtnBase	?vfunction39@tPushBtnBase@@UAEXXZ	claim		none
+0x00686780	function	fn_00686780	tPushBtnBase	?fn_00686780@tPushBtnBase@@QAEXH@Z	claim		none
 0x006867f0	function	fn_006867f0	tTextButton				vtable
 0x006868b0	function	fn_006868b0					none
 0x006868e0	function	fn_006868e0					none
