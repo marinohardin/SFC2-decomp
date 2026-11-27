@@ -87,6 +87,27 @@ int tEntity_Seeker::vfunction18()
 	return 0xc;
 }
 
+// FUNCTION: STARFLEETOP 0x0041e627
+bool tEntity_Seeker::vfunction31()
+{
+	switch (*(int *)&field_0x1bc[0])
+	{
+	case 0x25:
+	case 0x26:
+	case 0x27:
+	case 0x29:
+	case 0x2a:
+	case 0x2b:
+	case 0x2c:
+	case 0x2d:
+	case 0x2e:
+	case 0x2f:
+	case 0x30:
+		return field_0x194 == -1 ? true : false;
+	}
+	return false;
+}
+
 // HYPOTHESIS: the member layout from +0x248 on, as the stream calls address it.
 // FUNCTION: STARFLEETOP 0x0041e64f
 void tEntity_Seeker::vfunction11(tSFCStream &s, int32u mode)
