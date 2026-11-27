@@ -13,14 +13,15 @@ template<> int& std::map<int, int>::operator[]( const int& _Kv )
 }
 
 // The game's out-of-line copy of the library's tree destructor for the same map.
-// HYPOTHESIS: the original's library kept a per-instance nil node at +0x8 and the size at +0x10,
-// and freed the nil node here; the toolchain's xtree keeps a static nil, so that tail differs.
+// HYPOTHESIS: key and value are int, as for 0x005fb00a.
 // FUNCTION: STARFLEETOP 0x005fb033
 template<> std::_Tree<int, std::pair<const int, int>, std::map<int, int>::_Kfn, std::less<int>, std::allocator<int> >::~_Tree()
 {
 	erase( begin(), end() );
 	_Freenode( _Head );
 	_Head = 0, _Size = 0;
+	_Freenode( _Nil );
+	_Nil = 0;
 }
 
 // The game's out-of-line copy of the library's std::map operator[], for a 4-byte key and a vector value.
@@ -35,13 +36,15 @@ template<> std::vector<int>& std::map<int, std::vector<int> >::operator[]( const
 }
 
 // The game's out-of-line copy of the library's tree destructor for the map of vectors.
-// HYPOTHESIS: as for 0x005fb033, the original's library freed a per-instance nil node at +0x8.
+// HYPOTHESIS: as for 0x005fb033.
 // FUNCTION: STARFLEETOP 0x005fb0e4
 template<> std::_Tree<int, std::pair<const int, std::vector<int> >, std::map<int, std::vector<int> >::_Kfn, std::less<int>, std::allocator<std::vector<int> > >::~_Tree()
 {
 	erase( begin(), end() );
 	_Freenode( _Head );
 	_Head = 0, _Size = 0;
+	_Freenode( _Nil );
+	_Nil = 0;
 }
 
 // The game's out-of-line copy of the library's single-element vector insert, for a 16-byte element.
@@ -55,11 +58,10 @@ template<> std::vector<std::string>::iterator std::vector<std::string>::insert( 
 	return ( begin() + _O );
 }
 
-// The game's out-of-line copy of the library's tree range erase.
-// HYPOTHESIS: the tree is the map of two 4-byte types; the original's library kept a per-instance
-// nil node at +0x8, as for 0x005fb033.
+// The game's out-of-line copy of the library's tree range erase, for the tree keyed by a string.
+// HYPOTHESIS: the tree is the one of 0x005fb2cd; it calls 0x005fb377, that tree's _Erase.
 // FUNCTION: STARFLEETOP 0x005fb14e
-template<> std::_Tree<int, std::pair<const int, int>, std::map<int, int>::_Kfn, std::less<int>, std::allocator<int> >::iterator std::_Tree<int, std::pair<const int, int>, std::map<int, int>::_Kfn, std::less<int>, std::allocator<int> >::erase( iterator _F, iterator _L )
+template<> std::_Tree<std::string, std::pair<const std::string, int>, std::map<std::string, int>::_Kfn, std::less<std::string>, std::allocator<int> >::iterator std::_Tree<std::string, std::pair<const std::string, int>, std::map<std::string, int>::_Kfn, std::less<std::string>, std::allocator<int> >::erase( iterator _F, iterator _L )
 {
 	if ( size() == 0 || _F != begin() || _L != end() )
 	{
@@ -86,10 +88,10 @@ template<> std::map<int, int>::_Pairib std::map<int, int>::insert( const value_t
 	return ( _Pairib( _Ans.first, _Ans.second ) );
 }
 
-// The game's out-of-line copy of the library's tree range erase, for another tree.
-// HYPOTHESIS: the tree is the map of vectors; 0x005fb3af is its _Erase.
+// The game's out-of-line copy of the library's tree range erase, for the map of two 4-byte types.
+// HYPOTHESIS: the tree is the one of 0x005fb033, whose destructor calls this; 0x005fb3af is its _Erase.
 // FUNCTION: STARFLEETOP 0x005fb1e5
-template<> std::_Tree<int, std::pair<const int, std::vector<int> >, std::map<int, std::vector<int> >::_Kfn, std::less<int>, std::allocator<std::vector<int> > >::iterator std::_Tree<int, std::pair<const int, std::vector<int> >, std::map<int, std::vector<int> >::_Kfn, std::less<int>, std::allocator<std::vector<int> > >::erase( iterator _F, iterator _L )
+template<> std::_Tree<int, std::pair<const int, int>, std::map<int, int>::_Kfn, std::less<int>, std::allocator<int> >::iterator std::_Tree<int, std::pair<const int, int>, std::map<int, int>::_Kfn, std::less<int>, std::allocator<int> >::erase( iterator _F, iterator _L )
 {
 	if ( size() == 0 || _F != begin() || _L != end() )
 	{

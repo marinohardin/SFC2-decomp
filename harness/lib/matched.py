@@ -216,7 +216,8 @@ def refresh(data, address, entry):
     """Update the descriptive fields of the recorded entry from `entry`, which scored the same
     (not higher: record does that; not lower: a lower score is a regression, never stored). The
     landing step uses it so a name the source or the analysis has since corrected replaces the
-    stale one. Returns True when something changed."""
+    stale one. Returns True when something changed. (A released function's lower score is
+    stored by record_released.)"""
     old = recorded(data, address)
     if old is None or entry['score'] + EPSILON < old['score'] or bool(old.get('exact')) > bool(
             entry.get('exact')):
@@ -230,6 +231,19 @@ def record(data, address, entry, now):
     """Store entry for address if it improves on the recorded one. `now` is an ISO date string
     passed in by the caller. Returns True when stored."""
     if not improves(data, address, entry['score'], entry.get('exact', False)):
+        return False
+    data['functions'][key(address)] = dict(entry, recorded=now)
+    return True
+
+
+def record_released(data, address, entry, now, released):
+    """Store entry for address in place of a recorded entry it is worse than (a lower score, or
+    no longer exact), when the address is on the released-function list (`released`, from
+    load_released): the landing step records the score the owner released the function to.
+    Any other address, or an entry that is not worse, is left to record. Returns True when
+    stored."""
+    old = recorded(data, address)
+    if key(address) not in released or old is None or not worse(entry, old):
         return False
     data['functions'][key(address)] = dict(entry, recorded=now)
     return True

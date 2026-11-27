@@ -1,0 +1,63 @@
+# Copies of exact claims, in objects other than the claiming unit's, that differ from the original
+# (harness/README.md, "Every copy of an exact claim equals the original"). Matched on unit and symbol.
+# Rows only ever go: a row that no longer occurs is a WARN asking for its removal. The one
+# exception is a row the owner approves as the original's own state: the basic_string rows of
+# SDK-profile units (/O2) are such, each copy compared with the copy the SDK's static libraries
+# carry for the same symbol and found identical.
+unit	symbol
+Common/CommandLineArgs.cpp	?_Grow@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAE_NI_N@Z
+Common/DataStore/Streamable.cpp	?_Freeze@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAEXXZ
+Common/DataStore/Streamable.cpp	?_Grow@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAE_NI_N@Z
+Common/DataStore/Streamable.cpp	?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@ABV12@II@Z
+Common/DataStore/Streamable.cpp	?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@PBDI@Z
+Common/DataStore/Streamable.cpp	?erase@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@II@Z
+Common/Database/Database.cpp	??1tGuard@tOptex@@QAE@XZ
+Common/Database/DatabaseObject.cpp	??1tGuard@tOptex@@QAE@XZ
+Common/Database/DatabaseObject.cpp	??1tOptex@@QAE@XZ
+Common/Database/DatabaseObject.cpp	?Enter@tOptex@@QAEXXZ
+Common/Database/DatabaseObject.cpp	?TryEnter@tOptex@@QAE_NXZ
+Common/Database/DatabaseObject.cpp	?_Grow@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAE_NI_N@Z
+Common/Database/FileDatabaseMgr.cpp	?_Freeze@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAEXXZ
+Common/Database/FileDatabaseMgr.cpp	?_Grow@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAE_NI_N@Z
+Common/Database/FileDatabaseMgr.cpp	?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@ABV12@II@Z
+Common/Database/FileDatabaseMgr.cpp	?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@PBDI@Z
+Common/DynamicAllocator.cpp	?_Freeze@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAEXXZ
+Common/DynamicAllocator.cpp	?_Grow@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAE_NI_N@Z
+Common/DynamicAllocator.cpp	?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@ABV12@II@Z
+Common/Exceptions/BaseException.cpp	?_Freeze@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAEXXZ
+Common/Exceptions/BaseException.cpp	?_Grow@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAE_NI_N@Z
+Common/Exceptions/BaseException.cpp	?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@ABV12@II@Z
+Common/Exceptions/Validate.cpp	?_Freeze@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAEXXZ
+Common/Exceptions/Validate.cpp	?_Grow@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAE_NI_N@Z
+Common/Exceptions/Validate.cpp	?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@ABV12@II@Z
+Common/Log/LogStream.cpp	??0?$fpos@H@std@@QAE@J@Z
+Common/Log/LogStream.cpp	?_Grow@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAE_NI_N@Z
+Common/Thread/Thread.cpp	??1tGuard@tOptex@@QAE@XZ
+Common/Thread/Thread.cpp	??1tOptex@@QAE@XZ
+Common/Thread/Thread.cpp	?_Grow@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAE_NI_N@Z
+Common/Thread/Thread.cpp	?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@PBDI@Z
+Common/Thread/ThreadPool.cpp	??1tOptex@@QAE@XZ
+Common/Thread/ThreadPool.cpp	?Enter@tOptex@@QAEXXZ
+Common/Thread/ThreadPool.cpp	?Leave@tOptex@@QAEXXZ
+Common/Thread/ThreadPool.cpp	?TryEnter@tOptex@@QAE_NXZ
+Common/Timer/HeartbeatTimer.cpp	??1tGuard@tOptex@@QAE@XZ
+Common/Timer/HeartbeatTimer.cpp	??1tOptex@@QAE@XZ
+Common/Timer/HeartbeatTimer.cpp	?Enter@tOptex@@QAEXXZ
+Tiger/tAudioFile.cpp	?Search_tMemoryPart@tMemoryPart@@SAPAV1@XZ
+Tiger/tFile.cpp	??1tPath@@UAE@XZ
+Tiger/taudiochannel.cpp	?Search_tMemoryPart@tMemoryPart@@SAPAV1@XZ
+Tiger/tgfsys.cpp	??1tPath@@UAE@XZ
+Tiger/tpaging.cpp	?Search_tMemoryPart@tMemoryPart@@SAPAV1@XZ
+Tiger/twfsys.cpp	??1tPath@@UAE@XZ
+unsorted/fn_00460000.cpp	?append@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@ABV12@II@Z
+unsorted/fn_00460000.cpp	?append@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@PBDI@Z
+unsorted/fn_0047F000.cpp	?append@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@PBDI@Z
+unsorted/fn_00601747.cpp	??1tGuard@tOptex@@QAE@XZ
+unsorted/fn_00603000.cpp	?append@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@ABV12@II@Z
+unsorted/fn_0071D1F0.cpp	?_Freeze@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAEXXZ
+unsorted/fn_0071D1F0.cpp	?_Grow@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAE_NI_N@Z
+unsorted/fn_0071D1F0.cpp	?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@ABV12@II@Z
+unsorted/nSwitch__tDataHandler.cpp	??1tOptex@@QAE@XZ
+unsorted/nSwitch__tDataHandler.cpp	?_Freeze@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAEXXZ
+unsorted/nSwitch__tDataHandler.cpp	?_Grow@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAE_NI_N@Z
+unsorted/nSwitch__tDataHandler.cpp	?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@ABV12@II@Z
