@@ -8368,19 +8368,19 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00522b29	function	fn_00522b29		?fn_00522b29@@YIDPAVfn_0090bed4_Object@@HPAX@Z	claim		none
 0x00522b94	function	fn_00522b94		?fn_00522b94@@YIDPAVfn_0090bed4_Object@@HPAUvfunction33_result@@H@Z	claim		none
 0x00522bdf	function	fn_00522bdf		?fn_00522bdf@fn_0090bed4_Object@@QAEXHPAVtCommandDestination@@@Z	claim		none
-0x00522c00	function	fn_00522c00					none
-0x00522c46	function	fn_00522c46					none
-0x00522c66	function	fn_00522c66					none
-0x00522c86	function	fn_00522c86					none
+0x00522c00	function	fn_00522c00		?fn_00522c00@tObject_00522c00@@QAEDPAXPAVtCommandDestination@@@Z	claim		none
+0x00522c46	function	fn_00522c46		?fn_00522c46@@YIXPAVfn_0090bed4_Object@@HPAVtEntity@@@Z	claim		none
+0x00522c66	function	fn_00522c66		?fn_00522c66@@YIXPAVfn_0090bed4_Object@@HPAVtEntity@@@Z	claim		none
+0x00522c86	function	fn_00522c86		?fn_00522c86@@YIXPAVfn_0090bed4_Object@@HM@Z	claim		none
 0x00522c93	function	fn_00522c93					none
 0x00522d1f	function	fn_00522d1f					none
 0x00522d5f	function	fn_00522d5f					none
-0x00522da1	function	fn_00522da1					none
-0x00522dc6	function	fn_00522dc6					none
-0x00522e1b	function	fn_00522e1b					none
-0x00522e6d	function	fn_00522e6d					none
-0x00522e86	function	fn_00522e86					none
-0x00522f1e	function	fn_00522f1e					none
+0x00522da1	function	fn_00522da1		?fn_00522da1@@YIXPADHHH@Z	claim		none
+0x00522dc6	function	fn_00522dc6		?fn_00522dc6@@YIDPAVfn_0090bed4_Object@@HHHHM@Z	claim		none
+0x00522e1b	function	fn_00522e1b		?fn_00522e1b@tObject_00522e1b@@QAEHH@Z	claim		none
+0x00522e6d	function	fn_00522e6d		?fn_00522e6d@@YIXPAVfn_0090bed4_Object@@HDH@Z	claim		none
+0x00522e86	function	fn_00522e86		?fn_00522e86@@YIXPAD@Z	claim		none
+0x00522f1e	function	fn_00522f1e		?fn_00522f1e@@YAXXZ	add		none
 0x00522f7c	function	fn_00522f7c					none
 0x00523027	function	fn_00523027		?fn_00523027@fn_0090bed4_Object@@QAE_NHH@Z	claim		none
 0x00523086	function	fn_00523086		?fn_00523086@fn_0090bed4_Object@@QAE_NHH@Z	claim		none
