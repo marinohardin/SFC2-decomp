@@ -1,3 +1,4 @@
+#include "unsorted/tNetMsg_kKillEntity.h"
 #include "Tiger/tvectormath.h"
 #include "unsorted/sfcstreams.h"
 #include "unsorted/tEntity_Seeker.h"
@@ -12,6 +13,10 @@ void fn_0040eb35(float *value, tSFCStream &s, unsigned char flags, char *name);
 void fn_0040eb6e(tPoint3 *value, tSFCStream &s, unsigned char flags, char *name);
 
 #include <stdio.h>
+#include "unsorted/tEntityMgr.h"
+#include "unsorted/tNetControl.h"
+
+extern tEntityMgr g_008e1060;
 
 void fn_004d88e9(const char *param_1);
 void *FUN_0040fe6c(const char *name);
@@ -127,6 +132,21 @@ void tEntity_Seeker::vfunction11(tSFCStream &s, int32u mode)
 	fn_0040eafc((unsigned char *)&field_0x275, s, mode, "fActive");
 	fn_0040e9df((long *)&field_0x278, s, mode, "fLastWeasel");
 	fn_0040e691(s);
+}
+
+// FUNCTION: STARFLEETOP 0x0041e74f
+void tEntity_Seeker::vfunction5()
+{
+	if (fIsAlive)
+	{
+		fIsAlive = 0;
+		if (g_008e1060.fn_004235fa(fTargetID))
+		{
+			tNetMsg_kKillEntity msg;
+			msg.field_0x4 = true;
+			gNetControl.mQueueMsg(&msg, tNetMsg::kKillEntity, fID, 0.0);
+		}
+	}
 }
 
 // FUNCTION: STARFLEETOP 0x0041e79a

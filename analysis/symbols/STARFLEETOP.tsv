@@ -1013,7 +1013,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0041e0c9	function	fn_0041e0c9	tEntity_Seeker				vtable
 0x0041e627	function	fn_0041e627	tEntity_Seeker	?vfunction31@tEntity_Seeker@@UAE_NXZ	claim		vtable
 0x0041e64f	function	fn_0041e64f	tEntity_Seeker	?vfunction11@tEntity_Seeker@@UAEXAAVtSFCStream@@K@Z	claim		none
-0x0041e74f	function	fn_0041e74f	tEntity_Seeker				vtable
+0x0041e74f	function	fn_0041e74f	tEntity_Seeker	?vfunction5@tEntity_Seeker@@UAEXXZ	claim		vtable
 0x0041e79a	function	fn_0041e79a	tEntity_Seeker	?vfunction26@tEntity_Seeker@@UAEXFHHHH@Z	claim		none
 0x0041e93f	function	fn_0041e93f	tEntity_Seeker				vtable
 0x0041e946	function	fn_0041e946	tEntity_Seeker				vtable

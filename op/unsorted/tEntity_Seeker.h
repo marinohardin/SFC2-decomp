@@ -19,6 +19,8 @@ class tEntity_Seeker : public tEntity_Weapon
 public:
 	tEntity_Seeker();
 
+	virtual void vfunction5();
+
 	virtual void vfunction11(tSFCStream &s, int32u mode);
 	// HYPOTHESIS: the entity kind; the seeker answers 0xc.
 	virtual int vfunction18();
