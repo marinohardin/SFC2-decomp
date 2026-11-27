@@ -372,6 +372,16 @@ void tView3DExt::vfunction67(tMatrix *m, float left, float right, float bottom, 
 	mtx[2][3] = -((zFar + zNear) / (zFar - zNear));
 }
 
+// HYPOTHESIS: the bytes pass x, y, x + w, y + h; vfunction67's parameter names (left, right, bottom,
+// top) may then be in the wrong order.
+// FUNCTION: STARFLEETOP 0x006aa390
+void tView3DExt::vfunction66(tMatrix *m, float zNear, float zFar)
+{
+	float y = field_0x760;
+	float x = field_0x75c;
+	vfunction67(m, x, y, x + field_0x764, y + field_0x768, zNear, zFar);
+}
+
 // HYPOTHESIS: the original calls 0x0069cc40 (another tMatrix member taking an output point and an
 // input point) where this body calls fn_0069cbc0 three times; tMatrix declares no member for it yet.
 // FUNCTION: STARFLEETOP 0x006aa550
