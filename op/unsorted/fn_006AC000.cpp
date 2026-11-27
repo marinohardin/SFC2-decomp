@@ -47,3 +47,34 @@ void tView3DExt::vfunction69()
 	field_0x1eec.field_0x00 = -1;
 	field_0x1eec.field_0x04 = 0;
 }
+
+// HYPOTHESIS: a free function of two ints returning a vertex count.
+int fn_006b8190( int, int );
+extern float g_0079561c;    // 0.0f
+
+// FUNCTION: STARFLEETOP 0x006ac830
+void tView3DExt::fn_006ac830( int param_1, int param_2, int param_3 )
+{
+	if ( param_3 == 3 )
+		field_0x1f2c[2]++;
+	else if ( param_3 == 4 )
+		field_0x1f2c[3]++;
+	else if ( param_3 > 4 )
+		field_0x1f2c[4]++;
+	int count = fn_006b8190( param_3, param_1 );
+	if ( count > 2 )
+	{
+		float area = fn_006abeb0();
+		if ( area != g_0079561c )
+		{
+			int back = area > g_0079561c ? 0 : 1;
+			if ( !field_0x1ec8 || ( ( field_0x1ebc == 7 ) ^ field_0x1ec8 ^ back ) & 1 )
+			{
+				field_0x1f2c[7] += count - 2;
+				// HYPOTHESIS: the original pushes the low byte of the xor unmasked, as for a
+				// char-sized parameter; with vfunction98's bool the & 1 is the closest form.
+				vfunction98( count, 0, param_2, ( field_0x1ec0 ^ back ) & 1 );
+			}
+		}
+	}
+}
