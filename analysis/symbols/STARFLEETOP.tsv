@@ -4732,7 +4732,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004a368d	function	fn_004a368d	tActualPlayer	?vfunction11@tActualPlayer@@UAEXPAX@Z	claim		vtable
 0x004a36f9	function	fn_004a36f9	tActualPlayer	?vfunction12@tActualPlayer@@UAEXPAX@Z	claim		vtable
 0x004a3777	function	fn_004a3777	tActualPlayer	?vfunction13@tActualPlayer@@UAEXPAX@Z	claim		vtable
-0x004a3817	function	fn_004a3817	tActualPlayer				vtable
+0x004a3817	function	fn_004a3817	tActualPlayer	?vfunction15@tActualPlayer@@UAEXPAX@Z	claim		vtable
 0x004a38ee	function	fn_004a38ee	tActualPlayer				vtable
 0x004a39c5	function	fn_004a39c5	tActualPlayer				vtable
 0x004a3a43	function	fn_004a3a43	tActualPlayer				vtable

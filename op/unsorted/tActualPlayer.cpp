@@ -275,3 +275,20 @@ void tActualPlayer::vfunction13(void *aObject)
 	field_0x510 = ((fn_004a2e75_Object *)aObject)->vfunction139();
 	((fn_004a68e2_Object *)field_0x7f8)->fn_004a68e2((char *)aObject + 0x9c);
 }
+
+// FUNCTION: STARFLEETOP 0x004a3817
+void tActualPlayer::vfunction15(void *aObject)
+{
+	field_0xbec = &field_0x118c;
+	field_0xbf0 = &field_0x11b0;
+	field_0xbf4 = &field_0x11d4;
+	field_0xbe8 = aObject;
+	field_0xbf8 = &field_0x11f8;
+	field_0xc18 = fn_004a6f3d(aObject);
+	field_0xbfc = ((fn_004a2e75_Object *)aObject)->vfunction129();
+	field_0x740 = aObject;
+	// HYPOTHESIS: the object's class is not known; three ints at +0x478, +0x490 and +0x47c.
+	field_0x17f8 = *(long *)((char *)aObject + 0x478);
+	field_0x1814 = *(long *)((char *)field_0x740 + 0x490);
+	field_0x1830 = *(long *)((char *)field_0x740 + 0x47c);
+}

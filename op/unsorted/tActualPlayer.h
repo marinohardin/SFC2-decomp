@@ -127,7 +127,9 @@ public:
 	char field_0x730[0xc];  // tShadowFloat (RTTI, vtable 0x007a0e44; stored inline, 12 bytes)
 	// HYPOTHESIS: the object vfunction9 is given; it reads ints at +0x47c and +0x480 through it.
 	void *field_0x73c;
-	char field_0x740[0x8];
+	// HYPOTHESIS: the object vfunction15 is given; it reads ints at +0x490 and +0x47c through it.
+	void *field_0x740;
+	char field_0x744[0x4];
 	char field_0x748[0x50];  // tShadowTStr (RTTI, vtable 0x007a0dbc, constructor 0x004a03cd)
 	char field_0x798[0xc];  // tShadowFloat (RTTI, vtable 0x007a0e44; stored inline, 12 bytes)
 	char field_0x7a4[0xc];  // tShadowInt (RTTI, vtable 0x007a0df0)
@@ -198,7 +200,8 @@ public:
 	tMinMaxFloat field_0x118c;
 	tMinMaxFloat field_0x11b0;
 	tMinMaxFloat field_0x11d4;
-	char field_0x11f8[0x28];
+	tMinMaxFloat field_0x11f8;
+	char field_0x121c[0x4];
 	char field_0x1220[0x1c];  // a value object, constructed by tValueBase (0x00436633) and given its own vtable
 	char field_0x123c[0x1c];  // a value object, constructed by tValueBase (0x00436633) and given its own vtable
 	char field_0x1258[0x50];  // tShadowTStr (RTTI, vtable 0x007a0dbc, constructor 0x004a03cd)
@@ -241,8 +244,9 @@ public:
 	tValue<long> field_0x17a4;
 	tValue<long> field_0x17c0;
 	char field_0x17dc[0x1c];  // a value object, constructed by tValueBase (0x00436633) and given its own vtable
-	char field_0x17f8[0x1c];  // a value object, constructed by tValueBase (0x00436633) and given its own vtable
-	char field_0x1814[0x1c];  // a value object, constructed by tValueBase (0x00436633) and given its own vtable
+	// HYPOTHESIS: tValue<long>, the next two: vfunction15 stores at +0x18 and notifies with (3, 0).
+	tValue<long> field_0x17f8;
+	tValue<long> field_0x1814;
 	tValue<long> field_0x1830;
 	tValue<long> field_0x184c;
 	tValue<long> field_0x1868;
