@@ -216,3 +216,18 @@ void tActualPlayer::vfunction9(void *aObject)
 	field_0x1788 = *(long *)((char *)field_0x73c + 0x47c) - gValue_0083bb28;
 	field_0x17a4 = *(long *)((char *)field_0x73c + 0x480) - gValue_0083bb28;
 }
+
+// FUNCTION: STARFLEETOP 0x004a368d
+void tActualPlayer::vfunction11(void *aObject)
+{
+	field_0xbe8 = aObject;
+	if (aObject != 0)
+	{
+		field_0xbec = 0;
+		field_0xbf0 = 0;
+		field_0xbf4 = 0;
+		field_0xbf8 = 0;
+		field_0xc18 = fn_004a6f3d(aObject);
+		field_0xbfc = ((fn_004a2e75_Object *)aObject)->vfunction129();
+	}
+}
