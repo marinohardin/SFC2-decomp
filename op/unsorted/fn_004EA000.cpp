@@ -33,3 +33,14 @@ void tPlasmaDRackTube::fn_004ea379(int param_1, int param_2)
 		gNetControl.mQueueMsg(&msg, 0xb, vfunction37(), 0.0);
 	}
 }
+
+// HYPOTHESIS: tPlasmaDRackTube12 (RTTI) has no header yet; only its constructor
+// (0x004ea4ed) is declared here, for the global's dynamic initializer.
+class tPlasmaDRackTube12
+{
+public:
+	tPlasmaDRackTube12();
+};
+
+// FUNCTION: STARFLEETOP 0x004ea4cd
+tPlasmaDRackTube12 g_0092f168;

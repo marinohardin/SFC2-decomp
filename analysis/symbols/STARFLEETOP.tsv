@@ -7078,7 +7078,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004ea48c	function	fn_004ea48c	tPlasmaDRackTube				vtable
 0x004ea4cd	function	fn_004ea4cd					none
 0x004ea4d7	function	fn_004ea4d7					none
-0x004ea4ed	function	tPlasmaDRackTube12::tPlasmaDRackTube12	tPlasmaDRackTube12				rtti
+0x004ea4ed	function	tPlasmaDRackTube12::tPlasmaDRackTube12	tPlasmaDRackTube12	??0tPlasmaDRackTube12@@QAE@XZ	add		rtti
 0x004ea4ff	function	fn_004ea4ff	tPlasmaDRackTube12				vtable
 0x004ea505	function	fn_004ea505	tPlasmaDRackTube12				vtable
 0x004ea5d7	function	fn_004ea5d7	tPPD				vtable
