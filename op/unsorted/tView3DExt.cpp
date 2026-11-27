@@ -250,6 +250,29 @@ fn_0040105e_Vector *tView3DExt::vfunction36()
 	return (fn_0040105e_Vector *)field_0x738;
 }
 
+// HYPOTHESIS: the float constant 0.5 at 0x007959c8.
+extern float g_007959c8;
+// HYPOTHESIS: a global viewport rectangle; left and top at 0x00c7c250, right and bottom 0x50 further.
+extern float g_00c7c250;
+extern float g_00c7c254;
+extern float g_00c7c2a0;
+extern float g_00c7c2a4;
+
+// FUNCTION: STARFLEETOP 0x006aa000
+void tView3DExt::vfunction17(int a, int b, int c, int d)
+{
+	field_0x75c = (float)c;
+	field_0x760 = (float)d;
+	field_0x764 = (float)a;
+	field_0x768 = (float)b;
+	field_0x76c = (float)a * g_007959c8;
+	field_0x770 = (float)b * g_007959c8;
+	g_00c7c250 = field_0x75c;
+	g_00c7c2a0 = field_0x764 + field_0x75c;
+	g_00c7c254 = field_0x760;
+	g_00c7c2a4 = field_0x768 + field_0x760;
+}
+
 // HYPOTHESIS: the original calls 0x0069cc40 (another tMatrix member taking an output point and an
 // input point) where this body calls fn_0069cbc0 three times; tMatrix declares no member for it yet.
 // FUNCTION: STARFLEETOP 0x006aa550
