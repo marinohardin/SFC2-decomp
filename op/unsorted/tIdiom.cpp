@@ -16,3 +16,9 @@ tIdiom::~tIdiom()
 {
 	return;
 }
+
+// FUNCTION: STARFLEETOP 0x005d3852
+tIdiom::tIdiom( const std::string& text )
+{
+	fn_005d3a6a( text );
+}

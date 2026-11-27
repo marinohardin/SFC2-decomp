@@ -37,6 +37,9 @@ public:
 	// it is short; an index of two or more asserts (Idiom.cpp line 0x5b) and is taken as one.
 	void fn_005d39b7( int index, const std::string& text );
 
+	// HYPOTHESIS: called by tIdiom(const std::string&) (0x005d3852); stores the first string.
+	void fn_005d3a6a( const std::string& text );
+
 	std::vector< std::string >	field_0c;
 };
 
