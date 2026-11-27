@@ -12,11 +12,14 @@ class fn_004b2cd3_View
 {
 public:
 	void fn_004b2cd3(float fov, float distance, float width, float height);
+	bool fn_004b2eb9(int sx, int sy, tPoint2 *out);
 
 	float m00;
 	float m04;
 	float m08;
-	char m0c[0x24];
+	tPoint3 m0c;
+	tPoint3 m18;
+	tPoint3 m24;
 	float m30;
 	float m34;
 	float m38;
@@ -35,4 +38,23 @@ void fn_004b2cd3_View::fn_004b2cd3(float fov, float distance, float width, float
 	m00 = 0;
 	m04 = 0;
 	m08 = 0;
+}
+
+// FUNCTION: STARFLEETOP 0x004b2eb9
+bool fn_004b2cd3_View::fn_004b2eb9(int sx, int sy, tPoint2 *out)
+{
+	tPoint3 p;
+	p.x = sx - m38;
+	p.y = sy - m3c;
+	p.z = 1;
+	float x = p * m0c;
+	float y = p * m18;
+	float z = p * m24;
+	if (z != 0)
+	{
+		out->x = 1 / z * x + m00;
+		out->y = 1 / z * y + m04;
+		return true;
+	}
+	return false;
 }
