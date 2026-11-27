@@ -169,7 +169,9 @@ public:
 	virtual void vfunction132(); virtual void vfunction133(); virtual void vfunction134();
 	virtual void vfunction135(); virtual void vfunction136(); virtual void vfunction137();
 	virtual void vfunction138(); virtual void vfunction139(); virtual void vfunction140();
-	virtual void vfunction141(); virtual void vfunction142(); virtual void vfunction143();
+	// HYPOTHESIS: returns a value tEntityShip::vfunction23 (0x00416c02) passes on.
+	virtual int vfunction141();
+	virtual void vfunction142(); virtual void vfunction143();
 	// HYPOTHESIS: takes the arguments of tEntityShip::vfunction26 and returns a truth value.
 	virtual bool vfunction144(short a1, int a2, int a3, int a4, int a5);
 	virtual void vfunction145(); virtual void vfunction146();
