@@ -24,8 +24,9 @@ public:
 
 	// HYPOTHESIS: slot 62, returns the float at +0x260 (0x0041e09b).
 	virtual float vfunction63();
-	// HYPOTHESIS: returns a one-byte member at +0x275.
-	virtual bool vfunction70();
+	// HYPOTHESIS: returns the "fActive" byte at +0x275 (0x0041e0a2); a plain byte load, so
+	// the return type is char, not bool.
+	virtual char vfunction70();
 	// HYPOTHESIS: returns the int at +0x270.
 	virtual int vfunction71();
 

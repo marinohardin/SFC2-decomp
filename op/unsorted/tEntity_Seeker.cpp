@@ -75,6 +75,12 @@ float tEntity_Seeker::vfunction63()
 	return field_0x260;
 }
 
+// FUNCTION: STARFLEETOP 0x0041e0a2
+char tEntity_Seeker::vfunction70()
+{
+	return field_0x275;
+}
+
 // HYPOTHESIS: the member layout from +0x248 on, as the stream calls address it.
 // FUNCTION: STARFLEETOP 0x0041e64f
 void tEntity_Seeker::vfunction11(tSFCStream &s, int32u mode)
