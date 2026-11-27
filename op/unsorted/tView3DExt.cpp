@@ -200,6 +200,15 @@ tView3DExt::~tView3DExt()
 	}
 }
 
+// FUNCTION: STARFLEETOP 0x006a9f20
+fn_006a9f20_Callback tView3DExt::vfunction13(fn_006a9f20_Callback callback, void *data)
+{
+	field_0x1ee0 = data;
+	fn_006a9f20_Callback old = field_0x1edc;
+	field_0x1edc = callback;
+	return old;
+}
+
 // HYPOTHESIS: the original calls 0x0069cc40 (another tMatrix member taking an output point and an
 // input point) where this body calls fn_0069cbc0 three times; tMatrix declares no member for it yet.
 // FUNCTION: STARFLEETOP 0x006aa550

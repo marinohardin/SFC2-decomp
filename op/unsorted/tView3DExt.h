@@ -49,7 +49,7 @@ struct fn_006ac780_State
 };
 
 typedef char fn_006ac780_State_size_is_0x40[ sizeof( fn_006ac780_State ) == 0x40 ? 1 : -1 ];
-
+typedef void (*fn_006a9f20_Callback)();    // HYPOTHESIS: a no-argument callback, as vfunction13/15 keep it
 // HYPOTHESIS: derived from tView3D (both carry the vtable slots the units call). Its size is
 // 0x1f4c: tSWView3D and tD3DViewMgr (allocated as 0x8010 bytes) both start their own members
 // there, and no method of this class touches a byte beyond it. No member is named in the exe,
@@ -75,10 +75,10 @@ public:
 	// in slot 5, is this class's (it frees the vertex cache); the symbol table now says so too,
 	// as a placeholder name.
 	virtual bool vfunction6();
-	virtual void (*vfunction13(void (*)(), void *))();    // 0x006a9f20, returns the old callback
-	virtual void (*vfunction14())();    // 0x006a9f40
-	virtual void (*vfunction15(void (*)(), void *))();    // 0x006a9f50, likewise
-	virtual void (*vfunction16())();    // 0x006a9f70
+	virtual fn_006a9f20_Callback vfunction13(fn_006a9f20_Callback, void *);    // 0x006a9f20, returns the old callback
+	virtual fn_006a9f20_Callback vfunction14();    // 0x006a9f40
+	virtual fn_006a9f20_Callback vfunction15(fn_006a9f20_Callback, void *);    // 0x006a9f50, likewise
+	virtual fn_006a9f20_Callback vfunction16();    // 0x006a9f70
 	virtual void vfunction17(int, int, int, int);    // 0x006aa000, sets the viewport
 	virtual void vfunction18(int *, int *, int *, int *);    // 0x006aa080, reads it back
 	virtual int vfunction19(int);    // 0x006a9670, returns the old setting
@@ -180,9 +180,9 @@ public:
 	float				field_0x1ed4;    // vfunction45
 	bool				field_0x1ed8;    // vfunction47
 	unsigned char		field_0x1ed9;
-	void				(*field_0x1edc)();    // vfunction13
+	fn_006a9f20_Callback	field_0x1edc;    // vfunction13
 	void				*field_0x1ee0;
-	void				(*field_0x1ee4)();    // vfunction15
+	fn_006a9f20_Callback	field_0x1ee4;    // vfunction15
 	void				*field_0x1ee8;
 	fn_006ac780_State	field_0x1eec;    // +0x1eec..+0x1f2b
 	int					field_0x1f2c[8];    // counters, cleared by vfunction87, read by vfunction88..95
