@@ -306,3 +306,14 @@ void tEntity_Seeker::vfunction22(unsigned aIndex, void *aRecord)
 		*(tPoint3 *)&record[7] = *(tPoint3 *)&field_0x1f8[0x28];
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x00420493
+bool tEntity_Seeker::fn_00420493()
+{
+	// MATCH-ONLY: tEntity_Weapon.h does not yet declare the int at +0x1bc and the byte at
+	// +0x1c0 (header request).
+	int kind = *(int *)&field_0x1bc[0];
+	if (kind >= 15 && kind <= 17 && field_0x1bc[4] == 3)
+		return true;
+	return false;
+}

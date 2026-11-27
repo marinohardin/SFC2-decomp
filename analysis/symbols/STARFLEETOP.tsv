@@ -1032,7 +1032,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004203d5	function	fn_004203d5	tEntity_Seeker	?vfunction14@tEntity_Seeker@@UAEMXZ	claim		vtable
 0x004203f5	function	tEntity_HellboreSeeker::~tEntity_HellboreSeeker	tEntity_HellboreSeeker				rtti
 0x00420447	function	fn_00420447	tEntity_Seeker	?vfunction22@tEntity_Seeker@@UAEXIPAX@Z	claim		vtable
-0x00420493	function	fn_00420493					none
+0x00420493	function	fn_00420493		?fn_00420493@tEntity_Seeker@@QAE_NXZ	claim		none
 0x004204b2	function	fn_004204b2	tEntity_HellboreSeeker				vtable
 0x00420572	function	tEntity_DriftingSeeker::tEntity_DriftingSeeker	tEntity_DriftingSeeker	??0tEntity_DriftingSeeker@@QAE@XZ	add		rtti
 0x00420588	function	fn_00420588	tEntity_DriftingSeeker				vtable

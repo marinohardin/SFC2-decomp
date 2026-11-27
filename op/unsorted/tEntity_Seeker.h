@@ -46,6 +46,9 @@ public:
 	void fn_0041ee42( unsigned char *a, char *b, char *c );
 	void fn_0041eeaf();
 	void fn_0041ef62();
+	// HYPOTHESIS: a member of this class (it follows slot 21 in the unit); tests the int at
+	// +0x1bc for 15 to 17 and the byte at +0x1c0 for 3.
+	bool fn_00420493();
 
 	char field_0x248[0x18];
 	// HYPOTHESIS: a float; the constructor sets it to 0.0 and slot 62 returns it.
