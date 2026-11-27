@@ -132,7 +132,8 @@ public:
 	virtual float vfunction22(float param_1);
 	virtual void vfunction23();
 	virtual void vfunction24(); virtual void vfunction25(); virtual void vfunction26();
-	virtual void vfunction27();
+	// HYPOTHESIS: returns a record with a float at 0x18; 0x004198e0 reads it.
+	virtual tObject_00416d41_bounds *vfunction27();
 	// HYPOTHESIS: returns a record with a float at 0x18; 0x0041687b reads it.
 	virtual tObject_00416d41_bounds *vfunction28();
 	virtual void vfunction29();
@@ -300,6 +301,7 @@ public:
 	bool fn_00419c87();
 	void fn_00419818(const tPoint3 &aPoint);
 	void fn_00419873(short param_1, short param_2, short param_3);
+	void fn_004198e0();
 	// HYPOTHESIS: takes the ID of the entity 0x00416a0e acted for; the symbol table names 0x00419e84
 	// a destructor of tNetMsg_kSendVoice, which its callers' use contradicts.
 	void fn_00419e84(int aID);

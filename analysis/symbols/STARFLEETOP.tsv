@@ -888,7 +888,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0041980f	function	tNetMsg_kUpdateCloakStatus::mGetMap	tNetMsg_kUpdateCloakStatus	?mGetMap@tNetMsg_kUpdateCloakStatus@@UBEPBUtMapItem@tNetMsg@@XZ	claim		claim
 0x00419818	function	fn_00419818		?fn_00419818@tEntityShip@@QAEXABUtPoint3@@@Z	claim		none
 0x00419873	function	fn_00419873		?fn_00419873@tEntityShip@@QAEXFFF@Z	claim		none
-0x004198e0	function	fn_004198e0					none
+0x004198e0	function	fn_004198e0		?fn_004198e0@tEntityShip@@QAEXXZ	claim		none
 0x0041994b	function	fn_0041994b					none
 0x004199c4	function	fn_004199c4	tEntityShip				vtable
 0x004199f4	function	fn_004199f4					none

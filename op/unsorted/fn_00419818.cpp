@@ -1,4 +1,5 @@
 #include "unsorted/tEntityShip.h"
+#include "unsorted/tObject_0040ce21.h"
 
 // HYPOTHESIS: a tEntityShip member; it writes the three points at 0x8e8, 0x8f4 and 0x900 of the
 // ship's layout, clearing the first and setting the other two from the point given.
@@ -26,4 +27,16 @@ void tEntityShip::fn_00419873(short param_1, short param_2, short param_3)
 	field_948[6] = param_1;
 	field_948[7] = param_2;
 	field_948[8] = param_3;
+}
+
+// HYPOTHESIS: a tEntityShip member; it adds 1.5 to the float at 0x18 of slot 27's record of
+// the object at 0xad4, and hands it, cut to a whole number, to its slot 22.
+// FUNCTION: STARFLEETOP 0x004198e0
+void tEntityShip::fn_004198e0()
+{
+	static tObject_0040ce21 marker("More power to Ya!");
+
+	tObject_00416d41_ad4 *&object = field_ad4;
+	tObject_00416d41_bounds *record = object->vfunction27();
+	object->vfunction22((int)(record->field_18 + 1.5f));
 }
