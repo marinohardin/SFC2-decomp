@@ -20,6 +20,8 @@ public:
 	tEntity_Seeker();
 
 	virtual void vfunction11(tSFCStream &s, int32u mode);
+	// HYPOTHESIS: the entity kind; the seeker answers 0xc.
+	virtual int vfunction18();
 	virtual void vfunction26(short a1, int a2, int a3, int a4, int a5);
 
 	// HYPOTHESIS: slot 62, returns the float at +0x260 (0x0041e09b).
