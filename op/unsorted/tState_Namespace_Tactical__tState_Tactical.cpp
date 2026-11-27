@@ -545,6 +545,13 @@ void tState_Tactical::vfunction10( int param_1 )
 	g_00919f00.fn_004b6642();
 }
 
+// FUNCTION: STARFLEETOP 0x004b714d
+void tState_Tactical::vfunction7( int param_1 )
+{
+	field_240 = 0;
+	g_00919f00.fn_004b6642();
+}
+
 // FUNCTION: STARFLEETOP 0x004b9a3a
 void tState_Tactical::vfunction9( int *param_1 )
 {
