@@ -18508,7 +18508,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0069c940	function	fn_0069c940		?mPostTranslate@tMatrix@@QAEXMMM@Z	callers		none
 0x0069c970	function	fn_0069c970					none
 0x0069c9d0	function	fn_0069c9d0		?mTransform@tMatrix@@QBEXAAUtPoint3@@ABU2@@Z	callers		none
-0x0069ca30	function	fn_0069ca30					none
+0x0069ca30	function	fn_0069ca30		?mTransform@tMatrix@@QBEXAAUtPoint4@@ABUtPoint3@@@Z	add		none
 0x0069cae0	function	fn_0069cae0					none
 0x0069cb40	function	fn_0069cb40					none
 0x0069cbc0	function	fn_0069cbc0		?fn_0069cbc0@tMatrix@@QBEXAAUtPoint3@@ABU2@@Z	callers		none
@@ -18832,7 +18832,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x006ac810	function	fn_006ac810	tView3DExt	?vfunction69@tView3DExt@@UAEXXZ	claim		vtable
 0x006ac830	function	fn_006ac830		?fn_006ac830@tView3DExt@@QAEXHHH@Z	claim		none
 0x006ac900	function	fn_006ac900		?fn_006ac900@tView3DExt@@QAEXH@Z	add		none
-0x006ad130	function	fn_006ad130	tView3DExt				vtable
+0x006ad130	function	fn_006ad130	tView3DExt	?vfunction71@tView3DExt@@UAEXPAUtPoint3@@@Z	claim		vtable
 0x006ad230	function	fn_006ad230	tView3DExt				vtable
 0x006ad260	function	fn_006ad260	tView3DExt				vtable
 0x006ad2d0	function	fn_006ad2d0	tView3DExt				vtable

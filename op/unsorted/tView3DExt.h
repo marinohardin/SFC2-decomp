@@ -26,7 +26,12 @@ struct fn_006abe00_Vtx
 	float			field_0x10;    // w
 	char			field_0x14[0x0c];
 	float			field_0x20;    // 1 / w, cached
-	char			field_0x24[0x1c];
+	char			field_0x24[0x08];
+	float			field_0x2c;    // the view's +0x1ef4 (vfunction71)
+	float			field_0x30;    // the view's +0x1ef8
+	float			field_0x34;    // colour (vfunction71)
+	float			field_0x38;
+	float			field_0x3c;
 };
 
 typedef char fn_006abe00_Vtx_size_is_0x40[ sizeof( fn_006abe00_Vtx ) == 0x40 ? 1 : -1 ];
