@@ -5063,6 +5063,12 @@ address	size	symbol	source	modes	decorated
 0x0067e1a0	44	tSeqScene::vfunction44()	unsorted/tSeqScene.cpp	vc6 guest	?vfunction44@tSeqScene@@UAEXXZ
 0x0067e1d0	253	tSeqScene::fn_0067e1d0()	unsorted/tSeqScene.cpp	vc6 guest	?fn_0067e1d0@tSeqScene@@QAE_NXZ
 0x0067e2d0	102	tSeqScene::vfunction30()	unsorted/tSeqScene.cpp	vc6 guest	?vfunction30@tSeqScene@@UAEXXZ
+0x00686640	162	tPushBtnBase::vfunction43(tPoint)	unsorted/tPushBtnBase.cpp	vc6 guest	?vfunction43@tPushBtnBase@@UAEXUtPoint@@@Z
+0x006866f0	35	tPushBtnBase::vfunction44(tPoint)	unsorted/tPushBtnBase.cpp	vc6 guest	?vfunction44@tPushBtnBase@@UAEXUtPoint@@@Z
+0x00686720	35	tPushBtnBase::vfunction45(tPoint)	unsorted/tPushBtnBase.cpp	vc6 guest	?vfunction45@tPushBtnBase@@UAEXUtPoint@@@Z
+0x00686750	21	tPushBtnBase::vfunction47()	unsorted/tPushBtnBase.cpp	vc6 guest	?vfunction47@tPushBtnBase@@UAEXXZ
+0x00686770	12	tPushBtnBase::vfunction39()	unsorted/tPushBtnBase.cpp	vc6 guest	?vfunction39@tPushBtnBase@@UAEXXZ
+0x00686780	42	tPushBtnBase::fn_00686780(int)	unsorted/tPushBtnBase.cpp	vc6 guest	?fn_00686780@tPushBtnBase@@QAEXH@Z
 0x00687060	76	tActionUser::tActionUser()	unsorted/fn_00687000.cpp	vc6	??0tActionUser@@QAE@XZ
 0x006896d0	70	tTableAsset::tTableAsset()	unsorted/tTableAsset.cpp	vc6	??0tTableAsset@@QAE@XZ
 0x0068ff60	534	fn_0068ff60(iBasicStringElement *,tString &,fn_0068ff60_Root *,tDir)	unsorted/tSession.cpp	partial	?fn_0068ff60@@YAPAVfn_0068ff60_Root@@PAGAAVtString@@PAV1@VtDir@@@Z
