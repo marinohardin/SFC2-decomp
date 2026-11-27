@@ -4743,7 +4743,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004a3cf4	function	fn_004a3cf4	tActualPlayer	?vfunction22@tActualPlayer@@UAEXPAX@Z	claim		vtable
 0x004a3d72	function	fn_004a3d72	tActualPlayer	?vfunction23@tActualPlayer@@UAEXPAX@Z	claim		vtable
 0x004a3df0	function	fn_004a3df0	tActualPlayer	?vfunction24@tActualPlayer@@UAEXPAX@Z	claim		vtable
-0x004a3e6e	function	fn_004a3e6e	tActualPlayer				vtable
+0x004a3e6e	function	fn_004a3e6e	tActualPlayer	?vfunction25@tActualPlayer@@UAEXPAX@Z	claim		vtable
 0x004a3eec	function	fn_004a3eec	tActualPlayer				vtable
 0x004a46cd	function	fn_004a46cd					none
 0x004a46e6	function	tValue<float>::tValue<float>	tValue<float>				rtti

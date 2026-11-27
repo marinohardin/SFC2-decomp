@@ -240,7 +240,8 @@ public:
 	tMinMaxFloat field_0x16e8;
 	tMinMaxFloat field_0x170c;
 	tMinMaxFloat field_0x1730;
-	char field_0x1754[0x28];
+	tMinMaxFloat field_0x1754;
+	char field_0x1778[0x4];
 	char field_0x177c[0xc];  // tShadowFloat (RTTI, vtable 0x007a0e44; stored inline, 12 bytes)
 	// HYPOTHESIS: tValue<long>, the next three: vfunction9 stores at +0x18 and notifies with (3, 0).
 	tValue<long> field_0x1788;
