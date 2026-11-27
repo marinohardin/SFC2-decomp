@@ -92,3 +92,12 @@ void tView3DExt::vfunction76( unsigned int color )
 	field_0x1eec.field_0x34 = 1;
 	field_0x1eec.field_0x1c.mSet( ( (unsigned char *)&color )[ 2 ] * ( 1.0f / 255.0f ), ( (unsigned char *)&color )[ 1 ] * ( 1.0f / 255.0f ), ( (unsigned char *)&color )[ 0 ] * ( 1.0f / 255.0f ) );
 }
+
+// FUNCTION: STARFLEETOP 0x006ad3e0
+void tView3DExt::vfunction78( unsigned int value )
+{
+	if ( value > 0x1000 )
+		field_0x1eec.field_0x38 = 0;
+	else
+		field_0x1eec.field_0x38 = value;
+}
