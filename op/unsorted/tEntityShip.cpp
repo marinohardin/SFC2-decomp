@@ -437,17 +437,17 @@ void tEntityShip::vfunction4(tObject_00413ac3_arg *aObject)
 
 		if (vfunction32())
 		{
-			// MATCH-ONLY: the original calls slot 7 (offset 0x1c) of the object at 0x88 here; its
-			// header gives slot 7 no arguments yet, so slot 6 stands in until it does (HEADER REQUEST).
+
+
 			int state = field_870;
 			if (state >= 0x18)
-				field_0x88->vfunction6(aObject, vfunction74(0.0f), 0);
+				field_0x88->vfunction7(aObject, vfunction74(), 0.0f, 0);
 			else if (state > 0xd && state <= 0x12)
-				field_0x88->vfunction6(aObject, vfunction74(1.0f - ratio), 2);
+				field_0x88->vfunction7(aObject, vfunction74(), 1.0f - ratio, 2);
 			else if (state == 6)
-				field_0x88->vfunction6(aObject, vfunction74(1.0f - ratio), 1);
+				field_0x88->vfunction7(aObject, vfunction74(), 1.0f - ratio, 1);
 			else
-				field_0x88->vfunction6(aObject, vfunction74(1.0f - ratio), 0);
+				field_0x88->vfunction7(aObject, vfunction74(), 1.0f - ratio, 0);
 		}
 		else if (fn_00419c87())
 		{
@@ -715,4 +715,39 @@ void *tEntityShip::vfunction33()
 	if (field_ad4)
 		return field_ad4->vfunction95();
 	return 0;
+}
+
+// FUNCTION: STARFLEETOP 0x00416db7
+float tEntityShip::vfunction74()
+{
+	tCloakSystem *cloak = (tCloakSystem *)vfunction33();
+	if (!cloak)
+		return 1.0f;
+	// HYPOTHESIS: the original calls vftable offset 0x194 (slot 101), as 0x00416d75 does.
+	bool flag;
+	int level = cloak->vfunction102(&flag);
+	if (flag)
+		return 1.0f;
+	switch (level)
+	{
+	case 0:
+		return 1.0f;
+	case 1:
+	case 7:
+		return 0.85f;
+	case 2:
+	case 8:
+		return 0.7f;
+	case 3:
+	case 9:
+		return 0.55f;
+	case 4:
+	case 10:
+		return 0.4f;
+	case 5:
+	case 11:
+		return 0.25f;
+	default:
+		return 0.2f;
+	}
 }

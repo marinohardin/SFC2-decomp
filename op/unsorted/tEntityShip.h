@@ -264,8 +264,8 @@ public:
 	// 0x194 to the address given; 0x00417b2a pops 8 bytes, so it takes a second argument.
 	virtual tPoint3 vfunction72(int param_1);
 	virtual void vfunction73(int param_1, int param_2);
-	// HYPOTHESIS: takes a float (0x004162b9 passes 0.0 or 1.0 minus a ratio) and returns one.
-	virtual float vfunction74(float aValue);
+	// HYPOTHESIS: a factor from the cloak system's level (0x00416db7); 1.0 without a cloak.
+	virtual float vfunction74();
 	// HYPOTHESIS: returns the 16-bit value at 0x92e.
 	virtual short vfunction75();
 	virtual void vfunction76(int param_1);

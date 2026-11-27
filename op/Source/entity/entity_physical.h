@@ -89,7 +89,10 @@ public:
 	virtual void vfunction3(); virtual void vfunction4(); virtual void vfunction5();
 	// HYPOTHESIS: (object, float, flag); 0x00413ac3 passes the object it was given, 0.0 and 0.
 	virtual void vfunction6(tObject_00413ac3_arg *aObject, float aValue, int aFlag);
-	virtual void vfunction7(); virtual void vfunction8();
+	// HYPOTHESIS: (object, float, float, flag); 0x004162b9 passes the object, the result of
+	// tEntityShip's slot 73, 0.0 or 1.0 minus a ratio, and a flag.
+	virtual void vfunction7(tObject_00413ac3_arg *aObject, float aValue1, float aValue2, int aFlag);
+	virtual void vfunction8();
 	virtual float vfunction9();
 	virtual void vfunction10(); virtual void vfunction11(); virtual void vfunction12();
 	virtual void vfunction13(); virtual void vfunction14(); virtual void vfunction15();
