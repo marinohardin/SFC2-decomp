@@ -309,3 +309,15 @@ void tActualPlayer::vfunction16(void *aObject)
 	field_0x1814 = *(long *)((char *)field_0x744 + 0x494);
 	field_0x1830 = *(long *)((char *)field_0x744 + 0x47c);
 }
+
+// FUNCTION: STARFLEETOP 0x004a39c5
+void tActualPlayer::vfunction14(void *aObject)
+{
+	field_0xbec = &field_0x106c;
+	field_0xbf0 = &field_0x1090;
+	field_0xbf4 = &field_0x10b4;
+	field_0xbe8 = aObject;
+	field_0xbf8 = &field_0x10d8;
+	field_0xc18 = fn_004a6f3d(aObject);
+	field_0xbfc = ((fn_004a2e75_Object *)aObject)->vfunction129();
+}
