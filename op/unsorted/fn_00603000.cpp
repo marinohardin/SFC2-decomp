@@ -470,9 +470,9 @@ void** fn_00603351_vector::fn_00603ebe( void** dest, void** src )
 		*out = *it;
 		++out;
 	}
+	void** first = out;
 	void** oldEnd = field_08;
+	for ( ; first != oldEnd; ++first ) {} // HYPOTHESIS: the dropped elements' empty destroy loop
 	field_08 = out;
-	void** volatile keep = oldEnd; // MATCH-ONLY: original stores the old end into its argument slot
-	src = keep;
 	return dest;
 }
