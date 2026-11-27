@@ -292,6 +292,7 @@ public:
 	void fn_004168b5(double param_1, int param_2);
 	void fn_004168cc(int param_1, int param_2);
 	unsigned char fn_004168e2(int param_1);
+	void fn_004168f4();
 
 	// 0x1bc is cleared by the constructor.
 	tObject_00426563_1bc *field_1bc;
