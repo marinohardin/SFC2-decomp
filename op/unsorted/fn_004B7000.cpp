@@ -1,4 +1,6 @@
 #include <windows.h>
+#include "Tiger/tUniFont.h"
+#include "Tiger/tFontmgr.h"
 
 // HYPOTHESIS: a 16-bit pixel surface; slot 10 (+0x28) returns the row pitch in bytes and
 // slot 11 (+0x2c) the pixels, as tSWView3D::vfunction85 (0x006b23c0) reads them. Probably
@@ -43,6 +45,27 @@ void fn_004b70ac(fn_004b70ac_Surface *surface, int color, RECT *rect)
 			left = (unsigned short *)((unsigned char *)left + pitch);
 			*right = (unsigned short)color;
 			right = (unsigned short *)((unsigned char *)right + pitch);
+		}
+	}
+}
+
+// HYPOTHESIS: the font object at 0x00919f60 has no recovered name.
+extern tUniFont g_00919f60;
+
+// Measures a string in that font: zero origin, summed glyph widths, one line high.
+// FUNCTION: STARFLEETOP 0x004b7161
+// The original returns with ret 8: the function is __stdcall.
+void __stdcall fn_004b7161(const char *text, RECT *rect)
+{
+	rect->top = 0;
+	rect->bottom = g_00919f60.mGetFontHeight(*text);
+	rect->left = 0;
+	rect->right = 0;
+	unsigned short ch;
+	while ((ch = (unsigned char)*text++) != 0) {
+		const tCharInfo *info = g_00919f60.mGetCharInfo(ch);
+		if (info) {
+			rect->right += info->field_4;
 		}
 	}
 }

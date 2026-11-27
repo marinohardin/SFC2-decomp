@@ -5098,7 +5098,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004b6f40	function	fn_004b6f40					none
 0x004b70ac	function	fn_004b70ac		?fn_004b70ac@@YAXPAVfn_004b70ac_Surface@@HPAUtagRECT@@@Z	claim		none
 0x004b714d	function	fn_004b714d	tState_Namespace_Tactical::tState_Tactical	?vfunction7@tState_Tactical@tState_Namespace_Tactical@@UAEXH@Z	claim		vtable
-0x004b7161	function	fn_004b7161					none
+0x004b7161	function	fn_004b7161		?fn_004b7161@@YGXPBDPAUtagRECT@@@Z	claim		none
 0x004b71af	function	fn_004b71af					none
 0x004b720d	function	fn_004b720d					none
 0x004b723e	function	fn_004b723e					none
