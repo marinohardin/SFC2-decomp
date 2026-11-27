@@ -180,6 +180,26 @@ bool tView3DExt::vfunction39(unsigned int index, bool enable)
 	return false;
 }
 
+// HYPOTHESIS: the cache is freed twice; the original's bytes repeat the same block, perhaps from
+// an inlined helper the source called in two places.
+// FUNCTION: STARFLEETOP 0x006a9e80
+// FUNCTION: STARFLEETOP 0x006a9eb0
+tView3DExt::~tView3DExt()
+{
+	if ( mVtxCache )
+	{
+		delete [] mVtxCache;
+		mVtxCache = NULL;
+		mVtxCacheSize = 0;
+	}
+	if ( mVtxCache )
+	{
+		delete [] mVtxCache;
+		mVtxCache = NULL;
+		mVtxCacheSize = 0;
+	}
+}
+
 // HYPOTHESIS: the original calls 0x0069cc40 (another tMatrix member taking an output point and an
 // input point) where this body calls fn_0069cbc0 three times; tMatrix declares no member for it yet.
 // FUNCTION: STARFLEETOP 0x006aa550

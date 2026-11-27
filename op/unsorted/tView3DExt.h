@@ -205,4 +205,10 @@ typedef char tView3DExt_field_0x1edc_is_0x1edc[ offsetof( tView3DExt, field_0x1e
 typedef char tView3DExt_field_0x1eec_is_0x1eec[ offsetof( tView3DExt, field_0x1eec ) == 0x1eec ? 1 : -1 ];
 typedef char tView3DExt_field_0x1f2c_is_0x1f2c[ offsetof( tView3DExt, field_0x1f2c ) == 0x1f2c ? 1 : -1 ];
 
+// HYPOTHESIS: tView3D's destructor is empty and inline; ~tView3DExt (0x006a9eb0) ends with only the
+// base vtable store. It belongs after tView3D in tApp3dBase.h, which is outside this lane.
+inline tView3D::~tView3D()
+{
+}
+
 #endif

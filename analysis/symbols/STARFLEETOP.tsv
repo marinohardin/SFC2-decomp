@@ -18781,9 +18781,9 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x006a9c60	function	tView3DExt::tView3DExt	tView3DExt				rtti
 0x006a9e50	function	tView3D::~tView3D	tView3D				rtti
 0x006a9e60	function	tView3D::scalar_deleting_destructor	tView3D				rtti
-0x006a9e80	function	tView3DExt::scalar_deleting_destructor	tView3DExt				rtti
+0x006a9e80	function	tView3DExt::scalar_deleting_destructor	tView3DExt	??_GtView3DExt@@UAEPAXI@Z	claim		rtti
 0x006a9ea0	function	fn_006a9ea0					none
-0x006a9eb0	function	tView3DExt::~tView3DExt	tView3DExt	??1tView3DExt@@UAE@XZ	add		rtti
+0x006a9eb0	function	tView3DExt::~tView3DExt	tView3DExt	??1tView3DExt@@UAE@XZ	claim		rtti
 0x006a9f20	function	fn_006a9f20	tView3DExt				vtable
 0x006a9f40	function	fn_006a9f40	tView3DExt				vtable
 0x006a9f50	function	fn_006a9f50	tView3DExt				vtable
