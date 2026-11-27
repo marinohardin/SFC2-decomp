@@ -47,5 +47,6 @@ public:
 	virtual ~tTRBeamLight_Creator();
 };
 
+// FUNCTION: STARFLEETOP 0x004eb9e4
 // FUNCTION: STARFLEETOP 0x004eb9da
 tTRBeamLight_Creator g_0092f220;
