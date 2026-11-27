@@ -694,3 +694,17 @@ bool tEntityShip::vfunction31()
 		return false;
 	return true;
 }
+
+// FUNCTION: STARFLEETOP 0x00416d75
+bool tEntityShip::vfunction32()
+{
+	tCloakSystem *cloak = field_ad4->vfunction95();
+	if (cloak)
+	{
+		// HYPOTHESIS: the original calls vftable offset 0x194 (slot 101); tCloakSystem.h's
+		// float-taking vfunction39/40 hide the base slots, so this call builds at 0x198.
+		bool flag;
+		return cloak->vfunction102(&flag) ? true : false;
+	}
+	return false;
+}
