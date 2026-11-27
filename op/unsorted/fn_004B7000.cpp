@@ -2,6 +2,8 @@
 #include "Tiger/tUniFont.h"
 #include "Tiger/tFontmgr.h"
 #include "unsorted/tState_Tactical.h"
+#include "unsorted/tEntityMgr.h"
+#include "unsorted/tEntity.h"
 
 using namespace tState_Namespace_Tactical;
 
@@ -100,4 +102,18 @@ void tState_Tactical::fn_004b71af(int *rect)
 		rect[1] += d;
 		rect[3] += d;
 	}
+}
+
+extern tEntityMgr g_008e1060;
+
+// Keeps field_484 on an entity: the player's own one, else the entity field_484 names.
+// HYPOTHESIS: field_484 holds an entity's tID; the entity is returned, since the original keeps
+// eax untouched up to the ret.
+// FUNCTION: STARFLEETOP 0x004b720d
+tEntity *tState_Tactical::fn_004b720d()
+{
+	tEntity *entity = g_008e1060.mGetPlayersControledEntity();
+	if (entity != 0 || (entity = g_008e1060.fn_00424a37(field_484)) != 0)
+		field_484 = entity->fID;
+	return entity;
 }

@@ -5100,7 +5100,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004b714d	function	fn_004b714d	tState_Namespace_Tactical::tState_Tactical	?vfunction7@tState_Tactical@tState_Namespace_Tactical@@UAEXH@Z	claim		vtable
 0x004b7161	function	fn_004b7161		?fn_004b7161@@YGXPBDPAUtagRECT@@@Z	claim		none
 0x004b71af	function	fn_004b71af		?fn_004b71af@tState_Tactical@tState_Namespace_Tactical@@QAEXPAH@Z	claim		none
-0x004b720d	function	fn_004b720d					none
+0x004b720d	function	fn_004b720d		?fn_004b720d@tState_Tactical@tState_Namespace_Tactical@@QAEPAVtEntity@@XZ	claim		none
 0x004b723e	function	fn_004b723e					none
 0x004b7430	function	fn_004b7430					none
 0x004b7509	function	fn_004b7509					none

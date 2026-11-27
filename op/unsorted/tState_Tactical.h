@@ -8,6 +8,8 @@
 #include "unsorted/tGameState.h"
 #include "unsorted/tTacticalSubStateMan.h"
 
+class tEntity;
+
 void __fastcall fn_004afa40( void *self );
 void __fastcall fn_004bc256( void *self );
 
@@ -83,6 +85,7 @@ public:
 	int *fn_004ad878();
 	int *fn_004ad89d();
 	void fn_004b71af(int *rect);
+	tEntity *fn_004b720d();
 
 	int field_0c;	// 0x1e
 	float field_10;
