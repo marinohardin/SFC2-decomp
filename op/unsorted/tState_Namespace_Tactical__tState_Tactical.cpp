@@ -652,4 +652,18 @@ void tState_Tactical::vfunction9( int *param_1 )
 	}
 }
 
+// FUNCTION: STARFLEETOP 0x004b9dd6
+void tState_Tactical::vfunction11( int param_1 )
+{
+	int *rect = field_1f0;
+	if ( rect[0] < rect[2] && rect[1] < rect[3] )
+	{
+		fn_004b97cc( rect );
+		return;
+	}
+	rect = field_1e0;
+	if ( rect[0] < rect[2] && rect[1] < rect[3] )
+		fn_004b97cc( rect );
+}
+
 }	// namespace tState_Namespace_Tactical
