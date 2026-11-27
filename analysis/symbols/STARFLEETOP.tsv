@@ -886,7 +886,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004197fb	function	tNetMsg_kUpdateInternals::~tNetMsg_kUpdateInternals	tNetMsg_kUpdateInternals	??1tNetMsg_kUpdateInternals@@UAE@XZ	claim		claim
 0x00419809	function	tNetMsg_kUpdateInternals::mGetMap	tNetMsg_kUpdateInternals	?mGetMap@tNetMsg_kUpdateInternals@@UBEPBUtMapItem@tNetMsg@@XZ	claim		claim
 0x0041980f	function	tNetMsg_kUpdateCloakStatus::mGetMap	tNetMsg_kUpdateCloakStatus	?mGetMap@tNetMsg_kUpdateCloakStatus@@UBEPBUtMapItem@tNetMsg@@XZ	claim		claim
-0x00419818	function	fn_00419818					none
+0x00419818	function	fn_00419818		?fn_00419818@tEntityShip@@QAEXABUtPoint3@@@Z	claim		none
 0x00419873	function	fn_00419873					none
 0x004198e0	function	fn_004198e0					none
 0x0041994b	function	fn_0041994b					none

@@ -298,6 +298,7 @@ public:
 	void fn_004103e2(tObject_00413ac3_arg *aView);
 	// HYPOTHESIS: a test of the ship, called by 0x004162b9 to choose between two ways to draw.
 	bool fn_00419c87();
+	void fn_00419818(const tPoint3 &aPoint);
 	// HYPOTHESIS: takes the ID of the entity 0x00416a0e acted for; the symbol table names 0x00419e84
 	// a destructor of tNetMsg_kSendVoice, which its callers' use contradicts.
 	void fn_00419e84(int aID);
