@@ -6677,10 +6677,10 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004ddf73	function	fn_004ddf73	tESGLance				vtable
 0x004ddfb9	function	fn_004ddfb9	tESGLance				vtable
 0x004ddfec	function	fn_004ddfec	tESGLance				vtable
-0x004de01f	function	fn_004de01f					none
+0x004de01f	function	fn_004de01f		?fn_004de01f@tESGLance@@QAEHXZ	add		none
 0x004de023	function	fn_004de023	tESGLance				vtable
 0x004de02c	function	fn_004de02c	tESGLance				vtable
-0x004de035	function	tNetMsg_kCreateDirect::~tNetMsg_kCreateDirect	tNetMsg_kCreateDirect				rtti
+0x004de035	function	tNetMsg_kCreateDirect::~tNetMsg_kCreateDirect	tNetMsg_kCreateDirect	?fn_004de035@tESGLance@@QAEXM@Z	claim		rtti
 0x004de0fe	function	fn_004de0fe	tESGLance				vtable
 0x004de200	function	fn_004de200					none
 0x004de20a	function	fn_004de20a					none
