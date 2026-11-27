@@ -202,9 +202,11 @@ public:
 	tMinMaxFloat field_0x11b0;
 	tMinMaxFloat field_0x11d4;
 	tMinMaxFloat field_0x11f8;
-	char field_0x121c[0x4];
-	char field_0x1220[0x1c];  // a value object, constructed by tValueBase (0x00436633) and given its own vtable
-	char field_0x123c[0x1c];  // a value object, constructed by tValueBase (0x00436633) and given its own vtable
+	// HYPOTHESIS: the object vfunction17 is given; the two values after it are set from it.
+	void *field_0x121c;
+	// HYPOTHESIS: tValue<long>: vfunction17 stores at +0x18 and then notifies with (3, 0).
+	tValue<long> field_0x1220;
+	tValue<long> field_0x123c;
 	char field_0x1258[0x50];  // tShadowTStr (RTTI, vtable 0x007a0dbc, constructor 0x004a03cd)
 	char field_0x12a8[0x50];  // tShadowTStr (RTTI, vtable 0x007a0dbc, constructor 0x004a03cd)
 	tMinMaxFloat field_0x12f8;

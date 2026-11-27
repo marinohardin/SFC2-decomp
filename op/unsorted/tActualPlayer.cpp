@@ -158,6 +158,11 @@ public:
 	virtual void vfunction137();
 	virtual void vfunction138();
 	virtual int vfunction139();
+
+	// HYPOTHESIS: non-virtual methods called by vfunction17; their neighbours in the exe belong
+	// to tMaulerBeam, so the object may be one. The first returns a float.
+	float fn_004e171a();
+	long fn_004e1a60();
 };
 
 // FUNCTION: STARFLEETOP 0x004a2e75
@@ -320,4 +325,20 @@ void tActualPlayer::vfunction14(void *aObject)
 	field_0xbf8 = &field_0x10d8;
 	field_0xc18 = fn_004a6f3d(aObject);
 	field_0xbfc = ((fn_004a2e75_Object *)aObject)->vfunction129();
+}
+
+// FUNCTION: STARFLEETOP 0x004a3a43
+void tActualPlayer::vfunction17(void *aObject)
+{
+	field_0x1220 = 0;
+	field_0x123c = 0;
+	field_0xbe8 = aObject;
+	field_0xbfc = ((fn_004a2e75_Object *)aObject)->vfunction129();
+	field_0xc18 = fn_004a6f3d(field_0xbe8);
+	field_0x121c = aObject;
+	if (aObject != 0)
+	{
+		field_0x1220 = (long)((fn_004a2e75_Object *)aObject)->fn_004e171a();
+		field_0x123c = ((fn_004a2e75_Object *)field_0x121c)->fn_004e1a60();
+	}
 }
