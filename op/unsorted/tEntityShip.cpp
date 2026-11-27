@@ -685,3 +685,12 @@ void __stdcall fn_00416c58(tPoint3 &aVelocity, float aScale)
 	if ((aVelocity.z < 0.0f && delta.z < 0.0f) || (aVelocity.z > 0.0f && delta.z > 0.0f))
 		aVelocity.z = 0.0f;
 }
+
+// FUNCTION: STARFLEETOP 0x00416d41
+bool tEntityShip::vfunction31()
+{
+	if (field_870 == 24 || field_870 == 26 || field_870 == 12 || field_870 == 11
+		|| field_870 == 8 || field_870 == 7 || field_870 == 6 || field_870 == 10)
+		return false;
+	return true;
+}
