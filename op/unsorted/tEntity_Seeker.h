@@ -25,6 +25,7 @@ public:
 	virtual float vfunction14();
 	// HYPOTHESIS: the entity kind; the seeker answers 0xc.
 	virtual int vfunction18();
+	virtual void vfunction22(unsigned aIndex, void *aRecord);
 	// HYPOTHESIS: slot 22, returns the int at +0x268 (0x0041e93f).
 	virtual int vfunction23();
 	// HYPOTHESIS: slot 23, the int at +0x268 over the int at +0x270 as a fraction.

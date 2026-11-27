@@ -292,3 +292,17 @@ float tEntity_Seeker::vfunction14()
 		return 0.0f;
 	return r * fRadius;
 }
+
+// FUNCTION: STARFLEETOP 0x00420447
+void tEntity_Seeker::vfunction22(unsigned aIndex, void *aRecord)
+{
+	if (aIndex < vfunction21())
+	{
+		int32 *record = (int32 *)aRecord;
+		record[0] = 5;
+		*(tPoint3 *)&record[4] = fCurrPos;
+		((float *)record)[10] = 20.0f;
+		// MATCH-ONLY: tEntity_Weapon.h does not yet declare the point at +0x220 (header request).
+		*(tPoint3 *)&record[7] = *(tPoint3 *)&field_0x1f8[0x28];
+	}
+}
