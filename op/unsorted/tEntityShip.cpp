@@ -667,3 +667,21 @@ float tEntityShip::vfunction24()
 	}
 	return 0.0f;
 }
+
+// FUNCTION: STARFLEETOP 0x00416c58
+void __stdcall fn_00416c58(tPoint3 &aVelocity, float aScale)
+{
+	tPoint3 delta(0.0f, 0.0f, 0.0f);
+	tPoint3 direction(aVelocity);
+	direction.mNormalize();
+	delta.x = direction.x * (aScale * -2500.5f);
+	delta.y = direction.y * (aScale * -2500.5f);
+	delta.z = direction.z * (aScale * -2500.5f);
+	aVelocity += delta;
+	if ((aVelocity.x < 0.0f && delta.x < 0.0f) || (aVelocity.x > 0.0f && delta.x > 0.0f))
+		aVelocity.x = 0.0f;
+	if ((aVelocity.y < 0.0f && delta.y < 0.0f) || (aVelocity.y > 0.0f && delta.y > 0.0f))
+		aVelocity.y = 0.0f;
+	if ((aVelocity.z < 0.0f && delta.z < 0.0f) || (aVelocity.z > 0.0f && delta.z > 0.0f))
+		aVelocity.z = 0.0f;
+}
