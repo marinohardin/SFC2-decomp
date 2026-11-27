@@ -69,4 +69,25 @@ public:
 
 typedef char tEntity_Seeker_size_is_0x288[ sizeof( tEntity_Seeker ) == 0x288 ? 1 : -1 ];
 
+// HYPOTHESIS: the class of the 0xa0-byte entity tEntity_HellboreSeeker's slot 4 (0x004204b2)
+// creates; RTTI names it, the base is taken to be tEntity. The constructor (0x0042135f) takes
+// the seeker's target ID and the int at +0x26c.
+class tEntity_HellboreBlast : public tEntity
+{
+public:
+	tEntity_HellboreBlast( tID aTarget, int aValue );
+
+	// HYPOTHESIS: places the entity at the point; the symbol table's lead puts 0x0041089e in
+	// tEntity_Tractor, which is declared only inside another unit.
+	void fn_0041089e( tPoint3 *aPos );
+
+	char field_0x88[0xa0 - sizeof( tEntity )];
+};
+
+class tEntity_HellboreSeeker : public tEntity_Seeker
+{
+public:
+	virtual void vfunction5();
+};
+
 #endif	// tEntity_Seeker_h

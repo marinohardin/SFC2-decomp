@@ -1033,7 +1033,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004203f5	function	tEntity_HellboreSeeker::~tEntity_HellboreSeeker	tEntity_HellboreSeeker				rtti
 0x00420447	function	fn_00420447	tEntity_Seeker	?vfunction22@tEntity_Seeker@@UAEXIPAX@Z	claim		vtable
 0x00420493	function	fn_00420493		?fn_00420493@tEntity_Seeker@@QAE_NXZ	claim		none
-0x004204b2	function	fn_004204b2	tEntity_HellboreSeeker				vtable
+0x004204b2	function	fn_004204b2	tEntity_HellboreSeeker	?vfunction5@tEntity_HellboreSeeker@@UAEXXZ	claim		vtable
 0x00420572	function	tEntity_DriftingSeeker::tEntity_DriftingSeeker	tEntity_DriftingSeeker	??0tEntity_DriftingSeeker@@QAE@XZ	add		rtti
 0x00420588	function	fn_00420588	tEntity_DriftingSeeker				vtable
 0x0042058c	function	tEntity_HellboreSeeker::scalar_deleting_destructor	tEntity_HellboreSeeker				rtti
@@ -1073,7 +1073,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00421228	function	fn_00421228	tEntity_MineBlast				vtable
 0x0042128c	function	fn_0042128c	tEntity_MineBlast				vtable
 0x004212d7	function	fn_004212d7	tEntity_MineBlast				vtable
-0x0042135f	function	tEntity_HellboreBlast::tEntity_HellboreBlast	tEntity_HellboreBlast				rtti
+0x0042135f	function	tEntity_HellboreBlast::tEntity_HellboreBlast	tEntity_HellboreBlast	??0tEntity_HellboreBlast@@QAE@JH@Z	add		rtti
 0x004214be	function	fn_004214be	tEntity_HellboreBlast				vtable
 0x004214c2	function	tEntity_HellboreBlast::scalar_deleting_destructor	tEntity_HellboreBlast				rtti
 0x004214de	function	tEntity_HellboreBlast::~tEntity_HellboreBlast	tEntity_HellboreBlast				rtti
