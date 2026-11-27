@@ -39,6 +39,17 @@ public:
 
 extern fn_00919f00_object g_00919f00;
 
+// HYPOTHESIS: an int rectangle (left, top, right, bottom) with methods and no RTTI; the exe
+// names neither it nor its methods. tState_Tactical::field_1f0 has the same shape.
+struct fn_004b7f9e_Rect {
+	int left;
+	int top;
+	int right;
+	int bottom;
+	void fn_004b7f9e(const fn_004b7f9e_Rect *other);
+	void fn_004b99a4(fn_004b7f9e_Rect *out, const fn_004b7f9e_Rect *other) const;
+};
+
 namespace tState_Namespace_Tactical
 {
 

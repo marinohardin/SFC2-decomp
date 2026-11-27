@@ -118,15 +118,15 @@ tEntity *tState_Tactical::fn_004b720d()
 	return entity;
 }
 
-// HYPOTHESIS: an int rectangle (left, top, right, bottom) with methods and no RTTI; the exe
-// names neither it nor this method. tState_Tactical::field_1f0 has the same shape.
-struct fn_004b7f9e_Rect {
-	int left;
-	int top;
-	int right;
-	int bottom;
-	void fn_004b7f9e(const fn_004b7f9e_Rect *other);
-};
+// fn_004b7f9e_Rect is declared in unsorted/tState_Tactical.h.
+
+
+
+
+
+
+
+
 
 // Grows this rectangle to cover the one given.
 // FUNCTION: STARFLEETOP 0x004b7f9e
