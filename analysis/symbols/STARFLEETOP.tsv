@@ -18823,7 +18823,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x006ab380	function	fn_006ab380		?fn_006ab380@tD3DViewMgr_Sub@@QAEXXZ	add		none
 0x006abe00	function	tView3DExt::mAssertVtxCache	tView3DExt	?mAssertVtxCache@tView3DExt@@QAEXH@Z	claim		claim
 0x006abeb0	function	fn_006abeb0		?fn_006abeb0@tView3DExt@@QAEMXZ	claim		none
-0x006abf80	function	fn_006abf80	tView3DExt				vtable
+0x006abf80	function	fn_006abf80	tView3DExt	?vfunction79@tView3DExt@@UAEXHH@Z	claim		vtable
 0x006abfb0	function	fn_006abfb0	tView3DExt				vtable
 0x006abfc0	function	fn_006abfc0	tView3DExt				vtable
 0x006ac5a0	function	fn_006ac5a0	tView3DExt	?vfunction81@tView3DExt@@UAEXHPAPAX_N@Z	claim		none

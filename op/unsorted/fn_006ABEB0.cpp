@@ -41,3 +41,16 @@ float tView3DExt::fn_006abeb0()
 	return ( c->field_0x04 * ic - x0 ) * ( b->field_0x08 * ib - y0 )
 		- ( c->field_0x08 * ic - y0 ) * ( b->field_0x04 * ib - x0 );
 }
+
+// FUNCTION: STARFLEETOP 0x006abf80
+void tView3DExt::vfunction79( int count, int param_2 )
+{
+	mAssertVtxCache( count );
+	field_0x554 = param_2;
+	fn_006abe00_Vtx *vtx = mVtxCache;
+	for ( int i = 0; i < count; i++ )
+	{
+		vtx->field_0x00 = 0;
+		vtx++;
+	}
+}
