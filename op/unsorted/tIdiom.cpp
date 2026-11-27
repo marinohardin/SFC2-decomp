@@ -36,3 +36,9 @@ void tIdiom::StreamOut( nDataStore::tOutput& output ) const
 {
 	output << field_0c;
 }
+
+// FUNCTION: STARFLEETOP 0x005d3918
+void tIdiom::StreamIn( nDataStore::tInput& input )
+{
+	input >> field_0c;
+}
