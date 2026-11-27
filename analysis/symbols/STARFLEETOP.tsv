@@ -6959,7 +6959,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004e5c2f	function	fn_004e5c2f		?fn_004e5c2f@tPhaserXBank@@QAEHHH@Z	callers		none
 0x004e5c80	function	tNetMsg_kCreateDirect::~tNetMsg_kCreateDirect	tNetMsg_kCreateDirect				rtti
 0x004e5d4b	function	fn_004e5d4b	tPhaserXBank				vtable
-0x004e5e83	function	fn_004e5e83					none
+0x004e5e83	function	fn_004e5e83		?fn_004e5e83@@YAMXZ	claim		none
 0x004e5e8c	function	fn_004e5e8c	tPhaserXBank				vtable
 0x004e6461	function	fn_004e6461					none
 0x004e64a2	function	fn_004e64a2					none
