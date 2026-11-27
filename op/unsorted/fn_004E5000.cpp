@@ -46,5 +46,6 @@ public:
 	virtual ~tPhaserB_Creator();
 };
 
+// FUNCTION: STARFLEETOP 0x004e5222
 // FUNCTION: STARFLEETOP 0x004e5218
 tPhaserB_Creator g_0092efb0;
