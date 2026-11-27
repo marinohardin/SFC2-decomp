@@ -261,6 +261,9 @@ void fn_004602b2_class::fn_00460610()
 #include "Common/Database/DatabaseObject.h"
 
 #include "unsorted/tCampaignInfo.h"
+
+// MATCH-ONLY: declared before its first use, as an explicit specialization must be; defined at 0x0046090a.
+template<> inline std::vector<std::string> &std::vector<std::string>::operator=(const std::vector<std::string> &_X);
 //
 //
 //
@@ -456,67 +459,46 @@ tCampaignInfo &tCampaignInfo::operator=(const tCampaignInfo &other)
 // FUNCTION: STARFLEETOP 0x004608ea
 tState_Namespace_CampaignSelector::tState_CampaignSelector g_0090d158;
 
-inline const std::string *fn_0046090a_object::begin() const
-{
-    return (_First);
-}
-
-inline const std::string *fn_0046090a_object::end() const
-{
-    return (_Last);
-}
-
-inline unsigned int fn_0046090a_object::size() const
-{
-    return (_First == 0 ? 0 : _Last - _First);
-}
-
-inline unsigned int fn_0046090a_object::capacity() const
-{
-    return (_First == 0 ? 0 : _End - _First);
-}
-
-inline void fn_0046090a_object::_Destroy(std::string *first, std::string *last)
-{
-    for (; first != last; ++first)
-        allocator.destroy(first);
-}
-
-inline std::string *fn_0046090a_object::_Ucopy(const std::string *first, const std::string *last, std::string *dest)
-{
-    for (; first != last; ++dest, ++first)
-        allocator.construct(dest, *first);
-    return (dest);
-}
-
+// MATCH-ONLY: the library's vector assignment for strings, written out so that the claim has a line
+// of its own; fn_emit_0046090a makes this unit emit it.
 // FUNCTION: STARFLEETOP 0x0046090a
-fn_0046090a_object &fn_0046090a_object::operator=(const fn_0046090a_object &other)
+template<>
+inline std::vector<std::string> &std::vector<std::string>::operator=(const std::vector<std::string> &_X)
 {
-    if (this == &other)
+    if (this == &_X)
         ;
-    else if (other.size() <= size())
+    else if (_X.size() <= size())
     {
-        std::string *s = std::copy(other.begin(), other.end(), _First);
-        _Destroy(s, _Last);
-        _Last = _First + other.size();
+        iterator _S = copy(_X.begin(), _X.end(), _First);
+        _Destroy(_S, _Last);
+        _Last = _First + _X.size();
     }
-    else if (other.size() <= capacity())
+    else if (_X.size() <= capacity())
     {
-        const std::string *s = other.begin() + size();
-        std::copy(other.begin(), s, _First);
-        _Ucopy(s, other.end(), _Last);
-        _Last = _First + other.size();
+        const_iterator _S = _X.begin() + size();
+        copy(_X.begin(), _S, _First);
+        _Ucopy(_S, _X.end(), _Last);
+        _Last = _First + _X.size();
     }
     else
     {
         _Destroy(_First, _Last);
         allocator.deallocate(_First, _End - _First);
-        _First = allocator.allocate(other.size(), (void *)0);
-        _Last = _Ucopy(other.begin(), other.end(), _First);
+        _First = allocator.allocate(_X.size(), (void *)0);
+        _Last = _Ucopy(_X.begin(), _X.end(), _First);
         _End = _Last;
     }
     return (*this);
 }
+
+// MATCH-ONLY: exists only to make this unit emit the assignment above out of line; not a function of
+// the original.
+#pragma inline_depth( 0 )
+void fn_emit_0046090a(std::vector<std::string> *to, const std::vector<std::string> *from)
+{
+    *to = *from;
+}
+#pragma inline_depth()
 
 // HYPOTHESIS: a list-like container whose nodes start with the next link; 0x00460acb tears it
 // down like the library list's destructor, plus a second block at +8.

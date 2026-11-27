@@ -22,3 +22,5 @@ address	base symbol	new symbol
 0x005e4470	?vfunction31@tMetaMapControl@@QAE_NPAUc_tListBox_Base_Event@@@Z	?vfunction31@tMetaMapControl@@UAE_NPAUc_tListBox_Base_Event@@@Z
 0x0067dd00	?vfunction31@tVisGroup@@UAE_NPAH@Z	?vfunction31@tVisGroup@@UAE_NPAUc_tListBox_Base_Event@@@Z
 0x0040651e	?fn_0040651e@fn_0040651e_String@@QBEHABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z	?compare@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEHABV12@@Z
+0x00402d42	?fn_00402d42@fn_00402d42_Vec@@QAEXXZ	??1?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@QAE@XZ
+0x0046090a	??4fn_0046090a_object@@QAEAAV0@ABV0@@Z	??4?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@QAEAAV01@ABV01@@Z
