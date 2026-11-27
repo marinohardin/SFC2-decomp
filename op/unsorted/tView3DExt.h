@@ -74,6 +74,7 @@ public:
 	// Overrides, by tView3D's names (slot = number - 1). HYPOTHESIS: 0x006a95f0, the function
 	// in slot 5, is this class's (it frees the vertex cache); the symbol table now says so too,
 	// as a placeholder name.
+	virtual void vfunction5(int);    // 0x006aa6d0, stores its argument at +0x774
 	virtual bool vfunction6();
 	virtual fn_006a9f20_Callback vfunction13(fn_006a9f20_Callback, void *);    // 0x006a9f20, returns the old callback
 	virtual fn_006a9f20_Callback vfunction14();    // 0x006a9f40
