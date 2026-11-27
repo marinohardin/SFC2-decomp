@@ -108,7 +108,10 @@ public:
 	// HYPOTHESIS: a yes/no question; 0x004168e2 forwards its argument and the fleet entry's
 	// 0x004c3a36 reads the result.
 	virtual unsigned char vfunction20(int param_1);
-	virtual void vfunction21(); virtual void vfunction22(); virtual void vfunction23();
+	virtual void vfunction21();
+	// HYPOTHESIS: takes a float and returns one; 0x00416bea forwards its argument and drops the result.
+	virtual float vfunction22(float param_1);
+	virtual void vfunction23();
 	virtual void vfunction24(); virtual void vfunction25(); virtual void vfunction26();
 	virtual void vfunction27();
 	// HYPOTHESIS: returns a record with a float at 0x18; 0x0041687b reads it.
@@ -303,6 +306,7 @@ public:
 	void fn_004168cc(int param_1, int param_2);
 	unsigned char fn_004168e2(int param_1);
 	void fn_004168f4();
+	void fn_00416bea(float param_1);
 
 	// 0x1bc is cleared by the constructor.
 	tObject_00426563_1bc *field_1bc;

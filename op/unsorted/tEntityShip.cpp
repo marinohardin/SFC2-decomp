@@ -635,3 +635,9 @@ void tEntityShip::vfunction26(short a1, int a2, int a3, int a4, int a5)
 	if (!field_ad4->vfunction16())
 		fn_00419e84(a5);
 }
+
+// FUNCTION: STARFLEETOP 0x00416bea
+void tEntityShip::fn_00416bea(float param_1)
+{
+	field_ad4->vfunction22(param_1);
+}
