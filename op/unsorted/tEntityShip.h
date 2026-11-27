@@ -109,11 +109,17 @@ public:
 
 // HYPOTHESIS: one of the 25 hardpoint entries slot 57 of the object at 0xad4 returns; 0x004199f4
 // calls 0x00419a83 on each with the point found for it, passed by value (three dwords pushed).
+// 0x00419a83 stores the point at the unaligned offset 0x137, so the layout is packed.
+#pragma pack(push, 1)
 class fn_00419a83_Object
 {
 public:
 	void fn_00419a83(tPoint3 aPoint);
+
+	char field_0[0x137];
+	tPoint3 field_137;
 };
+#pragma pack(pop)
 
 // HYPOTHESIS: the object at 0xad4 (0x00416da2 calls through it); only slots 34 and 86 are called
 // by 0x004162b9, the slots before them are not known.

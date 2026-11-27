@@ -84,3 +84,10 @@ void tEntityShip::fn_004199f4()
 		}
 	}
 }
+
+// HYPOTHESIS: a hardpoint entry's setter; it keeps the point 0x004199f4 found for it.
+// FUNCTION: STARFLEETOP 0x00419a83
+void fn_00419a83_Object::fn_00419a83(tPoint3 aPoint)
+{
+	field_137 = aPoint;
+}
