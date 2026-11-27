@@ -129,7 +129,8 @@ public:
 	void *field_0x73c;
 	// HYPOTHESIS: the object vfunction15 is given; it reads ints at +0x490 and +0x47c through it.
 	void *field_0x740;
-	char field_0x744[0x4];
+	// HYPOTHESIS: the object vfunction16 is given; it reads ints at +0x494 and +0x47c through it.
+	void *field_0x744;
 	char field_0x748[0x50];  // tShadowTStr (RTTI, vtable 0x007a0dbc, constructor 0x004a03cd)
 	char field_0x798[0xc];  // tShadowFloat (RTTI, vtable 0x007a0e44; stored inline, 12 bytes)
 	char field_0x7a4[0xc];  // tShadowInt (RTTI, vtable 0x007a0df0)
