@@ -85,3 +85,10 @@ void tView3DExt::vfunction77( float r, float g, float b )
 	field_0x1eec.field_0x34 = 1;
 	field_0x1eec.field_0x1c.mSet( r, g, b );
 }
+
+// FUNCTION: STARFLEETOP 0x006ad370
+void tView3DExt::vfunction76( unsigned int color )
+{
+	field_0x1eec.field_0x34 = 1;
+	field_0x1eec.field_0x1c.mSet( ( (unsigned char *)&color )[ 2 ] * ( 1.0f / 255.0f ), ( (unsigned char *)&color )[ 1 ] * ( 1.0f / 255.0f ), ( (unsigned char *)&color )[ 0 ] * ( 1.0f / 255.0f ) );
+}
