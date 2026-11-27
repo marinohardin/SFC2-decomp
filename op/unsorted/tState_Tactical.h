@@ -280,4 +280,10 @@ public:
 
 extern fn_00898c24_object *g_00898c24;
 
+// HYPOTHESIS: 0x004b4018 shows or hides an interface panel by name; 0x004a634c and 0x004a6670
+// take panel names too.
+void fn_004b4018( const char *name, bool show );
+void fn_004a634c( const char *name );
+void fn_004a6670( const char *name, const char *empty );
+
 #endif	// tState_Tactical_h

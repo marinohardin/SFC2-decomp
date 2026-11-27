@@ -70,3 +70,22 @@ void tState_Tactical::fn_004b37ce( long *event )
 }
 
 }	// namespace tState_Namespace_Tactical
+
+// HYPOTHESIS: the argument is the screen width; at 640 or less the 800-wide panels are hidden.
+// FUNCTION: STARFLEETOP 0x004b3f79
+void fn_004b3f79( int width )
+{
+	bool show = width <= 640;
+	fn_004b4018( "ShipSpeed800", show );
+	fn_004b4018( "ShipSystems800", show );
+	fn_004b4018( "ShipHealth800", show );
+	fn_004b4018( "PhaserCapacitor800", show );
+	fn_004b4018( "TargetHealth800", show );
+	fn_004b4018( "Alert800", show );
+	fn_004b4018( "Timers800", show );
+	fn_004b4018( "A5_WEAPONS800", show );
+	fn_004b4018( "A7_WEAPONS800", show );
+	fn_004b4018( "A7_EMPTY800", show );
+	fn_004a634c( "A5_WEAPONS800" );
+	fn_004a6670( "A7_WEAPONS800", "A7_EMPTY800" );
+}

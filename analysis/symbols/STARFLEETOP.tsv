@@ -4772,13 +4772,13 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004a627b	function	tArea5Schematic::tArea5Schematic	tArea5Schematic				rtti
 0x004a6325	function	tArea5Schematic::scalar_deleting_destructor	tArea5Schematic				rtti
 0x004a6341	function	tArea5Schematic::~tArea5Schematic	tArea5Schematic				rtti
-0x004a634c	function	fn_004a634c					none
+0x004a634c	function	fn_004a634c		?fn_004a634c@@YAXPBD@Z	add		none
 0x004a6360	function	fn_004a6360	tArea5Schematic				vtable
 0x004a64cd	function	fn_004a64cd	tArea5Schematic				vtable
 0x004a6505	function	fn_004a6505	tArea5Schematic				vtable
 0x004a65a7	function	tArea7Schematic::tArea7Schematic	tArea7Schematic				rtti
 0x004a6654	function	tArea7Schematic::scalar_deleting_destructor	tArea7Schematic				rtti
-0x004a6670	function	fn_004a6670					none
+0x004a6670	function	fn_004a6670		?fn_004a6670@@YAXPBD0@Z	add		none
 0x004a6694	function	fn_004a6694	tArea7Schematic				vtable
 0x004a66d6	function	tArea7Schematic::~tArea7Schematic	tArea7Schematic				rtti
 0x004a66e1	function	fn_004a66e1	tArea7Schematic				vtable
@@ -5055,8 +5055,8 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004b3793	function	fn_004b3793		?fn_004b3793@tState_Tactical@tState_Namespace_Tactical@@QAEXPAJ@Z	claim		none
 0x004b37ce	function	fn_004b37ce		?fn_004b37ce@tState_Tactical@tState_Namespace_Tactical@@QAEXPAJ@Z	claim		none
 0x004b3809	function	fn_004b3809	tState_Namespace_Tactical::tState_Tactical				vtable
-0x004b3f79	function	fn_004b3f79					none
-0x004b4018	function	fn_004b4018					none
+0x004b3f79	function	fn_004b3f79		?fn_004b3f79@@YAXH@Z	claim		none
+0x004b4018	function	fn_004b4018		?fn_004b4018@@YAXPBD_N@Z	add		none
 0x004b4046	function	tValueI<tString>::tValueI<tString>	tValueI<tString>				rtti
 0x004b422c	function	tValueBase::~tValueBase	tValueBase				rtti
 0x004b4482	function	fn_004b4482					none
