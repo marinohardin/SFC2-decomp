@@ -328,25 +328,25 @@ void fn_006032e7_object::fn_00603873( const std::string& name, int a, int b )
 void fn_006032e7_object::fn_00603978( void* record )
 {
 	tOptex::tGuard guard( &field_b8 );
-	unsigned int index = 0;
 	if ( field_13c )
 	{
-		unsigned int count = field_13c->fn_count();
-		if ( count > 0 )
+		for ( unsigned int index = 0; index < (unsigned int)field_13c->fn_count(); ++index )
 		{
-			while ( 1 )
+			if ( field_13c->fn_item( index ) == record )
 			{
-				if ( field_13c->fn_item( index ) == record )
-				{
-					field_13c->fn_slot55( index );
-					break;
-				}
-				++index;
-				if ( index >= (unsigned int)field_13c->fn_count() )
-					break;
+				field_13c->fn_slot55( index );
+				break;
 			}
 		}
 	}
+
+
+
+
+
+
+
+
 	guard.Leave();
 }
 
@@ -372,21 +372,38 @@ void fn_006032e7_object::fn_00603c9a( int a, int b, int c )
 	guard.Leave();
 }
 
-// HYPOTHESIS: a node holding a kind, two ints and a string; its name is not recovered.
-class fn_00603d4a_node
+// HYPOTHESIS: the three ints ahead of the string are a base whose inline constructor assigns
+// them in its body: the original stores the kind, then +8, then +4, before the string is built,
+// which one class's initializer list (declaration order) cannot give. Name not recovered.
+class fn_00603d4a_head
 {
 public:
-	fn_00603d4a_node( const std::string& text, int a, int b );
+	fn_00603d4a_head( int kind, int a, int b );
 
 	int			m_kind;
 	int			m_a;
 	int			m_b;
+};
+
+inline fn_00603d4a_head::fn_00603d4a_head( int kind, int a, int b )
+{
+	m_kind = kind;
+	m_b = b;
+	m_a = a;
+}
+
+// HYPOTHESIS: a node holding a kind, two ints and a string; its name is not recovered.
+class fn_00603d4a_node : public fn_00603d4a_head
+{
+public:
+	fn_00603d4a_node( const std::string& text, int a, int b );
+
 	std::string	m_text;
 };
 
 // FUNCTION: STARFLEETOP 0x00603d4a
 fn_00603d4a_node::fn_00603d4a_node( const std::string& text, int a, int b )
-	: m_b( a ), m_kind( 2 ), m_a( b ), m_text( text )
+	: fn_00603d4a_head( 2, a, b ), m_text( text )
 {
 }
 
@@ -453,9 +470,9 @@ void** fn_00603351_vector::fn_00603ebe( void** dest, void** src )
 		*out = *it;
 		++out;
 	}
+	void** first = out;
 	void** oldEnd = field_08;
+	for ( ; first != oldEnd; ++first ) {} // HYPOTHESIS: the dropped elements' empty destroy loop
 	field_08 = out;
-	void** volatile keep = oldEnd; // MATCH-ONLY: original stores the old end into its argument slot
-	src = keep;
 	return dest;
 }
