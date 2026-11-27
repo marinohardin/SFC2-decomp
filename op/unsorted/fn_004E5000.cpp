@@ -1,6 +1,38 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/fn_004E5000.cpp
-// Functions: 0x004e5022 to 0x004e5222, 4 in op/UNITS.tsv
-// Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
-// Profile:   game-release (harness/units.json)
+#include "unsorted/tBaseWeapon.h"
+#include "unsorted/tNetMsg_kCreateDirect.h"
+#include "unsorted/tNetControl.h"
+#include "unsorted/tEntityMgr.h"
+#include "unsorted/fn_0090be9c_type.h"
+
+extern tEntityMgr g_008e1060;
+extern double g_00799f68;
+
+// HYPOTHESIS: tPhaserB (RTTI) derives from tBaseWeapon; this unit's function sits among its
+// vtable entries and calls its 0x004e4e50, as tPhaserA's twin at 0x004e492c does.
+class tPhaserB : public tBaseWeapon
+{
+public:
+	int fn_004e4e50();
+	void fn_004e5022(float param_1);
+};
+
+// HYPOTHESIS: sends the create message for the phaser's shot to its target, delayed by the
+// frame time plus three times the argument.
+// FUNCTION: STARFLEETOP 0x004e5022
+void tPhaserB::fn_004e5022(float param_1)
+{
+	int value = fn_004e4e50();
+	tNetMsg_kCreateDirect msg;
+	msg.field_0x4 = field_ec;
+	msg.field_0x8 = g_008e1060.mGetNextPlayerID();
+	// MATCH-ONLY: the byte at +0xc4 lies in tBaseWeapon's unnamed padding.
+	msg.field_0xd = pad_6c[0xc4 - 0x6c];
+	msg.field_0xc = (unsigned char)field_f8;
+	msg.field_0xe = field_fc;
+	msg.field_0x10 = value;
+	msg.field_0x14 = (unsigned char)vfunction140();
+	fn_0090be9c_type *source = g_0090be9c;
+	unsigned int count = source->vfunction7();
+	unsigned int frame = (int)(count * g_00799f68 / source->field_20);
+	gNetControl.mQueueMsg(&msg, 6, vfunction37(), param_1 * 3.0f + (frame + 1) * 50);
+}

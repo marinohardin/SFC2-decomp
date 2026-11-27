@@ -6923,10 +6923,10 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004e4da4	function	fn_004e4da4	tPhaserB				vtable
 0x004e4dea	function	fn_004e4dea	tPhaserB				vtable
 0x004e4e1d	function	fn_004e4e1d	tPhaserB				vtable
-0x004e4e50	function	fn_004e4e50					none
+0x004e4e50	function	fn_004e4e50		?fn_004e4e50@tPhaserB@@QAEHXZ	add		none
 0x004e4fc2	function	fn_004e4fc2	tPhaserB				vtable
 0x004e4fda	function	fn_004e4fda	tPhaserB				vtable
-0x004e5022	function	tNetMsg_kCreateDirect::~tNetMsg_kCreateDirect	tNetMsg_kCreateDirect				rtti
+0x004e5022	function	tNetMsg_kCreateDirect::~tNetMsg_kCreateDirect	tNetMsg_kCreateDirect	?fn_004e5022@tPhaserB@@QAEXM@Z	claim		rtti
 0x004e50eb	function	fn_004e50eb	tPhaserB				vtable
 0x004e5218	function	fn_004e5218					none
 0x004e5222	function	fn_004e5222					none
