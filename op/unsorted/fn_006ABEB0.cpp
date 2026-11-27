@@ -1,6 +1,43 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/fn_006ABEB0.cpp
-// Functions: 0x006abeb0 to 0x006abfc0, 4 in op/UNITS.tsv
-// Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
-// Profile:   sdk-release (harness/units.json)
+#include "unsorted/tView3DExt.h"
+
+// FUNCTION: STARFLEETOP 0x006abeb0
+float tView3DExt::fn_006abeb0()
+{
+	fn_006abe00_Vtx *a = mVtxCache + field_0x14[0];
+	fn_006abe00_Vtx *b = mVtxCache + field_0x14[1];
+	fn_006abe00_Vtx *c = mVtxCache + field_0x14[2];
+	float ia, ib, ic;
+
+	if ( a->field_0x00 & 0x10 )
+		ia = a->field_0x20;
+	else
+	{
+		ia = 1.0f / a->field_0x10;
+		a->field_0x00 |= 0x10;
+		a->field_0x20 = ia;
+	}
+
+	if ( b->field_0x00 & 0x10 )
+		ib = b->field_0x20;
+	else
+	{
+		ib = 1.0f / b->field_0x10;
+		b->field_0x00 |= 0x10;
+		b->field_0x20 = ib;
+	}
+
+	if ( c->field_0x00 & 0x10 )
+		ic = c->field_0x20;
+	else
+	{
+		ic = 1.0f / c->field_0x10;
+		c->field_0x00 |= 0x10;
+		c->field_0x20 = ic;
+	}
+
+	float x0 = a->field_0x04 * ia;
+	float y0 = a->field_0x08 * ia;
+
+	return ( c->field_0x04 * ic - x0 ) * ( b->field_0x08 * ib - y0 )
+		- ( c->field_0x08 * ic - y0 ) * ( b->field_0x04 * ib - x0 );
+}

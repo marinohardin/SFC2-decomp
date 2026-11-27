@@ -19,8 +19,17 @@ struct fn_006abe00_Vtx
 {
 	fn_006abe00_Vtx() {}
 
-	char	data[0x40];
+	unsigned int	field_0x00;    // flags; 0x10: field_0x20 holds 1 / field_0x10 (0x006abeb0)
+	float			field_0x04;    // x
+	float			field_0x08;    // y
+	float			field_0x0c;
+	float			field_0x10;    // w
+	char			field_0x14[0x0c];
+	float			field_0x20;    // 1 / w, cached
+	char			field_0x24[0x1c];
 };
+
+typedef char fn_006abe00_Vtx_size_is_0x40[ sizeof( fn_006abe00_Vtx ) == 0x40 ? 1 : -1 ];
 
 // HYPOTHESIS: the 0x40-byte member at the view's +0x1eec. 0x006a9540 calls 0x006ac780 with its
 // address in ecx, so it is an object of its own; its class has no name in the exe. 0x006ac780
@@ -70,6 +79,7 @@ public:
 
 	void	mAssertVtxCache( int count );
 	void	fn_006a9540();    // HYPOTHESIS: a member (it runs on this), resets the view's state
+	float	fn_006abeb0();    // HYPOTHESIS: a member; the screen-space cross product of the first three indexed vertices
 
 	// Overrides, by tView3D's names (slot = number - 1). HYPOTHESIS: 0x006a95f0, the function
 	// in slot 5, is this class's (it frees the vertex cache); the symbol table now says so too,
