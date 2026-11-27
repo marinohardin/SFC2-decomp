@@ -445,6 +445,12 @@ void tView3DExt::vfunction58(tMatrix *m)
 	}
 }
 
+// FUNCTION: STARFLEETOP 0x006aa6c0
+tMatrix *tView3DExt::vfunction59()
+{
+	return &field_0x6f4;
+}
+
 // HYPOTHESIS: tView3D declares vfunction41/42/53/54 without the arguments this function passes
 // (HEADER REQUEST pending); the member-pointer casts give those calls their real shapes.
 typedef bool (tView3D::*tVFn41)(bool);
