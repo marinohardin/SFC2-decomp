@@ -278,6 +278,7 @@ public:
 	bool fn_00416085();
 	void fn_004160c2();
 	void fn_004165b7();
+	void fn_004165d4();
 
 	// 0x1bc is cleared by the constructor.
 	tObject_00426563_1bc *field_1bc;

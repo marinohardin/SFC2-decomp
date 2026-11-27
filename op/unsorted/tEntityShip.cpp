@@ -504,6 +504,13 @@ void tEntityShip::fn_004165b7()
 	field_8b8 = 0.0f;
 }
 
+// FUNCTION: STARFLEETOP 0x004165d4
+void tEntityShip::fn_004165d4()
+{
+	field_add = false;
+	tEntityShip::vfunction5();
+}
+
 // FUNCTION: STARFLEETOP 0x00416a0e
 void tEntityShip::vfunction26(short a1, int a2, int a3, int a4, int a5)
 {
