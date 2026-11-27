@@ -26,6 +26,8 @@ public:
 	virtual int vfunction18();
 	// HYPOTHESIS: slot 22, returns the int at +0x268 (0x0041e93f).
 	virtual int vfunction23();
+	// HYPOTHESIS: slot 23, the int at +0x268 over the int at +0x270 as a fraction.
+	virtual float vfunction24();
 	virtual void vfunction26(short a1, int a2, int a3, int a4, int a5);
 	virtual bool vfunction31();
 
