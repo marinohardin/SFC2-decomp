@@ -43,4 +43,17 @@ void tState_Tactical::fn_004b3758( long *event )
 	}
 }
 
+// FUNCTION: STARFLEETOP 0x004b3793
+void tState_Tactical::fn_004b3793( long *event )
+{
+	switch ( event[0] )
+	{
+	case 2:
+		event[0] = 0x1002a;
+		field_470 = 0;
+		g_00898c24->vfunction10( gObject_0092deb4->vfunction39() );
+		break;
+	}
+}
+
 }	// namespace tState_Namespace_Tactical

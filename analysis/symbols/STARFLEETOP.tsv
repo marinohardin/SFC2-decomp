@@ -5052,7 +5052,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004b35db	function	fn_004b35db		?fn_004b35db@tState_Tactical@tState_Namespace_Tactical@@QAEXPAJ@Z	claim		none
 0x004b362e	function	fn_004b362e					none
 0x004b3758	function	fn_004b3758		?fn_004b3758@tState_Tactical@tState_Namespace_Tactical@@QAEXPAJ@Z	claim		none
-0x004b3793	function	fn_004b3793					none
+0x004b3793	function	fn_004b3793		?fn_004b3793@tState_Tactical@tState_Namespace_Tactical@@QAEXPAJ@Z	claim		none
 0x004b37ce	function	fn_004b37ce					none
 0x004b3809	function	fn_004b3809	tState_Namespace_Tactical::tState_Tactical				vtable
 0x004b3f79	function	fn_004b3f79					none
