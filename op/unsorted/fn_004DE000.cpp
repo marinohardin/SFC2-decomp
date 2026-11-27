@@ -46,5 +46,6 @@ public:
 	virtual ~tESGLance_Creator();
 };
 
+// FUNCTION: STARFLEETOP 0x004de20a
 // FUNCTION: STARFLEETOP 0x004de200
 tESGLance_Creator g_0092ec98;
