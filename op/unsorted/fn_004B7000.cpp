@@ -1,6 +1,48 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/fn_004B7000.cpp
-// Functions: 0x004b70ac to 0x004b7fce, 10 in op/UNITS.tsv
-// Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
-// Profile:   game-release (harness/units.json)
+#include <windows.h>
+
+// HYPOTHESIS: a 16-bit pixel surface; slot 10 (+0x28) returns the row pitch in bytes and
+// slot 11 (+0x2c) the pixels, as tSWView3D::vfunction85 (0x006b23c0) reads them. Probably
+// tBmpSurf, whose header declares no virtuals yet.
+class fn_004b70ac_Surface {
+public:
+	virtual void vfunction1();
+	virtual void vfunction2();
+	virtual void vfunction3();
+	virtual void vfunction4();
+	virtual void vfunction5();
+	virtual void vfunction6();
+	virtual void vfunction7();
+	virtual void vfunction8();
+	virtual void vfunction9();
+	virtual void vfunction10();
+	virtual int vfunction11();
+	virtual unsigned char *vfunction12();
+};
+
+// Draws the one-pixel outline of a rectangle in a 16-bit colour. The colour is loaded as a
+// dword, so the parameter is int-sized.
+// FUNCTION: STARFLEETOP 0x004b70ac
+void fn_004b70ac(fn_004b70ac_Surface *surface, int color, RECT *rect)
+{
+	int height = rect->bottom - rect->top >= 0 ? rect->bottom - rect->top : 0;
+	int width = rect->right - rect->left >= 0 ? rect->right - rect->left : 0;
+	int pitch = surface->vfunction11();
+	unsigned char *bits = surface->vfunction12();
+	if (bits) {
+		unsigned char *row = bits + rect->top * pitch;
+		unsigned short *top = (unsigned short *)(row + rect->left * 2);
+		unsigned short *bottom = (unsigned short *)(bits + (rect->bottom - 1) * pitch + rect->left * 2);
+		for (; width > 0; width--) {
+			*top++ = (unsigned short)color;
+			*bottom++ = (unsigned short)color;
+		}
+		unsigned short *left = (unsigned short *)row + rect->left;
+		unsigned short *right = (unsigned short *)row + rect->right - 1;
+		for (; height > 0; height--) {
+			*left = (unsigned short)color;
+			left = (unsigned short *)((unsigned char *)left + pitch);
+			*right = (unsigned short)color;
+			right = (unsigned short *)((unsigned char *)right + pitch);
+		}
+	}
+}
