@@ -15823,7 +15823,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00611eb0	function	fn_00611eb0					none
 0x00611f90	function	fn_00611f90					none
 0x0061236d	function	fn_0061236d					none
-0x006123a0	function	fn_006123a0	tGLDC				vtable
+0x006123a0	function	tGLDC::mDrawText	tGLDC				sdk
 0x006123b0	function	fn_006123b0					none
 0x00612420	function	fn_00612420					none
 0x00612493	function	fn_00612493					none
@@ -17598,12 +17598,12 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00673850	function	fn_00673850					none
 0x00673860	function	tQBoxRectList::scalar_deleting_destructor	tQBoxRectList				rtti
 0x00673880	function	tTigerQ3BltPart::~tTigerQ3BltPart	tTigerQ3BltPart				rtti
-0x006738e0	function	fn_006738e0	tBltPart				vtable
+0x006738e0	function	tView3DExt::mEnableLuminanceTexturing	tView3DExt				sdk
 0x006738f0	function	fn_006738f0	tBltPart				vtable
 0x00673900	function	fn_00673900	tHTMLLine				vtable
 0x00673910	function	tBltPart::~tBltPart	tBltPart				rtti
 0x00673920	function	tBltPart::scalar_deleting_destructor	tBltPart				rtti
-0x00673940	function	fn_00673940	tHTMLLine				vtable
+0x00673940	function	tSysMemSurf::mRestore	tSysMemSurf				sdk
 0x00673950	function	tPart::mIsCommon	tPart	?mIsCommon@tPart@@UAEEPAV1@@Z	mangled		mangled
 0x00673960	function	tTigerQ3BltPart::scalar_deleting_destructor	tTigerQ3BltPart				rtti
 0x006739b0	function	fn_006739b0					none
@@ -18480,75 +18480,75 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0069adc2	function	fn_0069adc2					none
 0x0069afc0	function	fn_0069afc0		?fn_0069afc0@@YAFMM@Z	callers		none
 0x0069b0e0	function	fn_0069b0e0		?fn_0069b0e0@@YAMXZ	add		none
-0x0069b120	function	fn_0069b120		??HtPoint3@@QBE?AU0@ABU0@@Z	callers		none
-0x0069b160	function	fn_0069b160		??YtPoint3@@QAEAAU0@ABU0@@Z	callers		none
+0x0069b120	function	tPoint3::operator+	tPoint3	??HtPoint3@@QBE?AU0@ABU0@@Z	callers		sdk
+0x0069b160	function	tPoint3::operator+=	tPoint3	??YtPoint3@@QAEAAU0@ABU0@@Z	callers		sdk
 0x0069b190	function	fn_0069b190		??GtPoint3@@QBE?AU0@ABU0@@Z	callers		none
 0x0069b1d0	function	fn_0069b1d0					none
 0x0069b200	function	fn_0069b200		??LtPoint3@@QBE?AU0@ABU0@@Z	callers		none
 0x0069b250	function	fn_0069b250		??DtPoint3@@QBEMABU0@@Z	callers		none
 0x0069b270	function	fn_0069b270		??DtPoint3@@QBE?AU0@M@Z	add		none
-0x0069b2b0	function	fn_0069b2b0		??XtPoint3@@QAEAAU0@M@Z	callers		none
-0x0069b2e0	function	fn_0069b2e0					none
+0x0069b2b0	function	tPoint3::operator*=	tPoint3	??XtPoint3@@QAEAAU0@M@Z	callers		sdk
+0x0069b2e0	function	tPoint3::operator/	tPoint3				sdk
 0x0069b320	function	fn_0069b320		??_0tPoint3@@QAEAAU0@M@Z	callers		none
-0x0069b350	function	fn_0069b350					none
-0x0069b390	function	fn_0069b390		?mLength@tPoint3@@QBEMXZ	callers		none
+0x0069b350	function	tPoint3::operator!=	tPoint3				sdk
+0x0069b390	function	tPoint3::mLength	tPoint3	?mLength@tPoint3@@QBEMXZ	callers		sdk
 0x0069b3d0	function	fn_0069b3d0		?mNormalize@tPoint3@@QAEEXZ	add		none
 0x0069b450	function	fn_0069b450					none
-0x0069baf0	function	fn_0069baf0		?mMult@tMatrix@@QBEXAAV1@ABV1@@Z	callers		none
-0x0069c250	function	fn_0069c250		?mIdentity@tMatrix@@QAEXXZ	callers		none
-0x0069c290	function	fn_0069c290		?mRotX@tMatrix@@QAEXF@Z	callers		none
-0x0069c370	function	fn_0069c370					none
-0x0069c450	function	fn_0069c450		?mRotY@tMatrix@@QAEXF@Z	callers		none
-0x0069c530	function	fn_0069c530					none
-0x0069c600	function	fn_0069c600		?mRotZ@tMatrix@@QAEXF@Z	callers		none
-0x0069c6e0	function	fn_0069c6e0		?mRotZRadians@tMatrix@@QAEXM@Z	callers		none
-0x0069c7c0	function	fn_0069c7c0					none
-0x0069c870	function	fn_0069c870		?mTranslate@tMatrix@@QAEXMMM@Z	callers		none
-0x0069c920	function	fn_0069c920		?mForceTranslate@tMatrix@@QAEXMMM@Z	callers		none
-0x0069c940	function	fn_0069c940		?mPostTranslate@tMatrix@@QAEXMMM@Z	callers		none
+0x0069baf0	function	tMatrix::mMult	tMatrix	?mMult@tMatrix@@QBEXAAV1@ABV1@@Z	callers		sdk
+0x0069c250	function	tMatrix::mIdentity	tMatrix	?mIdentity@tMatrix@@QAEXXZ	callers		sdk
+0x0069c290	function	tMatrix::mRotX	tMatrix	?mRotX@tMatrix@@QAEXF@Z	callers		sdk
+0x0069c370	function	tMatrix::mRotXRadians	tMatrix				sdk
+0x0069c450	function	tMatrix::mRotY	tMatrix	?mRotY@tMatrix@@QAEXF@Z	callers		sdk
+0x0069c530	function	tMatrix::mRotYRadians	tMatrix				sdk
+0x0069c600	function	tMatrix::mRotZ	tMatrix	?mRotZ@tMatrix@@QAEXF@Z	callers		sdk
+0x0069c6e0	function	tMatrix::mRotZRadians	tMatrix	?mRotZRadians@tMatrix@@QAEXM@Z	callers		sdk
+0x0069c7c0	function	tMatrix::mScale	tMatrix				sdk
+0x0069c870	function	tMatrix::mTranslate	tMatrix	?mTranslate@tMatrix@@QAEXMMM@Z	callers		sdk
+0x0069c920	function	tMatrix::mForceTranslate	tMatrix	?mForceTranslate@tMatrix@@QAEXMMM@Z	callers		sdk
+0x0069c940	function	tMatrix::mPostTranslate	tMatrix	?mPostTranslate@tMatrix@@QAEXMMM@Z	callers		sdk
 0x0069c970	function	fn_0069c970					none
-0x0069c9d0	function	fn_0069c9d0		?mTransform@tMatrix@@QBEXAAUtPoint3@@ABU2@@Z	callers		none
-0x0069ca30	function	fn_0069ca30		?mTransform@tMatrix@@QBEXAAUtPoint4@@ABUtPoint3@@@Z	add		none
-0x0069cae0	function	fn_0069cae0					none
-0x0069cb40	function	fn_0069cb40					none
+0x0069c9d0	function	tMatrix::mTransform	tMatrix	?mTransform@tMatrix@@QBEXAAUtPoint3@@ABU2@@Z	callers		sdk
+0x0069ca30	function	tMatrix::mTransform	tMatrix	?mTransform@tMatrix@@QBEXAAUtPoint4@@ABUtPoint3@@@Z	add		sdk
+0x0069cae0	function	tMatrix::mTransform3x3	tMatrix				sdk
+0x0069cb40	function	tMatrix::mInverseTransform	tMatrix				sdk
 0x0069cbc0	function	fn_0069cbc0		?fn_0069cbc0@tMatrix@@QBEXAAUtPoint3@@ABU2@@Z	callers		none
-0x0069cc40	function	fn_0069cc40					none
+0x0069cc40	function	tMatrix::mInverseTransform3x3	tMatrix				sdk
 0x0069cda0	function	fn_0069cda0					none
 0x0069cfaa	function	fn_0069cfaa					none
-0x0069d080	function	fn_0069d080	tD3DViewSurfMgr				vtable
-0x0069d2b0	function	fn_0069d2b0					none
+0x0069d080	function	tD3DViewSurfMgr::mCreateSurface	tD3DViewSurfMgr				sdk
+0x0069d2b0	function	tD3DViewMgr::mResetDataMembers	tD3DViewMgr				sdk
 0x0069d3e0	function	fn_0069d3e0					none
-0x0069d3f0	function	fn_0069d3f0					none
+0x0069d3f0	function	tD3DViewMgr::mInitD3D	tD3DViewMgr				sdk
 0x0069d6f8	function	fn_0069d6f8					none
 0x0069d6fb	function	fn_0069d6fb					none
-0x0069df50	function	fn_0069df50					none
-0x0069e040	function	fn_0069e040					none
+0x0069df50	function	tD3DViewMgr::mInitView3D	tD3DViewMgr				sdk
+0x0069e040	function	tD3DViewMgr::mDoneD3D	tD3DViewMgr				sdk
 0x0069e150	function	fn_0069e150	tD3DViewMgr				vtable
-0x0069e160	function	fn_0069e160	tD3DViewMgr				vtable
-0x0069e200	function	fn_0069e200	tD3DViewMgr				vtable
-0x0069e270	function	fn_0069e270	tD3DViewMgr				vtable
+0x0069e160	function	tD3DViewMgr::mInitFullscreen	tD3DViewMgr				sdk
+0x0069e200	function	tD3DViewMgr::mInitWindowed	tD3DViewMgr				sdk
+0x0069e270	function	tD3DViewMgr::mDone	tD3DViewMgr				sdk
 0x0069e2a0	function	fn_0069e2a0		?fn_0069e2a0@@YAXXZ	claim		none
-0x0069e300	function	fn_0069e300					none
-0x0069e3d0	function	fn_0069e3d0					none
+0x0069e300	function	tD3DViewMgr::mBeginScene	tD3DViewMgr				sdk
+0x0069e3d0	function	tD3DViewMgr::mEndScene	tD3DViewMgr				sdk
 0x0069e490	function	fn_0069e490	tD3DViewMgr_State	?fn_0069e490@tD3DViewMgr_State@@QAEHH@Z	claim		none
 0x0069e670	function	fn_0069e670	tD3DViewMgr_State	?fn_0069e670@tD3DViewMgr_State@@QAEDXZ	claim		none
 0x0069e8ea	function	fn_0069e8ea					none
 0x0069e950	function	fn_0069e950		?fn_0069e950@@YAKK@Z	claim		none
-0x0069eb90	function	fn_0069eb90					none
-0x0069ed60	function	fn_0069ed60					none
+0x0069eb90	function	tD3DViewMgr::mFlip	tD3DViewMgr				sdk
+0x0069ed60	function	tD3DViewMgr::mWndProc	tD3DViewMgr				sdk
 0x0069efe1	function	fn_0069efe1					none
 0x0069f020	function	fn_0069f020		?fn_0069f020@@YAPAVtView3D@@XZ	callers		none
-0x0069f160	function	fn_0069f160	tD3DViewSurfMgr				vtable
-0x0069f170	function	fn_0069f170	tD3DViewSurfMgr				vtable
+0x0069f160	function	tGLSurfMgr::mTrueRelease	tGLSurfMgr				sdk
+0x0069f170	function	tGLSurfMgr::mAddRef	tGLSurfMgr				sdk
 0x0069f180	function	fn_0069f180	tD3DViewSurfMgr				vtable
 0x0069f190	function	fn_0069f190	tView3DExt	?vfunction38@tView3DExt@@UAE_NXZ	claim		none
-0x0069f1a0	function	fn_0069f1a0	tD3DViewSurfMgr				vtable
-0x0069f1b0	function	fn_0069f1b0	tD3DViewSurfMgr				vtable
-0x0069f1c0	function	fn_0069f1c0	tD3DViewSurfMgr				vtable
-0x0069f1d0	function	fn_0069f1d0	tD3DViewSurfMgr				vtable
+0x0069f1a0	function	tD3DViewSurfMgr::mEnumDispModes	tD3DViewSurfMgr				sdk
+0x0069f1b0	function	tD3DViewSurfMgr::mInitFullScreenBitBlt	tD3DViewSurfMgr				sdk
+0x0069f1c0	function	tD3DViewSurfMgr::mInitWindowed	tD3DViewSurfMgr				sdk
+0x0069f1d0	function	tD3DViewSurfMgr::mDone	tD3DViewSurfMgr				sdk
 0x0069f210	function	tSequencePart::mGetSeed	tSequencePart				sdk
-0x0069f220	function	fn_0069f220	tD3DViewSurfMgr				vtable
-0x0069f230	function	fn_0069f230	tD3DViewSurfMgr				vtable
+0x0069f220	function	tD3DViewSurfMgr::mSwapBuffers	tD3DViewSurfMgr				sdk
+0x0069f230	function	tD3DViewSurfMgr::mCopyToFront	tD3DViewSurfMgr				sdk
 0x0069f240	function	fn_0069f240	tD3DViewSurfMgr				vtable
 0x0069f280	function	tD3DViewMgr::scalar_deleting_destructor	tD3DViewMgr				rtti
 0x0069f2a0	function	tD3DViewMgr::~tD3DViewMgr	tD3DViewMgr				rtti
@@ -18574,9 +18574,9 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0069fb10	function	fn_0069fb10	tSWView3D	?vfunction27@tSWView3D@@UAE_NEEE@Z	claim		none
 0x0069fb50	function	fn_0069fb50	tSWView3D	?vfunction30@tSWView3D@@UAE_N_N0@Z	claim		none
 0x0069fb90	function	fn_0069fb90	tSWView3D	?vfunction29@tSWView3D@@UAE_NHHHH_N0@Z	claim		none
-0x0069fcc0	function	fn_0069fcc0	tSWView3D				vtable
+0x0069fcc0	function	tSWView3D::mFlip	tSWView3D				sdk
 0x0069fce0	function	fn_0069fce0	tSWView3D				vtable
-0x0069fcf0	function	fn_0069fcf0	tSWView3D				vtable
+0x0069fcf0	function	tSWView3D::mDispose	tSWView3D				sdk
 0x0069fd20	function	fn_0069fd20		?fn_0069fd20@@YAPAVtSWView3D@@XZ	claim		none
 0x0069fda0	function	fn_0069fda0	tView3DExt	?vfunction47@tView3DExt@@UAE_N_N@Z	claim		none
 0x0069fdc0	function	fn_0069fdc0	tSWView3D	?vfunction43@tSWView3D@@UAEHXZ	claim		none
@@ -18590,70 +18590,70 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0069ff40	function	tGLDC::~tGLDC	tGLDC	??1tGLDC@@QAE@XZ	callers		rtti
 0x0069ff90	function	fn_0069ff90	tGLDC				vtable
 0x006a0110	function	fn_006a0110	tGLDC				vtable
-0x006a0120	function	fn_006a0120	tGLDC				vtable
-0x006a0150	function	fn_006a0150	tGLDC				vtable
-0x006a0180	function	fn_006a0180	tGLDC				vtable
+0x006a0120	function	tGLDC::mGetSurfaceWidth	tGLDC				sdk
+0x006a0150	function	tGLDC::mGetSurfaceHeight	tGLDC				sdk
+0x006a0180	function	tGLDC::mSetClipRect	tGLDC				sdk
 0x006a0220	function	fn_006a0220	tGLDC				vtable
-0x006a0230	function	fn_006a0230	tGLDC				vtable
+0x006a0230	function	tGLDC::mFont	tGLDC				sdk
 0x006a0240	function	fn_006a0240	tGLDC				vtable
 0x006a0280	function	fn_006a0280	tGLDC				vtable
-0x006a02c0	function	fn_006a02c0	tGLDC				vtable
-0x006a02d0	function	fn_006a02d0	tGLDC				vtable
+0x006a02c0	function	tGLDC::mGetFgColor	tGLDC				sdk
+0x006a02d0	function	tGLDC::mGetBgColor	tGLDC				sdk
 0x006a02e0	function	fn_006a02e0	tGLDC				vtable
 0x006a0300	function	fn_006a0300	tGLDC				vtable
-0x006a0310	function	fn_006a0310	tGLDC				vtable
+0x006a0310	function	tGLDC::mMoveTo	tGLDC				sdk
 0x006a0330	function	fn_006a0330	tGLDC				vtable
-0x006a0340	function	fn_006a0340	tGLDC				vtable
+0x006a0340	function	tGLDC::mGetCurrentPosition	tGLDC				sdk
 0x006a0360	function	fn_006a0360	tGLDC				vtable
-0x006a0390	function	fn_006a0390	tGLDC				vtable
-0x006a03c0	function	fn_006a03c0	tGLDC				vtable
-0x006a0410	function	fn_006a0410	tGLDC				vtable
-0x006a0460	function	fn_006a0460	tTexMgrBmp				vtable
-0x006a0490	function	fn_006a0490					none
-0x006a04d0	function	fn_006a04d0					none
-0x006a0570	function	fn_006a0570					none
+0x006a0390	function	tGLDC::mTextOut	tGLDC				sdk
+0x006a03c0	function	tGLDC::mFillRect	tGLDC				sdk
+0x006a0410	function	tGLDC::mCopyBits	tGLDC				sdk
+0x006a0460	function	tTexMgrBmp::mNewBasicFile	tTexMgrBmp				sdk
+0x006a0490	function	tTexMgr::tTexMgr	tTexMgr				sdk
+0x006a04d0	function	tTexMgr::~tTexMgr	tTexMgr				sdk
+0x006a0570	function	tTexMgr::mInit	tTexMgr				sdk
 0x006a0740	function	fn_006a0740					none
 0x006a0760	function	tTexBmp::~tTexBmp	tTexBmp				rtti
-0x006a0770	function	fn_006a0770					none
+0x006a0770	function	tTexMgr::mDone	tTexMgr				sdk
 0x006a07d0	function	fn_006a07d0					none
 0x006a08e0	function	fn_006a08e0					none
 0x006a0920	function	fn_006a0920					none
-0x006a09d0	function	fn_006a09d0					none
+0x006a09d0	function	tFrameTimer::mPause	tFrameTimer				sdk
 0x006a0bb0	function	fn_006a0bb0					none
 0x006a0d50	function	fn_006a0d50					none
-0x006a0e90	function	fn_006a0e90					none
+0x006a0e90	function	tGLPixFmt::tComponent::mSetMask	tGLPixFmt::tComponent				sdk
 0x006a0ee0	function	tGLPixFmt::tGLPixFmt	tGLPixFmt				rtti
-0x006a0f90	function	fn_006a0f90					none
-0x006a1160	function	fn_006a1160					none
-0x006a11a0	function	fn_006a11a0					none
+0x006a0f90	function	tGLPixFmt::mSetFormatRGB	tGLPixFmt				sdk
+0x006a1160	function	tGLPixFmt::mSetFormatPAL8	tGLPixFmt				sdk
+0x006a11a0	function	tGLPixFmt::operator!=	tGLPixFmt				sdk
 0x006a11f0	function	fn_006a11f0					none
-0x006a1230	function	fn_006a1230					none
-0x006a12a0	function	fn_006a12a0	tGLSurface				vtable
-0x006a13c0	function	fn_006a13c0	tGLSurface				vtable
-0x006a1770	function	fn_006a1770	tGLSurface				vtable
+0x006a1230	function	tGLPixFmt::mDeterminePixFmtID	tGLPixFmt				sdk
+0x006a12a0	function	tGLSurface::mRGBToNative	tGLSurface				sdk
+0x006a13c0	function	tGLSurface::mFillRect	tGLSurface				sdk
+0x006a1770	function	tGLSurface::mCopyBits	tGLSurface				sdk
 0x006a1cd0	function	fn_006a1cd0					none
 0x006a1e40	function	fn_006a1e40					none
 0x006a1fc0	function	fn_006a1fc0					none
 0x006a20f0	function	fn_006a20f0					none
-0x006a2220	function	fn_006a2220					none
-0x006a2240	function	fn_006a2240					none
+0x006a2220	function	tGLRectI::mWidth	tGLRectI				sdk
+0x006a2240	function	tGLRectI::mHeight	tGLRectI				sdk
 0x006a2260	function	fn_006a2260					none
 0x006a23a0	function	fn_006a23a0					none
 0x006a24e0	function	fn_006a24e0					none
-0x006a2620	function	fn_006a2620	tGLSurface				vtable
+0x006a2620	function	tGLSurface::mBltTrans	tGLSurface				sdk
 0x006a29ce	function	fn_006a29ce					none
 0x006a2a00	function	tSysMemSurf::tSysMemSurf	tSysMemSurf				rtti
 0x006a2a70	function	tGLSurface::~tGLSurface	tGLSurface				rtti
 0x006a2a80	function	tGLSurface::scalar_deleting_destructor	tGLSurface				rtti
 0x006a2aa0	function	tSysMemSurf::scalar_deleting_destructor	tSysMemSurf				rtti
-0x006a2ac0	function	fn_006a2ac0	tSysMemSurf				vtable
+0x006a2ac0	function	tSysMemSurf::mLock	tSysMemSurf				sdk
 0x006a2ae0	function	fn_006a2ae0	tSysMemSurf				vtable
 0x006a2b00	function	fn_006a2b00	tSysMemSurf				vtable
 0x006a2b20	function	tGLSurfMgrSurf::scalar_deleting_destructor	tGLSurfMgrSurf				rtti
 0x006a2c90	function	tSysMemSurf::~tSysMemSurf	tSysMemSurf				rtti
-0x006a2cf0	function	fn_006a2cf0	tSysMemSurf				vtable
-0x006a2d00	function	fn_006a2d00	tSysMemSurf				vtable
-0x006a2d50	function	fn_006a2d50	tSysMemSurf				vtable
+0x006a2cf0	function	tSysMemSurf::mGetPalette	tSysMemSurf				sdk
+0x006a2d00	function	tSysMemSurf::mSetPaletteEntries	tSysMemSurf				sdk
+0x006a2d50	function	tSysMemSurf::mGetPaletteEntries	tSysMemSurf				sdk
 0x006a2da0	function	fn_006a2da0	tStream_BasicFile				vtable
 0x006a2db0	function	fn_006a2db0	tStream_BasicFile				vtable
 0x006a2dc0	function	tStream_BasicFile::mGet	tStream_BasicFile	?mGet@tStream_BasicFile@@UAE_NPAXK@Z	claim		claim
@@ -18661,27 +18661,27 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x006a2ec0	function	fn_006a2ec0		?fn_006a2ec0@@YA?AUfn_006a2ec0_Error@@PBDH0ZZ	callers		none
 0x006a2f00	function	fn_006a2f00					none
 0x006a2f10	function	fn_006a2f10		??3tBaseItemBag@@SAXPAX@Z	callers		none
-0x006a2f20	function	fn_006a2f20					none
+0x006a2f20	function	tStream_Base::mByteOutput	tStream_Base				sdk
 0x006a2f80	function	fn_006a2f80		?fn_006a2f80@tStream_BasicFile@@QAEXPAXK@Z	callers		none
-0x006a2fe0	function	fn_006a2fe0					none
-0x006a30e0	function	fn_006a30e0					none
-0x006a3140	function	fn_006a3140	tMouseMgr_Ex				vtable
+0x006a2fe0	function	tMouseMgr_Ex::mCopyImage	tMouseMgr_Ex				sdk
+0x006a30e0	function	tMouseMgr_Ex::mResetMembers	tMouseMgr_Ex				sdk
+0x006a3140	function	tMouseMgr_Ex::mInit	tMouseMgr_Ex				sdk
 0x006a3350	function	fn_006a3350	tMouseMgr_Ex	?fn_006a3350@tMouseMgr_Ex@@QAEXXZ	callers		vtable
-0x006a34b0	function	fn_006a34b0	tMouseMgr_Ex				vtable
-0x006a35c0	function	fn_006a35c0	tMouseMgr_Ex				vtable
+0x006a34b0	function	tMouseMgr_Ex::mPreFlip	tMouseMgr_Ex				sdk
+0x006a35c0	function	tMouseMgr_Ex::mPostFlip	tMouseMgr_Ex				sdk
 0x006a35e0	function	fn_006a35e0		?fn_006a35e0@tMouseMgr_Ex@@QAEXXZ	callers		none
-0x006a3600	function	fn_006a3600	tMouseMgr_Ex				vtable
+0x006a3600	function	tMouseMgr_Ex::mShowCursor	tMouseMgr_Ex				sdk
 0x006a3730	function	fn_006a3730	tMouseMgr_Ex				vtable
 0x006a3750	function	fn_006a3750	tMouseMgr_Ex				vtable
-0x006a3760	function	fn_006a3760	tMouseMgr_Ex				vtable
-0x006a3be0	function	fn_006a3be0	tMouseMgr_Ex				vtable
-0x006a4140	function	fn_006a4140	tMouseMgr_Ex				vtable
-0x006a42c0	function	fn_006a42c0					none
-0x006a43b0	function	fn_006a43b0					none
+0x006a3760	function	tMouseMgr_Ex::mSetImage	tMouseMgr_Ex				sdk
+0x006a3be0	function	tMouseMgr_Ex::mSetImage	tMouseMgr_Ex				sdk
+0x006a4140	function	tMouseMgr_Ex::mUpdateMouse	tMouseMgr_Ex				sdk
+0x006a42c0	function	tMouseMgr_Ex::mSaveMouseImage	tMouseMgr_Ex				sdk
+0x006a43b0	function	tMouseMgr_Ex::mEraseOldSaveNew	tMouseMgr_Ex				sdk
 0x006a4690	function	tBmpSurf::tBmpSurf	tBmpSurf	??0tBmpSurf@@QAE@PAVtTexBmp@@@Z	callers		rtti
 0x006a46f0	function	tBmpSurf::scalar_deleting_destructor	tBmpSurf				rtti
 0x006a4710	function	tBmpSurf::~tBmpSurf	tBmpSurf	??1tBmpSurf@@QAE@XZ	callers		rtti
-0x006a4770	function	fn_006a4770	tBmpSurf				vtable
+0x006a4770	function	tBmpSurf::mSetSurfaceDesc	tBmpSurf				sdk
 0x006a48c0	thunk	fn_006a48c0	tTexBmp				vtable
 0x006a48d0	function	fn_006a48d0	tTexBmp	?vfunction2@tTexBmp@@UAEXPAVtBasicFile@@@Z	claim		none
 0x006a4df0	function	fn_006a4df0	tTexBmp	?vfunction3@tTexBmp@@UAEXPAVtBasicFile@@@Z	claim		none
@@ -18698,46 +18698,46 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x006a6690	function	fn_006a6690	twView3DMgrDLL				vtable
 0x006a6710	function	fn_006a6710	twView3DMgrDLL				vtable
 0x006a6740	function	fn_006a6740	twView3DMgrDLL				vtable
-0x006a6780	function	fn_006a6780	tGLSprite				vtable
-0x006a67b0	function	fn_006a67b0	tGLSprite				vtable
-0x006a6800	function	fn_006a6800	tGLSprite				vtable
+0x006a6780	function	tGLSprite::mResetDataMembers	tGLSprite				sdk
+0x006a67b0	function	tGLSprite::mDone	tGLSprite				sdk
+0x006a6800	function	tGLSprite::mSetImageData	tGLSprite				sdk
 0x006a6930	function	fn_006a6930	tGLSprite				vtable
 0x006a6940	function	fn_006a6940	tGLSprite				vtable
-0x006a6950	function	fn_006a6950	tGLSprite				vtable
-0x006a6970	function	fn_006a6970	tGLSprite				vtable
-0x006a69a0	function	fn_006a69a0	tGLSprite				vtable
+0x006a6950	function	tGLSprite::mSetRefPt	tGLSprite				sdk
+0x006a6970	function	tGLSprite::mDrawOntoSurface	tGLSprite				sdk
+0x006a69a0	function	tGLSprite::mDrawOntoSurface	tGLSprite				sdk
 0x006a6c71	function	fn_006a6c71					none
-0x006a6cb0	function	fn_006a6cb0	tDDPixFmt				vtable
-0x006a6dc0	function	fn_006a6dc0	tDDSurface				vtable
+0x006a6cb0	function	tDDPixFmt::mSetFormat	tDDPixFmt				sdk
+0x006a6dc0	function	tDDSurface::mRelease	tDDSurface				sdk
 0x006a6de0	function	tDDSurface::tDDSurface	tDDSurface				rtti
 0x006a6e70	function	tDDSurface::scalar_deleting_destructor	tDDSurface				rtti
 0x006a6e90	function	tDDTexFmt::scalar_deleting_destructor	tDDTexFmt				rtti
 0x006a6eb0	function	tDDSurface::~tDDSurface	tDDSurface				rtti
-0x006a6f40	function	fn_006a6f40	tDDSurface				vtable
-0x006a6fe0	function	fn_006a6fe0	tDDSurface				vtable
-0x006a7040	function	fn_006a7040	tDDSurface				vtable
-0x006a7060	function	fn_006a7060	tDDSurface				vtable
+0x006a6f40	function	tDDSurface::mLock	tDDSurface				sdk
+0x006a6fe0	function	tDDSurface::mUnlock	tDDSurface				sdk
+0x006a7040	function	tDDSurface::mIsLost	tDDSurface				sdk
+0x006a7060	function	tDDSurface::mRestore	tDDSurface				sdk
 0x006a7080	function	fn_006a7080	tDDSurface				vtable
-0x006a7090	function	fn_006a7090	tDDSurface				vtable
-0x006a71b0	function	fn_006a71b0	tDDSurface				vtable
-0x006a7200	function	fn_006a7200	tDDSurface				vtable
-0x006a7370	function	fn_006a7370	tDDSurface				vtable
-0x006a7530	function	fn_006a7530	tDDSurface				vtable
+0x006a7090	function	tDDSurface::mSetPaletteEntries	tDDSurface				sdk
+0x006a71b0	function	tDDSurface::mGetPaletteEntries	tDDSurface				sdk
+0x006a7200	function	tDDSurface::mFillRect	tDDSurface				sdk
+0x006a7370	function	tDDSurface::mCopyBits	tDDSurface				sdk
+0x006a7530	function	tDDSurface::mBltTrans	tDDSurface				sdk
 0x006a7760	function	fn_006a7760					none
-0x006a78f0	function	fn_006a78f0	tDDSurface				vtable
+0x006a78f0	function	tDDSurface::mAddRef	tDDSurface				sdk
 0x006a7900	function	CryptoPP::ECPublicKey<CryptoPP::ECP>::BasePoint	CryptoPP::ECPublicKey<CryptoPP::ECP>	?BasePoint@?$ECPublicKey@VECP@CryptoPP@@@CryptoPP@@QBEABUECPPoint@2@XZ	mangled		mangled
 0x006a7910	function	fn_006a7910	tDDSurface				vtable
 0x006a7920	function	tOneChannelInfo::mGetChannelNumber	tOneChannelInfo	?mGetChannelNumber@tOneChannelInfo@@UAEJXZ	mangled		mangled
-0x006a7930	function	fn_006a7930	tDDSurface				vtable
-0x006a7940	function	fn_006a7940	tDDSurface				vtable
+0x006a7930	function	tDDSurface::mGetPitch	tDDSurface				sdk
+0x006a7940	function	tDDSurface::mGetBitsPtr	tDDSurface				sdk
 0x006a7950	function	tGLSurfMgrSurf::tGLSurfMgrSurf	tGLSurfMgrSurf				rtti
 0x006a7a20	function	tGLSurfMgrSurf::scalar_deleting_destructor	tGLSurfMgrSurf				rtti
 0x006a7a40	function	tGLSurfMgrSurf::~tGLSurfMgrSurf	tGLSurfMgrSurf				rtti
 0x006a7ab0	function	tGLSurfMgrSurf::scalar_deleting_destructor	tGLSurfMgrSurf				rtti
-0x006a7b00	function	fn_006a7b00	tD3DViewSurfMgr				vtable
-0x006a7b20	function	fn_006a7b20					none
+0x006a7b00	function	tGLSurfMgr::mRelease	tGLSurfMgr				sdk
+0x006a7b20	function	tGLSurfMgr::mCreateSurface	tGLSurfMgr				sdk
 0x006a7c20	function	CD3DFramework::CD3DFramework	CD3DFramework	??0CD3DFramework@@QAE@XZ	claim		claim
-0x006a7c50	thunk	fn_006a7c50					none
+0x006a7c50	thunk	CD3DFramework::~CD3DFramework	CD3DFramework				sdk
 0x006a7c60	function	CD3DFramework::DestroyObjects	CD3DFramework	?DestroyObjects@CD3DFramework@@QAEJXZ	claim		claim
 0x006a7d20	function	CD3DFramework::Initialize	CD3DFramework	?Initialize@CD3DFramework@@QAEJPAUHWND__@@PAU_GUID@@1PAU_DDSURFACEDESC2@@K@Z	claim		claim
 0x006a7d90	function	CD3DFramework::CreateEnvironment	CD3DFramework	?CreateEnvironment@CD3DFramework@@AAEJPAU_GUID@@0PAU_DDSURFACEDESC2@@K@Z	claim		claim
@@ -18750,16 +18750,16 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x006a8500	function	CD3DFramework::FlipToGDISurface	CD3DFramework	?FlipToGDISurface@CD3DFramework@@QAEJH@Z	claim		claim
 0x006a8540	function	CD3DFramework::RestoreSurfaces	CD3DFramework	?RestoreSurfaces@CD3DFramework@@QAEJXZ	claim		claim
 0x006a85a0	function	CD3DFramework::Move	CD3DFramework	?Move@CD3DFramework@@QAEXHH@Z	claim		claim
-0x006a85f0	function	fn_006a85f0					none
+0x006a85f0	function	tD3DViewMgr::mEnumTexFmtsCallback	tD3DViewMgr				sdk
 0x006a8730	function	tGLPixFmt::~tGLPixFmt	tGLPixFmt				rtti
-0x006a8770	function	fn_006a8770					none
-0x006a87a0	function	fn_006a87a0					none
-0x006a8860	function	fn_006a8860					none
+0x006a8770	function	tD3DViewMgr::mInitTextures	tD3DViewMgr				sdk
+0x006a87a0	function	tD3DViewMgr::mDoneTextures	tD3DViewMgr				sdk
+0x006a8860	function	tD3DViewMgr::mSetCurrentTexture	tD3DViewMgr				sdk
 0x006a8930	function	fn_006a8930	tD3DViewMgr	?fn_006a8930@tD3DViewMgr@@QAEPAVtTexFace@@HPAUtTexFormat@@HHPAE@Z	claim		none
-0x006a8e50	function	fn_006a8e50					none
+0x006a8e50	function	tD3DViewMgr::mLoadTexture	tD3DViewMgr				sdk
 0x006a9369	function	fn_006a9369					none
-0x006a93a0	function	fn_006a93a0					none
-0x006a9410	function	fn_006a9410					none
+0x006a93a0	function	tD3DViewMgr::mRestoreTextures	tD3DViewMgr				sdk
+0x006a9410	function	tD3DTexInfo::~tD3DTexInfo	tD3DTexInfo				sdk
 0x006a94a0	function	D3DUtil_InitSurfaceDesc		?D3DUtil_InitSurfaceDesc@@YAXAAU_DDSURFACEDESC2@@KK@Z	claim		claim
 0x006a94d0	function	D3DUtil_InitViewport		?D3DUtil_InitViewport@@YAXAAU_D3DVIEWPORT2@@KK@Z	claim		claim
 0x006a9540	function	fn_006a9540	tView3DExt	?fn_006a9540@tView3DExt@@QAEXXZ	claim		none
@@ -18798,7 +18798,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x006aa270	function	fn_006aa270	tView3DExt	?vfunction64@tView3DExt@@UAEXMM@Z	claim		none
 0x006aa2c0	function	fn_006aa2c0	tView3DExt	?vfunction67@tView3DExt@@UAEXPAVtMatrix@@MMMMMM@Z	claim		none
 0x006aa390	function	fn_006aa390	tView3DExt	?vfunction66@tView3DExt@@UAEXPAVtMatrix@@MM@Z	claim		none
-0x006aa3f0	function	fn_006aa3f0	tView3DExt				vtable
+0x006aa3f0	function	tView3DExt::mSetProjMtx	tView3DExt				sdk
 0x006aa490	function	fn_006aa490	tView3DExt	?vfunction61@tView3DExt@@UAEPAVtMatrix@@XZ	claim		none
 0x006aa4a0	function	fn_006aa4a0	tView3DExt	?vfunction55@tView3DExt@@UAEXPAVtMatrix@@@Z	claim		none
 0x006aa4d0	function	fn_006aa4d0	tView3DExt	?vfunction56@tView3DExt@@UAEPAVtMatrix@@XZ	claim		none
@@ -18815,9 +18815,9 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x006aa770	function	fn_006aa770	tView3DExt	?vfunction93@tView3DExt@@UAEHXZ	claim		none
 0x006aa780	function	fn_006aa780	tView3DExt	?vfunction94@tView3DExt@@UAEHXZ	claim		none
 0x006aa790	function	fn_006aa790	tView3DExt	?vfunction95@tView3DExt@@UAEHXZ	claim		none
-0x006aa7a0	function	fn_006aa7a0					none
+0x006aa7a0	function	tD3DViewMgr::mChooseWindowed	tD3DViewMgr				sdk
 0x006aab00	function	fn_006aab00					none
-0x006aae20	function	fn_006aae20					none
+0x006aae20	function	tD3DViewMgr::mChooseFullscreen	tD3DViewMgr				sdk
 0x006ab280	function	fn_006ab280					none
 0x006ab2f0	function	fn_006ab2f0					none
 0x006ab380	function	fn_006ab380		?fn_006ab380@tD3DViewMgr_Sub@@QAEXXZ	add		none
@@ -18825,7 +18825,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x006abeb0	function	fn_006abeb0	tView3DExt	?fn_006abeb0@tView3DExt@@QAEMXZ	claim		none
 0x006abf80	function	fn_006abf80	tView3DExt	?vfunction79@tView3DExt@@UAEXHH@Z	claim		none
 0x006abfb0	function	fn_006abfb0	tView3DExt	?vfunction80@tView3DExt@@UAEXPAX@Z	claim		none
-0x006abfc0	function	fn_006abfc0	tView3DExt				vtable
+0x006abfc0	function	tView3DExt::mDrawPolygonListSelectTexture	tView3DExt				sdk
 0x006ac5a0	function	fn_006ac5a0	tView3DExt	?vfunction81@tView3DExt@@UAEXHPAPAX_N@Z	claim		none
 0x006ac780	function	fn_006ac780		?fn_006ac780@fn_006ac780_State@@QAEXXZ	claim		none
 0x006ac7c0	function	fn_006ac7c0	tView3DExt	?vfunction68@tView3DExt@@UAE_NH@Z	claim		none
@@ -18842,15 +18842,15 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x006ad370	function	fn_006ad370	tView3DExt	?vfunction76@tView3DExt@@UAEXI@Z	claim		none
 0x006ad3e0	function	fn_006ad3e0	tView3DExt	?vfunction78@tView3DExt@@UAEXI@Z	claim		none
 0x006ad410	function	GetDXVersion		?GetDXVersion@@YAXPAK0@Z	claim		claim
-0x006ad7d0	function	fn_006ad7d0					none
-0x006ad890	function	fn_006ad890					none
-0x006ada90	function	fn_006ada90					none
-0x006adc90	function	fn_006adc90					none
-0x006add10	function	fn_006add10					none
-0x006add60	function	fn_006add60					none
-0x006adde0	function	fn_006adde0					none
-0x006adeb0	function	fn_006adeb0					none
-0x006adf80	function	fn_006adf80					none
+0x006ad7d0	function	tEdge::mNewRight	tEdge				sdk
+0x006ad890	function	tEdge::mNewLeft	tEdge				sdk
+0x006ada90	function	tEdge::mNewLeftRGB	tEdge				sdk
+0x006adc90	function	tEdge::mStepLeft	tEdge				sdk
+0x006add10	function	tEdge::mStepRight	tEdge				sdk
+0x006add60	function	tEdge::mStepLeftRGB	tEdge				sdk
+0x006adde0	function	tEdge::mSetVtxs	tEdge				sdk
+0x006adeb0	function	tEdge::mSetVtxsRGB	tEdge				sdk
+0x006adf80	function	tSWView3D::mDrawTriangle	tSWView3D				sdk
 0x006aedb0	function	fn_006aedb0					none
 0x006aee70	function	fn_006aee70					none
 0x006af060	function	fn_006af060					none
@@ -18867,54 +18867,54 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x006b0320	function	fn_006b0320					none
 0x006b0570	function	fn_006b0570					none
 0x006b05f0	function	fn_006b05f0					none
-0x006b0b00	function	fn_006b0b00					none
+0x006b0b00	function	tGLPixFmt::operator()	tGLPixFmt				sdk
 0x006b0b60	function	fn_006b0b60					none
 0x006b1050	function	fn_006b1050	tSWView3D	?vfunction98@tSWView3D@@UAE_NHHH_N@Z	claim		none
-0x006b11a0	function	fn_006b11a0					none
-0x006b1230	function	fn_006b1230	tSWView3D				vtable
-0x006b1660	function	fn_006b1660	tSWView3D				vtable
+0x006b11a0	function	tSWView3D::mSetPixelFormat	tSWView3D				sdk
+0x006b1230	function	tSWView3D::mDrawPoints	tSWView3D				sdk
+0x006b1660	function	tSWView3D::mDrawLine	tSWView3D				sdk
 0x006b1c10	function	tGLPixFmt::tGLPixFmt_Constructor_or_Destructor	tGLPixFmt				rtti
-0x006b1c30	function	fn_006b1c30					none
-0x006b1d00	function	fn_006b1d00					none
-0x006b1ee0	function	fn_006b1ee0					none
+0x006b1c30	function	tClut::mNew	tClut				sdk
+0x006b1d00	function	tClut::mBuildRamps	tClut				sdk
+0x006b1ee0	function	tClut::mSetPixelFormat	tClut				sdk
 0x006b1f60	function	tTexInfo::scalar_deleting_destructor	tTexInfo				rtti
 0x006b1f80	function	tTexInfo::~tTexInfo	tTexInfo				rtti
-0x006b2010	function	fn_006b2010	tTexInfo				vtable
-0x006b20c0	function	fn_006b20c0	tTexInfo				vtable
-0x006b20d0	function	fn_006b20d0					none
-0x006b2230	function	fn_006b2230	tSWView3D				vtable
-0x006b2280	function	fn_006b2280	tSWView3D				vtable
+0x006b2010	function	tTexInfo::mSetPaletteEntries	tTexInfo				sdk
+0x006b20c0	function	tTexInfo::mSetSurfaceDesc	tTexInfo				sdk
+0x006b20d0	function	tTexInfo::mSetProperties	tTexInfo				sdk
+0x006b2230	function	tSWView3D::mEnumTextureFormats	tSWView3D				sdk
+0x006b2280	function	tSWView3D::mCreateTexture	tSWView3D				sdk
 0x006b23c0	function	fn_006b23c0	tSWView3D	?vfunction85@tSWView3D@@UAE_NHPAVtBmpSurf@@DH@Z	claim		none
-0x006b2500	function	fn_006b2500	tSWView3D				vtable
-0x006b2520	function	fn_006b2520					none
+0x006b2500	function	tSWView3D::mGetTexture	tSWView3D				sdk
+0x006b2520	function	tGDISurface::tGDISurface	tGDISurface				sdk
 0x006b26a0	function	tGDISurface::scalar_deleting_destructor	tGDISurface				rtti
 0x006b26c0	function	tGDISurface::~tGDISurface	tGDISurface				rtti
 0x006b2710	function	fn_006b2710	tGDISurface				vtable
-0x006b2720	function	fn_006b2720	tGDISurface				vtable
-0x006b27c0	function	fn_006b27c0	tGDISurface				vtable
-0x006b29c0	function	fn_006b29c0					none
+0x006b2720	function	tGDISurface::mSetPaletteEntries	tGDISurface				sdk
+0x006b27c0	function	tGDISurface::mGetPaletteEntries	tGDISurface				sdk
+0x006b29c0	function	tGDISurfMgr::mInitBackBuffer	tGDISurfMgr				sdk
 0x006b2a95	function	fn_006b2a95					none
-0x006b2ad0	function	fn_006b2ad0					none
-0x006b2b30	function	fn_006b2b30					none
-0x006b2e40	function	fn_006b2e40					none
+0x006b2ad0	function	tGDISurfMgr::mInitWindowed	tGDISurfMgr				sdk
+0x006b2b30	function	tGDISurfMgr::mDone	tGDISurfMgr				sdk
+0x006b2e40	function	tGDISurfMgr::mCreateSurface	tGDISurfMgr				sdk
 0x006b3196	function	fn_006b3196					none
 0x006b31c5	function	fn_006b31c5					none
 0x006b31d9	function	fn_006b31d9					none
-0x006b3200	function	fn_006b3200	tGDISurfMgr				vtable
+0x006b3200	function	tGDISurfMgr::mTrueRelease	tGDISurfMgr				sdk
 0x006b3260	function	fn_006b3260		?fn_006b3260@@YAPAXXZ	add		none
 0x006b32c0	function	tGLFontEx::mAddRef	tGLFontEx	?mAddRef@tGLFontEx@@UAEJXZ	claim		claim
 0x006b32d0	function	tChannelAttributes::mGet3DSoundProfile	tChannelAttributes	?mGet3DSoundProfile@tChannelAttributes@@UAEPAVt3DSoundProfile@@XZ	claim		claim
 0x006b32e0	function	tScriptMapData::mGetItemList	tScriptMapData	?mGetItemList@tScriptMapData@@QBEABV?$vector@VtMapObject@@V?$allocator@VtMapObject@@@std@@@std@@XZ	claim		claim
 0x006b32f0	function	fn_006b32f0	tDDSurface				vtable
-0x006b3300	function	fn_006b3300	tGDISurface				vtable
+0x006b3300	function	tGDISurface::mLock	tGDISurface				sdk
 0x006b3310	function	tgSoundPart::mGetGlobalVolume	tgSoundPart	?mGetGlobalVolume@tgSoundPart@@UAEJXZ	mangled		mangled
 0x006b3320	function	fn_006b3320	tSysMemSurf				vtable
 0x006b3330	function	fn_006b3330	tSysMemSurf				vtable
 0x006b3340	function	fn_006b3340	tD3DViewSurfMgr				vtable
 0x006b3350	function	fn_006b3350	tListMemberWithHandle				vtable
-0x006b3360	function	fn_006b3360					none
+0x006b3360	function	tDDSurfMgr::mResetDataMembers	tDDSurfMgr				sdk
 0x006b3440	function	fn_006b3440					none
-0x006b37b0	function	fn_006b37b0					none
+0x006b37b0	function	tDDSurfMgr::mDone	tDDSurfMgr				sdk
 0x006b3e10	function	fn_006b3e10	tDDSurfMgr	?fn_006b3e10@tDDSurfMgr@@QAE_NXZ	claim		none
 0x006b3f80	function	fn_006b3f80		?fn_006b3f80@@YAXPAVtDDSurfMgr@@JPBDH1ZZ	claim		none
 0x006b3ffe	function	fn_006b3ffe					none
@@ -18928,21 +18928,21 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x006b4b10	function	fn_006b4b10		?fn_006b4b10@tDDSurfMgr@@QAEXH@Z	callers		none
 0x006b4be0	function	fn_006b4be0					none
 0x006b4f7d	function	fn_006b4f7d					none
-0x006b4fc0	function	fn_006b4fc0	tDDSurfMgr				vtable
+0x006b4fc0	function	tDDSurfMgr::mTrueRelease	tDDSurfMgr				sdk
 0x006b4fe0	function	fn_006b4fe0		?fn_006b4fe0@@YAPAXXZ	add		none
 0x006b5060	function	fn_006b5060		?fn_006b5060@@YAHH@Z	add		none
 0x006b5090	function	fn_006b5090		?fn_006b5090@@YAHH@Z	add		none
-0x006b50c0	function	fn_006b50c0					none
+0x006b50c0	function	tGLDC::_mTextOut	tGLDC				sdk
 0x006b5660	function	fn_006b5660					none
-0x006b56f0	function	fn_006b56f0	tGLDC				vtable
+0x006b56f0	function	tGLDC::mDrawText	tGLDC				sdk
 0x006b58a0	function	twDLLMgrBase::twDLLMgrBase	twDLLMgrBase				rtti
-0x006b58c0	function	fn_006b58c0	twDLLMgrBase				vtable
+0x006b58c0	function	twDLLMgrBase::mInit	twDLLMgrBase				sdk
 0x006b5ca0	function	fn_006b5ca0	twDLLMgrBase				vtable
-0x006b5d30	function	fn_006b5d30	twDLLMgrBase				vtable
-0x006b5ee0	function	fn_006b5ee0	twDLLMgrBase				vtable
-0x006b5fa0	function	fn_006b5fa0	twDLLMgrBase				vtable
-0x006b5fe0	function	fn_006b5fe0					none
-0x006b5ff0	function	fn_006b5ff0					none
+0x006b5d30	function	twDLLMgrBase::mEnumerate	twDLLMgrBase				sdk
+0x006b5ee0	function	twDLLMgrBase::mCreateInterface	twDLLMgrBase				sdk
+0x006b5fa0	function	twDLLMgrBase::mFreeInterface	twDLLMgrBase				sdk
+0x006b5fe0	function	tView3D_GetVersion					sdk
+0x006b5ff0	function	CompressSprite					sdk
 0x006b6080	function	fn_006b6080					none
 0x006b67c2	function	fn_006b67c2					none
 0x006b67e9	function	fn_006b67e9					none
@@ -18963,27 +18963,27 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x006b7065	function	fn_006b7065					none
 0x006b7095	function	fn_006b7095					none
 0x006b70ad	function	fn_006b70ad					none
-0x006b70d0	function	fn_006b70d0					none
-0x006b72c0	function	fn_006b72c0					none
-0x006b74e0	function	fn_006b74e0					none
-0x006b7700	function	fn_006b7700					none
-0x006b7900	function	fn_006b7900					none
-0x006b7980	function	fn_006b7980					none
+0x006b70d0	function	Draw8BitRunLenSpriteTo8BitSurface					sdk
+0x006b72c0	function	Draw16BitRunLenSpriteTo16BitSurface					sdk
+0x006b74e0	function	Draw24BitRunLenSpriteTo24BitSurface					sdk
+0x006b7700	function	Draw32BitRunLenSpriteTo32BitSurface					sdk
+0x006b7900	function	D3DEnum_FreeResources					sdk
+0x006b7980	function	D3DEnum_EnumerateDevices					sdk
 0x006b79f0	function	fn_006b79f0					none
-0x006b7f20	function	fn_006b7f20					none
+0x006b7f20	function	D3DEnum_SelectDefaultDriver					sdk
 0x006b80c0	function	fn_006b80c0					none
-0x006b8160	function	fn_006b8160					none
-0x006b8190	function	fn_006b8190					none
-0x006b8450	function	fn_006b8450					none
-0x006b88a0	function	fn_006b88a0					none
-0x006b8c30	function	fn_006b8c30					none
+0x006b8160	function	D3DEnum_GetFirstDriver					sdk
+0x006b8190	function	tView3DExt::mClip	tView3DExt				sdk
+0x006b8450	function	tView3DExt::mClipToPlane	tView3DExt				sdk
+0x006b88a0	function	tView3DExt::mClipLineToPlane	tView3DExt				sdk
+0x006b8c30	function	tView3DExt::mClipLine	tView3DExt				sdk
 0x006b9000	function	twDisplayMgr::twDisplayMgr	twDisplayMgr				rtti
 0x006b9020	function	twDisplayMgr::scalar_deleting_destructor	twDisplayMgr				rtti
 0x006b9040	function	twDisplayMgr::~twDisplayMgr	twDisplayMgr				rtti
-0x006b90b0	function	fn_006b90b0	twDisplayMgr				vtable
-0x006b9170	function	fn_006b9170	twDisplayMgr				vtable
-0x006b91b0	function	fn_006b91b0	twDisplayMgr				vtable
-0x006b9210	function	fn_006b9210	twDisplayMgr				vtable
+0x006b90b0	function	twDisplayMgr::mInit	twDisplayMgr				sdk
+0x006b9170	function	twDisplayMgr::mDone	twDisplayMgr				sdk
+0x006b91b0	function	twDisplayMgr::mSetDispMode	twDisplayMgr				sdk
+0x006b9210	function	twDisplayMgr::mEnumDispModes	twDisplayMgr				sdk
 0x006b9270	function	tOSDisplayMgr::scalar_deleting_destructor	tOSDisplayMgr				rtti
 0x006b9290	function	fn_006b9290		?fn_006b9290@@YAPBDJ@Z	callers		none
 0x006b9722	function	fn_006b9722					none
