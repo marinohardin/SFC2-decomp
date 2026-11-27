@@ -3243,7 +3243,6 @@ address	size	mangled_name	library	tier	score	notes
 006b56f0	432	?mDrawText@tGLDC@@UAEHPBDAAUtGLRectI@@KH@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=185; libmatch=same
 006b58a0	32	??0twDLLMgrBase@@QAE@XZ	dmp3D_MSVCR.lib	exact+ctx	0.949	cands=2 ctx_agree=1 caller_votes=1.8 ntok=6
 006b58c0	992	?mInit@twDLLMgrBase@@UAEEPBD00@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=12 caller_votes=0.0 ntok=302; libmatch=same
-006b5c80	176	?mDone@twDLLMgrBase@@UAEXXZ	dmp3D_MSVCR.lib	fuzzy	0.708	ratio=0.885 runner_up=0.000 ctx_agree=3 calls=2/2 ntok=55/67; libmatch=DIFFERENT
 006b5d30	432	?mEnumerate@twDLLMgrBase@@UAEEPBDP6AEPAVtDLLInfo@1@PAX@Z20H@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=7 caller_votes=0.0 ntok=136; libmatch=same
 006b5ee0	192	?mCreateInterface@twDLLMgrBase@@UAEPAXPBDH@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=3 caller_votes=0.0 ntok=58; libmatch=same
 006b5fa0	64	?mFreeInterface@twDLLMgrBase@@UAEXPAVtDLLInfo@1@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=1 caller_votes=0.0 ntok=15; libmatch=same

@@ -17598,12 +17598,12 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00673850	function	fn_00673850					none
 0x00673860	function	tQBoxRectList::scalar_deleting_destructor	tQBoxRectList				rtti
 0x00673880	function	tTigerQ3BltPart::~tTigerQ3BltPart	tTigerQ3BltPart				rtti
-0x006738e0	function	tView3DExt::mEnableLuminanceTexturing	tView3DExt				sdk
+0x006738e0	function	fn_006738e0	tBltPart				vtable
 0x006738f0	function	fn_006738f0	tBltPart				vtable
 0x00673900	function	fn_00673900	tHTMLLine				vtable
 0x00673910	function	tBltPart::~tBltPart	tBltPart				rtti
 0x00673920	function	tBltPart::scalar_deleting_destructor	tBltPart				rtti
-0x00673940	function	tSysMemSurf::mRestore	tSysMemSurf				sdk
+0x00673940	function	fn_00673940	tHTMLLine				vtable
 0x00673950	function	tPart::mIsCommon	tPart	?mIsCommon@tPart@@UAEEPAV1@@Z	mangled		mangled
 0x00673960	function	tTigerQ3BltPart::scalar_deleting_destructor	tTigerQ3BltPart				rtti
 0x006739b0	function	fn_006739b0					none

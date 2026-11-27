@@ -109,12 +109,37 @@ RTTI, globals and string literals, taken from the same relocation evidence.
 ### Rows withheld from the committed 2.5.5.2 evidence
 
 The two files the harness reads as evidence (`StarFleetOP_2552_sdklib_fuzzy.tsv` and `_fuzzy_data.tsv`)
-are the script's output minus 90 rows (76 and 14), because the claimed source in `op/` still refers
-to those addresses by a placeholder symbol or another name and a row there fails the claim's
-relocation check, which lowers the score of 81 exact or partial functions (`harness/README.md`). A
-withheld row is not wrong evidence: the claimed source has to be corrected first (the table
-figures above and the other result files are the complete run). Rerunning the commands above gives
-the complete files; drop the rows again, or correct the claims, before committing them.
+are the script's output minus the 91 rows (77 and 14) listed in `StarFleetOP_2552_sdklib_withheld.tsv`
+(columns `file` = `fuzzy` or `data`, `address`, `name`, `tier`, `score`, `reason`, `claimed_functions`).
+- `reason` = `claim` (90 rows): the claimed source in `op/` still refers to that address by a
+  placeholder symbol or another name, and a row there fails the claim's relocation check, which lowered
+  the score of 81 exact or partial functions (`harness/README.md`). The row is not wrong; the claim has
+  to be corrected first, then the row goes back. `claimed_functions` lists the claims that disagree.
+  Every row at those addresses is dropped, whatever its name.
+- `reason` = `wrong-placement` (1 row): `twDLLMgrBase::mDone` at 0x6b5c80, a fuzzy placement
+  (score 0.708) that libmatch's exact match at 0x6b5ca0 contradicts.
+
+After a rerun of the commands above, drop the rows of that file (match `file`, `address` and `name`;
+for `claim` rows every row at the address) from the two outputs before committing them. The table
+figures, the calibration files and `StarFleetOP_2552_sdklib_matches.tsv` below are from the complete run.
+
+`StarFleetOP_2552_sdklib_matches.tsv` here is still the earlier, partial one: `tools/units.py` reads it
+and the complete file regroups the 3D library's units under `op/`. The complete file is deliberately not
+committed until that regrouping is done. It is exactly the `lib_matches.tsv` the `libmatch.py` command
+under "Rerun" writes into the current directory (the 4,277 rows above); copy it over this file in the pull
+request that runs `python3 tools/units.py`.
+
+Symbol-table rows held back as leads: the seed also wanted to name 0x006738e0 (`tView3DExt::mEnableLuminanceTexturing`,
+`exact+ctx` 0.883, 4 candidates, 16-byte body of 2 instructions) and 0x00673940 (`tSysMemSurf::mRestore`,
+`exact+ctx` 0.962 against `tGDISurface::mRestore` and others at 0.797; one of 4 identical-structure
+addresses). They keep the table's earlier rows, and the matches stay in `_fuzzy.tsv` as leads. The other
+rows whose class changed (0x0069f160, 0x0069f170, 0x006a7b00, `tD3DViewSurfMgr` to `tGLSurfMgr`) are `exact`
+with one candidate and are kept.
+
+Names the old run placed and the new one does not (`D3DUtil_SetIdentityMatrix`, the `ByteQueue` scalar
+deleting destructor and destructor, `tChannelAttributes::operator=`, `tMissionInfo::mSetDate`): no
+current symbol row carries any of them. Only the `ByteQueue` scalar deleting destructor was a label
+(0x0069ff20, `exact+ctx` 0.912, a wrong placement); the table row there is `tGLDC::scalar_deleting_destructor`.
 
 ### Calibration (`*_sdklib_fuzzy_calibration.txt`)
 
