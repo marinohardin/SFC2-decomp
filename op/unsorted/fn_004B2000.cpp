@@ -58,3 +58,22 @@ bool fn_004b2cd3_View::fn_004b2eb9(int sx, int sy, tPoint2 *out)
 	}
 	return false;
 }
+
+// HYPOTHESIS: the object at 0x00919b44 is created on demand by 0x004b3055, and 0x004c5f0a is
+// a member of its class (declared only in tState_Namespace_Tactical__tState_Tactical.cpp), so
+// it is called here as a free function taking the object in ecx.
+extern void *g_00919b44;
+void fn_004b3055();
+void __fastcall fn_004c5f0a( void *self );
+
+// FUNCTION: STARFLEETOP 0x004b2f6c
+void fn_004b2f6c()
+{
+	if ( !g_00919b44 )
+	{
+		fn_004b3055();
+		if ( !g_00919b44 )
+			return;
+	}
+	fn_004c5f0a( g_00919b44 );
+}
