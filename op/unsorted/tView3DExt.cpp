@@ -339,6 +339,14 @@ void tView3DExt::vfunction63(float left, float right, float bottom, float top, f
 	vfunction60(&m);
 }
 
+// FUNCTION: STARFLEETOP 0x006aa270
+void tView3DExt::vfunction64(float zNear, float zFar)
+{
+	tMatrix m;
+	vfunction66(&m, zNear, zFar);
+	vfunction60(&m);
+}
+
 // HYPOTHESIS: the original calls 0x0069cc40 (another tMatrix member taking an output point and an
 // input point) where this body calls fn_0069cbc0 three times; tMatrix declares no member for it yet.
 // FUNCTION: STARFLEETOP 0x006aa550

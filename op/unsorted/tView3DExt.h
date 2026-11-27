@@ -107,6 +107,7 @@ public:
 	virtual tMatrix *vfunction61();    // 0x006aa490
 	virtual void vfunction62(float, float, float);    // 0x006aa1c0, builds through vfunction65 and sets through vfunction60
 	virtual void vfunction63(float, float, float, float, float, float);    // 0x006aa210
+	virtual void vfunction64(float, float);    // 0x006aa270
 	virtual void vfunction65(tMatrix *, float, float, float);    // 0x006aa0e0
 	virtual void vfunction66(tMatrix *, float, float);    // 0x006aa390
 	virtual void vfunction67(tMatrix *, float, float, float, float, float, float);    // 0x006aa2c0
