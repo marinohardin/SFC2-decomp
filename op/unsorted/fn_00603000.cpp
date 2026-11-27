@@ -328,25 +328,25 @@ void fn_006032e7_object::fn_00603873( const std::string& name, int a, int b )
 void fn_006032e7_object::fn_00603978( void* record )
 {
 	tOptex::tGuard guard( &field_b8 );
-	unsigned int index = 0;
 	if ( field_13c )
 	{
-		unsigned int count = field_13c->fn_count();
-		if ( count > 0 )
+		for ( unsigned int index = 0; index < (unsigned int)field_13c->fn_count(); ++index )
 		{
-			while ( 1 )
+			if ( field_13c->fn_item( index ) == record )
 			{
-				if ( field_13c->fn_item( index ) == record )
-				{
-					field_13c->fn_slot55( index );
-					break;
-				}
-				++index;
-				if ( index >= (unsigned int)field_13c->fn_count() )
-					break;
+				field_13c->fn_slot55( index );
+				break;
 			}
 		}
 	}
+
+
+
+
+
+
+
+
 	guard.Leave();
 }
 
