@@ -1,6 +1,33 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/fn_004AD000.cpp
-// Functions: 0x004ad668 to 0x004add41, 19 in op/UNITS.tsv
-// Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
-// Profile:   game-release (harness/units.json)
+#include "unsorted/tState_Tactical.h"
+
+using namespace tState_Namespace_Tactical;
+
+// HYPOTHESIS: returns the rectangle at +0x25c when it is non-empty and field_274 is not negative.
+// FUNCTION: STARFLEETOP 0x004ad878
+int *tState_Tactical::fn_004ad878()
+{
+	int *rect = field_25c;
+	if ( rect[0] >= rect[2] || rect[1] >= rect[3] || field_274 < 0 )
+		return 0;
+	return rect;
+}
+
+// HYPOTHESIS: returns the rectangle at +0x278 when it is non-empty and field_290 is not negative.
+// FUNCTION: STARFLEETOP 0x004ad89d
+int *tState_Tactical::fn_004ad89d()
+{
+	int *rect = field_278;
+	if ( rect[0] >= rect[2] || rect[1] >= rect[3] || field_290 < 0 )
+		return 0;
+	return rect;
+}
+
+// HYPOTHESIS: the one camera manager; its name is not known.
+// FUNCTION: STARFLEETOP 0x004add2b
+// FUNCTION: STARFLEETOP 0x004add21
+tCameraMgrEx g_00918890;
+
+// FUNCTION: STARFLEETOP 0x004add41
+tCameraMgrEx::~tCameraMgrEx()
+{
+}

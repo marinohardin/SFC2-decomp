@@ -4772,13 +4772,13 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004a627b	function	tArea5Schematic::tArea5Schematic	tArea5Schematic				rtti
 0x004a6325	function	tArea5Schematic::scalar_deleting_destructor	tArea5Schematic				rtti
 0x004a6341	function	tArea5Schematic::~tArea5Schematic	tArea5Schematic				rtti
-0x004a634c	function	fn_004a634c					none
+0x004a634c	function	fn_004a634c		?fn_004a634c@@YAXPBD@Z	add		none
 0x004a6360	function	fn_004a6360	tArea5Schematic				vtable
 0x004a64cd	function	fn_004a64cd	tArea5Schematic				vtable
 0x004a6505	function	fn_004a6505	tArea5Schematic				vtable
 0x004a65a7	function	tArea7Schematic::tArea7Schematic	tArea7Schematic				rtti
 0x004a6654	function	tArea7Schematic::scalar_deleting_destructor	tArea7Schematic				rtti
-0x004a6670	function	fn_004a6670					none
+0x004a6670	function	fn_004a6670		?fn_004a6670@@YAXPBD0@Z	add		none
 0x004a6694	function	fn_004a6694	tArea7Schematic				vtable
 0x004a66d6	function	tArea7Schematic::~tArea7Schematic	tArea7Schematic				rtti
 0x004a66e1	function	fn_004a66e1	tArea7Schematic				vtable
@@ -4892,20 +4892,20 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004aa818	function	tShuttleConvertToAdmin::~tShuttleConvertToAdmin	tShuttleConvertToAdmin				rtti
 0x004aa865	function	fn_004aa865					none
 0x004aa875	function	fn_004aa875					none
-0x004aae0f	function	tState_Namespace_Tactical::tState_Tactical::tState_Tactical	tState_Namespace_Tactical::tState_Tactical				rtti
+0x004aae0f	function	tState_Namespace_Tactical::tState_Tactical::tState_Tactical	tState_Namespace_Tactical::tState_Tactical	??0tState_Tactical@tState_Namespace_Tactical@@QAE@XZ	add		rtti
 0x004aaff4	thunk	fn_004aaff4					none
-0x004aaff9	function	tState_Namespace_Tactical::tState_Tactical::scalar_deleting_destructor	tState_Namespace_Tactical::tState_Tactical				rtti
-0x004ab015	function	tState_Namespace_Tactical::tState_Tactical::~tState_Tactical	tState_Namespace_Tactical::tState_Tactical				rtti
+0x004aaff9	function	tState_Namespace_Tactical::tState_Tactical::scalar_deleting_destructor	tState_Namespace_Tactical::tState_Tactical	??_GtState_Tactical@tState_Namespace_Tactical@@UAEPAXI@Z	claim		rtti
+0x004ab015	function	tState_Namespace_Tactical::tState_Tactical::~tState_Tactical	tState_Namespace_Tactical::tState_Tactical	??1tState_Tactical@tState_Namespace_Tactical@@UAE@XZ	claim		rtti
 0x004ab0f1	function	fn_004ab0f1	tState_Namespace_Tactical::tState_Tactical				vtable
-0x004ab4c3	function	fn_004ab4c3					none
-0x004ab4f3	function	fn_004ab4f3					none
-0x004ab5c6	function	fn_004ab5c6					none
-0x004ab699	function	fn_004ab699					none
-0x004ab6bc	function	fn_004ab6bc					none
+0x004ab4c3	function	fn_004ab4c3		?fn_004ab4c3@@YIXPAHH0@Z	claim		none
+0x004ab4f3	function	fn_004ab4f3		?fn_004ab4f3@@YAXPAM@Z	claim		none
+0x004ab5c6	function	fn_004ab5c6		?fn_004ab5c6@@YAXPAM@Z	claim		none
+0x004ab699	function	fn_004ab699		?fn_004ab699@@YAXPAE@Z	claim		none
+0x004ab6bc	function	fn_004ab6bc		?fn_004ab6bc@@YAXH@Z	claim		none
 0x004ab70a	function	fn_004ab70a	tState_Namespace_Tactical::tState_Tactical	?vfunction4@tState_Tactical@tState_Namespace_Tactical@@UAE_NXZ	claim		none
-0x004aba3c	function	fn_004aba3c					none
-0x004aba46	function	fn_004aba46					none
-0x004aba4f	function	fn_004aba4f					none
+0x004aba3c	function	fn_004aba3c		?fn_004aba3c@@YAXD@Z	claim		none
+0x004aba46	function	fn_004aba46		?fn_004aba46@@YAXXZ	claim		none
+0x004aba4f	function	fn_004aba4f		?fn_004aba4f@tState_Tactical@tState_Namespace_Tactical@@QAEXXZ	claim		none
 0x004abadd	function	fn_004abadd	tState_Namespace_Tactical::tState_Tactical				vtable
 0x004ad668	function	fn_004ad668					none
 0x004ad6c2	function	fn_004ad6c2					none
@@ -4913,19 +4913,19 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004ad735	function	fn_004ad735					none
 0x004ad78d	function	fn_004ad78d					none
 0x004ad814	function	fn_004ad814					none
-0x004ad878	function	fn_004ad878					none
-0x004ad89d	function	fn_004ad89d					none
+0x004ad878	function	fn_004ad878		?fn_004ad878@tState_Tactical@tState_Namespace_Tactical@@QAEPAHXZ	claim		none
+0x004ad89d	function	fn_004ad89d		?fn_004ad89d@tState_Tactical@tState_Namespace_Tactical@@QAEPAHXZ	claim		none
 0x004ad8c2	function	fn_004ad8c2					none
 0x004ada57	function	tNetMsg_kChangeHost::~tNetMsg_kChangeHost	tNetMsg_kChangeHost				rtti
-0x004adc4c	function	fn_004adc4c	tState_Namespace_Tactical::tState_Tactical				vtable
-0x004adc52	function	fn_004adc52					none
+0x004adc4c	function	fn_004adc4c	tState_Namespace_Tactical::tState_Tactical	?vfunction13@tState_Tactical@tState_Namespace_Tactical@@UAEPADXZ	claim		vtable
+0x004adc52	function	fn_004adc52		?fn_004adc52@tState_Tactical@tState_Namespace_Tactical@@QAEEXZ	claim		none
 0x004adc63	function	fn_004adc63					none
 0x004adc6d	function	fn_004adc6d					none
-0x004adc83	function	fn_004adc83					none
+0x004adc83	function	fn_004adc83		?fn_004adc83@tState_Namespace_Tactical@@YAPAVtState_Tactical@1@XZ	claim		none
 0x004adc89	function	fn_004adc89					none
 0x004add21	function	fn_004add21					none
 0x004add2b	function	fn_004add2b					none
-0x004add41	function	fn_004add41					none
+0x004add41	function	fn_004add41		??1tCameraMgrEx@tState_Namespace_Tactical@@UAE@XZ	claim		none
 0x004add65	function	tState_Namespace_Tactical::tCameraMgr::scalar_deleting_destructor	tState_Namespace_Tactical::tCameraMgr				rtti
 0x004add82	function	tState_Namespace_Tactical::tCamera::scalar_deleting_destructor	tState_Namespace_Tactical::tCamera				rtti
 0x004addaf	function	fn_004addaf					none
@@ -4949,7 +4949,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004aebea	function	fn_004aebea	tState_Namespace_Tactical::tCamera_ReverseOverTheShoulder				vtable
 0x004aef09	function	fn_004aef09	tState_Namespace_Tactical::tCamera_ReverseOverTheShoulder				vtable
 0x004aef7b	function	fn_004aef7b	tState_Namespace_Tactical::tCamera_ReverseOverTheShoulder				vtable
-0x004aefd4	function	tState_Namespace_Tactical::tCameraMgrEx::tCameraMgrEx	tState_Namespace_Tactical::tCameraMgrEx				rtti
+0x004aefd4	function	tState_Namespace_Tactical::tCameraMgrEx::tCameraMgrEx	tState_Namespace_Tactical::tCameraMgrEx	??0tCameraMgrEx@tState_Namespace_Tactical@@QAE@XZ	add		rtti
 0x004af1bc	function	tState_Namespace_Tactical::tCameraMgr::~tCameraMgr	tState_Namespace_Tactical::tCameraMgr				rtti
 0x004af1c3	function	fn_004af1c3					none
 0x004af1f4	function	fn_004af1f4					none
@@ -4974,25 +4974,25 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004af6d0	function	fn_004af6d0	tState_Namespace_Tactical::tCameraMgrEx				vtable
 0x004af6e2	function	fn_004af6e2	tState_Namespace_Tactical::tCameraMgrEx				vtable
 0x004af6f4	function	fn_004af6f4	tState_Namespace_Tactical::tCameraMgrEx				vtable
-0x004af706	function	fn_004af706					none
-0x004af807	function	fn_004af807	tState_Namespace_Tactical::tState_Tactical				vtable
+0x004af706	function	fn_004af706		?fn_004af706@@YAXABUtPoint3@@00AAVtMatrix@@@Z	claim		none
+0x004af807	function	fn_004af807	tState_Namespace_Tactical::tState_Tactical	?vfunction19@tState_Tactical@tState_Namespace_Tactical@@UAEPAXXZ	claim		vtable
 0x004af80d	function	fn_004af80d					none
-0x004af94b	function	fn_004af94b					none
-0x004afa1c	function	fn_004afa1c					none
-0x004afa40	function	fn_004afa40		?fn_004afa40@@YIXPAX@Z	add		none
-0x004afa4e	function	fn_004afa4e					none
-0x004afac9	function	fn_004afac9					none
-0x004afb43	function	fn_004afb43					none
-0x004afb67	function	fn_004afb67					none
-0x004afbc4	function	fn_004afbc4					none
-0x004afbeb	function	fn_004afbeb					none
-0x004afc63	function	fn_004afc63					none
-0x004afc87	function	fn_004afc87					none
-0x004afcf1	function	fn_004afcf1					none
-0x004afd4d	function	fn_004afd4d					none
+0x004af94b	function	fn_004af94b		?fn_004af94b@@YAXXZ	claim		none
+0x004afa1c	function	fn_004afa1c		?fn_004afa1c@@YIPAXPAXHI@Z	claim		none
+0x004afa40	function	fn_004afa40		?fn_004afa40@@YIXPAX@Z	claim		none
+0x004afa4e	function	fn_004afa4e		?fn_004afa4e@@YIXPAXHPBUtPoint4@@HHH@Z	claim		none
+0x004afac9	function	fn_004afac9		?fn_004afac9@@YIXPAXHPBUtPoint4@@H@Z	claim		none
+0x004afb43	function	fn_004afb43		?fn_004afb43@@YIPAXPAXHI@Z	claim		none
+0x004afb67	function	fn_004afb67		?fn_004afb67@@YIXPAXHH@Z	claim		none
+0x004afbc4	function	fn_004afbc4		?fn_004afbc4@@YIPAXPAXHI@Z	claim		none
+0x004afbeb	function	fn_004afbeb		?fn_004afbeb@@YIXPAXHHPBUtPoint4@@@Z	claim		none
+0x004afc63	function	fn_004afc63		?fn_004afc63@@YIPAXPAXHI@Z	claim		none
+0x004afc87	function	fn_004afc87		?fn_004afc87@@YIXPAXHHH@Z	claim		none
+0x004afcf1	function	fn_004afcf1		?fn_004afcf1@@YIXPAX@Z	claim		none
+0x004afd4d	function	fn_004afd4d		?fn_004afd4d@@YIPAXPAX@Z	claim		none
 0x004afdb6	function	fn_004afdb6					none
 0x004afec0	function	fn_004afec0					none
-0x004aff50	function	fn_004aff50					none
+0x004aff50	function	fn_004aff50		?fn_004aff50@@YI_NPAXHABUtPoint3@@M@Z	claim		none
 0x004b0016	function	fn_004b0016					none
 0x004b00bb	function	fn_004b00bb					none
 0x004b0136	function	fn_004b0136					none
@@ -5042,21 +5042,21 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004b2ae6	function	tMatrix::tMatrix	tMatrix	??0tMatrix@@QAE@MMMMMMMMMMMMMMMM@Z	claim		claim
 0x004b2b56	function	fn_004b2b56	tMyHud3D	?vfunction11@tMyHud3D@@UAEXHHDH@Z	claim		none
 0x004b2c83	function	fn_004b2c83	tMyHud3D	?vfunction10@tMyHud3D@@UAEXH@Z	claim		none
-0x004b2cd3	function	fn_004b2cd3					none
+0x004b2cd3	function	fn_004b2cd3		?fn_004b2cd3@fn_004b2cd3_View@@QAEXMMMM@Z	claim		none
 0x004b2d5c	function	fn_004b2d5c					none
-0x004b2eb9	function	fn_004b2eb9					none
-0x004b2f6c	function	fn_004b2f6c					none
+0x004b2eb9	function	fn_004b2eb9		?fn_004b2eb9@fn_004b2cd3_View@@QAE_NHHPAUtPoint2@@@Z	claim		none
+0x004b2f6c	function	fn_004b2f6c		?fn_004b2f6c@@YAXXZ	claim		none
 0x004b2f8b	function	fn_004b2f8b	tState_Namespace_Tactical::tState_Tactical				vtable
-0x004b2fe6	function	fn_004b2fe6					none
-0x004b3055	function	fn_004b3055					none
-0x004b35db	function	fn_004b35db					none
+0x004b2fe6	function	fn_004b2fe6		?fn_004b2fe6@@YAXXZ	claim		none
+0x004b3055	function	fn_004b3055		?fn_004b3055@@YAXXZ	add		none
+0x004b35db	function	fn_004b35db		?fn_004b35db@tState_Tactical@tState_Namespace_Tactical@@QAEXPAJ@Z	claim		none
 0x004b362e	function	fn_004b362e					none
-0x004b3758	function	fn_004b3758					none
-0x004b3793	function	fn_004b3793					none
-0x004b37ce	function	fn_004b37ce					none
+0x004b3758	function	fn_004b3758		?fn_004b3758@tState_Tactical@tState_Namespace_Tactical@@QAEXPAJ@Z	claim		none
+0x004b3793	function	fn_004b3793		?fn_004b3793@tState_Tactical@tState_Namespace_Tactical@@QAEXPAJ@Z	claim		none
+0x004b37ce	function	fn_004b37ce		?fn_004b37ce@tState_Tactical@tState_Namespace_Tactical@@QAEXPAJ@Z	claim		none
 0x004b3809	function	fn_004b3809	tState_Namespace_Tactical::tState_Tactical				vtable
-0x004b3f79	function	fn_004b3f79					none
-0x004b4018	function	fn_004b4018					none
+0x004b3f79	function	fn_004b3f79		?fn_004b3f79@@YAXH@Z	claim		none
+0x004b4018	function	fn_004b4018		?fn_004b4018@@YAXPBD_N@Z	add		none
 0x004b4046	function	tValueI<tString>::tValueI<tString>	tValueI<tString>				rtti
 0x004b422c	function	tValueBase::~tValueBase	tValueBase				rtti
 0x004b4482	function	fn_004b4482					none
@@ -5089,36 +5089,36 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004b661b	function	tTexBmpZip::scalar_deleting_destructor	tTexBmpZip				rtti
 0x004b6637	function	tTexBmp::~tTexBmp	tTexBmp				rtti
 0x004b6642	function	fn_004b6642					none
-0x004b6647	function	fn_004b6647	tState_Namespace_Tactical::tState_Tactical				vtable
+0x004b6647	function	fn_004b6647	tState_Namespace_Tactical::tState_Tactical	?vfunction10@tState_Tactical@tState_Namespace_Tactical@@UAEXH@Z	claim		vtable
 0x004b665e	function	fn_004b665e					none
 0x004b666e	function	tTexBmpZip::tTexBmpZip	tTexBmpZip				rtti
 0x004b6692	function	fn_004b6692					none
 0x004b66a8	function	fn_004b66a8	tState_Namespace_Tactical::tState_Tactical				vtable
 0x004b69d7	function	fn_004b69d7					none
 0x004b6f40	function	fn_004b6f40					none
-0x004b70ac	function	fn_004b70ac					none
-0x004b714d	function	fn_004b714d	tState_Namespace_Tactical::tState_Tactical				vtable
-0x004b7161	function	fn_004b7161					none
-0x004b71af	function	fn_004b71af					none
-0x004b720d	function	fn_004b720d					none
+0x004b70ac	function	fn_004b70ac		?fn_004b70ac@@YAXPAVfn_004b70ac_Surface@@HPAUtagRECT@@@Z	claim		none
+0x004b714d	function	fn_004b714d	tState_Namespace_Tactical::tState_Tactical	?vfunction7@tState_Tactical@tState_Namespace_Tactical@@UAEXH@Z	claim		vtable
+0x004b7161	function	fn_004b7161		?fn_004b7161@@YGXPBDPAUtagRECT@@@Z	claim		none
+0x004b71af	function	fn_004b71af		?fn_004b71af@tState_Tactical@tState_Namespace_Tactical@@QAEXPAH@Z	claim		none
+0x004b720d	function	fn_004b720d		?fn_004b720d@tState_Tactical@tState_Namespace_Tactical@@QAEPAVtEntity@@XZ	claim		none
 0x004b723e	function	fn_004b723e					none
 0x004b7430	function	fn_004b7430					none
 0x004b7509	function	fn_004b7509					none
-0x004b7f9e	function	fn_004b7f9e					none
-0x004b7fce	function	fn_004b7fce					none
+0x004b7f9e	function	fn_004b7f9e		?fn_004b7f9e@fn_004b7f9e_Rect@@QAEXPBU1@@Z	claim		none
+0x004b7fce	function	fn_004b7fce		?fn_004b7fce@@YAXPAM0HM@Z	claim		none
 0x004b802d	function	fn_004b802d					none
 0x004b8115	function	fn_004b8115					none
 0x004b85f1	function	fn_004b85f1					none
 0x004b900a	function	fn_004b900a					none
 0x004b915b	function	fn_004b915b					none
-0x004b94dc	function	fn_004b94dc		?fn_004b94dc@@YIHPAX@Z	add		none
+0x004b94dc	function	fn_004b94dc		?fn_004b94dc@@YIHPAX@Z	claim		none
 0x004b94e3	function	fn_004b94e3					none
-0x004b97cc	function	fn_004b97cc					none
-0x004b99a4	function	fn_004b99a4					none
-0x004b99f7	function	fn_004b99f7	tState_Namespace_Tactical::tState_Tactical				vtable
+0x004b97cc	function	fn_004b97cc		?fn_004b97cc@tState_Tactical@tState_Namespace_Tactical@@QAEXPAH@Z	add		none
+0x004b99a4	function	fn_004b99a4		?fn_004b99a4@fn_004b7f9e_Rect@@QBEXPAU1@PBU1@@Z	claim		none
+0x004b99f7	function	fn_004b99f7	tState_Namespace_Tactical::tState_Tactical	?vfunction8@tState_Tactical@tState_Namespace_Tactical@@UAEXPAH@Z	claim		vtable
 0x004b9a3a	function	fn_004b9a3a	tState_Namespace_Tactical::tState_Tactical	?vfunction9@tState_Tactical@tState_Namespace_Tactical@@UAEXPAH@Z	claim		none
-0x004b9d12	function	fn_004b9d12					none
-0x004b9dd6	function	fn_004b9dd6	tState_Namespace_Tactical::tState_Tactical				vtable
+0x004b9d12	function	fn_004b9d12		?fn_004b9d12@fn_0092f478_object@@QAEAAV1@PAV1@@Z	claim		none
+0x004b9dd6	function	fn_004b9dd6	tState_Namespace_Tactical::tState_Tactical	?vfunction11@tState_Tactical@tState_Namespace_Tactical@@UAEXH@Z	claim		vtable
 0x004b9e11	function	fn_004b9e11					none
 0x004ba05b	function	fn_004ba05b					none
 0x004ba2a5	function	fn_004ba2a5					none
@@ -5161,12 +5161,12 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004bbda1	function	fn_004bbda1					none
 0x004bbed7	function	fn_004bbed7					none
 0x004bc197	function	fn_004bc197					none
-0x004bc256	function	fn_004bc256					none
+0x004bc256	function	fn_004bc256		?fn_004bc256@@YIXPAX@Z	add		none
 0x004bc282	function	fn_004bc282					none
 0x004bc3e1	function	fn_004bc3e1					none
 0x004bc53a	function	fn_004bc53a					none
 0x004bc544	function	fn_004bc544					none
-0x004bc55a	function	fn_004bc55a					none
+0x004bc55a	function	fn_004bc55a		?fn_004bc55a@tState_Tactical@tState_Namespace_Tactical@@QAEXJJPAD@Z	add		none
 0x004bc5fc	function	tNetMsg_kMoveInDirection::tNetMsg_kMoveInDirection_Constructor_or_Destructor	tNetMsg_kMoveInDirection				rtti
 0x004bc67e	function	fn_004bc67e					none
 0x004bc712	function	fn_004bc712					none
@@ -5336,7 +5336,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004bf7d9	function	fn_004bf7d9					none
 0x004bf81a	function	fn_004bf81a					none
 0x004bf887	function	fn_004bf887					none
-0x004bf8d6	function	fn_004bf8d6					none
+0x004bf8d6	function	fn_004bf8d6		?fn_004bf8d6@@YAXXZ	add		none
 0x004bf915	function	fn_004bf915	tDragBar				vtable
 0x004bf971	function	fn_004bf971	tDragBar				vtable
 0x004bfa5b	function	fn_004bfa5b	tDragBar				vtable
@@ -5609,7 +5609,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004c5af7	function	fn_004c5af7					none
 0x004c5b33	function	fn_004c5b33	tHelpWinMgr_SFC::tFrame				vtable
 0x004c5b85	function	fn_004c5b85					none
-0x004c5b95	function	fn_004c5b95					none
+0x004c5b95	function	fn_004c5b95		?fn_004c5b95@@YIXPAX@Z	add		none
 0x004c5bdd	function	fn_004c5bdd					none
 0x004c5be8	function	fn_004c5be8					none
 0x004c5c33	function	fn_004c5c33					none
@@ -5623,7 +5623,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004c5df6	function	fn_004c5df6					none
 0x004c5e52	function	fn_004c5e52					none
 0x004c5ebf	function	fn_004c5ebf					none
-0x004c5f0a	function	fn_004c5f0a					none
+0x004c5f0a	function	fn_004c5f0a		?fn_004c5f0a@@YIXPAX@Z	add		none
 0x004c5f52	function	fn_004c5f52					none
 0x004c5f98	function	fn_004c5f98					none
 0x004c5fdb	function	fn_004c5fdb					none
@@ -21610,7 +21610,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x007364c0	function	fn_007364c0		?fn_007364c0@@YAXPADPBD@Z	add		none
 0x007364c7	function	fn_007364c7					none
 0x007364d0	function	fn_007364d0					none
-0x007365b0	function	fn_007365b0					none
+0x007365b0	function	fn_007365b0		_memcpy	add		none
 0x00736649	function	fn_00736649					none
 0x00736689	function	fn_00736689					none
 0x007366f6	function	fn_007366f6					none
@@ -21748,9 +21748,9 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x007392a4	function	fn_007392a4					none
 0x007392ad	function	fn_007392ad					none
 0x00739360	function	fn_00739360					none
-0x00739374	function	fn_00739374					none
+0x00739374	function	fn_00739374		_tan	add		none
 0x0073937d	function	fn_0073937d					none
-0x00739412	function	fn_00739412					none
+0x00739412	function	fn_00739412		_qsort	add		none
 0x00739566	function	fn_00739566					none
 0x007395b4	function	fn_007395b4					none
 0x007395e0	function	fn_007395e0					none
