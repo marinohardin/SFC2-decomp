@@ -9,7 +9,7 @@ First-pass static analysis of the retail binaries (2026-11-02). Scripts need `pi
 - `scripts/funccount.py <exe>` — rough function-count heuristics (call targets, data->text pointers).
 
 Results:
-- `StarFleetOP_2552_sdklib_matches.tsv` — 3,758 unique name->address matches in the patched 2.5.5.2 game exe.
+- `StarFleetOP_2552_sdklib_matches.tsv` — 3,758 unique name->address matches in the patched 2.5.5.2 game exe, from a damaged copy of the SDK's 3D library (9 of its 56 objects). With the whole library the same command gives 4,277 rows (2,885 distinct names at 2,389 addresses), and the figures and calibration below are from that run. `tools/units.py` reads this file and a replacement regroups the 3D library's units under `op/` and `op/UNITS.tsv`, so the file is replaced in the pull request that regenerates them.
 - `StarFleetOP_2500_sdklib_matches.tsv` — same against the original disc 2.5.0.0 exe (2,989 matches; different optimization).
 - `ServerPlatform_sdklib_matches.tsv` — 3,100 matches in the Dynaverse server kit exe.
 - `StarFleetOP_2552_strings.txt` — `strings -n 8` of the game exe.
@@ -76,22 +76,22 @@ did not exist for the run below. Progress and the summary go to stderr (saved as
 
 ### Results (before → after)
 
-`libmatch` counts above (3,758 and 3,100) are TSV rows: the same COMDAT comes from several libraries.
-Distinct, they are **2,396 names at 1,934 addresses** (2.5.5.2) and **684 names at 318 addresses**
+`libmatch` counts above (4,277 with the whole library, and 3,100) are TSV rows: the same COMDAT comes from several libraries.
+Distinct, they are **2,885 names at 2,389 addresses** (2.5.5.2) and **684 names at 318 addresses**
 (ServerPlatform).
 
 | `StarFleetOP.exe` 2.5.5.2 | names placed | new vs libmatch | new, excluding anonymous funclets/static initialisers | `.text` bytes |
 |---|---|---|---|---|
-| libmatch (before) | 2,396 | – | – | 471,870 (12.6%) |
-| exact | 2,377 | 186 | 54 | 467,308 |
-| exact+ctx (multi resolved by context) | 795 | 634 | 464 | 32,128 |
-| masked | 23 | 23 | 12 | 1,239 |
+| libmatch (before) | 2,885 | – | – | 586,417 (15.6%) |
+| exact | 2,852 | 198 | 61 | 579,183 |
+| exact+ctx (multi resolved by context) | 904 | 721 | 539 | 34,049 |
+| masked | 32 | 32 | 21 | 5,751 |
 | masked+ctx | 36 | 36 | 13 | 1,627 |
-| exact-short (1–5 instructions, unique, no context; score 0.5) | 99 | 75 | 67 | 991 |
-| fuzzy | 40 | 36 | 34 | 8,972 |
-| ref (address from callers/vtables) | 185 | 179 | 179 | 17,810 |
-| **after, all tiers** | **3,555** | **1,169** | **823** | **529,840 (14.1%)** |
-| still ambiguous (`multi`) | 3,049 names | | | |
+| exact-short (1–5 instructions, unique, no context; score 0.5) | 105 | 81 | 71 | 1,094 |
+| fuzzy | 39 | 34 | 33 | 8,960 |
+| ref (address from callers/vtables) | 196 | 188 | 188 | 21,425 |
+| **after, all tiers** | **4,164** | **1,290** | **926** | **649,639 (17.3%)** |
+| still ambiguous (`multi`) | 3,108 names | | | |
 
 | `ServerPlatform.exe` | names placed | new vs libmatch | new, named | `.text` bytes |
 |---|---|---|---|---|
@@ -103,8 +103,18 @@ Distinct, they are **2,396 names at 1,934 addresses** (2.5.5.2) and **684 names 
 
 "Anonymous" means `obj:.text$x#n` (EH unwind funclets) and `obj|_$E..` (static initialisers):
 they are correctly placed, but their names only tell you which object they come from.
-`*_sdklib_fuzzy_data.tsv` also names 1,164 (2.5.5.2) and 330 (server) data addresses: vtables,
+`*_sdklib_fuzzy_data.tsv` also names 1,551 (2.5.5.2, at 1,481 addresses) and 330 (server) data addresses: vtables,
 RTTI, globals and string literals, taken from the same relocation evidence.
+
+### Rows withheld from the committed 2.5.5.2 evidence
+
+The two files the harness reads as evidence (`StarFleetOP_2552_sdklib_fuzzy.tsv` and `_fuzzy_data.tsv`)
+are the script's output minus 90 rows (76 and 14), because the claimed source in `op/` still refers
+to those addresses by a placeholder symbol or another name and a row there fails the claim's
+relocation check, which lowers the score of 81 exact or partial functions (`harness/README.md`). A
+withheld row is not wrong evidence: the claimed source has to be corrected first (the table
+figures above and the other result files are the complete run). Rerunning the commands above gives
+the complete files; drop the rows again, or correct the claims, before committing them.
 
 ### Calibration (`*_sdklib_fuzzy_calibration.txt`)
 
@@ -115,32 +125,34 @@ has unpadded twins that vtables point to.
 
 | 2.5.5.2, blind full pipeline | precision | recall |
 |---|---|---|
-| all 2,396 ground-truth names | 2,385/2,386 = 99.96% | 99.5% |
-| 2,032 long names | 2,023/2,024 = 99.95% | 99.5% |
-| tier b alone (A equality ignored, no fuzzy), long | masked 100% (1,361), masked+ctx 99.0% (412/416) | 87.3% |
+| all 2,885 ground-truth names | 2,872/2,874 = 99.93% | 99.5% |
+| 2,435 long names | 2,423/2,425 = 99.92% | 99.5% |
+| tier b alone (A equality ignored, no fuzzy), long | masked 100% (1,717), masked+ctx 99.1% (450/454) | 89.1% |
 | ServerPlatform, all 684 | 661/661 = 100% | 96.6% |
 
-The single "wrong" placement is `tBasicFile::mDispose`. libmatch places it in the middle of another
-function (0x62bf4f, not a function start). A placed caller points at 0x520990, where the
-fuzzy matcher puts it, so the ground truth is probably the one in error.
+Two placements disagree with libmatch. `tBasicFile::mDispose`: libmatch places it in the middle of
+another function (0x62bf4f, not a function start). A placed caller points at 0x520990, where the
+pipeline puts it, so the ground truth is probably the one in error. `twDLLMgrBase::mDone`: libmatch
+matches the 144-byte body exactly at 0x6b5ca0; the fuzzy tier puts it at 0x6b5c80 (ratio 0.885,
+score 0.708, below the 0.85 a label needs), so here the fuzzy placement is the one in error.
 
 Tier c, leave-one-out on 1,500 ground-truth functions with at least 12 instructions, at the chosen
 ratio 0.85 / margin 0.05:
 
 | variant | recall | precision |
 |---|---|---|
-| present (true copy available) | 88.8% | 99.9% |
-| absent (true address removed): false-positive rate | 4.0% | – |
-| synthetic drift (8% tokens replaced, 4% deleted, 3% duplicated) | 51.5% | 99.9% |
-| real drift: 90 functions whose address ≥ 2 callers fix but whose body changed | 3.3% | 60% (3 of 5) |
-| fuzzy placements outside the ground truth, re-checked against the final name set | 17 of 36 checkable | 0 contradicted |
+| present (true copy available) | 91.5% | 99.9% |
+| absent (true address removed): false-positive rate | 3.1% | – |
+| synthetic drift (8% tokens replaced, 4% deleted, 3% duplicated) | 54.8% | 99.9% |
+| real drift: 91 functions whose address ≥ 2 callers fix but whose body changed | 4.4% | 67% (4 of 6) |
+| fuzzy placements outside the ground truth, re-checked against the final name set | 18 of 34 checkable | 0 contradicted |
 
 What this means: tier c is reliable when the function is still recognisable, but most functions
 that changed between the June 2001 libraries and the 2003 exe changed completely. Most are STL
 (`basic_string`, streams, `_Tree`), whose 2003 code differs, so they score 0.1–0.5 against the old
 bodies. Those are recovered through callers (`ref`), not through similarity. The register-agnostic
-C stream doubles real-drift recall over the B stream (8.9% vs 4.5% at ratio 0.80; B-stream run in
-`StarFleetOP_2552_sdklib_fuzzy_calibration_streamB.txt`, 26 fuzzy names instead of 40). The other ~6,000 SDK
+C stream nearly doubles real-drift recall over the B stream (9.9% vs 5.6% at ratio 0.80; B-stream run in
+`StarFleetOP_2552_sdklib_fuzzy_calibration_streamB.txt`, 25 fuzzy names instead of 39). The other ~7,000 SDK
 functions are inlined, dropped, or still ambiguous. Fuzzy scores are capped at 0.8. Treat `fuzzy`,
 `exact-short`, single-caller `ref` (score ≤ 0.8) and `multi` as leads, not facts.
 
