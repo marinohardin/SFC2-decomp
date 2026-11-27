@@ -18,6 +18,9 @@ public:
 	tEntity_Weapon();
 	~tEntity_Weapon();
 
+	virtual void vfunction5();
+	virtual void vfunction11(tSFCStream &s, int32u mode);
+
 	// Slots 62 and 64 are both filled by 0x00504078, which loads a float constant.
 	virtual float vfunction63();
 	virtual float vfunction65();

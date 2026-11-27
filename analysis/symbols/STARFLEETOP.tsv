@@ -962,16 +962,16 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0041c008	function	tEntity_Transporter::~tEntity_Transporter	tEntity_Transporter				rtti
 0x0041c055	function	fn_0041c055	tEntity_Transporter				vtable
 0x0041c0b9	function	fn_0041c0b9	tEntity_Transporter				vtable
-0x0041c1ef	function	tEntity_Weapon::tEntity_Weapon	tEntity_Weapon				rtti
-0x0041c23c	function	fn_0041c23c	tEntity_Placeholder				vtable
-0x0041c242	function	fn_0041c242	tEntity_Weapon				vtable
-0x0041c249	function	fn_0041c249	tEntity_Weapon				vtable
+0x0041c1ef	function	tEntity_Weapon::tEntity_Weapon	tEntity_Weapon	??0tEntity_Weapon@@QAE@XZ	claim		rtti
+0x0041c23c	function	fn_0041c23c	tEntity_Placeholder	?vfunction66@tEntity_Weapon@@UAEFD@Z	claim		vtable
+0x0041c242	function	fn_0041c242	tEntity_Weapon	?vfunction68@tEntity_Weapon@@UAEJXZ	claim		vtable
+0x0041c249	function	fn_0041c249	tEntity_Weapon	?vfunction69@tEntity_Weapon@@UAEHXZ	claim		vtable
 0x0041c250	function	tEntity_Weapon::scalar_deleting_destructor	tEntity_Weapon				rtti
 0x0041c26c	thunk	fn_0041c26c					none
 0x0041c271	function	fn_0041c271	tEntity_Weapon				vtable
-0x0041c983	function	fn_0041c983					none
-0x0041c99c	function	fn_0041c99c	tEntity_Weapon				vtable
-0x0041c9a7	function	fn_0041c9a7	tEntity_Weapon				vtable
+0x0041c983	function	fn_0041c983		?fn_0041c983@fn_0041c983_Triple@@QAEPAU1@MMM@Z	claim		none
+0x0041c99c	function	fn_0041c99c	tEntity_Weapon	?vfunction5@tEntity_Weapon@@UAEXXZ	claim		vtable
+0x0041c9a7	function	fn_0041c9a7	tEntity_Weapon	?vfunction11@tEntity_Weapon@@UAEXAAVtSFCStream@@K@Z	claim		vtable
 0x0041ca85	function	tEntity_DirectFire::tEntity_DirectFire	tEntity_DirectFire	??0tEntity_DirectFire@@QAE@XZ	add		rtti
 0x0041cae2	function	fn_0041cae2	tEntity_DirectFire				vtable
 0x0041cae6	function	tEntity_DirectFire::scalar_deleting_destructor	tEntity_DirectFire				rtti
@@ -6401,27 +6401,27 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004d6fb5	function	fn_004d6fb5					none
 0x004d6fd4	function	fn_004d6fd4					none
 0x004d6fef	function	fn_004d6fef					none
-0x004d703f	function	fn_004d703f					none
-0x004d707c	function	fn_004d707c					none
-0x004d7099	function	fn_004d7099					none
-0x004d70ce	function	fn_004d70ce					none
+0x004d703f	function	fn_004d703f		?fn_004d703f@fn_004d703f_Array@@QAEXXZ	claim		none
+0x004d707c	function	fn_004d707c		?fn_004d707c@fn_004d703f_Array@@QAEME@Z	claim		none
+0x004d7099	function	fn_004d7099		?fn_004d7099@fn_004d703f_Array@@QAEEM@Z	claim		none
+0x004d70ce	function	fn_004d70ce		?fn_004d70ce@fn_004d703f_Array@@QAEME@Z	claim		none
 0x004d70eb	function	tBaseWeapon::tBaseWeapon	tBaseWeapon	??0tBaseWeapon@@QAE@H@Z	callers		rtti
 0x004d7270	function	fn_004d7270	tBaseWeapon				vtable
-0x004d7292	function	fn_004d7292	tBaseWeapon				vtable
+0x004d7292	function	fn_004d7292	tBaseWeapon	?vfunction52@tBaseWeapon@@UAEXXZ	claim		vtable
 0x004d72b4	function	fn_004d72b4	tBaseWeapon				vtable
-0x004d72dc	function	fn_004d72dc	tBaseWeapon				vtable
-0x004d7304	function	fn_004d7304	tBaseWeapon				vtable
-0x004d730c	function	fn_004d730c	tBaseWeapon				vtable
-0x004d7313	function	fn_004d7313	tBaseWeapon				vtable
-0x004d731a	function	fn_004d731a	tBaseWeapon				vtable
-0x004d7321	function	fn_004d7321	tBaseWeapon				vtable
-0x004d732e	function	fn_004d732e	tBaseWeapon				vtable
-0x004d733b	function	fn_004d733b	tBaseWeapon				vtable
-0x004d7342	function	fn_004d7342	tBaseWeapon				vtable
-0x004d7354	function	fn_004d7354	tBaseWeapon				vtable
-0x004d735b	function	fn_004d735b	tBaseWeapon				vtable
-0x004d7362	function	fn_004d7362	tBaseWeapon				vtable
-0x004d7378	function	fn_004d7378	tBaseWeapon				vtable
+0x004d72dc	function	fn_004d72dc	tBaseWeapon	?vfunction54@tBaseWeapon@@UAEXH@Z	claim		vtable
+0x004d7304	function	fn_004d7304	tBaseWeapon	?vfunction108@tBaseWeapon@@UAEHXZ	claim		vtable
+0x004d730c	function	fn_004d730c	tBaseWeapon	?vfunction109@tBaseWeapon@@UAEMXZ	claim		vtable
+0x004d7313	function	fn_004d7313	tBaseWeapon	?vfunction110@tBaseWeapon@@UAEMXZ	claim		vtable
+0x004d731a	function	fn_004d731a	tBaseWeapon	?vfunction111@tBaseWeapon@@UAEMXZ	claim		vtable
+0x004d7321	function	fn_004d7321	tBaseWeapon	?vfunction124@tBaseWeapon@@UAEXH@Z	claim		vtable
+0x004d732e	function	fn_004d732e	tBaseWeapon	?vfunction125@tBaseWeapon@@UAEXH@Z	claim		vtable
+0x004d733b	function	fn_004d733b	tBaseWeapon	?vfunction129@tBaseWeapon@@UAEHXZ	claim		vtable
+0x004d7342	function	fn_004d7342	tBaseWeapon	?vfunction138@tBaseWeapon@@UAE_NXZ	claim		vtable
+0x004d7354	function	fn_004d7354	tBaseWeapon	?vfunction139@tBaseWeapon@@UAEPAXXZ	claim		vtable
+0x004d735b	function	fn_004d735b	tBaseWeapon	?vfunction66@tBaseWeapon@@UAEDXZ	claim		vtable
+0x004d7362	function	fn_004d7362	tBaseWeapon	?vfunction140@tBaseWeapon@@UAEDXZ	claim		vtable
+0x004d7378	function	fn_004d7378	tBaseWeapon	?vfunction141@tBaseWeapon@@UAEXD@Z	claim		vtable
 0x004d7385	function	tBaseWeapon::scalar_deleting_destructor	tBaseWeapon				rtti
 0x004d73a1	function	tTRBeam::~tTRBeam	tTRBeam				rtti
 0x004d7402	function	fn_004d7402	tBaseWeapon	?vfunction101@tBaseWeapon@@UAEHHH@Z	claim		none
@@ -6466,8 +6466,8 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004d8916	function	fn_004d8916		?fn_004d8916@@YAXHHMHH@Z	claim		none
 0x004d895c	function	fn_004d895c	tBaseWeapon	?vfunction144@tBaseWeapon@@UAEHXZ	claim		none
 0x004d8963	function	fn_004d8963	tBaseWeapon	?vfunction146@tBaseWeapon@@UAEHXZ	claim		none
-0x004d8967	function	fn_004d8967					none
-0x004d8999	function	fn_004d8999					none
+0x004d8967	function	fn_004d8967		?fn_004d8967@@YAPAXPAX0@Z	add		none
+0x004d8999	function	fn_004d8999		?fn_004d8999@@YAXPAX0H@Z	add		none
 0x004d8a14	function	fn_004d8a14					none
 0x004d8a82	function	fn_004d8a82					none
 0x004d8b35	function	fn_004d8b35					none
@@ -6999,23 +6999,23 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004e72ca	function	fn_004e72ca					none
 0x004e72e7	function	fn_004e72e7					none
 0x004e72fd	function	fn_004e72fd	tPlasmaLauncher				vtable
-0x004e770a	function	fn_004e770a					none
-0x004e775b	function	fn_004e775b	tPlasmaLauncher				vtable
-0x004e779b	function	fn_004e779b	tPlasmaLauncher				vtable
-0x004e7869	function	fn_004e7869	tPlasmaLauncher				vtable
+0x004e770a	function	fn_004e770a		?fn_004e770a@tPlasmaLauncher@@QAEHXZ	claim		none
+0x004e775b	function	fn_004e775b	tPlasmaLauncher	?mStreamOutSystemSpecificData@tPlasmaLauncher@@UAEIAAVtSFCStream@@II@Z	claim		vtable
+0x004e779b	function	fn_004e779b	tPlasmaLauncher	?vfunction142@tPlasmaLauncher@@UAEMDE@Z	claim		vtable
+0x004e7869	function	fn_004e7869	tPlasmaLauncher	?vfunction143@tPlasmaLauncher@@UAEMDE@Z	claim		vtable
 0x004e7949	function	tPlasmaLauncher::tPlasmaLauncher	tPlasmaLauncher				rtti
-0x004e7bb8	function	fn_004e7bb8	tPlasmaLauncher				vtable
+0x004e7bb8	function	fn_004e7bb8	tPlasmaLauncher	?vfunction80@tPlasmaLauncher@@UAEXXZ	claim		vtable
 0x004e7be1	thunk	fn_004e7be1	tBaseWeapon				vtable
-0x004e7be6	function	fn_004e7be6	tPlasmaLauncher				vtable
+0x004e7be6	function	fn_004e7be6	tPlasmaLauncher	?vfunction105@tPlasmaLauncher@@UAEXH@Z	claim		vtable
 0x004e7bf2	thunk	fn_004e7bf2	tPlasmaLauncher				vtable
 0x004e7bf7	function	fn_004e7bf7	tPlasmaLauncher				vtable
 0x004e80b0	function	fn_004e80b0	tPlasmaLauncher	?vfunction125@tPlasmaLauncher@@UAEXH@Z	claim		none
 0x004e824a	function	fn_004e824a		?fn_004e824a@@YAPAVtMessageSink@@XZ	add		none
 0x004e82bf	function	fn_004e82bf	tPlasmaLauncher				vtable
 0x004e82f0	function	fn_004e82f0	tPlasmaLauncher				vtable
-0x004e83ab	function	fn_004e83ab	tPlasmaLauncher				vtable
-0x004e83d8	function	fn_004e83d8	tPlasmaLauncher				vtable
-0x004e83f3	function	fn_004e83f3	tPlasmaLauncher				vtable
+0x004e83ab	function	fn_004e83ab	tPlasmaLauncher	?vfunction114@tPlasmaLauncher@@UAEMEHH@Z	claim		vtable
+0x004e83d8	function	fn_004e83d8	tPlasmaLauncher	?vfunction118@tPlasmaLauncher@@UAEME@Z	claim		vtable
+0x004e83f3	function	fn_004e83f3	tPlasmaLauncher	?vfunction148@tPlasmaLauncher@@UAEXXZ	claim		vtable
 0x004e8423	function	fn_004e8423	tPlasmaLauncher				vtable
 0x004e861e	function	fn_004e861e	tPlasmaLauncher				vtable
 0x004e88c6	function	fn_004e88c6	tPlasmaLauncher				vtable
@@ -7371,52 +7371,52 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004f7fee	function	fn_004f7fee					none
 0x004f8057	function	fn_004f8057					none
 0x004f819c	function	fn_004f819c					none
-0x004f81e2	function	tFx_Hypermass::tFx_Hypermass	tFx_Hypermass				rtti
+0x004f81e2	function	tFx_Hypermass::tFx_Hypermass	tFx_Hypermass	??0tFx_Hypermass@@QAE@XZ	add		rtti
 0x004f823d	function	fn_004f823d	tFx_Hypermass				vtable
 0x004f82c6	function	fn_004f82c6	tFx_Hypermass				vtable
-0x004f851f	function	fn_004f851f					none
-0x004f857c	function	tHypermass<12>::tHypermass<12>	tHypermass<12>				rtti
+0x004f851f	function	fn_004f851f		?fn_004f851f@@YAPAVtFx_Hypermass@@XZ	claim		none
+0x004f857c	function	tHypermass<12>::tHypermass<12>	tHypermass<12>	??0?$tHypermass@$0M@@@QAE@XZ	claim		rtti
 0x004f85cd	function	fn_004f85cd	tHypermass<12>				vtable
-0x004f8a02	function	tHypermass<16>::tHypermass<16>	tHypermass<16>				rtti
+0x004f8a02	function	tHypermass<16>::tHypermass<16>	tHypermass<16>	??0?$tHypermass@$0BA@@@QAE@XZ	claim		rtti
 0x004f8a53	function	fn_004f8a53	tHypermass<16>				vtable
-0x004f8e88	function	tHypermass<20>::tHypermass<20>	tHypermass<20>				rtti
+0x004f8e88	function	tHypermass<20>::tHypermass<20>	tHypermass<20>	??0?$tHypermass@$0BE@@@QAE@XZ	claim		rtti
 0x004f8ed9	function	fn_004f8ed9	tHypermass<20>				vtable
-0x004f930e	function	tHypermass<24>::tHypermass<24>	tHypermass<24>				rtti
+0x004f930e	function	tHypermass<24>::tHypermass<24>	tHypermass<24>	??0?$tHypermass@$0BI@@@QAE@XZ	claim		rtti
 0x004f935f	function	fn_004f935f	tHypermass<24>				vtable
-0x004f9794	function	tHypermass<28>::tHypermass<28>	tHypermass<28>				rtti
+0x004f9794	function	tHypermass<28>::tHypermass<28>	tHypermass<28>	??0?$tHypermass@$0BM@@@QAE@XZ	claim		rtti
 0x004f97e5	function	fn_004f97e5	tHypermass<28>				vtable
-0x004f9c1a	function	tHypermass<32>::tHypermass<32>	tHypermass<32>				rtti
+0x004f9c1a	function	tHypermass<32>::tHypermass<32>	tHypermass<32>	??0?$tHypermass@$0CA@@@QAE@XZ	claim		rtti
 0x004f9c6b	function	fn_004f9c6b	tHypermass<32>				vtable
-0x004fa0a0	function	tHypermass<36>::tHypermass<36>	tHypermass<36>				rtti
+0x004fa0a0	function	tHypermass<36>::tHypermass<36>	tHypermass<36>	??0?$tHypermass@$0CE@@@QAE@XZ	claim		rtti
 0x004fa0f1	function	fn_004fa0f1	tHypermass<36>				vtable
-0x004fa526	function	fn_004fa526					none
-0x004fa58f	function	fn_004fa58f					none
-0x004fa662	function	fn_004fa662					none
-0x004fa6ec	function	fn_004fa6ec					none
-0x004fa9bc	function	fn_004fa9bc					none
-0x004faa22	function	fn_004faa22					none
-0x004faaf4	function	fn_004faaf4					none
-0x004fab7e	function	fn_004fab7e					none
-0x004fae4d	function	fn_004fae4d					none
-0x004faeb6	function	fn_004faeb6					none
-0x004faf89	function	fn_004faf89					none
-0x004fb013	function	fn_004fb013					none
+0x004fa526	function	fn_004fa526		?fn_004fa526@?$tHypermass@$0M@@@QAE?AUtPoint3@@II@Z	claim		none
+0x004fa58f	function	fn_004fa58f		?fn_004fa58f@?$tHypermass@$0M@@@QAE?AUtPoint2@@II@Z	claim		none
+0x004fa662	function	fn_004fa662		?fn_004fa662@?$tHypermass@$0M@@@QAEXPAUtPoint3@@MD@Z	claim		none
+0x004fa6ec	function	fn_004fa6ec		?fn_004fa6ec@?$tHypermass@$0M@@@QAEXXZ	add		none
+0x004fa9bc	function	fn_004fa9bc		?fn_004fa526@?$tHypermass@$0BA@@@QAE?AUtPoint3@@II@Z	claim		none
+0x004faa22	function	fn_004faa22		?fn_004fa58f@?$tHypermass@$0BA@@@QAE?AUtPoint2@@II@Z	claim		none
+0x004faaf4	function	fn_004faaf4		?fn_004fa662@?$tHypermass@$0BA@@@QAEXPAUtPoint3@@MD@Z	claim		none
+0x004fab7e	function	fn_004fab7e		?fn_004fa6ec@?$tHypermass@$0BA@@@QAEXXZ	add		none
+0x004fae4d	function	fn_004fae4d		?fn_004fa526@?$tHypermass@$0BE@@@QAE?AUtPoint3@@II@Z	claim		none
+0x004faeb6	function	fn_004faeb6		?fn_004fa58f@?$tHypermass@$0BE@@@QAE?AUtPoint2@@II@Z	claim		none
+0x004faf89	function	fn_004faf89		?fn_004fa662@?$tHypermass@$0BE@@@QAEXPAUtPoint3@@MD@Z	claim		none
+0x004fb013	function	fn_004fb013		?fn_004fa6ec@?$tHypermass@$0BE@@@QAEXXZ	add		none
 0x004fb2e3	function	fn_004fb2e3					none
 0x004fb34c	function	fn_004fb34c					none
 0x004fb41f	function	fn_004fb41f					none
-0x004fb4a9	function	fn_004fb4a9					none
+0x004fb4a9	function	fn_004fb4a9		?fn_004fa6ec@?$tHypermass@$0BI@@@QAEXXZ	add		none
 0x004fb779	function	fn_004fb779					none
 0x004fb7df	function	fn_004fb7df					none
 0x004fb8b1	function	fn_004fb8b1					none
-0x004fb93b	function	fn_004fb93b					none
+0x004fb93b	function	fn_004fb93b		?fn_004fa6ec@?$tHypermass@$0BM@@@QAEXXZ	add		none
 0x004fbc0a	function	fn_004fbc0a					none
 0x004fbc70	function	fn_004fbc70					none
 0x004fbd42	function	fn_004fbd42					none
-0x004fbdcc	function	fn_004fbdcc					none
+0x004fbdcc	function	fn_004fbdcc		?fn_004fa6ec@?$tHypermass@$0CA@@@QAEXXZ	add		none
 0x004fc09b	function	fn_004fc09b					none
 0x004fc104	function	fn_004fc104					none
 0x004fc1d7	function	fn_004fc1d7					none
-0x004fc261	function	fn_004fc261					none
+0x004fc261	function	fn_004fc261		?fn_004fa6ec@?$tHypermass@$0CE@@@QAEXXZ	add		none
 0x004fc595	function	fn_004fc595					none
 0x004fc632	function	fn_004fc632					none
 0x004fc649	function	fn_004fc649					none
@@ -15484,7 +15484,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00606d42	function	tSecurityRelayC::~tSecurityRelayC	tSecurityRelayC				rtti
 0x00606e50	function	fn_00606e50	tSecurityRelayC				vtable
 0x00606e96	function	fn_00606e96	tSecurityRelayC				vtable
-0x00606efd	function	fn_00606efd	tBaseWeapon				vtable
+0x00606efd	function	fn_00606efd	tBaseWeapon	?vfunction145@tBaseWeapon@@UAEXH@Z	claim		vtable
 0x00606f0a	function	fn_00606f0a					none
 0x00606f4b	function	fn_00606f4b					none
 0x00606f87	function	fn_00606f87					none

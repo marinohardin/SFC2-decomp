@@ -16,6 +16,155 @@ public:
 
 tMessageSink *fn_004e824a();
 
+// HYPOTHESIS: a per-kind byte table and a per-step int table, read by vfunction114.
+extern signed char g_007a8cb4[];
+extern int g_007a8cbc[];
+
+// FUNCTION: STARFLEETOP 0x004e770a
+int tPlasmaLauncher::fn_004e770a()
+{
+    int count = 0;
+    if (field_3c >= field_38)
+        count = 1;
+    if (field_dc >= field_38)
+        count++;
+    if (field_e0 >= field_38)
+        count++;
+    if (field_e4 >= field_38)
+        count++;
+    char banks = vfunction106();
+    if (count <= banks)
+        return count;
+    return banks;
+}
+
+// FUNCTION: STARFLEETOP 0x004e775b
+unsigned tPlasmaLauncher::mStreamOutSystemSpecificData(tSFCStream &s, unsigned aFlags, unsigned mode)
+{
+    tBaseWeapon::mStreamOutSystemSpecificData(s, aFlags, mode);
+    if ((aFlags & 8) > 0 || ((aFlags & 0x20) <= 0 && (aFlags & 0x80) > 0))
+        aFlags = vfunction24(s, aFlags, mode);
+    return aFlags;
+}
+
+// FUNCTION: STARFLEETOP 0x004e779b
+float tPlasmaLauncher::vfunction142(char param_1, unsigned char param_2)
+{
+    if (param_1 != -1 && (param_1 >= field_e8 || param_1 >= vfunction106()))
+        return 0.0f;
+    float result = 0.0f;
+    if (param_2 == 0)
+    {
+        switch (field_10c)
+        {
+        case 0:
+            result = 3.0f;
+            break;
+        case 1:
+            result = 2.0f;
+            break;
+        case 2:
+        case 7:
+            goto L_one;
+        case 3:
+            if (field_f8 == 3)
+                goto L_zero;
+            goto L_one;
+        case 4:
+        case 5:
+        L_zero:
+            result = 0.0f;
+            break;
+        case 6:
+            goto L_five;
+        }
+    }
+    else
+    {
+        switch (field_10c)
+        {
+        case 0:
+        L_five:
+            return 5.0f;
+        case 1:
+            return 4.0f;
+        case 2:
+            return 2.5f;
+        case 6:
+            goto L_five;
+        case 7:
+        L_one:
+            result = 1.0f;
+            break;
+        }
+    }
+    return result;
+}
+
+// FUNCTION: STARFLEETOP 0x004e7869
+float tPlasmaLauncher::vfunction143(char param_1, unsigned char param_2)
+{
+    if (param_1 != -1 && (param_1 < field_e8 || param_1 >= vfunction106()))
+        return 0.0f;
+    float result = 0.0f;
+    switch (field_10c)
+    {
+    case 0:
+        if (field_fc != 0)
+            return 4.66f;
+        goto L_three;
+    case 1:
+        if (field_fc == 0)
+            result = 2.66f;
+        else
+            result = 4.0f;
+        break;
+    case 2:
+        if (field_fc == 0)
+            result = 2.33f;
+        else
+            result = 3.33f;
+        break;
+    case 3:
+        if (field_f8 != 3)
+            goto L_twofive;
+        goto L_one67;
+    case 4:
+    L_one67:
+        result = 1.67f;
+        break;
+    case 5:
+        result = 0.0f;
+        break;
+    case 6:
+    L_three:
+        result = 3.0f;
+        break;
+    case 7:
+    L_twofive:
+        result = 2.5f;
+    }
+    return result;
+}
+
+// FUNCTION: STARFLEETOP 0x004e7bb8
+void tPlasmaLauncher::vfunction80()
+{
+    if (field_10 == 0)
+    {
+        if (field_488 == 0.0f)
+            field_488 = 0.25f;
+    }
+    else
+        tBaseWeapon::vfunction80();
+}
+
+// FUNCTION: STARFLEETOP 0x004e7be6
+void tPlasmaLauncher::vfunction105(int param_1)
+{
+    tBaseWeapon::vfunction105(param_1);
+}
+
 // FUNCTION: STARFLEETOP 0x004e80b0
 void tPlasmaLauncher::vfunction125(int aValue)
 {
@@ -85,6 +234,31 @@ void tPlasmaLauncher::vfunction125(int aValue)
     vfunction65(field_fc);
     field_4a8 = param_1;
     vfunction126(local_8);
+}
+
+// FUNCTION: STARFLEETOP 0x004e83ab
+float tPlasmaLauncher::vfunction114(unsigned char param_1, int param_2, int param_3)
+{
+    if (param_3 > 10)
+        param_3 = 10;
+    return g_007a8cb4[field_108] * g_007a8cbc[param_3];
+}
+
+// FUNCTION: STARFLEETOP 0x004e83d8
+float tPlasmaLauncher::vfunction118(unsigned char param_1)
+{
+    return g_007a8cb4[field_10c];
+}
+
+// FUNCTION: STARFLEETOP 0x004e83f3
+void tPlasmaLauncher::vfunction148()
+{
+    float local_8;
+
+    field_148.fn_0050bfaa();
+    field_148.fn_004d6fd4();
+    local_8 = 300.0f;
+    field_148.fn_004d6f22(&local_8, 1);
 }
 
 // FUNCTION: STARFLEETOP 0x004e8a69
