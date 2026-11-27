@@ -664,8 +664,8 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0041165c	function	tEntity_Astral_WormHole::~tEntity_Astral_WormHole	tEntity_Astral_WormHole				rtti
 0x004116af	function	fn_004116af	tEntity_Astral_Hypermass				vtable
 0x004116cc	function	fn_004116cc	tEntity_Astral_WormHole				vtable
-0x00411790	function	fn_00411790	tPhysicalEntity				vtable
-0x004117a5	function	fn_004117a5					none
+0x00411790	function	fn_00411790	tPhysicalEntity	?vfunction41@tPhysicalEntity@@UAEXH@Z	claim		vtable
+0x004117a5	function	fn_004117a5		??0tEntity_Astral_Fissure@@QAE@XZ	claim		none
 0x004117e9	function	fn_004117e9	tEntity_Astral_Fissure				vtable
 0x004117ed	function	tEntity_Astral_Fissure::scalar_deleting_destructor	tEntity_Astral_Fissure				rtti
 0x00411809	function	tEntity_Astral_Fissure::~tEntity_Astral_Fissure	tEntity_Astral_Fissure				rtti
@@ -726,11 +726,11 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00412f08	function	fn_00412f08		??0tPoint3@@QAE@ABU0@@Z	add		none
 0x00412f21	function	fn_00412f21		?fn_00412f21@@YAMXZ	callers		none
 0x00412f28	function	fn_00412f28					none
-0x00412f67	function	tPhysicalEntity::tPhysicalEntity	tPhysicalEntity				rtti
+0x00412f67	function	tPhysicalEntity::tPhysicalEntity	tPhysicalEntity	??0tPhysicalEntity@@QAE@XZ	add		rtti
 0x004130b4	function	tPhysicalEntity::scalar_deleting_destructor	tPhysicalEntity				rtti
-0x004130d0	function	fn_004130d0					none
-0x004130f1	function	fn_004130f1					none
-0x00413112	function	fn_00413112					none
+0x004130d0	function	fn_004130d0		?fn_004130d0@tPhysicalEntity@@QAE?AUtPoint3@@XZ	claim		none
+0x004130f1	function	fn_004130f1		?fn_004130f1@tPhysicalEntity@@QAE?AUtPoint3@@XZ	claim		none
+0x00413112	function	fn_00413112		?fn_00413112@tEntity@@QAEXABUtPoint3@@@Z	claim		none
 0x00413153	function	fn_00413153	tPhysicalEntity	?vfunction11@tPhysicalEntity@@UAEXAAVtSFCStream@@K@Z	claim		none
 0x004133d3	function	tMemoryPart::Search_tMemoryPart	tMemoryPart	?Search_tMemoryPart@tMemoryPart@@SAPAV1@XZ	claim		claim
 0x00413448	function	fn_00413448	tPhysicalEntity	?vfunction3@tPhysicalEntity@@UAEXXZ	claim		none
@@ -763,10 +763,10 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00413f8a	function	fn_00413f8a	tPhysicalEntity	?vfunction51@tPhysicalEntity@@UAEXXZ	claim		none
 0x00413fba	function	fn_00413fba	tPhysicalEntity	?vfunction52@tPhysicalEntity@@UAEXXZ	claim		none
 0x00413fe9	function	fn_00413fe9	tPhysicalEntity	?vfunction46@tPhysicalEntity@@UAEXPAV1@H@Z	claim		none
-0x004140a9	function	fn_004140a9	tPhysicalEntity				vtable
+0x004140a9	function	fn_004140a9	tPhysicalEntity	?vfunction47@tPhysicalEntity@@UAEXH@Z	claim		vtable
 0x004140fc	function	fn_004140fc	tPhysicalEntity				vtable
-0x004141fe	function	fn_004141fe	tPhysicalEntity				vtable
-0x00414205	function	fn_00414205	tPhysicalEntity				vtable
+0x004141fe	function	fn_004141fe	tPhysicalEntity	?vfunction23@tPhysicalEntity@@UAEHXZ	claim		vtable
+0x00414205	function	fn_00414205	tPhysicalEntity	?vfunction24@tPhysicalEntity@@UAEMXZ	claim		vtable
 0x0041424a	function	tEntity_Placeholder::~tEntity_Placeholder	tEntity_Placeholder				rtti
 0x004144f7	function	tEntity_Placeholder::scalar_deleting_destructor	tEntity_Placeholder				rtti
 0x00414513	function	tEntity_Placeholder::~tEntity_Placeholder	tEntity_Placeholder				rtti
@@ -774,92 +774,92 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00414546	function	fn_00414546	tEntity				vtable
 0x00414552	function	fn_00414552	tEntity_Placeholder				vtable
 0x00414557	function	fn_00414557	tEntity_Placeholder				vtable
-0x0041455b	function	fn_0041455b					none
+0x0041455b	function	fn_0041455b		?fn_0041455b@@YAXHH@Z	claim		none
 0x004145d7	function	fn_004145d7					none
 0x004145e7	function	fn_004145e7					none
 0x004145fd	thunk	fn_004145fd					none
-0x00414602	function	fn_00414602					none
+0x00414602	function	fn_00414602		?fn_00414602@@YAXXZ	claim		none
 0x004146a7	function	fn_004146a7					none
 0x004146d1	function	fn_004146d1					none
-0x00414b2a	function	fn_00414b2a	tEntityShip				vtable
-0x00414b31	function	fn_00414b31	tEntityShip				vtable
-0x00414b38	function	fn_00414b38	tEntityShip				vtable
-0x00414b3f	function	fn_00414b3f	tEntityShip				vtable
-0x00414b47	function	fn_00414b47					none
+0x00414b2a	function	fn_00414b2a	tEntityShip	?vfunction70@tEntityShip@@UAEHXZ	claim		vtable
+0x00414b31	function	fn_00414b31	tEntityShip	?vfunction64@tEntityShip@@UAEMXZ	claim		vtable
+0x00414b38	function	fn_00414b38	tEntityShip	?vfunction65@tEntityShip@@UAEMXZ	claim		vtable
+0x00414b3f	function	fn_00414b3f	tEntityShip	?vfunction75@tEntityShip@@UAEFXZ	claim		vtable
+0x00414b47	function	fn_00414b47		?fn_00414b47@tEntityShip@@QAEXH@Z	claim		none
 0x00414b76	function	tNetMsg_kHoldPosition::mGetMap	tNetMsg_kHoldPosition	?mGetMap@tNetMsg_kHoldPosition@@UBEPBUtMapItem@tNetMsg@@XZ	claim		claim
 0x00414b7c	function	tNetMsg_kMoveInDirection::mGetMap	tNetMsg_kMoveInDirection	?mGetMap@tNetMsg_kMoveInDirection@@UBEPBUtMapItem@tNetMsg@@XZ	claim		claim
 0x00414b82	function	tNetMsg_kMoveTo::mGetMap	tNetMsg_kMoveTo	?mGetMap@tNetMsg_kMoveTo@@UBEPBUtMapItem@tNetMsg@@XZ	claim		claim
 0x00414b88	function	tNetMsg_kOrbit::mGetMap	tNetMsg_kOrbit	?mGetMap@tNetMsg_kOrbit@@UBEPBUtMapItem@tNetMsg@@XZ	claim		claim
-0x00414b8f	function	tEntityShip::scalar_deleting_destructor	tEntityShip				rtti
-0x00414bab	function	fn_00414bab					none
-0x00414bfa	function	fn_00414bfa					none
-0x00414cad	function	fn_00414cad					none
-0x00414cf5	function	fn_00414cf5					none
-0x00414d2f	function	fn_00414d2f					none
-0x00414d69	function	fn_00414d69					none
-0x00414d70	function	fn_00414d70	tEntityShip				vtable
+0x00414b8f	function	tEntityShip::scalar_deleting_destructor	tEntityShip	??_GtEntityShip@@UAEPAXI@Z	claim		rtti
+0x00414bab	function	fn_00414bab		?fn_00414bab@@YG_NHFH@Z	claim		none
+0x00414bfa	function	fn_00414bfa		?fn_00414bfa@tEntityShip@@QAEXPAUtNetMsg@@@Z	claim		none
+0x00414cad	function	fn_00414cad		?fn_00414cad@tEntityShip@@QAEXPAUtNetMsg@@@Z	claim		none
+0x00414cf5	function	fn_00414cf5		?fn_00414cf5@tEntityShip@@QAEXPAUtNetMsg@@@Z	claim		none
+0x00414d2f	function	fn_00414d2f		?fn_00414d2f@tEntityShip@@QAEXPAUtNetMsg@@@Z	claim		none
+0x00414d69	function	fn_00414d69		?fn_00414d69@tEntityShip@@QAEHXZ	claim		none
+0x00414d70	function	fn_00414d70	tEntityShip	?vfunction17@tEntityShip@@UAEXXZ	claim		vtable
 0x00414d96	function	fn_00414d96					none
 0x00414f41	function	fn_00414f41					none
 0x00414f56	function	fn_00414f56	tEntityShip				vtable
 0x00415450	function	fn_00415450		?fn_00415450@@YA_NFFF@Z	callers		none
-0x00415479	function	fn_00415479					none
-0x0041553a	function	fn_0041553a					none
+0x00415479	function	fn_00415479		?fn_00415479@tEntityShip@@QAE?AUtPoint3@@XZ	claim		none
+0x0041553a	function	fn_0041553a		?fn_0041553a@tEntityShip@@QAEXPAUtPoint3@@PAD@Z	add		none
 0x0041556f	function	fn_0041556f					none
-0x004155c1	function	fn_004155c1					none
-0x004155ed	function	fn_004155ed	tEntityShip				vtable
-0x00415628	function	fn_00415628					none
-0x0041563f	function	fn_0041563f					none
-0x00415652	function	fn_00415652					none
-0x00415672	function	fn_00415672					none
-0x004156b8	function	fn_004156b8					none
-0x004156e3	function	fn_004156e3					none
+0x004155c1	function	fn_004155c1		?fn_004155c1@tEntityShip@@QAEXPAUtPoint3@@@Z	claim		none
+0x004155ed	function	fn_004155ed	tEntityShip	?vfunction66@tEntityShip@@UAEFD@Z	claim		vtable
+0x00415628	function	fn_00415628		?fn_00415628@tEntityShip@@QAEXHH@Z	claim		none
+0x0041563f	function	fn_0041563f		?fn_0041563f@tEntityShip@@QAEXH@Z	claim		none
+0x00415652	function	fn_00415652		?fn_00415652@tEntityShip@@QAEXH@Z	claim		none
+0x00415672	function	fn_00415672		?fn_00415672@tEntityShip@@QAEHH@Z	claim		none
+0x004156b8	function	fn_004156b8		?fn_004156b8@tEntityShip@@QAEHH@Z	claim		none
+0x004156e3	function	fn_004156e3		?fn_004156e3@tEntityShip@@QAEPAVfn_004288d1_Object@@XZ	claim		none
 0x004156f9	function	fn_004156f9					none
-0x004157ee	function	fn_004157ee					none
+0x004157ee	function	fn_004157ee		?fn_004157ee@tEntityShip@@QAEHHHH@Z	claim		none
 0x0041584e	function	fn_0041584e					none
-0x004158c1	function	tEntityShip::~tEntityShip	tEntityShip				rtti
+0x004158c1	function	tEntityShip::~tEntityShip	tEntityShip	??1tEntityShip@@UAE@XZ	claim		rtti
 0x00415ad9	function	fn_00415ad9					none
-0x00415aed	function	fn_00415aed					none
-0x00415b6b	function	fn_00415b6b	tEntityShip				vtable
+0x00415aed	function	fn_00415aed		?fn_00415aed@tEntityShip@@QAE_NPAV1@@Z	claim		none
+0x00415b6b	function	fn_00415b6b	tEntityShip	?vfunction63@tEntityShip@@UAEMXZ	claim		vtable
 0x00415b96	function	fn_00415b96					none
 0x00415e63	function	fn_00415e63	tEntityShip				vtable
-0x00415ff4	function	fn_00415ff4	tEntityShip				vtable
-0x00416067	function	fn_00416067	tEntityShip				vtable
-0x00416085	function	fn_00416085					none
-0x004160c2	function	fn_004160c2					none
-0x004160ee	function	fn_004160ee	tEntityShip				vtable
+0x00415ff4	function	fn_00415ff4	tEntityShip	?vfunction71@tEntityShip@@UAEHPAVtEntity@@@Z	claim		vtable
+0x00416067	function	fn_00416067	tEntityShip	?vfunction13@tEntityShip@@UAEXJ@Z	claim		vtable
+0x00416085	function	fn_00416085		?fn_00416085@tEntityShip@@QAE_NXZ	claim		none
+0x004160c2	function	fn_004160c2		?fn_004160c2@tEntityShip@@QAEXXZ	claim		none
+0x004160ee	function	fn_004160ee	tEntityShip	?vfunction68@tEntityShip@@UAE_NXZ	claim		vtable
 0x0041613e	function	fn_0041613e		?fn_0041613e@@YA?AUtPoint3@@PAVtObject_00413ac3_arg@@ABU1@@Z	callers		none
 0x004161da	function	fn_004161da	tEntityShip				vtable
 0x004162b9	function	fn_004162b9	tEntityShip	?vfunction4@tEntityShip@@UAEXPAVtObject_00413ac3_arg@@@Z	claim		none
-0x004165b7	function	fn_004165b7					none
-0x004165d4	function	fn_004165d4					none
+0x004165b7	function	fn_004165b7		?fn_004165b7@tEntityShip@@QAEXXZ	claim		none
+0x004165d4	function	fn_004165d4		?fn_004165d4@tEntityShip@@QAEXXZ	claim		none
 0x004165e0	function	fn_004165e0	tEntityShip				vtable
 0x0041677d	function	fn_0041677d					none
-0x0041687b	function	fn_0041687b					none
-0x0041689a	function	fn_0041689a					none
-0x004168b5	function	fn_004168b5					none
-0x004168cc	function	fn_004168cc					none
-0x004168e2	function	fn_004168e2					none
-0x004168f4	function	fn_004168f4					none
+0x0041687b	function	fn_0041687b		?fn_0041687b@tEntityShip@@QAEXXZ	claim		none
+0x0041689a	function	fn_0041689a		?fn_0041689a@tEntityShip@@QAENH@Z	claim		none
+0x004168b5	function	fn_004168b5		?fn_004168b5@tEntityShip@@QAEXNH@Z	claim		none
+0x004168cc	function	fn_004168cc		?fn_004168cc@tEntityShip@@QAEXHH@Z	claim		none
+0x004168e2	function	fn_004168e2		?fn_004168e2@tEntityShip@@QAEEH@Z	claim		none
+0x004168f4	function	fn_004168f4		?fn_004168f4@tEntityShip@@QAEXXZ	claim		none
 0x004168ff	function	fn_004168ff					none
-0x00416944	function	fn_00416944	tEntityShip				vtable
+0x00416944	function	fn_00416944	tEntityShip	?vfunction69@tEntityShip@@UAEX_N@Z	claim		vtable
 0x00416a0e	function	fn_00416a0e	tEntityShip	?vfunction26@tEntityShip@@UAEXFHHHH@Z	claim		none
-0x00416bea	function	fn_00416bea					none
-0x00416c02	function	fn_00416c02	tEntityShip				vtable
-0x00416c17	function	fn_00416c17	tEntityShip				vtable
-0x00416c58	function	fn_00416c58					none
-0x00416d41	function	fn_00416d41	tEntityShip				vtable
-0x00416d75	function	fn_00416d75	tEntityShip				vtable
-0x00416da2	function	fn_00416da2	tEntityShip				vtable
-0x00416db7	function	fn_00416db7	tEntityShip				vtable
+0x00416bea	function	fn_00416bea		?fn_00416bea@tEntityShip@@QAEXM@Z	claim		none
+0x00416c02	function	fn_00416c02	tEntityShip	?vfunction23@tEntityShip@@UAEHXZ	claim		vtable
+0x00416c17	function	fn_00416c17	tEntityShip	?vfunction24@tEntityShip@@UAEMXZ	claim		vtable
+0x00416c58	function	fn_00416c58		?fn_00416c58@@YGXAAUtPoint3@@M@Z	claim		none
+0x00416d41	function	fn_00416d41	tEntityShip	?vfunction31@tEntityShip@@UAE_NXZ	claim		vtable
+0x00416d75	function	fn_00416d75	tEntityShip	?vfunction32@tEntityShip@@UAE_NXZ	claim		vtable
+0x00416da2	function	fn_00416da2	tEntityShip	?vfunction33@tEntityShip@@UAEPAXXZ	claim		vtable
+0x00416db7	function	fn_00416db7	tEntityShip	?vfunction74@tEntityShip@@UAEMXZ	claim		vtable
 0x00416e4f	function	fn_00416e4f	tEntityShip				vtable
 0x00417582	function	fn_00417582					none
 0x004177c8	function	fn_004177c8	tEntityControlShip				vtable
 0x004177cb	function	fn_004177cb					none
 0x00417b2a	function	fn_00417b2a	tEntityShip				vtable
-0x00417b57	function	fn_00417b57	tEntityShip				vtable
-0x00417b92	function	fn_00417b92	tEntityShip				vtable
+0x00417b57	function	fn_00417b57	tEntityShip	?vfunction38@tEntityShip@@UAEXH_N@Z	claim		vtable
+0x00417b92	function	fn_00417b92	tEntityShip	?vfunction39@tEntityShip@@UAEXH@Z	claim		vtable
 0x00417bc6	function	fn_00417bc6	tEntityShip				vtable
-0x00417d3f	function	fn_00417d3f					none
+0x00417d3f	function	fn_00417d3f		?fn_00417d3f@tEntity@@QAEXABUtPoint3@@@Z	claim		none
 0x00417d69	function	fn_00417d69					none
 0x00417ee8	function	fn_00417ee8					none
 0x004182a8	function	fn_004182a8					none
@@ -886,13 +886,13 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004197fb	function	tNetMsg_kUpdateInternals::~tNetMsg_kUpdateInternals	tNetMsg_kUpdateInternals	??1tNetMsg_kUpdateInternals@@UAE@XZ	claim		claim
 0x00419809	function	tNetMsg_kUpdateInternals::mGetMap	tNetMsg_kUpdateInternals	?mGetMap@tNetMsg_kUpdateInternals@@UBEPBUtMapItem@tNetMsg@@XZ	claim		claim
 0x0041980f	function	tNetMsg_kUpdateCloakStatus::mGetMap	tNetMsg_kUpdateCloakStatus	?mGetMap@tNetMsg_kUpdateCloakStatus@@UBEPBUtMapItem@tNetMsg@@XZ	claim		claim
-0x00419818	function	fn_00419818					none
-0x00419873	function	fn_00419873					none
-0x004198e0	function	fn_004198e0					none
-0x0041994b	function	fn_0041994b					none
+0x00419818	function	fn_00419818		?fn_00419818@tEntityShip@@QAEXABUtPoint3@@@Z	claim		none
+0x00419873	function	fn_00419873		?fn_00419873@tEntityShip@@QAEXFFF@Z	claim		none
+0x004198e0	function	fn_004198e0		?fn_004198e0@tEntityShip@@QAEXXZ	claim		none
+0x0041994b	function	fn_0041994b		?fn_0041994b@tEntityShip@@QAEXXZ	claim		none
 0x004199c4	function	fn_004199c4	tEntityShip				vtable
-0x004199f4	function	fn_004199f4					none
-0x00419a83	function	fn_00419a83					none
+0x004199f4	function	fn_004199f4		?fn_004199f4@tEntityShip@@QAEXXZ	claim		none
+0x00419a83	function	fn_00419a83		?fn_00419a83@fn_00419a83_Object@@QAEXUtPoint3@@@Z	claim		none
 0x00419aa0	function	fn_00419aa0					none
 0x00419bd3	function	fn_00419bd3					none
 0x00419be0	function	fn_00419be0					none
@@ -904,7 +904,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00419d71	function	fn_00419d71					none
 0x00419d82	function	fn_00419d82					none
 0x00419dd2	function	fn_00419dd2	tEntityShip				vtable
-0x00419e4a	function	fn_00419e4a					none
+0x00419e4a	function	fn_00419e4a		?fn_00419e4a@tEntityShip@@QAEXH@Z	add		none
 0x00419e84	function	tNetMsg_kSendVoice::~tNetMsg_kSendVoice	tNetMsg_kSendVoice				rtti
 0x0041a061	function	fn_0041a061					none
 0x0041a0d4	function	fn_0041a0d4					none
@@ -2994,8 +2994,8 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004545eb	function	tTractorSystem::~tTractorSystem	tTractorSystem				rtti
 0x004546d3	thunk	fn_004546d3	tTractorSystem				vtable
 0x004546d8	function	fn_004546d8	tTractorSystem				vtable
-0x004546e1	function	fn_004546e1					none
-0x004546f0	function	fn_004546f0					none
+0x004546e1	function	fn_004546e1		?fn_004546e1@tTractorSystem@@QAEXXZ	add		none
+0x004546f0	function	fn_004546f0		?fn_004546f0@tTractorSystem@@QAE_NH_N@Z	add		none
 0x004547a9	function	fn_004547a9	tTractorSystem				vtable
 0x00454803	function	fn_00454803					none
 0x00454851	function	fn_00454851					none
@@ -7277,7 +7277,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004f3c55	function	fn_004f3c55	tFx_Corpses				vtable
 0x004f3c7d	function	fn_004f3c7d	tFx_Fissure				vtable
 0x004f3c84	function	fn_004f3c84	tFx_Fissure				vtable
-0x004f3eda	function	fn_004f3eda					none
+0x004f3eda	function	fn_004f3eda		?fn_004f3eda@@YAHXZ	add		none
 0x004f3f44	thunk	fn_004f3f44					none
 0x004f3f49	function	fn_004f3f49					none
 0x004f3f54	function	fn_004f3f54					none
@@ -21607,7 +21607,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x007363f0	function	fn_007363f0		__chkstk	callers		none
 0x0073641f	function	fn_0073641f					none
 0x007364aa	function	fn_007364aa		_atoi	callers		none
-0x007364c0	function	fn_007364c0					none
+0x007364c0	function	fn_007364c0		?fn_007364c0@@YAXPADPBD@Z	add		none
 0x007364c7	function	fn_007364c7					none
 0x007364d0	function	fn_007364d0					none
 0x007365b0	function	fn_007365b0					none
