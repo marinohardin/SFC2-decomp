@@ -37,3 +37,15 @@ void tTRBeam::fn_004eb7f9(float param_1)
 	unsigned int frame = (int)(count * g_00799f68 / source->field_20);
 	gNetControl.mQueueMsg(&msg, 6, vfunction37(), param_1 * 3.0f + (frame + 1) * 50);
 }
+
+// HYPOTHESIS: tTRBeamLight_Creator (RTTI) registers itself like tPhaserA_Creator; its
+// constructor is 0x004eb9fa in its own unit. It has no shared header yet, so it is declared here.
+class tTRBeamLight_Creator
+{
+public:
+	tTRBeamLight_Creator();
+	virtual ~tTRBeamLight_Creator();
+};
+
+// FUNCTION: STARFLEETOP 0x004eb9da
+tTRBeamLight_Creator g_0092f220;

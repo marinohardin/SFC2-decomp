@@ -7120,7 +7120,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004eb8c2	function	fn_004eb8c2	tTRBeam				vtable
 0x004eb9da	function	fn_004eb9da					none
 0x004eb9e4	function	fn_004eb9e4					none
-0x004eb9fa	function	tTRBeamLight_Creator::tTRBeamLight_Creator	tTRBeamLight_Creator				rtti
+0x004eb9fa	function	tTRBeamLight_Creator::tTRBeamLight_Creator	tTRBeamLight_Creator	??0tTRBeamLight_Creator@@QAE@XZ	add		rtti
 0x004eba0c	function	fn_004eba0c	tTRBeamLight_Creator				vtable
 0x004eba12	function	fn_004eba12	tTRBeamLight_Creator				vtable
 0x004ebaa9	function	fn_004ebaa9					none
