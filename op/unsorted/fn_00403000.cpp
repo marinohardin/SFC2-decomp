@@ -60,7 +60,8 @@ std::string& std::string::assign(const std::string& _X, size_type _P, size_type 
         _N = _M;
     if (this == &_X)
         erase((size_type)(_P + _N)), erase(0, _P);
-    else if (0 < _N && _N == _X.size() && _Refcnt(_X.c_str()) < (char)_FROZEN) // MATCH-ONLY: the exe compares the byte against -1 as a signed int
+    else if (0 < _N && _N == _X.size() && _Refcnt(_X.c_str()) < _FROZEN - 1
+        && allocator == _X.allocator)
     {
         _Tidy(true);
         _Ptr = (char*)_X.c_str();

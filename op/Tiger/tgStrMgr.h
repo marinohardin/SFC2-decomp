@@ -55,9 +55,7 @@ class tStrMgrCore
 		// only reproduce the two distinct erase instantiations; the pads fill the
 		// unexplained 4 bytes after each map.
 		std::map<tString, int, less_ss>	fn_00627180_map1;	// type from mGetStringIndex's lower_bound instantiation
-		int						fn_00627180_pad1;
 		std::map<long, long>	fn_00627180_map2;
-		int						fn_00627180_pad2;
 		std::vector<tString *>	fn_00627180_vec;
 		int						fn_00627180_count;
 		unsigned char			fn_00627200_throwOnMiss;	// HYPOTHESIS: byte flag at +0x40; set, a failed lookup throws

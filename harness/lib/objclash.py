@@ -19,6 +19,13 @@
                       held to the original's bytes, and a consumer that links the objects may bind
                       callers to it.
 
+  copies unlike the   a function COMDAT that an object other than the claiming unit's defines
+  original            under the symbol of an exact claim, whose bytes do not equal the original's
+                      at the claimed address under the harness's relocation rules: a linker keeps
+                      the first copy it sees, so a consumer that links the objects may place that
+                      copy at the claimed address. The comparison is the caller's (verify.py hands
+                      in target.build), so this module stays a reader of objects.
+
 All of them only read the COFF objects (harness/lib/coff.py). `objects` maps a unit to its object file.
 """
 import re
@@ -251,6 +258,69 @@ def load_baseline(path):
             else:
                 unclaimed.add((row[1], row[2]))
     return paths_, copies, unclaimed
+
+
+def exe_copy_findings(objs, claims, compare):
+    """[(unit, symbol, line)], one per (unit, symbol), for each external function COMDAT (any
+    selection kind) that an object defines under a symbol in `claims` ({symbol: (int address,
+    claiming unit)}, the exact claims), in a unit other than the claiming one, whose bytes differ
+    from the original's. `compare(obj, symbol, address)` returns (equal, copy size, original
+    size, detail): the harness's strict comparison of that copy with the exe at `address`. The
+    claiming unit's own copy is the one scored, so it is not compared again. `objs` maps a unit
+    to its parsed object."""
+    out = []
+    for unit, obj in sorted(objs.items()):
+        seen = set()
+        for s in obj.symbols.values():
+            if (s.section <= 0 or s.storage != coff.SYM_CLASS_EXTERNAL or not s.is_function
+                    or obj.sections[s.section].selection is None or s.name in seen):
+                continue
+            claim = claims.get(s.name)
+            if claim is None or claim[1] == unit:
+                continue
+            seen.add(s.name)
+            address, owner = claim
+            equal, size, exe_size, detail = compare(obj, s.name, address)
+            if equal:
+                continue
+            out.append((unit, s.name, f'{unit}: its copy of {s.name} differs from the original '
+                        f'at 0x{address:08x}, which {owner} claims exact: {size} bytes against '
+                        f'the original\'s {exe_size}{detail} (a linker keeps the first copy it '
+                        'sees, so a consumer that links the objects may place this one; give the '
+                        'unit the definition the claim matches)'))
+    return out
+
+
+def load_exe_copy_baseline(path):
+    """The known copies unlike the original: rows `unit <TAB> symbol` (a header row `unit` and
+    `#` comment lines are skipped). A missing file is no debt. Returns a set of (unit, symbol)."""
+    rows = set()
+    try:
+        f = open(path, newline='')
+    except OSError:
+        return rows
+    with f:
+        for n, line in enumerate(f, 1):
+            line = line.rstrip('\r\n')
+            if not line.strip() or line.startswith('#') or line.split('\t')[0] == 'unit':
+                continue
+            row = line.split('\t')
+            if len(row) != 2 or not row[0] or not row[1]:
+                raise ValueError(f'{path}:{n}: expected unit and symbol separated by a tab')
+            rows.add((row[0], row[1]))
+    return rows
+
+
+def exe_copy_check(objs, claims, compare, baseline=frozenset()):
+    """(error lines, stale rows, findings): the copies unlike the original (exe_copy_findings)
+    that `baseline` (a set of (unit, symbol)) does not list, each baseline row that no longer
+    occurs (as `unit <TAB> symbol`, so the list only shrinks), and every finding as (unit,
+    symbol) for the build folder's list."""
+    found = exe_copy_findings(objs, claims, compare)
+    errors = [line for unit, sym, line in found if (unit, sym) not in baseline]
+    seen = {(unit, sym) for unit, sym, _ in found}
+    stale = [f'{u}\t{s}' for u, s in sorted(set(baseline) - seen)]
+    return errors, stale, sorted(seen)
 
 
 def check(objects, claimed_symbols, roots=(), baseline=(frozenset(), frozenset(), frozenset()),

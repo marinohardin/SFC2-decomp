@@ -22,6 +22,7 @@ import hashlib
 import io
 import json
 import os
+import struct
 import subprocess
 import threading
 import sys
@@ -37,6 +38,11 @@ RELOC_BASELINE = paths.env_path('HARNESS_RELOC_BASELINE', os.path.join(
     paths.REPO, 'analysis', 'results', 'reloc_baseline.tsv'))
 OBJECT_BASELINE = paths.env_path('HARNESS_OBJECT_BASELINE', os.path.join(
     paths.REPO, 'analysis', 'results', 'object_baseline.tsv'))
+# Copies of exact claims, in other objects, that differ from the original, known when the check
+# came in (report_exe_copies); a copy not listed here fails an --all run.
+EXE_COPY_BASELINE = paths.env_path('HARNESS_EXE_COPY_BASELINE', os.path.join(
+    paths.REPO, 'analysis', 'results', 'exe_copy_baseline.tsv'))
+EXE_COPIES_FILE = 'exe_copies.tsv'
 RELOC_BASELINE_FIELDS = ('function', 'offset', 'symbol', 'target', 'claimed')
 # A relocation that names another symbol than the claim at its target is of one class
 # (classify_break): the first three fail the run, the last two are listed only.
@@ -55,6 +61,7 @@ class Report:
         self.standins = []
         self.table_breaks = []   # report_table_breaks
         self.claimed_credits = []   # claimed_credits
+        self.exe_copies = None   # report_exe_copies: (unit, symbol) of every copy unlike the original
         self.objects = {}      # unit (as in a result's `unit`) -> its object file, for step 8
 
     def add(self, tag, text):
@@ -148,6 +155,7 @@ def default_jobs():
 
 
 OBJDIFF_TIMEOUT = 300   # seconds; objdiff has been seen to spin for hours on some objects
+OBJDIFF_UNFINISHED = 'objdiff did not finish'   # the start of objdiff()'s message for a timeout
 
 
 def objdiff(target_obj, base_obj, symbol, out_dir, timeout=OBJDIFF_TIMEOUT):
@@ -157,7 +165,7 @@ def objdiff(target_obj, base_obj, symbol, out_dir, timeout=OBJDIFF_TIMEOUT):
                             '--format', 'json', symbol], capture_output=True, text=True,
                            timeout=timeout)
     except subprocess.TimeoutExpired:
-        return None, None, f'objdiff did not finish in {timeout} s'
+        return None, None, f'{OBJDIFF_UNFINISHED} in {timeout} s'
     if p.returncode != 0 or not os.path.exists(out):
         return None, None, p.stderr.strip()[-500:]
     with open(out) as f:
@@ -334,6 +342,8 @@ def score_function(fn, unit, build, exe, index, symbol_hint=None, recorded=None,
     left, right, err = objdiff(tpath, bpath, sym, fdir)
     if left is None:
         res['error'] = f'objdiff failed: {err}'
+        # No score at all, which _report_function treats apart from a failed build or diff.
+        res['not_scored'] = err.startswith(OBJDIFF_UNFINISHED)
         return res
     pct = float(left.get('match_percent') or 0.0)
     res.update(score=round(pct, 3), exact=bool(pct >= 100.0 and t['strict']),
@@ -454,6 +464,7 @@ def run(ids, check_all=False, behavioural=False, record=False, now=None, base=No
     index = funcs.FunctionIndex(paths.FUNCTIONS_CSV, paths.SYMBOL_TSVS)
     cfg = source.load_units()
     data = matched.load(paths.MATCHED_SET)
+    released_list = matched.load_released(paths.RELEASED)
     if base is not None:
         base_data, label = base
         base_data, released = matched.release_listed(
@@ -461,8 +472,7 @@ def run(ids, check_all=False, behavioural=False, record=False, now=None, base=No
         for k in released:
             rep.add('INFO', f'{k} dropped from matched_set.json: on the boundary-error list and '
                     f'never exact in {label}')
-        base_data, used, stale = matched.release_released(
-            base_data, data, matched.load_released(paths.RELEASED))
+        base_data, used, stale = matched.release_released(base_data, data, released_list)
         for k, date, reason in used:
             rep.add('INFO', f'{k} released from {label} ({date}): {reason}')
         for k in stale:
@@ -617,7 +627,7 @@ def run(ids, check_all=False, behavioural=False, record=False, now=None, base=No
                                  table_symbol=row[0] if row and row[1] == 'claim' else None)
             res['claimed'] = a in claimed_addrs
             sub.results.append(res)
-            _report_function(sub, data, fn, res)
+            _report_function(sub, data, fn, res, released_list)
         return sub
 
     for sub in _in_threads(build_and_score, sorted(by_unit.items()), jobs):
@@ -636,6 +646,11 @@ def run(ids, check_all=False, behavioural=False, record=False, now=None, base=No
     if check_all:
         report_comdat_kinds(rep)
         report_object_clashes(rep, table=table)
+        if exe is not None:
+            report_exe_copies(rep, exe, index)
+        else:
+            rep.add('INFO', 'copies of exact claims in other objects not compared with the '
+                    'original: the exe was not read (no unit was built)')
     report_claim_symbols(rep, data, load_reloc_baseline(RELOC_BASELINE), check_all,
                          symtab.load_claims(), index)
     report_table_breaks(rep, claimed_symbols(rep.results, data, symtab.load_claims()), table,
@@ -656,6 +671,11 @@ def run(ids, check_all=False, behavioural=False, record=False, now=None, base=No
                     changed = True
                     rep.add('OK', f'{res["address"]} recorded in matched_set.json at '
                             f'{res["score"]:.2f}%')
+                elif land and matched.record_released(data, int(res['address'], 16), entry, now,
+                                                      released_list):
+                    changed = True
+                    rep.add('INFO', f'{res["address"]} recorded in matched_set.json at its '
+                            f'released score, {res["score"]:.2f}% (analysis/results/released.tsv)')
                 elif land and matched.refresh(data, int(res['address'], 16), entry):
                     changed = True
                     rep.add('INFO', f'{res["address"]} name, symbol, unit or size refreshed from '
@@ -807,6 +827,80 @@ def report_object_clashes(rep, baseline_path=None, table=None):
     for row in stale:
         rep.add('WARN', f'{_shown(baseline_path or OBJECT_BASELINE)}: the row "{row}" no longer '
                 'occurs: remove it')
+
+
+def exact_claims(results, keys):
+    """{symbol: (int address, unit)} of the exact claims among `results` whose address is still
+    claimed (`keys`). A compiler static (resolved per unit) and a symbol that two claims compile
+    to name no one address, so they are left out."""
+    out, twice = {}, set()
+    for r in results:
+        sym = r.get('symbol')
+        if not (r.get('exact') and sym and r['address'] in keys) or sym.startswith(PER_UNIT_PREFIXES):
+            continue
+        if sym in out:
+            twice.add(sym)
+        out[sym] = (int(r['address'], 16), r['unit'])
+    return {s: v for s, v in out.items() if s not in twice}
+
+
+def exe_copy_compare(exe, index):
+    """compare(obj, symbol, address) for objclash.exe_copy_findings: target.build's strict check
+    of the copy of `symbol` in `obj` against the exe at `address`, the same relocation rules as a
+    claim's own score (functions.csv size, extended up to the next function for a longer copy).
+    The original's size reported is the functions.csv size. A copy that cannot be compared (an
+    error reading it) is reported as differing, with the reason."""
+    def compare(obj, symbol, address):
+        fn = index.by_address.get(address)
+        try:
+            t = target.build(address, fn.size if fn else 0, obj, symbol, exe, index)
+        except (coff.CoffError, KeyError, IndexError, ValueError, struct.error) as e:
+            # a copy that cannot be compared is not taken as equal: it is a finding
+            sym = obj.by_name.get(symbol)
+            size = len(obj.sections[sym.section].data) if sym and sym.section > 0 else 0
+            return False, size, fn.size if fn else 0, f', it could not be compared ({e})'
+        exe_size = (fn.size if fn else 0) or len(t['target'])
+        if t['strict']:
+            return True, len(t['base']), exe_size, ''
+        bad = [r for r in t['relocs'] if r.status == 'mismatch']
+        detail = []
+        if t['first_diff'] is not None:
+            detail.append(f'first differing byte +0x{t["first_diff"]:x}')
+        if bad:
+            r = bad[0]
+            detail.append(f'mismatched relocations: {len(bad)}, the first +0x{r.offset:x} '
+                          f'{r.symbol}: {r.detail}')
+        return False, len(t['base']), exe_size, ''.join(f', {d}' for d in detail)
+    return compare
+
+
+def report_exe_copies(rep, exe, index, baseline_path=None):
+    """An ERROR line, and a failed run, for each copy of an exact claim that another object
+    defines and that differs from the original (objclash.exe_copy_findings), unless the
+    baseline lists it; a WARN line for each baseline row that no longer occurs; an INFO line
+    with the count and the time taken. Every finding is kept in rep.exe_copies for the build
+    folder's exe_copies.tsv."""
+    started = time.monotonic()
+    path = baseline_path or EXE_COPY_BASELINE
+    claims = exact_claims(rep.results, claimed_keys())
+    objs = {}
+    for unit, obj_path in rep.objects.items():
+        try:
+            objs[unit] = unit_object(obj_path)[0]
+        except (OSError, coff.CoffError) as e:
+            rep.add('WARN', f'{unit}: its object cannot be read ({e}), so its copies are not '
+                    'compared with the original and its baseline rows read as gone')
+    errors, stale, found = objclash.exe_copy_check(objs, claims, exe_copy_compare(exe, index),
+                                                   objclash.load_exe_copy_baseline(path))
+    rep.exe_copies = found
+    for line in errors:
+        rep.add('ERROR', line)
+        rep.failed = True
+    for row in stale:
+        rep.add('WARN', f'{_shown(path)}: the row "{row}" no longer occurs: remove it')
+    rep.add('INFO', f'{len(found)} copies of exact claims in other objects differ from the '
+            f'original ({len(found) - len(errors)} on the baseline); copies of {len(claims)} exact '
+            f'claims compared in {time.monotonic() - started:.1f} s')
 
 
 CLAIM_RELOC_TYPES = ('REL32', 'DIR32')
@@ -1222,13 +1316,37 @@ def report_table_breaks(rep, claims, rows, check_all, own, evidence):
             rep.add('WARN', text + f' (class {b["class"]})')
 
 
-def _report_function(rep, data, fn, res):
+def _report_function(rep, data, fn, res, released=None):
+    """released: the released-function list (matched.load_released). A listed address that
+    scores lower than its recorded entry, or is no longer exact, is not a regression here: one
+    INFO line gives the list's date and reason, as the base gate does. So is a listed address
+    that objdiff could not finish on (not_scored), when it is recorded and not exact: without a
+    score an exact status cannot be shown, and an address with no entry has nothing to keep. Its
+    entry is left as recorded, since no result means none is written. Any other error stays
+    one, listed or not."""
     a = fn.address
     head = f'{res["address"]} {fn.name}'
     if res.get('found_by') == 'line':
         rep.add('INFO', f'{head}: found by line (table has no current symbol)')
     if res['error'] and 'relocs' not in res:
-        rep.add('ERROR', f'{head}: {res["error"]}')
+        if res.get('not_scored'):
+            old = matched.recorded(data, a)
+            listed = (released or {}).get(matched.key(a))
+            if listed and old and not old.get('exact'):
+                rep.add('INFO', f'{head} released ({listed[0]}): {listed[1]}; not scored: '
+                        f'{res["error"].removeprefix("objdiff failed: ")}; matched_set.json '
+                        f'left at {old["score"]:.2f}%')
+                return
+            why = ''
+            if listed:
+                why = (' (on analysis/results/released.tsv, but recorded exact, which a function '
+                       'that is not scored cannot show)' if old else
+                       ' (on analysis/results/released.tsv, but not in matched_set.json: there '
+                       'is no recorded entry to keep)')
+            rep.add('ERROR', f'{head}: could not be scored: {res["error"]}{why}; see '
+                    'harness/README.md, "Released functions"')
+        else:
+            rep.add('ERROR', f'{head}: {res["error"]}')
         if res['claimed']:
             rep.failed = True
         if matched.recorded(data, a):
@@ -1241,12 +1359,18 @@ def _report_function(rep, data, fn, res):
     detail = (f'{res["score"]:.2f}% {state} ({res["size"]} bytes original, '
               f'{res["rebuilt_size"]} rebuilt; {len(res["relocs"])} relocations, '
               f'{unverified} unverified)')
-    if matched.is_regression(data, a, res['score']) or (old and old.get('exact') and not res['exact']):
+    lowered = matched.is_regression(data, a, res['score']) or bool(
+        old and old.get('exact') and not res['exact'])
+    listed = (released or {}).get(matched.key(a)) if lowered else None
+    if lowered and not listed:
         rep.regressions.append(a)
         rep.add('ERROR', f'{head} {detail} REGRESSION: matched_set.json has {old["score"]:.2f}%')
     elif res['error']:
         rep.add('ERROR', f'{head} {detail}: {res["error"]}')
         rep.failed = rep.failed or res['claimed']
+    elif listed:
+        rep.add('INFO', f'{head} {detail} released ({listed[0]}): {listed[1]}; matched_set.json '
+                f'has {old["score"]:.2f}%')
     else:
         was = f'; matched_set.json has {old["score"]:.2f}%' if old else '; not in matched_set.json'
         rep.add('OK', f'{head} {detail}{was}')
@@ -1343,6 +1467,11 @@ def main(argv=None):
             f.writelines('\t'.join(map(str, row)) + '\n' for row in rep.claimed_credits)
         with open(os.path.join(paths.BUILD, TABLE_BREAKS_FILE), 'w') as f:
             f.write(reloc_baseline_text(rep.table_breaks, classes=True))
+        if rep.exe_copies is not None:
+            # What exe_copy_baseline.tsv would hold today (report_exe_copies).
+            with open(os.path.join(paths.BUILD, EXE_COPIES_FILE), 'w') as f:
+                f.write('unit\tsymbol\n')
+                f.writelines(f'{u}\t{s}\n' for u, s in rep.exe_copies)
         by_class = {c: sum(1 for b in rep.claim_breaks if b['class'] == c)
                     for c in CLASS_ERRORS + CLASS_WARNS}
         rep.add('INFO', f'{len(rep.claim_breaks)} relocations name another symbol than the '

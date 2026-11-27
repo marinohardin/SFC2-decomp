@@ -9,7 +9,8 @@
 #    a raised score or a newly exact function is stored, and the name, symbol, unit and size of
 #    every entry are refreshed from the tree (build-and-verify's own scoring; `verify.py --land`).
 #    A function that scores lower than BASE's record, or has lost its source, is reported as a
-#    REGRESSION and this script exits non-zero without writing the matched set.
+#    REGRESSION and this script exits non-zero without writing the matched set; an address on
+#    analysis/results/released.tsv is the one exception, recorded at its new, lower score.
 # 2. Syncs the symbol table to the claims from the build step 1 just made (tools/symbols.py
 #    claim; the seed in keep-existing mode fills empty rows from agreeing exact callers; then
 #    check), so an integration branch ends with every claimed row current.
