@@ -18508,7 +18508,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0069c940	function	fn_0069c940		?mPostTranslate@tMatrix@@QAEXMMM@Z	callers		none
 0x0069c970	function	fn_0069c970					none
 0x0069c9d0	function	fn_0069c9d0		?mTransform@tMatrix@@QBEXAAUtPoint3@@ABU2@@Z	callers		none
-0x0069ca30	function	fn_0069ca30					none
+0x0069ca30	function	fn_0069ca30		?mTransform@tMatrix@@QBEXAAUtPoint4@@ABUtPoint3@@@Z	add		none
 0x0069cae0	function	fn_0069cae0					none
 0x0069cb40	function	fn_0069cb40					none
 0x0069cbc0	function	fn_0069cbc0		?fn_0069cbc0@tMatrix@@QBEXAAUtPoint3@@ABU2@@Z	callers		none
@@ -18527,13 +18527,13 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0069e160	function	fn_0069e160	tD3DViewMgr				vtable
 0x0069e200	function	fn_0069e200	tD3DViewMgr				vtable
 0x0069e270	function	fn_0069e270	tD3DViewMgr				vtable
-0x0069e2a0	function	fn_0069e2a0					none
+0x0069e2a0	function	fn_0069e2a0		?fn_0069e2a0@@YAXXZ	claim		none
 0x0069e300	function	fn_0069e300					none
 0x0069e3d0	function	fn_0069e3d0					none
-0x0069e490	function	fn_0069e490					none
-0x0069e670	function	fn_0069e670	tSWView3D				vtable
+0x0069e490	function	fn_0069e490		?fn_0069e490@tD3DViewMgr_State@@QAEHH@Z	claim		none
+0x0069e670	function	fn_0069e670	tSWView3D	?fn_0069e670@tD3DViewMgr_State@@QAEDXZ	claim		vtable
 0x0069e8ea	function	fn_0069e8ea					none
-0x0069e950	function	fn_0069e950					none
+0x0069e950	function	fn_0069e950		?fn_0069e950@@YAKK@Z	claim		none
 0x0069eb90	function	fn_0069eb90					none
 0x0069ed60	function	fn_0069ed60					none
 0x0069efe1	function	fn_0069efe1					none
@@ -18541,7 +18541,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0069f160	function	fn_0069f160	tD3DViewSurfMgr				vtable
 0x0069f170	function	fn_0069f170	tD3DViewSurfMgr				vtable
 0x0069f180	function	fn_0069f180	tD3DViewSurfMgr				vtable
-0x0069f190	function	fn_0069f190	tView3DExt				vtable
+0x0069f190	function	fn_0069f190	tView3DExt	?vfunction38@tView3DExt@@UAE_NXZ	claim		vtable
 0x0069f1a0	function	fn_0069f1a0	tD3DViewSurfMgr				vtable
 0x0069f1b0	function	fn_0069f1b0	tD3DViewSurfMgr				vtable
 0x0069f1c0	function	fn_0069f1c0	tD3DViewSurfMgr				vtable
@@ -18552,39 +18552,39 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0069f240	function	fn_0069f240	tD3DViewSurfMgr				vtable
 0x0069f280	function	tD3DViewMgr::scalar_deleting_destructor	tD3DViewMgr				rtti
 0x0069f2a0	function	tD3DViewMgr::~tD3DViewMgr	tD3DViewMgr				rtti
-0x0069f350	function	fn_0069f350					none
-0x0069f3b0	function	tSWView3D::tSWView3D	tSWView3D				rtti
+0x0069f350	function	fn_0069f350		??1tD3DViewSurfMgr@@UAE@XZ	claim		none
+0x0069f3b0	function	tSWView3D::tSWView3D	tSWView3D	??0tSWView3D@@QAE@XZ	claim		rtti
 0x0069f470	function	fn_0069f470	tAsset				vtable
-0x0069f480	function	fn_0069f480	tSWView3D				vtable
-0x0069f490	function	tSWView3D::scalar_deleting_destructor	tSWView3D				rtti
-0x0069f4b0	function	tSWView3D::~tSWView3D	tSWView3D				rtti
-0x0069f510	function	fn_0069f510	tSWView3D				vtable
-0x0069f600	function	fn_0069f600					none
-0x0069f850	function	fn_0069f850	tSWView3D				vtable
-0x0069f8a0	function	fn_0069f8a0	tSWView3D				vtable
-0x0069f900	function	tSWView3D::scalar_deleting_destructor	tSWView3D				rtti
-0x0069f990	function	fn_0069f990	tSWView3D				vtable
-0x0069fa10	function	fn_0069fa10	tSWView3D				vtable
-0x0069fa50	function	fn_0069fa50	tSWView3D				vtable
-0x0069fa60	function	fn_0069fa60	tSWView3D				vtable
-0x0069fa70	function	fn_0069fa70	tSWView3D				vtable
+0x0069f480	function	fn_0069f480	tSWView3D	?vfunction86@tSWView3D@@UAEHXZ	claim		vtable
+0x0069f490	function	tSWView3D::scalar_deleting_destructor	tSWView3D	??_GtSWView3D@@UAEPAXI@Z	claim		rtti
+0x0069f4b0	function	tSWView3D::~tSWView3D	tSWView3D	??1tSWView3D@@UAE@XZ	claim		rtti
+0x0069f510	function	fn_0069f510	tSWView3D	?vfunction2@tSWView3D@@UAE_NHH@Z	claim		vtable
+0x0069f600	function	fn_0069f600		?fn_0069f600@tSWView3D@@QAE_NHHHHPAUtagRECT@@_N1@Z	add		none
+0x0069f850	function	fn_0069f850	tSWView3D	?vfunction3@tSWView3D@@UAE_NHHHHPAUtagRECT@@_N@Z	claim		vtable
+0x0069f8a0	function	fn_0069f8a0	tSWView3D	?vfunction4@tSWView3D@@UAE_NHHPAUtagRECT@@_N@Z	claim		vtable
+0x0069f900	function	tSWView3D::scalar_deleting_destructor	tSWView3D	?vfunction6@tSWView3D@@UAE_NXZ	claim		rtti
+0x0069f990	function	fn_0069f990	tSWView3D	?vfunction11@tSWView3D@@UAE_NXZ	claim		vtable
+0x0069fa10	function	fn_0069fa10	tSWView3D	?vfunction12@tSWView3D@@UAE_NXZ	claim		vtable
+0x0069fa50	function	fn_0069fa50	tSWView3D	?vfunction25@tSWView3D@@UAEHH@Z	claim		vtable
+0x0069fa60	function	fn_0069fa60	tSWView3D	?vfunction26@tSWView3D@@UAEHXZ	claim		vtable
+0x0069fa70	function	fn_0069fa70	tSWView3D	?vfunction17@tSWView3D@@UAEXHHHH@Z	claim		vtable
 0x0069fac0	function	fn_0069fac0	tSWView3D				vtable
-0x0069fad0	function	fn_0069fad0	tSWView3D				vtable
-0x0069faf0	function	fn_0069faf0	tSWView3D				vtable
-0x0069fb10	function	fn_0069fb10	tSWView3D				vtable
-0x0069fb50	function	fn_0069fb50	tSWView3D				vtable
+0x0069fad0	function	fn_0069fad0	tSWView3D	?vfunction10@tSWView3D@@UAEHXZ	claim		vtable
+0x0069faf0	function	fn_0069faf0	tSWView3D	?vfunction28@tSWView3D@@UAE_NI@Z	claim		vtable
+0x0069fb10	function	fn_0069fb10	tSWView3D	?vfunction27@tSWView3D@@UAE_NEEE@Z	claim		vtable
+0x0069fb50	function	fn_0069fb50	tSWView3D	?vfunction30@tSWView3D@@UAE_N_N0@Z	claim		vtable
 0x0069fb90	function	fn_0069fb90	tSWView3D	?vfunction29@tSWView3D@@UAE_NHHHH_N0@Z	claim		none
 0x0069fcc0	function	fn_0069fcc0	tSWView3D				vtable
 0x0069fce0	function	fn_0069fce0	tSWView3D				vtable
 0x0069fcf0	function	fn_0069fcf0	tSWView3D				vtable
-0x0069fd20	function	fn_0069fd20		?fn_0069fd20@@YAPAVtView3D@@XZ	callers		none
-0x0069fda0	function	fn_0069fda0	tView3DExt				vtable
-0x0069fdc0	function	fn_0069fdc0	tSWView3D				vtable
+0x0069fd20	function	fn_0069fd20		?fn_0069fd20@@YAPAVtSWView3D@@XZ	claim		none
+0x0069fda0	function	fn_0069fda0	tView3DExt	?vfunction47@tView3DExt@@UAE_N_N@Z	claim		vtable
+0x0069fdc0	function	fn_0069fdc0	tSWView3D	?vfunction43@tSWView3D@@UAEHXZ	claim		vtable
 0x0069fdd0	function	fn_0069fdd0	tApplication				vtable
-0x0069fde0	function	fn_0069fde0	tSWView3D				vtable
-0x0069fe00	function	fn_0069fe00	tSWView3D				vtable
-0x0069fe20	function	fn_0069fe20	tSWView3D				vtable
-0x0069fe40	function	fn_0069fe40	tSWView3D				vtable
+0x0069fde0	function	fn_0069fde0	tSWView3D	?vfunction48@tSWView3D@@UAE_N_N@Z	claim		vtable
+0x0069fe00	function	fn_0069fe00	tSWView3D	?vfunction49@tSWView3D@@UAE_N_N@Z	claim		vtable
+0x0069fe20	function	fn_0069fe20	tSWView3D	?vfunction50@tSWView3D@@UAE_N_N@Z	claim		vtable
+0x0069fe40	function	fn_0069fe40	tSWView3D	?vfunction51@tSWView3D@@UAE_N_N@Z	claim		vtable
 0x0069fe60	function	tGLDC::tGLDC	tGLDC	??0tGLDC@@QAE@XZ	callers		rtti
 0x0069ff20	function	tGLDC::scalar_deleting_destructor	tGLDC				sdk
 0x0069ff40	function	tGLDC::~tGLDC	tGLDC	??1tGLDC@@QAE@XZ	callers		rtti
@@ -18762,85 +18762,85 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x006a9410	function	fn_006a9410					none
 0x006a94a0	function	D3DUtil_InitSurfaceDesc		?D3DUtil_InitSurfaceDesc@@YAXAAU_DDSURFACEDESC2@@KK@Z	claim		claim
 0x006a94d0	function	D3DUtil_InitViewport		?D3DUtil_InitViewport@@YAXAAU_D3DVIEWPORT2@@KK@Z	claim		claim
-0x006a9540	function	fn_006a9540					none
-0x006a95f0	function	tSWView3D::~tSWView3D	tSWView3D				rtti
-0x006a9620	function	fn_006a9620	tView3DExt				vtable
-0x006a9660	function	fn_006a9660	tView3DExt				vtable
-0x006a9670	function	fn_006a9670	tView3DExt				vtable
-0x006a96d0	function	fn_006a96d0	tView3DExt				vtable
-0x006a96e0	function	fn_006a96e0	tView3DExt				vtable
-0x006a9700	function	fn_006a9700	tView3DExt				vtable
-0x006a9710	function	fn_006a9710	tView3DExt				vtable
-0x006a9780	function	fn_006a9780	tView3DExt				vtable
-0x006a9790	function	fn_006a9790					none
-0x006a9aa0	function	fn_006a9aa0	tView3DExt				vtable
-0x006a9ab0	function	fn_006a9ab0	tView3DExt				vtable
-0x006a9ba0	function	fn_006a9ba0	tView3DExt				vtable
-0x006a9c20	function	fn_006a9c20	tView3DExt				vtable
-0x006a9c40	function	fn_006a9c40	tView3DExt				vtable
+0x006a9540	function	fn_006a9540		?fn_006a9540@tView3DExt@@QAEXXZ	claim		none
+0x006a95f0	function	tSWView3D::~tSWView3D	tSWView3D	?vfunction6@tView3DExt@@UAE_NXZ	claim		rtti
+0x006a9620	function	fn_006a9620	tView3DExt	?vfunction23@tView3DExt@@UAEHH@Z	claim		vtable
+0x006a9660	function	fn_006a9660	tView3DExt	?vfunction24@tView3DExt@@UAEHXZ	claim		vtable
+0x006a9670	function	fn_006a9670	tView3DExt	?vfunction19@tView3DExt@@UAEHH@Z	claim		vtable
+0x006a96d0	function	fn_006a96d0	tView3DExt	?vfunction20@tView3DExt@@UAEHXZ	claim		vtable
+0x006a96e0	function	fn_006a96e0	tView3DExt	?vfunction21@tView3DExt@@UAEHH@Z	claim		vtable
+0x006a9700	function	fn_006a9700	tView3DExt	?vfunction22@tView3DExt@@UAEHXZ	claim		vtable
+0x006a9710	function	fn_006a9710	tView3DExt	?vfunction45@tView3DExt@@UAEXM@Z	claim		vtable
+0x006a9780	function	fn_006a9780	tView3DExt	?vfunction46@tView3DExt@@UAEMXZ	claim		vtable
+0x006a9790	function	fn_006a9790		?fn_006a9790@tView3DExt@@QAE?AUtPoint3@@PAU2@0@Z	add		none
+0x006a9aa0	function	fn_006a9aa0	tView3DExt	?vfunction32@tView3DExt@@UAEHXZ	claim		vtable
+0x006a9ab0	function	fn_006a9ab0	tView3DExt	?vfunction33@tView3DExt@@UAEXIPBX@Z	claim		vtable
+0x006a9ba0	function	fn_006a9ba0	tView3DExt	?vfunction34@tView3DExt@@UAEXIPAX@Z	claim		vtable
+0x006a9c20	function	fn_006a9c20	tView3DExt	?vfunction37@tView3DExt@@UAE_N_N@Z	claim		vtable
+0x006a9c40	function	fn_006a9c40	tView3DExt	?vfunction39@tView3DExt@@UAE_NI_N@Z	claim		vtable
 0x006a9c60	function	tView3DExt::tView3DExt	tView3DExt				rtti
 0x006a9e50	function	tView3D::~tView3D	tView3D				rtti
 0x006a9e60	function	tView3D::scalar_deleting_destructor	tView3D				rtti
-0x006a9e80	function	tView3DExt::scalar_deleting_destructor	tView3DExt				rtti
+0x006a9e80	function	tView3DExt::scalar_deleting_destructor	tView3DExt	??_GtView3DExt@@UAEPAXI@Z	claim		rtti
 0x006a9ea0	function	fn_006a9ea0					none
-0x006a9eb0	function	tView3DExt::~tView3DExt	tView3DExt				rtti
-0x006a9f20	function	fn_006a9f20	tView3DExt				vtable
-0x006a9f40	function	fn_006a9f40	tView3DExt				vtable
-0x006a9f50	function	fn_006a9f50	tView3DExt				vtable
-0x006a9f70	function	fn_006a9f70	tView3DExt				vtable
-0x006a9f80	function	fn_006a9f80	tView3DExt				vtable
-0x006a9ff0	function	fn_006a9ff0	tView3DExt				vtable
-0x006aa000	function	fn_006aa000	tView3DExt				vtable
-0x006aa080	function	fn_006aa080	tView3DExt				vtable
-0x006aa0e0	function	fn_006aa0e0	tView3DExt				vtable
-0x006aa1c0	function	fn_006aa1c0	tView3DExt				vtable
-0x006aa210	function	fn_006aa210	tView3DExt				vtable
-0x006aa270	function	fn_006aa270	tView3DExt				vtable
-0x006aa2c0	function	fn_006aa2c0	tView3DExt				vtable
-0x006aa390	function	fn_006aa390	tView3DExt				vtable
+0x006a9eb0	function	tView3DExt::~tView3DExt	tView3DExt	??1tView3DExt@@UAE@XZ	claim		rtti
+0x006a9f20	function	fn_006a9f20	tView3DExt	?vfunction13@tView3DExt@@UAEP6AXXZP6AXXZPAX@Z	claim		vtable
+0x006a9f40	function	fn_006a9f40	tView3DExt	?vfunction14@tView3DExt@@UAEP6AXXZXZ	claim		vtable
+0x006a9f50	function	fn_006a9f50	tView3DExt	?vfunction15@tView3DExt@@UAEP6AXXZP6AXXZPAX@Z	claim		vtable
+0x006a9f70	function	fn_006a9f70	tView3DExt	?vfunction16@tView3DExt@@UAEP6AXXZXZ	claim		vtable
+0x006a9f80	function	fn_006a9f80	tView3DExt	?vfunction35@tView3DExt@@UAEXPAUfn_0040105e_Vector@@@Z	claim		vtable
+0x006a9ff0	function	fn_006a9ff0	tView3DExt	?vfunction36@tView3DExt@@UAEPAUfn_0040105e_Vector@@XZ	claim		vtable
+0x006aa000	function	fn_006aa000	tView3DExt	?vfunction17@tView3DExt@@UAEXHHHH@Z	claim		vtable
+0x006aa080	function	fn_006aa080	tView3DExt	?vfunction18@tView3DExt@@UAEXPAH000@Z	claim		vtable
+0x006aa0e0	function	fn_006aa0e0	tView3DExt	?vfunction65@tView3DExt@@UAEXPAVtMatrix@@MMM@Z	claim		vtable
+0x006aa1c0	function	fn_006aa1c0	tView3DExt	?vfunction62@tView3DExt@@UAEXMMM@Z	claim		vtable
+0x006aa210	function	fn_006aa210	tView3DExt	?vfunction63@tView3DExt@@UAEXMMMMMM@Z	claim		vtable
+0x006aa270	function	fn_006aa270	tView3DExt	?vfunction64@tView3DExt@@UAEXMM@Z	claim		vtable
+0x006aa2c0	function	fn_006aa2c0	tView3DExt	?vfunction67@tView3DExt@@UAEXPAVtMatrix@@MMMMMM@Z	claim		vtable
+0x006aa390	function	fn_006aa390	tView3DExt	?vfunction66@tView3DExt@@UAEXPAVtMatrix@@MM@Z	claim		vtable
 0x006aa3f0	function	fn_006aa3f0	tView3DExt				vtable
-0x006aa490	function	fn_006aa490	tView3DExt				vtable
-0x006aa4a0	function	fn_006aa4a0	tView3DExt				vtable
-0x006aa4d0	function	fn_006aa4d0	tView3DExt				vtable
-0x006aa4e0	function	fn_006aa4e0	tView3DExt				vtable
+0x006aa490	function	fn_006aa490	tView3DExt	?vfunction61@tView3DExt@@UAEPAVtMatrix@@XZ	claim		vtable
+0x006aa4a0	function	fn_006aa4a0	tView3DExt	?vfunction55@tView3DExt@@UAEXPAVtMatrix@@@Z	claim		vtable
+0x006aa4d0	function	fn_006aa4d0	tView3DExt	?vfunction56@tView3DExt@@UAEPAVtMatrix@@XZ	claim		vtable
+0x006aa4e0	function	fn_006aa4e0	tView3DExt	?vfunction57@tView3DExt@@UAEXPAUtPoint3@@@Z	claim		vtable
 0x006aa550	function	fn_006aa550	tView3DExt	?vfunction58@tView3DExt@@UAEXPAVtMatrix@@@Z	claim		none
-0x006aa6c0	function	fn_006aa6c0	tView3DExt				vtable
-0x006aa6d0	function	fn_006aa6d0	tView3DExt				vtable
-0x006aa6e0	function	fn_006aa6e0	tView3DExt				vtable
-0x006aa720	function	fn_006aa720	tView3DExt				vtable
-0x006aa730	function	fn_006aa730	tView3DExt				vtable
-0x006aa740	function	fn_006aa740	tView3DExt				vtable
-0x006aa750	function	fn_006aa750	tView3DExt				vtable
-0x006aa760	function	fn_006aa760	tView3DExt				vtable
-0x006aa770	function	fn_006aa770	tView3DExt				vtable
-0x006aa780	function	fn_006aa780	tView3DExt				vtable
-0x006aa790	function	fn_006aa790	tView3DExt				vtable
+0x006aa6c0	function	fn_006aa6c0	tView3DExt	?vfunction59@tView3DExt@@UAEPAVtMatrix@@XZ	claim		vtable
+0x006aa6d0	function	fn_006aa6d0	tView3DExt	?vfunction5@tView3DExt@@UAEXH@Z	claim		vtable
+0x006aa6e0	function	fn_006aa6e0	tView3DExt	?vfunction87@tView3DExt@@UAEXXZ	claim		vtable
+0x006aa720	function	fn_006aa720	tView3DExt	?vfunction88@tView3DExt@@UAEHXZ	claim		vtable
+0x006aa730	function	fn_006aa730	tView3DExt	?vfunction89@tView3DExt@@UAEHXZ	claim		vtable
+0x006aa740	function	fn_006aa740	tView3DExt	?vfunction90@tView3DExt@@UAEHXZ	claim		vtable
+0x006aa750	function	fn_006aa750	tView3DExt	?vfunction91@tView3DExt@@UAEHXZ	claim		vtable
+0x006aa760	function	fn_006aa760	tView3DExt	?vfunction92@tView3DExt@@UAEHXZ	claim		vtable
+0x006aa770	function	fn_006aa770	tView3DExt	?vfunction93@tView3DExt@@UAEHXZ	claim		vtable
+0x006aa780	function	fn_006aa780	tView3DExt	?vfunction94@tView3DExt@@UAEHXZ	claim		vtable
+0x006aa790	function	fn_006aa790	tView3DExt	?vfunction95@tView3DExt@@UAEHXZ	claim		vtable
 0x006aa7a0	function	fn_006aa7a0					none
 0x006aab00	function	fn_006aab00					none
 0x006aae20	function	fn_006aae20					none
 0x006ab280	function	fn_006ab280					none
 0x006ab2f0	function	fn_006ab2f0					none
-0x006ab380	function	fn_006ab380					none
+0x006ab380	function	fn_006ab380		?fn_006ab380@tD3DViewMgr_Sub@@QAEXXZ	add		none
 0x006abe00	function	tView3DExt::mAssertVtxCache	tView3DExt	?mAssertVtxCache@tView3DExt@@QAEXH@Z	claim		claim
-0x006abeb0	function	fn_006abeb0					none
-0x006abf80	function	fn_006abf80	tView3DExt				vtable
-0x006abfb0	function	fn_006abfb0	tView3DExt				vtable
+0x006abeb0	function	fn_006abeb0		?fn_006abeb0@tView3DExt@@QAEMXZ	claim		none
+0x006abf80	function	fn_006abf80	tView3DExt	?vfunction79@tView3DExt@@UAEXHH@Z	claim		vtable
+0x006abfb0	function	fn_006abfb0	tView3DExt	?vfunction80@tView3DExt@@UAEXPAX@Z	claim		vtable
 0x006abfc0	function	fn_006abfc0	tView3DExt				vtable
 0x006ac5a0	function	fn_006ac5a0	tView3DExt	?vfunction81@tView3DExt@@UAEXHPAPAX_N@Z	claim		none
-0x006ac780	function	fn_006ac780					none
-0x006ac7c0	function	fn_006ac7c0	tView3DExt				vtable
-0x006ac810	function	fn_006ac810	tView3DExt				vtable
-0x006ac830	function	fn_006ac830					none
-0x006ac900	function	fn_006ac900					none
-0x006ad130	function	fn_006ad130	tView3DExt				vtable
-0x006ad230	function	fn_006ad230	tView3DExt				vtable
-0x006ad260	function	fn_006ad260	tView3DExt				vtable
-0x006ad2d0	function	fn_006ad2d0	tView3DExt				vtable
-0x006ad300	function	fn_006ad300	tView3DExt				vtable
-0x006ad320	function	fn_006ad320	tView3DExt				vtable
-0x006ad340	function	fn_006ad340	tView3DExt				vtable
-0x006ad370	function	fn_006ad370	tView3DExt				vtable
-0x006ad3e0	function	fn_006ad3e0	tView3DExt				vtable
+0x006ac780	function	fn_006ac780		?fn_006ac780@fn_006ac780_State@@QAEXXZ	claim		none
+0x006ac7c0	function	fn_006ac7c0	tView3DExt	?vfunction68@tView3DExt@@UAE_NH@Z	claim		vtable
+0x006ac810	function	fn_006ac810	tView3DExt	?vfunction69@tView3DExt@@UAEXXZ	claim		vtable
+0x006ac830	function	fn_006ac830		?fn_006ac830@tView3DExt@@QAEXHHH@Z	claim		none
+0x006ac900	function	fn_006ac900		?fn_006ac900@tView3DExt@@QAEXH@Z	add		none
+0x006ad130	function	fn_006ad130	tView3DExt	?vfunction71@tView3DExt@@UAEXPAUtPoint3@@@Z	claim		vtable
+0x006ad230	function	fn_006ad230	tView3DExt	?vfunction70@tView3DExt@@UAEXMMM@Z	claim		vtable
+0x006ad260	function	fn_006ad260	tView3DExt	?vfunction73@tView3DExt@@UAEXPAUtPoint3@@@Z	claim		vtable
+0x006ad2d0	function	fn_006ad2d0	tView3DExt	?vfunction72@tView3DExt@@UAEXMMM@Z	claim		vtable
+0x006ad300	function	fn_006ad300	tView3DExt	?vfunction75@tView3DExt@@UAEXPAUtPoint2@@@Z	claim		vtable
+0x006ad320	function	fn_006ad320	tView3DExt	?vfunction74@tView3DExt@@UAEXMM@Z	claim		vtable
+0x006ad340	function	fn_006ad340	tView3DExt	?vfunction77@tView3DExt@@UAEXMMM@Z	claim		vtable
+0x006ad370	function	fn_006ad370	tView3DExt	?vfunction76@tView3DExt@@UAEXI@Z	claim		vtable
+0x006ad3e0	function	fn_006ad3e0	tView3DExt	?vfunction78@tView3DExt@@UAEXI@Z	claim		vtable
 0x006ad410	function	GetDXVersion		?GetDXVersion@@YAXPAK0@Z	claim		claim
 0x006ad7d0	function	fn_006ad7d0					none
 0x006ad890	function	fn_006ad890					none
@@ -18901,7 +18901,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x006b31c5	function	fn_006b31c5					none
 0x006b31d9	function	fn_006b31d9					none
 0x006b3200	function	fn_006b3200	tGDISurfMgr				vtable
-0x006b3260	function	fn_006b3260					none
+0x006b3260	function	fn_006b3260		?fn_006b3260@@YAPAXXZ	add		none
 0x006b32c0	function	tGLFontEx::mAddRef	tGLFontEx	?mAddRef@tGLFontEx@@UAEJXZ	claim		claim
 0x006b32d0	function	tChannelAttributes::mGet3DSoundProfile	tChannelAttributes	?mGet3DSoundProfile@tChannelAttributes@@UAEPAVt3DSoundProfile@@XZ	claim		claim
 0x006b32e0	function	tScriptMapData::mGetItemList	tScriptMapData	?mGetItemList@tScriptMapData@@QBEABV?$vector@VtMapObject@@V?$allocator@VtMapObject@@@std@@@std@@XZ	claim		claim
@@ -18929,9 +18929,9 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x006b4be0	function	fn_006b4be0					none
 0x006b4f7d	function	fn_006b4f7d					none
 0x006b4fc0	function	fn_006b4fc0	tDDSurfMgr				vtable
-0x006b4fe0	function	fn_006b4fe0					none
-0x006b5060	function	fn_006b5060					none
-0x006b5090	function	fn_006b5090					none
+0x006b4fe0	function	fn_006b4fe0		?fn_006b4fe0@@YAPAXXZ	add		none
+0x006b5060	function	fn_006b5060		?fn_006b5060@@YAHH@Z	add		none
+0x006b5090	function	fn_006b5090		?fn_006b5090@@YAHH@Z	add		none
 0x006b50c0	function	fn_006b50c0					none
 0x006b5660	function	fn_006b5660					none
 0x006b56f0	function	fn_006b56f0	tGLDC				vtable
