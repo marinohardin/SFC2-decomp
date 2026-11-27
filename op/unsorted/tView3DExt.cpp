@@ -395,6 +395,12 @@ void tView3DExt::vfunction55(tMatrix *m)
 	field_0x5a0.mMult(field_0x5e4, field_0x628);
 }
 
+// FUNCTION: STARFLEETOP 0x006aa4d0
+tMatrix *tView3DExt::vfunction56()
+{
+	return &field_0x628;
+}
+
 // HYPOTHESIS: the original calls 0x0069cc40 (another tMatrix member taking an output point and an
 // input point) where this body calls fn_0069cbc0 three times; tMatrix declares no member for it yet.
 // FUNCTION: STARFLEETOP 0x006aa550
