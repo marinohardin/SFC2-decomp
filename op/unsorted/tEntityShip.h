@@ -97,7 +97,10 @@ public:
 	virtual void vfunction18(); virtual void vfunction19(); virtual void vfunction20();
 	virtual void vfunction21(); virtual void vfunction22(); virtual void vfunction23();
 	virtual void vfunction24(); virtual void vfunction25(); virtual void vfunction26();
-	virtual void vfunction27(); virtual void vfunction28(); virtual void vfunction29();
+	virtual void vfunction27();
+	// HYPOTHESIS: returns a record with a float at 0x18; 0x0041687b reads it.
+	virtual tObject_00416d41_bounds *vfunction28();
+	virtual void vfunction29();
 	virtual void vfunction30(); virtual void vfunction31(); virtual void vfunction32();
 	virtual void vfunction33();
 	virtual tObject_00416d41_bounds *vfunction34();
@@ -279,6 +282,7 @@ public:
 	void fn_004160c2();
 	void fn_004165b7();
 	void fn_004165d4();
+	void fn_0041687b();
 
 	// 0x1bc is cleared by the constructor.
 	tObject_00426563_1bc *field_1bc;
