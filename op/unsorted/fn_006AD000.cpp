@@ -39,3 +39,10 @@ void tView3DExt::vfunction71( tPoint3 *point )
 			fn_006ac900( 0 );
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x006ad230
+void tView3DExt::vfunction70( float x, float y, float z )
+{
+	tPoint3 point( x, y, z );
+	vfunction71( &point );
+}
