@@ -54,3 +54,9 @@ void tView3DExt::vfunction79( int count, int param_2 )
 		vtx++;
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x006abfb0
+void tView3DExt::vfunction80( void *param_1 )
+{
+	field_0x558 = param_1;
+}
