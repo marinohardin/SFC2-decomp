@@ -6904,10 +6904,10 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004e46ae	function	fn_004e46ae	tPhaserA				vtable
 0x004e46f4	function	fn_004e46f4	tPhaserA				vtable
 0x004e4727	function	fn_004e4727	tPhaserA				vtable
-0x004e475a	function	fn_004e475a					none
+0x004e475a	function	fn_004e475a		?fn_004e475a@tPhaserA@@QAEHXZ	add		none
 0x004e48cc	function	fn_004e48cc	tPhaserA				vtable
 0x004e48e4	function	fn_004e48e4	tPhaserA				vtable
-0x004e492c	function	tNetMsg_kCreateDirect::~tNetMsg_kCreateDirect	tNetMsg_kCreateDirect				rtti
+0x004e492c	function	tNetMsg_kCreateDirect::~tNetMsg_kCreateDirect	tNetMsg_kCreateDirect	?fn_004e492c@tPhaserA@@QAEXM@Z	claim		rtti
 0x004e49f5	function	fn_004e49f5	tPhaserA				vtable
 0x004e4b0c	function	fn_004e4b0c					none
 0x004e4b16	function	fn_004e4b16					none
