@@ -6,6 +6,7 @@ baseline) under pytest's tmp_path; the expected breaks are written out by hand.
 import importlib.util
 import json
 import pathlib
+import struct
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 
@@ -51,7 +52,8 @@ def make_repo(tmp_path, files, matched=None, functions=(), boundaries=(), baseli
 
 
 def run(repo, capsys, *extra):
-    rc = lint_claims.main(['--repo', str(repo), *extra])
+    # No executable unless a test names one: the falls-through rule must not read the real install.
+    rc = lint_claims.main(['--repo', str(repo), '--exe', str(repo / 'no-such.exe'), *extra])
     out = capsys.readouterr().out.splitlines()
     return rc, [ln for ln in out if not ln.startswith('lint_claims:')]
 
@@ -421,3 +423,132 @@ def test_assert_defined_two_ways_follows_the_included_header(tmp_path, capsys):
                                 'c.cpp': line_fn(0x401200, '\tassert(1);\n')})
     rc, warns, summary = warnings_of(repo, capsys)
     assert len(warns) == 1 and 'op/b.cpp' in warns[0]
+
+
+# --- falls-through -----------------------------------------------------------------------------
+# A hand-built PE image: one .text section at 0x401000 (image base 0x400000, section at 0x1000,
+# raw data at file offset 0x200, 0x90 bytes). Offsets below are from 0x401000; every byte is
+# written out. Gaps are 0xCC.
+#
+#   0x00  33 C0 C3                  f1, 3 bytes, ends in ret
+#   0x10  6A 00 E8 E9 FF FF FF      f2, 7 bytes, ends in call (to f1); 0x17 is called by f4: ok
+#   0x17  C3                        f3, reached by f4's call
+#   0x20  E8 F2 FF FF FF C3         f4, 6 bytes, ends in ret; its call goes to 0x17
+#   0x30  6A 00 E8 E0 FF FF FF      f5, 7 bytes, ends in call (to 0x17); 0x37 refers to nothing
+#   0x37  C3                        f5's unreferenced continuation
+#   0x40  6A 00 E8 B9 FF FF FF 90 90 90   f6, 10 bytes with three nops of padding, ends in call
+#   0x4A  C3                        f6's unreferenced continuation
+#   0x50  6A 00 E8 A9 FF FF FF      f7, 7 bytes, ends in call; CC CC CC, then 0x5A is referenced
+#   0x5A  C3                        f8, referenced by the dword at 0x60
+#   0x60  5A 10 40 00               a pointer to f8
+#   0x70  6A 00 E8 89 FF FF FF      f9, 7 bytes, ends in call; 0x77 is referenced by the dword
+#   0x77  C3                        at 0x80
+#   0x80  77 10 40 00               a pointer to 0x77
+IMAGE_PIECES = {
+    0x00: '33C0C3',
+    0x10: '6A00E8E9FFFFFF',
+    0x17: 'C3',
+    0x20: 'E8F2FFFFFFC3',
+    0x30: '6A00E8E0FFFFFF',
+    0x37: 'C3',
+    0x40: '6A00E8B9FFFFFF909090',
+    0x4A: 'C3',
+    0x50: '6A00E8A9FFFFFF',
+    0x5A: 'C3',
+    0x60: '5A104000',
+    0x70: '6A00E889FFFFFF',
+    0x77: 'C3',
+    0x80: '77104000',
+}
+# (address, size) of the claims, as functions.csv would give them
+FALL_CLAIMS = {'f1': (0x401000, 3), 'f2': (0x401010, 7), 'f4': (0x401020, 6),
+               'f5': (0x401030, 7), 'f6': (0x401040, 10), 'f7': (0x401050, 7),
+               'f9': (0x401070, 7)}
+
+
+def build_pe(path):
+    text = bytearray(b'\xcc' * 0x90)
+    for off, hexbytes in IMAGE_PIECES.items():
+        b = bytes.fromhex(hexbytes)
+        text[off:off + len(b)] = b
+    head = bytearray(0x200)
+    head[0:2] = b'MZ'
+    struct.pack_into('<I', head, 0x3C, 0x40)
+    head[0x40:0x44] = b'PE\0\0'
+    struct.pack_into('<HHIIIHH', head, 0x44, 0x14C, 1, 0, 0, 0, 0xE0, 0x102)
+    struct.pack_into('<I', head, 0x58 + 28, 0x400000)             # ImageBase
+    struct.pack_into('<8sIIII', head, 0x58 + 0xE0, b'.text', 0x90, 0x1000, 0x90, 0x200)
+    path.write_bytes(bytes(head) + bytes(text))
+    return path
+
+
+def fall_repo(tmp_path, names=tuple(FALL_CLAIMS), matched=None, baseline=None):
+    files = {'fall.c': ''.join(
+        f'// FUNCTION: STARFLEETOP 0x{FALL_CLAIMS[n][0]:08x}\nvoid {n}() {{ x(); }}\n\n'
+        for n in sorted(names, key=lambda n: FALL_CLAIMS[n]))}
+    return make_repo(tmp_path, files, matched=matched, baseline=baseline,
+                     functions=[(f'{FALL_CLAIMS[n][0]:08x}', FALL_CLAIMS[n][1], n, '')
+                                for n in names])
+
+
+def fall_run(tmp_path, capsys, *extra):
+    exe = build_pe(tmp_path / 'image.exe')
+    return run(tmp_path, capsys, '--exe', str(exe), '--no-hash', *extra)
+
+
+def fall_addresses(out):
+    return sorted(ln.split('FUNCTION ')[1].split(' ')[0] for ln in out if 'falls-through:' in ln)
+
+
+def test_a_claim_ending_in_a_call_with_nothing_after_it_is_a_break(tmp_path, capsys):
+    fall_repo(tmp_path)
+    rc, out = fall_run(tmp_path, capsys)
+    # f5: 0x401037 is referenced by nothing; f6: padding stripped, ends in a call, 0x40104a the same
+    assert fall_addresses(out) == ['0x00401030', '0x00401040']
+    assert rc == 1
+    assert out[0].startswith('op/fall.c:') and 'ends in a call and nothing refers to 0x00401037' in out[0]
+    assert 'nothing refers to 0x0040104a' in out[1]
+
+
+def test_ret_a_referenced_next_and_padding_before_a_referenced_next_pass(tmp_path, capsys):
+    # f1 ends in ret; f2 in a call with its next (0x401017) the target of f4's call; f7 ends in a
+    # call, three CC follow and the function after them is a pointer's target; f9's next is a
+    # pointer's target directly
+    fall_repo(tmp_path, ('f1', 'f2', 'f4', 'f7', 'f9'))
+    rc, out = fall_run(tmp_path, capsys)
+    assert out == [] and rc == 0
+
+
+def test_an_exact_claim_that_falls_through_is_not_excused_by_the_baseline(tmp_path, capsys):
+    fall_repo(tmp_path, ('f5', 'f6'), matched={'0x00401030': (7, True), '0x00401040': (10, False)},
+              baseline=[('falls-through', 'op/fall.c', '0x00401030', 'wrongly baselined'),
+                        ('falls-through', 'op/fall.c', '0x00401040', 'known')])
+    rc, out = fall_run(tmp_path, capsys)
+    assert fall_addresses(out) == ['0x00401030']    # f6 is known, f5 is exact and still fails
+    assert 'it is exact, so the baseline cannot excuse it' in out[0]
+    assert rc == 1
+
+
+def test_a_written_baseline_leaves_out_an_exact_fall_through(tmp_path, capsys):
+    fall_repo(tmp_path, ('f5', 'f6'), matched={'0x00401030': (7, True), '0x00401040': (10, False)},
+              baseline=[])
+    rc, _ = fall_run(tmp_path, capsys, '--write-baseline')
+    rows = (tmp_path / 'analysis/results/lint_baseline.tsv').read_text().splitlines()
+    assert rc == 0 and len(rows) == 2 and rows[1].split('\t')[:3] == [
+        'falls-through', 'op/fall.c', '0x00401040']
+
+
+def test_without_an_executable_the_rule_is_skipped_with_an_info_line(tmp_path, capsys):
+    fall_repo(tmp_path, ('f5',), baseline=[('falls-through', 'op/fall.c', '0x00401030', 'known')])
+    rc = lint_claims.main(['--repo', str(tmp_path), '--exe', str(tmp_path / 'absent.exe')])
+    out = capsys.readouterr().out.splitlines()
+    assert out[0].startswith('lint_claims: INFO no executable at ') and 'skipped' in out[0]
+    assert not any('falls-through:' in ln for ln in out)    # no break, and the row is not stale
+    assert rc == 0
+
+
+def test_an_executable_that_is_not_the_retail_file_is_refused(tmp_path, capsys):
+    fall_repo(tmp_path, ('f5',))
+    exe = build_pe(tmp_path / 'image.exe')
+    rc = lint_claims.main(['--repo', str(tmp_path), '--exe', str(exe)])
+    assert rc == 2 and 'is not the retail file' in capsys.readouterr().err
