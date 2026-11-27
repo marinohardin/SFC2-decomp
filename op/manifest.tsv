@@ -94,7 +94,7 @@ address	size	symbol	source	modes	decorated
 0x00406487	33	fn_00406487(char,const std::locale&)	unsorted/fn_00406000.cpp	vc6 guest	?fn_00406487@@YA_NDABVlocale@std@@@Z
 0x004064a8	45	fn_004064a8(tFighterSpec*,const tFighterSpec&)	unsorted/fn_00406000.cpp	vc6 guest	?fn_004064a8@@YAXPAVtFighterSpec@@ABV1@@Z
 0x004064d5	73	fn_004064d5(std::string*,const std::string&)	unsorted/fn_00406000.cpp	vc6 guest	?fn_004064d5@@YAXPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV12@@Z
-0x0040651e	34	fn_0040651e_String::fn_0040651e(const std::string&) const	unsorted/fn_00406000.cpp	vc6 guest	?fn_0040651e@fn_0040651e_String@@QBEHABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z
+0x0040651e	34	std::string::compare(const std::string&) const	unsorted/fn_00406000.cpp	vc6	?compare@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEHABV12@@Z
 0x00406540	63	fn_00406540_Iter::fn_00406540(const fn_00406540_Iter&) const	unsorted/fn_00406000.cpp	vc6 guest	?fn_00406540@fn_00406540_Iter@@QBE_NABV1@@Z
 0x0040657f	84	fn_0040657f_Collate::fn_0040657f_Collate(size_t)	unsorted/fn_00406000.cpp	vc6	??0fn_0040657f_Collate@@QAE@I@Z
 0x004065d3	26	fn_004065d3_Codecvt::fn_004065d3(int&,const char*,const char*,const char*&,char*,char*,char*&) const	unsorted/fn_00406000.cpp	vc6 guest	?fn_004065d3@fn_004065d3_Codecvt@@QBEHAAHPBD1AAPBDPAD3AAPAD@Z
@@ -518,7 +518,7 @@ address	size	symbol	source	modes	decorated
 0x00424a24	19	tEntityMgr::fn_00424a24(tEntity *)	unsorted/tEntityMgr.cpp	vc6 guest	?fn_00424a24@tEntityMgr@@QAEPAVtObject_00423a6a_entity@@PAVtEntity@@@Z
 0x00424a37	88	tEntityMgr::fn_00424a37(tID)	unsorted/tEntityMgr.cpp	vc6 guest	?fn_00424a37@tEntityMgr@@QAEPAVtEntity@@J@Z
 0x00424a8f	160	tEntityMgr::mArchive(tSFCStream &,unsigned long)	unsorted/tEntityMgr.cpp	vc6 guest	?mArchive@tEntityMgr@@UAEXAAVtSFCStream@@K@Z
-0x00424b90	119	tStrMgrCore::tStrMgrCore(unsigned char)	unsorted/tStrMgrCore.cpp	partial	??0tStrMgrCore@@QAE@E@Z
+0x00424b90	119	tStrMgrCore::tStrMgrCore(unsigned char)	unsorted/tStrMgrCore.cpp	vc6	??0tStrMgrCore@@QAE@E@Z
 0x00424c07	28	tStrMgrCore::`scalar deleting destructor'	unsorted/tStrMgrCore.cpp	vc6	??_GtStrMgrCore@@UAEPAXI@Z
 0x00424d28	15	fn_00424d28_class::fn_00424d28()	unsorted/fn_00424D28.cpp	vc6 guest	?fn_00424d28@fn_00424d28_class@@QAEXXZ
 0x00424d37	15	fn_00424d28_class::fn_00424d37(const tString&)	unsorted/fn_00424D28.cpp	vc6 guest	?fn_00424d37@fn_00424d28_class@@QAEXABVtString@@@Z
@@ -655,7 +655,7 @@ address	size	symbol	source	modes	decorated
 0x0042a6ea	18	fn_0042a480_object::FUN_0042a6ea(const tHexPoint&)	unsorted/fn_0042A000.cpp	vc6 guest	?FUN_0042a6ea@fn_0042a480_object@@QAEXABVtHexPoint@@@Z
 0x0042a6fc	13	fn_0042a480_object::FUN_0042a6fc(bool)	unsorted/fn_0042A000.cpp	vc6 guest	?FUN_0042a6fc@fn_0042a480_object@@QAEX_N@Z
 0x0042a709	52	fn_0042a480_object::FUN_0042a709(int,int)	unsorted/fn_0042A000.cpp	vc6 guest	?FUN_0042a709@fn_0042a480_object@@QAEXHH@Z
-0x0042a73d	112	fn_0042a480_object::FUN_0042a73d()	unsorted/fn_0042A000.cpp	partial	?FUN_0042a73d@fn_0042a480_object@@QAEXXZ
+0x0042a73d	112	fn_0042a480_object::FUN_0042a73d()	unsorted/fn_0042A000.cpp	vc6 guest	?FUN_0042a73d@fn_0042a480_object@@QAEXXZ
 0x0042a7b2	13	fn_0042a480_object::FUN_0042a7b2(unsigned long)	unsorted/fn_0042A000.cpp	vc6 guest	?FUN_0042a7b2@fn_0042a480_object@@QAEXK@Z
 0x0042a7bf	164	fn_0042a480_object::FUN_0042a7bf(const std::vector< fn_0054185f_ship >&)	unsorted/fn_0042A000.cpp	partial	?FUN_0042a7bf@fn_0042a480_object@@QAEXABV?$vector@Vfn_0054185f_ship@@V?$allocator@Vfn_0054185f_ship@@@std@@@std@@@Z
 0x0042a8b7	120	fn_0042a480_object::FUN_0042a8b7(const tMetaMapHex&)	unsorted/fn_0042A000.cpp	vc6 guest	?FUN_0042a8b7@fn_0042a480_object@@QAEXABVtMetaMapHex@@@Z
@@ -674,7 +674,7 @@ address	size	symbol	source	modes	decorated
 0x0042ab25	191	fn_0042a480_object::FUN_0042ab25(std::vector< db::tID >&)	unsorted/fn_0042A000.cpp	vc6 guest	?FUN_0042ab25@fn_0042a480_object@@QAEXAAV?$vector@VtID@nDatabase@@V?$allocator@VtID@nDatabase@@@std@@@std@@@Z
 0x0042abe4	82	fn_0042a480_object::FUN_0042abe4()	unsorted/fn_0042A000.cpp	vc6 guest	?FUN_0042abe4@fn_0042a480_object@@QAE?AVtHexPoint@@XZ
 0x0042ac36	32	fn_0042a480_object::FUN_0042ac36()	unsorted/fn_0042A000.cpp	vc6 guest	?FUN_0042ac36@fn_0042a480_object@@QAEABVtHexPoint@@XZ
-0x0042ac56	331	fn_0042a480_object::FUN_0042ac56()	unsorted/fn_0042A000.cpp	partial	?FUN_0042ac56@fn_0042a480_object@@QAE?AV?$map@U?$pair@HH@std@@VtHexPoint@@U?$less@U?$pair@HH@std@@@2@V?$allocator@VtHexPoint@@@2@@std@@XZ
+0x0042ac56	331	fn_0042a480_object::FUN_0042ac56()	unsorted/fn_0042A000.cpp	vc6 guest	?FUN_0042ac56@fn_0042a480_object@@QAE?AV?$map@U?$pair@HH@std@@VtHexPoint@@U?$less@U?$pair@HH@std@@@2@V?$allocator@VtHexPoint@@@2@@std@@XZ
 0x0042ada1	32	fn_0042a480_object::FUN_0042ada1()	unsorted/fn_0042A000.cpp	vc6 guest	?FUN_0042ada1@fn_0042a480_object@@QAEHXZ
 0x0042ade3	56	tObject_0042ade3::~tObject_0042ade3()	unsorted/fn_0042A000.cpp	vc6	??1tObject_0042ade3@@QAE@XZ
 0x0042c053	129	fn_0042c053_Tree::fn_0042c053(fn_0042c053_Node*,fn_0042c053_Node*)	unsorted/fn_0042C000.cpp	vc6 guest	?fn_0042c053@fn_0042c053_Tree@@QAEPAUfn_0042c053_Node@@PAU2@0@Z
@@ -3381,15 +3381,15 @@ address	size	symbol	source	modes	decorated
 0x005f7db6	52	fn_005f7db6_iterator::FUN_005f7db6()	unsorted/fn_005F745F.cpp	vc6 guest	?FUN_005f7db6@fn_005f7db6_iterator@@QAEAAUfn_0055fe12_value@@XZ
 0x005f7dea	272	fn_005f7a6a_object::FUN_005f7dea(unsigned int)	unsorted/fn_005F745F.cpp	vc6 guest	?FUN_005f7dea@fn_005f7a6a_object@@QAEXI@Z
 0x005fb00a	41	operator[](const int&)	unsorted/fn_005FB000.cpp	vc6 guest	??A?$map@HHU?$less@H@std@@V?$allocator@H@2@@std@@QAEAAHABH@Z
-0x005fb033	56	~_Tree()	unsorted/fn_005FB000.cpp	partial	??1?$_Tree@HU?$pair@$$CBHH@std@@U_Kfn@?$map@HHU?$less@H@std@@V?$allocator@H@2@@2@U?$less@H@2@V?$allocator@H@2@@std@@QAE@XZ
-0x005fb0e4	56	~_Tree()	unsorted/fn_005FB000.cpp	partial	??1?$_Tree@HU?$pair@$$CBHV?$vector@HV?$allocator@H@std@@@std@@@std@@U_Kfn@?$map@HV?$vector@HV?$allocator@H@std@@@std@@U?$less@H@2@V?$allocator@V?$vector@HV?$allocator@H@std@@@std@@@2@@2@U?$less@H@2@V?$allocator@V?$vector@HV?$allocator@H@std@@@std@@@2@@std@@QAE@XZ
+0x005fb033	56	~_Tree()	unsorted/fn_005FB000.cpp	vc6 guest	??1?$_Tree@HU?$pair@$$CBHH@std@@U_Kfn@?$map@HHU?$less@H@std@@V?$allocator@H@2@@2@U?$less@H@2@V?$allocator@H@2@@std@@QAE@XZ
+0x005fb0e4	56	~_Tree()	unsorted/fn_005FB000.cpp	vc6 guest	??1?$_Tree@HU?$pair@$$CBHV?$vector@HV?$allocator@H@std@@@std@@@std@@U_Kfn@?$map@HV?$vector@HV?$allocator@H@std@@@std@@U?$less@H@2@V?$allocator@V?$vector@HV?$allocator@H@std@@@std@@@2@@2@U?$less@H@2@V?$allocator@V?$vector@HV?$allocator@H@std@@@std@@@2@@std@@QAE@XZ
 0x005fb124	42	insert(iterator,const std::string&)	unsorted/fn_005FB000.cpp	vc6 guest	?insert@?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@QAEPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@PAV32@ABV32@@Z
-0x005fb14e	116	erase(iterator,iterator)	unsorted/fn_005FB000.cpp	partial	?erase@?$_Tree@HU?$pair@$$CBHH@std@@U_Kfn@?$map@HHU?$less@H@std@@V?$allocator@H@2@@2@U?$less@H@2@V?$allocator@H@2@@std@@QAE?AViterator@12@V312@0@Z
+0x005fb14e	116	erase(iterator,iterator)	unsorted/fn_005FB000.cpp	vc6 guest	?erase@?$_Tree@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@2@U_Kfn@?$map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@H@2@@2@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@H@2@@std@@QAE?AViterator@12@V312@0@Z
 0x005fb1c2	35	insert(const value_type&)	unsorted/fn_005FB000.cpp	vc6 guest	?insert@?$map@HHU?$less@H@std@@V?$allocator@H@2@@std@@QAE?AU?$pair@Viterator@?$_Tree@HU?$pair@$$CBHH@std@@U_Kfn@?$map@HHU?$less@H@std@@V?$allocator@H@2@@2@U?$less@H@2@V?$allocator@H@2@@std@@_N@2@ABU?$pair@$$CBHH@2@@Z
-0x005fb1e5	116	erase(iterator,iterator)	unsorted/fn_005FB000.cpp	partial	?erase@?$_Tree@HU?$pair@$$CBHV?$vector@HV?$allocator@H@std@@@std@@@std@@U_Kfn@?$map@HV?$vector@HV?$allocator@H@std@@@std@@U?$less@H@2@V?$allocator@V?$vector@HV?$allocator@H@std@@@std@@@2@@2@U?$less@H@2@V?$allocator@V?$vector@HV?$allocator@H@std@@@std@@@2@@std@@QAE?AViterator@12@V312@0@Z
-0x005fb259	116	erase(iterator,iterator)	unsorted/fn_005FB000.cpp	partial	?erase@?$_Tree@HU?$pair@$$CBHV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@std@@U_Kfn@?$map@HV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@H@2@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@2@U?$less@H@2@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@QAE?AViterator@12@V312@0@Z
-0x005fb2cd	170	insert(const value_type&)	unsorted/fn_005FB000.cpp	partial	?insert@?$_Tree@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@2@U_Kfn@?$map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@H@2@@2@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@H@2@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@2@U_Kfn@?$map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@H@2@@2@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@H@2@@std@@_N@2@ABU?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@2@@Z
-0x005fb377	56	_Erase(_Nodeptr)	unsorted/fn_005FB000.cpp	partial	?_Erase@?$_Tree@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@2@U_Kfn@?$map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@H@2@@2@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@H@2@@std@@IAEXPAU_Node@12@@Z
+0x005fb1e5	116	erase(iterator,iterator)	unsorted/fn_005FB000.cpp	vc6 guest	?erase@?$_Tree@HU?$pair@$$CBHH@std@@U_Kfn@?$map@HHU?$less@H@std@@V?$allocator@H@2@@2@U?$less@H@2@V?$allocator@H@2@@std@@QAE?AViterator@12@V312@0@Z
+0x005fb259	116	erase(iterator,iterator)	unsorted/fn_005FB000.cpp	vc6 guest	?erase@?$_Tree@HU?$pair@$$CBHV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@std@@U_Kfn@?$map@HV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@H@2@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@2@U?$less@H@2@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@QAE?AViterator@12@V312@0@Z
+0x005fb2cd	170	insert(const value_type&)	unsorted/fn_005FB000.cpp	vc6 guest	?insert@?$_Tree@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@2@U_Kfn@?$map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@H@2@@2@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@H@2@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@2@U_Kfn@?$map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@H@2@@2@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@H@2@@std@@_N@2@ABU?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@2@@Z
+0x005fb377	56	_Erase(_Nodeptr)	unsorted/fn_005FB000.cpp	vc6 guest	?_Erase@?$_Tree@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@2@U_Kfn@?$map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@H@2@@2@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@H@2@@std@@IAEXPAU_Node@12@@Z
 0x005fb3af	48	_Erase(_Nodeptr)	unsorted/fn_005FB000.cpp	vc6 guest	?_Erase@?$_Tree@HU?$pair@$$CBHH@std@@U_Kfn@?$map@HHU?$less@H@std@@V?$allocator@H@2@@2@U?$less@H@2@V?$allocator@H@2@@std@@IAEXPAU_Node@12@@Z
 0x005fb3df	155	insert(const value_type&)	unsorted/fn_005FB000.cpp	vc6 guest	?insert@?$_Tree@HU?$pair@$$CBHV?$vector@HV?$allocator@H@std@@@std@@@std@@U_Kfn@?$map@HV?$vector@HV?$allocator@H@std@@@std@@U?$less@H@2@V?$allocator@V?$vector@HV?$allocator@H@std@@@std@@@2@@2@U?$less@H@2@V?$allocator@V?$vector@HV?$allocator@H@std@@@std@@@2@@std@@QAE?AU?$pair@Viterator@?$_Tree@HU?$pair@$$CBHV?$vector@HV?$allocator@H@std@@@std@@@std@@U_Kfn@?$map@HV?$vector@HV?$allocator@H@std@@@std@@U?$less@H@2@V?$allocator@V?$vector@HV?$allocator@H@std@@@std@@@2@@2@U?$less@H@2@V?$allocator@V?$vector@HV?$allocator@H@std@@@std@@@2@@std@@_N@2@ABU?$pair@$$CBHV?$vector@HV?$allocator@H@std@@@std@@@2@@Z
 0x005fb47a	619	erase(iterator)	unsorted/fn_005FB000.cpp	vc6 guest	?erase@?$_Tree@HU?$pair@$$CBHV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@std@@U_Kfn@?$map@HV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@H@2@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@2@U?$less@H@2@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@QAE?AViterator@12@V312@@Z
@@ -3912,7 +3912,7 @@ address	size	symbol	source	modes	decorated
 0x006345f0	381	twIORequestQueue::twIORequestQueue(twQueueName)	Tiger/twfsys.cpp	vc6	??0twIORequestQueue@@QAE@VtwQueueName@@@Z
 0x00634770	160	twIORequestQueue::~twIORequestQueue()	Tiger/twfsys.cpp	vc6	??1twIORequestQueue@@QAE@XZ
 0x00634810	302	twIORequestQueue::mAdd(twIORequest)	Tiger/twfsys.cpp	partial	?mAdd@twIORequestQueue@@QAEXVtwIORequest@@@Z
-0x00634940	520	twIORequestQueueManager::~twIORequestQueueManager()	Tiger/twfsys.cpp	partial	??1twIORequestQueueManager@@QAE@XZ
+0x00634940	520	twIORequestQueueManager::~twIORequestQueueManager()	Tiger/twfsys.cpp	vc6	??1twIORequestQueueManager@@QAE@XZ
 0x00634b50	591	twIORequestQueueManager::mRequest(twIORequest)	Tiger/twfsys.cpp	partial	?mRequest@twIORequestQueueManager@@QAEXVtwIORequest@@@Z
 0x00637820	111	twClock::mActivate()	Tiger/twclock.cpp	vc6 guest	?mActivate@twClock@@UAEXXZ
 0x00637890	85	twClock::mDeactivate()	Tiger/twclock.cpp	vc6 guest	?mDeactivate@twClock@@UAEXXZ
@@ -5036,7 +5036,7 @@ address	size	symbol	source	modes	decorated
 0x006f6580	66	tHeartbeatTimer::OnAutoRunHB(int32)	Common/Timer/HeartbeatTimer.cpp	vc6 guest	?OnAutoRunHB@tHeartbeatTimer@@SAXJ@Z
 0x006f65d0	316	tHeartbeatTimer::Heartbeat()	Common/Timer/HeartbeatTimer.cpp	vc6 guest	?Heartbeat@tHeartbeatTimer@@SAXXZ
 0x006f6b60	30	tSettings::`scalar deleting destructor'	Common/Settings.cpp	vc6	??_GtSettings@@UAEPAXI@Z
-0x006f6b80	217	tSettings::~tSettings()	Common/Settings.cpp	partial	??1tSettings@@UAE@XZ
+0x006f6b80	217	tSettings::~tSettings()	Common/Settings.cpp	vc6	??1tSettings@@UAE@XZ
 0x006f87d0	33	tDateAndTime::tDateAndTime()	Common/DateAndTime.cpp	vc6	??0tDateAndTime@@QAE@XZ
 0x006f8800	29	tDateAndTime::tDateAndTime(time_t)	Common/DateAndTime.cpp	vc6	??0tDateAndTime@@QAE@J@Z
 0x006f8820	12	tDateAndTime::operator=(time_t)	Common/DateAndTime.cpp	vc6 guest	??4tDateAndTime@@QAEABV0@J@Z
@@ -5056,17 +5056,17 @@ address	size	symbol	source	modes	decorated
 0x006f8e90	29	tStreamable::tObjectIDInfo::tObjectIDInfo()	Common/DataStore/Streamable.cpp	vc6	??0tObjectIDInfo@tStreamable@nDataStore@@QAE@XZ
 0x006f8eb0	25	tStreamable::tStreamable(iObjectVersion)	Common/DataStore/Streamable.cpp	vc6	??0tStreamable@nDataStore@@QAE@E@Z
 0x006f8ed0	7	tStreamable::~tStreamable()	Common/DataStore/Streamable.cpp	vc6	??1tStreamable@nDataStore@@UAE@XZ
-0x006f8ee0	587	tStreamable::GetObjectID() const	Common/DataStore/Streamable.cpp	partial	?GetObjectID@tStreamable@nDataStore@@QBEKXZ
+0x006f8ee0	587	tStreamable::GetObjectID() const	Common/DataStore/Streamable.cpp	vc6 guest	?GetObjectID@tStreamable@nDataStore@@QBEKXZ
 0x006f9130	4	tStreamable::GetVersion() const	Common/DataStore/Streamable.cpp	vc6 guest	?GetVersion@tStreamable@nDataStore@@QBEEXZ
-0x006f9140	384	operator>>(nDataStore::tInput&,tStreamable&)	Common/DataStore/Streamable.cpp	partial	??5nDataStore@@YAAAVtInput@0@AAV10@AAVtStreamable@0@@Z
-0x006f92c0	341	tStreamable::tCRCFailed::tCRCFailed(const tCRCFailed&)	Common/DataStore/Streamable.cpp	partial	??0tCRCFailed@tStreamable@nDataStore@@QAE@ABV012@@Z
+0x006f9140	384	operator>>(nDataStore::tInput&,tStreamable&)	Common/DataStore/Streamable.cpp	vc6 guest	??5nDataStore@@YAAAVtInput@0@AAV10@AAVtStreamable@0@@Z
+0x006f92c0	341	tStreamable::tCRCFailed::tCRCFailed(const tCRCFailed&)	Common/DataStore/Streamable.cpp	vc6	??0tCRCFailed@tStreamable@nDataStore@@QAE@ABV012@@Z
 0x006f9420	534	operator<<(nDataStore::tOutput&,const tStreamable&)	Common/DataStore/Streamable.cpp	vc6 guest	??6nDataStore@@YAAAVtOutput@0@AAV10@ABVtStreamable@0@@Z
 0x006fa440	9	tID::IsValid() const	Common/Database/DatabaseID.cpp	vc6 guest	?IsValid@tID@nDatabase@@QBE_NXZ
 0x006fa450	8	tgPrefsPart::mActivate()	Common/Database/DatabaseID.cpp	vc6 guest	?mActivate@tgPrefsPart@@UAEXXZ
 0x006fa460	16	tID::operator==(const tID&) const	Common/Database/DatabaseID.cpp	vc6 guest	??8tID@nDatabase@@QBE_NABV01@@Z
 0x006fa470	16	tID::operator!=(const tID&) const	Common/Database/DatabaseID.cpp	vc6 guest	??9tID@nDatabase@@QBE_NABV01@@Z
 0x006fa480	16	tID::operator<(const tID&) const	Common/Database/DatabaseID.cpp	vc6 guest	??MtID@nDatabase@@QBE_NABV01@@Z
-0x006fa540	364	tDatabaseObject::tDatabaseObject(iObjectVersion)	Common/Database/DatabaseObject.cpp	partial	??0tDatabaseObject@nDatabase@@QAE@E@Z
+0x006fa540	364	tDatabaseObject::tDatabaseObject(iObjectVersion)	Common/Database/DatabaseObject.cpp	vc6	??0tDatabaseObject@nDatabase@@QAE@E@Z
 0x006fa6b0	30	tDatabaseObject::`scalar deleting destructor'	Common/Database/DatabaseObject.cpp	vc6	??_GtDatabaseObject@nDatabase@@UAEPAXI@Z
 0x006fa6d0	401	tDatabaseObject::tDatabaseObject(const tDatabaseObject&)	Common/Database/DatabaseObject.cpp	vc6	??0tDatabaseObject@nDatabase@@QAE@ABV01@@Z
 0x006fa870	383	tDatabaseObject::operator=(const tDatabaseObject&)	Common/Database/DatabaseObject.cpp	vc6 guest	??4tDatabaseObject@nDatabase@@QAEAAV01@ABV01@@Z
@@ -5075,7 +5075,7 @@ address	size	symbol	source	modes	decorated
 0x006fac20	413	tDatabaseObject::MakeReadOnly()	Common/Database/DatabaseObject.cpp	vc6 guest	?MakeReadOnly@tDatabaseObject@nDatabase@@UAEXXZ
 0x006fadc0	25	tDatabaseObject::SetID(const tID&)	Common/Database/DatabaseObject.cpp	vc6 guest	?SetID@tDatabaseObject@nDatabase@@UAEXABVtID@2@@Z
 0x006fade0	324	tDatabaseObject::SetLockID(const int32u)	Common/Database/DatabaseObject.cpp	vc6 guest	?SetLockID@tDatabaseObject@nDatabase@@UAEXK@Z
-0x006faf30	441	tDatabaseObject::AttachToDB(const tID&)	Common/Database/DatabaseObject.cpp	partial	?AttachToDB@tDatabaseObject@nDatabase@@MAEXABVtID@2@@Z
+0x006faf30	441	tDatabaseObject::AttachToDB(const tID&)	Common/Database/DatabaseObject.cpp	vc6 guest	?AttachToDB@tDatabaseObject@nDatabase@@MAEXABVtID@2@@Z
 0x006fb0f0	344	tDatabaseObject::RemoveFromDB()	Common/Database/DatabaseObject.cpp	vc6 guest	?RemoveFromDB@tDatabaseObject@nDatabase@@MAEXXZ
 0x006fb3f0	358	tDatabaseObject::UnLock()	Common/Database/DatabaseObject.cpp	vc6 guest	?UnLock@tDatabaseObject@nDatabase@@MAEXXZ
 0x006fb560	317	tDatabaseObject::GetLockID() const	Common/Database/DatabaseObject.cpp	vc6 guest	?GetLockID@tDatabaseObject@nDatabase@@UBEKXZ
@@ -5120,11 +5120,11 @@ address	size	symbol	source	modes	decorated
 0x006fe600	30	tLogStream::tStreamBuf::`scalar deleting destructor'	Common/Log/LogStream.cpp	vc6	??_GtStreamBuf@tLogStream@nLog@@UAEPAXI@Z
 0x006fe720	340	tLogStream::tStreamBuf::xsputn(const char*,std::streamsize)	Common/Log/LogStream.cpp	partial	?xsputn@tStreamBuf@tLogStream@nLog@@UAEHPBDH@Z
 0x006fe880	28	tLogStream::tStreamBuf::overflow(int)	Common/Log/LogStream.cpp	vc6 guest	?overflow@tStreamBuf@tLogStream@nLog@@UAEHH@Z
-0x006fe8b0	377	tLogStream::tStreamBuf::Report()	Common/Log/LogStream.cpp	partial	?Report@tStreamBuf@tLogStream@nLog@@UAEXXZ
+0x006fe8b0	377	tLogStream::tStreamBuf::Report()	Common/Log/LogStream.cpp	vc6 guest	?Report@tStreamBuf@tLogStream@nLog@@UAEXXZ
 0x006feda0	25	tLogStream::tStreamBuf::SetEventType(tLog::tEventType)	Common/Log/LogStream.cpp	vc6 guest	?SetEventType@tStreamBuf@tLogStream@nLog@@UAEXW4tEventType@tLog@3@@Z
 0x006fedc0	262	tLogStream::tLogStream(tLog::tEventType)	Common/Log/LogStream.cpp	vc6	??0tLogStream@nLog@@QAE@W4tEventType@tLog@1@@Z
 0x006feed0	45	tLogStream::`scalar deleting destructor'	Common/Log/LogStream.cpp	vc6	??_GtLogStream@nLog@@UAEPAXI@Z
-0x006fefd0	406	tThread::tThread()	Common/Thread/Thread.cpp	partial	??0tThread@@QAE@XZ
+0x006fefd0	406	tThread::tThread()	Common/Thread/Thread.cpp	vc6	??0tThread@@QAE@XZ
 0x006ff170	224	tThread::~tThread()	Common/Thread/Thread.cpp	vc6	??1tThread@@QAE@XZ
 0x006ff4f0	471	tThread::StopThread(int32u)	Common/Thread/Thread.cpp	vc6 guest	?StopThread@tThread@@QAEXK@Z
 0x006ff6d0	24	tThread::mSetPriority(ThreadPriority)	Common/Thread/Thread.cpp	vc6 guest	?mSetPriority@tThread@@QAEXW4ThreadPriority@1@@Z
@@ -5136,14 +5136,14 @@ address	size	symbol	source	modes	decorated
 0x00707e80	97	tFileDatabaseMgr::tDatabaseInfo::tDatabaseInfo()	Common/Database/FileDatabaseMgr.cpp	vc6	??0tDatabaseInfo@tFileDatabaseMgr@nDatabase@@QAE@XZ
 0x00707ef0	588	tFileDatabaseMgr::tDatabaseInfo::StreamOut(nDataStore::tOutput&) const	Common/Database/FileDatabaseMgr.cpp	vc6 guest	?StreamOut@tDatabaseInfo@tFileDatabaseMgr@nDatabase@@UBEXAAVtOutput@nDataStore@@@Z
 0x00708140	472	tFileDatabaseMgr::tDatabaseInfo::StreamIn(nDataStore::tInput&)	Common/Database/FileDatabaseMgr.cpp	partial	?StreamIn@tDatabaseInfo@tFileDatabaseMgr@nDatabase@@UAEXAAVtInput@nDataStore@@@Z
-0x00708330	216	tFileDatabaseMgr::kDatabaseInfoFileName (dynamic initializer)	Common/Database/FileDatabaseMgr.cpp	partial	
+0x00708330	216	tFileDatabaseMgr::kDatabaseInfoFileName (dynamic initializer)	Common/Database/FileDatabaseMgr.cpp	vc6	
 0x00708410	12	tFileDatabaseMgr::kDatabaseInfoFileName (atexit registration)	Common/Database/FileDatabaseMgr.cpp	vc6	
-0x00708490	216	tFileDatabaseMgr::kDatabaseVersionFileName (dynamic initializer)	Common/Database/FileDatabaseMgr.cpp	partial	
+0x00708490	216	tFileDatabaseMgr::kDatabaseVersionFileName (dynamic initializer)	Common/Database/FileDatabaseMgr.cpp	vc6	
 0x00708570	12	tFileDatabaseMgr::kDatabaseVersionFileName (atexit registration)	Common/Database/FileDatabaseMgr.cpp	vc6	
-0x007085f0	216	tFileDatabaseMgr::kDatabaseSaveDirectory (dynamic initializer)	Common/Database/FileDatabaseMgr.cpp	partial	
+0x007085f0	216	tFileDatabaseMgr::kDatabaseSaveDirectory (dynamic initializer)	Common/Database/FileDatabaseMgr.cpp	vc6	
 0x007086d0	12	tFileDatabaseMgr::kDatabaseSaveDirectory (atexit registration)	Common/Database/FileDatabaseMgr.cpp	vc6	
 0x00708800	30	tFileDatabaseMgr::`scalar deleting destructor'	Common/Database/FileDatabaseMgr.cpp	vc6	??_GtFileDatabaseMgr@nDatabase@@UAEPAXI@Z
-0x00708820	287	tFileDatabaseMgr::~tFileDatabaseMgr()	Common/Database/FileDatabaseMgr.cpp	partial	??1tFileDatabaseMgr@nDatabase@@UAE@XZ
+0x00708820	287	tFileDatabaseMgr::~tFileDatabaseMgr()	Common/Database/FileDatabaseMgr.cpp	vc6	??1tFileDatabaseMgr@nDatabase@@UAE@XZ
 0x00708fc0	153	tFileDatabaseMgr::GetCurDBInfo()	Common/Database/FileDatabaseMgr.cpp	vc6 guest	?GetCurDBInfo@tFileDatabaseMgr@nDatabase@@UAE?AVtDatabaseInfo@12@XZ
 0x00709060	69	tFileDatabaseMgr::GetDBInfo(int32) const	Common/Database/FileDatabaseMgr.cpp	vc6 guest	?GetDBInfo@tFileDatabaseMgr@nDatabase@@UBEPBVtDatabaseInfo@12@J@Z
 0x007090b0	442	tFileDatabaseMgr::New(const tDatabaseInfo&)	Common/Database/FileDatabaseMgr.cpp	partial	?New@tFileDatabaseMgr@nDatabase@@UAEPAVtDatabase@2@ABVtDatabaseInfo@12@@Z

@@ -1,0 +1,875 @@
+//	xtree: std::_Tree, the balanced tree behind std::map, std::multimap, std::set and std::multiset.
+// This project's own reconstruction of the original's tree from the executable's code; the units
+// find it first because op/ leads the include path, so `#include <xtree>` from <map> and <set> reaches it.
+// Evidence: the constructor 0x0042b346 (_Init), the destructors 0x005fb033 and 0x004c6dc1, _Lbound
+// 0x004793a8, _Buynode 0x00613bc0, _Lrotate 0x00613b70, _Inc 0x00613c70, _Dec 0x006d40d0, _Min
+// 0x0070dc20, _Copy 0x00679310, equal_range 0x00636e70, and the decorated names in the symbol table
+// (class, template parameters, nested _Node, iterator and const_iterator, member names, argument types).
+// Layout: the allocator at +0 and the key compare at +1 (both empty), _Head +4, _Nil +8, _Multi +0xc,
+// _Size +0x10 (0x14 bytes). Each tree owns its nil node, made in _Init and freed in the destructor,
+// so there are no static _Nil or _Nilrefs data. A node is _Left +0, _Parent +4, _Right +8, the value,
+// then a colour byte and a nil-flag byte; _Buynode takes the colour as a char. The routines that
+// cannot reach an object (_Min, _Max, the iterators' _Inc and _Dec) stop at the node's nil flag.
+// Some members are defined outside the class on purpose: the original calls them out of line.
+
+#ifndef xtree_h
+#define xtree_h 1
+
+#include <memory>
+#include <iterator>
+#include <utility>
+#include <xutility>
+
+namespace std {
+
+template<class _K, class _Ty, class _Kfn, class _Pr, class _A>
+class _Tree {
+public:
+	typedef _Tree<_K, _Ty, _Kfn, _Pr, _A> _Myt;
+	typedef _K key_type;
+	typedef _Ty value_type;
+	typedef _A::size_type size_type;
+	typedef _A::difference_type difference_type;
+	typedef _Ty *_Tptr;
+	typedef const _Ty *_Ctptr;
+	typedef _Ty& reference;
+	typedef const _Ty& const_reference;
+protected:
+	enum _Redbl { _Red, _Black };
+	struct _Node;
+	friend struct _Node;
+	typedef _Node *_Nodeptr;
+	struct _Node {
+		_Nodeptr _Left, _Parent, _Right;
+		value_type _Value;
+		char _Color;
+		bool _Isnil;
+	};
+	static _Nodeptr& _Left( _Nodeptr _P )
+	{
+		return ( (_Nodeptr&)(*_P)._Left );
+	}
+	static _Nodeptr& _Parent( _Nodeptr _P )
+	{
+		return ( (_Nodeptr&)(*_P)._Parent );
+	}
+	static _Nodeptr& _Right( _Nodeptr _P )
+	{
+		return ( (_Nodeptr&)(*_P)._Right );
+	}
+	static reference _Value( _Nodeptr _P )
+	{
+		return ( (reference)(*_P)._Value );
+	}
+	static char& _Color( _Nodeptr _P )
+	{
+		return ( (char&)(*_P)._Color );
+	}
+	static bool& _Isnil( _Nodeptr _P )
+	{
+		return ( (bool&)(*_P)._Isnil );
+	}
+	static _K& _Key( _Nodeptr _P )
+	{
+		return ( (_K&)_Kfn()( _Value( _P ) ) );
+	}
+public:
+	class iterator;
+	class const_iterator;
+	friend class iterator;
+	friend class const_iterator;
+	class iterator : public _Bidit<_Ty, difference_type> {
+	public:
+		iterator()
+		{
+		}
+		iterator( _Nodeptr _P ) : _Ptr( _P )
+		{
+		}
+		reference operator*() const
+		{
+			return ( _Value( _Ptr ) );
+		}
+		_Tptr operator->() const
+		{
+			return ( &**this );
+		}
+		iterator& operator++()
+		{
+			_Inc();
+			return ( *this );
+		}
+		iterator operator++( int )
+		{
+			iterator _Tmp = *this;
+			_Inc();
+			return ( _Tmp );
+		}
+		iterator& operator--()
+		{
+			_Dec();
+			return ( *this );
+		}
+		iterator operator--( int )
+		{
+			iterator _Tmp = *this;
+			_Dec();
+			return ( _Tmp );
+		}
+		bool operator==( const iterator& _X ) const
+		{
+			return ( _Ptr == _X._Ptr );
+		}
+		bool operator!=( const iterator& _X ) const
+		{
+			return ( !( *this == _X ) );
+		}
+		void _Dec();
+		void _Inc();
+		_Nodeptr _Mynode() const
+		{
+			return ( _Ptr );
+		}
+	protected:
+		_Nodeptr _Ptr;
+	};
+	class const_iterator : public _Bidit<_Ty, difference_type> {
+	public:
+		const_iterator()
+		{
+		}
+		const_iterator( _Nodeptr _P ) : _Ptr( _P )
+		{
+		}
+		const_iterator( const iterator& _X ) : _Ptr( _X._Mynode() )
+		{
+		}
+		const_reference operator*() const
+		{
+			return ( _Value( _Ptr ) );
+		}
+		_Ctptr operator->() const
+		{
+			return ( &**this );
+		}
+		const_iterator& operator++()
+		{
+			_Inc();
+			return ( *this );
+		}
+		const_iterator operator++( int )
+		{
+			const_iterator _Tmp = *this;
+			_Inc();
+			return ( _Tmp );
+		}
+		const_iterator& operator--()
+		{
+			_Dec();
+			return ( *this );
+		}
+		const_iterator operator--( int )
+		{
+			const_iterator _Tmp = *this;
+			_Dec();
+			return ( _Tmp );
+		}
+		bool operator==( const const_iterator& _X ) const
+		{
+			return ( _Ptr == _X._Ptr );
+		}
+		bool operator!=( const const_iterator& _X ) const
+		{
+			return ( !( *this == _X ) );
+		}
+		void _Dec();
+		void _Inc();
+		_Nodeptr _Mynode() const
+		{
+			return ( _Ptr );
+		}
+	protected:
+		_Nodeptr _Ptr;
+	};
+	typedef reverse_bidirectional_iterator<iterator, value_type, reference, _Tptr, difference_type> reverse_iterator;
+	typedef reverse_bidirectional_iterator<const_iterator, value_type, const_reference, _Ctptr, difference_type> const_reverse_iterator;
+	typedef pair<iterator, bool> _Pairib;
+	typedef pair<iterator, iterator> _Pairii;
+	typedef pair<const_iterator, const_iterator> _Paircc;
+	explicit _Tree( const _Pr& _Parg, bool _Marg = false, const _A& _Al = _A() )
+		: allocator( _Al ), key_compare( _Parg ), _Multi( _Marg )
+	{
+		_Init();
+	}
+	_Tree( const _Myt& _X )
+		: allocator( _X.allocator ), key_compare( _X.key_compare ), _Multi( _X._Multi )
+	{
+		_Init();
+		_Copy( _X );
+	}
+	_Tree( const value_type *_F, const value_type *_L, const _Pr& _Parg, bool _Marg = false, const _A& _Al = _A() )
+		: allocator( _Al ), key_compare( _Parg ), _Multi( _Marg )
+	{
+		_Init();
+		insert( _F, _L );
+	}
+	~_Tree()
+	{
+		erase( begin(), end() );
+		_Freenode( _Head );
+		_Head = 0, _Size = 0;
+		_Freenode( _Nil );
+		_Nil = 0;
+	}
+	_Myt& operator=( const _Myt& _X )
+	{
+		if ( this != &_X )
+		{
+			erase( begin(), end() );
+			key_compare = _X.key_compare;
+			_Copy( _X );
+		}
+		return ( *this );
+	}
+	iterator begin()
+	{
+		return ( iterator( _Lmost() ) );
+	}
+	const_iterator begin() const
+	{
+		return ( const_iterator( _Lmost() ) );
+	}
+	iterator end()
+	{
+		return ( iterator( _Head ) );
+	}
+	const_iterator end() const
+	{
+		return ( const_iterator( _Head ) );
+	}
+	reverse_iterator rbegin()
+	{
+		return ( reverse_iterator( end() ) );
+	}
+	const_reverse_iterator rbegin() const
+	{
+		return ( const_reverse_iterator( end() ) );
+	}
+	reverse_iterator rend()
+	{
+		return ( reverse_iterator( begin() ) );
+	}
+	const_reverse_iterator rend() const
+	{
+		return ( const_reverse_iterator( begin() ) );
+	}
+	size_type size() const
+	{
+		return ( _Size );
+	}
+	size_type max_size() const
+	{
+		return ( allocator.max_size() );
+	}
+	bool empty() const
+	{
+		return ( size() == 0 );
+	}
+	_A get_allocator() const
+	{
+		return ( allocator );
+	}
+	_Pr key_comp() const
+	{
+		return ( key_compare );
+	}
+	_Pairib insert( const value_type& _V )
+	{
+		_Nodeptr _X = _Root();
+		_Nodeptr _Y = _Head;
+		bool _Ans = true;
+		while ( _X != _Nil )
+		{
+			_Y = _X;
+			_Ans = key_compare( _Kfn()( _V ), _Key( _X ) );
+			_X = _Ans ? _Left( _X ) : _Right( _X );
+		}
+		if ( _Multi )
+			return ( _Pairib( _Insert( _X, _Y, _V ), true ) );
+		iterator _P = iterator( _Y );
+		if ( !_Ans )
+			;
+		else if ( _P == begin() )
+			return ( _Pairib( _Insert( _X, _Y, _V ), true ) );
+		else
+			--_P;
+		if ( key_compare( _Key( _P._Mynode() ), _Kfn()( _V ) ) )
+			return ( _Pairib( _Insert( _X, _Y, _V ), true ) );
+		return ( _Pairib( _P, false ) );
+	}
+	iterator insert( iterator _P, const value_type& _V )
+	{
+		if ( size() == 0 )
+			return ( _Insert( _Root(), _Head, _V ) );
+		else if ( _P == begin() )
+		{
+			if ( key_compare( _Kfn()( _V ), _Key( _P._Mynode() ) ) )
+				return ( _Insert( _Lmost(), _P._Mynode(), _V ) );
+		}
+		else if ( _P == end() )
+		{
+			if ( key_compare( _Key( _Rmost() ), _Kfn()( _V ) ) )
+				return ( _Insert( _Nil, _Rmost(), _V ) );
+		}
+		else
+		{
+			iterator _S = _P;
+			if ( key_compare( _Key( ( --_S )._Mynode() ), _Kfn()( _V ) )
+				&& key_compare( _Kfn()( _V ), _Key( _P._Mynode() ) ) )
+			{
+				if ( _Right( _S._Mynode() ) == _Nil )
+					return ( _Insert( _Nil, _S._Mynode(), _V ) );
+				else
+					return ( _Insert( _P._Mynode(), _P._Mynode(), _V ) );
+			}
+		}
+		return ( insert( _V ).first );
+	}
+	void insert( iterator _F, iterator _L )
+	{
+		for ( ; _F != _L; ++_F )
+			insert( *_F );
+	}
+	void insert( const value_type *_F, const value_type *_L )
+	{
+		for ( ; _F != _L; ++_F )
+			insert( *_F );
+	}
+	iterator erase( iterator _P );
+	iterator erase( iterator _F, iterator _L )
+	{
+		if ( size() == 0 || _F != begin() || _L != end() )
+		{
+			while ( _F != _L )
+				erase( _F++ );
+			return ( _F );
+		}
+		else
+		{
+			_Erase( _Root() );
+			_Root() = _Nil, _Size = 0;
+			_Lmost() = _Head, _Rmost() = _Head;
+			return ( begin() );
+		}
+	}
+	size_type erase( const _K& _X )
+	{
+		_Pairii _P = equal_range( _X );
+		size_type _N = 0;
+		_Distance( _P.first, _P.second, _N );
+		erase( _P.first, _P.second );
+		return ( _N );
+	}
+	void erase( const _K *_F, const _K *_L )
+	{
+		for ( ; _F != _L; ++_F )
+			erase( *_F );
+	}
+	void clear()
+	{
+		erase( begin(), end() );
+	}
+	iterator find( const _K& _Kv )
+	{
+		iterator _P = lower_bound( _Kv );
+		return ( _P == end() || key_compare( _Kv, _Key( _P._Mynode() ) ) ? end() : _P );
+	}
+	const_iterator find( const _K& _Kv ) const
+	{
+		const_iterator _P = lower_bound( _Kv );
+		return ( _P == end() || key_compare( _Kv, _Key( _P._Mynode() ) ) ? end() : _P );
+	}
+	size_type count( const _K& _Kv ) const
+	{
+		_Paircc _Ans = equal_range( _Kv );
+		size_type _N = 0;
+		_Distance( _Ans.first, _Ans.second, _N );
+		return ( _N );
+	}
+	iterator lower_bound( const _K& _Kv )
+	{
+		return ( iterator( _Lbound( _Kv ) ) );
+	}
+	const_iterator lower_bound( const _K& _Kv ) const
+	{
+		return ( const_iterator( _Lbound( _Kv ) ) );
+	}
+	iterator upper_bound( const _K& _Kv )
+	{
+		return ( iterator( _Ubound( _Kv ) ) );
+	}
+	const_iterator upper_bound( const _K& _Kv ) const
+	{
+		return ( const_iterator( _Ubound( _Kv ) ) );
+	}
+	_Pairii equal_range( const _K& _Kv );
+	_Paircc equal_range( const _K& _Kv ) const;
+	void swap( _Myt& _X )
+	{
+		if ( get_allocator() == _X.get_allocator() )
+		{
+			std::swap( key_compare, _X.key_compare );
+			std::swap( _Head, _X._Head );
+			std::swap( _Nil, _X._Nil );
+			std::swap( _Multi, _X._Multi );
+			std::swap( _Size, _X._Size );
+		}
+		else
+		{
+			_Myt _Ts = *this;
+			*this = _X, _X = _Ts;
+		}
+	}
+	friend void swap( _Myt& _X, _Myt& _Y )
+	{
+		_X.swap( _Y );
+	}
+protected:
+	void _Copy( const _Myt& _X )
+	{
+		_Root() = _Copy( _X._Root(), _Head );
+		_Size = _X.size();
+		if ( _Root() != _Nil )
+		{
+			_Lmost() = _Min( _Root() );
+			_Rmost() = _Max( _Root() );
+		}
+		else
+			_Lmost() = _Head, _Rmost() = _Head;
+	}
+	_Nodeptr _Copy( _Nodeptr _X, _Nodeptr _P )
+	{
+		_Nodeptr _R = _Nil;
+		if ( !_Isnil( _X ) )
+		{
+			_Nodeptr _Y = _Buynode( _P, _Color( _X ) );
+			_Consval( &_Value( _Y ), _Value( _X ) );
+			_Left( _Y ) = _Nil, _Right( _Y ) = _Nil;
+			if ( _R == _Nil )
+				_R = _Y;
+			_Left( _Y ) = _Copy( _Left( _X ), _Y );
+			_Right( _Y ) = _Copy( _Right( _X ), _Y );
+		}
+		return ( _R );
+	}
+	void _Erase( _Nodeptr _X )
+	{
+		for ( _Nodeptr _Y = _X; _Y != _Nil; _X = _Y )
+		{
+			_Erase( _Right( _Y ) );
+			_Y = _Left( _Y );
+			_Destval( &_Value( _X ) );
+			_Freenode( _X );
+		}
+	}
+	void _Init()
+	{
+		_Nil = _Buynode( 0, _Black );
+		_Isnil( _Nil ) = true;
+		_Left( _Nil ) = 0, _Right( _Nil ) = 0;
+		_Head = _Buynode( _Nil, _Red );
+		_Lmost() = _Head, _Rmost() = _Head;
+		_Size = 0;
+	}
+	iterator _Insert( _Nodeptr _X, _Nodeptr _Y, const _Ty& _V )
+	{
+		_Nodeptr _Z = _Buynode( _Y, _Red );
+		_Left( _Z ) = _Nil, _Right( _Z ) = _Nil;
+		_Consval( &_Value( _Z ), _V );
+		++_Size;
+		if ( _Y == _Head || _X != _Nil || key_compare( _Kfn()( _V ), _Key( _Y ) ) )
+		{
+			_Left( _Y ) = _Z;
+			if ( _Y == _Head )
+			{
+				_Root() = _Z;
+				_Rmost() = _Z;
+			}
+			else if ( _Y == _Lmost() )
+				_Lmost() = _Z;
+		}
+		else
+		{
+			_Right( _Y ) = _Z;
+			if ( _Y == _Rmost() )
+				_Rmost() = _Z;
+		}
+		for ( _X = _Z; _X != _Root() && _Color( _Parent( _X ) ) == _Red; )
+			if ( _Parent( _X ) == _Left( _Parent( _Parent( _X ) ) ) )
+			{
+				_Y = _Right( _Parent( _Parent( _X ) ) );
+				if ( _Color( _Y ) == _Red )
+				{
+					_Color( _Parent( _X ) ) = _Black;
+					_Color( _Y ) = _Black;
+					_Color( _Parent( _Parent( _X ) ) ) = _Red;
+					_X = _Parent( _Parent( _X ) );
+				}
+				else
+				{
+					if ( _X == _Right( _Parent( _X ) ) )
+					{
+						_X = _Parent( _X );
+						_Lrotate( _X );
+					}
+					_Color( _Parent( _X ) ) = _Black;
+					_Color( _Parent( _Parent( _X ) ) ) = _Red;
+					_Rrotate( _Parent( _Parent( _X ) ) );
+				}
+			}
+			else
+			{
+				_Y = _Left( _Parent( _Parent( _X ) ) );
+				if ( _Color( _Y ) == _Red )
+				{
+					_Color( _Parent( _X ) ) = _Black;
+					_Color( _Y ) = _Black;
+					_Color( _Parent( _Parent( _X ) ) ) = _Red;
+					_X = _Parent( _Parent( _X ) );
+				}
+				else
+				{
+					if ( _X == _Left( _Parent( _X ) ) )
+					{
+						_X = _Parent( _X );
+						_Rrotate( _X );
+					}
+					_Color( _Parent( _X ) ) = _Black;
+					_Color( _Parent( _Parent( _X ) ) ) = _Red;
+					_Lrotate( _Parent( _Parent( _X ) ) );
+				}
+			}
+		_Color( _Root() ) = _Black;
+		return ( iterator( _Z ) );
+	}
+	inline _Nodeptr _Lbound( const _K& _Kv ) const
+	{
+		_Nodeptr _X = _Root();
+		_Nodeptr _Y = _Head;
+		while ( _X != _Nil )
+			if ( key_compare( _Key( _X ), _Kv ) )
+				_X = _Right( _X );
+			else
+				_Y = _X, _X = _Left( _X );
+		return ( _Y );
+	}
+	inline _Nodeptr _Ubound( const _K& _Kv ) const
+	{
+		_Nodeptr _X = _Root();
+		_Nodeptr _Y = _Head;
+		while ( _X != _Nil )
+			if ( key_compare( _Kv, _Key( _X ) ) )
+				_Y = _X, _X = _Left( _X );
+			else
+				_X = _Right( _X );
+		return ( _Y );
+	}
+	void _Lrotate( _Nodeptr _X )
+	{
+		_Nodeptr _Y = _Right( _X );
+		_Right( _X ) = _Left( _Y );
+		if ( _Left( _Y ) != _Nil )
+			_Parent( _Left( _Y ) ) = _X;
+		_Parent( _Y ) = _Parent( _X );
+		if ( _X == _Root() )
+			_Root() = _Y;
+		else if ( _X == _Left( _Parent( _X ) ) )
+			_Left( _Parent( _X ) ) = _Y;
+		else
+			_Right( _Parent( _X ) ) = _Y;
+		_Left( _Y ) = _X;
+		_Parent( _X ) = _Y;
+	}
+	void _Rrotate( _Nodeptr _X )
+	{
+		_Nodeptr _Y = _Left( _X );
+		_Left( _X ) = _Right( _Y );
+		if ( _Right( _Y ) != _Nil )
+			_Parent( _Right( _Y ) ) = _X;
+		_Parent( _Y ) = _Parent( _X );
+		if ( _X == _Root() )
+			_Root() = _Y;
+		else if ( _X == _Right( _Parent( _X ) ) )
+			_Right( _Parent( _X ) ) = _Y;
+		else
+			_Left( _Parent( _X ) ) = _Y;
+		_Right( _Y ) = _X;
+		_Parent( _X ) = _Y;
+	}
+	static _Nodeptr _Max( _Nodeptr _P )
+	{
+		while ( !_Isnil( _Right( _P ) ) )
+			_P = _Right( _P );
+		return ( _P );
+	}
+	static _Nodeptr _Min( _Nodeptr _P )
+	{
+		while ( !_Isnil( _Left( _P ) ) )
+			_P = _Left( _P );
+		return ( _P );
+	}
+	_Nodeptr _Buynode( _Nodeptr _Parg, char _Carg )
+	{
+		_Nodeptr _S = (_Nodeptr)allocator._Charalloc( 1 * sizeof ( _Node ) );
+		_Parent( _S ) = _Parg;
+		_Color( _S ) = _Carg;
+		_Isnil( _S ) = false;
+		return ( _S );
+	}
+	void _Consval( _Tptr _P, const _Ty& _V )
+	{
+		_Construct( _P, _V );
+	}
+	void _Destval( _Tptr _P )
+	{
+		_Destroy( _P );
+	}
+	void _Freenode( _Nodeptr _S )
+	{
+		allocator.deallocate( _S, 1 );
+	}
+	_Nodeptr& _Lmost() const
+	{
+		return ( _Left( _Head ) );
+	}
+	_Nodeptr& _Rmost() const
+	{
+		return ( _Right( _Head ) );
+	}
+	_Nodeptr& _Root() const
+	{
+		return ( _Parent( _Head ) );
+	}
+	_A allocator;
+	_Pr key_compare;
+	_Nodeptr _Head;
+	_Nodeptr _Nil;
+	bool _Multi;
+	size_type _Size;
+};
+
+template<class _K, class _Ty, class _Kfn, class _Pr, class _A>
+_Tree<_K, _Ty, _Kfn, _Pr, _A>::_Pairii _Tree<_K, _Ty, _Kfn, _Pr, _A>::equal_range( const _K& _Kv )
+{
+	_Nodeptr _X = _Root();
+	_Nodeptr _U = _Head;
+	while ( _X != _Nil )
+		if ( key_compare( _Kv, _Key( _X ) ) )
+			_U = _X, _X = _Left( _X );
+		else
+			_X = _Right( _X );
+	_X = _Root();
+	_Nodeptr _L = _Head;
+	while ( _X != _Nil )
+		if ( key_compare( _Key( _X ), _Kv ) )
+			_X = _Right( _X );
+		else
+			_L = _X, _X = _Left( _X );
+	return ( _Pairii( iterator( _L ), iterator( _U ) ) );
+}
+
+template<class _K, class _Ty, class _Kfn, class _Pr, class _A>
+_Tree<_K, _Ty, _Kfn, _Pr, _A>::_Paircc _Tree<_K, _Ty, _Kfn, _Pr, _A>::equal_range( const _K& _Kv ) const
+{
+	return ( _Paircc( const_iterator( _Lbound( _Kv ) ), const_iterator( _Ubound( _Kv ) ) ) );
+}
+
+template<class _K, class _Ty, class _Kfn, class _Pr, class _A>
+void _Tree<_K, _Ty, _Kfn, _Pr, _A>::const_iterator::_Dec()
+	{
+		if ( _Color( _Ptr ) == _Red && _Parent( _Parent( _Ptr ) ) == _Ptr )
+			_Ptr = _Right( _Ptr );
+		else if ( !_Isnil( _Left( _Ptr ) ) )
+			_Ptr = _Max( _Left( _Ptr ) );
+		else
+		{
+			_Nodeptr _P;
+			while ( _Ptr == _Left( _P = _Parent( _Ptr ) ) )
+				_Ptr = _P;
+			_Ptr = _P;
+		}
+	}
+
+template<class _K, class _Ty, class _Kfn, class _Pr, class _A>
+void _Tree<_K, _Ty, _Kfn, _Pr, _A>::const_iterator::_Inc()
+	{
+		if ( _Isnil( _Right( _Ptr ) ) )
+		{
+			_Nodeptr _P;
+			while ( _Ptr == _Right( _P = _Parent( _Ptr ) ) )
+				_Ptr = _P;
+			if ( _Right( _Ptr ) != _P )
+				_Ptr = _P;
+		}
+		else
+			_Ptr = _Min( _Right( _Ptr ) );
+	}
+
+template<class _K, class _Ty, class _Kfn, class _Pr, class _A>
+void _Tree<_K, _Ty, _Kfn, _Pr, _A>::iterator::_Dec()
+	{
+		if ( _Color( _Ptr ) == _Red && _Parent( _Parent( _Ptr ) ) == _Ptr )
+			_Ptr = _Right( _Ptr );
+		else if ( !_Isnil( _Left( _Ptr ) ) )
+			_Ptr = _Max( _Left( _Ptr ) );
+		else
+		{
+			_Nodeptr _P;
+			while ( _Ptr == _Left( _P = _Parent( _Ptr ) ) )
+				_Ptr = _P;
+			_Ptr = _P;
+		}
+	}
+
+template<class _K, class _Ty, class _Kfn, class _Pr, class _A>
+void _Tree<_K, _Ty, _Kfn, _Pr, _A>::iterator::_Inc()
+	{
+		if ( _Isnil( _Right( _Ptr ) ) )
+		{
+			_Nodeptr _P;
+			while ( _Ptr == _Right( _P = _Parent( _Ptr ) ) )
+				_Ptr = _P;
+			if ( _Right( _Ptr ) != _P )
+				_Ptr = _P;
+		}
+		else
+			_Ptr = _Min( _Right( _Ptr ) );
+	}
+
+template<class _K, class _Ty, class _Kfn, class _Pr, class _A>
+_Tree<_K, _Ty, _Kfn, _Pr, _A>::iterator _Tree<_K, _Ty, _Kfn, _Pr, _A>::erase( iterator _P )
+{
+	_Nodeptr _X;
+	_Nodeptr _Y = ( _P++ )._Mynode();
+	_Nodeptr _Z = _Y;
+	if ( _Left( _Y ) == _Nil )
+		_X = _Right( _Y );
+	else if ( _Right( _Y ) == _Nil )
+		_X = _Left( _Y );
+	else
+		_Y = _Min( _Right( _Y ) ), _X = _Right( _Y );
+	if ( _Y != _Z )
+	{
+		_Parent( _Left( _Z ) ) = _Y;
+		_Left( _Y ) = _Left( _Z );
+		if ( _Y == _Right( _Z ) )
+			_Parent( _X ) = _Y;
+		else
+		{
+			_Parent( _X ) = _Parent( _Y );
+			_Left( _Parent( _Y ) ) = _X;
+			_Right( _Y ) = _Right( _Z );
+			_Parent( _Right( _Z ) ) = _Y;
+		}
+		if ( _Root() == _Z )
+			_Root() = _Y;
+		else if ( _Left( _Parent( _Z ) ) == _Z )
+			_Left( _Parent( _Z ) ) = _Y;
+		else
+			_Right( _Parent( _Z ) ) = _Y;
+		_Parent( _Y ) = _Parent( _Z );
+		std::swap( _Color( _Y ), _Color( _Z ) );
+		_Y = _Z;
+	}
+	else
+	{
+		_Parent( _X ) = _Parent( _Y );
+		if ( _Root() == _Z )
+			_Root() = _X;
+		else if ( _Left( _Parent( _Z ) ) == _Z )
+			_Left( _Parent( _Z ) ) = _X;
+		else
+			_Right( _Parent( _Z ) ) = _X;
+		if ( _Lmost() != _Z )
+			;
+		else if ( _Right( _Z ) == _Nil )
+			_Lmost() = _Parent( _Z );
+		else
+			_Lmost() = _Min( _X );
+		if ( _Rmost() != _Z )
+			;
+		else if ( _Left( _Z ) == _Nil )
+			_Rmost() = _Parent( _Z );
+		else
+			_Rmost() = _Max( _X );
+	}
+	if ( _Color( _Y ) == _Black )
+	{
+		for ( ; _X != _Root() && _Color( _X ) == _Black; _X = _Parent( _X ) )
+			if ( _X == _Left( _Parent( _X ) ) )
+			{
+				_Nodeptr _W = _Right( _Parent( _X ) );
+				if ( _Color( _W ) == _Red )
+				{
+					_Color( _W ) = _Black;
+					_Color( _Parent( _X ) ) = _Red;
+					_Lrotate( _Parent( _X ) );
+					_W = _Right( _Parent( _X ) );
+				}
+				if ( _Color( _Left( _W ) ) == _Black && _Color( _Right( _W ) ) == _Black )
+				{
+					_Color( _W ) = _Red;
+					continue;
+				}
+				else if ( _Color( _Right( _W ) ) == _Black )
+				{
+					_Color( _Left( _W ) ) = _Black;
+					_Color( _W ) = _Red;
+					_Rrotate( _W );
+					_W = _Right( _Parent( _X ) );
+				}
+				_Color( _W ) = _Color( _Parent( _X ) );
+				_Color( _Parent( _X ) ) = _Black;
+				_Color( _Right( _W ) ) = _Black;
+				_Lrotate( _Parent( _X ) );
+				break;
+			}
+			else
+			{
+				_Nodeptr _W = _Left( _Parent( _X ) );
+				if ( _Color( _W ) == _Red )
+				{
+					_Color( _W ) = _Black;
+					_Color( _Parent( _X ) ) = _Red;
+					_Rrotate( _Parent( _X ) );
+					_W = _Left( _Parent( _X ) );
+				}
+				if ( _Color( _Right( _W ) ) == _Black && _Color( _Left( _W ) ) == _Black )
+				{
+					_Color( _W ) = _Red;
+					continue;
+				}
+				else if ( _Color( _Left( _W ) ) == _Black )
+				{
+					_Color( _Right( _W ) ) = _Black;
+					_Color( _W ) = _Red;
+					_Lrotate( _W );
+					_W = _Left( _Parent( _X ) );
+				}
+				_Color( _W ) = _Color( _Parent( _X ) );
+				_Color( _Parent( _X ) ) = _Black;
+				_Color( _Left( _W ) ) = _Black;
+				_Rrotate( _Parent( _X ) );
+				break;
+			}
+		_Color( _X ) = _Black;
+	}
+	_Destval( &_Value( _Y ) );
+	_Freenode( _Y );
+	--_Size;
+	return ( _P );
+}
+
+}
+
+#endif // xtree_h

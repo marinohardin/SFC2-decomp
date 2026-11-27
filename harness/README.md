@@ -237,6 +237,33 @@ object, and cannot be baselined. COMDAT selection kinds are not compared here (`
 does that); only code bytes and relocation targets. The checkout root is matched on whole path segments; a row that no longer occurs is a `WARN` asking for its removal, so the
 list only shrinks. Only the units a claim builds are read: an unclaimed unit's object is not.
 
+**Every copy of an exact claim equals the original** (`--all` only, `report_exe_copies` in
+`lib/verify.py`, `exe_copy_findings` in `lib/objclash.py`). An inline function or a template
+member is emitted as a COMDAT in every object that uses it, and a linker keeps the first copy it
+sees, so a consumer that links the objects may place any of them at the claimed address. For each
+exact claim, every function COMDAT that another built object defines under the claim's symbol is
+compared with the exe at the claimed address under the same rules as the claim's own score
+(`target.build`: the functions.csv size, relocations masked only where the exe agrees, constants
+compared by value); the claiming unit's own copy is the one scored and is not compared again. A
+copy that differs is an `ERROR` naming the unit, the symbol, the address, the copy's size against
+the original's and the first difference, and fails the run (exit 2). The usual cause is a
+different definition in sight (a hand definition in the claiming unit against the header's in the
+others) or a different compile profile: the SDK profile's `/O2` makes other code than the game
+profile's `/O1` from the same header. The original's own libraries carried such copies as well, so
+a copy of the other profile can be the original's state and not a fault; it stays on the baseline.
+The `basic_string` rows of SDK-profile units are such: each of those copies was compared with the
+copy the SDK's static libraries carry for the same symbol and is identical to it, which is why
+rows of that kind were added with the owner's approval, the one way the baseline grows.
+Such a row is safe only if a consumer keeps the claiming unit's copy (by linking that object first,
+as the original's link order did); the check assumes this and nothing here verifies it. A copy that
+cannot be compared at all is reported as differing, with the reason. Known cases are listed in
+`analysis/results/exe_copy_baseline.tsv` (`unit<TAB>symbol`, matched on both, so the same symbol in
+a new unit is a new error); a row that no longer occurs is a `WARN` asking for its removal. Every
+`--all` writes the cases it found to `exe_copies.tsv` in its build folder, in the baseline's
+format. Compiler statics (`_$E`, `$`) and a symbol two claims compile to name no one address and
+are not compared. The check parses no object again (the scoring step's copies are reused) and runs
+no objdiff; comparing the copies of 4,628 exact claims took 0.2 s of an `--all`.
+
 **Units that read a changed file.** A run for some functions (not `--all`) builds their units,
 plus every other unit with a recorded function that reads a file changed since the checkout's
 HEAD (modified, added, deleted or untracked under `op/`): the unit itself, a file it includes
@@ -311,10 +338,30 @@ function, sorted by address). The base gate (`--base`, `scripts/check.sh`, and t
 `scripts/progress.py`) refuses a function that lost its recorded score, its exact status or its
 claim. An address on this list is not held: the run prints one `INFO` line per listed address it
 used, with the date and reason. It releases whatever the gate would call worse for that address,
-a lowered score included. A listed address that is still exact prints a stale-row warning, so the
-list cannot rot; remove the row then. A malformed row is an error. Adding a row needs the owner's
-approval and a reason a reader can check (for a function given up so that objects link, say); it
-is not a way to pass a lane or to hide a regression, and a lane never adds one.
+a lowered score included. The check of a rebuilt function against the tree's own `matched_set.json`
+does the same: a listed address that scores lower, or is no longer exact, is not a `REGRESSION`
+but one `INFO` line with the date and reason, and the landing step (`harness/landing.sh`) records
+its new, lower score, the one exception to a landing storing only raised scores. An address not
+on the list that scores lower still stops the landing, and nothing is written. A listed address
+that is still exact prints a stale-row warning, so the list cannot rot; remove the row then.
+
+A listed address with a recorded entry that is not exact, and that objdiff does not finish on
+within its time limit, is not scored at all. It is neither a `REGRESSION` nor a failure: one
+`INFO` line gives the date and reason and says `not scored: objdiff did not finish`, and its
+`matched_set.json` entry is left exactly as recorded, on a check and on a landing alike, so the
+base gate has nothing to hold. While objdiff does not finish, nothing can show the row stale; it
+stays until objdiff scores the function again, and the rules above apply from then on. Three
+cases stay errors: a listed address recorded exact, since exact status cannot be shown without a
+score; a listed address with no entry, which has nothing to keep; and any other failure to
+rebuild or score a listed address. An address not on the list that objdiff does not finish on is
+an error saying it could not be scored (and a `REGRESSION` when it is recorded). Observed with
+objdiff 3.8.3, not traced in its code: it did not finish on a target that carries two
+relocations which do not sit on an instruction's operand, one of them reaching the padding after
+the function, and finished once either of the two was taken out.
+
+A malformed row is an error. Adding a row needs the owner's approval and a reason a reader can
+check (for a function given up so that objects link, say); it is not a way to pass a lane or to
+hide a regression, and a lane never adds one.
 
 ## Hooks (`hooks/`)
 
