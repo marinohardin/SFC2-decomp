@@ -43,9 +43,8 @@ struct fn_006ac780_State
 	int					field_0x04;    // the next cache entry, below 0x150
 	float				field_0x08;    // vfunction74
 	float				field_0x0c;
-	float				field_0x10;    // vfunction73
-	float				field_0x14;
-	float				field_0x18;
+	// HYPOTHESIS: a point; vfunction73 takes a tPoint3 * and vfunction68 sets it with tPoint3::mSet
+	tPoint3				field_0x10;    // vfunction73
 	float				field_0x1c;    // vfunction77, vfunction76
 	float				field_0x20;
 	float				field_0x24;
