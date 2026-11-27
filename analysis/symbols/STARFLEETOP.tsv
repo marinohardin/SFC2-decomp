@@ -4723,7 +4723,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004a203a	function	fn_004a203a	tActualPlayer	?vfunction27@tActualPlayer@@UAEXXZ	claim		vtable
 0x004a20ad	function	fn_004a20ad					none
 0x004a282c	function	fn_004a282c					none
-0x004a2e75	function	fn_004a2e75	tActualPlayer				vtable
+0x004a2e75	function	fn_004a2e75	tActualPlayer	?vfunction5@tActualPlayer@@UAEXPAX@Z	claim		vtable
 0x004a2ef3	function	fn_004a2ef3	tActualPlayer				vtable
 0x004a2f71	function	fn_004a2f71	tActualPlayer				vtable
 0x004a2fef	function	fn_004a2fef	tActualPlayer				vtable
@@ -4795,7 +4795,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004a6c14	function	fn_004a6c14					none
 0x004a6c3e	function	fn_004a6c3e	tShadowTrans				vtable
 0x004a6cd1	function	fn_004a6cd1					none
-0x004a6f3d	function	fn_004a6f3d					none
+0x004a6f3d	function	fn_004a6f3d		?fn_004a6f3d@@YAHPAX@Z	add		none
 0x004a6fd8	function	fn_004a6fd8					none
 0x004a703d	function	tShadowBase::tShadowBase	tShadowBase				rtti
 0x004a7151	function	fn_004a7151					none
@@ -17531,7 +17531,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00671130	function	_GetCharHeight		?_GetCharHeight@@YAKKG@Z	claim		claim
 0x006711b0	function	_GetTypefacebyName		?_GetTypefacebyName@@YA?AW4eTypeface@@ABVtString@@@Z	mangled		mangled
 0x006711c0	function	tNotifier::~tNotifier	tNotifier	??1tNotifier@@UAE@XZ	callers		rtti
-0x006712c0	function	fn_006712c0					none
+0x006712c0	function	fn_006712c0		?fn_006712c0@tNotifier@@QAEXJJ@Z	add		none
 0x00671300	function	fn_00671300					none
 0x00671410	function	fn_00671410					none
 0x00671520	function	fn_00671520					none

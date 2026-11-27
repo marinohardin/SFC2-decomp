@@ -148,8 +148,9 @@ public:
 	tMinMaxFloat *field_0xbf0;
 	tMinMaxFloat *field_0xbf4;
 	tMinMaxFloat *field_0xbf8;
-	char field_0xbfc[0x1c];  // a value object, constructed by tValueBase (0x00436633) and given its own vtable
-	char field_0xc18[0x1c];  // a value object, constructed by tValueBase (0x00436633) and given its own vtable
+	// HYPOTHESIS: tValue<long>: vfunction5 stores at +0x18 and then notifies with (3, 0).
+	tValue<long> field_0xbfc;
+	tValue<long> field_0xc18;
 	tMinMaxFloat field_0xc34;
 	tMinMaxFloat field_0xc58;
 	tMinMaxFloat field_0xc7c;
@@ -291,5 +292,9 @@ public:
 };
 
 typedef char tActualPlayer_size_is_0x201c[ sizeof( tActualPlayer ) == 0x201c ? 1 : -1 ];
+
+// HYPOTHESIS: a cdecl free function of the object tActualPlayer::vfunction5 is given; returns
+// the value vfunction5 stores in field_0xc18.
+int fn_004a6f3d(void *aObject);
 
 #endif	// tActualPlayer_h
