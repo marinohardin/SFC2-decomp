@@ -1,6 +1,11 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/fn_004E9000.cpp
-// Functions: 0x004e917f to 0x004e9257, 3 in op/UNITS.tsv
-// Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
-// Profile:   game-release (harness/units.json)
+// HYPOTHESIS: tPlasmaR_Creator (RTTI) registers itself like tETrait_Creator; its constructor
+// is 0x004e926d in its own unit. It has no shared header yet, so it is declared here.
+class tPlasmaR_Creator
+{
+public:
+	tPlasmaR_Creator();
+	virtual ~tPlasmaR_Creator();
+};
+
+// FUNCTION: STARFLEETOP 0x004e924d
+tPlasmaR_Creator g_0092f0f0;

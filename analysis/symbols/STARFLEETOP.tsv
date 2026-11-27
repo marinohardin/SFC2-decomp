@@ -7026,7 +7026,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004e917f	function	tNetMsg_kCreateSeeker::~tNetMsg_kCreateSeeker	tNetMsg_kCreateSeeker				rtti
 0x004e924d	function	fn_004e924d					none
 0x004e9257	function	fn_004e9257					none
-0x004e926d	function	tPlasmaR_Creator::tPlasmaR_Creator	tPlasmaR_Creator				rtti
+0x004e926d	function	tPlasmaR_Creator::tPlasmaR_Creator	tPlasmaR_Creator	??0tPlasmaR_Creator@@QAE@XZ	add		rtti
 0x004e927f	function	fn_004e927f	tPlasmaR_Creator				vtable
 0x004e9285	function	fn_004e9285	tPlasmaR_Creator				vtable
 0x004e9328	function	fn_004e9328					none
