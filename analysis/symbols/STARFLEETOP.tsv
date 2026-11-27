@@ -7113,10 +7113,10 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004eb4cd	function	fn_004eb4cd	tTRBeam				vtable
 0x004eb517	function	fn_004eb517	tTRBeam				vtable
 0x004eb55f	function	fn_004eb55f	tTRBeam				vtable
-0x004eb5a7	function	fn_004eb5a7					none
+0x004eb5a7	function	fn_004eb5a7		?fn_004eb5a7@tTRBeam@@QAEHXZ	add		none
 0x004eb76a	function	fn_004eb76a	tTRBeam				vtable
 0x004eb79a	function	fn_004eb79a	tTRBeam				vtable
-0x004eb7f9	function	tNetMsg_kCreateDirect::~tNetMsg_kCreateDirect	tNetMsg_kCreateDirect				rtti
+0x004eb7f9	function	tNetMsg_kCreateDirect::~tNetMsg_kCreateDirect	tNetMsg_kCreateDirect	?fn_004eb7f9@tTRBeam@@QAEXM@Z	claim		rtti
 0x004eb8c2	function	fn_004eb8c2	tTRBeam				vtable
 0x004eb9da	function	fn_004eb9da					none
 0x004eb9e4	function	fn_004eb9e4					none
