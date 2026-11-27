@@ -159,8 +159,8 @@ extern char g_b00850b62;
 extern char g_b008930a2;
 
 
-// MATCH-ONLY: tObject_00918888 declares slots 5 and 6 as void and nullary; the calls here need
-// slot 5 to return an int and slot 6 to take a point and return a truth value.
+// MATCH-ONLY: tObject_00918888 declares slots 4 to 6 as void and nullary; the calls here need
+// slot 4 to return a matrix, slot 5 an int and slot 6 to take a point and return a truth value.
 class fn_00918888_slots
 {
 public:
@@ -168,7 +168,7 @@ public:
 	virtual void vfunction1();
 	virtual void vfunction2();
 	virtual void vfunction3();
-	virtual void vfunction4();
+	virtual tMatrix *vfunction4();
 	virtual int vfunction5();
 	virtual bool vfunction6( tPoint3 *point );
 	virtual void vfunction7();
@@ -550,6 +550,17 @@ void tState_Tactical::vfunction7( int param_1 )
 {
 	field_240 = 0;
 	g_00919f00.fn_004b6642();
+}
+
+// FUNCTION: STARFLEETOP 0x004b99f7
+void tState_Tactical::vfunction8( int *param_1 )
+{
+	// HYPOTHESIS: the argument is the view, as in vfunction9.
+	tView3D *view = (tView3D *)param_1;
+	view->vfunction27( 0, 0, 0 );
+	view->vfunction30( true, true );
+	gObject_00918888->vfunction3();
+	view->vfunction55( ( (fn_00918888_slots *)gObject_00918888 )->vfunction4() );
 }
 
 // FUNCTION: STARFLEETOP 0x004b9a3a
