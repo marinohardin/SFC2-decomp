@@ -103,6 +103,11 @@ Distinct, they are **2,396 names at 1,934 addresses** (2.5.5.2) and **1,126 name
 
 The `ServerPlatform.exe` figures are for the 2.5.5.2 server kit (3.1 MB, linked 2004-01-20), run with the
 whole 3D library; the `StarFleetOP.exe` figures above are from an earlier run.
+The table was rerun whole on that kit, so its "libmatch (before)" row is the kit's own libmatch
+baseline, not the earlier kit's result. On this kit the blind calibration has 4 wrong placements
+out of 1,115 (99.6%), all in the masked tiers, where the earlier kit had none: a masked or
+masked+ctx server placement is a lead, not a name. Nothing in the repository consumes the server
+placements.
 
 "Anonymous" means `obj:.text$x#n` (EH unwind funclets) and `obj|_$E..` (static initialisers):
 they are correctly placed, but their names only tell you which object they come from.
