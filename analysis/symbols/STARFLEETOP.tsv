@@ -6911,7 +6911,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004e49f5	function	fn_004e49f5	tPhaserA				vtable
 0x004e4b0c	function	fn_004e4b0c					none
 0x004e4b16	function	fn_004e4b16					none
-0x004e4b2c	function	tPhaserA_Creator::tPhaserA_Creator	tPhaserA_Creator				rtti
+0x004e4b2c	function	tPhaserA_Creator::tPhaserA_Creator	tPhaserA_Creator	??0tPhaserA_Creator@@QAE@XZ	add		rtti
 0x004e4b3e	function	fn_004e4b3e	tPhaserA_Creator				vtable
 0x004e4b44	function	fn_004e4b44	tPhaserA_Creator				vtable
 0x004e4bd1	function	fn_004e4bd1					none
