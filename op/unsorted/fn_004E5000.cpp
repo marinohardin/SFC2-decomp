@@ -36,3 +36,15 @@ void tPhaserB::fn_004e5022(float param_1)
 	unsigned int frame = (int)(count * g_00799f68 / source->field_20);
 	gNetControl.mQueueMsg(&msg, 6, vfunction37(), param_1 * 3.0f + (frame + 1) * 50);
 }
+
+// HYPOTHESIS: tPhaserB_Creator (RTTI) registers itself like tETrait_Creator; its constructor
+// is 0x004e5238 in its own unit. It has no shared header yet, so it is declared here.
+class tPhaserB_Creator
+{
+public:
+	tPhaserB_Creator();
+	virtual ~tPhaserB_Creator();
+};
+
+// FUNCTION: STARFLEETOP 0x004e5218
+tPhaserB_Creator g_0092efb0;

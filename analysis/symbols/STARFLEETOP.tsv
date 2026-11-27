@@ -6930,7 +6930,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004e50eb	function	fn_004e50eb	tPhaserB				vtable
 0x004e5218	function	fn_004e5218					none
 0x004e5222	function	fn_004e5222					none
-0x004e5238	function	tPhaserB_Creator::tPhaserB_Creator	tPhaserB_Creator				rtti
+0x004e5238	function	tPhaserB_Creator::tPhaserB_Creator	tPhaserB_Creator	??0tPhaserB_Creator@@QAE@XZ	add		rtti
 0x004e524a	function	fn_004e524a	tPhaserB_Creator				vtable
 0x004e5250	function	fn_004e5250	tPhaserB_Creator				vtable
 0x004e52dd	function	fn_004e52dd					none
