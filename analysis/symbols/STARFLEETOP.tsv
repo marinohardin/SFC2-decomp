@@ -1019,7 +1019,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0041e946	function	fn_0041e946	tEntity_Seeker	?vfunction71@tEntity_Seeker@@UAEHXZ	claim		vtable
 0x0041e94d	function	fn_0041e94d	tEntity_Seeker	?vfunction24@tEntity_Seeker@@UAEMXZ	claim		vtable
 0x0041e95a	function	fn_0041e95a	tEntity_Seeker				vtable
-0x0041ea2c	function	fn_0041ea2c					none
+0x0041ea2c	function	fn_0041ea2c		?fn_0041ea2c@@YGXPAUtPoint3@@PAVtEntity@@HH@Z	claim		none
 0x0041eaf9	function	fn_0041eaf9	tEntity_Seeker				vtable
 0x0041ee42	function	fn_0041ee42		?fn_0041ee42@tEntity_Seeker@@QAEXPAEPAD1@Z	callers		none
 0x0041eeaf	function	tNetMsg_kCreateSeekerAtPoint::~tNetMsg_kCreateSeekerAtPoint	tNetMsg_kCreateSeekerAtPoint	?fn_0041eeaf@tEntity_Seeker@@QAEXXZ	claim		rtti

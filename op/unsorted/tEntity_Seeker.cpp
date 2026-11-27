@@ -235,3 +235,51 @@ float tEntity_Seeker::vfunction24()
 {
 	return (float)field_0x268 / field_0x270;
 }
+
+extern float g_00c6c004[];
+extern float g_00c6a004[];
+
+// MATCH-ONLY: the original reads the two tables through inline functions returning float
+// (fld/fstp rather than a dword copy); their names are not known.
+inline float fn_inline_cos(tAngle aAngle)
+{
+	return g_00c6c004[aAngle & 0x1fff];
+}
+
+inline float fn_inline_sin(tAngle aAngle)
+{
+	return g_00c6a004[aAngle & 0x1fff];
+}
+
+// HYPOTHESIS: places a point just ahead of an entity along its heading; the third
+// argument is not read. It has no known caller and pops its four arguments (ret 0x10)
+// without using ecx, so it is taken as __stdcall.
+// FUNCTION: STARFLEETOP 0x0041ea2c
+void __stdcall fn_0041ea2c(tPoint3 *aPoint, tEntity *aEntity, int aUnused, int aFlag)
+{
+	tPoint3 offset;
+	offset.x = 0.0f;
+	offset.y = 0.0f;
+	offset.z = 0.0f;
+	if (aEntity != 0)
+	{
+		tPhysicalEntity *entity = (tPhysicalEntity *)g_008e1060.fn_004249c0(aEntity);
+		*aPoint = entity->fCurrPos;
+		float scale;
+		if (aFlag == 0)
+		{
+			scale = entity->vfunction14();
+			if (scale > 2.0f)
+				scale = 2.0f;
+		}
+		else
+			scale = 0.25f;
+		tAngle angle = entity->field_0x90;
+		offset.x = fn_inline_cos(angle);
+		offset.y = fn_inline_sin(angle);
+		if (aFlag == 0)
+			offset.z = -0.25f;
+		offset = offset * scale;
+		*aPoint += offset;
+	}
+}
