@@ -1,6 +1,6 @@
 {
  "schema": 3,
- "generated_at": "2026-11-26T17:37:36Z",
+ "generated_at": "2026-11-27T12:35:58Z",
  "text_bytes": 3751936,
  "inputs": {
   "functions_csv": {
@@ -41,7 +41,7 @@
   "matched_set": {
    "path": "analysis/results/matched_set.json",
    "present": true,
-   "sha256": "78e56ab39bd65ecd1dfa5bfb6621afb00724bda865dce67a254a49cb3ff52791"
+   "sha256": "2f4434294d6437390a2d29f040cc7d760da781f4511c4c32b0cd897b4739dde6"
   },
   "functional_set": {
    "path": "harness/functional_set.json",
@@ -51,7 +51,7 @@
   "manifest": {
    "path": "op/manifest.tsv",
    "present": true,
-   "sha256": "b9eec4ed530d919827a9d473cd7a4db24e23f51cce9978d0ca690b5f95286b4d"
+   "sha256": "904643ee671c1b83ad02b37f515b32eb13aac307772bf4c8dc2f50b07a3301e4"
   }
  },
  "function_kinds": {
@@ -84,13 +84,13 @@
    "bytes": 3473841,
    "status": {
     "exact": {
-     "functions": 4790,
-     "pct_functions": 20.762,
-     "function_bytes": 561344,
-     "funclet_bytes": 13386,
-     "bytes": 574730,
-     "pct_bytes": 16.5445,
-     "pct_text": 15.3182
+     "functions": 5127,
+     "pct_functions": 22.2227,
+     "function_bytes": 587126,
+     "funclet_bytes": 14076,
+     "bytes": 601202,
+     "pct_bytes": 17.3065,
+     "pct_text": 16.0238
     },
     "functional": {
      "functions": 0,
@@ -102,13 +102,13 @@
      "pct_text": 0.0
     },
     "partial": {
-     "functions": 468,
-     "pct_functions": 2.0285,
-     "function_bytes": 172843,
-     "funclet_bytes": 9383,
-     "bytes": 182226,
-     "pct_bytes": 5.2457,
-     "pct_text": 4.8569
+     "functions": 466,
+     "pct_functions": 2.0199,
+     "function_bytes": 170161,
+     "funclet_bytes": 8969,
+     "bytes": 179130,
+     "pct_bytes": 5.1565,
+     "pct_text": 4.7743
     },
     "lifted": {
      "functions": 0,
@@ -120,13 +120,13 @@
      "pct_text": 0.0
     },
     "original-x86": {
-     "functions": 17813,
-     "pct_functions": 77.2095,
-     "function_bytes": 2572113,
-     "funclet_bytes": 144772,
-     "bytes": 2716885,
-     "pct_bytes": 78.2098,
-     "pct_text": 72.4129
+     "functions": 17478,
+     "pct_functions": 75.7574,
+     "function_bytes": 2549013,
+     "funclet_bytes": 144496,
+     "bytes": 2693509,
+     "pct_bytes": 77.5369,
+     "pct_text": 71.7898
     }
    },
    "named": {
@@ -161,28 +161,28 @@
      "pct_functions": 0.0
     },
     "claim": {
-     "functions": 554,
-     "function_bytes": 65444,
-     "pct_functions": 2.4013
+     "functions": 579,
+     "function_bytes": 67713,
+     "pct_functions": 2.5096
     },
     "rtti-class": {
-     "functions": 7324,
-     "function_bytes": 973374,
-     "pct_functions": 31.7455
+     "functions": 7303,
+     "function_bytes": 971306,
+     "pct_functions": 31.6545
     },
     "none": {
-     "functions": 12535,
-     "function_bytes": 1763265,
-     "pct_functions": 54.3323
+     "functions": 12531,
+     "function_bytes": 1763064,
+     "pct_functions": 54.3149
     }
    },
    "named_real_symbol": {
-    "functions": 3212,
-    "pct_functions": 13.9222
+    "functions": 3237,
+    "pct_functions": 14.0306
    },
    "named_with_class": {
-    "functions": 10536,
-    "pct_functions": 45.6677
+    "functions": 10540,
+    "pct_functions": 45.6851
    }
   },
   "game": {
@@ -192,12 +192,12 @@
    "bytes": 3330800,
    "status": {
     "exact": {
-     "functions": 4790,
-     "pct_functions": 21.6116,
-     "function_bytes": 561344,
-     "funclet_bytes": 13386,
-     "bytes": 574730,
-     "pct_bytes": 17.255
+     "functions": 5127,
+     "pct_functions": 23.1321,
+     "function_bytes": 587126,
+     "funclet_bytes": 14076,
+     "bytes": 601202,
+     "pct_bytes": 18.0498
     },
     "functional": {
      "functions": 0,
@@ -208,12 +208,12 @@
      "pct_bytes": 0.0
     },
     "partial": {
-     "functions": 468,
-     "pct_functions": 2.1115,
-     "function_bytes": 172843,
-     "funclet_bytes": 9383,
-     "bytes": 182226,
-     "pct_bytes": 5.4709
+     "functions": 466,
+     "pct_functions": 2.1025,
+     "function_bytes": 170161,
+     "funclet_bytes": 8969,
+     "bytes": 179130,
+     "pct_bytes": 5.378
     },
     "lifted": {
      "functions": 0,
@@ -224,12 +224,12 @@
      "pct_bytes": 0.0
     },
     "original-x86": {
-     "functions": 16906,
-     "pct_functions": 76.2768,
-     "function_bytes": 2437257,
-     "funclet_bytes": 136587,
-     "bytes": 2573844,
-     "pct_bytes": 77.274
+     "functions": 16571,
+     "pct_functions": 74.7654,
+     "function_bytes": 2414157,
+     "funclet_bytes": 136311,
+     "bytes": 2550468,
+     "pct_bytes": 76.5722
     }
    },
    "named": {
@@ -264,28 +264,28 @@
      "pct_functions": 0.0
     },
     "claim": {
-     "functions": 554,
-     "function_bytes": 65444,
-     "pct_functions": 2.4995
+     "functions": 579,
+     "function_bytes": 67713,
+     "pct_functions": 2.6123
     },
     "rtti-class": {
-     "functions": 6990,
-     "function_bytes": 929797,
-     "pct_functions": 31.5376
+     "functions": 6969,
+     "function_bytes": 927729,
+     "pct_functions": 31.4429
     },
     "none": {
-     "functions": 12534,
-     "function_bytes": 1763237,
-     "pct_functions": 56.5512
+     "functions": 12530,
+     "function_bytes": 1763036,
+     "pct_functions": 56.5331
     }
    },
    "named_real_symbol": {
-    "functions": 2640,
-    "pct_functions": 11.9112
+    "functions": 2665,
+    "pct_functions": 12.024
    },
    "named_with_class": {
-    "functions": 9630,
-    "pct_functions": 43.4488
+    "functions": 9634,
+    "pct_functions": 43.4669
    }
   }
  },
@@ -1765,6 +1765,22 @@
    "name": "tNetMsg_kKillEntity::vfunction1"
   },
   {
+   "address": "00411790",
+   "name": "tPhysicalEntity::vfunction41"
+  },
+  {
+   "address": "004130d0",
+   "name": "FUN_004130d0"
+  },
+  {
+   "address": "004130f1",
+   "name": "FUN_004130f1"
+  },
+  {
+   "address": "00413112",
+   "name": "FUN_00413112"
+  },
+  {
    "address": "00413153",
    "name": "tPhysicalEntity::vfunction11"
   },
@@ -1889,6 +1905,50 @@
    "name": "tPhysicalEntity::vfunction46"
   },
   {
+   "address": "004140a9",
+   "name": "tPhysicalEntity::vfunction47"
+  },
+  {
+   "address": "004141fe",
+   "name": "tPhysicalEntity::vfunction23"
+  },
+  {
+   "address": "00414205",
+   "name": "tPhysicalEntity::vfunction24"
+  },
+  {
+   "address": "0041455b",
+   "name": "FUN_0041455b"
+  },
+  {
+   "address": "004145d7",
+   "name": "FUN_004145d7"
+  },
+  {
+   "address": "004145e7",
+   "name": "FUN_004145e7"
+  },
+  {
+   "address": "00414b2a",
+   "name": "tEntityShip::vfunction70"
+  },
+  {
+   "address": "00414b31",
+   "name": "tEntityShip::vfunction64"
+  },
+  {
+   "address": "00414b38",
+   "name": "tEntityShip::vfunction65"
+  },
+  {
+   "address": "00414b3f",
+   "name": "tEntityShip::vfunction75"
+  },
+  {
+   "address": "00414b47",
+   "name": "FUN_00414b47"
+  },
+  {
    "address": "00414b76",
    "name": "tNetMsg_kHoldPosition::vfunction1"
   },
@@ -1903,6 +1963,174 @@
   {
    "address": "00414b88",
    "name": "tNetMsg_kOrbit::vfunction1"
+  },
+  {
+   "address": "00414b8f",
+   "name": "tEntityShip::scalar_deleting_destructor"
+  },
+  {
+   "address": "00414bab",
+   "name": "FUN_00414bab"
+  },
+  {
+   "address": "00414cad",
+   "name": "FUN_00414cad"
+  },
+  {
+   "address": "00414cf5",
+   "name": "FUN_00414cf5"
+  },
+  {
+   "address": "00414d2f",
+   "name": "FUN_00414d2f"
+  },
+  {
+   "address": "00414d69",
+   "name": "FUN_00414d69"
+  },
+  {
+   "address": "00414d70",
+   "name": "tEntityShip::vfunction17"
+  },
+  {
+   "address": "00415479",
+   "name": "FUN_00415479"
+  },
+  {
+   "address": "004155c1",
+   "name": "FUN_004155c1"
+  },
+  {
+   "address": "004155ed",
+   "name": "tEntityShip::vfunction66"
+  },
+  {
+   "address": "00415628",
+   "name": "FUN_00415628"
+  },
+  {
+   "address": "0041563f",
+   "name": "FUN_0041563f"
+  },
+  {
+   "address": "00415652",
+   "name": "FUN_00415652"
+  },
+  {
+   "address": "00415672",
+   "name": "FUN_00415672"
+  },
+  {
+   "address": "004156b8",
+   "name": "FUN_004156b8"
+  },
+  {
+   "address": "004156e3",
+   "name": "FUN_004156e3"
+  },
+  {
+   "address": "004157ee",
+   "name": "FUN_004157ee"
+  },
+  {
+   "address": "00415aed",
+   "name": "FUN_00415aed"
+  },
+  {
+   "address": "00415b6b",
+   "name": "tEntityShip::vfunction63"
+  },
+  {
+   "address": "00415ff4",
+   "name": "tEntityShip::vfunction71"
+  },
+  {
+   "address": "00416067",
+   "name": "tEntityShip::vfunction13"
+  },
+  {
+   "address": "00416085",
+   "name": "FUN_00416085"
+  },
+  {
+   "address": "004160c2",
+   "name": "FUN_004160c2"
+  },
+  {
+   "address": "004160ee",
+   "name": "tEntityShip::vfunction68"
+  },
+  {
+   "address": "004165b7",
+   "name": "FUN_004165b7"
+  },
+  {
+   "address": "004165d4",
+   "name": "FUN_004165d4"
+  },
+  {
+   "address": "0041687b",
+   "name": "FUN_0041687b"
+  },
+  {
+   "address": "0041689a",
+   "name": "FUN_0041689a"
+  },
+  {
+   "address": "004168b5",
+   "name": "FUN_004168b5"
+  },
+  {
+   "address": "004168cc",
+   "name": "FUN_004168cc"
+  },
+  {
+   "address": "004168e2",
+   "name": "FUN_004168e2"
+  },
+  {
+   "address": "004168f4",
+   "name": "FUN_004168f4"
+  },
+  {
+   "address": "00416944",
+   "name": "tEntityShip::vfunction69"
+  },
+  {
+   "address": "00416bea",
+   "name": "FUN_00416bea"
+  },
+  {
+   "address": "00416c02",
+   "name": "tEntityShip::vfunction23"
+  },
+  {
+   "address": "00416c17",
+   "name": "tEntityShip::vfunction24"
+  },
+  {
+   "address": "00416c58",
+   "name": "FUN_00416c58"
+  },
+  {
+   "address": "00416d41",
+   "name": "tEntityShip::vfunction31"
+  },
+  {
+   "address": "00416da2",
+   "name": "tEntityShip::vfunction33"
+  },
+  {
+   "address": "00417b57",
+   "name": "tEntityShip::vfunction38"
+  },
+  {
+   "address": "00417b92",
+   "name": "tEntityShip::vfunction39"
+  },
+  {
+   "address": "00417d3f",
+   "name": "FUN_00417d3f"
   },
   {
    "address": "0041978f",
@@ -1929,8 +2157,16 @@
    "name": "tNetMsg_kCorrectPos::vfunction1"
   },
   {
+   "address": "004197b3",
+   "name": "tNetMsg_kCreateDirect::vfunction1"
+  },
+  {
    "address": "004197b9",
    "name": "tNetMsg_kCreateESG::vfunction1"
+  },
+  {
+   "address": "004197bf",
+   "name": "tNetMsg_kCreateSeeker::vfunction1"
   },
   {
    "address": "004197d1",
@@ -1969,12 +2205,120 @@
    "name": "tNetMsg_kUpdateCloakStatus::vfunction1"
   },
   {
+   "address": "00419818",
+   "name": "FUN_00419818"
+  },
+  {
+   "address": "00419873",
+   "name": "FUN_00419873"
+  },
+  {
+   "address": "004198e0",
+   "name": "FUN_004198e0"
+  },
+  {
+   "address": "0041994b",
+   "name": "FUN_0041994b"
+  },
+  {
+   "address": "004199f4",
+   "name": "FUN_004199f4"
+  },
+  {
+   "address": "00419a83",
+   "name": "FUN_00419a83"
+  },
+  {
+   "address": "0041c1ef",
+   "name": "tEntity_Weapon::tEntity_Weapon"
+  },
+  {
+   "address": "0041c23c",
+   "name": "tEntity_Placeholder::vfunction66"
+  },
+  {
+   "address": "0041c242",
+   "name": "tEntity_Weapon::vfunction68"
+  },
+  {
+   "address": "0041c249",
+   "name": "tEntity_Weapon::vfunction69"
+  },
+  {
+   "address": "0041c983",
+   "name": "FUN_0041c983"
+  },
+  {
+   "address": "0041c99c",
+   "name": "tEntity_Weapon::vfunction5"
+  },
+  {
+   "address": "0041c9a7",
+   "name": "tEntity_Weapon::vfunction11"
+  },
+  {
+   "address": "0041e042",
+   "name": "tEntity_Seeker::tEntity_Seeker"
+  },
+  {
+   "address": "0041e09b",
+   "name": "tEntity_Seeker::vfunction63"
+  },
+  {
+   "address": "0041e0a2",
+   "name": "tEntity_Seeker::vfunction70"
+  },
+  {
+   "address": "0041e0a9",
+   "name": "tEntity_Seeker::vfunction18"
+  },
+  {
+   "address": "0041e627",
+   "name": "tEntity_Seeker::vfunction31"
+  },
+  {
    "address": "0041e64f",
    "name": "tEntity_Seeker::vfunction11"
   },
   {
+   "address": "0041e74f",
+   "name": "tEntity_Seeker::vfunction5"
+  },
+  {
+   "address": "0041e93f",
+   "name": "tEntity_Seeker::vfunction23"
+  },
+  {
+   "address": "0041e946",
+   "name": "tEntity_Seeker::vfunction71"
+  },
+  {
+   "address": "0041e94d",
+   "name": "tEntity_Seeker::vfunction24"
+  },
+  {
+   "address": "0041ea2c",
+   "name": "FUN_0041ea2c"
+  },
+  {
    "address": "0041eeaf",
    "name": "tNetMsg_kCreateSeekerAtPoint::~tNetMsg_kCreateSeekerAtPoint"
+  },
+  {
+   "address": "004203d5",
+   "name": "tEntity_Seeker::vfunction14"
+  },
+  {
+   "address": "00420447",
+   "name": "tEntity_Seeker::vfunction22"
+  },
+  {
+   "address": "00420493",
+   "name": "FUN_00420493"
+  },
+  {
+   "address": "004204b2",
+   "name": "tEntity_HellboreSeeker::vfunction5"
   },
   {
    "address": "00421740",
@@ -2241,6 +2585,10 @@
    "name": "tEntityMgr::vfunction1"
   },
   {
+   "address": "00424b90",
+   "name": "tStrMgrCore::tStrMgrCore"
+  },
+  {
    "address": "00424c07",
    "name": "tStrMgrCore::scalar_deleting_destructor"
   },
@@ -2355,6 +2703,10 @@
   {
    "address": "00425ec0",
    "name": "FUN_00425ec0"
+  },
+  {
+   "address": "00425fef",
+   "name": "FUN_00425fef"
   },
   {
    "address": "004260a4",
@@ -2721,6 +3073,10 @@
    "name": "FUN_0042a709"
   },
   {
+   "address": "0042a73d",
+   "name": "FUN_0042a73d"
+  },
+  {
    "address": "0042a7b2",
    "name": "FUN_0042a7b2"
   },
@@ -2787,6 +3143,10 @@
   {
    "address": "0042ac36",
    "name": "FUN_0042ac36"
+  },
+  {
+   "address": "0042ac56",
+   "name": "FUN_0042ac56"
   },
   {
    "address": "0042ada1",
@@ -5993,6 +6353,234 @@
    "name": "FUN_00496853"
   },
   {
+   "address": "004a203a",
+   "name": "tActualPlayer::vfunction27"
+  },
+  {
+   "address": "004a2e75",
+   "name": "tActualPlayer::vfunction5"
+  },
+  {
+   "address": "004a2ef3",
+   "name": "tActualPlayer::vfunction6"
+  },
+  {
+   "address": "004a2f71",
+   "name": "tActualPlayer::vfunction7"
+  },
+  {
+   "address": "004a2fef",
+   "name": "tActualPlayer::vfunction8"
+  },
+  {
+   "address": "004a306d",
+   "name": "tActualPlayer::vfunction9"
+  },
+  {
+   "address": "004a368d",
+   "name": "tActualPlayer::vfunction11"
+  },
+  {
+   "address": "004a36f9",
+   "name": "tActualPlayer::vfunction12"
+  },
+  {
+   "address": "004a3777",
+   "name": "tActualPlayer::vfunction13"
+  },
+  {
+   "address": "004a3817",
+   "name": "tActualPlayer::vfunction15"
+  },
+  {
+   "address": "004a38ee",
+   "name": "tActualPlayer::vfunction16"
+  },
+  {
+   "address": "004a39c5",
+   "name": "tActualPlayer::vfunction14"
+  },
+  {
+   "address": "004a3a43",
+   "name": "tActualPlayer::vfunction17"
+  },
+  {
+   "address": "004a3afc",
+   "name": "tActualPlayer::vfunction18"
+  },
+  {
+   "address": "004a3b7a",
+   "name": "tActualPlayer::vfunction19"
+  },
+  {
+   "address": "004a3bf8",
+   "name": "tActualPlayer::vfunction20"
+  },
+  {
+   "address": "004a3c76",
+   "name": "tActualPlayer::vfunction21"
+  },
+  {
+   "address": "004a3cf4",
+   "name": "tActualPlayer::vfunction22"
+  },
+  {
+   "address": "004a3d72",
+   "name": "tActualPlayer::vfunction23"
+  },
+  {
+   "address": "004a3df0",
+   "name": "tActualPlayer::vfunction24"
+  },
+  {
+   "address": "004a3e6e",
+   "name": "tActualPlayer::vfunction25"
+  },
+  {
+   "address": "004aaff9",
+   "name": "tState_Namespace_Tactical::tState_Tactical::scalar_deleting_destructor"
+  },
+  {
+   "address": "004ab015",
+   "name": "tState_Namespace_Tactical::tState_Tactical::~tState_Tactical"
+  },
+  {
+   "address": "004ab4c3",
+   "name": "FUN_004ab4c3"
+  },
+  {
+   "address": "004ab4f3",
+   "name": "FUN_004ab4f3"
+  },
+  {
+   "address": "004ab5c6",
+   "name": "FUN_004ab5c6"
+  },
+  {
+   "address": "004ab699",
+   "name": "FUN_004ab699"
+  },
+  {
+   "address": "004ab6bc",
+   "name": "FUN_004ab6bc"
+  },
+  {
+   "address": "004aba3c",
+   "name": "FUN_004aba3c"
+  },
+  {
+   "address": "004aba46",
+   "name": "FUN_004aba46"
+  },
+  {
+   "address": "004aba4f",
+   "name": "FUN_004aba4f"
+  },
+  {
+   "address": "004ad878",
+   "name": "FUN_004ad878"
+  },
+  {
+   "address": "004ad89d",
+   "name": "FUN_004ad89d"
+  },
+  {
+   "address": "004adc4c",
+   "name": "tState_Namespace_Tactical::tState_Tactical::vfunction13"
+  },
+  {
+   "address": "004adc52",
+   "name": "FUN_004adc52"
+  },
+  {
+   "address": "004adc63",
+   "name": "FUN_004adc63"
+  },
+  {
+   "address": "004adc6d",
+   "name": "FUN_004adc6d"
+  },
+  {
+   "address": "004adc83",
+   "name": "FUN_004adc83"
+  },
+  {
+   "address": "004add21",
+   "name": "FUN_004add21"
+  },
+  {
+   "address": "004add2b",
+   "name": "FUN_004add2b"
+  },
+  {
+   "address": "004add41",
+   "name": "FUN_004add41"
+  },
+  {
+   "address": "004af706",
+   "name": "FUN_004af706"
+  },
+  {
+   "address": "004af807",
+   "name": "tState_Namespace_Tactical::tState_Tactical::vfunction19"
+  },
+  {
+   "address": "004af94b",
+   "name": "FUN_004af94b"
+  },
+  {
+   "address": "004afa1c",
+   "name": "FUN_004afa1c"
+  },
+  {
+   "address": "004afa40",
+   "name": "FUN_004afa40"
+  },
+  {
+   "address": "004afa4e",
+   "name": "FUN_004afa4e"
+  },
+  {
+   "address": "004afac9",
+   "name": "FUN_004afac9"
+  },
+  {
+   "address": "004afb43",
+   "name": "FUN_004afb43"
+  },
+  {
+   "address": "004afb67",
+   "name": "FUN_004afb67"
+  },
+  {
+   "address": "004afbc4",
+   "name": "FUN_004afbc4"
+  },
+  {
+   "address": "004afbeb",
+   "name": "FUN_004afbeb"
+  },
+  {
+   "address": "004afc63",
+   "name": "FUN_004afc63"
+  },
+  {
+   "address": "004afc87",
+   "name": "FUN_004afc87"
+  },
+  {
+   "address": "004afcf1",
+   "name": "FUN_004afcf1"
+  },
+  {
+   "address": "004afd4d",
+   "name": "FUN_004afd4d"
+  },
+  {
+   "address": "004aff50",
+   "name": "FUN_004aff50"
+  },
+  {
    "address": "004b0a39",
    "name": "tMyHud3D::vfunction2"
   },
@@ -6051,6 +6639,90 @@
   {
    "address": "004b2c83",
    "name": "tMyHud3D::vfunction10"
+  },
+  {
+   "address": "004b2cd3",
+   "name": "FUN_004b2cd3"
+  },
+  {
+   "address": "004b2eb9",
+   "name": "FUN_004b2eb9"
+  },
+  {
+   "address": "004b2f6c",
+   "name": "FUN_004b2f6c"
+  },
+  {
+   "address": "004b35db",
+   "name": "FUN_004b35db"
+  },
+  {
+   "address": "004b3758",
+   "name": "FUN_004b3758"
+  },
+  {
+   "address": "004b3793",
+   "name": "FUN_004b3793"
+  },
+  {
+   "address": "004b37ce",
+   "name": "FUN_004b37ce"
+  },
+  {
+   "address": "004b3f79",
+   "name": "FUN_004b3f79"
+  },
+  {
+   "address": "004b6647",
+   "name": "tState_Namespace_Tactical::tState_Tactical::vfunction10"
+  },
+  {
+   "address": "004b70ac",
+   "name": "FUN_004b70ac"
+  },
+  {
+   "address": "004b714d",
+   "name": "tState_Namespace_Tactical::tState_Tactical::vfunction7"
+  },
+  {
+   "address": "004b7161",
+   "name": "FUN_004b7161"
+  },
+  {
+   "address": "004b71af",
+   "name": "FUN_004b71af"
+  },
+  {
+   "address": "004b720d",
+   "name": "FUN_004b720d"
+  },
+  {
+   "address": "004b7f9e",
+   "name": "FUN_004b7f9e"
+  },
+  {
+   "address": "004b7fce",
+   "name": "FUN_004b7fce"
+  },
+  {
+   "address": "004b94dc",
+   "name": "FUN_004b94dc"
+  },
+  {
+   "address": "004b99a4",
+   "name": "FUN_004b99a4"
+  },
+  {
+   "address": "004b99f7",
+   "name": "tState_Namespace_Tactical::tState_Tactical::vfunction8"
+  },
+  {
+   "address": "004b9d12",
+   "name": "FUN_004b9d12"
+  },
+  {
+   "address": "004b9dd6",
+   "name": "tState_Namespace_Tactical::tState_Tactical::vfunction11"
   },
   {
    "address": "004bd534",
@@ -7349,6 +8021,78 @@
    "name": "tStageBase::vfunction32"
   },
   {
+   "address": "004d703f",
+   "name": "FUN_004d703f"
+  },
+  {
+   "address": "004d707c",
+   "name": "FUN_004d707c"
+  },
+  {
+   "address": "004d7099",
+   "name": "FUN_004d7099"
+  },
+  {
+   "address": "004d70ce",
+   "name": "FUN_004d70ce"
+  },
+  {
+   "address": "004d7292",
+   "name": "tBaseWeapon::vfunction52"
+  },
+  {
+   "address": "004d72dc",
+   "name": "tBaseWeapon::vfunction54"
+  },
+  {
+   "address": "004d7304",
+   "name": "tBaseWeapon::vfunction108"
+  },
+  {
+   "address": "004d730c",
+   "name": "tBaseWeapon::vfunction109"
+  },
+  {
+   "address": "004d7313",
+   "name": "tBaseWeapon::vfunction110"
+  },
+  {
+   "address": "004d731a",
+   "name": "tBaseWeapon::vfunction111"
+  },
+  {
+   "address": "004d7321",
+   "name": "tBaseWeapon::vfunction124"
+  },
+  {
+   "address": "004d732e",
+   "name": "tBaseWeapon::vfunction125"
+  },
+  {
+   "address": "004d733b",
+   "name": "tBaseWeapon::vfunction129"
+  },
+  {
+   "address": "004d7342",
+   "name": "tBaseWeapon::vfunction138"
+  },
+  {
+   "address": "004d7354",
+   "name": "tBaseWeapon::vfunction139"
+  },
+  {
+   "address": "004d735b",
+   "name": "tBaseWeapon::vfunction66"
+  },
+  {
+   "address": "004d7362",
+   "name": "tBaseWeapon::vfunction140"
+  },
+  {
+   "address": "004d7378",
+   "name": "tBaseWeapon::vfunction141"
+  },
+  {
    "address": "004d7402",
    "name": "tBaseWeapon::vfunction101"
   },
@@ -7505,6 +8249,18 @@
    "name": "tBaseWeapon::vfunction146"
   },
   {
+   "address": "004de035",
+   "name": "tNetMsg_kCreateDirect::~tNetMsg_kCreateDirect"
+  },
+  {
+   "address": "004de200",
+   "name": "FUN_004de200"
+  },
+  {
+   "address": "004de20a",
+   "name": "FUN_004de20a"
+  },
+  {
    "address": "004e1e8f",
    "name": "tPhaserBank::tPhaserBank"
   },
@@ -7587,6 +8343,30 @@
   {
    "address": "004e2b02",
    "name": "tPhaserBank::vfunction39"
+  },
+  {
+   "address": "004e492c",
+   "name": "tNetMsg_kCreateDirect::~tNetMsg_kCreateDirect"
+  },
+  {
+   "address": "004e4b0c",
+   "name": "FUN_004e4b0c"
+  },
+  {
+   "address": "004e4b16",
+   "name": "FUN_004e4b16"
+  },
+  {
+   "address": "004e5022",
+   "name": "tNetMsg_kCreateDirect::~tNetMsg_kCreateDirect"
+  },
+  {
+   "address": "004e5218",
+   "name": "FUN_004e5218"
+  },
+  {
+   "address": "004e5222",
+   "name": "FUN_004e5222"
   },
   {
    "address": "004e531b",
@@ -7673,8 +8453,128 @@
    "name": "tPhaserXBank::vfunction118"
   },
   {
+   "address": "004e770a",
+   "name": "FUN_004e770a"
+  },
+  {
+   "address": "004e775b",
+   "name": "tPlasmaLauncher::vfunction23"
+  },
+  {
+   "address": "004e779b",
+   "name": "tPlasmaLauncher::vfunction142"
+  },
+  {
+   "address": "004e7869",
+   "name": "tPlasmaLauncher::vfunction143"
+  },
+  {
+   "address": "004e7bb8",
+   "name": "tPlasmaLauncher::vfunction80"
+  },
+  {
+   "address": "004e7be6",
+   "name": "tPlasmaLauncher::vfunction105"
+  },
+  {
    "address": "004e80b0",
    "name": "tPlasmaLauncher::vfunction125"
+  },
+  {
+   "address": "004e83d8",
+   "name": "tPlasmaLauncher::vfunction118"
+  },
+  {
+   "address": "004e83f3",
+   "name": "tPlasmaLauncher::vfunction148"
+  },
+  {
+   "address": "004e924d",
+   "name": "FUN_004e924d"
+  },
+  {
+   "address": "004e9257",
+   "name": "FUN_004e9257"
+  },
+  {
+   "address": "004ea379",
+   "name": "tNetMsg_kCreateSeeker::~tNetMsg_kCreateSeeker"
+  },
+  {
+   "address": "004ea4cd",
+   "name": "FUN_004ea4cd"
+  },
+  {
+   "address": "004ea4d7",
+   "name": "FUN_004ea4d7"
+  },
+  {
+   "address": "004eb7f9",
+   "name": "tNetMsg_kCreateDirect::~tNetMsg_kCreateDirect"
+  },
+  {
+   "address": "004eb9da",
+   "name": "FUN_004eb9da"
+  },
+  {
+   "address": "004eb9e4",
+   "name": "FUN_004eb9e4"
+  },
+  {
+   "address": "004f851f",
+   "name": "FUN_004f851f"
+  },
+  {
+   "address": "004f857c",
+   "name": "tHypermass<12>::tHypermass<12>"
+  },
+  {
+   "address": "004f8a02",
+   "name": "tHypermass<16>::tHypermass<16>"
+  },
+  {
+   "address": "004f8e88",
+   "name": "tHypermass<20>::tHypermass<20>"
+  },
+  {
+   "address": "004f930e",
+   "name": "tHypermass<24>::tHypermass<24>"
+  },
+  {
+   "address": "004f9794",
+   "name": "tHypermass<28>::tHypermass<28>"
+  },
+  {
+   "address": "004f9c1a",
+   "name": "tHypermass<32>::tHypermass<32>"
+  },
+  {
+   "address": "004fa0a0",
+   "name": "tHypermass<36>::tHypermass<36>"
+  },
+  {
+   "address": "004fa526",
+   "name": "FUN_004fa526"
+  },
+  {
+   "address": "004fa662",
+   "name": "FUN_004fa662"
+  },
+  {
+   "address": "004fa9bc",
+   "name": "FUN_004fa9bc"
+  },
+  {
+   "address": "004faaf4",
+   "name": "FUN_004faaf4"
+  },
+  {
+   "address": "004fae4d",
+   "name": "FUN_004fae4d"
+  },
+  {
+   "address": "004faf89",
+   "name": "FUN_004faf89"
   },
   {
    "address": "0050037b",
@@ -8327,6 +9227,26 @@
   {
    "address": "00522bdf",
    "name": "FUN_00522bdf"
+  },
+  {
+   "address": "00522c00",
+   "name": "FUN_00522c00"
+  },
+  {
+   "address": "00522c46",
+   "name": "FUN_00522c46"
+  },
+  {
+   "address": "00522c66",
+   "name": "FUN_00522c66"
+  },
+  {
+   "address": "00522c86",
+   "name": "FUN_00522c86"
+  },
+  {
+   "address": "00522e6d",
+   "name": "FUN_00522e6d"
   },
   {
    "address": "00523027",
@@ -12929,12 +13849,40 @@
    "name": "FUN_005fb00a"
   },
   {
+   "address": "005fb033",
+   "name": "FUN_005fb033"
+  },
+  {
+   "address": "005fb0e4",
+   "name": "FUN_005fb0e4"
+  },
+  {
    "address": "005fb124",
    "name": "FUN_005fb124"
   },
   {
+   "address": "005fb14e",
+   "name": "FUN_005fb14e"
+  },
+  {
    "address": "005fb1c2",
    "name": "FUN_005fb1c2"
+  },
+  {
+   "address": "005fb1e5",
+   "name": "FUN_005fb1e5"
+  },
+  {
+   "address": "005fb259",
+   "name": "FUN_005fb259"
+  },
+  {
+   "address": "005fb2cd",
+   "name": "FUN_005fb2cd"
+  },
+  {
+   "address": "005fb377",
+   "name": "FUN_005fb377"
   },
   {
    "address": "005fb3af",
@@ -13321,8 +14269,16 @@
    "name": "FUN_006037fc"
   },
   {
+   "address": "00603978",
+   "name": "FUN_00603978"
+  },
+  {
    "address": "00603a08",
    "name": "FUN_00603a08"
+  },
+  {
+   "address": "00603d4a",
+   "name": "FUN_00603d4a"
   },
   {
    "address": "00603e24",
@@ -13333,8 +14289,16 @@
    "name": "FUN_00603e35"
   },
   {
+   "address": "00603ebe",
+   "name": "FUN_00603ebe"
+  },
+  {
    "address": "00604259",
    "name": "FUN_00604259"
+  },
+  {
+   "address": "00606efd",
+   "name": "tBaseWeapon::vfunction145"
   },
   {
    "address": "00607faa",
@@ -14571,6 +15535,10 @@
   {
    "address": "00634770",
    "name": "twIORequestQueue::~twIORequestQueue"
+  },
+  {
+   "address": "00634940",
+   "name": "twIORequestQueueManager::~twIORequestQueueManager"
   },
   {
    "address": "00637820",
@@ -18141,6 +19109,110 @@
    "name": "FUN_00693fc0"
   },
   {
+   "address": "0069e2a0",
+   "name": "FUN_0069e2a0"
+  },
+  {
+   "address": "0069e490",
+   "name": "FUN_0069e490"
+  },
+  {
+   "address": "0069e670",
+   "name": "tSWView3D::vfunction40"
+  },
+  {
+   "address": "0069e950",
+   "name": "FUN_0069e950"
+  },
+  {
+   "address": "0069f190",
+   "name": "tView3DExt::vfunction38"
+  },
+  {
+   "address": "0069f480",
+   "name": "tSWView3D::vfunction86"
+  },
+  {
+   "address": "0069f490",
+   "name": "tSWView3D::scalar_deleting_destructor"
+  },
+  {
+   "address": "0069f850",
+   "name": "tSWView3D::vfunction3"
+  },
+  {
+   "address": "0069f8a0",
+   "name": "tSWView3D::vfunction4"
+  },
+  {
+   "address": "0069f900",
+   "name": "tSWView3D::scalar_deleting_destructor"
+  },
+  {
+   "address": "0069f990",
+   "name": "tSWView3D::vfunction11"
+  },
+  {
+   "address": "0069fa10",
+   "name": "tSWView3D::vfunction12"
+  },
+  {
+   "address": "0069fa50",
+   "name": "tSWView3D::vfunction25"
+  },
+  {
+   "address": "0069fa60",
+   "name": "tSWView3D::vfunction26"
+  },
+  {
+   "address": "0069fa70",
+   "name": "tSWView3D::vfunction17"
+  },
+  {
+   "address": "0069fad0",
+   "name": "tSWView3D::vfunction10"
+  },
+  {
+   "address": "0069faf0",
+   "name": "tSWView3D::vfunction28"
+  },
+  {
+   "address": "0069fb10",
+   "name": "tSWView3D::vfunction27"
+  },
+  {
+   "address": "0069fb50",
+   "name": "tSWView3D::vfunction30"
+  },
+  {
+   "address": "0069fd20",
+   "name": "FUN_0069fd20"
+  },
+  {
+   "address": "0069fda0",
+   "name": "tView3DExt::vfunction47"
+  },
+  {
+   "address": "0069fdc0",
+   "name": "tSWView3D::vfunction43"
+  },
+  {
+   "address": "0069fde0",
+   "name": "tSWView3D::vfunction48"
+  },
+  {
+   "address": "0069fe00",
+   "name": "tSWView3D::vfunction49"
+  },
+  {
+   "address": "0069fe20",
+   "name": "tSWView3D::vfunction50"
+  },
+  {
+   "address": "0069fe40",
+   "name": "tSWView3D::vfunction51"
+  },
+  {
    "address": "006a2dc0",
    "name": "FUN_006a2dc0"
   },
@@ -18225,8 +19297,236 @@
    "name": "D3DUtil_InitViewport"
   },
   {
+   "address": "006a95f0",
+   "name": "tSWView3D::~tSWView3D"
+  },
+  {
+   "address": "006a9620",
+   "name": "tView3DExt::vfunction23"
+  },
+  {
+   "address": "006a9660",
+   "name": "tView3DExt::vfunction24"
+  },
+  {
+   "address": "006a9670",
+   "name": "tView3DExt::vfunction19"
+  },
+  {
+   "address": "006a96d0",
+   "name": "tView3DExt::vfunction20"
+  },
+  {
+   "address": "006a96e0",
+   "name": "tView3DExt::vfunction21"
+  },
+  {
+   "address": "006a9700",
+   "name": "tView3DExt::vfunction22"
+  },
+  {
+   "address": "006a9780",
+   "name": "tView3DExt::vfunction46"
+  },
+  {
+   "address": "006a9aa0",
+   "name": "tView3DExt::vfunction32"
+  },
+  {
+   "address": "006a9ab0",
+   "name": "tView3DExt::vfunction33"
+  },
+  {
+   "address": "006a9ba0",
+   "name": "tView3DExt::vfunction34"
+  },
+  {
+   "address": "006a9c20",
+   "name": "tView3DExt::vfunction37"
+  },
+  {
+   "address": "006a9c40",
+   "name": "tView3DExt::vfunction39"
+  },
+  {
+   "address": "006a9e80",
+   "name": "tView3DExt::scalar_deleting_destructor"
+  },
+  {
+   "address": "006a9eb0",
+   "name": "tView3DExt::~tView3DExt"
+  },
+  {
+   "address": "006a9f20",
+   "name": "tView3DExt::vfunction13"
+  },
+  {
+   "address": "006a9f40",
+   "name": "tView3DExt::vfunction14"
+  },
+  {
+   "address": "006a9f50",
+   "name": "tView3DExt::vfunction15"
+  },
+  {
+   "address": "006a9f70",
+   "name": "tView3DExt::vfunction16"
+  },
+  {
+   "address": "006a9f80",
+   "name": "tView3DExt::vfunction35"
+  },
+  {
+   "address": "006a9ff0",
+   "name": "tView3DExt::vfunction36"
+  },
+  {
+   "address": "006aa000",
+   "name": "tView3DExt::vfunction17"
+  },
+  {
+   "address": "006aa080",
+   "name": "tView3DExt::vfunction18"
+  },
+  {
+   "address": "006aa1c0",
+   "name": "tView3DExt::vfunction62"
+  },
+  {
+   "address": "006aa210",
+   "name": "tView3DExt::vfunction63"
+  },
+  {
+   "address": "006aa270",
+   "name": "tView3DExt::vfunction64"
+  },
+  {
+   "address": "006aa390",
+   "name": "tView3DExt::vfunction66"
+  },
+  {
+   "address": "006aa490",
+   "name": "tView3DExt::vfunction61"
+  },
+  {
+   "address": "006aa4a0",
+   "name": "tView3DExt::vfunction55"
+  },
+  {
+   "address": "006aa4d0",
+   "name": "tView3DExt::vfunction56"
+  },
+  {
+   "address": "006aa4e0",
+   "name": "tView3DExt::vfunction57"
+  },
+  {
+   "address": "006aa6c0",
+   "name": "tView3DExt::vfunction59"
+  },
+  {
+   "address": "006aa6d0",
+   "name": "tView3DExt::vfunction5"
+  },
+  {
+   "address": "006aa6e0",
+   "name": "tView3DExt::vfunction87"
+  },
+  {
+   "address": "006aa720",
+   "name": "tView3DExt::vfunction88"
+  },
+  {
+   "address": "006aa730",
+   "name": "tView3DExt::vfunction89"
+  },
+  {
+   "address": "006aa740",
+   "name": "tView3DExt::vfunction90"
+  },
+  {
+   "address": "006aa750",
+   "name": "tView3DExt::vfunction91"
+  },
+  {
+   "address": "006aa760",
+   "name": "tView3DExt::vfunction92"
+  },
+  {
+   "address": "006aa770",
+   "name": "tView3DExt::vfunction93"
+  },
+  {
+   "address": "006aa780",
+   "name": "tView3DExt::vfunction94"
+  },
+  {
+   "address": "006aa790",
+   "name": "tView3DExt::vfunction95"
+  },
+  {
    "address": "006abe00",
    "name": "FUN_006abe00"
+  },
+  {
+   "address": "006abeb0",
+   "name": "FUN_006abeb0"
+  },
+  {
+   "address": "006abf80",
+   "name": "tView3DExt::vfunction79"
+  },
+  {
+   "address": "006abfb0",
+   "name": "tView3DExt::vfunction80"
+  },
+  {
+   "address": "006ac780",
+   "name": "FUN_006ac780"
+  },
+  {
+   "address": "006ac7c0",
+   "name": "tView3DExt::vfunction68"
+  },
+  {
+   "address": "006ac810",
+   "name": "tView3DExt::vfunction69"
+  },
+  {
+   "address": "006ad130",
+   "name": "tView3DExt::vfunction71"
+  },
+  {
+   "address": "006ad230",
+   "name": "tView3DExt::vfunction70"
+  },
+  {
+   "address": "006ad260",
+   "name": "tView3DExt::vfunction73"
+  },
+  {
+   "address": "006ad2d0",
+   "name": "tView3DExt::vfunction72"
+  },
+  {
+   "address": "006ad300",
+   "name": "tView3DExt::vfunction75"
+  },
+  {
+   "address": "006ad320",
+   "name": "tView3DExt::vfunction74"
+  },
+  {
+   "address": "006ad340",
+   "name": "tView3DExt::vfunction77"
+  },
+  {
+   "address": "006ad370",
+   "name": "tView3DExt::vfunction76"
+  },
+  {
+   "address": "006ad3e0",
+   "name": "tView3DExt::vfunction78"
   },
   {
    "address": "006ad410",
@@ -18741,6 +20041,10 @@
    "name": "tSettings::`scalar_deleting_destructor'"
   },
   {
+   "address": "006f6b80",
+   "name": "tSettings::~tSettings"
+  },
+  {
    "address": "006f87d0",
    "name": "tDateAndTime::tDateAndTime"
   },
@@ -18817,8 +20121,20 @@
    "name": "nDataStore::tStreamable::~tStreamable"
   },
   {
+   "address": "006f8ee0",
+   "name": "nDataStore::tStreamable::GetObjectID"
+  },
+  {
    "address": "006f9130",
    "name": "nDataStore::tStreamable::GetVersion"
+  },
+  {
+   "address": "006f9140",
+   "name": "nDataStore::operator>>"
+  },
+  {
+   "address": "006f92c0",
+   "name": "nDataStore::tStreamable::tCRCFailed::tCRCFailed"
   },
   {
    "address": "006f9420",
@@ -18843,6 +20159,10 @@
   {
    "address": "006fa480",
    "name": "nDatabase::tID::operator<"
+  },
+  {
+   "address": "006fa540",
+   "name": "nDatabase::tDatabaseObject::tDatabaseObject"
   },
   {
    "address": "006fa6b0",
@@ -18875,6 +20195,10 @@
   {
    "address": "006fade0",
    "name": "nDatabase::tDatabaseObject::SetLockID"
+  },
+  {
+   "address": "006faf30",
+   "name": "nDatabase::tDatabaseObject::AttachToDB"
   },
   {
    "address": "006fb0f0",
@@ -19037,6 +20361,10 @@
    "name": "nLog::tLogStream::tStreamBuf::overflow"
   },
   {
+   "address": "006fe8b0",
+   "name": "nLog::tLogStream::tStreamBuf::Report"
+  },
+  {
    "address": "006feda0",
    "name": "nLog::tLogStream::tStreamBuf::SetEventType"
   },
@@ -19047,6 +20375,10 @@
   {
    "address": "006feed0",
    "name": "nLog::tLogStream::`scalar_deleting_destructor'"
+  },
+  {
+   "address": "006fefd0",
+   "name": "tThread::tThread"
   },
   {
    "address": "006ff170",
@@ -19081,12 +20413,24 @@
    "name": "nDatabase::tFileDatabaseMgr::tDatabaseInfo::StreamOut"
   },
   {
+   "address": "00708330",
+   "name": "FUN_00708330"
+  },
+  {
    "address": "00708410",
    "name": "FUN_00708410"
   },
   {
+   "address": "00708490",
+   "name": "FUN_00708490"
+  },
+  {
    "address": "00708570",
    "name": "FUN_00708570"
+  },
+  {
+   "address": "007085f0",
+   "name": "FUN_007085f0"
   },
   {
    "address": "007086d0",
@@ -19095,6 +20439,10 @@
   {
    "address": "00708800",
    "name": "nDatabase::tFileDatabaseMgr::`scalar_deleting_destructor'"
+  },
+  {
+   "address": "00708820",
+   "name": "nDatabase::tFileDatabaseMgr::~tFileDatabaseMgr"
   },
   {
    "address": "00708fc0",
@@ -19580,8 +20928,24 @@
    "name": "FUN_0040f86c"
   },
   {
+   "address": "004117a5",
+   "name": "FUN_004117a5"
+  },
+  {
    "address": "00413ea8",
    "name": "tPhysicalEntity::vfunction49"
+  },
+  {
+   "address": "00414602",
+   "name": "FUN_00414602"
+  },
+  {
+   "address": "00414bfa",
+   "name": "FUN_00414bfa"
+  },
+  {
+   "address": "004158c1",
+   "name": "tEntityShip::~tEntityShip"
   },
   {
    "address": "004162b9",
@@ -19590,6 +20954,14 @@
   {
    "address": "00416a0e",
    "name": "tEntityShip::vfunction26"
+  },
+  {
+   "address": "00416d75",
+   "name": "tEntityShip::vfunction32"
+  },
+  {
+   "address": "00416db7",
+   "name": "tEntityShip::vfunction74"
   },
   {
    "address": "0041e79a",
@@ -19632,10 +21004,6 @@
    "name": "FUN_0042402d"
   },
   {
-   "address": "00424b90",
-   "name": "tStrMgrCore::tStrMgrCore"
-  },
-  {
    "address": "00425501",
    "name": "FUN_00425501"
   },
@@ -19654,10 +21022,6 @@
   {
    "address": "00425f71",
    "name": "FUN_00425f71"
-  },
-  {
-   "address": "00425fef",
-   "name": "FUN_00425fef"
   },
   {
    "address": "0042636b",
@@ -19700,16 +21064,8 @@
    "name": "tClientCharacter::vfunction3"
   },
   {
-   "address": "0042a73d",
-   "name": "FUN_0042a73d"
-  },
-  {
    "address": "0042a7bf",
    "name": "FUN_0042a7bf"
-  },
-  {
-   "address": "0042ac56",
-   "name": "FUN_0042ac56"
   },
   {
    "address": "0042c6da",
@@ -19892,6 +21248,10 @@
    "name": "FUN_004b0e1b"
   },
   {
+   "address": "004b2fe6",
+   "name": "FUN_004b2fe6"
+  },
+  {
    "address": "004b9a3a",
    "name": "tState_Namespace_Tactical::tState_Tactical::vfunction9"
   },
@@ -19944,8 +21304,28 @@
    "name": "tPhaserXBank::vfunction135"
   },
   {
+   "address": "004e5e83",
+   "name": "FUN_004e5e83"
+  },
+  {
+   "address": "004e83ab",
+   "name": "tPlasmaLauncher::vfunction114"
+  },
+  {
    "address": "004e8a69",
    "name": "tPlasmaLauncher::vfunction65"
+  },
+  {
+   "address": "004fa58f",
+   "name": "FUN_004fa58f"
+  },
+  {
+   "address": "004faa22",
+   "name": "FUN_004faa22"
+  },
+  {
+   "address": "004faeb6",
+   "name": "FUN_004faeb6"
   },
   {
    "address": "00500872",
@@ -20058,6 +21438,22 @@
   {
    "address": "00522a09",
    "name": "FUN_00522a09"
+  },
+  {
+   "address": "00522da1",
+   "name": "FUN_00522da1"
+  },
+  {
+   "address": "00522dc6",
+   "name": "FUN_00522dc6"
+  },
+  {
+   "address": "00522e1b",
+   "name": "FUN_00522e1b"
+  },
+  {
+   "address": "00522e86",
+   "name": "FUN_00522e86"
   },
   {
    "address": "0052315a",
@@ -20396,34 +21792,6 @@
    "name": "FUN_005f7961"
   },
   {
-   "address": "005fb033",
-   "name": "FUN_005fb033"
-  },
-  {
-   "address": "005fb0e4",
-   "name": "FUN_005fb0e4"
-  },
-  {
-   "address": "005fb14e",
-   "name": "FUN_005fb14e"
-  },
-  {
-   "address": "005fb1e5",
-   "name": "FUN_005fb1e5"
-  },
-  {
-   "address": "005fb259",
-   "name": "FUN_005fb259"
-  },
-  {
-   "address": "005fb2cd",
-   "name": "FUN_005fb2cd"
-  },
-  {
-   "address": "005fb377",
-   "name": "FUN_005fb377"
-  },
-  {
    "address": "00600035",
    "name": "FUN_00600035"
   },
@@ -20476,24 +21844,12 @@
    "name": "FUN_00603873"
   },
   {
-   "address": "00603978",
-   "name": "FUN_00603978"
-  },
-  {
    "address": "00603c9a",
    "name": "FUN_00603c9a"
   },
   {
-   "address": "00603d4a",
-   "name": "FUN_00603d4a"
-  },
-  {
    "address": "00603d8f",
    "name": "FUN_00603d8f"
-  },
-  {
-   "address": "00603ebe",
-   "name": "FUN_00603ebe"
   },
   {
    "address": "006041a1",
@@ -20876,10 +22232,6 @@
    "name": "twIORequestQueue::mAdd"
   },
   {
-   "address": "00634940",
-   "name": "twIORequestQueueManager::~twIORequestQueueManager"
-  },
-  {
    "address": "00634b50",
    "name": "twIORequestQueueManager::mRequest"
   },
@@ -21088,6 +22440,22 @@
    "name": "FUN_00693ef0"
   },
   {
+   "address": "0069f350",
+   "name": "FUN_0069f350"
+  },
+  {
+   "address": "0069f3b0",
+   "name": "tSWView3D::tSWView3D"
+  },
+  {
+   "address": "0069f4b0",
+   "name": "tSWView3D::~tSWView3D"
+  },
+  {
+   "address": "0069f510",
+   "name": "tSWView3D::vfunction2"
+  },
+  {
    "address": "0069fb90",
    "name": "tSWView3D::vfunction29"
   },
@@ -21108,12 +22476,32 @@
    "name": "FUN_006a8930"
   },
   {
+   "address": "006a9540",
+   "name": "FUN_006a9540"
+  },
+  {
+   "address": "006a9710",
+   "name": "tView3DExt::vfunction45"
+  },
+  {
+   "address": "006aa0e0",
+   "name": "tView3DExt::vfunction65"
+  },
+  {
+   "address": "006aa2c0",
+   "name": "tView3DExt::vfunction67"
+  },
+  {
    "address": "006aa550",
    "name": "tView3DExt::vfunction58"
   },
   {
    "address": "006ac5a0",
    "name": "tView3DExt::vfunction81"
+  },
+  {
+   "address": "006ac830",
+   "name": "FUN_006ac830"
   },
   {
    "address": "006b1050",
@@ -21204,30 +22592,6 @@
    "name": "tOSVersion::Instance"
   },
   {
-   "address": "006f6b80",
-   "name": "tSettings::~tSettings"
-  },
-  {
-   "address": "006f8ee0",
-   "name": "nDataStore::tStreamable::GetObjectID"
-  },
-  {
-   "address": "006f9140",
-   "name": "nDataStore::operator>>"
-  },
-  {
-   "address": "006f92c0",
-   "name": "nDataStore::tStreamable::tCRCFailed::tCRCFailed"
-  },
-  {
-   "address": "006fa540",
-   "name": "nDatabase::tDatabaseObject::tDatabaseObject"
-  },
-  {
-   "address": "006faf30",
-   "name": "nDatabase::tDatabaseObject::AttachToDB"
-  },
-  {
    "address": "006fd380",
    "name": "nException::tBaseException::ReportHeader"
   },
@@ -21244,14 +22608,6 @@
    "name": "nLog::tLogStream::tStreamBuf::xsputn"
   },
   {
-   "address": "006fe8b0",
-   "name": "nLog::tLogStream::tStreamBuf::Report"
-  },
-  {
-   "address": "006fefd0",
-   "name": "tThread::tThread"
-  },
-  {
    "address": "006ff710",
    "name": "FUN_006ff710"
   },
@@ -21262,22 +22618,6 @@
   {
    "address": "00708140",
    "name": "nDatabase::tFileDatabaseMgr::tDatabaseInfo::StreamIn"
-  },
-  {
-   "address": "00708330",
-   "name": "FUN_00708330"
-  },
-  {
-   "address": "00708490",
-   "name": "FUN_00708490"
-  },
-  {
-   "address": "007085f0",
-   "name": "FUN_007085f0"
-  },
-  {
-   "address": "00708820",
-   "name": "nDatabase::tFileDatabaseMgr::~tFileDatabaseMgr"
   },
   {
    "address": "007090b0",
