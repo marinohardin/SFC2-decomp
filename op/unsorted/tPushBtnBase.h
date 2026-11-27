@@ -41,7 +41,7 @@ public:
 	virtual void vfunction41();
 	virtual void vfunction42();
 	virtual void vfunction43( tPoint pt );	// 0x00686640
-	virtual void vfunction44();	// 0x006866f0
+	virtual void vfunction44( tPoint pt );	// 0x006866f0
 	virtual void vfunction45();	// 0x00686720
 	virtual void vfunction46();
 	virtual void vfunction47();	// 0x00686750
