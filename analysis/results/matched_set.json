@@ -19864,29 +19864,11 @@
    "exact": false,
    "recorded": "2026-11-25"
   },
-  "0x00504433": {
-   "name": "FUN_00504433",
-   "symbol": "?fn_00504433@@YAMXZ",
-   "unit": "unsorted/fn_00504316.cpp",
-   "size": 15,
-   "score": 50.0,
-   "exact": false,
-   "recorded": "2026-11-25"
-  },
   "0x00504b65": {
    "name": "FUN_00504b65",
    "symbol": "?fn_00504b65@@YAPAVtFx_ProximityDetonation@@XZ",
    "unit": "unsorted/fn_00504B65.cpp",
    "size": 92,
-   "score": 100.0,
-   "exact": true,
-   "recorded": "2026-11-25"
-  },
-  "0x00504bff": {
-   "name": "FUN_00504bff",
-   "symbol": "?fn_00504bff@@YAXXZ",
-   "unit": "unsorted/fn_00504B65.cpp",
-   "size": 11,
    "score": 100.0,
    "exact": true,
    "recorded": "2026-11-25"
