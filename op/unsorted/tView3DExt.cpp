@@ -1,4 +1,5 @@
 #define tvectormath_spark_members
+#include <math.h>
 #include "unsorted/tView3DExt.h"
 
 // FUNCTION: STARFLEETOP 0x0069f190
@@ -228,6 +229,19 @@ fn_006a9f20_Callback tView3DExt::vfunction15(fn_006a9f20_Callback callback, void
 fn_006a9f20_Callback tView3DExt::vfunction16()
 {
 	return field_0x1ee4;
+}
+
+// FUNCTION: STARFLEETOP 0x006a9f80
+void tView3DExt::vfunction35(fn_0040105e_Vector *v)
+{
+	float len = v->m_z * v->m_z + v->m_y * v->m_y + v->m_x * v->m_x;
+	if (len >= 1.0f || len < 0.9999f)
+		len = (float)sqrt(len);
+	if (len >= 1e-07f) {
+		field_0x738[0] = v->m_x / len;
+		field_0x738[1] = v->m_y / len;
+		field_0x738[2] = v->m_z / len;
+	}
 }
 
 // HYPOTHESIS: the original calls 0x0069cc40 (another tMatrix member taking an output point and an

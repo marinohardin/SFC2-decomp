@@ -90,6 +90,7 @@ public:
 	virtual int vfunction32();    // 0x006a9aa0, returns 0x40 (the number of lights)
 	virtual void vfunction33(unsigned int, const void *);    // 0x006a9ab0, sets a 0x40-byte light
 	virtual void vfunction34(unsigned int, void *);    // 0x006a9ba0, reads one back
+	virtual void vfunction35(fn_0040105e_Vector *);    // 0x006a9f80, normalizes into +0x738
 	virtual fn_0040105e_Vector *vfunction36();    // 0x006a9ff0, the vector at +0x738
 	virtual bool vfunction37(bool);    // 0x006a9c20, returns the old flag
 	virtual bool vfunction38();    // 0x0069f190
