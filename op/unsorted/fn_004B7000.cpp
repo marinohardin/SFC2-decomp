@@ -1,6 +1,9 @@
 #include <windows.h>
 #include "Tiger/tUniFont.h"
 #include "Tiger/tFontmgr.h"
+#include "unsorted/tState_Tactical.h"
+
+using namespace tState_Namespace_Tactical;
 
 // HYPOTHESIS: a 16-bit pixel surface; slot 10 (+0x28) returns the row pitch in bytes and
 // slot 11 (+0x2c) the pixels, as tSWView3D::vfunction85 (0x006b23c0) reads them. Probably
@@ -67,5 +70,34 @@ void __stdcall fn_004b7161(const char *text, RECT *rect)
 		if (info) {
 			rect->right += info->field_4;
 		}
+	}
+}
+
+// Shifts a rectangle (left, top, right, bottom) so that it lies inside field_1f0, keeping its
+// size: first against the top-left corner, then against the bottom-right one.
+// HYPOTHESIS: a member of tState_Tactical; the class owns the rectangle at +0x1f0, and no
+// caller is known.
+// FUNCTION: STARFLEETOP 0x004b71af
+void tState_Tactical::fn_004b71af(int *rect)
+{
+	int d = field_1f0[0] - rect[0];
+	if (d > 0) {
+		rect[0] += d;
+		rect[2] += d;
+	}
+	d = field_1f0[1] - rect[1];
+	if (d > 0) {
+		rect[1] += d;
+		rect[3] += d;
+	}
+	d = field_1f0[2] - rect[2];
+	if (d < 0) {
+		rect[0] += d;
+		rect[2] += d;
+	}
+	d = field_1f0[3] - rect[3];
+	if (d < 0) {
+		rect[1] += d;
+		rect[3] += d;
 	}
 }

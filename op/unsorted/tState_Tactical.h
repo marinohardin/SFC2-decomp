@@ -82,6 +82,7 @@ public:
 	void fn_004aba4f();
 	int *fn_004ad878();
 	int *fn_004ad89d();
+	void fn_004b71af(int *rect);
 
 	int field_0c;	// 0x1e
 	float field_10;
