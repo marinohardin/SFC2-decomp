@@ -352,23 +352,24 @@ void tView3DExt::vfunction67(tMatrix *m, float left, float right, float bottom, 
 {
 	// HYPOTHESIS: the original builds m with tMatrix's 12-float (3x4) constructor, which also sets the
 	// 3x4 flag (the byte at +0x41); tMatrix in Tiger/tvectormath.h does not declare that constructor yet.
+	// MATCH-ONLY: the constant cells come first, as the inlined constructor's stores do.
 	tMtx4x4 &mtx = m->mGetMtx4x4();
-	mtx[0][0] = 2.0f / (right - left);
 	mtx[0][1] = 0.0f;
 	mtx[0][2] = 0.0f;
-	mtx[0][3] = -((right + left) / (right - left));
 	mtx[1][0] = 0.0f;
-	mtx[1][1] = 2.0f / (top - bottom);
 	mtx[1][2] = 0.0f;
-	mtx[1][3] = -((top + bottom) / (top - bottom));
 	mtx[2][0] = 0.0f;
 	mtx[2][1] = 0.0f;
-	mtx[2][2] = -2.0f / (zFar - zNear);
-	mtx[2][3] = -((zFar + zNear) / (zFar - zNear));
 	mtx[3][0] = 0.0f;
 	mtx[3][1] = 0.0f;
 	mtx[3][2] = 0.0f;
 	mtx[3][3] = 1.0f;
+	mtx[0][3] = -((right + left) / (right - left));
+	mtx[1][1] = 2.0f / (top - bottom);
+	mtx[1][3] = -((top + bottom) / (top - bottom));
+	mtx[2][2] = -2.0f / (zFar - zNear);
+	mtx[0][0] = 2.0f / (right - left);
+	mtx[2][3] = -((zFar + zNear) / (zFar - zNear));
 }
 
 // HYPOTHESIS: the original calls 0x0069cc40 (another tMatrix member taking an output point and an
