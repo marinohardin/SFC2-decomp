@@ -1,6 +1,7 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/fn_004B9000.cpp
-// Functions: 0x004b900a to 0x004b9e11, 11 in op/UNITS.tsv
-// Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
-// Profile:   game-release (harness/units.json)
+// HYPOTHESIS: a getter of a class not yet identified; the symbol table records it as a
+// fastcall free function taking the object, which callers in other units also use.
+// FUNCTION: STARFLEETOP 0x004b94dc
+int __fastcall fn_004b94dc(void *self)
+{
+	return *(int *)((char *)self + 0x88);
+}
