@@ -273,6 +273,19 @@ void tView3DExt::vfunction17(int a, int b, int c, int d)
 	g_00c7c2a4 = field_0x768 + field_0x760;
 }
 
+// FUNCTION: STARFLEETOP 0x006aa080
+void tView3DExt::vfunction18(int *a, int *b, int *c, int *d)
+{
+	if (a)
+		*a = (int)field_0x764;
+	if (b)
+		*b = (int)field_0x768;
+	if (c)
+		*c = (int)field_0x75c;
+	if (d)
+		*d = (int)field_0x760;
+}
+
 // HYPOTHESIS: the original calls 0x0069cc40 (another tMatrix member taking an output point and an
 // input point) where this body calls fn_0069cbc0 three times; tMatrix declares no member for it yet.
 // FUNCTION: STARFLEETOP 0x006aa550
