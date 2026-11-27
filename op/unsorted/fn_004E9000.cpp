@@ -7,5 +7,6 @@ public:
 	virtual ~tPlasmaR_Creator();
 };
 
+// FUNCTION: STARFLEETOP 0x004e9257
 // FUNCTION: STARFLEETOP 0x004e924d
 tPlasmaR_Creator g_0092f0f0;
