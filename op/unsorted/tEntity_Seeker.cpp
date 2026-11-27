@@ -217,3 +217,9 @@ void tEntity_Seeker::vfunction26(short a1, int a2, int a3, int a4, int a5)
 		}
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x0041e93f
+int tEntity_Seeker::vfunction23()
+{
+	return field_0x268;
+}

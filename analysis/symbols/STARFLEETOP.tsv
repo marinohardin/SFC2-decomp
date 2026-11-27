@@ -1015,7 +1015,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0041e64f	function	fn_0041e64f	tEntity_Seeker	?vfunction11@tEntity_Seeker@@UAEXAAVtSFCStream@@K@Z	claim		none
 0x0041e74f	function	fn_0041e74f	tEntity_Seeker	?vfunction5@tEntity_Seeker@@UAEXXZ	claim		vtable
 0x0041e79a	function	fn_0041e79a	tEntity_Seeker	?vfunction26@tEntity_Seeker@@UAEXFHHHH@Z	claim		none
-0x0041e93f	function	fn_0041e93f	tEntity_Seeker				vtable
+0x0041e93f	function	fn_0041e93f	tEntity_Seeker	?vfunction23@tEntity_Seeker@@UAEHXZ	claim		vtable
 0x0041e946	function	fn_0041e946	tEntity_Seeker				vtable
 0x0041e94d	function	fn_0041e94d	tEntity_Seeker				vtable
 0x0041e95a	function	fn_0041e95a	tEntity_Seeker				vtable

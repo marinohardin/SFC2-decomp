@@ -24,6 +24,8 @@ public:
 	virtual void vfunction11(tSFCStream &s, int32u mode);
 	// HYPOTHESIS: the entity kind; the seeker answers 0xc.
 	virtual int vfunction18();
+	// HYPOTHESIS: slot 22, returns the int at +0x268 (0x0041e93f).
+	virtual int vfunction23();
 	virtual void vfunction26(short a1, int a2, int a3, int a4, int a5);
 	virtual bool vfunction31();
 
