@@ -11,3 +11,19 @@ void tEntityShip::fn_00419818(const tPoint3 &aPoint)
 	field_900.y = aPoint.y * 100.0;
 	field_900.z = aPoint.z * 100.0;
 }
+
+// HYPOTHESIS: a tEntityShip member; it fills nine floats from 0x948 with zeros and the three
+// values given.
+// FUNCTION: STARFLEETOP 0x00419873
+void tEntityShip::fn_00419873(short param_1, short param_2, short param_3)
+{
+	field_948[0] = 0.0f;
+	field_948[1] = param_1;
+	field_948[2] = 0.0f;
+	field_948[3] = param_2;
+	field_948[4] = 0.0f;
+	field_948[5] = param_3;
+	field_948[6] = param_1;
+	field_948[7] = param_2;
+	field_948[8] = param_3;
+}
