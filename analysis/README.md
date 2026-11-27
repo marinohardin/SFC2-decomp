@@ -11,7 +11,7 @@ First-pass static analysis of the retail binaries (2026-11-02). Scripts need `pi
 Results:
 - `StarFleetOP_2552_sdklib_matches.tsv` — 3,758 unique name->address matches in the patched 2.5.5.2 game exe.
 - `StarFleetOP_2500_sdklib_matches.tsv` — same against the original disc 2.5.0.0 exe (2,989 matches; different optimization).
-- `ServerPlatform_sdklib_matches.tsv` — 3,100 matches in the Dynaverse server kit exe.
+- `ServerPlatform_sdklib_matches.tsv` — 3,906 matches in the Dynaverse server kit exe (2.5.5.2 kit, linked 2004-01-20).
 - `StarFleetOP_2552_strings.txt` — `strings -n 8` of the game exe.
 
 ## Fuzzy SDK matching (P0-7): `scripts/fuzzymatch.py`
@@ -33,7 +33,7 @@ R=analysis/results
 $W/venv/bin/python analysis/scripts/fuzzymatch.py --exe "reference/installed game/Starfleet Command Orion Pirates/StarFleetOP.exe" \
   --truth $R/StarFleetOP_2552_sdklib_matches.tsv --out $R/StarFleetOP_2552_sdklib_fuzzy.tsv \
   --data-out $R/StarFleetOP_2552_sdklib_fuzzy_data.tsv --calib $R/StarFleetOP_2552_sdklib_fuzzy_calibration.txt "${LIBS[@]}"
-$W/venv/bin/python analysis/scripts/fuzzymatch.py --exe reference/SFCOPServer/ServerPlatform.exe \
+$W/venv/bin/python analysis/scripts/fuzzymatch.py --exe reference/SFCOPServer2552_B36/ServerPlatform.exe \
   --truth $R/ServerPlatform_sdklib_matches.tsv --out $R/ServerPlatform_sdklib_fuzzy.tsv \
   --data-out $R/ServerPlatform_sdklib_fuzzy_data.tsv --calib $R/ServerPlatform_sdklib_fuzzy_calibration.txt "${LIBS[@]}"
 ```
@@ -76,8 +76,8 @@ did not exist for the run below. Progress and the summary go to stderr (saved as
 
 ### Results (before → after)
 
-`libmatch` counts above (3,758 and 3,100) are TSV rows: the same COMDAT comes from several libraries.
-Distinct, they are **2,396 names at 1,934 addresses** (2.5.5.2) and **684 names at 318 addresses**
+`libmatch` counts above (3,758 and 3,906) are TSV rows: the same COMDAT comes from several libraries.
+Distinct, they are **2,396 names at 1,934 addresses** (2.5.5.2) and **1,126 names at 794 addresses**
 (ServerPlatform).
 
 | `StarFleetOP.exe` 2.5.5.2 | names placed | new vs libmatch | new, excluding anonymous funclets/static initialisers | `.text` bytes |
@@ -95,15 +95,18 @@ Distinct, they are **2,396 names at 1,934 addresses** (2.5.5.2) and **684 names 
 
 | `ServerPlatform.exe` | names placed | new vs libmatch | new, named | `.text` bytes |
 |---|---|---|---|---|
-| libmatch (before) | 684 | – | – | 60,633 (2.0%) |
-| exact / exact+ctx | 716 / 348 | 145 / 272 | 36 / 176 | 55,667 / 19,026 |
-| masked / masked+ctx | 25 / 20 | 25 / 20 | 8 / 5 | 1,759 / 578 |
-| exact-short / fuzzy / ref | 42 / 43 / 68 | 42 / 31 / 66 | 40 / 31 / 66 | 130 / 11,035 / 8,928 |
-| **after, all tiers** | **1,262** | **601** | **362** | **97,068 (3.1%)** |
+| libmatch (before) | 1,126 | – | – | 188,826 (7.7%) |
+| exact / exact+ctx | 1,264 / 460 | 189 / 454 | 39 / 296 | 185,156 / 29,733 |
+| masked / masked+ctx | 36 / 17 | 32 / 17 | 16 / 8 | 2,119 / 1,151 |
+| exact-short / fuzzy / ref | 42 / 35 / 83 | 30 / 31 / 69 | 19 / 31 / 69 | 293 / 7,394 / 11,770 |
+| **after, all tiers** | **1,937** | **822** | **478** | **237,543 (9.7%)** |
+
+The `ServerPlatform.exe` figures are for the 2.5.5.2 server kit (3.1 MB, linked 2004-01-20), run with the
+whole 3D library; the `StarFleetOP.exe` figures above are from an earlier run.
 
 "Anonymous" means `obj:.text$x#n` (EH unwind funclets) and `obj|_$E..` (static initialisers):
 they are correctly placed, but their names only tell you which object they come from.
-`*_sdklib_fuzzy_data.tsv` also names 1,164 (2.5.5.2) and 330 (server) data addresses: vtables,
+`*_sdklib_fuzzy_data.tsv` also names 1,164 (2.5.5.2) and 618 (server) data addresses: vtables,
 RTTI, globals and string literals, taken from the same relocation evidence.
 
 ### Calibration (`*_sdklib_fuzzy_calibration.txt`)
@@ -118,7 +121,7 @@ has unpadded twins that vtables point to.
 | all 2,396 ground-truth names | 2,385/2,386 = 99.96% | 99.5% |
 | 2,032 long names | 2,023/2,024 = 99.95% | 99.5% |
 | tier b alone (A equality ignored, no fuzzy), long | masked 100% (1,361), masked+ctx 99.0% (412/416) | 87.3% |
-| ServerPlatform, all 684 | 661/661 = 100% | 96.6% |
+| ServerPlatform, all 1,126 | 1,111/1,115 = 99.6% | 98.7% |
 
 The single "wrong" placement is `tBasicFile::mDispose`. libmatch places it in the middle of another
 function (0x62bf4f, not a function start). A placed caller points at 0x520990, where the
