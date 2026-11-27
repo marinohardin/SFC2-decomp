@@ -5089,7 +5089,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004b661b	function	tTexBmpZip::scalar_deleting_destructor	tTexBmpZip				rtti
 0x004b6637	function	tTexBmp::~tTexBmp	tTexBmp				rtti
 0x004b6642	function	fn_004b6642					none
-0x004b6647	function	fn_004b6647	tState_Namespace_Tactical::tState_Tactical				vtable
+0x004b6647	function	fn_004b6647	tState_Namespace_Tactical::tState_Tactical	?vfunction10@tState_Tactical@tState_Namespace_Tactical@@UAEXH@Z	claim		vtable
 0x004b665e	function	fn_004b665e					none
 0x004b666e	function	tTexBmpZip::tTexBmpZip	tTexBmpZip				rtti
 0x004b6692	function	fn_004b6692					none

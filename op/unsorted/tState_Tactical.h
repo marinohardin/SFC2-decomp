@@ -28,6 +28,15 @@ public:
 	unsigned char m_data[0xc];
 };
 
+// HYPOTHESIS: the static object at 0x00919f00, on which slots 7 and 10 call 0x004b6642.
+class fn_00919f00_object
+{
+public:
+	void fn_004b6642();
+};
+
+extern fn_00919f00_object g_00919f00;
+
 namespace tState_Namespace_Tactical
 {
 
