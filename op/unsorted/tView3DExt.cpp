@@ -323,6 +323,14 @@ void tView3DExt::vfunction65(tMatrix *m, float fov, float zNear, float zFar)
 	// m kept live to the end); tMatrix in Tiger/tvectormath.h does not declare that SDK member yet.
 }
 
+// FUNCTION: STARFLEETOP 0x006aa1c0
+void tView3DExt::vfunction62(float fov, float zNear, float zFar)
+{
+	tMatrix m;
+	vfunction65(&m, fov, zNear, zFar);
+	vfunction60(&m);
+}
+
 // HYPOTHESIS: the original calls 0x0069cc40 (another tMatrix member taking an output point and an
 // input point) where this body calls fn_0069cbc0 three times; tMatrix declares no member for it yet.
 // FUNCTION: STARFLEETOP 0x006aa550
