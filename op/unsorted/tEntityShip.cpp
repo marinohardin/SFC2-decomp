@@ -761,3 +761,12 @@ void tEntityShip::vfunction38(int aID, bool aValue)
 	else if (tractor->fn_004546f0(aID, aValue))
 		tPhysicalEntity::vfunction38(aID, aValue);
 }
+
+// FUNCTION: STARFLEETOP 0x00417b92
+void tEntityShip::vfunction39(int aID)
+{
+	tPhysicalEntity::vfunction39(aID);
+	tTractorSystem *tractor = field_ad4->vfunction75();
+	if (tractor && tractor->field_144 == aID)
+		tractor->fn_004546e1();
+}

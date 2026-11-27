@@ -21,6 +21,14 @@ public:
 	// HYPOTHESIS: a test tEntityShip::vfunction38 (0x00417b57) makes with its two arguments
 	// before handing them on.
 	bool fn_004546f0(int aID, bool aValue);
+	// HYPOTHESIS: releases the tractor lock; tEntityShip::vfunction39 (0x00417b92) calls it when
+	// field_144 holds the ID it is given.
+	void fn_004546e1();
+
+	// tRepairableShipSystem ends at 0x7c and is aligned to 8, so this class starts at 0x80.
+	char pad80[0x144 - 0x80];
+	// HYPOTHESIS: the ID of the entity held by the beam (compared with an ID at 0x00417b92).
+	int field_144;
 };
 
 // HYPOTHESIS: the record slot 34 (offset 0x88) of the object at 0xad4 returns; 0x004162b9 reads
