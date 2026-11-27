@@ -76,3 +76,22 @@ def test_retail_hash_list_shape():
         assert len(digest) == 64 and all(c in "0123456789abcdef" for c in digest), line
         assert name.endswith((".exe", ".lib", ".dll")), line
     assert any(name.endswith("StarFleetOP.exe") for name in (l.partition("  ")[2] for l in lines))
+
+
+def test_retail_hash_list_pins_the_whole_3d_library():
+    # The 4,229,212-byte library with all 56 objects, not the 848,082-byte copy cut off in its tenth.
+    lines = (ROOT / "analysis/results/retail_hashes.sha256").read_text().splitlines()
+    pinned = [l.partition("  ")[0] for l in lines if l.endswith("/dmp3D_MSVCR.lib")]
+    assert pinned == ["b89b29d36ffcc04a3adc8893f5c5b5e8a21366f43128850d589907e309766653"]
+
+
+def test_setup_checks_only_the_linked_install():
+    # A contributor links the game install only: setup must not ask for the server kit's files.
+    import re
+    script = (ROOT / "scripts/setup.sh").read_text()
+    pattern = re.search(r'grep -E "([^"]+)" "\$repo/analysis/results/retail_hashes\.sha256"', script).group(1)
+    lines = (ROOT / "analysis/results/retail_hashes.sha256").read_text().splitlines()
+    names = [l.partition("  ")[2] for l in lines if re.search(pattern, l)]
+    assert names and all(n.startswith("installed game/Starfleet Command Orion Pirates/") for n in names)
+    assert "installed game/Starfleet Command Orion Pirates/StarFleetOP.exe" in names
+    assert sum(n.endswith(".lib") for n in names) == 6

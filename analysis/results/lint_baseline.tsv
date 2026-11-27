@@ -114,3 +114,6 @@ address-order	op/unsorted/tShuttleBaySystem.cpp	0x0044e844	out of address order 
 empty-body	op/Tiger/tSndMemMgr.cpp	0x0066def0	legal form, the destructor folded with its base 0x00645480; the comment above lacks MATCH-ONLY:
 empty-body	op/unsorted/tAuctionItem.cpp	0x00544c08	legal form, the destructor implicit (0x00544c24); the comment above lacks MATCH-ONLY:
 empty-body	op/unsorted/tCampaignState.cpp	0x0045ddf7	empty destructor, not exact (honest partial or placeholder); predates the check
+falls-through	op/Source/network/netcon.cpp	0x00434195	not exact; ends in a call with unreferenced code after it, the function may continue (boundary not judged); predates the check
+falls-through	op/dmp3d/glsurface/tDDSurfMgr.cpp	0x006b3f80	not exact; ends in a call with unreferenced code after it, the function may continue (boundary not judged); predates the check
+falls-through	op/unsorted/fn_00481000.cpp	0x00481a1c	not exact; ends in a call with unreferenced code after it, the function may continue (boundary not judged); predates the check

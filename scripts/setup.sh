@@ -42,7 +42,7 @@ fi
 [ -f "$link/StarFleetOP.exe" ] || fail "no install linked: run with --install <your Orion Pirates folder>"
 
 echo "setup: checking the install against analysis/results/retail_hashes.sha256"
-(cd reference && grep -E "StarFleetOP\.exe|OP API - R2\.1/" "$repo/analysis/results/retail_hashes.sha256" \
+(cd reference && grep -E "  installed game/.*(StarFleetOP\.exe|OP API - R2\.1/)" "$repo/analysis/results/retail_hashes.sha256" \
     | shasum -a 256 -c --quiet -) || fail "files differ from 2.5.5.2: reinstall and patch to 2.5.5.2"
 
 if docker image inspect "${SFCOP_MSVC_IMAGE:-sfcop-msvc6:latest}" >/dev/null 2>&1; then
