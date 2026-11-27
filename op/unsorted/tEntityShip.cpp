@@ -526,6 +526,13 @@ double tEntityShip::fn_0041689a(int param_1)
 	return 0.0;
 }
 
+// FUNCTION: STARFLEETOP 0x004168b5
+void tEntityShip::fn_004168b5(double param_1, int param_2)
+{
+	if (param_2 < 7)
+		field_a98[param_2] = param_1;
+}
+
 // FUNCTION: STARFLEETOP 0x00416a0e
 void tEntityShip::vfunction26(short a1, int a2, int a3, int a4, int a5)
 {
