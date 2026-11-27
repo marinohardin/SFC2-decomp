@@ -22,3 +22,11 @@ tIdiom::tIdiom( const std::string& text )
 {
 	fn_005d3a6a( text );
 }
+
+// FUNCTION: STARFLEETOP 0x005d38a4
+tIdiom::tIdiom( const tIdiom& other )
+{
+	fObjectID = other.fObjectID;
+	fObjectVersion = other.fObjectVersion;
+	field_0c = other.field_0c;
+}
