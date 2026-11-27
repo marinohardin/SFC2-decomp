@@ -7026,7 +7026,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004e917f	function	tNetMsg_kCreateSeeker::~tNetMsg_kCreateSeeker	tNetMsg_kCreateSeeker				rtti
 0x004e924d	function	fn_004e924d					none
 0x004e9257	function	fn_004e9257					none
-0x004e926d	function	tPlasmaR_Creator::tPlasmaR_Creator	tPlasmaR_Creator				rtti
+0x004e926d	function	tPlasmaR_Creator::tPlasmaR_Creator	tPlasmaR_Creator	??0tPlasmaR_Creator@@QAE@XZ	add		rtti
 0x004e927f	function	fn_004e927f	tPlasmaR_Creator				vtable
 0x004e9285	function	fn_004e9285	tPlasmaR_Creator				vtable
 0x004e9328	function	fn_004e9328					none
@@ -7071,14 +7071,14 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004e9dc9	function	fn_004e9dc9	tPlasmaDRackTube				vtable
 0x004e9dcf	function	fn_004e9dcf	tPlasmaDRackTube				vtable
 0x004e9ecb	function	fn_004e9ecb	tPlasmaDRackTube				vtable
-0x004ea379	function	tNetMsg_kCreateSeeker::~tNetMsg_kCreateSeeker	tNetMsg_kCreateSeeker				rtti
+0x004ea379	function	tNetMsg_kCreateSeeker::~tNetMsg_kCreateSeeker	tNetMsg_kCreateSeeker	?fn_004ea379@tPlasmaDRackTube@@QAEXHH@Z	claim		rtti
 0x004ea406	function	fn_004ea406	tPlasmaDRackTube				vtable
 0x004ea450	function	fn_004ea450	tPlasmaDRackTube				vtable
 0x004ea472	function	fn_004ea472	tAntiDroneRack				vtable
 0x004ea48c	function	fn_004ea48c	tPlasmaDRackTube				vtable
 0x004ea4cd	function	fn_004ea4cd					none
 0x004ea4d7	function	fn_004ea4d7					none
-0x004ea4ed	function	tPlasmaDRackTube12::tPlasmaDRackTube12	tPlasmaDRackTube12				rtti
+0x004ea4ed	function	tPlasmaDRackTube12::tPlasmaDRackTube12	tPlasmaDRackTube12	??0tPlasmaDRackTube12@@QAE@XZ	add		rtti
 0x004ea4ff	function	fn_004ea4ff	tPlasmaDRackTube12				vtable
 0x004ea505	function	fn_004ea505	tPlasmaDRackTube12				vtable
 0x004ea5d7	function	fn_004ea5d7	tPPD				vtable
