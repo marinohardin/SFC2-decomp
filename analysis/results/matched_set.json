@@ -858,7 +858,7 @@
   },
   "0x0040651e": {
    "name": "FUN_0040651e",
-   "symbol": "?fn_0040651e@fn_0040651e_String@@QBEHABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "symbol": "?compare@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEHABV12@@Z",
    "unit": "unsorted/fn_00406000.cpp",
    "size": 34,
    "score": 100.0,
@@ -4668,9 +4668,9 @@
    "symbol": "??0tStrMgrCore@@QAE@E@Z",
    "unit": "unsorted/tStrMgrCore.cpp",
    "size": 119,
-   "score": 99.949,
-   "exact": false,
-   "recorded": "2026-11-19"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-26"
   },
   "0x00424c07": {
    "name": "tStrMgrCore::scalar_deleting_destructor",
@@ -5892,9 +5892,9 @@
    "symbol": "?FUN_0042a73d@fn_0042a480_object@@QAEXXZ",
    "unit": "unsorted/fn_0042A000.cpp",
    "size": 112,
-   "score": 99.868,
-   "exact": false,
-   "recorded": "2026-11-16"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-26"
   },
   "0x0042a7b2": {
    "name": "FUN_0042a7b2",
@@ -6063,9 +6063,9 @@
    "symbol": "?FUN_0042ac56@fn_0042a480_object@@QAE?AV?$map@U?$pair@HH@std@@VtHexPoint@@U?$less@U?$pair@HH@std@@@2@V?$allocator@VtHexPoint@@@2@@std@@XZ",
    "unit": "unsorted/fn_0042A000.cpp",
    "size": 331,
-   "score": 99.709,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-26"
   },
   "0x0042ada1": {
    "name": "FUN_0042ada1",
@@ -6339,7 +6339,7 @@
   },
   "0x0042cc61": {
    "name": "FUN_0042cc61",
-   "symbol": "_$E26",
+   "symbol": "_$E24",
    "unit": "unsorted/fn_0042C000.cpp",
    "size": 51,
    "score": 100.0,
@@ -6348,7 +6348,7 @@
   },
   "0x0042cc94": {
    "name": "FUN_0042cc94",
-   "symbol": "_$E28",
+   "symbol": "_$E26",
    "unit": "unsorted/fn_0042C000.cpp",
    "size": 12,
    "score": 100.0,
@@ -6357,7 +6357,7 @@
   },
   "0x0042ccc7": {
    "name": "FUN_0042ccc7",
-   "symbol": "_$E31",
+   "symbol": "_$E29",
    "unit": "unsorted/fn_0042C000.cpp",
    "size": 51,
    "score": 100.0,
@@ -6366,7 +6366,7 @@
   },
   "0x0042ccfa": {
    "name": "FUN_0042ccfa",
-   "symbol": "_$E33",
+   "symbol": "_$E31",
    "unit": "unsorted/fn_0042C000.cpp",
    "size": 12,
    "score": 100.0,
@@ -11073,7 +11073,7 @@
   },
   "0x004608ea": {
    "name": "FUN_004608ea",
-   "symbol": "_$E24",
+   "symbol": "_$E22",
    "unit": "unsorted/fn_00460000.cpp",
    "size": 10,
    "score": 100.0,
@@ -11082,7 +11082,7 @@
   },
   "0x004608f4": {
    "name": "FUN_004608f4",
-   "symbol": "_$E26",
+   "symbol": "_$E24",
    "unit": "unsorted/fn_00460000.cpp",
    "size": 12,
    "score": 100.0,
@@ -13899,7 +13899,7 @@
   },
   "0x004bda34": {
    "name": "FUN_004bda34",
-   "symbol": "_$E16",
+   "symbol": "_$E14",
    "unit": "unsorted/fn_004BD43E.cpp",
    "size": 10,
    "score": 100.0,
@@ -13908,7 +13908,7 @@
   },
   "0x004bda3e": {
    "name": "FUN_004bda3e",
-   "symbol": "_$E18",
+   "symbol": "_$E16",
    "unit": "unsorted/fn_004BD43E.cpp",
    "size": 12,
    "score": 100.0,
@@ -13917,7 +13917,7 @@
   },
   "0x004bda7f": {
    "name": "FUN_004bda7f",
-   "symbol": "_$E21",
+   "symbol": "_$E19",
    "unit": "unsorted/fn_004BD43E.cpp",
    "size": 15,
    "score": 100.0,
@@ -13926,7 +13926,7 @@
   },
   "0x004bda8e": {
    "name": "FUN_004bda8e",
-   "symbol": "_$E23",
+   "symbol": "_$E21",
    "unit": "unsorted/fn_004BD43E.cpp",
    "size": 12,
    "score": 100.0,
@@ -13935,7 +13935,7 @@
   },
   "0x004bdabf": {
    "name": "FUN_004bdabf",
-   "symbol": "_$E26",
+   "symbol": "_$E24",
    "unit": "unsorted/fn_004BD43E.cpp",
    "size": 51,
    "score": 100.0,
@@ -13944,7 +13944,7 @@
   },
   "0x004bdaf2": {
    "name": "FUN_004bdaf2",
-   "symbol": "_$E28",
+   "symbol": "_$E26",
    "unit": "unsorted/fn_004BD43E.cpp",
    "size": 12,
    "score": 100.0,
@@ -13953,7 +13953,7 @@
   },
   "0x004bdb25": {
    "name": "FUN_004bdb25",
-   "symbol": "_$E31",
+   "symbol": "_$E29",
    "unit": "unsorted/fn_004BD43E.cpp",
    "size": 51,
    "score": 100.0,
@@ -13962,7 +13962,7 @@
   },
   "0x004bdb58": {
    "name": "FUN_004bdb58",
-   "symbol": "_$E33",
+   "symbol": "_$E31",
    "unit": "unsorted/fn_004BD43E.cpp",
    "size": 12,
    "score": 100.0,
@@ -13971,7 +13971,7 @@
   },
   "0x004bdb8b": {
    "name": "FUN_004bdb8b",
-   "symbol": "_$E36",
+   "symbol": "_$E34",
    "unit": "unsorted/fn_004BD43E.cpp",
    "size": 51,
    "score": 100.0,
@@ -13980,7 +13980,7 @@
   },
   "0x004bdbbe": {
    "name": "FUN_004bdbbe",
-   "symbol": "_$E38",
+   "symbol": "_$E36",
    "unit": "unsorted/fn_004BD43E.cpp",
    "size": 12,
    "score": 100.0,
@@ -13989,7 +13989,7 @@
   },
   "0x004bdbf1": {
    "name": "FUN_004bdbf1",
-   "symbol": "_$E41",
+   "symbol": "_$E39",
    "unit": "unsorted/fn_004BD43E.cpp",
    "size": 51,
    "score": 100.0,
@@ -13998,7 +13998,7 @@
   },
   "0x004bdc24": {
    "name": "FUN_004bdc24",
-   "symbol": "_$E43",
+   "symbol": "_$E41",
    "unit": "unsorted/fn_004BD43E.cpp",
    "size": 12,
    "score": 100.0,
@@ -14115,7 +14115,7 @@
   },
   "0x004bdf8d": {
    "name": "FUN_004bdf8d",
-   "symbol": "_$E46",
+   "symbol": "_$E44",
    "unit": "unsorted/fn_004BD43E.cpp",
    "size": 10,
    "score": 100.0,
@@ -14124,7 +14124,7 @@
   },
   "0x004bdf97": {
    "name": "FUN_004bdf97",
-   "symbol": "_$E48",
+   "symbol": "_$E46",
    "unit": "unsorted/fn_004BD43E.cpp",
    "size": 12,
    "score": 100.0,
@@ -19605,7 +19605,7 @@
   },
   "0x00534391": {
    "name": "FUN_00534391",
-   "symbol": "_$E17",
+   "symbol": "_$E15",
    "unit": "unsorted/fn_0053434B.cpp",
    "size": 10,
    "score": 100.0,
@@ -19614,7 +19614,7 @@
   },
   "0x0053439b": {
    "name": "FUN_0053439b",
-   "symbol": "_$E19",
+   "symbol": "_$E17",
    "unit": "unsorted/fn_0053434B.cpp",
    "size": 12,
    "score": 100.0,
@@ -21801,7 +21801,7 @@
   },
   "0x00544b3c": {
    "name": "FUN_00544b3c",
-   "symbol": "_$E26",
+   "symbol": "_$E24",
    "unit": "unsorted/fn_00544000.cpp",
    "size": 10,
    "score": 100.0,
@@ -21810,7 +21810,7 @@
   },
   "0x00544b46": {
    "name": "FUN_00544b46",
-   "symbol": "_$E28",
+   "symbol": "_$E26",
    "unit": "unsorted/fn_00544000.cpp",
    "size": 12,
    "score": 100.0,
@@ -22359,7 +22359,7 @@
   },
   "0x005468d7": {
    "name": "FUN_005468d7",
-   "symbol": "_$E26",
+   "symbol": "_$E24",
    "unit": "unsorted/fn_00546000.cpp",
    "size": 10,
    "score": 100.0,
@@ -22368,7 +22368,7 @@
   },
   "0x005468e1": {
    "name": "FUN_005468e1",
-   "symbol": "_$E28",
+   "symbol": "_$E26",
    "unit": "unsorted/fn_00546000.cpp",
    "size": 12,
    "score": 100.0,
@@ -27912,7 +27912,7 @@
   },
   "0x005d9750": {
    "name": "FUN_005d9750",
-   "symbol": "_$E24",
+   "symbol": "_$E22",
    "unit": "unsorted/fn_005D913F.cpp",
    "size": 15,
    "score": 100.0,
@@ -27921,7 +27921,7 @@
   },
   "0x005d975f": {
    "name": "FUN_005d975f",
-   "symbol": "_$E26",
+   "symbol": "_$E24",
    "unit": "unsorted/fn_005D913F.cpp",
    "size": 12,
    "score": 100.0,
@@ -28407,7 +28407,7 @@
   },
   "0x005deff2": {
    "name": "FUN_005deff2",
-   "symbol": "_$E24",
+   "symbol": "_$E22",
    "unit": "unsorted/fn_005DE000.cpp",
    "size": 51,
    "score": 100.0,
@@ -28560,7 +28560,7 @@
   },
   "0x005e2799": {
    "name": "FUN_005e2799",
-   "symbol": "_$E24",
+   "symbol": "_$E22",
    "unit": "unsorted/fn_005E2501.cpp",
    "size": 51,
    "score": 100.0,
@@ -28569,7 +28569,7 @@
   },
   "0x005e27cc": {
    "name": "FUN_005e27cc",
-   "symbol": "_$E26",
+   "symbol": "_$E24",
    "unit": "unsorted/fn_005E2501.cpp",
    "size": 12,
    "score": 100.0,
@@ -28578,7 +28578,7 @@
   },
   "0x005e27ef": {
    "name": "FUN_005e27ef",
-   "symbol": "_$E29",
+   "symbol": "_$E27",
    "unit": "unsorted/fn_005E2501.cpp",
    "size": 51,
    "score": 100.0,
@@ -28587,7 +28587,7 @@
   },
   "0x005e2822": {
    "name": "FUN_005e2822",
-   "symbol": "_$E31",
+   "symbol": "_$E29",
    "unit": "unsorted/fn_005E2501.cpp",
    "size": 12,
    "score": 100.0,
@@ -28596,7 +28596,7 @@
   },
   "0x005e2845": {
    "name": "FUN_005e2845",
-   "symbol": "_$E34",
+   "symbol": "_$E32",
    "unit": "unsorted/fn_005E2501.cpp",
    "size": 51,
    "score": 100.0,
@@ -28605,7 +28605,7 @@
   },
   "0x005e2878": {
    "name": "FUN_005e2878",
-   "symbol": "_$E36",
+   "symbol": "_$E34",
    "unit": "unsorted/fn_005E2501.cpp",
    "size": 12,
    "score": 100.0,
@@ -28614,7 +28614,7 @@
   },
   "0x005e289b": {
    "name": "FUN_005e289b",
-   "symbol": "_$E39",
+   "symbol": "_$E37",
    "unit": "unsorted/fn_005E2501.cpp",
    "size": 51,
    "score": 100.0,
@@ -28623,7 +28623,7 @@
   },
   "0x005e28ce": {
    "name": "FUN_005e28ce",
-   "symbol": "_$E41",
+   "symbol": "_$E39",
    "unit": "unsorted/fn_005E2501.cpp",
    "size": 12,
    "score": 100.0,
@@ -28632,7 +28632,7 @@
   },
   "0x005e28f1": {
    "name": "FUN_005e28f1",
-   "symbol": "_$E44",
+   "symbol": "_$E42",
    "unit": "unsorted/fn_005E2501.cpp",
    "size": 51,
    "score": 100.0,
@@ -28641,7 +28641,7 @@
   },
   "0x005e2924": {
    "name": "FUN_005e2924",
-   "symbol": "_$E46",
+   "symbol": "_$E44",
    "unit": "unsorted/fn_005E2501.cpp",
    "size": 12,
    "score": 100.0,
@@ -28650,7 +28650,7 @@
   },
   "0x005e2947": {
    "name": "FUN_005e2947",
-   "symbol": "_$E49",
+   "symbol": "_$E47",
    "unit": "unsorted/fn_005E2501.cpp",
    "size": 51,
    "score": 100.0,
@@ -28659,7 +28659,7 @@
   },
   "0x005e297a": {
    "name": "FUN_005e297a",
-   "symbol": "_$E51",
+   "symbol": "_$E49",
    "unit": "unsorted/fn_005E2501.cpp",
    "size": 12,
    "score": 100.0,
@@ -28668,7 +28668,7 @@
   },
   "0x005e299d": {
    "name": "FUN_005e299d",
-   "symbol": "_$E54",
+   "symbol": "_$E52",
    "unit": "unsorted/fn_005E2501.cpp",
    "size": 51,
    "score": 100.0,
@@ -28677,7 +28677,7 @@
   },
   "0x005e29d0": {
    "name": "FUN_005e29d0",
-   "symbol": "_$E56",
+   "symbol": "_$E54",
    "unit": "unsorted/fn_005E2501.cpp",
    "size": 12,
    "score": 100.0,
@@ -28686,7 +28686,7 @@
   },
   "0x005e29f3": {
    "name": "FUN_005e29f3",
-   "symbol": "_$E59",
+   "symbol": "_$E57",
    "unit": "unsorted/fn_005E2501.cpp",
    "size": 51,
    "score": 100.0,
@@ -28695,7 +28695,7 @@
   },
   "0x005e2a26": {
    "name": "FUN_005e2a26",
-   "symbol": "_$E61",
+   "symbol": "_$E59",
    "unit": "unsorted/fn_005E2501.cpp",
    "size": 12,
    "score": 100.0,
@@ -28704,7 +28704,7 @@
   },
   "0x005e2a49": {
    "name": "FUN_005e2a49",
-   "symbol": "_$E64",
+   "symbol": "_$E62",
    "unit": "unsorted/fn_005E2501.cpp",
    "size": 51,
    "score": 100.0,
@@ -28713,7 +28713,7 @@
   },
   "0x005e2a7c": {
    "name": "FUN_005e2a7c",
-   "symbol": "_$E66",
+   "symbol": "_$E64",
    "unit": "unsorted/fn_005E2501.cpp",
    "size": 12,
    "score": 100.0,
@@ -28722,7 +28722,7 @@
   },
   "0x005e2a9f": {
    "name": "FUN_005e2a9f",
-   "symbol": "_$E69",
+   "symbol": "_$E67",
    "unit": "unsorted/fn_005E2501.cpp",
    "size": 51,
    "score": 100.0,
@@ -28731,7 +28731,7 @@
   },
   "0x005e2ad2": {
    "name": "FUN_005e2ad2",
-   "symbol": "_$E71",
+   "symbol": "_$E69",
    "unit": "unsorted/fn_005E2501.cpp",
    "size": 12,
    "score": 100.0,
@@ -28740,7 +28740,7 @@
   },
   "0x005e2af5": {
    "name": "FUN_005e2af5",
-   "symbol": "_$E74",
+   "symbol": "_$E72",
    "unit": "unsorted/fn_005E2501.cpp",
    "size": 51,
    "score": 100.0,
@@ -28749,7 +28749,7 @@
   },
   "0x005e2b28": {
    "name": "FUN_005e2b28",
-   "symbol": "_$E76",
+   "symbol": "_$E74",
    "unit": "unsorted/fn_005E2501.cpp",
    "size": 12,
    "score": 100.0,
@@ -28758,7 +28758,7 @@
   },
   "0x005e2b4b": {
    "name": "FUN_005e2b4b",
-   "symbol": "_$E79",
+   "symbol": "_$E77",
    "unit": "unsorted/fn_005E2501.cpp",
    "size": 51,
    "score": 100.0,
@@ -28767,7 +28767,7 @@
   },
   "0x005e2b7e": {
    "name": "FUN_005e2b7e",
-   "symbol": "_$E81",
+   "symbol": "_$E79",
    "unit": "unsorted/fn_005E2501.cpp",
    "size": 12,
    "score": 100.0,
@@ -28776,7 +28776,7 @@
   },
   "0x005e2ba1": {
    "name": "FUN_005e2ba1",
-   "symbol": "_$E84",
+   "symbol": "_$E82",
    "unit": "unsorted/fn_005E2501.cpp",
    "size": 51,
    "score": 100.0,
@@ -28785,7 +28785,7 @@
   },
   "0x005e2bd4": {
    "name": "FUN_005e2bd4",
-   "symbol": "_$E86",
+   "symbol": "_$E84",
    "unit": "unsorted/fn_005E2501.cpp",
    "size": 12,
    "score": 100.0,
@@ -28794,7 +28794,7 @@
   },
   "0x005e2bf7": {
    "name": "FUN_005e2bf7",
-   "symbol": "_$E89",
+   "symbol": "_$E87",
    "unit": "unsorted/fn_005E2501.cpp",
    "size": 51,
    "score": 100.0,
@@ -28803,7 +28803,7 @@
   },
   "0x005e2c2a": {
    "name": "FUN_005e2c2a",
-   "symbol": "_$E91",
+   "symbol": "_$E89",
    "unit": "unsorted/fn_005E2501.cpp",
    "size": 12,
    "score": 100.0,
@@ -28812,7 +28812,7 @@
   },
   "0x005e2c4d": {
    "name": "FUN_005e2c4d",
-   "symbol": "_$E94",
+   "symbol": "_$E92",
    "unit": "unsorted/fn_005E2501.cpp",
    "size": 51,
    "score": 100.0,
@@ -28821,7 +28821,7 @@
   },
   "0x005e2c80": {
    "name": "FUN_005e2c80",
-   "symbol": "_$E96",
+   "symbol": "_$E94",
    "unit": "unsorted/fn_005E2501.cpp",
    "size": 12,
    "score": 100.0,
@@ -28830,7 +28830,7 @@
   },
   "0x005e2ca3": {
    "name": "FUN_005e2ca3",
-   "symbol": "_$E99",
+   "symbol": "_$E97",
    "unit": "unsorted/fn_005E2501.cpp",
    "size": 51,
    "score": 100.0,
@@ -28839,7 +28839,7 @@
   },
   "0x005e2cd6": {
    "name": "FUN_005e2cd6",
-   "symbol": "_$E101",
+   "symbol": "_$E99",
    "unit": "unsorted/fn_005E2501.cpp",
    "size": 12,
    "score": 100.0,
@@ -28848,7 +28848,7 @@
   },
   "0x005e2cf9": {
    "name": "FUN_005e2cf9",
-   "symbol": "_$E104",
+   "symbol": "_$E102",
    "unit": "unsorted/fn_005E2501.cpp",
    "size": 51,
    "score": 100.0,
@@ -28857,7 +28857,7 @@
   },
   "0x005e2d2c": {
    "name": "FUN_005e2d2c",
-   "symbol": "_$E106",
+   "symbol": "_$E104",
    "unit": "unsorted/fn_005E2501.cpp",
    "size": 12,
    "score": 100.0,
@@ -28866,7 +28866,7 @@
   },
   "0x005e2d4f": {
    "name": "FUN_005e2d4f",
-   "symbol": "_$E109",
+   "symbol": "_$E107",
    "unit": "unsorted/fn_005E2501.cpp",
    "size": 51,
    "score": 100.0,
@@ -28875,7 +28875,7 @@
   },
   "0x005e2d82": {
    "name": "FUN_005e2d82",
-   "symbol": "_$E111",
+   "symbol": "_$E109",
    "unit": "unsorted/fn_005E2501.cpp",
    "size": 12,
    "score": 100.0,
@@ -28884,7 +28884,7 @@
   },
   "0x005e2da5": {
    "name": "FUN_005e2da5",
-   "symbol": "_$E114",
+   "symbol": "_$E112",
    "unit": "unsorted/fn_005E2501.cpp",
    "size": 51,
    "score": 100.0,
@@ -28893,7 +28893,7 @@
   },
   "0x005e2dd8": {
    "name": "FUN_005e2dd8",
-   "symbol": "_$E116",
+   "symbol": "_$E114",
    "unit": "unsorted/fn_005E2501.cpp",
    "size": 12,
    "score": 100.0,
@@ -28902,7 +28902,7 @@
   },
   "0x005e2dfb": {
    "name": "FUN_005e2dfb",
-   "symbol": "_$E119",
+   "symbol": "_$E117",
    "unit": "unsorted/fn_005E2501.cpp",
    "size": 51,
    "score": 100.0,
@@ -28911,7 +28911,7 @@
   },
   "0x005e2e2e": {
    "name": "FUN_005e2e2e",
-   "symbol": "_$E121",
+   "symbol": "_$E119",
    "unit": "unsorted/fn_005E2501.cpp",
    "size": 12,
    "score": 100.0,
@@ -28920,7 +28920,7 @@
   },
   "0x005e2e51": {
    "name": "FUN_005e2e51",
-   "symbol": "_$E124",
+   "symbol": "_$E122",
    "unit": "unsorted/fn_005E2501.cpp",
    "size": 51,
    "score": 100.0,
@@ -28929,7 +28929,7 @@
   },
   "0x005e2e84": {
    "name": "FUN_005e2e84",
-   "symbol": "_$E126",
+   "symbol": "_$E124",
    "unit": "unsorted/fn_005E2501.cpp",
    "size": 12,
    "score": 100.0,
@@ -28938,7 +28938,7 @@
   },
   "0x005e2ea7": {
    "name": "FUN_005e2ea7",
-   "symbol": "_$E129",
+   "symbol": "_$E127",
    "unit": "unsorted/fn_005E2501.cpp",
    "size": 51,
    "score": 100.0,
@@ -28947,7 +28947,7 @@
   },
   "0x005e2eda": {
    "name": "FUN_005e2eda",
-   "symbol": "_$E131",
+   "symbol": "_$E129",
    "unit": "unsorted/fn_005E2501.cpp",
    "size": 12,
    "score": 100.0,
@@ -28956,7 +28956,7 @@
   },
   "0x005e2efd": {
    "name": "FUN_005e2efd",
-   "symbol": "_$E134",
+   "symbol": "_$E132",
    "unit": "unsorted/fn_005E2501.cpp",
    "size": 51,
    "score": 100.0,
@@ -28965,7 +28965,7 @@
   },
   "0x005e2f30": {
    "name": "FUN_005e2f30",
-   "symbol": "_$E136",
+   "symbol": "_$E134",
    "unit": "unsorted/fn_005E2501.cpp",
    "size": 12,
    "score": 100.0,
@@ -30144,7 +30144,7 @@
   },
   "0x005eabbe": {
    "name": "FUN_005eabbe",
-   "symbol": "_$E24",
+   "symbol": "_$E22",
    "unit": "unsorted/fn_005EA000.cpp",
    "size": 51,
    "score": 100.0,
@@ -30153,7 +30153,7 @@
   },
   "0x005eabf1": {
    "name": "FUN_005eabf1",
-   "symbol": "_$E26",
+   "symbol": "_$E24",
    "unit": "unsorted/fn_005EA000.cpp",
    "size": 12,
    "score": 100.0,
@@ -30417,18 +30417,18 @@
    "symbol": "??1?$_Tree@HU?$pair@$$CBHH@std@@U_Kfn@?$map@HHU?$less@H@std@@V?$allocator@H@2@@2@U?$less@H@2@V?$allocator@H@2@@std@@QAE@XZ",
    "unit": "unsorted/fn_005FB000.cpp",
    "size": 56,
-   "score": 82.522,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-26"
   },
   "0x005fb0e4": {
    "name": "FUN_005fb0e4",
    "symbol": "??1?$_Tree@HU?$pair@$$CBHV?$vector@HV?$allocator@H@std@@@std@@@std@@U_Kfn@?$map@HV?$vector@HV?$allocator@H@std@@@std@@U?$less@H@2@V?$allocator@V?$vector@HV?$allocator@H@std@@@std@@@2@@2@U?$less@H@2@V?$allocator@V?$vector@HV?$allocator@H@std@@@std@@@2@@std@@QAE@XZ",
    "unit": "unsorted/fn_005FB000.cpp",
    "size": 56,
-   "score": 82.522,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-26"
   },
   "0x005fb124": {
    "name": "FUN_005fb124",
@@ -30441,12 +30441,12 @@
   },
   "0x005fb14e": {
    "name": "FUN_005fb14e",
-   "symbol": "?erase@?$_Tree@HU?$pair@$$CBHH@std@@U_Kfn@?$map@HHU?$less@H@std@@V?$allocator@H@2@@2@U?$less@H@2@V?$allocator@H@2@@std@@QAE?AViterator@12@V312@0@Z",
+   "symbol": "?erase@?$_Tree@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@2@U_Kfn@?$map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@H@2@@2@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@H@2@@std@@QAE?AViterator@12@V312@0@Z",
    "unit": "unsorted/fn_005FB000.cpp",
    "size": 116,
-   "score": 71.468,
-   "exact": false,
-   "recorded": "2026-11-19"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-26"
   },
   "0x005fb1c2": {
    "name": "FUN_005fb1c2",
@@ -30459,39 +30459,39 @@
   },
   "0x005fb1e5": {
    "name": "FUN_005fb1e5",
-   "symbol": "?erase@?$_Tree@HU?$pair@$$CBHV?$vector@HV?$allocator@H@std@@@std@@@std@@U_Kfn@?$map@HV?$vector@HV?$allocator@H@std@@@std@@U?$less@H@2@V?$allocator@V?$vector@HV?$allocator@H@std@@@std@@@2@@2@U?$less@H@2@V?$allocator@V?$vector@HV?$allocator@H@std@@@std@@@2@@std@@QAE?AViterator@12@V312@0@Z",
+   "symbol": "?erase@?$_Tree@HU?$pair@$$CBHH@std@@U_Kfn@?$map@HHU?$less@H@std@@V?$allocator@H@2@@2@U?$less@H@2@V?$allocator@H@2@@std@@QAE?AViterator@12@V312@0@Z",
    "unit": "unsorted/fn_005FB000.cpp",
    "size": 116,
-   "score": 71.468,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-26"
   },
   "0x005fb259": {
    "name": "FUN_005fb259",
    "symbol": "?erase@?$_Tree@HU?$pair@$$CBHV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@std@@U_Kfn@?$map@HV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@H@2@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@2@U?$less@H@2@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@QAE?AViterator@12@V312@0@Z",
    "unit": "unsorted/fn_005FB000.cpp",
    "size": 116,
-   "score": 71.468,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-26"
   },
   "0x005fb2cd": {
    "name": "FUN_005fb2cd",
    "symbol": "?insert@?$_Tree@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@2@U_Kfn@?$map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@H@2@@2@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@H@2@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@2@U_Kfn@?$map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@H@2@@2@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@H@2@@std@@_N@2@ABU?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@2@@Z",
    "unit": "unsorted/fn_005FB000.cpp",
    "size": 170,
-   "score": 79.986,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-26"
   },
   "0x005fb377": {
    "name": "FUN_005fb377",
    "symbol": "?_Erase@?$_Tree@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@2@U_Kfn@?$map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@H@2@@2@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@H@2@@std@@IAEXPAU_Node@12@@Z",
    "unit": "unsorted/fn_005FB000.cpp",
    "size": 56,
-   "score": 5.946,
-   "exact": false,
-   "recorded": "2026-11-17"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-26"
   },
   "0x005fb3af": {
    "name": "FUN_005fb3af",
@@ -30648,7 +30648,7 @@
   },
   "0x005fbe4a": {
    "name": "FUN_005fbe4a",
-   "symbol": "_$E22",
+   "symbol": "_$E14",
    "unit": "unsorted/fn_005FB000.cpp",
    "size": 51,
    "score": 100.0,
@@ -30657,7 +30657,7 @@
   },
   "0x005fbe7d": {
    "name": "FUN_005fbe7d",
-   "symbol": "_$E24",
+   "symbol": "_$E16",
    "unit": "unsorted/fn_005FB000.cpp",
    "size": 12,
    "score": 100.0,
@@ -30666,7 +30666,7 @@
   },
   "0x005fbeb0": {
    "name": "FUN_005fbeb0",
-   "symbol": "_$E27",
+   "symbol": "_$E19",
    "unit": "unsorted/fn_005FB000.cpp",
    "size": 51,
    "score": 100.0,
@@ -30675,7 +30675,7 @@
   },
   "0x005fbee3": {
    "name": "FUN_005fbee3",
-   "symbol": "_$E29",
+   "symbol": "_$E21",
    "unit": "unsorted/fn_005FB000.cpp",
    "size": 12,
    "score": 100.0,
@@ -30684,7 +30684,7 @@
   },
   "0x005fbf16": {
    "name": "FUN_005fbf16",
-   "symbol": "_$E32",
+   "symbol": "_$E24",
    "unit": "unsorted/fn_005FB000.cpp",
    "size": 51,
    "score": 100.0,
@@ -30693,7 +30693,7 @@
   },
   "0x005fbf49": {
    "name": "FUN_005fbf49",
-   "symbol": "_$E34",
+   "symbol": "_$E26",
    "unit": "unsorted/fn_005FB000.cpp",
    "size": 12,
    "score": 100.0,
@@ -30702,7 +30702,7 @@
   },
   "0x005fbf7c": {
    "name": "FUN_005fbf7c",
-   "symbol": "_$E37",
+   "symbol": "_$E29",
    "unit": "unsorted/fn_005FB000.cpp",
    "size": 51,
    "score": 100.0,
@@ -30711,7 +30711,7 @@
   },
   "0x005fbfaf": {
    "name": "FUN_005fbfaf",
-   "symbol": "_$E39",
+   "symbol": "_$E31",
    "unit": "unsorted/fn_005FB000.cpp",
    "size": 12,
    "score": 100.0,
@@ -30720,7 +30720,7 @@
   },
   "0x005fbfe2": {
    "name": "FUN_005fbfe2",
-   "symbol": "_$E42",
+   "symbol": "_$E34",
    "unit": "unsorted/fn_005FB000.cpp",
    "size": 51,
    "score": 100.0,
@@ -35196,9 +35196,9 @@
    "symbol": "??1twIORequestQueueManager@@QAE@XZ",
    "unit": "Tiger/twfsys.cpp",
    "size": 528,
-   "score": 19.874,
-   "exact": false,
-   "recorded": "2026-11-16"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-26"
   },
   "0x00634b50": {
    "name": "twIORequestQueueManager::mRequest",
@@ -42690,7 +42690,7 @@
   },
   "0x00675f40": {
    "name": "FUN_00675f40",
-   "symbol": "_$E8",
+   "symbol": "_$E4",
    "unit": "unsorted/tCastMgr.cpp",
    "size": 16,
    "score": 100.0,
@@ -42699,7 +42699,7 @@
   },
   "0x00675f50": {
    "name": "FUN_00675f50",
-   "symbol": "_$E10",
+   "symbol": "_$E6",
    "unit": "unsorted/tCastMgr.cpp",
    "size": 16,
    "score": 100.0,
@@ -44673,9 +44673,9 @@
    "symbol": "?FUN_006e3000@tObject_006e3000@@QAEXXZ",
    "unit": "unsorted/fn_006E3000.cpp",
    "size": 432,
-   "score": 37.413,
+   "score": 36.378,
    "exact": false,
-   "recorded": "2026-11-17"
+   "recorded": "2026-11-26"
   },
   "0x006e31b0": {
    "name": "FUN_006e31b0",
@@ -45312,9 +45312,9 @@
    "symbol": "??1tSettings@@UAE@XZ",
    "unit": "Common/Settings.cpp",
    "size": 224,
-   "score": 53.025,
-   "exact": false,
-   "recorded": "2026-11-19"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-26"
   },
   "0x006f87d0": {
    "name": "tDateAndTime::tDateAndTime",
@@ -45444,7 +45444,7 @@
   },
   "0x006f8d70": {
    "name": "FUN_006f8d70",
-   "symbol": "_$E19",
+   "symbol": "_$E17",
    "unit": "Common/DataStore/Streamable.cpp",
    "size": 32,
    "score": 100.0,
@@ -45453,7 +45453,7 @@
   },
   "0x006f8d90": {
    "name": "FUN_006f8d90",
-   "symbol": "_$E22",
+   "symbol": "_$E20",
    "unit": "Common/DataStore/Streamable.cpp",
    "size": 16,
    "score": 100.0,
@@ -45492,9 +45492,9 @@
    "symbol": "?GetObjectID@tStreamable@nDataStore@@QBEKXZ",
    "unit": "Common/DataStore/Streamable.cpp",
    "size": 592,
-   "score": 95.483,
-   "exact": false,
-   "recorded": "2026-11-19"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-26"
   },
   "0x006f9130": {
    "name": "nDataStore::tStreamable::GetVersion",
@@ -45510,18 +45510,18 @@
    "symbol": "??5nDataStore@@YAAAVtInput@0@AAV10@AAVtStreamable@0@@Z",
    "unit": "Common/DataStore/Streamable.cpp",
    "size": 384,
-   "score": 99.959,
-   "exact": false,
-   "recorded": "2026-11-19"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-26"
   },
   "0x006f92c0": {
    "name": "nDataStore::tStreamable::tCRCFailed::tCRCFailed",
    "symbol": "??0tCRCFailed@tStreamable@nDataStore@@QAE@ABV012@@Z",
    "unit": "Common/DataStore/Streamable.cpp",
    "size": 352,
-   "score": 61.587,
-   "exact": false,
-   "recorded": "2026-11-19"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-26"
   },
   "0x006f9420": {
    "name": "nDataStore::operator<<",
@@ -45582,9 +45582,9 @@
    "symbol": "??0tDatabaseObject@nDatabase@@QAE@E@Z",
    "unit": "Common/Database/DatabaseObject.cpp",
    "size": 368,
-   "score": 78.022,
-   "exact": false,
-   "recorded": "2026-11-19"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-26"
   },
   "0x006fa6b0": {
    "name": "nDatabase::tDatabaseObject::`scalar_deleting_destructor'",
@@ -45663,9 +45663,9 @@
    "symbol": "?AttachToDB@tDatabaseObject@nDatabase@@MAEXABVtID@2@@Z",
    "unit": "Common/Database/DatabaseObject.cpp",
    "size": 448,
-   "score": 48.085,
-   "exact": false,
-   "recorded": "2026-11-19"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-26"
   },
   "0x006fb0f0": {
    "name": "nDatabase::tDatabaseObject::RemoveFromDB",
@@ -46050,9 +46050,9 @@
    "symbol": "?xsputn@tStreamBuf@tLogStream@nLog@@UAEHPBDH@Z",
    "unit": "Common/Log/LogStream.cpp",
    "size": 352,
-   "score": 24.719,
+   "score": 41.472,
    "exact": false,
-   "recorded": "2026-11-19"
+   "recorded": "2026-11-26"
   },
   "0x006fe880": {
    "name": "nLog::tLogStream::tStreamBuf::overflow",
@@ -46068,9 +46068,9 @@
    "symbol": "?Report@tStreamBuf@tLogStream@nLog@@UAEXXZ",
    "unit": "Common/Log/LogStream.cpp",
    "size": 384,
-   "score": 28.201,
-   "exact": false,
-   "recorded": "2026-11-19"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-26"
   },
   "0x006feda0": {
    "name": "nLog::tLogStream::tStreamBuf::SetEventType",
@@ -46104,9 +46104,9 @@
    "symbol": "??0tThread@@QAE@XZ",
    "unit": "Common/Thread/Thread.cpp",
    "size": 416,
-   "score": 53.483,
-   "exact": false,
-   "recorded": "2026-11-24"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-26"
   },
   "0x006ff170": {
    "name": "tThread::~tThread",
@@ -46203,22 +46203,22 @@
    "symbol": "?StreamIn@tDatabaseInfo@tFileDatabaseMgr@nDatabase@@UAEXAAVtInput@nDataStore@@@Z",
    "unit": "Common/Database/FileDatabaseMgr.cpp",
    "size": 480,
-   "score": 17.57,
+   "score": 22.707,
    "exact": false,
-   "recorded": "2026-11-09"
+   "recorded": "2026-11-26"
   },
   "0x00708330": {
    "name": "FUN_00708330",
-   "symbol": "_$E29",
+   "symbol": "_$E27",
    "unit": "Common/Database/FileDatabaseMgr.cpp",
    "size": 224,
-   "score": 40.398,
-   "exact": false,
-   "recorded": "2026-11-09"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-26"
   },
   "0x00708410": {
    "name": "FUN_00708410",
-   "symbol": "_$E32",
+   "symbol": "_$E30",
    "unit": "Common/Database/FileDatabaseMgr.cpp",
    "size": 16,
    "score": 100.0,
@@ -46227,16 +46227,16 @@
   },
   "0x00708490": {
    "name": "FUN_00708490",
-   "symbol": "_$E35",
+   "symbol": "_$E33",
    "unit": "Common/Database/FileDatabaseMgr.cpp",
    "size": 224,
-   "score": 40.398,
-   "exact": false,
-   "recorded": "2026-11-09"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-26"
   },
   "0x00708570": {
    "name": "FUN_00708570",
-   "symbol": "_$E37",
+   "symbol": "_$E35",
    "unit": "Common/Database/FileDatabaseMgr.cpp",
    "size": 16,
    "score": 100.0,
@@ -46245,16 +46245,16 @@
   },
   "0x007085f0": {
    "name": "FUN_007085f0",
-   "symbol": "_$E40",
+   "symbol": "_$E38",
    "unit": "Common/Database/FileDatabaseMgr.cpp",
    "size": 224,
-   "score": 40.398,
-   "exact": false,
-   "recorded": "2026-11-09"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-26"
   },
   "0x007086d0": {
    "name": "FUN_007086d0",
-   "symbol": "_$E42",
+   "symbol": "_$E40",
    "unit": "Common/Database/FileDatabaseMgr.cpp",
    "size": 16,
    "score": 100.0,
@@ -46275,9 +46275,9 @@
    "symbol": "??1tFileDatabaseMgr@nDatabase@@UAE@XZ",
    "unit": "Common/Database/FileDatabaseMgr.cpp",
    "size": 288,
-   "score": 44.294,
-   "exact": false,
-   "recorded": "2026-11-09"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-26"
   },
   "0x00708fc0": {
    "name": "nDatabase::tFileDatabaseMgr::GetCurDBInfo",
@@ -46311,7 +46311,7 @@
    "symbol": "?Load@tFileDatabaseMgr@nDatabase@@UAEPAVtDatabase@2@ABVtDatabaseInfo@12@@Z",
    "unit": "Common/Database/FileDatabaseMgr.cpp",
    "size": 784,
-   "score": 79.663,
+   "score": 99.996,
    "exact": false,
    "recorded": "2026-11-26"
   },

@@ -19,7 +19,6 @@ public:
 	std::string& fn_0060b7f4( int* key );
 	void fn_0060b715();
 
-	char field_0[4];
 	// HYPOTHESIS: the key and value types; the validate text names the member, and its
 	// size() is read at +0x10.
 	std::map< int, std::string > fStringMap;
