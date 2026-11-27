@@ -286,6 +286,43 @@ void tView3DExt::vfunction18(int *a, int *b, int *c, int *d)
 		*d = (int)field_0x760;
 }
 
+// The three factors of the field-of-view angle are separate constants in the original.
+extern double g_007a1648;    // pi
+extern double g_007a13a8;    // 1/180
+extern double g_007977c8;    // 0.5
+
+// FUNCTION: STARFLEETOP 0x006aa0e0
+void tView3DExt::vfunction65(tMatrix *m, float fov, float zNear, float zFar)
+{
+	float top = (float)tan(fov * g_007977c8 * g_007a13a8 * g_007a1648) * zNear;
+	float bottom = -top;
+	float right = field_0x764 / field_0x768 * top;
+	float left = -right;
+	tMtx4x4 &mtx = m->mGetMtx4x4();
+	float depth = zFar - zNear;
+	float width = right - left;
+	float height = top - bottom;
+	float twoNear = zNear + zNear;
+	mtx[0][0] = twoNear / width;
+	mtx[0][1] = 0.0f;
+	mtx[0][2] = (left + right) / width;
+	mtx[0][3] = 0.0f;
+	mtx[1][0] = 0.0f;
+	mtx[1][1] = twoNear / height;
+	mtx[1][2] = (bottom + top) / height;
+	mtx[1][3] = 0.0f;
+	mtx[2][0] = 0.0f;
+	mtx[2][1] = 0.0f;
+	mtx[2][2] = -((zNear + zFar) / depth);
+	mtx[2][3] = -((zNear * zFar + zNear * zFar) / depth);
+	mtx[3][0] = 0.0f;
+	mtx[3][1] = 0.0f;
+	mtx[3][2] = -1.0f;
+	mtx[3][3] = 0.0f;
+	// HYPOTHESIS: the original ends with m->mSet3x4Flag(kFalse) (the byte at +0x41 cleared last,
+	// m kept live to the end); tMatrix in Tiger/tvectormath.h does not declare that SDK member yet.
+}
+
 // HYPOTHESIS: the original calls 0x0069cc40 (another tMatrix member taking an output point and an
 // input point) where this body calls fn_0069cbc0 three times; tMatrix declares no member for it yet.
 // FUNCTION: STARFLEETOP 0x006aa550

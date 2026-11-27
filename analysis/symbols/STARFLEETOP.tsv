@@ -18792,7 +18792,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x006a9ff0	function	fn_006a9ff0	tView3DExt	?vfunction36@tView3DExt@@UAEPAUfn_0040105e_Vector@@XZ	claim		vtable
 0x006aa000	function	fn_006aa000	tView3DExt	?vfunction17@tView3DExt@@UAEXHHHH@Z	claim		vtable
 0x006aa080	function	fn_006aa080	tView3DExt	?vfunction18@tView3DExt@@UAEXPAH000@Z	claim		vtable
-0x006aa0e0	function	fn_006aa0e0	tView3DExt				vtable
+0x006aa0e0	function	fn_006aa0e0	tView3DExt	?vfunction65@tView3DExt@@UAEXPAVtMatrix@@MMM@Z	claim		vtable
 0x006aa1c0	function	fn_006aa1c0	tView3DExt				vtable
 0x006aa210	function	fn_006aa210	tView3DExt				vtable
 0x006aa270	function	fn_006aa270	tView3DExt				vtable
