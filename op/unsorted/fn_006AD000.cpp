@@ -78,3 +78,12 @@ void tView3DExt::vfunction74( float x, float y )
 	field_0x1eec.field_0x08 = x;
 	field_0x1eec.field_0x0c = y;
 }
+
+// FUNCTION: STARFLEETOP 0x006ad340
+void tView3DExt::vfunction77( float r, float g, float b )
+{
+	field_0x1eec.field_0x34 = 1;
+	field_0x1eec.field_0x1c = r;
+	field_0x1eec.field_0x20 = g;
+	field_0x1eec.field_0x24 = b;
+}
