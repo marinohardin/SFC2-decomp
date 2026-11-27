@@ -61,6 +61,7 @@ public:
 	// HYPOTHESIS: 0x004b35db keeps ecx live up to its call of 0x004bc55a, which it makes
 	// without loading ecx: both are members of one class, and the class is only a guess.
 	void fn_004b35db(long *event);
+	void fn_004b3758(long *event);
 	void fn_004bc55a(long x, long y, char *out);
 	void fn_004ba05b(int *param_1);
 	void fn_004ba5ea(int *param_1);
@@ -257,5 +258,24 @@ public:
 };
 
 extern fn_004c5b95_Object *g_00919b44;
+
+// HYPOTHESIS: the mouse at 0x00898c24: slot 9 selects a cursor by name, slot 10 a race's cursor.
+class fn_00898c24_object
+{
+public:
+	virtual void vfunction0();
+	virtual void vfunction1();
+	virtual void vfunction2();
+	virtual void vfunction3();
+	virtual void vfunction4();
+	virtual void vfunction5();
+	virtual void vfunction6();
+	virtual void vfunction7();
+	virtual void vfunction8();
+	virtual void vfunction9(const char *name);
+	virtual void vfunction10(int kind);
+};
+
+extern fn_00898c24_object *g_00898c24;
 
 #endif	// tState_Tactical_h

@@ -20,22 +20,22 @@ public:
 	virtual fn_00918838_object *vfunction1();
 };
 
-// HYPOTHESIS: the mouse at 0x00898c24: slot 9 selects a cursor by name, slot 10 a race's cursor.
-class fn_00898c24_object
-{
-public:
-	virtual void vfunction0();
-	virtual void vfunction1();
-	virtual void vfunction2();
-	virtual void vfunction3();
-	virtual void vfunction4();
-	virtual void vfunction5();
-	virtual void vfunction6();
-	virtual void vfunction7();
-	virtual void vfunction8();
-	virtual void vfunction9(const char *name);
-	virtual void vfunction10(int kind);
-};
+// The type of the mouse at 0x00898c24 is declared in unsorted/tState_Tactical.h.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // HYPOTHESIS: the object at 0x00969088, slot 1 takes nothing.
 class fn_00969088_object
@@ -100,7 +100,7 @@ public:
 void __fastcall fn_0069b450( tMatrix *self, int unused, tMatrix *other );
 void __fastcall fn_0069c7c0( tMatrix *self, int unused, float x, float y, float z );
 
-extern fn_00898c24_object *g_00898c24;
+
 extern fn_00918838_object *g_00918838;
 extern fn_00918838_object *g_0091883c;
 extern fn_00918838_object *g_00918840;
