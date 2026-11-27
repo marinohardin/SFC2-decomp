@@ -18,6 +18,27 @@
 // also holds tPlayerShadow's constructor inline. vfunctionN is slot N-1; the one-argument
 // functions take a pointer to an object whose slots 0x200 and 0x228 they call (a ship), so
 // the argument is a void pointer here.
+
+// tShadowFloat (RTTI, vtable 0x007a0e44, constructor 0x004a03bc): a 12-byte shadow of one value.
+// Its slot names are not known; vfunctionN is slot N-1.
+class tShadowFloat
+{
+public:
+	tShadowFloat();
+	virtual void vfunction1();
+	virtual void vfunction2();
+	// HYPOTHESIS: slot 2 sets the shadowed value; tActualPlayer::vfunction27 passes 0 to it.
+	virtual void vfunction3(int aValue);
+
+	int field_0x4;
+	int field_0x8;
+};
+
+// tShadowDragBar (RTTI, vtable 0x007a0e34): a tShadowFloat of the same size.
+class tShadowDragBar : public tShadowFloat
+{
+};
+
 class tActualPlayer : public tPlayerShadow
 {
 public:
@@ -51,19 +72,19 @@ public:
 	char field_0x2c[0x8];  // after tConnector (0x2c bytes); the first member starts at 0x34
 	char field_0x34[0xc];  // tShadowFloat (RTTI, vtable 0x007a0e44; stored inline, 12 bytes)
 	char field_0x40[0xc];  // tShadowFloat (RTTI, vtable 0x007a0e44; stored inline, 12 bytes)
-	char field_0x4c[0xc];  // tShadowDragBar (RTTI, vtable 0x007a0e34; a tShadowFloat)
+	tShadowDragBar field_0x4c;
 	char field_0x58[0x54];  // tShadowGaugeStr (RTTI, vtable 0x007a0e20; a tShadowFloat)
 	char field_0xac[0xc];  // tShadowFloat (RTTI, vtable 0x007a0e44; stored inline, 12 bytes)
-	char field_0xb8[0xc];  // tShadowFloat (RTTI, vtable 0x007a0e44; stored inline, 12 bytes)
+	tShadowFloat field_0xb8;
 	char field_0xc4[0xc];  // tShadowFloat (RTTI, vtable 0x007a0e44; stored inline, 12 bytes)
 	char field_0xd0[0xc];  // tShadowFloat (RTTI, vtable 0x007a0e44; stored inline, 12 bytes)
-	char field_0xdc[0xc];  // tShadowFloat (RTTI, vtable 0x007a0e44; stored inline, 12 bytes)
-	char field_0xe8[0xc];  // tShadowFloat (RTTI, vtable 0x007a0e44; stored inline, 12 bytes)
+	tShadowFloat field_0xdc;
+	tShadowFloat field_0xe8;
 	char field_0xf4[0x54];  // tShadowGaugeStr (RTTI, vtable 0x007a0e20; a tShadowFloat)
 	char field_0x148[0xc];  // tShadowFloat (RTTI, vtable 0x007a0e44; stored inline, 12 bytes)
 	char field_0x154[0x54];  // tShadowGaugeStr (RTTI, vtable 0x007a0e20; a tShadowFloat)
 	char field_0x1a8[0xc];  // tShadowFloat (RTTI, vtable 0x007a0e44; stored inline, 12 bytes)
-	char field_0x1b4[0xc];  // tShadowFloat (RTTI, vtable 0x007a0e44; stored inline, 12 bytes)
+	tShadowFloat field_0x1b4;
 	char field_0x1c0[0x54];  // tShadowGaugeStr (RTTI, vtable 0x007a0e20; a tShadowFloat)
 	char field_0x214[0x54];  // tShadowGaugeStr (RTTI, vtable 0x007a0e20; a tShadowFloat)
 	char field_0x268[0x54];  // tShadowGaugeStr (RTTI, vtable 0x007a0e20; a tShadowFloat)
@@ -75,9 +96,9 @@ public:
 	char field_0x388[0xc];  // tShadowFloat (RTTI, vtable 0x007a0e44; stored inline, 12 bytes)
 	char field_0x394[0x54];  // tShadowGaugeStr (RTTI, vtable 0x007a0e20; a tShadowFloat)
 	char field_0x3e8[0xc];  // tShadowFloat (RTTI, vtable 0x007a0e44; stored inline, 12 bytes)
-	char field_0x3f4[0xc];  // tShadowFloat (RTTI, vtable 0x007a0e44; stored inline, 12 bytes)
+	tShadowFloat field_0x3f4;
 	char field_0x400[0xc];  // tShadowFloat (RTTI, vtable 0x007a0e44; stored inline, 12 bytes)
-	char field_0x40c[0xc];  // tShadowFloat (RTTI, vtable 0x007a0e44; stored inline, 12 bytes)
+	tShadowFloat field_0x40c;
 	char field_0x418[0xc];  // tShadowFloat (RTTI, vtable 0x007a0e44; stored inline, 12 bytes)
 	char field_0x424[0xc];  // tShadowFloat (RTTI, vtable 0x007a0e44; stored inline, 12 bytes)
 	char field_0x430[0x54];  // tShadowGaugeStr (RTTI, vtable 0x007a0e20; a tShadowFloat)

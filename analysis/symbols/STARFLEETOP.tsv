@@ -4720,7 +4720,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004a1284	function	tPlayerShadow::scalar_deleting_destructor	tPlayerShadow				rtti
 0x004a12a0	function	tPlayerShadow::~tPlayerShadow	tPlayerShadow				rtti
 0x004a12ba	function	fn_004a12ba	tActualPlayer				vtable
-0x004a203a	function	fn_004a203a	tActualPlayer				vtable
+0x004a203a	function	fn_004a203a	tActualPlayer	?vfunction27@tActualPlayer@@UAEXXZ	claim		vtable
 0x004a20ad	function	fn_004a20ad					none
 0x004a282c	function	fn_004a282c					none
 0x004a2e75	function	fn_004a2e75	tActualPlayer				vtable
