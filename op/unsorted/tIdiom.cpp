@@ -9,3 +9,10 @@ tIdiom::tIdiom()
 	: nDataStore::tStreamable( 0 )
 {
 }
+
+// FUNCTION: STARFLEETOP 0x005d37fb
+// FUNCTION: STARFLEETOP 0x005d3817
+tIdiom::~tIdiom()
+{
+	return;
+}
