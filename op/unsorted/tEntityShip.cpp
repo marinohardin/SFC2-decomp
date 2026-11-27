@@ -708,3 +708,11 @@ bool tEntityShip::vfunction32()
 	}
 	return false;
 }
+
+// FUNCTION: STARFLEETOP 0x00416da2
+void *tEntityShip::vfunction33()
+{
+	if (field_ad4)
+		return field_ad4->vfunction95();
+	return 0;
+}
