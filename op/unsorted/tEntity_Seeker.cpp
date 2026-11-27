@@ -283,3 +283,12 @@ void __stdcall fn_0041ea2c(tPoint3 *aPoint, tEntity *aEntity, int aUnused, int a
 		*aPoint += offset;
 	}
 }
+
+// FUNCTION: STARFLEETOP 0x004203d5
+float tEntity_Seeker::vfunction14()
+{
+	float r = 1.0f - field_0x264;
+	if (r <= 0.0f)
+		return 0.0f;
+	return r * fRadius;
+}

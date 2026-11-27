@@ -1029,7 +1029,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0041f089	function	fn_0041f089					none
 0x0041f114	function	fn_0041f114					none
 0x0041f5f5	function	fn_0041f5f5	tEntity_Seeker				vtable
-0x004203d5	function	fn_004203d5	tEntity_Seeker				vtable
+0x004203d5	function	fn_004203d5	tEntity_Seeker	?vfunction14@tEntity_Seeker@@UAEMXZ	claim		vtable
 0x004203f5	function	tEntity_HellboreSeeker::~tEntity_HellboreSeeker	tEntity_HellboreSeeker				rtti
 0x00420447	function	fn_00420447	tEntity_Seeker				vtable
 0x00420493	function	fn_00420493					none
