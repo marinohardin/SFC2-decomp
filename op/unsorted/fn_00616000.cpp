@@ -278,7 +278,7 @@ public:
 	// HYPOTHESIS: the insert at 0x006135a0 is map<long, long>'s (an SDK match); the values are
 	// read as pointers.
 	std::map< long, long > fProviders;
-	char fPad6C[0x44];
+	char fPad6C[0x40];
 	// HYPOTHESIS: a std::list of received messages (head at +0xb4, size at +0xb8).
 	std::list<fn_00616470_Message*> fMessages;
 	char fPadBC[0x7c];

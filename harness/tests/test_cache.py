@@ -168,6 +168,22 @@ def test_an_unchanged_object_is_not_compared_again(scoring):
                                        'result.json')))['score'] == 75.0
 
 
+@pytest.mark.parametrize('err,not_scored', [
+    ('objdiff did not finish in 300 s', True),
+    ('error: cannot read object', False),
+])
+def test_an_objdiff_failure_is_not_cached_and_says_whether_it_timed_out(scoring, monkeypatch,
+                                                                        err, not_scored):
+    score, calls = scoring
+    monkeypatch.setattr(verify, 'objdiff', lambda t, b, sym, out_dir: (None, None, err))
+    res = score()
+    assert res['error'] == 'objdiff failed: ' + err
+    assert res['not_scored'] is not_scored
+    assert 'relocs' not in res
+    score(stamp=1)                   # nothing was cached: the target is built again
+    assert calls == ['_f', '_f']
+
+
 def test_a_hit_keeps_the_unit_and_name_of_the_function_scored_now(scoring):
     """A function moved to another file or renamed, with the same object: the score is reused,
     the unit and the name are this run's."""

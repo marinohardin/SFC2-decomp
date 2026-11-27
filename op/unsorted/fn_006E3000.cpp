@@ -110,12 +110,25 @@ public:
 
 	char m00[0x18];
 	CRITICAL_SECTION mSection;
-	tTimerMap_006e3000 mTimers;
-	long m40;
-	tIndexMap_006e3000 m44;
-	char m54[0x8];
+	// MATCH-ONLY: the two trees are kept in one record; the original reaches both from one base.
+	struct tTimerTable
+	{
+		tTimerMap_006e3000 mTimers;
+		tIndexMap_006e3000 m44;
+		// The table's own erase (0x006e36a0 below is its out-of-line copy), expanded in place.
+		tTimerMap_006e3000::iterator fn_erase(tTimerMap_006e3000::iterator p)
+		{
+			tObject_006e3000_entry* entry = (*p).second;
+			mTimers.erase(p++);
+			m44.erase(entry->m04);
+			entry->fn_005d6a66();
+			delete entry;
+			return p;
+		}
+	} m30;
+	char m54[0x4];
 	tTimerMap_006e3000 m5c;
-	char m6c[0x1c];
+	char m6c[0x18];
 	unsigned long mLastTick;
 };
 
@@ -123,25 +136,24 @@ public:
 void tObject_006e3000::FUN_006e3000()
 {
 	tLock_006e3000 lock(&mSection);
+	// MATCH-ONLY: one iterator serves both loops, as in the original (it lives in memory).
+	tTimerMap_006e3000::iterator it;
 	unsigned long now = ::GetTickCount();
 	if (now < mLastTick) {
-		for (tTimerMap_006e3000::iterator i = mTimers.begin(); i != mTimers.end(); ++i)
-			(*i).second->mObject->fn_006e08f0((*i).second->mObject->m28);
-		mTimers.swap(m5c);
+		for (it = m30.mTimers.begin(); it != m30.mTimers.end(); ++it)
+		{
+			tObject_006e3000_shared* shared = (*it).second->mObject;
+			shared->fn_006e08f0(shared->m28);
+		}
+		m30.mTimers.swap(m5c);
 		m5c.clear();
 	}
 	mLastTick = now;
-	tTimerMap_006e3000::iterator it = mTimers.begin();
-	while (it != mTimers.end() && (*it).first <= mLastTick) {
+	it = m30.mTimers.begin();
+	while (it != m30.mTimers.end() && (*it).first <= mLastTick) {
 		tRef_006e3000 object((*it).second->mObject);
 		object->fn_006e08f0(object->m28);
-		tObject_006e3000_entry* entry = (*it).second;
-		tTimerMap_006e3000::iterator next = it;
-		mTimers.erase(next++);
-		m44.erase(entry->m04);
-		entry->fn_005d6a66();
-		delete entry;
-		it = next;
+		it = m30.fn_erase(it);
 	}
 }
 
@@ -150,8 +162,8 @@ unsigned long tObject_006e3000::FUN_006e31b0()
 {
 	tLock_006e3000 lock(&mSection);
 	unsigned long wait = 9 - mLastTick;
-	if (m40 != 0) {
-		tTimerMap_006e3000::iterator first = mTimers.begin();
+	if (m30.mTimers.size() != 0) {
+		tTimerMap_006e3000::iterator first = m30.mTimers.begin();
 		wait = (*first).first <= mLastTick ? 0 : (*first).first - mLastTick;
 	}
 	return wait;
