@@ -551,6 +551,36 @@ void tEntityShip::fn_004168f4()
 	field_b0c = 0.4f;
 }
 
+// HYPOTHESIS: hands every other ship of this ship's team to the player when this ship is the one the
+// player controls, then removes this ship.
+// MATCH-ONLY: 0x00525081 is declared on tObject_008e1060 only; tEntityMgr has no declaration of it
+// yet (HEADER REQUEST), so the call goes through a member pointer on the entity manager.
+// FUNCTION: STARFLEETOP 0x00416944
+void tEntityShip::vfunction69(bool param_1)
+{
+	int (tEntityMgr::*getPlayerID)() = (int (tEntityMgr::*)())&tObject_008e1060::fn_00525081;
+	tID myID = fID;
+	if ((g_008e1060.*getPlayerID)() == myID)
+	{
+		std::vector<int> *ships = gObject_0090be60->fn_00426f1a(fTeam);
+		for (std::vector<int>::iterator it = ships->begin(); it != ships->end(); it++)
+		{
+			int id = *it;
+			tEntityShip *ship = (tEntityShip *)g_008e1060.fn_0042496f(id);
+			if (ship && ship->field_874 != 1)
+			{
+				fn_00437d8d_Object *system = ship->field_ad4->vfunction83();
+				if ((!system || !system->fn_00437d8d()) && g_008e1060.fn_004235fa(id) && ship != this && !ship->fn_00419c87())
+					g_008e1060.mMarkIDasControledByPlayer(id);
+			}
+		}
+	}
+	if (!param_1)
+		vfunction5();
+	else
+		fn_004165d4();
+}
+
 // FUNCTION: STARFLEETOP 0x00416a0e
 void tEntityShip::vfunction26(short a1, int a2, int a3, int a4, int a5)
 {

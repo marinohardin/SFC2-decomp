@@ -80,6 +80,14 @@ public:
 	virtual tID vfunction116(int aIndex);
 };
 
+// HYPOTHESIS: the object slot 83 (offset 0x14c) of the object at 0xad4 returns; 0x00416944 calls
+// 0x00437d8d on it for a truth value.
+class fn_00437d8d_Object
+{
+public:
+	bool fn_00437d8d();
+};
+
 // HYPOTHESIS: the object at 0xad4 (0x00416da2 calls through it); only slots 34 and 86 are called
 // by 0x004162b9, the slots before them are not known.
 class tObject_00416d41_ad4
@@ -125,7 +133,8 @@ public:
 	virtual void vfunction74(); virtual void vfunction75(); virtual void vfunction76();
 	virtual void vfunction77(); virtual void vfunction78(); virtual void vfunction79();
 	virtual void vfunction80(); virtual void vfunction81(); virtual void vfunction82();
-	virtual void vfunction83();
+	// HYPOTHESIS: returns a system or 0; 0x00416944 calls 0x00437d8d on it.
+	virtual fn_00437d8d_Object *vfunction83();
 	// HYPOTHESIS: returns the ship's sensor group; 0x00415ff4 calls 0x0043eca6 on it.
 	virtual tSensorGroupSystem *vfunction84();
 	virtual void vfunction85();
@@ -240,7 +249,8 @@ public:
 	virtual void vfunction67(void *param_1);
 	// HYPOTHESIS: a truth value: 0x004160ee ends in mov al, 1 or xor al, al.
 	virtual bool vfunction68();
-	virtual void vfunction69(int param_1);
+	// HYPOTHESIS: a truth value: 0x00416944 tests it as a byte.
+	virtual void vfunction69(bool param_1);
 	// HYPOTHESIS: returns the dword at 0x878.
 	virtual int vfunction70();
 	// HYPOTHESIS: takes an entity (0x00415ff4 reads its ID at 0x1c and looks it up).
