@@ -40,7 +40,9 @@ class tPlasmaDRackTube12
 {
 public:
 	tPlasmaDRackTube12();
+	~tPlasmaDRackTube12();
 };
 
+// FUNCTION: STARFLEETOP 0x004ea4d7
 // FUNCTION: STARFLEETOP 0x004ea4cd
 tPlasmaDRackTube12 g_0092f168;
