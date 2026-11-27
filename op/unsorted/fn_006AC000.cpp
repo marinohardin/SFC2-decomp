@@ -39,3 +39,11 @@ bool tView3DExt::vfunction68( int param_1 )
 	}
 	return false;
 }
+
+// FUNCTION: STARFLEETOP 0x006ac810
+void tView3DExt::vfunction69()
+{
+	fn_006ac900( 1 );
+	field_0x1eec.field_0x00 = -1;
+	field_0x1eec.field_0x04 = 0;
+}
