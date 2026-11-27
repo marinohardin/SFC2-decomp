@@ -746,6 +746,11 @@ def main(argv=None):
     if not os.path.isdir(op_root):
         print(f'lint_claims: no source tree at {op_root}', file=sys.stderr)
         return 2
+    if args.write_baseline and image is None and any(k[0] == 'falls-through' for k in baseline):
+        print('lint_claims: --write-baseline needs the executable here: without it the '
+              'falls-through rule does not run, and its baseline rows would be dropped',
+              file=sys.stderr)
+        return 2
     breaks = lint(repo, op_root, ev, () if args.write_baseline else baseline)
     if args.write_baseline:
         with open(baseline_path, 'w', newline='') as f:

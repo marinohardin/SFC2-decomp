@@ -547,6 +547,16 @@ def test_without_an_executable_the_rule_is_skipped_with_an_info_line(tmp_path, c
     assert rc == 0
 
 
+def test_without_an_executable_a_baseline_with_fall_through_rows_is_not_rewritten(tmp_path, capsys):
+    fall_repo(tmp_path, ('f5',), baseline=[('falls-through', 'op/fall.c', '0x00401030', 'known')])
+    before = (tmp_path / 'analysis/results/lint_baseline.tsv').read_text()
+    rc = lint_claims.main(['--repo', str(tmp_path), '--exe', str(tmp_path / 'absent.exe'),
+                           '--write-baseline'])
+    err = capsys.readouterr().err
+    assert rc == 2 and '--write-baseline needs the executable' in err
+    assert (tmp_path / 'analysis/results/lint_baseline.tsv').read_text() == before
+
+
 def test_an_executable_that_is_not_the_retail_file_is_refused(tmp_path, capsys):
     fall_repo(tmp_path, ('f5',))
     exe = build_pe(tmp_path / 'image.exe')
