@@ -223,3 +223,9 @@ int tEntity_Seeker::vfunction23()
 {
 	return field_0x268;
 }
+
+// FUNCTION: STARFLEETOP 0x0041e946
+int tEntity_Seeker::vfunction71()
+{
+	return field_0x270;
+}
