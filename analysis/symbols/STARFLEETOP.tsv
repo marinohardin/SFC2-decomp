@@ -18772,7 +18772,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x006a9700	function	fn_006a9700	tView3DExt	?vfunction22@tView3DExt@@UAEHXZ	claim		vtable
 0x006a9710	function	fn_006a9710	tView3DExt	?vfunction45@tView3DExt@@UAEXM@Z	claim		vtable
 0x006a9780	function	fn_006a9780	tView3DExt	?vfunction46@tView3DExt@@UAEMXZ	claim		vtable
-0x006a9790	function	fn_006a9790					none
+0x006a9790	function	fn_006a9790		?fn_006a9790@tView3DExt@@QAE?AUtPoint3@@PAU2@0@Z	add		none
 0x006a9aa0	function	fn_006a9aa0	tView3DExt	?vfunction32@tView3DExt@@UAEHXZ	claim		vtable
 0x006a9ab0	function	fn_006a9ab0	tView3DExt	?vfunction33@tView3DExt@@UAEXIPBX@Z	claim		vtable
 0x006a9ba0	function	fn_006a9ba0	tView3DExt	?vfunction34@tView3DExt@@UAEXIPAX@Z	claim		vtable
@@ -18834,7 +18834,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x006ac900	function	fn_006ac900		?fn_006ac900@tView3DExt@@QAEXH@Z	add		none
 0x006ad130	function	fn_006ad130	tView3DExt	?vfunction71@tView3DExt@@UAEXPAUtPoint3@@@Z	claim		vtable
 0x006ad230	function	fn_006ad230	tView3DExt	?vfunction70@tView3DExt@@UAEXMMM@Z	claim		vtable
-0x006ad260	function	fn_006ad260	tView3DExt				vtable
+0x006ad260	function	fn_006ad260	tView3DExt	?vfunction73@tView3DExt@@UAEXPAUtPoint3@@@Z	claim		vtable
 0x006ad2d0	function	fn_006ad2d0	tView3DExt				vtable
 0x006ad300	function	fn_006ad300	tView3DExt				vtable
 0x006ad320	function	fn_006ad320	tView3DExt				vtable

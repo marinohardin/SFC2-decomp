@@ -46,3 +46,14 @@ void tView3DExt::vfunction70( float x, float y, float z )
 	tPoint3 point( x, y, z );
 	vfunction71( &point );
 }
+
+// FUNCTION: STARFLEETOP 0x006ad260
+void tView3DExt::vfunction73( tPoint3 *point )
+{
+	if ( field_0x1ecc != 3 )
+	{
+		tPoint3 zero( 0.0f, 0.0f, 0.0f );
+		field_0x1eec.field_0x10 = fn_006a9790( &zero, point );
+		field_0x1eec.field_0x34 = 1;
+	}
+}

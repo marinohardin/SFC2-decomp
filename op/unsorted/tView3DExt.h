@@ -86,6 +86,7 @@ public:
 	float	fn_006abeb0();    // HYPOTHESIS: a member; the screen-space cross product of the first three indexed vertices
 	void	fn_006ac900( int );    // HYPOTHESIS: a member (vfunction69 calls it on this with 1)
 	void	fn_006ac830( int, int, int );    // HYPOTHESIS: a member; counts a primitive by type and draws it through vfunction98
+	tPoint3	fn_006a9790( tPoint3 *, tPoint3 * );    // HYPOTHESIS: a member (vfunction73 calls it on this), returns a point by value
 
 	// Overrides, by tView3D's names (slot = number - 1). HYPOTHESIS: 0x006a95f0, the function
 	// in slot 5, is this class's (it frees the vertex cache); the symbol table now says so too,
