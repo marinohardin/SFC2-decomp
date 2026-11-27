@@ -240,4 +240,18 @@ public:
 
 }	// namespace tState_Namespace_Tactical
 
+void __fastcall fn_004c5b95( void *self );
+
+// HYPOTHESIS: the type of the object at 0x00919b44, whose destructor is the function at 0x004c5b95.
+// 0x004c5d2e, called on it with a binding id, gives that binding's text or null.
+class fn_004c5b95_Object
+{
+public:
+	~fn_004c5b95_Object() { fn_004c5b95( this ); }
+	const char *fn_004c5d2e( long id, long param_2 );
+	unsigned char m_data[4];
+};
+
+extern fn_004c5b95_Object *g_00919b44;
+
 #endif	// tState_Tactical_h

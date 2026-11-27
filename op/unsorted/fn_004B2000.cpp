@@ -1,5 +1,7 @@
 #include <math.h>
 #include "Tiger/tvectormath.h"
+#include "Tiger/tinifile.h"
+#include "unsorted/tState_Tactical.h"
 
 // HYPOTHESIS: two constants loaded from memory rather than folded into the pi product, so
 // declared as const variables: one degree in radians over pi (0x007a13a8) and a half (0x007977c8).
@@ -60,9 +62,8 @@ bool fn_004b2cd3_View::fn_004b2eb9(int sx, int sy, tPoint2 *out)
 }
 
 // HYPOTHESIS: the object at 0x00919b44 is created on demand by 0x004b3055, and 0x004c5f0a is
-// a member of its class (declared only in tState_Namespace_Tactical__tState_Tactical.cpp), so
-// it is called here as a free function taking the object in ecx.
-extern void *g_00919b44;
+// a member of its class (declared in unsorted/tState_Tactical.h), still called here as a free
+// function taking the object in ecx.
 void fn_004b3055();
 void __fastcall fn_004c5f0a( void *self );
 
@@ -76,4 +77,36 @@ void fn_004b2f6c()
 			return;
 	}
 	fn_004c5f0a( g_00919b44 );
+}
+
+// HYPOTHESIS: a table of three longs per entry, ended by a negative first long: a binding id,
+// the INI key it is written under, and a third long not read here. The empty fallback is the
+// exe's string at 0x0083bc54.
+extern long g_008524d8[];
+extern const char g_sz0083bc54[];
+
+
+// FUNCTION: STARFLEETOP 0x004b2fe6
+void fn_004b2fe6()
+{
+	tINIFile *file = tINIFile::mNewINIFile( "assets/specs/bindings.ini", 0 );
+	if ( file )
+	{
+		tINISection *section = file->mGetSection( "Bindings", 0 );
+		if ( section )
+		{
+			for ( long *entry = g_008524d8; ; entry += 3 )
+			{
+				long key = entry[0];
+				if ( key < 0 )
+					break;
+				const char *text = g_00919b44->fn_004c5d2e( key, 0 );
+				if ( !text )
+					text = g_sz0083bc54;
+				section->mPutString( (const char *)entry[1], text );
+			}
+		}
+		file->mFlush();
+		file->mRelease();
+	}
 }

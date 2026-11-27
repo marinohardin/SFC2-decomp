@@ -5047,7 +5047,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004b2eb9	function	fn_004b2eb9		?fn_004b2eb9@fn_004b2cd3_View@@QAE_NHHPAUtPoint2@@@Z	claim		none
 0x004b2f6c	function	fn_004b2f6c		?fn_004b2f6c@@YAXXZ	claim		none
 0x004b2f8b	function	fn_004b2f8b	tState_Namespace_Tactical::tState_Tactical				vtable
-0x004b2fe6	function	fn_004b2fe6					none
+0x004b2fe6	function	fn_004b2fe6		?fn_004b2fe6@@YAXXZ	claim		none
 0x004b3055	function	fn_004b3055		?fn_004b3055@@YAXXZ	add		none
 0x004b35db	function	fn_004b35db					none
 0x004b362e	function	fn_004b362e					none
