@@ -4724,7 +4724,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x004a20ad	function	fn_004a20ad					none
 0x004a282c	function	fn_004a282c					none
 0x004a2e75	function	fn_004a2e75	tActualPlayer	?vfunction5@tActualPlayer@@UAEXPAX@Z	claim		vtable
-0x004a2ef3	function	fn_004a2ef3	tActualPlayer				vtable
+0x004a2ef3	function	fn_004a2ef3	tActualPlayer	?vfunction6@tActualPlayer@@UAEXPAX@Z	claim		vtable
 0x004a2f71	function	fn_004a2f71	tActualPlayer				vtable
 0x004a2fef	function	fn_004a2fef	tActualPlayer				vtable
 0x004a306d	function	fn_004a306d	tActualPlayer				vtable
