@@ -30,3 +30,9 @@ tIdiom::tIdiom( const tIdiom& other )
 	fObjectVersion = other.fObjectVersion;
 	field_0c = other.field_0c;
 }
+
+// FUNCTION: STARFLEETOP 0x005d3906
+void tIdiom::StreamOut( nDataStore::tOutput& output ) const
+{
+	output << field_0c;
+}
