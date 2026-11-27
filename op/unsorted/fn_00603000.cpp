@@ -372,21 +372,38 @@ void fn_006032e7_object::fn_00603c9a( int a, int b, int c )
 	guard.Leave();
 }
 
-// HYPOTHESIS: a node holding a kind, two ints and a string; its name is not recovered.
-class fn_00603d4a_node
+// HYPOTHESIS: the three ints ahead of the string are a base whose inline constructor assigns
+// them in its body: the original stores the kind, then +8, then +4, before the string is built,
+// which one class's initializer list (declaration order) cannot give. Name not recovered.
+class fn_00603d4a_head
 {
 public:
-	fn_00603d4a_node( const std::string& text, int a, int b );
+	fn_00603d4a_head( int kind, int a, int b );
 
 	int			m_kind;
 	int			m_a;
 	int			m_b;
+};
+
+inline fn_00603d4a_head::fn_00603d4a_head( int kind, int a, int b )
+{
+	m_kind = kind;
+	m_b = b;
+	m_a = a;
+}
+
+// HYPOTHESIS: a node holding a kind, two ints and a string; its name is not recovered.
+class fn_00603d4a_node : public fn_00603d4a_head
+{
+public:
+	fn_00603d4a_node( const std::string& text, int a, int b );
+
 	std::string	m_text;
 };
 
 // FUNCTION: STARFLEETOP 0x00603d4a
 fn_00603d4a_node::fn_00603d4a_node( const std::string& text, int a, int b )
-	: m_b( a ), m_kind( 2 ), m_a( b ), m_text( text )
+	: fn_00603d4a_head( 2, a, b ), m_text( text )
 {
 }
 
