@@ -649,3 +649,21 @@ int tEntityShip::vfunction23()
 		return field_ad4->vfunction141();
 	return 0;
 }
+
+// FUNCTION: STARFLEETOP 0x00416c17
+float tEntityShip::vfunction24()
+{
+	if (field_ad4)
+	{
+		tObject_00416d41_bounds *bounds = field_ad4->vfunction34();
+		if (bounds)
+		{
+			float value = bounds->field_18;
+			if (value > 1.0f)
+				return 1.0f;
+			if (value >= 0.0f)
+				return value;
+		}
+	}
+	return 0.0f;
+}
