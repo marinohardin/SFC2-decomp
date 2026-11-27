@@ -141,3 +141,16 @@ void fn_004b7f9e_Rect::fn_004b7f9e(const fn_004b7f9e_Rect *other)
 	if (other->bottom > bottom)
 		bottom = other->bottom;
 }
+
+// Clips the edge from b to a against the plane where component [axis] equals k times w,
+// leaving the intersection in b.
+// FUNCTION: STARFLEETOP 0x004b7fce
+void fn_004b7fce(float *a, float *b, int axis, float k)
+{
+	float db = b[axis] - k * b[3];
+	float t = db / (db - (a[axis] - k * a[3]));
+	b[0] = (a[0] - b[0]) * t + b[0];
+	b[1] = (a[1] - b[1]) * t + b[1];
+	b[2] = (a[2] - b[2]) * t + b[2];
+	b[3] = (a[3] - b[3]) * t + b[3];
+}
