@@ -5,7 +5,7 @@ address	size	symbol	source	modes	decorated
 0x00401057	7	tApp3dBase::~tApp3dBase()	unsorted/tApp3dBase.cpp	vc6	??1tApp3dBase@@UAE@XZ
 0x0040105e	370	tApp3dBase::vfunction11(tApplication *,fn_0040105e_Params *)	unsorted/tApp3dBase.cpp	vc6 guest	?vfunction11@tApp3dBase@@UAE_NPAVtApplication@@PAUfn_0040105e_Params@@@Z
 0x004011d0	57	tApp3dBase::vfunction12()	unsorted/tApp3dBase.cpp	vc6 guest	?vfunction12@tApp3dBase@@UAEXXZ
-0x00401209	210	tApp3dBase::vfunction7(tView3D *,int,int,fn_0040105e_Params *)	unsorted/tApp3dBase.cpp	vc6 guest	?vfunction7@tApp3dBase@@UAE_NPAVtView3D@@HHPAUfn_0040105e_Params@@@Z
+0x00401209	210	tApp3dBase::vfunction7(tView3D *,int,int,fn_0040105e_Params *)	unsorted/tApp3dBase.cpp	vc6 guest	?vfunction7@tApp3dBase@@UAEEPAVtView3D@@HHPAUfn_0040105e_Params@@@Z
 0x004012db	91	tApp3dBase::vfunction20()	unsorted/tApp3dBase.cpp	vc6 guest	?vfunction20@tApp3dBase@@UAE_NXZ
 0x0040135a	5	tApp3dBase::vfunction18()	unsorted/tApp3dBase.cpp	vc6 guest	?vfunction18@tApp3dBase@@UAEXXZ
 0x00401862	253	tFighterSpec::tFighterSpec()	unsorted/tFighterSpec.cpp	vc6	??0tFighterSpec@@QAE@XZ
@@ -348,7 +348,7 @@ address	size	symbol	source	modes	decorated
 0x0040f94d	28	tSphere::vfunction7(int)	unsorted/tSphere.cpp	vc6 guest	?vfunction7@tSphere@@UAEXH@Z
 0x0040f969	12	tSphere::vfunction8(int *)	unsorted/tSphere.cpp	vc6 guest	?vfunction8@tSphere@@UAEXPAH@Z
 0x0040f975	40	tSphere::vfunction9(float)	unsorted/tSphere.cpp	vc6 guest	?vfunction9@tSphere@@UAEXM@Z
-0x0040f99d	44	tSphere::vfunction10(fn_0069c970_Owner)	unsorted/tSphere.cpp	vc6 guest	?vfunction10@tSphere@@UAEXVfn_0069c970_Owner@@@Z
+0x0040f99d	44	tSphere::vfunction10(tMatrix)	unsorted/tSphere.cpp	vc6 guest	?vfunction10@tSphere@@UAEXVtMatrix@@@Z
 0x0040fea0	23	tETrait_Creator::tETrait_Creator()	unsorted/tETrait_Creator.cpp	vc6	??0tETrait_Creator@@QAE@XZ
 0x0040feb7	28	tETrait_Creator::`scalar deleting destructor'	unsorted/tETrait_Creator.cpp	vc6	??_GtETrait_Creator@@UAEPAXI@Z
 0x0040fed3	40	tETrait_Creator::~tETrait_Creator()	unsorted/tETrait_Creator.cpp	vc6	??1tETrait_Creator@@UAE@XZ
@@ -1214,7 +1214,7 @@ address	size	symbol	source	modes	decorated
 0x00448bea	7	tShipSystemsExt::vfunction44()	unsorted/tShipSystemsExt.cpp	vc6 guest	?vfunction44@tShipSystemsExt@@UAE_NXZ
 0x00448bf1	13	tShipSystemsExt::vfunction45(bool)	unsorted/tShipSystemsExt.cpp	vc6 guest	?vfunction45@tShipSystemsExt@@UAEX_N@Z
 0x0044c185	241	FUN_0044c185(fn_0044c185_object *)	unsorted/fn_0044C000.cpp	vc6 guest	?FUN_0044c185@@YAXPAVfn_0044c185_object@@@Z
-0x0044c276	146	FUN_0044c276(fn_0044c185_vec3 *,fn_0044c185_object *,const char *)	unsorted/fn_0044C000.cpp	vc6 guest	?FUN_0044c276@@YADPAUfn_0044c185_vec3@@PAVfn_0044c185_object@@PBD@Z
+0x0044c276	146	FUN_0044c276(tPoint3 *,fn_0044c185_object *,const char *)	unsorted/fn_0044C000.cpp	vc6 guest	?FUN_0044c276@@YADPAUtPoint3@@PAVfn_0044c185_object@@PBD@Z
 0x0044c308	84	FUN_0044c308(fn_0044c185_object *)	unsorted/fn_0044C000.cpp	vc6 guest	?FUN_0044c308@@YAXPAVfn_0044c185_object@@@Z
 0x0044c35d	1522	fn_0044c35d_systems::FUN_0044c35d(int,short,char)	unsorted/fn_0044C000.cpp	partial	?FUN_0044c35d@fn_0044c35d_systems@@QAEDHFD@Z
 0x0044c951	50	tShipSystemsExt::vfunction171()	unsorted/fn_0044C000.cpp	vc6 guest	?vfunction171@tShipSystemsExt@@UAEPAVtIndividualShipSystemList@@XZ
@@ -4897,7 +4897,7 @@ address	size	symbol	source	modes	decorated
 0x0066d340	36	tBasicFileCRT::mSeekEnd(long)	unsorted/tBasicFileCRTNamespace__tBasicFileCRT.cpp	vc6 guest	?mSeekEnd@tBasicFileCRT@tBasicFileCRTNamespace@@UAEEJ@Z
 0x0066d370	239	_InitNewBasicFileCRT(unsigned char)	unsorted/tBasicFileCRTNamespace__tBasicFileCRT.cpp	vc6 guest	?_InitNewBasicFileCRT@@YAEE@Z
 0x0066d460	17	_DoneNewBasicFileCRT()	unsorted/tBasicFileCRTNamespace__tBasicFileCRT.cpp	vc6 guest	?_DoneNewBasicFileCRT@@YAXXZ
-0x0066d480	259	_NewBasicFileCRT()	unsorted/tBasicFileCRTNamespace__tBasicFileCRT.cpp	vc6 guest	?_NewBasicFileCRT@tBasicFileCRTNamespace@@YAPAVtBasicFile@1@XZ
+0x0066d480	259	_NewBasicFileCRT()	unsorted/tBasicFileCRTNamespace__tBasicFileCRT.cpp	vc6 guest	?_NewBasicFileCRT@@YAPAVtBasicFile@@XZ
 0x0066d680	97	tItemBag::tItemBag()	Tiger/tBag.cpp	vc6	??0tItemBag@@QAE@XZ
 0x0066d6f0	30	tItemBag::scalar_deleting_destructor(unsigned char)	Tiger/tBag.cpp	vc6 guest	?scalar_deleting_destructor@tItemBag@@QAEPAXE@Z
 0x0066d710	194	tItemBag::~tItemBag()	Tiger/tBag.cpp	vc6	??1tItemBag@@UAE@XZ
@@ -5108,42 +5108,42 @@ address	size	symbol	source	modes	decorated
 0x0069e490	115	tD3DViewMgr_State::fn_0069e490(int)	unsorted/tD3DViewMgr.cpp	vc6 guest	?fn_0069e490@tD3DViewMgr_State@@QAEHH@Z
 0x0069e670	7	tD3DViewMgr_State::fn_0069e670()	unsorted/tD3DViewMgr.cpp	vc6 guest	?fn_0069e670@tD3DViewMgr_State@@QAEDXZ
 0x0069e950	90	fn_0069e950(unsigned long)	unsorted/tD3DViewMgr.cpp	vc6 guest	?fn_0069e950@@YAKK@Z
-0x0069f190	7	tView3DExt::vfunction38()	unsorted/tView3DExt.cpp	vc6 guest	?vfunction38@tView3DExt@@UAE_NXZ
+0x0069f190	7	tView3DExt::mLightingEnabled()	unsorted/tView3DExt.cpp	vc6 guest	?mLightingEnabled@tView3DExt@@UAEEXZ
 0x0069f350	63	tD3DViewSurfMgr::~tD3DViewSurfMgr()	unsorted/fn_0069F000.cpp	partial	??1tD3DViewSurfMgr@@UAE@XZ
 0x0069f3b0	189	tSWView3D::tSWView3D()	unsorted/tSWView3D.cpp	partial	??0tSWView3D@@QAE@XZ
-0x0069f480	7	tSWView3D::vfunction86()	unsorted/tSWView3D.cpp	vc6 guest	?vfunction86@tSWView3D@@UAEHXZ
+0x0069f480	7	tSWView3D::mGetSurfMgr()	unsorted/tSWView3D.cpp	vc6 guest	?mGetSurfMgr@tSWView3D@@UAEPAVtGLSurfMgr@@XZ
 0x0069f490	30	tSWView3D::`scalar deleting destructor'	unsorted/tSWView3D.cpp	vc6	??_GtSWView3D@@UAEPAXI@Z
 0x0069f4b0	89	tSWView3D::~tSWView3D()	unsorted/tSWView3D.cpp	partial	??1tSWView3D@@UAE@XZ
-0x0069f510	190	tSWView3D::vfunction2(int,int)	unsorted/tSWView3D.cpp	partial	?vfunction2@tSWView3D@@UAE_NHH@Z
-0x0069f850	76	tSWView3D::vfunction3(int,int,int,int,RECT *,bool)	unsorted/tSWView3D.cpp	vc6 guest	?vfunction3@tSWView3D@@UAE_NHHHHPAUtagRECT@@_N@Z
-0x0069f8a0	90	tSWView3D::vfunction4(int,int,RECT *,bool)	unsorted/tSWView3D.cpp	vc6 guest	?vfunction4@tSWView3D@@UAE_NHHPAUtagRECT@@_N@Z
-0x0069f900	144	tSWView3D::vfunction6()	unsorted/tSWView3D.cpp	vc6 guest	?vfunction6@tSWView3D@@UAE_NXZ
-0x0069f990	124	tSWView3D::vfunction11()	unsorted/tSWView3D.cpp	vc6 guest	?vfunction11@tSWView3D@@UAE_NXZ
-0x0069fa10	59	tSWView3D::vfunction12()	unsorted/tSWView3D.cpp	vc6 guest	?vfunction12@tSWView3D@@UAE_NXZ
-0x0069fa50	8	tSWView3D::vfunction25(int)	unsorted/tSWView3D.cpp	vc6 guest	?vfunction25@tSWView3D@@UAEHH@Z
-0x0069fa60	6	tSWView3D::vfunction26()	unsorted/tSWView3D.cpp	vc6 guest	?vfunction26@tSWView3D@@UAEHXZ
-0x0069fa70	70	tSWView3D::vfunction17(int,int,int,int)	unsorted/tSWView3D.cpp	vc6 guest	?vfunction17@tSWView3D@@UAEXHHHH@Z
-0x0069fad0	21	tSWView3D::vfunction10()	unsorted/tSWView3D.cpp	vc6 guest	?vfunction10@tSWView3D@@UAEHXZ
-0x0069faf0	23	tSWView3D::vfunction28(unsigned int)	unsorted/tSWView3D.cpp	vc6 guest	?vfunction28@tSWView3D@@UAE_NI@Z
-0x0069fb10	56	tSWView3D::vfunction27(unsigned char,unsigned char,unsigned char)	unsorted/tSWView3D.cpp	vc6 guest	?vfunction27@tSWView3D@@UAE_NEEE@Z
-0x0069fb50	56	tSWView3D::vfunction30(bool,bool)	unsorted/tSWView3D.cpp	vc6 guest	?vfunction30@tSWView3D@@UAE_N_N0@Z
-0x0069fb90	294	tSWView3D::vfunction29(int,int,int,int,bool,bool)	unsorted/tSWView3D.cpp	partial	?vfunction29@tSWView3D@@UAE_NHHHH_N0@Z
-0x0069fd20	115	fn_0069fd20()	unsorted/tSWView3D.cpp	vc6 guest	?fn_0069fd20@@YAPAVtSWView3D@@XZ
-0x0069fda0	24	tView3DExt::vfunction47(bool)	unsorted/tView3DExt.cpp	vc6 guest	?vfunction47@tView3DExt@@UAE_N_N@Z
-0x0069fdc0	6	tSWView3D::vfunction43()	unsorted/tSWView3D.cpp	vc6 guest	?vfunction43@tSWView3D@@UAEHXZ
-0x0069fde0	24	tSWView3D::vfunction48(bool)	unsorted/tSWView3D.cpp	vc6 guest	?vfunction48@tSWView3D@@UAE_N_N@Z
-0x0069fe00	26	tSWView3D::vfunction49(bool)	unsorted/tSWView3D.cpp	vc6 guest	?vfunction49@tSWView3D@@UAE_N_N@Z
-0x0069fe20	20	tSWView3D::vfunction50(bool)	unsorted/tSWView3D.cpp	vc6 guest	?vfunction50@tSWView3D@@UAE_N_N@Z
-0x0069fe40	20	tSWView3D::vfunction51(bool)	unsorted/tSWView3D.cpp	vc6 guest	?vfunction51@tSWView3D@@UAE_N_N@Z
-0x006a2dc0	127	tStream_BasicFile::mGet(void *,unsigned long)	dmp3d/common/stream_basicfile.cpp	vc6 guest	?mGet@tStream_BasicFile@@UAE_NPAXK@Z
-0x006a2e40	127	tStream_BasicFile::mPut(const void *,unsigned long)	dmp3d/common/stream_basicfile.cpp	vc6 guest	?mPut@tStream_BasicFile@@UAE_NPBXK@Z
-0x006a48d0	1305	tTexBmp::vfunction2(tBasicFile *)	dmp3d/common/texBmp.cpp	vc6 guest	?vfunction2@tTexBmp@@UAEXPAVtBasicFile@@@Z
-0x006a4df0	3117	tTexBmp::vfunction3(tBasicFile *)	dmp3d/common/texBmp.cpp	vc6 guest	?vfunction3@tTexBmp@@UAEXPAVtBasicFile@@@Z
-0x006a5a20	307	tTexBmp::vfunction7(const char *)	dmp3d/common/texBmp.cpp	partial	?vfunction7@tTexBmp@@UAE_NPBD@Z
-0x006a5b90	139	tTexBmp::vfunction8()	dmp3d/common/texBmp.cpp	vc6 guest	?vfunction8@tTexBmp@@UAE_NXZ
-0x006a5c20	93	tTexBmp::fn_006a5c20()	dmp3d/common/texBmp.cpp	vc6 guest	?fn_006a5c20@tTexBmp@@QAEXXZ
-0x006a5c80	709	tTexBmp::vfunction4(tBasicFile *)	dmp3d/common/texBmp.cpp	vc6 guest	?vfunction4@tTexBmp@@UAEXPAVtBasicFile@@@Z
-0x006a5f50	913	tTexBmp::vfunction5(tBasicFile *)	dmp3d/common/texBmp.cpp	partial	?vfunction5@tTexBmp@@UAEXPAVtBasicFile@@@Z
+0x0069f510	190	tSWView3D::mEnumDispModes(fn_0069f510_Callback,void *)	unsorted/tSWView3D.cpp	vc6 guest	?mEnumDispModes@tSWView3D@@UAEEP6AEHHPAX@Z0@Z
+0x0069f850	76	tSWView3D::mInitFullscreen(void *,void *,int,int,const tGLRectI *,unsigned char)	unsorted/tSWView3D.cpp	vc6 guest	?mInitFullscreen@tSWView3D@@UAEEPAX0HHPBUtGLRectI@@E@Z
+0x0069f8a0	90	tSWView3D::mInitWindowed(void *,void *,const tGLRectI *,unsigned char)	unsorted/tSWView3D.cpp	vc6 guest	?mInitWindowed@tSWView3D@@UAEEPAX0PBUtGLRectI@@E@Z
+0x0069f900	144	tSWView3D::mDone()	unsorted/tSWView3D.cpp	vc6 guest	?mDone@tSWView3D@@UAEEXZ
+0x0069f990	124	tSWView3D::mBeginScene()	unsorted/tSWView3D.cpp	vc6 guest	?mBeginScene@tSWView3D@@UAEEXZ
+0x0069fa10	59	tSWView3D::mEndScene()	unsorted/tSWView3D.cpp	vc6 guest	?mEndScene@tSWView3D@@UAEEXZ
+0x0069fa50	8	tSWView3D::mSetPolygonMode(unsigned int)	unsorted/tSWView3D.cpp	vc6 guest	?mSetPolygonMode@tSWView3D@@UAEII@Z
+0x0069fa60	6	tSWView3D::mGetPolygonMode()	unsorted/tSWView3D.cpp	vc6 guest	?mGetPolygonMode@tSWView3D@@UAEIXZ
+0x0069fa70	70	tSWView3D::mSetViewport(int,int,int,int)	unsorted/tSWView3D.cpp	vc6 guest	?mSetViewport@tSWView3D@@UAEXHHHH@Z
+0x0069fad0	21	tSWView3D::mGetCaps()	unsorted/tSWView3D.cpp	vc6 guest	?mGetCaps@tSWView3D@@UAEKXZ
+0x0069faf0	23	tSWView3D::mSetClearColor(tGLRgbQuad)	unsorted/tSWView3D.cpp	vc6 guest	?mSetClearColor@tSWView3D@@UAEEUtGLRgbQuad@@@Z
+0x0069fb10	56	tSWView3D::mSetClearColor(unsigned char,unsigned char,unsigned char)	unsorted/tSWView3D.cpp	vc6 guest	?mSetClearColor@tSWView3D@@UAEEEEE@Z
+0x0069fb50	56	tSWView3D::mClear(unsigned char,unsigned char)	unsorted/tSWView3D.cpp	vc6 guest	?mClear@tSWView3D@@UAEEEE@Z
+0x0069fb90	294	tSWView3D::mClear(int,int,int,int,unsigned char,unsigned char)	unsorted/tSWView3D.cpp	partial	?mClear@tSWView3D@@UAEEHHHHEE@Z
+0x0069fd20	115	dmpGetSWView3D()	unsorted/tSWView3D.cpp	vc6 guest	?dmpGetSWView3D@@YAPAVtView3D@@XZ
+0x0069fda0	24	tView3DExt::mEnableGlobalBlend(unsigned char)	unsorted/tView3DExt.cpp	vc6 guest	?mEnableGlobalBlend@tView3DExt@@UAEEE@Z
+0x0069fdc0	6	tSWView3D::mGetSrcBlendCaps()	unsorted/tSWView3D.cpp	vc6 guest	?mGetSrcBlendCaps@tSWView3D@@UAEKXZ
+0x0069fde0	24	tSWView3D::mAlphaTestEnable(unsigned char)	unsorted/tSWView3D.cpp	vc6 guest	?mAlphaTestEnable@tSWView3D@@UAEEE@Z
+0x0069fe00	26	tSWView3D::mEnableZWriteAndTest(unsigned char)	unsorted/tSWView3D.cpp	vc6 guest	?mEnableZWriteAndTest@tSWView3D@@UAEEE@Z
+0x0069fe20	20	tSWView3D::mEnableZWrite(unsigned char)	unsorted/tSWView3D.cpp	vc6 guest	?mEnableZWrite@tSWView3D@@UAEEE@Z
+0x0069fe40	20	tSWView3D::mEnableZTest(unsigned char)	unsorted/tSWView3D.cpp	vc6 guest	?mEnableZTest@tSWView3D@@UAEEE@Z
+0x006a2dc0	127	tStream_BasicFile::mGet(void *,unsigned long)	dmp3d/common/stream_basicfile.cpp	vc6 guest	?mGet@tStream_BasicFile@@UAEEPAXK@Z
+0x006a2e40	127	tStream_BasicFile::mPut(const void *,unsigned long)	dmp3d/common/stream_basicfile.cpp	vc6 guest	?mPut@tStream_BasicFile@@UAEEPBXK@Z
+0x006a48d0	1305	tTexBmp::mInitAsBMP(tBasicFile *)	dmp3d/common/texBmp.cpp	vc6 guest	?mInitAsBMP@tTexBmp@@MAEXPAVtBasicFile@@@Z
+0x006a4df0	3117	tTexBmp::mInitAsPCX(tBasicFile *)	dmp3d/common/texBmp.cpp	vc6 guest	?mInitAsPCX@tTexBmp@@MAEXPAVtBasicFile@@@Z
+0x006a5a20	307	tTexBmp::mInit(const char *)	dmp3d/common/texBmp.cpp	partial	?mInit@tTexBmp@@UAEEPBD@Z
+0x006a5b90	139	tTexBmp::mDone()	dmp3d/common/texBmp.cpp	vc6 guest	?mDone@tTexBmp@@UAEEXZ
+0x006a5c20	93	tTexBmp::mResetDataMembers()	dmp3d/common/texBmp.cpp	vc6 guest	?mResetDataMembers@tTexBmp@@IAEXXZ
+0x006a5c80	709	tTexBmp::mReadBMP(tBasicFile *)	dmp3d/common/texBmp.cpp	vc6 guest	?mReadBMP@tTexBmp@@MAEXPAVtBasicFile@@@Z
+0x006a5f50	913	tTexBmp::mReadPCX(tBasicFile *)	dmp3d/common/texBmp.cpp	vc6 guest	?mReadPCX@tTexBmp@@MAEXPAVtBasicFile@@@Z
 0x006a62f0	436	tTexBmp::mLock()	dmp3d/common/texBmp.cpp	partial	?mLock@tTexBmp@@QAE_NXZ
 0x006a7c20	46	CD3DFramework::CD3DFramework()	dmp3d/dx6/d3dframe.cpp	vc6	??0CD3DFramework@@QAE@XZ
 0x006a7c60	190	CD3DFramework::DestroyObjects()	dmp3d/dx6/d3dframe.cpp	vc6 guest	?DestroyObjects@CD3DFramework@@QAEJXZ
@@ -5160,80 +5160,80 @@ address	size	symbol	source	modes	decorated
 0x006a8930	1180	tD3DViewMgr::fn_006a8930(int,tTexFormat *,int,int,unsigned char *)	dmp3d/d3d/d3dViewMgr_Tex.cpp	partial	?fn_006a8930@tD3DViewMgr@@QAEPAVtTexFace@@HPAUtTexFormat@@HHPAE@Z
 0x006a94a0	45	D3DUtil_InitSurfaceDesc(DDSURFACEDESC2&,DWORD,DWORD)	dmp3d/dx6/d3dutil.cpp	vc6 guest	?D3DUtil_InitSurfaceDesc@@YAXAAU_DDSURFACEDESC2@@KK@Z
 0x006a94d0	67	D3DUtil_InitViewport(D3DVIEWPORT2&,DWORD,DWORD)	dmp3d/dx6/d3dutil.cpp	vc6 guest	?D3DUtil_InitViewport@@YAXAAU_D3DVIEWPORT2@@KK@Z
-0x006a9540	176	tView3DExt::fn_006a9540()	unsorted/fn_006A9540.cpp	partial	?fn_006a9540@tView3DExt@@QAEXXZ
-0x006a95f0	37	tView3DExt::vfunction6()	unsorted/fn_006A9540.cpp	vc6 guest	?vfunction6@tView3DExt@@UAE_NXZ
-0x006a9620	64	tView3DExt::vfunction23(int)	unsorted/tView3DExt.cpp	vc6 guest	?vfunction23@tView3DExt@@UAEHH@Z
-0x006a9660	7	tView3DExt::vfunction24()	unsorted/tView3DExt.cpp	vc6 guest	?vfunction24@tView3DExt@@UAEHXZ
-0x006a9670	84	tView3DExt::vfunction19(int)	unsorted/tView3DExt.cpp	vc6 guest	?vfunction19@tView3DExt@@UAEHH@Z
-0x006a96d0	7	tView3DExt::vfunction20()	unsorted/tView3DExt.cpp	vc6 guest	?vfunction20@tView3DExt@@UAEHXZ
-0x006a96e0	29	tView3DExt::vfunction21(int)	unsorted/tView3DExt.cpp	vc6 guest	?vfunction21@tView3DExt@@UAEHH@Z
-0x006a9700	7	tView3DExt::vfunction22()	unsorted/tView3DExt.cpp	vc6 guest	?vfunction22@tView3DExt@@UAEHXZ
-0x006a9710	109	tView3DExt::vfunction45(float)	unsorted/tView3DExt.cpp	partial	?vfunction45@tView3DExt@@UAEXM@Z
-0x006a9780	7	tView3DExt::vfunction46()	unsorted/tView3DExt.cpp	vc6 guest	?vfunction46@tView3DExt@@UAEMXZ
-0x006a9aa0	6	tView3DExt::vfunction32()	unsorted/tView3DExt.cpp	vc6 guest	?vfunction32@tView3DExt@@UAEHXZ
-0x006a9ab0	230	tView3DExt::vfunction33(unsigned int,const void *)	unsorted/tView3DExt.cpp	vc6 guest	?vfunction33@tView3DExt@@UAEXIPBX@Z
-0x006a9ba0	125	tView3DExt::vfunction34(unsigned int,void *)	unsorted/tView3DExt.cpp	vc6 guest	?vfunction34@tView3DExt@@UAEXIPAX@Z
-0x006a9c20	19	tView3DExt::vfunction37(bool)	unsorted/tView3DExt.cpp	vc6 guest	?vfunction37@tView3DExt@@UAE_N_N@Z
-0x006a9c40	30	tView3DExt::vfunction39(unsigned int,bool)	unsorted/tView3DExt.cpp	vc6 guest	?vfunction39@tView3DExt@@UAE_NI_N@Z
+0x006a9540	176	tView3DExt::mInitExt()	unsorted/fn_006A9540.cpp	vc6 guest	?mInitExt@tView3DExt@@IAEXXZ
+0x006a95f0	37	tView3DExt::mDone()	unsorted/fn_006A9540.cpp	vc6 guest	?mDone@tView3DExt@@UAEEXZ
+0x006a9620	64	tView3DExt::mSetWinding(unsigned int)	unsorted/tView3DExt.cpp	vc6 guest	?mSetWinding@tView3DExt@@UAEII@Z
+0x006a9660	7	tView3DExt::mGetWinding()	unsorted/tView3DExt.cpp	vc6 guest	?mGetWinding@tView3DExt@@UAEIXZ
+0x006a9670	84	tView3DExt::mSetCullMode(unsigned int)	unsorted/tView3DExt.cpp	vc6 guest	?mSetCullMode@tView3DExt@@UAEII@Z
+0x006a96d0	7	tView3DExt::mGetCullMode()	unsorted/tView3DExt.cpp	vc6 guest	?mGetCullMode@tView3DExt@@UAEIXZ
+0x006a96e0	29	tView3DExt::mSetShadeMode(unsigned int)	unsorted/tView3DExt.cpp	vc6 guest	?mSetShadeMode@tView3DExt@@UAEII@Z
+0x006a9700	7	tView3DExt::mGetShadeMode()	unsorted/tView3DExt.cpp	vc6 guest	?mGetShadeMode@tView3DExt@@UAEIXZ
+0x006a9710	109	tView3DExt::mSetGlobalBlend(float)	unsorted/tView3DExt.cpp	vc6 guest	?mSetGlobalBlend@tView3DExt@@UAEMM@Z
+0x006a9780	7	tView3DExt::mGetGlobalBlend()	unsorted/tView3DExt.cpp	vc6 guest	?mGetGlobalBlend@tView3DExt@@UAEMXZ
+0x006a9aa0	6	tView3DExt::mGetMaxNumLights() const	unsorted/tView3DExt.cpp	vc6 guest	?mGetMaxNumLights@tView3DExt@@UBEKXZ
+0x006a9ab0	230	tView3DExt::mSetLightDescription(unsigned long,const tGLLightDesc &)	unsorted/tView3DExt.cpp	vc6 guest	?mSetLightDescription@tView3DExt@@UAEXKABVtGLLightDesc@@@Z
+0x006a9ba0	125	tView3DExt::mGetLightDescription(unsigned long,tGLLightDesc &) const	unsorted/tView3DExt.cpp	vc6 guest	?mGetLightDescription@tView3DExt@@UBEXKAAVtGLLightDesc@@@Z
+0x006a9c20	19	tView3DExt::mEnableLighting(unsigned char)	unsorted/tView3DExt.cpp	vc6 guest	?mEnableLighting@tView3DExt@@UAEEE@Z
+0x006a9c40	30	tView3DExt::mEnableLight(unsigned long,unsigned char)	unsorted/tView3DExt.cpp	vc6 guest	?mEnableLight@tView3DExt@@UAEEKE@Z
 0x006a9e80	30	tView3DExt::`scalar deleting destructor'	unsorted/tView3DExt.cpp	vc6	??_GtView3DExt@@UAEPAXI@Z
 0x006a9eb0	109	tView3DExt::~tView3DExt()	unsorted/tView3DExt.cpp	vc6	??1tView3DExt@@UAE@XZ
-0x006a9f20	29	tView3DExt::vfunction13(fn_006a9f20_Callback,void *)	unsorted/tView3DExt.cpp	vc6 guest	?vfunction13@tView3DExt@@UAEP6AXXZP6AXXZPAX@Z
-0x006a9f40	7	tView3DExt::vfunction14()	unsorted/tView3DExt.cpp	vc6 guest	?vfunction14@tView3DExt@@UAEP6AXXZXZ
-0x006a9f50	29	tView3DExt::vfunction15(fn_006a9f20_Callback,void *)	unsorted/tView3DExt.cpp	vc6 guest	?vfunction15@tView3DExt@@UAEP6AXXZP6AXXZPAX@Z
-0x006a9f70	7	tView3DExt::vfunction16()	unsorted/tView3DExt.cpp	vc6 guest	?vfunction16@tView3DExt@@UAEP6AXXZXZ
-0x006a9f80	112	tView3DExt::vfunction35(fn_0040105e_Vector *)	unsorted/tView3DExt.cpp	vc6 guest	?vfunction35@tView3DExt@@UAEXPAUfn_0040105e_Vector@@@Z
-0x006a9ff0	7	tView3DExt::vfunction36()	unsorted/tView3DExt.cpp	vc6 guest	?vfunction36@tView3DExt@@UAEPAUfn_0040105e_Vector@@XZ
-0x006aa000	128	tView3DExt::vfunction17(int,int,int,int)	unsorted/tView3DExt.cpp	vc6 guest	?vfunction17@tView3DExt@@UAEXHHHH@Z
-0x006aa080	93	tView3DExt::vfunction18(int *,int *,int *,int *)	unsorted/tView3DExt.cpp	vc6 guest	?vfunction18@tView3DExt@@UAEXPAH000@Z
-0x006aa0e0	216	tView3DExt::vfunction65(tMatrix *,float,float,float)	unsorted/tView3DExt.cpp	partial	?vfunction65@tView3DExt@@UAEXPAVtMatrix@@MMM@Z
-0x006aa1c0	72	tView3DExt::vfunction62(float,float,float)	unsorted/tView3DExt.cpp	vc6 guest	?vfunction62@tView3DExt@@UAEXMMM@Z
-0x006aa210	87	tView3DExt::vfunction63(float,float,float,float,float,float)	unsorted/tView3DExt.cpp	vc6 guest	?vfunction63@tView3DExt@@UAEXMMMMMM@Z
-0x006aa270	67	tView3DExt::vfunction64(float,float)	unsorted/tView3DExt.cpp	vc6 guest	?vfunction64@tView3DExt@@UAEXMM@Z
-0x006aa2c0	205	tView3DExt::vfunction67(tMatrix *,float,float,float,float,float,float)	unsorted/tView3DExt.cpp	partial	?vfunction67@tView3DExt@@UAEXPAVtMatrix@@MMMMMM@Z
-0x006aa390	90	tView3DExt::vfunction66(tMatrix *,float,float)	unsorted/tView3DExt.cpp	vc6 guest	?vfunction66@tView3DExt@@UAEXPAVtMatrix@@MM@Z
-0x006aa490	7	tView3DExt::vfunction61()	unsorted/tView3DExt.cpp	vc6 guest	?vfunction61@tView3DExt@@UAEPAVtMatrix@@XZ
-0x006aa4a0	47	tView3DExt::vfunction55(tMatrix *)	unsorted/tView3DExt.cpp	vc6 guest	?vfunction55@tView3DExt@@UAEXPAVtMatrix@@@Z
-0x006aa4d0	7	tView3DExt::vfunction56()	unsorted/tView3DExt.cpp	vc6 guest	?vfunction56@tView3DExt@@UAEPAVtMatrix@@XZ
-0x006aa4e0	93	tView3DExt::vfunction57(tPoint3 *)	unsorted/tView3DExt.cpp	vc6 guest	?vfunction57@tView3DExt@@UAEXPAUtPoint3@@@Z
-0x006aa550	327	tView3DExt::vfunction58(tMatrix *)	unsorted/tView3DExt.cpp	partial	?vfunction58@tView3DExt@@UAEXPAVtMatrix@@@Z
+0x006a9f20	29	tView3DExt::mSetBeginCallback(fn_006a9f20_Callback,void *)	unsorted/tView3DExt.cpp	vc6 guest	?mSetBeginCallback@tView3DExt@@UAEP6AXPAVtGLSurface@@PAX@ZP6AX01@Z1@Z
+0x006a9f40	7	tView3DExt::mGetBeginCallback()	unsorted/tView3DExt.cpp	vc6 guest	?mGetBeginCallback@tView3DExt@@UAEP6AXPAVtGLSurface@@PAX@ZXZ
+0x006a9f50	29	tView3DExt::mSetEndCallback(fn_006a9f20_Callback,void *)	unsorted/tView3DExt.cpp	vc6 guest	?mSetEndCallback@tView3DExt@@UAEP6AXPAVtGLSurface@@PAX@ZP6AX01@Z1@Z
+0x006a9f70	7	tView3DExt::mGetEndCallback()	unsorted/tView3DExt.cpp	vc6 guest	?mGetEndCallback@tView3DExt@@UAEP6AXPAVtGLSurface@@PAX@ZXZ
+0x006a9f80	112	tView3DExt::mSetLightPosition(const tPoint3 &)	unsorted/tView3DExt.cpp	vc6 guest	?mSetLightPosition@tView3DExt@@UAEXABUtPoint3@@@Z
+0x006a9ff0	7	tView3DExt::mGetLightPosition()	unsorted/tView3DExt.cpp	vc6 guest	?mGetLightPosition@tView3DExt@@UAEABUtPoint3@@XZ
+0x006aa000	128	tView3DExt::mSetViewport(int,int,int,int)	unsorted/tView3DExt.cpp	vc6 guest	?mSetViewport@tView3DExt@@UAEXHHHH@Z
+0x006aa080	93	tView3DExt::mGetViewport(int *,int *,int *,int *)	unsorted/tView3DExt.cpp	vc6 guest	?mGetViewport@tView3DExt@@UAEXPAH000@Z
+0x006aa0e0	216	tView3DExt::mCreatePerspective(tMatrix &,float,float,float)	unsorted/tView3DExt.cpp	partial	?mCreatePerspective@tView3DExt@@UAEXAAVtMatrix@@MMM@Z
+0x006aa1c0	72	tView3DExt::mSetPerspective(float,float,float)	unsorted/tView3DExt.cpp	vc6 guest	?mSetPerspective@tView3DExt@@UAEXMMM@Z
+0x006aa210	87	tView3DExt::mSetOrtho(float,float,float,float,float,float)	unsorted/tView3DExt.cpp	vc6 guest	?mSetOrtho@tView3DExt@@UAEXMMMMMM@Z
+0x006aa270	67	tView3DExt::mSetOrthoIdentity(float,float)	unsorted/tView3DExt.cpp	vc6 guest	?mSetOrthoIdentity@tView3DExt@@UAEXMM@Z
+0x006aa2c0	205	tView3DExt::mCreateOrtho(tMatrix &,float,float,float,float,float,float)	unsorted/tView3DExt.cpp	partial	?mCreateOrtho@tView3DExt@@UAEXAAVtMatrix@@MMMMMM@Z
+0x006aa390	90	tView3DExt::mCreateOrthoIdentity(tMatrix &,float,float)	unsorted/tView3DExt.cpp	vc6 guest	?mCreateOrthoIdentity@tView3DExt@@UAEXAAVtMatrix@@MM@Z
+0x006aa490	7	tView3DExt::mGetProjMtx()	unsorted/tView3DExt.cpp	vc6 guest	?mGetProjMtx@tView3DExt@@UAEABVtMatrix@@XZ
+0x006aa4a0	47	tView3DExt::mSetCameraMtx(const tMatrix &)	unsorted/tView3DExt.cpp	vc6 guest	?mSetCameraMtx@tView3DExt@@UAEXABVtMatrix@@@Z
+0x006aa4d0	7	tView3DExt::mGetCameraMtx()	unsorted/tView3DExt.cpp	vc6 guest	?mGetCameraMtx@tView3DExt@@UAEABVtMatrix@@XZ
+0x006aa4e0	93	tView3DExt::mGetCameraPosition(tPoint3 &)	unsorted/tView3DExt.cpp	vc6 guest	?mGetCameraPosition@tView3DExt@@UAEXAAUtPoint3@@@Z
+0x006aa550	327	tView3DExt::mSetModelMtx(const tMatrix &)	unsorted/tView3DExt.cpp	partial	?mSetModelMtx@tView3DExt@@UAEXABVtMatrix@@@Z
 0x006aa6c0	7	tView3DExt::vfunction59()	unsorted/tView3DExt.cpp	vc6 guest	?vfunction59@tView3DExt@@UAEPAVtMatrix@@XZ
-0x006aa6d0	13	tView3DExt::vfunction5(int)	unsorted/tView3DExt.cpp	vc6 guest	?vfunction5@tView3DExt@@UAEXH@Z
-0x006aa6e0	51	tView3DExt::vfunction87()	unsorted/tView3DExt.cpp	vc6 guest	?vfunction87@tView3DExt@@UAEXXZ
-0x006aa720	7	tView3DExt::vfunction88()	unsorted/tView3DExt.cpp	vc6 guest	?vfunction88@tView3DExt@@UAEHXZ
-0x006aa730	7	tView3DExt::vfunction89()	unsorted/tView3DExt.cpp	vc6 guest	?vfunction89@tView3DExt@@UAEHXZ
-0x006aa740	7	tView3DExt::vfunction90()	unsorted/tView3DExt.cpp	vc6 guest	?vfunction90@tView3DExt@@UAEHXZ
-0x006aa750	7	tView3DExt::vfunction91()	unsorted/tView3DExt.cpp	vc6 guest	?vfunction91@tView3DExt@@UAEHXZ
-0x006aa760	7	tView3DExt::vfunction92()	unsorted/tView3DExt.cpp	vc6 guest	?vfunction92@tView3DExt@@UAEHXZ
-0x006aa770	7	tView3DExt::vfunction93()	unsorted/tView3DExt.cpp	vc6 guest	?vfunction93@tView3DExt@@UAEHXZ
-0x006aa780	7	tView3DExt::vfunction94()	unsorted/tView3DExt.cpp	vc6 guest	?vfunction94@tView3DExt@@UAEHXZ
-0x006aa790	7	tView3DExt::vfunction95()	unsorted/tView3DExt.cpp	vc6 guest	?vfunction95@tView3DExt@@UAEHXZ
-0x006abe00	176	tView3DExt::mAssertVtxCache(int)	dmp3d/view3d/drawPoly.cpp	vc6 guest	?mAssertVtxCache@tView3DExt@@QAEXH@Z
-0x006abeb0	200	tView3DExt::fn_006abeb0()	unsorted/fn_006ABEB0.cpp	vc6 guest	?fn_006abeb0@tView3DExt@@QAEMXZ
-0x006abf80	48	tView3DExt::vfunction79(int,int)	unsorted/fn_006ABEB0.cpp	vc6 guest	?vfunction79@tView3DExt@@UAEXHH@Z
+0x006aa6d0	13	tView3DExt::mSetDriver(int)	unsorted/tView3DExt.cpp	vc6 guest	?mSetDriver@tView3DExt@@UAEXH@Z
+0x006aa6e0	51	tView3DExt::mResetCounts()	unsorted/tView3DExt.cpp	vc6 guest	?mResetCounts@tView3DExt@@UAEXXZ
+0x006aa720	7	tView3DExt::mGetRawCountPoints()	unsorted/tView3DExt.cpp	vc6 guest	?mGetRawCountPoints@tView3DExt@@UAEKXZ
+0x006aa730	7	tView3DExt::mGetRawCountLines()	unsorted/tView3DExt.cpp	vc6 guest	?mGetRawCountLines@tView3DExt@@UAEKXZ
+0x006aa740	7	tView3DExt::mGetRawCountTris()	unsorted/tView3DExt.cpp	vc6 guest	?mGetRawCountTris@tView3DExt@@UAEKXZ
+0x006aa750	7	tView3DExt::mGetRawCountQuads()	unsorted/tView3DExt.cpp	vc6 guest	?mGetRawCountQuads@tView3DExt@@UAEKXZ
+0x006aa760	7	tView3DExt::mGetRawCountNGons()	unsorted/tView3DExt.cpp	vc6 guest	?mGetRawCountNGons@tView3DExt@@UAEKXZ
+0x006aa770	7	tView3DExt::mGetTrueCountPoints()	unsorted/tView3DExt.cpp	vc6 guest	?mGetTrueCountPoints@tView3DExt@@UAEKXZ
+0x006aa780	7	tView3DExt::mGetTrueCountLines()	unsorted/tView3DExt.cpp	vc6 guest	?mGetTrueCountLines@tView3DExt@@UAEKXZ
+0x006aa790	7	tView3DExt::mGetTrueCountTris()	unsorted/tView3DExt.cpp	vc6 guest	?mGetTrueCountTris@tView3DExt@@UAEKXZ
+0x006abe00	176	tView3DExt::mAssertVtxCache(int)	dmp3d/view3d/drawPoly.cpp	vc6 guest	?mAssertVtxCache@tView3DExt@@IAEXH@Z
+0x006abeb0	200	tView3DExt::mGetPolyNormalZ()	unsorted/fn_006ABEB0.cpp	vc6 guest	?mGetPolyNormalZ@tView3DExt@@IAEMXZ
+0x006abf80	48	tView3DExt::mSubmitVertices(int,const tPoint3 *)	unsorted/fn_006ABEB0.cpp	vc6 guest	?mSubmitVertices@tView3DExt@@UAEXHPBUtPoint3@@@Z
 0x006abfb0	13	tView3DExt::vfunction80(void *)	unsorted/fn_006ABEB0.cpp	vc6 guest	?vfunction80@tView3DExt@@UAEXPAX@Z
 0x006ac5a0	439	tView3DExt::vfunction81(int,void **,bool)	unsorted/tView3DExt.cpp	partial	?vfunction81@tView3DExt@@UAEXHPAPAX_N@Z
-0x006ac780	59	fn_006ac780_State::fn_006ac780()	unsorted/fn_006AC000.cpp	vc6 guest	?fn_006ac780@fn_006ac780_State@@QAEXXZ
-0x006ac7c0	66	tView3DExt::vfunction68(int)	unsorted/fn_006AC000.cpp	vc6 guest	?vfunction68@tView3DExt@@UAE_NH@Z
-0x006ac810	32	tView3DExt::vfunction69()	unsorted/fn_006AC000.cpp	vc6 guest	?vfunction69@tView3DExt@@UAEXXZ
-0x006ac830	199	tView3DExt::fn_006ac830(int,int,int)	unsorted/fn_006AC000.cpp	partial	?fn_006ac830@tView3DExt@@QAEXHHH@Z
-0x006ad130	249	tView3DExt::vfunction71(tPoint3 *)	unsorted/fn_006AD000.cpp	vc6 guest	?vfunction71@tView3DExt@@UAEXPAUtPoint3@@@Z
-0x006ad230	46	tView3DExt::vfunction70(float,float,float)	unsorted/fn_006AD000.cpp	vc6 guest	?vfunction70@tView3DExt@@UAEXMMM@Z
-0x006ad260	104	tView3DExt::vfunction73(tPoint3 *)	unsorted/fn_006AD000.cpp	vc6 guest	?vfunction73@tView3DExt@@UAEXPAUtPoint3@@@Z
-0x006ad2d0	46	tView3DExt::vfunction72(float,float,float)	unsorted/fn_006AD000.cpp	vc6 guest	?vfunction72@tView3DExt@@UAEXMMM@Z
-0x006ad300	24	tView3DExt::vfunction75(tPoint2 *)	unsorted/fn_006AD000.cpp	vc6 guest	?vfunction75@tView3DExt@@UAEXPAUtPoint2@@@Z
-0x006ad320	23	tView3DExt::vfunction74(float,float)	unsorted/fn_006AD000.cpp	vc6 guest	?vfunction74@tView3DExt@@UAEXMM@Z
-0x006ad340	43	tView3DExt::vfunction77(float,float,float)	unsorted/fn_006AD000.cpp	vc6 guest	?vfunction77@tView3DExt@@UAEXMMM@Z
-0x006ad370	103	tView3DExt::vfunction76(unsigned int)	unsorted/fn_006AD000.cpp	vc6 guest	?vfunction76@tView3DExt@@UAEXI@Z
-0x006ad3e0	33	tView3DExt::vfunction78(unsigned int)	unsorted/fn_006AD000.cpp	vc6 guest	?vfunction78@tView3DExt@@UAEXI@Z
+0x006ac780	59	tView3DExt::tPrimitive::mInit()	unsorted/fn_006AC000.cpp	vc6 guest	?mInit@tPrimitive@tView3DExt@@QAEXXZ
+0x006ac7c0	66	tView3DExt::mBeginPrimitive(ePrimitiveType)	unsorted/fn_006AC000.cpp	vc6 guest	?mBeginPrimitive@tView3DExt@@UAEEW4ePrimitiveType@@@Z
+0x006ac810	32	tView3DExt::mEndPrimitive()	unsorted/fn_006AC000.cpp	vc6 guest	?mEndPrimitive@tView3DExt@@UAEEXZ
+0x006ac830	199	tView3DExt::mFlushPolygon(unsigned long,int,int)	unsorted/fn_006AC000.cpp	partial	?mFlushPolygon@tView3DExt@@IAEXKHH@Z
+0x006ad130	249	tView3DExt::mVtxCoord(const tPoint3 &)	unsorted/fn_006AD000.cpp	vc6 guest	?mVtxCoord@tView3DExt@@UAEXABUtPoint3@@@Z
+0x006ad230	46	tView3DExt::mVtxCoord(float,float,float)	unsorted/fn_006AD000.cpp	vc6 guest	?mVtxCoord@tView3DExt@@UAEXMMM@Z
+0x006ad260	104	tView3DExt::mVtxNormal(const tPoint3 &)	unsorted/fn_006AD000.cpp	vc6 guest	?mVtxNormal@tView3DExt@@UAEXABUtPoint3@@@Z
+0x006ad2d0	46	tView3DExt::mVtxNormal(float,float,float)	unsorted/fn_006AD000.cpp	vc6 guest	?mVtxNormal@tView3DExt@@UAEXMMM@Z
+0x006ad300	24	tView3DExt::mVtxTexCoord(const tPoint2 &)	unsorted/fn_006AD000.cpp	vc6 guest	?mVtxTexCoord@tView3DExt@@UAEXABUtPoint2@@@Z
+0x006ad320	23	tView3DExt::mVtxTexCoord(float,float)	unsorted/fn_006AD000.cpp	vc6 guest	?mVtxTexCoord@tView3DExt@@UAEXMM@Z
+0x006ad340	43	tView3DExt::mVtxColor(float,float,float)	unsorted/fn_006AD000.cpp	vc6 guest	?mVtxColor@tView3DExt@@UAEXMMM@Z
+0x006ad370	103	tView3DExt::mVtxColor(tGLRgbQuad)	unsorted/fn_006AD000.cpp	vc6 guest	?mVtxColor@tView3DExt@@UAEXUtGLRgbQuad@@@Z
+0x006ad3e0	33	tView3DExt::mPrimitiveTexID(int)	unsorted/fn_006AD000.cpp	vc6 guest	?mPrimitiveTexID@tView3DExt@@UAEXH@Z
 0x006ad410	924	GetDXVersion(DWORD*,DWORD*)	dmp3d/dx6/getdxver.cpp	vc6 guest	?GetDXVersion@@YAXPAK0@Z
 0x006b1050	327	tSWView3D::vfunction98(int,int,int,bool)	unsorted/fn_006B1000.cpp	partial	?vfunction98@tSWView3D@@UAE_NHHH_N@Z
-0x006b23c0	315	tSWView3D::vfunction85(int,tBmpSurf *,char,int)	unsorted/tSWView3D.cpp	vc6 guest	?vfunction85@tSWView3D@@UAE_NHPAVtBmpSurf@@DH@Z
+0x006b23c0	315	tSWView3D::mLoadTexture(int,tGLSurface &,unsigned char,unsigned long)	unsorted/tSWView3D.cpp	vc6 guest	?mLoadTexture@tSWView3D@@UAEEHAAVtGLSurface@@EK@Z
 0x006b32c0	8	tGLFontEx::mAddRef()	dmp3d/glFont/tGLFont.cpp	vc6 guest	?mAddRef@tGLFontEx@@UAEJXZ
 0x006b32d0	4	tChannelAttributes::mGet3DSoundProfile()	Source/Scripting/ScriptMapData.cpp	vc6 guest	?mGet3DSoundProfile@tChannelAttributes@@UAEPAVt3DSoundProfile@@XZ
 0x006b32e0	4	tScriptMapData::mGetItemList() const	Source/Scripting/ScriptMapData.cpp	vc6 guest	?mGetItemList@tScriptMapData@@QBEABV?$vector@VtMapObject@@V?$allocator@VtMapObject@@@std@@@std@@XZ
 0x006b3e10	273	tDDSurfMgr::fn_006b3e10()	dmp3d/glsurface/tDDSurfMgr.cpp	partial	?fn_006b3e10@tDDSurfMgr@@QAE_NXZ
-0x006b3f80	126	fn_006b3f80(tDDSurfMgr*,HRESULT,const char*,int,const char*,...)	dmp3d/glsurface/tDDSurfMgr.cpp	partial	?fn_006b3f80@@YAXPAVtDDSurfMgr@@JPBDH1ZZ
-0x006b4010	117	fn_006b4010(tDDSurfMgr*,HRESULT,const char*,int,const char*,...)	dmp3d/glsurface/tDDSurfMgr.cpp	vc6 guest	?fn_006b4010@@YA_NPAVtDDSurfMgr@@JPBDH1ZZ
+0x006b3f80	126	tDDSurfMgr::mDDThrow(HRESULT,const char*,int,const char*,...)	dmp3d/glsurface/tDDSurfMgr.cpp	partial	?mDDThrow@tDDSurfMgr@@IAAXJPBDH0ZZ
+0x006b4010	117	tDDSurfMgr::mDDCheck(HRESULT,const char*,int,const char*,...)	dmp3d/glsurface/tDDSurfMgr.cpp	vc6 guest	?mDDCheck@tDDSurfMgr@@IAAEJPBDH0ZZ
 0x006b4090	695	tDDSurfMgr::fn_006b4090(int,int,int,int,int,bool,bool,int,HWND,int)	dmp3d/glsurface/tDDSurfMgr.cpp	vc6 guest	?fn_006b4090@tDDSurfMgr@@QAE_NHHHHH_N0HPAUHWND__@@H@Z
 0x006b4350	5	t00c7c608Guard::~t00c7c608Guard()	dmp3d/glsurface/tDDSurfMgr.cpp	vc6	??1t00c7c608Guard@@QAE@XZ
 0x006b4360	249	tDDSurfMgr::mSetDisplayMode(int,int,int)	dmp3d/glsurface/tDDSurfMgr.cpp	vc6 guest	?mSetDisplayMode@tDDSurfMgr@@QAE_NHHH@Z
