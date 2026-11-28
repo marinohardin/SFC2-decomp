@@ -381,7 +381,7 @@
   },
   "0x00402d42": {
    "name": "FUN_00402d42",
-   "symbol": "?fn_00402d42@fn_00402d42_Vec@@QAEXXZ",
+   "symbol": "??1?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@QAE@XZ",
    "unit": "unsorted/fn_00402000.cpp",
    "size": 53,
    "score": 100.0,
@@ -11919,7 +11919,7 @@
   },
   "0x0046090a": {
    "name": "FUN_0046090a",
-   "symbol": "??4fn_0046090a_object@@QAEAAV0@ABV0@@Z",
+   "symbol": "??4?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@QAEAAV01@ABV01@@Z",
    "unit": "unsorted/fn_00460000.cpp",
    "size": 449,
    "score": 100.0,
@@ -23961,7 +23961,7 @@
   },
   "0x00544b3c": {
    "name": "FUN_00544b3c",
-   "symbol": "_$E24",
+   "symbol": "_$E27",
    "unit": "unsorted/fn_00544000.cpp",
    "size": 10,
    "score": 100.0,
@@ -23970,7 +23970,7 @@
   },
   "0x00544b46": {
    "name": "FUN_00544b46",
-   "symbol": "_$E26",
+   "symbol": "_$E29",
    "unit": "unsorted/fn_00544000.cpp",
    "size": 12,
    "score": 100.0,

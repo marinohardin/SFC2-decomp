@@ -65,7 +65,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00402cdf	function	fn_00402cdf		?fn_00402cdf@fn_00402bb6_Streambuf@@QAEHXZ	claim		none
 0x00402cf9	function	fn_00402cf9		?fn_00402cf9@fn_00402cf9_Vec@@QAEXXZ	claim		none
 0x00402d31	function	fn_00402d31		?fn_00402d31@fn_00402d31_Obj@@QAEXH@Z	claim		none
-0x00402d42	function	fn_00402d42		?fn_00402d42@fn_00402d42_Vec@@QAEXXZ	claim		none
+0x00402d42	function	fn_00402d42		??1?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@QAE@XZ	claim		none
 0x00402d77	function	fn_00402d77		?fn_00402d77@fn_00402d77_Obj@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z	claim		none
 0x00402d88	function	std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>_>::basic_stringstream<char,std::char_traits<char>,std::allocator<char>_>_Constructor_or_Destructor	std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>_>	??0?$basic_stringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@H@Z	callers		rtti
 0x00402dfe	function	std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>_>::~basic_stringstream<char,std::char_traits<char>,std::allocator<char>_>	std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>_>				rtti
@@ -3272,7 +3272,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00460736	function	tCampaignInfo::operator=	tCampaignInfo	??4tCampaignInfo@@QAEAAV0@ABV0@@Z	claim		claim
 0x004608ea	function	fn_004608ea					none
 0x004608f4	function	fn_004608f4					none
-0x0046090a	function	fn_0046090a		??4fn_0046090a_object@@QAEAAV0@ABV0@@Z	claim		none
+0x0046090a	function	fn_0046090a		??4?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@QAEAAV01@ABV01@@Z	claim		none
 0x00460acb	function	fn_00460acb		?fn_00460acb@fn_00460acb_class@@QAEXXZ	claim		none
 0x00460b03	function	fn_00460b03		?fn_00460b03@fn_00460b03_class@@QAEXXZ	claim		none
 0x00460b3b	function	fn_00460b3b		?fn_00460b3b@fn_00460b3b_class@@QAEXXZ	claim		none
