@@ -163,18 +163,22 @@ void fn_00469e3e(int param_1)
 
 // HYPOTHESIS: the globals at 0x0090db8c..0x0090db9c are three values and a flag; types guessed.
 extern int g_0090db8c;
-extern int g_0090db90;
-extern int g_0090db94;
+extern void *g_0090db90;
+extern void *g_0090db94;
 extern char g_0090db9c;
 
-void fn_0069ab80(int *a, int *b, int c, int d);
+// HYPOTHESIS: only the static member the units call; the class is declared nowhere else yet.
+class tDMPEvt {
+public:
+	static unsigned char mGetLocalMousePos(int *x, int *y, void *a, void *b);
+};
 
 // FUNCTION: STARFLEETOP 0x00469e4d
 void fn_00469e4d()
 {
 	if (g_0090db9c == 0)
 	{
-		fn_0069ab80(&g_0090db88.m_00, &g_0090db8c, g_0090db90, g_0090db94);
+		tDMPEvt::mGetLocalMousePos(&g_0090db88.m_00, &g_0090db8c, g_0090db90, g_0090db94);
 	}
 }
 
@@ -214,8 +218,8 @@ char fn_00469e75(int param_1, int param_2)
 	if (g_0090db70.fn_00672b60(obj, b) == 0)
 		return 0;
 	g_0090db9c = 0;
-	g_0090db90 = param_1;
-	g_0090db94 = param_2;
+	g_0090db90 = (void *)param_1;
+	g_0090db94 = (void *)param_2;
 	fn_00464be8();
 	fn_00469ab8(&g_0090db48);
 	fn_0046a62d("startup");
@@ -465,14 +469,14 @@ void fn_00469ef9(unsigned int param_1)
 		g_0090e004 = g_0090e004 == 0;
 
 	// HYPOTHESIS: an eight-int event record; slot 0 the type, 1 the key, 5 the modifier flags,
-	// 6 and 7 the values fn_0069ab80 fills.
+	// 6 and 7 the values mGetLocalMousePos fills.
 	int ev[8];
 	ev[0] = 0x100;
 	ev[1] = key;
 	ev[5] = flags;
 	ev[6] = 0;
 	ev[7] = 0;
-	fn_0069ab80(&ev[6], &ev[7], g_0090db90, g_0090db94);
+	tDMPEvt::mGetLocalMousePos(&ev[6], &ev[7], g_0090db90, g_0090db94);
 	if (g_0090db44 != 0)
 	{
 		((fn_0090db44_object *)g_0090db44)->vfunction15(ev);
@@ -560,7 +564,7 @@ void fn_0046a2d4(unsigned int param_1)
 	ev[5] = flags;
 	ev[6] = 0;
 	ev[7] = 0;
-	fn_0069ab80(&ev[6], &ev[7], g_0090db90, g_0090db94);
+	tDMPEvt::mGetLocalMousePos(&ev[6], &ev[7], g_0090db90, g_0090db94);
 	if (g_0090db44 != 0)
 	{
 		((fn_0090db44_object *)g_0090db44)->vfunction16(ev);
@@ -632,8 +636,8 @@ extern char g_sz008458f4[];
 void fn_0046aa9a(int param_1);
 extern float g_007962f8;
 extern int g_0090bf08;
-extern unsigned int g_0079ec40;
-extern unsigned int g_0079ec44;
+extern tGLRgbQuad g_0079ec40;
+extern tGLRgbQuad g_0079ec44;
 // HYPOTHESIS: the object returned by fn_0046a755 carries a float at +0x38 (frames per second).
 class fn_0046aa9a_stats
 {
@@ -645,7 +649,7 @@ public:
 class fn_0046aa9a_host
 {
 public:
-	int fn_0040163a(int param_1, char *param_2, int param_3, int param_4);
+	int fn_0040163a();
 };
 
 // FUNCTION: STARFLEETOP 0x0046a4bd
@@ -1181,20 +1185,19 @@ char fn_0046aa94()
 void fn_0046aa9a(int param_1)
 {
 	tGLDC dc;
-	unsigned int saved;
 	char text[80];
-	dc.vfunction2((int *)param_1);
+	dc.mSetSurface((tGLSurface *)param_1);
 	static tObject_0040ce21 report("Show me your frames.");
 	fn_0046aa9a_stats *stats = (fn_0046aa9a_stats *)fn_0046a755();
 	float rate = stats->field_38;
 	rate *= g_007962f8;
 	int fps = (int)rate;
 	sprintf(text, "FPS: %3d.%d[%d]", fps / 10, fps % 10, g_0090bf08);
-	dc.vfunction9(&saved, &g_0079ec40);
-	dc.vfunction10(&saved, &g_0079ec44);
-	dc.vfunction13(1);
-	dc.vfunction16(2);
-	dc.vfunction22(((fn_0046aa9a_host *)param_1)->fn_0040163a(30, text, -1, 1) - 30);
+	dc.mSetFgColor(g_0079ec40);
+	dc.mSetBgColor(g_0079ec44);
+	dc.mEnableOpaqueBkgnd(1);
+	dc.mSetTextAlign(2);
+	dc.mTextOut(((fn_0046aa9a_host *)param_1)->fn_0040163a() - 30, 30, text, -1, 1);
 }
 
 // FUNCTION: STARFLEETOP 0x0046abb3
