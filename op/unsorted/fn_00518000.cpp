@@ -1,6 +1,8 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/fn_00518000.cpp
-// Functions: 0x0051819f to 0x0051819f, 1 in op/UNITS.tsv
-// Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
-// Profile:   game-release (harness/units.json)
+#include "unsorted/tAICaptain.h"
+
+// 0x00517f6e writes this flag at offset 0x1c.
+// FUNCTION: STARFLEETOP 0x0051819f
+bool tAIHETOfficer::fn_0051819f()
+{
+	return *(const bool *)((const char *)this + 0x1c);
+}

@@ -1,6 +1,22 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/fn_00555F85.cpp
-// Functions: 0x00555f85 to 0x00555f85, 1 in op/UNITS.tsv
-// Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
-// Profile:   game-release (harness/units.json)
+#include "Common/Database/DatabaseID.h"
+#include "unsorted/nSwitch__tRequestWithResponse.h"
+
+// The constructor at 0x00555dc8 installs this RTTI-backed vtable and constructs
+// the two tID members at +0x18 and +0x28. Stream input normalizes the byte at +0x38.
+namespace nStoredProcedureArguments { class tSetPreparedMissionsIDRequest : public nSwitch::tRequestWithResponse
+	{
+	public:
+		bool fn_00555f85() const;
+
+	private:
+		nDatabase::tID m_18;
+		nDatabase::tID m_28;
+		bool m_38;
+	};
+}
+
+// FUNCTION: STARFLEETOP 0x00555f85
+bool nStoredProcedureArguments::tSetPreparedMissionsIDRequest::fn_00555f85() const
+{
+	return m_38;
+}
