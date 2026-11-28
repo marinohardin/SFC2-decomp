@@ -7,10 +7,8 @@
 #include "unsorted/tSWView3D.h"
 #include "Tiger/tinifile.h"
 
-namespace tBasicFileCRTNamespace {
 class tBasicFile;
 tBasicFile *_NewBasicFileCRT();
-}
 
 // HYPOTHESIS: field_1f68 is an object whose slot +0x2c returns an object with a slot +0x48 that
 // takes the 16-bit value at field_1f5c and the clipped rectangle.
@@ -62,7 +60,7 @@ public:
 	virtual void *v2();
 	virtual void v3();
 	virtual void v4();
-	virtual bool v5(void (__stdcall *)(void *, int), int);
+	virtual bool v5(void (__stdcall *)(void *, int), void *);
 	virtual void v6();
 	virtual void v7();
 	virtual void v8();
@@ -75,8 +73,8 @@ extern char *g_008846b4;
 extern char *g_008846b8;
 extern int g_00c7c10c;
 void __stdcall fn_0069f5d0(void *, int);
-void *fn_006b3260();
-void *fn_006b4fe0();
+tGLSurfMgr *dmpCreateGDISurfMgr();
+tGLSurfMgr *dmpCreateDDSurfMgr();
 
 // FUNCTION: STARFLEETOP 0x0069f3b0
 tSWView3D::tSWView3D()
@@ -100,30 +98,30 @@ tSWView3D::tSWView3D()
 }
 
 // FUNCTION: STARFLEETOP 0x0069f480
-int tSWView3D::vfunction86()
+tGLSurfMgr *tSWView3D::mGetSurfMgr()
 {
-	return (int)field_1f68;
+	return (tGLSurfMgr *)field_1f68;
 }
 
 // FUNCTION: STARFLEETOP 0x0069f490
 // FUNCTION: STARFLEETOP 0x0069f4b0
 tSWView3D::~tSWView3D()
 {
-	tSWView3D::vfunction6();
+	tSWView3D::mDone();
 	// HYPOTHESIS: the inlined ~tGLPixFmt of the member at +0x5f6c resets its vtable (0x007959d8).
 	// MATCH-ONLY: stored as a raw address, the class is not in a shared header.
 	*(unsigned long *)field_5f6c = 0x007959d8;
 }
 
 // FUNCTION: STARFLEETOP 0x0069f510
-bool tSWView3D::vfunction2(int a, int b)
+unsigned char tSWView3D::mEnumDispModes(unsigned char (*a)(int, int, void *), void *b)
 {
 	fn_0069f510_Device *device = (fn_0069f510_Device *)field_1f68;
 	bool created = false;
 	if (!device) {
 		bool debug = false;
 		created = true;
-		tINIFile *ini = tINIFile::mNewINIFile(g_008846b4, (tBasicFile *(*)())tBasicFileCRTNamespace::_NewBasicFileCRT);
+		tINIFile *ini = tINIFile::mNewINIFile(g_008846b4, _NewBasicFileCRT);
 		if (ini) {
 			tINISection *section = ini->mGetSection(g_008846b8, 0);
 			if (section) {
@@ -135,12 +133,12 @@ bool tSWView3D::vfunction2(int a, int b)
 		}
 		void *made = 0;
 		if (!(ini && debug))
-			made = fn_006b4fe0();
-		device = (fn_0069f510_Device *)(made ? made : fn_006b3260());
+			made = dmpCreateDDSurfMgr();
+		device = (fn_0069f510_Device *)(made ? made : dmpCreateGDISurfMgr());
 		if (!device)
 			return false;
 	}
-	g_00c7c10c = a;
+	g_00c7c10c = (int)a;
 	bool result = device->v5(fn_0069f5d0, b);
 	if (created) {
 		device->v9();
@@ -156,44 +154,43 @@ public:
 };
 
 // FUNCTION: STARFLEETOP 0x0069f850
-bool tSWView3D::vfunction3(int a, int b, int c, int d, RECT *rect, bool f)
+unsigned char tSWView3D::mInitFullscreen(void *a, void *b, int c, int d, const tGLRectI *rect, unsigned char f)
 {
-	// HYPOTHESIS: RECT is only forward-declared here, so the rectangle is four ints.
+	// HYPOTHESIS: tGLRectI is only forward-declared here, so the rectangle is four ints.
 	int local[4];
 	if (!rect) {
-		rect = (RECT *)local;
+		rect = (const tGLRectI *)local;
 		local[0] = 0;
 		local[1] = 0;
 		local[2] = c;
 		local[3] = d;
 	}
-	return fn_0069f600(a, b, c, d, rect, f, true);
+	return mInit(a, b, c, d, rect, f, true);
 }
 
-int fn_006b5060(int);
-int fn_006b5090(int);
+int GetWindowWidth(void *);
+int GetWindowHeight(void *);
 
 // FUNCTION: STARFLEETOP 0x0069f8a0
-bool tSWView3D::vfunction4(int a, int b, RECT *rect, bool f)
+unsigned char tSWView3D::mInitWindowed(void *a, void *b, const tGLRectI *rect, unsigned char f)
 {
-	// HYPOTHESIS: the two free functions read the width and height of the object a stands for.
-	int w = fn_006b5060(a);
-	int h = fn_006b5090(a);
+	int w = GetWindowWidth(a);
+	int h = GetWindowHeight(a);
 	int local[4];
 	if (!rect) {
-		rect = (RECT *)local;
+		rect = (const tGLRectI *)local;
 		local[0] = 0;
 		local[1] = 0;
 		local[2] = w;
 		local[3] = h;
 	}
-	return fn_0069f600(a, b, w, h, rect, f, false);
+	return mInit(a, b, w, h, rect, f, false);
 }
 
 // FUNCTION: STARFLEETOP 0x0069f900
-bool tSWView3D::vfunction6()
+unsigned char tSWView3D::mDone()
 {
-	tView3DExt::vfunction6();
+	tView3DExt::mDone();
 	if (field_5fb4) {
 		delete field_5fb4;
 		field_5fb4 = 0;
@@ -235,7 +232,7 @@ public:
 };
 
 // FUNCTION: STARFLEETOP 0x0069f990
-bool tSWView3D::vfunction11()
+unsigned char tSWView3D::mBeginScene()
 {
 	field_5fa8 = ((fn_0069f510_Device *)field_1f68)->v11();
 	if (field_0x1edc)
@@ -253,7 +250,7 @@ bool tSWView3D::vfunction11()
 }
 
 // FUNCTION: STARFLEETOP 0x0069fa10
-bool tSWView3D::vfunction12()
+unsigned char tSWView3D::mEndScene()
 {
 	void *surface = ((fn_0069f510_Device *)field_1f68)->v11();
 	if (field_0x1ee4)
@@ -264,21 +261,21 @@ bool tSWView3D::vfunction12()
 }
 
 // FUNCTION: STARFLEETOP 0x0069fa50
-int tSWView3D::vfunction25(int)
+unsigned int tSWView3D::mSetPolygonMode(unsigned int)
 {
 	return 10;
 }
 
 // FUNCTION: STARFLEETOP 0x0069fa60
-int tSWView3D::vfunction26()
+unsigned int tSWView3D::mGetPolygonMode()
 {
 	return 10;
 }
 
 // FUNCTION: STARFLEETOP 0x0069fa70
-void tSWView3D::vfunction17(int a, int b, int c, int d)
+void tSWView3D::mSetViewport(int a, int b, int c, int d)
 {
-	tView3DExt::vfunction17(a, b, c, d);
+	tView3DExt::mSetViewport(a, b, c, d);
 	field_1f50 = d;
 	field_1f4c = c;
 	field_1f54 = a + c;
@@ -286,23 +283,22 @@ void tSWView3D::vfunction17(int a, int b, int c, int d)
 }
 
 // FUNCTION: STARFLEETOP 0x0069fad0
-int tSWView3D::vfunction10()
+unsigned long tSWView3D::mGetCaps()
 {
-	int result = 0xe;
+	unsigned long result = 0xe;
 	if (field_5fb4)
 		result = 0x1f;
 	return result;
 }
 
 // FUNCTION: STARFLEETOP 0x0069faf0
-bool tSWView3D::vfunction28(unsigned int color)
+unsigned char tSWView3D::mSetClearColor(tGLRgbQuad color)
 {
-	unsigned char* c = (unsigned char*)&color;
-	return vfunction27(c[2], c[1], c[0]);
+	return mSetClearColor(color.field_0x02, color.field_0x01, color.field_0x00);
 }
 
 // FUNCTION: STARFLEETOP 0x0069fb10
-bool tSWView3D::vfunction27(unsigned char r, unsigned char g, unsigned char b)
+unsigned char tSWView3D::mSetClearColor(unsigned char r, unsigned char g, unsigned char b)
 {
 	unsigned short r16 = r;
 	unsigned short g16 = g;
@@ -312,15 +308,15 @@ bool tSWView3D::vfunction27(unsigned char r, unsigned char g, unsigned char b)
 }
 
 // FUNCTION: STARFLEETOP 0x0069fb50
-bool tSWView3D::vfunction30(bool e, bool f)
+unsigned char tSWView3D::mClear(unsigned char e, unsigned char f)
 {
 	int width = (int)field_0x764;
 	int height = (int)field_0x768;
-	return vfunction29(0, 0, width, height, e, f);
+	return mClear(0, 0, width, height, e, f);
 }
 
 // FUNCTION: STARFLEETOP 0x0069fb90
-bool tSWView3D::vfunction29(int a, int b, int c, int d, bool e, bool f)
+unsigned char tSWView3D::mClear(int a, int b, int c, int d, unsigned char e, unsigned char f)
 {
 	int rect[4];
 	rect[2] = field_1f4c + c;
@@ -356,35 +352,32 @@ bool tSWView3D::vfunction29(int a, int b, int c, int d, bool e, bool f)
 	return true;
 }
 
-// HYPOTHESIS: the shared instance, created on first use.
-extern tSWView3D *g_00c7c110;
-
 // FUNCTION: STARFLEETOP 0x0069fd20
-tSWView3D *fn_0069fd20()
+tView3D *dmpGetSWView3D()
 {
-	if (!g_00c7c110)
-		g_00c7c110 = new tSWView3D;
-	if (g_00c7c110)
-		g_00c7c110->vfunction7();
-	return g_00c7c110;
+	if (!tSWView3D::fMaster)
+		tSWView3D::fMaster = new tSWView3D;
+	if (tSWView3D::fMaster)
+		tSWView3D::fMaster->vfunction7();
+	return tSWView3D::fMaster;
 }
 
 // FUNCTION: STARFLEETOP 0x0069fdc0
-int tSWView3D::vfunction43()
+unsigned long tSWView3D::mGetSrcBlendCaps()
 {
 	return 2;
 }
 
 // FUNCTION: STARFLEETOP 0x0069fde0
-bool tSWView3D::vfunction48(bool param_1)
+unsigned char tSWView3D::mAlphaTestEnable(unsigned char param_1)
 {
 	bool old = field_5fc4;
-	field_5fc4 = param_1 ? true : false;    // HYPOTHESIS: the original tests the argument again, as tView3DExt::vfunction47 does
+	field_5fc4 = param_1 ? true : false;    // HYPOTHESIS: the original tests the argument again, as tView3DExt::mEnableGlobalBlend does
 	return old;
 }
 
 // FUNCTION: STARFLEETOP 0x0069fe00
-bool tSWView3D::vfunction49(bool param_1)
+unsigned char tSWView3D::mEnableZWriteAndTest(unsigned char param_1)
 {
 	field_5fc5 = param_1 ? true : false;
 	field_5fc6 = param_1 ? true : false;
@@ -392,14 +385,14 @@ bool tSWView3D::vfunction49(bool param_1)
 }
 
 // FUNCTION: STARFLEETOP 0x0069fe20
-bool tSWView3D::vfunction50(bool param_1)
+unsigned char tSWView3D::mEnableZWrite(unsigned char param_1)
 {
 	field_5fc5 = param_1 ? true : false;
 	return true;
 }
 
 // FUNCTION: STARFLEETOP 0x0069fe40
-bool tSWView3D::vfunction51(bool param_1)
+unsigned char tSWView3D::mEnableZTest(unsigned char param_1)
 {
 	field_5fc6 = param_1 ? true : false;
 	return true;
@@ -452,9 +445,9 @@ public:
 };
 
 // FUNCTION: STARFLEETOP 0x006b23c0
-bool tSWView3D::vfunction85(int handle, tBmpSurf *surf, char c1, int c2)
+unsigned char tSWView3D::mLoadTexture(int handle, tGLSurface &surf, unsigned char c1, unsigned long c2)
 {
-	fn_006b23c0_Surf *s = (fn_006b23c0_Surf *)surf;
+	fn_006b23c0_Surf *s = (fn_006b23c0_Surf *)&surf;
 	if (handle > 0 && handle <= 0x1000) {
 		fn_006b23c0_Rect *r = s->GetRect();
 		unsigned int w = ((r->right - r->left < 0) - 1) & (r->right - r->left);
@@ -479,7 +472,7 @@ bool tSWView3D::vfunction85(int handle, tBmpSurf *surf, char c1, int c2)
 					} while (y != 0);
 				}
 				s->v8();
-				t->flag64 = c1;
+				t->flag64 = (char)c1;
 				t->flag65 = (char)c2;
 				return true;
 			}

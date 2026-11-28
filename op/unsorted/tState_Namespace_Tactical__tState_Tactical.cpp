@@ -555,10 +555,10 @@ void tState_Tactical::vfunction8( int *param_1 )
 {
 	// HYPOTHESIS: the argument is the view, as in vfunction9.
 	tView3D *view = (tView3D *)param_1;
-	view->vfunction27( 0, 0, 0 );
-	view->vfunction30( true, true );
+	view->mSetClearColor( 0, 0, 0 );
+	view->mClear( true, true );
 	gObject_00918888->vfunction3();
-	view->vfunction55( ( (fn_00918888_slots *)gObject_00918888 )->vfunction4() );
+	view->mSetCameraMtx( *( (fn_00918888_slots *)gObject_00918888 )->vfunction4() );
 }
 
 // FUNCTION: STARFLEETOP 0x004b9a3a
@@ -578,7 +578,7 @@ void tState_Tactical::vfunction9( int *param_1 )
 		*(int *)&field_458.m_data[4] = 0;
 		// HYPOTHESIS: the argument is the view (slot 55 returns its matrix, slot 60 its projection).
 		tView3D *view = (tView3D *)param_1;
-		tMatrix *matrix = view->vfunction56();
+		const tMatrix *matrix = &view->mGetCameraMtx();
 		field_294 = *matrix;
 		gMatrix_0092f5b8 = *matrix;
 		float halfWidth = (float)( ( field_1f0[2] - field_1f0[0] ) >= 0 ? ( field_1f0[2] - field_1f0[0] ) : 0 ) * 0.5f;
@@ -587,7 +587,7 @@ void tState_Tactical::vfunction9( int *param_1 )
 			tMatrix screen;
 			screen.mTranslate( (float)field_1f0[0] + halfWidth, (float)field_1f0[1] + halfHeight, 0.0f );
 			fn_0069c7c0( &screen, 0, halfWidth, -halfHeight, 1.0f );
-			fn_0069b450( &screen, 0, view->vfunction61() );
+			fn_0069b450( &screen, 0, (tMatrix *)&view->mGetProjMtx() );
 
 
 			field_31c = screen;
@@ -637,11 +637,11 @@ void tState_Tactical::vfunction9( int *param_1 )
 			light.f6 = 1.0f;
 			light.f1 = 0.0f;
 			light.f2 = 0.0f;
-			light.f7 = ( view->vfunction10() & 0x20 ) ? 1.5f : 4.0f;
-			view->vfunction33( 0, (void *)&light.type );
-			view->vfunction39( 0, true );
-			if ( (unsigned int)view->vfunction32() > 1 )
-				view->vfunction39( 1, false );
+			light.f7 = ( view->mGetCaps() & 0x20 ) ? 1.5f : 4.0f;
+			view->mSetLightDescription( 0, *(const tGLLightDesc *)&light.type );
+			view->mEnableLight( 0, true );
+			if ( view->mGetMaxNumLights() > 1 )
+				view->mEnableLight( 1, false );
 			fn_004ba7c7( param_1 );
 			fn_004ecfb3( param_1 );
 			g_00967af4->vfunction2( param_1 );

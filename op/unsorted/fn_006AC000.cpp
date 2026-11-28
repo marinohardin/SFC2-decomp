@@ -6,7 +6,7 @@
 #include "unsorted/tView3DExt.h"
 
 // FUNCTION: STARFLEETOP 0x006ac780
-void fn_006ac780_State::fn_006ac780()
+void tView3DExt::tPrimitive::mInit()
 {
 	field_0x00 = -1;
 	field_0x04 = 0;
@@ -27,7 +27,7 @@ void fn_006ac780_State::fn_006ac780()
 }
 
 // FUNCTION: STARFLEETOP 0x006ac7c0
-bool tView3DExt::vfunction68( int param_1 )
+unsigned char tView3DExt::mBeginPrimitive( ePrimitiveType param_1 )
 {
 	if ( param_1 >= 0 && param_1 <= 9 )
 	{
@@ -41,11 +41,12 @@ bool tView3DExt::vfunction68( int param_1 )
 }
 
 // FUNCTION: STARFLEETOP 0x006ac810
-void tView3DExt::vfunction69()
+unsigned char tView3DExt::mEndPrimitive()
 {
-	fn_006ac900( 1 );
+	unsigned char result = mFlushPrimitiveVtxs( 1 );
 	field_0x1eec.field_0x00 = -1;
 	field_0x1eec.field_0x04 = 0;
+	return result;
 }
 
 // HYPOTHESIS: a free function of two ints returning a vertex count.
@@ -53,7 +54,7 @@ int fn_006b8190( int, int );
 extern float g_0079561c;    // 0.0f
 
 // FUNCTION: STARFLEETOP 0x006ac830
-void tView3DExt::fn_006ac830( int param_1, int param_2, int param_3 )
+void tView3DExt::mFlushPolygon( unsigned long param_1, int param_2, int param_3 )
 {
 	if ( param_3 == 3 )
 		field_0x1f2c[2]++;
@@ -64,7 +65,7 @@ void tView3DExt::fn_006ac830( int param_1, int param_2, int param_3 )
 	int count = fn_006b8190( param_3, param_1 );
 	if ( count > 2 )
 	{
-		float area = fn_006abeb0();
+		float area = mGetPolyNormalZ();
 		if ( area != g_0079561c )
 		{
 			int back = area > g_0079561c ? 0 : 1;

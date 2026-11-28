@@ -1,7 +1,7 @@
 #include "unsorted/tView3DExt.h"
 
 // FUNCTION: STARFLEETOP 0x006abeb0
-float tView3DExt::fn_006abeb0()
+float tView3DExt::mGetPolyNormalZ()
 {
 	fn_006abe00_Vtx *a = mVtxCache + field_0x14[0];
 	fn_006abe00_Vtx *b = mVtxCache + field_0x14[1];
@@ -43,7 +43,7 @@ float tView3DExt::fn_006abeb0()
 }
 
 // FUNCTION: STARFLEETOP 0x006abf80
-void tView3DExt::vfunction79( int count, int param_2 )
+void tView3DExt::mSubmitVertices( int count, const tPoint3 *param_2 )
 {
 	mAssertVtxCache( count );
 	field_0x554 = param_2;

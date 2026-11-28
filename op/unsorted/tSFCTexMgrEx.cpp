@@ -88,7 +88,7 @@ void tSFCTexMgrEx::vfunction4(int handle)
                 if (view && tTexMgr::fList && bmp->mLock())
                 {
                     tBmpSurf surf(*bmp);
-                    view->vfunction85(handle, &surf, entry->m0c, entry->m10);
+                    view->mLoadTexture(handle, *(tGLSurface *)&surf, entry->m0c, entry->m10);
                     bmp->mUnlock();
                     entry->m00 = 0;
                 }
