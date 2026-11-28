@@ -9683,7 +9683,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0054b4a0	function	nStoredProcedureArguments::tEconomicStatusRequest::tEconomicStatusResponse::tEconomicStatusResponse	nStoredProcedureArguments::tEconomicStatusRequest::tEconomicStatusResponse				rtti
 0x0054b4ea	function	fn_0054b4ea	nStoredProcedureArguments::tEconomicStatusRequest::tEconomicStatusResponse				vtable
 0x0054b51d	function	fn_0054b51d	nStoredProcedureArguments::tEconomicStatusRequest::tEconomicStatusResponse				vtable
-0x0054b552	function	fn_0054b552					none
+0x0054b552	function	fn_0054b552		?fn_0054b552@@YIJPAD@Z	claim		none
 0x0054b556	function	nStoredProcedureArguments::tEconomicStatusRequest::tEconomicStatusRequest	nStoredProcedureArguments::tEconomicStatusRequest				rtti
 0x0054b568	function	nStoredProcedureArguments::tEconomicStatusRequest::scalar_deleting_destructor	nStoredProcedureArguments::tEconomicStatusRequest				rtti
 0x0054b584	function	nStoredProcedureArguments::tEconomicStatusRequest::tEconomicStatusRequest	nStoredProcedureArguments::tEconomicStatusRequest				rtti
@@ -9825,7 +9825,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0054ddd5	function	nStoredProcedureArguments::tMetaMapMoveRequest::tMetaMapMoveResponse::tMetaMapMoveResponse	nStoredProcedureArguments::tMetaMapMoveRequest::tMetaMapMoveResponse				rtti
 0x0054de6b	function	fn_0054de6b	nStoredProcedureArguments::tMetaMapMoveRequest::tMetaMapMoveResponse				vtable
 0x0054deab	function	fn_0054deab	nStoredProcedureArguments::tMetaMapMoveRequest::tMetaMapMoveResponse				vtable
-0x0054deec	function	fn_0054deec					none
+0x0054deec	function	fn_0054deec		?fn_0054deec@@YIJPAD@Z	claim		none
 0x0054def0	function	nStoredProcedureArguments::tMetaMapMoveRequest::tMetaMapMoveRequest	nStoredProcedureArguments::tMetaMapMoveRequest				rtti
 0x0054df33	function	nStoredProcedureArguments::tMetaMapMoveRequest::scalar_deleting_destructor	nStoredProcedureArguments::tMetaMapMoveRequest				rtti
 0x0054df4f	function	nStoredProcedureArguments::tMetaMapMoveRequest::~tMetaMapMoveRequest	nStoredProcedureArguments::tMetaMapMoveRequest				rtti

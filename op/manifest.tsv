@@ -2752,6 +2752,7 @@ address	size	symbol	source	modes	decorated
 0x0054841d	12	mAssignAllocID(iAllocatorID)	unsorted/tBattles.cpp	vc6 guest	?mAssignAllocID@?$tClassAllocator@VtBattles@@@@MAEXJ@Z
 0x00549d84	6	tCampaignInfo::SQLTableName() const	unsorted/tCampaignInfo.cpp	vc6 guest	?SQLTableName@tCampaignInfo@@UBEPBDXZ
 0x00549d8a	6	tCampaignInfo::SQLFieldNames() const	unsorted/tCampaignInfo.cpp	vc6 guest	?SQLFieldNames@tCampaignInfo@@UBEPBDXZ
+0x0054b552	4	fn_0054b552(char*)	unsorted/fn_0054B552.cpp	vc6	?fn_0054b552@@YIJPAD@Z
 0x0054bd73	464	tMetaMapDataRequest::tResponse::tClientHex::tClientHex(tMetaMapHex&,int32,int32)	Meta/MetaDatabase/StoredProcedures/MapProcedures/MetaMapDataRequest.cpp	vc6	??0tClientHex@tResponse@tMetaMapDataRequest@nStoredProcedureArguments@@QAE@AAVtMetaMapHex@@JJ@Z
 0x0054bf43	20	tMetaMapDataRequest::tResponse::tClientHex::tClientHex()	Meta/MetaDatabase/StoredProcedures/MapProcedures/MetaMapDataRequest.cpp	vc6	??0tClientHex@tResponse@tMetaMapDataRequest@nStoredProcedureArguments@@QAE@XZ
 0x0054bf57	206	tMetaMapDataRequest::tResponse::tClientHex::StreamOut(nDataStore::tOutput&) const	Meta/MetaDatabase/StoredProcedures/MapProcedures/MetaMapDataRequest.cpp	vc6 guest	?StreamOut@tClientHex@tResponse@tMetaMapDataRequest@nStoredProcedureArguments@@UBEXAAVtOutput@nDataStore@@@Z
@@ -2766,6 +2767,7 @@ address	size	symbol	source	modes	decorated
 0x0054c471	26	tMetaMapDataRequest::tResponse::fn_0054c471(long,long)	Meta/MetaDatabase/StoredProcedures/MapProcedures/MetaMapDataRequest.cpp	vc6 guest	?fn_0054c471@tResponse@tMetaMapDataRequest@nStoredProcedureArguments@@QAEAAVtClientHex@123@JJ@Z
 0x0054c48b	88	tMetaMapDataRequest::tResponse::fn_0054c48b(int32*,int32*)	Meta/MetaDatabase/StoredProcedures/MapProcedures/MetaMapDataRequest.cpp	vc6 guest	?fn_0054c48b@tResponse@tMetaMapDataRequest@nStoredProcedureArguments@@QAEPAVtClientHex@123@PAJ0@Z
 0x0054c4e3	97	tMetaMapDataRequest::tResponse::fn_0054c4e3(long,long)	Meta/MetaDatabase/StoredProcedures/MapProcedures/MetaMapDataRequest.cpp	vc6 guest	?fn_0054c4e3@tResponse@tMetaMapDataRequest@nStoredProcedureArguments@@QAEJJJ@Z
+0x0054deec	4	fn_0054deec(char*)	unsorted/fn_0054DEEC.cpp	vc6	?fn_0054deec@@YIJPAD@Z
 0x0054fa6d	117	tAddPreparedMissionRequest::vfunction3(nDataStore::tInput&)	Meta/MetaDatabase/StoredProcedures/MissionProcedures/AddPreparedMissionRequest.cpp	vc6 guest	?vfunction3@tAddPreparedMissionRequest@nStoredProcedureArguments@@UAEXAAVtInput@nDataStore@@@Z
 0x0054ffe5	173	tChooseMissionRequest::vfunction3(nDataStore::tInput&)	Meta/MetaDatabase/StoredProcedures/MissionProcedures/ChooseMissionRequest.cpp	vc6 guest	?vfunction3@tChooseMissionRequest@@UAEXAAVtInput@nDataStore@@@Z
 0x0055095b	102	tExistPreparedMissionRequest::vfunction3(nDataStore::tInput&)	Meta/MetaDatabase/StoredProcedures/MissionProcedures/ExistPreparedMissionRequest.cpp	vc6 guest	?vfunction3@tExistPreparedMissionRequest@@UAEXAAVtInput@nDataStore@@@Z

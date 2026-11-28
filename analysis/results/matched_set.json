@@ -24751,6 +24751,15 @@
    "exact": true,
    "recorded": "2026-11-26"
   },
+  "0x0054b552": {
+   "name": "FUN_0054b552",
+   "symbol": "?fn_0054b552@@YIJPAD@Z",
+   "unit": "unsorted/fn_0054B552.cpp",
+   "size": 4,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-27"
+  },
   "0x0054bd73": {
    "name": "nStoredProcedureArguments::tMetaMapDataRequest::tResponse::tClientHex::tClientHex",
    "symbol": "??0tClientHex@tResponse@tMetaMapDataRequest@nStoredProcedureArguments@@QAE@AAVtMetaMapHex@@JJ@Z",
@@ -24876,6 +24885,15 @@
    "score": 100.0,
    "exact": true,
    "recorded": "2026-11-19"
+  },
+  "0x0054deec": {
+   "name": "FUN_0054deec",
+   "symbol": "?fn_0054deec@@YIJPAD@Z",
+   "unit": "unsorted/fn_0054DEEC.cpp",
+   "size": 4,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-27"
   },
   "0x0054fa6d": {
    "name": "nStoredProcedureArguments::tAddPreparedMissionRequest::vfunction3",
