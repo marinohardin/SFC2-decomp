@@ -49,6 +49,12 @@ overlap, because the linker kept each unit's functions together.
   unit splits a page into several runs, only the first run is `fn_<page>.cpp`; each later run is
   named by the address of its own first function, `fn_<first address>.cpp`, not by the page.
 
+A function can also be recorded in a unit: `analysis/results/unit_evidence.tsv` lists its address,
+the unit and the reason (a compiler experiment, the image's layout), for evidence that the two
+inputs above do not carry. A recorded function joins a unit that other evidence already names, and
+the unit keeps that evidence's label; the generator stops with an error on a row that names any
+other unit or no function.
+
 Functions between two anchors of a unit belong to it, and EH funclets right after its last
 function stay with it. When the evidence would put one unit in two places, the unit keeps its
 largest run of anchors and the others are dropped. A directory or file name the evidence spells
@@ -64,7 +70,8 @@ evidence appears; the matched set is keyed by address, so a move cannot lose a s
 ## Moving a function when evidence appears
 
 1. Record the evidence where the generator reads it: the analysis that writes
-   `ghidra/exports/functions.csv` (an assertion path, a header) or the SDK match results.
+   `ghidra/exports/functions.csv` (an assertion path, a header), the SDK match results, or, for
+   evidence neither carries, a row of `analysis/results/unit_evidence.tsv` with its reason.
 2. Regenerate (below) and read the diff of `UNITS.tsv`: the function's row should now be in its
    unit's range.
 3. If the function was already decompiled, move its source, `FUNCTION:` line included, to the
@@ -78,9 +85,9 @@ python3 tools/units.py           # rewrite UNITS.tsv, the placeholders and the h
 python3 tools/units.py --check   # exit 1 if UNITS.tsv is not what the evidence gives
 ```
 
-It reads `ghidra/exports/functions.csv`, `analysis/results/StarFleetOP_2552_sdklib_matches.tsv`
-and the SDK's libraries and headers, beside the exe in the install (`--sdk` or `SFCOP_SDK` to
-point elsewhere). It is idempotent. It writes a placeholder only where there is none or where the
+It reads `ghidra/exports/functions.csv`, `analysis/results/StarFleetOP_2552_sdklib_matches.tsv`,
+`analysis/results/unit_evidence.tsv` and the SDK's libraries and headers, beside the exe in the
+install (`--sdk` or `SFCOP_SDK` to point elsewhere). It is idempotent. It writes a placeholder only where there is none or where the
 file is still a placeholder, removes placeholders of units that left the map, and leaves every
 file with content alone (it lists them). A file is a placeholder only when its text is exactly the
 block the generator writes; any added line, a note under the marker included, makes it content.

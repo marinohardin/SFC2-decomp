@@ -1,0 +1,12 @@
+# Functions put in a unit by evidence that ghidra/exports/functions.csv and the SDK matches do not carry (tools/units.py, op/README.md).
+# A row joins a unit that other evidence already names; the reason says what shows the function was compiled there.
+address	unit	reason
+0x005d37d2	Meta/Servers/Idiom.cpp	tIdiom::tIdiom(). The class's members and 0x005d392a/0x005d39b7, whose asserts name Idiom.cpp, are one object: with 0x005d39b7's body (string assignment into the vector) in the same source file, the file's copy of vector<string>::operator= (0x0046090a) compiles to the original's 449 bytes, and to 442 without it.
+0x005d37fb	Meta/Servers/Idiom.cpp	tIdiom's scalar deleting destructor; tIdiom is compiled with 0x005d39b7 (see 0x005d37d2).
+0x005d3817	Meta/Servers/Idiom.cpp	tIdiom::~tIdiom(); see 0x005d37d2.
+0x005d3852	Meta/Servers/Idiom.cpp	tIdiom::tIdiom(const string&); see 0x005d37d2.
+0x005d38a4	Meta/Servers/Idiom.cpp	tIdiom::tIdiom(const tIdiom&), which calls the vector<string>::operator= copy at 0x0046090a; see 0x005d37d2.
+0x005d3906	Meta/Servers/Idiom.cpp	tIdiom's second virtual function; see 0x005d37d2.
+0x005d3918	Meta/Servers/Idiom.cpp	tIdiom's third virtual function; see 0x005d37d2.
+0x005d3a6a	Meta/Servers/Idiom.cpp	A tIdiom member (thiscall, passes its argument on to 0x005d39b7 with index 0), called by tIdiom::tIdiom(const string&) and from 0x00546dda, so not inlined; it lies before 0x005d3ad9, the next object's first static initializer (each object here starts with one: 0x005d37b1 before tIdiom, 0x005d3b5b before tRelay).
+0x005d3a78	Meta/Servers/Idiom.cpp	The vector<string>::resize(n, x) instance (insert at 0x00404695, erase at 0x00404044); its one caller is 0x005d39b7, and it lies before 0x005d3ad9, the next object's first static initializer (see 0x005d3a6a).

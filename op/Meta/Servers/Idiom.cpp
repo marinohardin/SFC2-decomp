@@ -1,6 +1,45 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      Meta/Servers/Idiom.cpp
-// Functions: 0x005d392a to 0x005d39b7, 2 in op/UNITS.tsv
-// Evidence:  assert-path (the original's assertion strings name this file)
-// Profile:   game-release (harness/units.json)
+#define DATASTORE_OUT_OF_LINE_BUFFER_GET	// MATCH-ONLY: tBuffer::Get is the out-of-line copy at 0x0042a31c
+// tIdiom.cpp
+
+#include "unsorted/tIdiom.h"
+#include "Common/DataStore/DataStoreInput.h"
+#include "Common/DataStore/DataStoreOutput.h"
+
+// FUNCTION: STARFLEETOP 0x005d37d2
+tIdiom::tIdiom()
+	: nDataStore::tStreamable( 0 )
+{
+}
+
+// FUNCTION: STARFLEETOP 0x005d37fb
+// FUNCTION: STARFLEETOP 0x005d3817
+tIdiom::~tIdiom()
+{
+	return;
+}
+
+// FUNCTION: STARFLEETOP 0x005d3852
+tIdiom::tIdiom( const std::string& text )
+{
+	fn_005d3a6a( text );
+}
+
+// FUNCTION: STARFLEETOP 0x005d38a4
+tIdiom::tIdiom( const tIdiom& other )
+{
+	fObjectID = other.fObjectID;
+	fObjectVersion = other.fObjectVersion;
+	field_0c = other.field_0c;
+}
+
+// FUNCTION: STARFLEETOP 0x005d3906
+void tIdiom::StreamOut( nDataStore::tOutput& output ) const
+{
+	output << field_0c;
+}
+
+// FUNCTION: STARFLEETOP 0x005d3918
+void tIdiom::StreamIn( nDataStore::tInput& input )
+{
+	input >> field_0c;
+}
