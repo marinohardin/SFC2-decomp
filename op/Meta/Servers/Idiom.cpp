@@ -43,3 +43,15 @@ void tIdiom::StreamIn( nDataStore::tInput& input )
 {
 	input >> field_0c;
 }
+
+// FUNCTION: STARFLEETOP 0x005d39b7
+void tIdiom::fn_005d39b7( int index, const std::string& text )
+{
+	if ( index >= 2 ) {
+		index = 1;
+	}
+	if ( field_0c.size() <= index ) {
+		field_0c.resize( index + 1 );
+	}
+	field_0c[index] = text;
+}
