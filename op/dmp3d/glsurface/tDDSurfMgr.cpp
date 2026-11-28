@@ -28,12 +28,16 @@ public:
     bool mSetDisplayMode(int width, int height, int bpp);
     bool mRestoreDisplayMode();
     bool mInitBuffers(int a1);
-protected: HRESULT mSetupPalette(); unsigned char mPause(unsigned char a1); public:
-    // (mSetupPalette is 0x006b4a50 and mPause 0x006b4b10; both are protected in the SDK.)
-protected: static HWND fHWnd; static WNDPROC fOldWndProc;
+
+protected:
+    HRESULT mSetupPalette();    // 0x006b4a50
+    unsigned char mPause(unsigned char a1);    // 0x006b4b10
+    static HWND fHWnd;
+    static WNDPROC fOldWndProc;
     static LRESULT CALLBACK mWndProcStub(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
     void mDDThrow(HRESULT hr, const char* file, int line, const char* format, ...);
-    unsigned char mDDCheck(HRESULT hr, const char* file, int line, const char* format, ...); public:
+    unsigned char mDDCheck(HRESULT hr, const char* file, int line, const char* format, ...);
+public:
 
     int m004;
     char m_pad8[0xc - 0x8];
@@ -89,10 +93,6 @@ const char* D3DErrorCodeToString(HRESULT hr);
 // MATCH-ONLY: the original's earlier lines are not recovered; the blank lines below keep
 // mInitInterfaces on its original line numbers, which its error reports carry. (A #line
 // past the end of the file leaves the compiler's listing without line records.)
-
-
-
-
 
 
 
