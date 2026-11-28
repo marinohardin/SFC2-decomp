@@ -110,3 +110,5 @@ address	base symbol	new symbol
 0x006ad3e0	?vfunction78@tView3DExt@@UAEXI@Z	?mPrimitiveTexID@tView3DExt@@UAEXH@Z
 0x006b23c0	?vfunction85@tSWView3D@@UAE_NHPAVtBmpSurf@@DH@Z	?mLoadTexture@tSWView3D@@UAEEHAAVtGLSurface@@EK@Z
 0x006b4010	?fn_006b4010@@YA_NPAVtDDSurfMgr@@JPBDH1ZZ	?mDDCheck@tDDSurfMgr@@IAAEJPBDH0ZZ
+0x00402d42	?fn_00402d42@fn_00402d42_Vec@@QAEXXZ	??1?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@QAE@XZ
+0x0046090a	??4fn_0046090a_object@@QAEAAV0@ABV0@@Z	??4?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@QAEAAV01@ABV01@@Z

@@ -29,4 +29,3 @@ function	offset	symbol	target	claimed
 0x0044ec9a	0xbc	?find@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEIPBDII@Z	0x00403d05	?fn_00403d05@fn_00403d05_String@@QBEIPBDII@Z
 0x0046090a	0x12b	?_Construct@std@@YAXPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@ABV21@@Z	0x004064d5	?fn_004064d5@@YAXPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV12@@Z
 0x0046090a	0x1a0	?_Construct@std@@YAXPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@ABV21@@Z	0x004064d5	?fn_004064d5@@YAXPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV12@@Z
-0x0047ebca	0x476	??1?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@QAE@XZ	0x00402d42	?fn_00402d42@fn_00402d42_Vec@@QAEXXZ
