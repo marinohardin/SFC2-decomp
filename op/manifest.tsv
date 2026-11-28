@@ -5,7 +5,7 @@ address	size	symbol	source	modes	decorated
 0x00401057	7	tApp3dBase::~tApp3dBase()	unsorted/tApp3dBase.cpp	vc6	??1tApp3dBase@@UAE@XZ
 0x0040105e	370	tApp3dBase::vfunction11(tApplication *,fn_0040105e_Params *)	unsorted/tApp3dBase.cpp	vc6 guest	?vfunction11@tApp3dBase@@UAE_NPAVtApplication@@PAUfn_0040105e_Params@@@Z
 0x004011d0	57	tApp3dBase::vfunction12()	unsorted/tApp3dBase.cpp	vc6 guest	?vfunction12@tApp3dBase@@UAEXXZ
-0x00401209	210	tApp3dBase::vfunction7(tView3D *,int,int,fn_0040105e_Params *)	unsorted/tApp3dBase.cpp	vc6 guest	?vfunction7@tApp3dBase@@UAE_NPAVtView3D@@HHPAUfn_0040105e_Params@@@Z
+0x00401209	210	tApp3dBase::vfunction7(tView3D *,int,int,fn_0040105e_Params *)	unsorted/tApp3dBase.cpp	vc6 guest	?vfunction7@tApp3dBase@@UAEEPAVtView3D@@HHPAUfn_0040105e_Params@@@Z
 0x004012db	91	tApp3dBase::vfunction20()	unsorted/tApp3dBase.cpp	vc6 guest	?vfunction20@tApp3dBase@@UAE_NXZ
 0x0040135a	5	tApp3dBase::vfunction18()	unsorted/tApp3dBase.cpp	vc6 guest	?vfunction18@tApp3dBase@@UAEXXZ
 0x00401862	253	tFighterSpec::tFighterSpec()	unsorted/tFighterSpec.cpp	vc6	??0tFighterSpec@@QAE@XZ
@@ -41,7 +41,7 @@ address	size	symbol	source	modes	decorated
 0x00402cdf	26	fn_00402bb6_Streambuf::fn_00402cdf()	unsorted/fn_00402000.cpp	vc6 guest	?fn_00402cdf@fn_00402bb6_Streambuf@@QAEHXZ
 0x00402cf9	56	fn_00402cf9_Vec::fn_00402cf9()	unsorted/fn_00402000.cpp	vc6 guest	?fn_00402cf9@fn_00402cf9_Vec@@QAEXXZ
 0x00402d31	17	fn_00402d31_Obj::fn_00402d31(int)	unsorted/fn_00402000.cpp	vc6 guest	?fn_00402d31@fn_00402d31_Obj@@QAEXH@Z
-0x00402d42	53	fn_00402d42_Vec::fn_00402d42()	unsorted/fn_00402000.cpp	vc6 guest	?fn_00402d42@fn_00402d42_Vec@@QAEXXZ
+0x00402d42	53	~vector()	unsorted/fn_00402000.cpp	vc6 guest	??1?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@QAE@XZ
 0x00402d77	17	fn_00402d77_Obj::fn_00402d77(const std::string&)	unsorted/fn_00402000.cpp	vc6 guest	?fn_00402d77@fn_00402d77_Obj@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z
 0x004033ab	165	std::ifstream::ifstream(const char*,std::ios_base::openmode)	unsorted/fn_00403000.cpp	partial	??0?$basic_ifstream@DU?$char_traits@D@std@@@std@@QAE@PBDH@Z
 0x0040345f	70	std::ifstream::~ifstream()	unsorted/fn_00403000.cpp	vc6	??1?$basic_ifstream@DU?$char_traits@D@std@@@std@@UAE@XZ
@@ -348,7 +348,7 @@ address	size	symbol	source	modes	decorated
 0x0040f94d	28	tSphere::vfunction7(int)	unsorted/tSphere.cpp	vc6 guest	?vfunction7@tSphere@@UAEXH@Z
 0x0040f969	12	tSphere::vfunction8(int *)	unsorted/tSphere.cpp	vc6 guest	?vfunction8@tSphere@@UAEXPAH@Z
 0x0040f975	40	tSphere::vfunction9(float)	unsorted/tSphere.cpp	vc6 guest	?vfunction9@tSphere@@UAEXM@Z
-0x0040f99d	44	tSphere::vfunction10(fn_0069c970_Owner)	unsorted/tSphere.cpp	vc6 guest	?vfunction10@tSphere@@UAEXVfn_0069c970_Owner@@@Z
+0x0040f99d	44	tSphere::vfunction10(tMatrix)	unsorted/tSphere.cpp	vc6 guest	?vfunction10@tSphere@@UAEXVtMatrix@@@Z
 0x0040fea0	23	tETrait_Creator::tETrait_Creator()	unsorted/tETrait_Creator.cpp	vc6	??0tETrait_Creator@@QAE@XZ
 0x0040feb7	28	tETrait_Creator::`scalar deleting destructor'	unsorted/tETrait_Creator.cpp	vc6	??_GtETrait_Creator@@UAEPAXI@Z
 0x0040fed3	40	tETrait_Creator::~tETrait_Creator()	unsorted/tETrait_Creator.cpp	vc6	??1tETrait_Creator@@UAE@XZ
@@ -386,6 +386,11 @@ address	size	symbol	source	modes	decorated
 0x0041065f	8	tPhysicalEntity::vfunction62()	unsorted/tPhysicalEntity.cpp	vc6 guest	?vfunction62@tPhysicalEntity@@UAEXXZ
 0x00410667	8	tPhysicalEntity::vfunction64()	unsorted/tPhysicalEntity.cpp	vc6 guest	?vfunction64@tPhysicalEntity@@UAEMXZ
 0x00410a46	6	tNetMsg_kKillEntity::mGetMap() const	unsorted/tNetMsg_kKillEntity.cpp	vc6 guest	?mGetMap@tNetMsg_kKillEntity@@UBEPBUtMapItem@tNetMsg@@XZ
+0x00411790	21	tPhysicalEntity::vfunction41(int)	unsorted/fn_00411790.cpp	vc6 guest	?vfunction41@tPhysicalEntity@@UAEXH@Z
+0x004117a5	68	tEntity_Astral_Fissure::tEntity_Astral_Fissure()	unsorted/fn_00411790.cpp	partial	??0tEntity_Astral_Fissure@@QAE@XZ
+0x004130d0	33	tPhysicalEntity::fn_004130d0()	unsorted/fn_00413000.cpp	vc6 guest	?fn_004130d0@tPhysicalEntity@@QAE?AUtPoint3@@XZ
+0x004130f1	33	tPhysicalEntity::fn_004130f1()	unsorted/fn_00413000.cpp	vc6 guest	?fn_004130f1@tPhysicalEntity@@QAE?AUtPoint3@@XZ
+0x00413112	65	tEntity::fn_00413112(const tPoint3 &)	unsorted/fn_00413000.cpp	vc6 guest	?fn_00413112@tEntity@@QAEXABUtPoint3@@@Z
 0x00413153	640	tPhysicalEntity::vfunction11(tSFCStream &,int32u)	Source/entity/entity_physical.cpp	vc6 guest	?vfunction11@tPhysicalEntity@@UAEXAAVtSFCStream@@K@Z
 0x004133d3	117	tMemoryPart::Search_tMemoryPart()	Source/entity/entity_physical.cpp	vc6 guest	?Search_tMemoryPart@tMemoryPart@@SAPAV1@XZ
 0x00413448	134	tPhysicalEntity::vfunction3()	Source/entity/entity_physical.cpp	vc6 guest	?vfunction3@tPhysicalEntity@@UAEXXZ
@@ -418,19 +423,79 @@ address	size	symbol	source	modes	decorated
 0x00413f8a	48	tPhysicalEntity::vfunction51()	Source/entity/entity_physical.cpp	vc6 guest	?vfunction51@tPhysicalEntity@@UAEXXZ
 0x00413fba	47	tPhysicalEntity::vfunction52()	Source/entity/entity_physical.cpp	vc6 guest	?vfunction52@tPhysicalEntity@@UAEXXZ
 0x00413fe9	192	tPhysicalEntity::vfunction46(tPhysicalEntity *,int)	Source/entity/entity_physical.cpp	vc6 guest	?vfunction46@tPhysicalEntity@@UAEXPAV1@H@Z
+0x004140a9	83	tPhysicalEntity::vfunction47(int)	unsorted/fn_00414000.cpp	vc6 guest	?vfunction47@tPhysicalEntity@@UAEXH@Z
+0x004141fe	7	tPhysicalEntity::vfunction23()	unsorted/fn_00414000.cpp	vc6 guest	?vfunction23@tPhysicalEntity@@UAEHXZ
+0x00414205	13	tPhysicalEntity::vfunction24()	unsorted/fn_00414000.cpp	vc6 guest	?vfunction24@tPhysicalEntity@@UAEMXZ
+0x0041455b	58	fn_0041455b(int,int)	unsorted/fn_00414000.cpp	vc6 guest	?fn_0041455b@@YAXHH@Z
+0x004145d7	16	g_008e0d48 (dynamic initializer)	unsorted/fn_00414000.cpp	vc6	
+0x004145e7	12	g_008e0d48 (atexit registration)	unsorted/fn_00414000.cpp	vc6	
+0x00414602	61	fn_00414602()	unsorted/fn_00414000.cpp	partial	?fn_00414602@@YAXXZ
+0x00414b2a	7	tEntityShip::vfunction70()	unsorted/fn_0041455B.cpp	vc6 guest	?vfunction70@tEntityShip@@UAEHXZ
+0x00414b31	7	tEntityShip::vfunction64()	unsorted/fn_0041455B.cpp	vc6 guest	?vfunction64@tEntityShip@@UAEMXZ
+0x00414b38	7	tEntityShip::vfunction65()	unsorted/fn_0041455B.cpp	vc6 guest	?vfunction65@tEntityShip@@UAEMXZ
+0x00414b3f	8	tEntityShip::vfunction75()	unsorted/fn_0041455B.cpp	vc6 guest	?vfunction75@tEntityShip@@UAEFXZ
+0x00414b47	47	tEntityShip::fn_00414b47(int)	unsorted/fn_0041455B.cpp	vc6 guest	?fn_00414b47@tEntityShip@@QAEXH@Z
 0x00414b76	6	tNetMsg_kHoldPosition::mGetMap() const	unsorted/tNetMsg_kHoldPosition.cpp	vc6 guest	?mGetMap@tNetMsg_kHoldPosition@@UBEPBUtMapItem@tNetMsg@@XZ
 0x00414b7c	6	tNetMsg_kMoveInDirection::mGetMap() const	unsorted/tNetMsg_kMoveInDirection.cpp	vc6 guest	?mGetMap@tNetMsg_kMoveInDirection@@UBEPBUtMapItem@tNetMsg@@XZ
 0x00414b82	6	tNetMsg_kMoveTo::mGetMap() const	unsorted/tNetMsg_kMoveTo.cpp	vc6 guest	?mGetMap@tNetMsg_kMoveTo@@UBEPBUtMapItem@tNetMsg@@XZ
 0x00414b88	6	tNetMsg_kOrbit::mGetMap() const	unsorted/tNetMsg_kOrbit.cpp	vc6 guest	?mGetMap@tNetMsg_kOrbit@@UBEPBUtMapItem@tNetMsg@@XZ
+0x00414b8f	28	tEntityShip::`scalar deleting destructor'	unsorted/tEntityShip.cpp	vc6	??_GtEntityShip@@UAEPAXI@Z
+0x00414bab	79	fn_00414bab(int,short,int)	unsorted/tEntityShip.cpp	vc6	?fn_00414bab@@YG_NHFH@Z
+0x00414bfa	179	tEntityShip::fn_00414bfa(tNetMsg *)	unsorted/tEntityShip.cpp	partial	?fn_00414bfa@tEntityShip@@QAEXPAUtNetMsg@@@Z
+0x00414cad	72	tEntityShip::fn_00414cad(tNetMsg *)	unsorted/tEntityShip.cpp	vc6 guest	?fn_00414cad@tEntityShip@@QAEXPAUtNetMsg@@@Z
+0x00414cf5	58	tEntityShip::fn_00414cf5(tNetMsg *)	unsorted/tEntityShip.cpp	vc6 guest	?fn_00414cf5@tEntityShip@@QAEXPAUtNetMsg@@@Z
+0x00414d2f	58	tEntityShip::fn_00414d2f(tNetMsg *)	unsorted/tEntityShip.cpp	vc6 guest	?fn_00414d2f@tEntityShip@@QAEXPAUtNetMsg@@@Z
+0x00414d69	7	tEntityShip::fn_00414d69()	unsorted/tEntityShip.cpp	vc6 guest	?fn_00414d69@tEntityShip@@QAEHXZ
+0x00414d70	38	tEntityShip::vfunction17()	unsorted/tEntityShip.cpp	vc6 guest	?vfunction17@tEntityShip@@UAEXXZ
+0x00415479	193	tEntityShip::fn_00415479()	unsorted/tEntityShip.cpp	vc6 guest	?fn_00415479@tEntityShip@@QAE?AUtPoint3@@XZ
+0x004155c1	44	tEntityShip::fn_004155c1(tPoint3 *)	unsorted/tEntityShip.cpp	vc6 guest	?fn_004155c1@tEntityShip@@QAEXPAUtPoint3@@@Z
+0x004155ed	59	tEntityShip::vfunction66(char)	unsorted/tEntityShip.cpp	vc6 guest	?vfunction66@tEntityShip@@UAEFD@Z
+0x00415628	23	tEntityShip::fn_00415628(int,int)	unsorted/tEntityShip.cpp	vc6 guest	?fn_00415628@tEntityShip@@QAEXHH@Z
+0x0041563f	19	tEntityShip::fn_0041563f(int)	unsorted/tEntityShip.cpp	vc6 guest	?fn_0041563f@tEntityShip@@QAEXH@Z
+0x00415652	32	tEntityShip::fn_00415652(int)	unsorted/tEntityShip.cpp	vc6 guest	?fn_00415652@tEntityShip@@QAEXH@Z
+0x00415672	70	tEntityShip::fn_00415672(int)	unsorted/tEntityShip.cpp	vc6 guest	?fn_00415672@tEntityShip@@QAEHH@Z
+0x004156b8	43	tEntityShip::fn_004156b8(int)	unsorted/tEntityShip.cpp	vc6 guest	?fn_004156b8@tEntityShip@@QAEHH@Z
+0x004156e3	22	tEntityShip::fn_004156e3()	unsorted/tEntityShip.cpp	vc6 guest	?fn_004156e3@tEntityShip@@QAEPAVfn_004288d1_Object@@XZ
+0x004157ee	96	tEntityShip::fn_004157ee(int,int,int)	unsorted/tEntityShip.cpp	vc6 guest	?fn_004157ee@tEntityShip@@QAEHHHH@Z
+0x004158c1	536	tEntityShip::~tEntityShip()	unsorted/tEntityShip.cpp	partial	??1tEntityShip@@UAE@XZ
+0x00415aed	126	tEntityShip::fn_00415aed(tEntityShip *)	unsorted/tEntityShip.cpp	vc6 guest	?fn_00415aed@tEntityShip@@QAE_NPAV1@@Z
+0x00415b6b	43	tEntityShip::vfunction63()	unsorted/tEntityShip.cpp	vc6 guest	?vfunction63@tEntityShip@@UAEMXZ
+0x00415ff4	115	tEntityShip::vfunction71(tEntity *)	unsorted/tEntityShip.cpp	vc6 guest	?vfunction71@tEntityShip@@UAEHPAVtEntity@@@Z
+0x00416067	30	tEntityShip::vfunction13(tID)	unsorted/tEntityShip.cpp	vc6 guest	?vfunction13@tEntityShip@@UAEXJ@Z
+0x00416085	61	tEntityShip::fn_00416085()	unsorted/tEntityShip.cpp	vc6 guest	?fn_00416085@tEntityShip@@QAE_NXZ
+0x004160c2	44	tEntityShip::fn_004160c2()	unsorted/tEntityShip.cpp	vc6 guest	?fn_004160c2@tEntityShip@@QAEXXZ
+0x004160ee	80	tEntityShip::vfunction68()	unsorted/tEntityShip.cpp	vc6 guest	?vfunction68@tEntityShip@@UAE_NXZ
 0x004162b9	765	tEntityShip::vfunction4(tObject_00413ac3_arg *)	unsorted/tEntityShip.cpp	partial	?vfunction4@tEntityShip@@UAEXPAVtObject_00413ac3_arg@@@Z
+0x004165b7	29	tEntityShip::fn_004165b7()	unsorted/tEntityShip.cpp	vc6 guest	?fn_004165b7@tEntityShip@@QAEXXZ
+0x004165d4	12	tEntityShip::fn_004165d4()	unsorted/tEntityShip.cpp	vc6 guest	?fn_004165d4@tEntityShip@@QAEXXZ
+0x0041687b	31	tEntityShip::fn_0041687b()	unsorted/tEntityShip.cpp	vc6 guest	?fn_0041687b@tEntityShip@@QAEXXZ
+0x0041689a	27	tEntityShip::fn_0041689a(int)	unsorted/tEntityShip.cpp	vc6 guest	?fn_0041689a@tEntityShip@@QAENH@Z
+0x004168b5	23	tEntityShip::fn_004168b5(double,int)	unsorted/tEntityShip.cpp	vc6 guest	?fn_004168b5@tEntityShip@@QAEXNH@Z
+0x004168cc	22	tEntityShip::fn_004168cc(int,int)	unsorted/tEntityShip.cpp	vc6 guest	?fn_004168cc@tEntityShip@@QAEXHH@Z
+0x004168e2	18	tEntityShip::fn_004168e2(int)	unsorted/tEntityShip.cpp	vc6 guest	?fn_004168e2@tEntityShip@@QAEEH@Z
+0x004168f4	11	tEntityShip::fn_004168f4()	unsorted/tEntityShip.cpp	vc6 guest	?fn_004168f4@tEntityShip@@QAEXXZ
+0x00416944	202	tEntityShip::vfunction69(bool)	unsorted/tEntityShip.cpp	vc6 guest	?vfunction69@tEntityShip@@UAEX_N@Z
 0x00416a0e	476	tEntityShip::vfunction26(short,int,int,int,int)	unsorted/tEntityShip.cpp	partial	?vfunction26@tEntityShip@@UAEXFHHHH@Z
+0x00416bea	24	tEntityShip::fn_00416bea(float)	unsorted/tEntityShip.cpp	vc6 guest	?fn_00416bea@tEntityShip@@QAEXM@Z
+0x00416c02	21	tEntityShip::vfunction23()	unsorted/tEntityShip.cpp	vc6 guest	?vfunction23@tEntityShip@@UAEHXZ
+0x00416c17	65	tEntityShip::vfunction24()	unsorted/tEntityShip.cpp	vc6 guest	?vfunction24@tEntityShip@@UAEMXZ
+0x00416c58	233	fn_00416c58(tPoint3 &,float)	unsorted/tEntityShip.cpp	vc6	?fn_00416c58@@YGXAAUtPoint3@@M@Z
+0x00416d41	52	tEntityShip::vfunction31()	unsorted/tEntityShip.cpp	vc6 guest	?vfunction31@tEntityShip@@UAE_NXZ
+0x00416d75	45	tEntityShip::vfunction32()	unsorted/tEntityShip.cpp	partial	?vfunction32@tEntityShip@@UAE_NXZ
+0x00416da2	21	tEntityShip::vfunction33()	unsorted/tEntityShip.cpp	vc6 guest	?vfunction33@tEntityShip@@UAEPAXXZ
+0x00416db7	104	tEntityShip::vfunction74()	unsorted/tEntityShip.cpp	partial	?vfunction74@tEntityShip@@UAEMXZ
+0x00417b57	59	tEntityShip::vfunction38(int,bool)	unsorted/tEntityShip.cpp	vc6 guest	?vfunction38@tEntityShip@@UAEXH_N@Z
+0x00417b92	52	tEntityShip::vfunction39(int)	unsorted/tEntityShip.cpp	vc6 guest	?vfunction39@tEntityShip@@UAEXH@Z
+0x00417d3f	42	tEntity::fn_00417d3f(const tPoint3 &)	unsorted/fn_00417000.cpp	vc6 guest	?fn_00417d3f@tEntity@@QAEXABUtPoint3@@@Z
 0x0041978f	6	tNetMsg_kAdjustSpeed::mGetMap() const	unsorted/tNetMsg_kAdjustSpeed.cpp	vc6 guest	?mGetMap@tNetMsg_kAdjustSpeed@@UBEPBUtMapItem@tNetMsg@@XZ
 0x00419795	6	tNetMsg_kShipTargetable::mGetMap() const	unsorted/tNetMsg_kShipTargetable.cpp	vc6 guest	?mGetMap@tNetMsg_kShipTargetable@@UBEPBUtMapItem@tNetMsg@@XZ
 0x0041979b	6	tNetMsg_kShipCanTarget::mGetMap() const	unsorted/tNetMsg_kShipCanTarget.cpp	vc6 guest	?mGetMap@tNetMsg_kShipCanTarget@@UBEPBUtMapItem@tNetMsg@@XZ
 0x004197a1	6	tNetMsg_kBreakDown::mGetMap() const	unsorted/tNetMsg_kBreakDown.cpp	vc6 guest	?mGetMap@tNetMsg_kBreakDown@@UBEPBUtMapItem@tNetMsg@@XZ
 0x004197a7	6	tNetMsg_kWarpOut::mGetMap() const	unsorted/tNetMsg_kWarpOut.cpp	vc6 guest	?mGetMap@tNetMsg_kWarpOut@@UBEPBUtMapItem@tNetMsg@@XZ
 0x004197ad	6	tNetMsg_kCorrectPos::mGetMap() const	unsorted/tNetMsg_kCorrectPos.cpp	vc6 guest	?mGetMap@tNetMsg_kCorrectPos@@UBEPBUtMapItem@tNetMsg@@XZ
+0x004197b3	6	tNetMsg_kCreateDirect::mGetMap() const	unsorted/tNetMsg_kCreateDirect.cpp	vc6 guest	?mGetMap@tNetMsg_kCreateDirect@@UBEPBUtMapItem@tNetMsg@@XZ
 0x004197b9	6	tNetMsg_kCreateESG::mGetMap() const	unsorted/tNetMsg_kCreateESG.cpp	vc6 guest	?mGetMap@tNetMsg_kCreateESG@@UBEPBUtMapItem@tNetMsg@@XZ
+0x004197bf	6	tNetMsg_kCreateSeeker::mGetMap() const	unsorted/fn_004197BF.cpp	vc6 guest	?mGetMap@tNetMsg_kCreateSeeker@@UBEPBUtMapItem@tNetMsg@@XZ
 0x004197d1	6	tNetMsg_kLayMine::mGetMap() const	unsorted/tNetMsg_kLayMine.cpp	vc6 guest	?mGetMap@tNetMsg_kLayMine@@UBEPBUtMapItem@tNetMsg@@XZ
 0x004197d7	6	tNetMsg_kSelectTarget::mGetMap() const	unsorted/tNetMsg_kSelectTarget.cpp	vc6 guest	?mGetMap@tNetMsg_kSelectTarget@@UBEPBUtMapItem@tNetMsg@@XZ
 0x004197dd	6	tNetMsg_kTransportBomb::mGetMap() const	unsorted/tNetMsg_kTransportBomb.cpp	vc6 guest	?mGetMap@tNetMsg_kTransportBomb@@UBEPBUtMapItem@tNetMsg@@XZ
@@ -440,10 +505,37 @@ address	size	symbol	source	modes	decorated
 0x004197fb	14	tNetMsg_kUpdateInternals::~tNetMsg_kUpdateInternals()	unsorted/tNetMsg_kUpdateInternals.cpp	vc6	??1tNetMsg_kUpdateInternals@@UAE@XZ
 0x00419809	6	tNetMsg_kUpdateInternals::mGetMap() const	unsorted/tNetMsg_kUpdateInternals.cpp	vc6 guest	?mGetMap@tNetMsg_kUpdateInternals@@UBEPBUtMapItem@tNetMsg@@XZ
 0x0041980f	6	tNetMsg_kUpdateCloakStatus::mGetMap() const	unsorted/tNetMsg_kUpdateCloakStatus.cpp	vc6 guest	?mGetMap@tNetMsg_kUpdateCloakStatus@@UBEPBUtMapItem@tNetMsg@@XZ
+0x00419818	91	tEntityShip::fn_00419818(const tPoint3 &)	unsorted/fn_00419818.cpp	vc6 guest	?fn_00419818@tEntityShip@@QAEXABUtPoint3@@@Z
+0x00419873	109	tEntityShip::fn_00419873(short,short,short)	unsorted/fn_00419818.cpp	vc6 guest	?fn_00419873@tEntityShip@@QAEXFFF@Z
+0x004198e0	106	tEntityShip::fn_004198e0()	unsorted/fn_00419818.cpp	vc6 guest	?fn_004198e0@tEntityShip@@QAEXXZ
+0x0041994b	120	tEntityShip::fn_0041994b()	unsorted/fn_00419818.cpp	vc6 guest	?fn_0041994b@tEntityShip@@QAEXXZ
+0x004199f4	143	tEntityShip::fn_004199f4()	unsorted/fn_00419818.cpp	vc6 guest	?fn_004199f4@tEntityShip@@QAEXXZ
+0x00419a83	29	fn_00419a83_Object::fn_00419a83(tPoint3)	unsorted/fn_00419818.cpp	vc6 guest	?fn_00419a83@fn_00419a83_Object@@QAEXUtPoint3@@@Z
+0x0041c1ef	77	tEntity_Weapon::tEntity_Weapon()	unsorted/tEntity_Weapon.cpp	vc6	??0tEntity_Weapon@@QAE@XZ
+0x0041c23c	6	tEntity_Weapon::vfunction66(char)	unsorted/tEntity_Weapon.cpp	vc6 guest	?vfunction66@tEntity_Weapon@@UAEFD@Z
+0x0041c242	7	tEntity_Weapon::vfunction68()	unsorted/tEntity_Weapon.cpp	vc6 guest	?vfunction68@tEntity_Weapon@@UAEJXZ
+0x0041c249	7	tEntity_Weapon::vfunction69()	unsorted/tEntity_Weapon.cpp	vc6 guest	?vfunction69@tEntity_Weapon@@UAEHXZ
+0x0041c983	25	fn_0041c983_Triple::fn_0041c983(float,float,float)	unsorted/tEntity_Weapon.cpp	vc6 guest	?fn_0041c983@fn_0041c983_Triple@@QAEPAU1@MMM@Z
+0x0041c99c	11	tEntity_Weapon::vfunction5()	unsorted/tEntity_Weapon.cpp	vc6 guest	?vfunction5@tEntity_Weapon@@UAEXXZ
+0x0041c9a7	222	tEntity_Weapon::vfunction11(tSFCStream &,int32u)	unsorted/tEntity_Weapon.cpp	vc6 guest	?vfunction11@tEntity_Weapon@@UAEXAAVtSFCStream@@K@Z
+0x0041e042	89	tEntity_Seeker::tEntity_Seeker()	unsorted/tEntity_Seeker.cpp	vc6	??0tEntity_Seeker@@QAE@XZ
+0x0041e09b	7	tEntity_Seeker::vfunction63()	unsorted/tEntity_Seeker.cpp	vc6 guest	?vfunction63@tEntity_Seeker@@UAEMXZ
+0x0041e0a2	7	tEntity_Seeker::vfunction70()	unsorted/tEntity_Seeker.cpp	vc6 guest	?vfunction70@tEntity_Seeker@@UAEDXZ
+0x0041e0a9	4	tEntity_Seeker::vfunction18()	unsorted/tEntity_Seeker.cpp	vc6 guest	?vfunction18@tEntity_Seeker@@UAEHXZ
+0x0041e627	40	tEntity_Seeker::vfunction31()	unsorted/tEntity_Seeker.cpp	vc6 guest	?vfunction31@tEntity_Seeker@@UAE_NXZ
 0x0041e64f	256	tEntity_Seeker::vfunction11(tSFCStream &,int32u)	unsorted/tEntity_Seeker.cpp	vc6 guest	?vfunction11@tEntity_Seeker@@UAEXAAVtSFCStream@@K@Z
+0x0041e74f	75	tEntity_Seeker::vfunction5()	unsorted/tEntity_Seeker.cpp	vc6 guest	?vfunction5@tEntity_Seeker@@UAEXXZ
 0x0041e79a	421	tEntity_Seeker::vfunction26(short,int,int,int,int)	unsorted/tEntity_Seeker.cpp	partial	?vfunction26@tEntity_Seeker@@UAEXFHHHH@Z
+0x0041e93f	7	tEntity_Seeker::vfunction23()	unsorted/tEntity_Seeker.cpp	vc6 guest	?vfunction23@tEntity_Seeker@@UAEHXZ
+0x0041e946	7	tEntity_Seeker::vfunction71()	unsorted/tEntity_Seeker.cpp	vc6 guest	?vfunction71@tEntity_Seeker@@UAEHXZ
+0x0041e94d	13	tEntity_Seeker::vfunction24()	unsorted/tEntity_Seeker.cpp	vc6 guest	?vfunction24@tEntity_Seeker@@UAEMXZ
+0x0041ea2c	205	fn_0041ea2c(tPoint3 *,tEntity *,int,int)	unsorted/tEntity_Seeker.cpp	vc6	?fn_0041ea2c@@YGXPAUtPoint3@@PAVtEntity@@HH@Z
 0x0041eeaf	179	tEntity_Seeker::fn_0041eeaf()	unsorted/tNetMsg_kCreateSeekerAtPoint.cpp	vc6 guest	?fn_0041eeaf@tEntity_Seeker@@QAEXXZ
 0x0041ef62	180	tEntity_Seeker::fn_0041ef62()	unsorted/tNetMsg_kCreateSeekerAtPoint.cpp	partial	?fn_0041ef62@tEntity_Seeker@@QAEXXZ
+0x004203d5	32	tEntity_Seeker::vfunction14()	unsorted/tEntity_Seeker.cpp	vc6 guest	?vfunction14@tEntity_Seeker@@UAEMXZ
+0x00420447	76	tEntity_Seeker::vfunction22(unsigned aIndex,void *)	unsorted/tEntity_Seeker.cpp	vc6 guest	?vfunction22@tEntity_Seeker@@UAEXIPAX@Z
+0x00420493	31	tEntity_Seeker::fn_00420493()	unsorted/tEntity_Seeker.cpp	vc6 guest	?fn_00420493@tEntity_Seeker@@QAE_NXZ
+0x004204b2	191	tEntity_HellboreSeeker::vfunction5()	unsorted/tEntity_HellboreSeeker.cpp	vc6 guest	?vfunction5@tEntity_HellboreSeeker@@UAEXXZ
 0x00421740	53	fn_00421740()	unsorted/fn_00421000.cpp	vc6 guest	?fn_00421740@@YAPAVtEntity_DirectFire@@XZ
 0x00421775	53	fn_00421775()	unsorted/fn_00421000.cpp	vc6 guest	?fn_00421775@@YAPAVtEntity_PPDFire@@XZ
 0x004217aa	53	fn_004217aa()	unsorted/fn_00421000.cpp	vc6 guest	?fn_004217aa@@YAPAVtEntity_ESG@@XZ
@@ -553,7 +645,7 @@ address	size	symbol	source	modes	decorated
 0x00425ec0	12	g_fn_0042556b_table (atexit registration)	unsorted/fn_00425000.cpp	vc6	
 0x00425f08	105	fn_00425f08(fn_004255b5_vector*,unsigned int*,unsigned int*)	unsorted/fn_00425000.cpp	partial	?fn_00425f08@@YAPAIPAUfn_004255b5_vector@@PAI1@Z
 0x00425f71	93	fn_00425f71(unsigned int*,unsigned int*,int)	unsorted/fn_00425000.cpp	partial	?fn_00425f71@@YAXPAI0H@Z
-0x00425fef	181	fn_00425fef(unsigned int*,unsigned int*,int)	unsorted/fn_00425000.cpp	partial	?fn_00425fef@@YAXPAI0H@Z
+0x00425fef	181	fn_00425fef(unsigned int*,unsigned int*,int)	unsorted/fn_00425000.cpp	vc6 guest	?fn_00425fef@@YAXPAI0H@Z
 0x004260a4	86	fn_004260a4(unsigned int*,unsigned int*)	unsorted/fn_00426000.cpp	vc6 guest	?fn_004260a4@@YAXPAI0@Z
 0x00426116	43	fn_00426116()	unsorted/fn_00426000.cpp	vc6 guest	?fn_00426116@@YAXXZ
 0x00426141	358	fn_00426141_Class::fn_00426141_Class(fn_00426141_Game*)	unsorted/fn_00426000.cpp	vc6	??0fn_00426141_Class@@QAE@PAVfn_00426141_Game@@@Z
@@ -1122,7 +1214,7 @@ address	size	symbol	source	modes	decorated
 0x00448bea	7	tShipSystemsExt::vfunction44()	unsorted/tShipSystemsExt.cpp	vc6 guest	?vfunction44@tShipSystemsExt@@UAE_NXZ
 0x00448bf1	13	tShipSystemsExt::vfunction45(bool)	unsorted/tShipSystemsExt.cpp	vc6 guest	?vfunction45@tShipSystemsExt@@UAEX_N@Z
 0x0044c185	241	FUN_0044c185(fn_0044c185_object *)	unsorted/fn_0044C000.cpp	vc6 guest	?FUN_0044c185@@YAXPAVfn_0044c185_object@@@Z
-0x0044c276	146	FUN_0044c276(fn_0044c185_vec3 *,fn_0044c185_object *,const char *)	unsorted/fn_0044C000.cpp	vc6 guest	?FUN_0044c276@@YADPAUfn_0044c185_vec3@@PAVfn_0044c185_object@@PBD@Z
+0x0044c276	146	FUN_0044c276(tPoint3 *,fn_0044c185_object *,const char *)	unsorted/fn_0044C000.cpp	vc6 guest	?FUN_0044c276@@YADPAUtPoint3@@PAVfn_0044c185_object@@PBD@Z
 0x0044c308	84	FUN_0044c308(fn_0044c185_object *)	unsorted/fn_0044C000.cpp	vc6 guest	?FUN_0044c308@@YAXPAVfn_0044c185_object@@@Z
 0x0044c35d	1522	fn_0044c35d_systems::FUN_0044c35d(int,short,char)	unsorted/fn_0044C000.cpp	partial	?FUN_0044c35d@fn_0044c35d_systems@@QAEDHFD@Z
 0x0044c951	50	tShipSystemsExt::vfunction171()	unsorted/fn_0044C000.cpp	vc6 guest	?vfunction171@tShipSystemsExt@@UAEPAVtIndividualShipSystemList@@XZ
@@ -1233,7 +1325,7 @@ address	size	symbol	source	modes	decorated
 0x00460736	426	tCampaignInfo::operator=(const tCampaignInfo &)	unsorted/fn_00460000.cpp	vc6 guest	??4tCampaignInfo@@QAEAAV0@ABV0@@Z
 0x004608ea	10	g_0090d158 (dynamic initializer)	unsorted/fn_00460000.cpp	vc6	
 0x004608f4	12	g_0090d158 (atexit registration)	unsorted/fn_00460000.cpp	vc6	
-0x0046090a	449	fn_0046090a_object::operator=(const fn_0046090a_object &)	unsorted/fn_00460000.cpp	vc6 guest	??4fn_0046090a_object@@QAEAAV0@ABV0@@Z
+0x0046090a	449	operator=(const std::vector<std::string> &)	unsorted/fn_00460000.cpp	vc6 guest	??4?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@QAEAAV01@ABV01@@Z
 0x00460acb	56	fn_00460acb_class::fn_00460acb()	unsorted/fn_00460000.cpp	vc6 guest	?fn_00460acb@fn_00460acb_class@@QAEXXZ
 0x00460b03	56	fn_00460b03_class::fn_00460b03()	unsorted/fn_00460000.cpp	vc6 guest	?fn_00460b03@fn_00460b03_class@@QAEXXZ
 0x00460b3b	56	fn_00460b3b_class::fn_00460b3b()	unsorted/fn_00460000.cpp	vc6 guest	?fn_00460b3b@fn_00460b3b_class@@QAEXXZ
@@ -1519,7 +1611,64 @@ address	size	symbol	source	modes	decorated
 0x0049674e	87	fn_0049674e_object::fn_0049674e_object()	unsorted/fn_00496000.cpp	vc6	??0fn_0049674e_object@@QAE@XZ
 0x004967a5	174	fn_0049674e_object::fn_004967a5()	unsorted/fn_00496000.cpp	vc6 guest	?fn_004967a5@fn_0049674e_object@@QAEXXZ
 0x00496853	95	fn_00496853()	unsorted/fn_00496000.cpp	vc6 guest	?fn_00496853@@YAXXZ
+0x004a203a	115	tActualPlayer::vfunction27()	unsorted/tActualPlayer.cpp	vc6 guest	?vfunction27@tActualPlayer@@UAEXXZ
+0x004a2e75	126	tActualPlayer::vfunction5(void *)	unsorted/tActualPlayer.cpp	vc6 guest	?vfunction5@tActualPlayer@@UAEXPAX@Z
+0x004a2ef3	126	tActualPlayer::vfunction6(void *)	unsorted/tActualPlayer.cpp	vc6 guest	?vfunction6@tActualPlayer@@UAEXPAX@Z
+0x004a2f71	126	tActualPlayer::vfunction7(void *)	unsorted/tActualPlayer.cpp	vc6 guest	?vfunction7@tActualPlayer@@UAEXPAX@Z
+0x004a2fef	126	tActualPlayer::vfunction8(void *)	unsorted/tActualPlayer.cpp	vc6 guest	?vfunction8@tActualPlayer@@UAEXPAX@Z
+0x004a306d	227	tActualPlayer::vfunction9(void *)	unsorted/tActualPlayer.cpp	vc6 guest	?vfunction9@tActualPlayer@@UAEXPAX@Z
+0x004a368d	108	tActualPlayer::vfunction11(void *)	unsorted/tActualPlayer.cpp	vc6 guest	?vfunction11@tActualPlayer@@UAEXPAX@Z
+0x004a36f9	126	tActualPlayer::vfunction12(void *)	unsorted/tActualPlayer.cpp	vc6 guest	?vfunction12@tActualPlayer@@UAEXPAX@Z
+0x004a3777	160	tActualPlayer::vfunction13(void *)	unsorted/tActualPlayer.cpp	vc6 guest	?vfunction13@tActualPlayer@@UAEXPAX@Z
+0x004a3817	215	tActualPlayer::vfunction15(void *)	unsorted/tActualPlayer.cpp	vc6 guest	?vfunction15@tActualPlayer@@UAEXPAX@Z
+0x004a38ee	215	tActualPlayer::vfunction16(void *)	unsorted/tActualPlayer.cpp	vc6 guest	?vfunction16@tActualPlayer@@UAEXPAX@Z
+0x004a39c5	126	tActualPlayer::vfunction14(void *)	unsorted/tActualPlayer.cpp	vc6 guest	?vfunction14@tActualPlayer@@UAEXPAX@Z
+0x004a3a43	185	tActualPlayer::vfunction17(void *)	unsorted/tActualPlayer.cpp	vc6 guest	?vfunction17@tActualPlayer@@UAEXPAX@Z
+0x004a3afc	126	tActualPlayer::vfunction18(void *)	unsorted/tActualPlayer.cpp	vc6 guest	?vfunction18@tActualPlayer@@UAEXPAX@Z
+0x004a3b7a	126	tActualPlayer::vfunction19(void *)	unsorted/tActualPlayer.cpp	vc6 guest	?vfunction19@tActualPlayer@@UAEXPAX@Z
+0x004a3bf8	126	tActualPlayer::vfunction20(void *)	unsorted/tActualPlayer.cpp	vc6 guest	?vfunction20@tActualPlayer@@UAEXPAX@Z
+0x004a3c76	126	tActualPlayer::vfunction21(void *)	unsorted/tActualPlayer.cpp	vc6 guest	?vfunction21@tActualPlayer@@UAEXPAX@Z
+0x004a3cf4	126	tActualPlayer::vfunction22(void *)	unsorted/tActualPlayer.cpp	vc6 guest	?vfunction22@tActualPlayer@@UAEXPAX@Z
+0x004a3d72	126	tActualPlayer::vfunction23(void *)	unsorted/tActualPlayer.cpp	vc6 guest	?vfunction23@tActualPlayer@@UAEXPAX@Z
+0x004a3df0	126	tActualPlayer::vfunction24(void *)	unsorted/tActualPlayer.cpp	vc6 guest	?vfunction24@tActualPlayer@@UAEXPAX@Z
+0x004a3e6e	126	tActualPlayer::vfunction25(void *)	unsorted/tActualPlayer.cpp	vc6 guest	?vfunction25@tActualPlayer@@UAEXPAX@Z
+0x004aaff9	28	tState_Tactical::`scalar deleting destructor'	unsorted/tState_Namespace_Tactical__tState_Tactical.cpp	vc6	??_GtState_Tactical@tState_Namespace_Tactical@@UAEPAXI@Z
+0x004ab015	220	tState_Tactical::~tState_Tactical()	unsorted/tState_Namespace_Tactical__tState_Tactical.cpp	vc6	??1tState_Tactical@tState_Namespace_Tactical@@UAE@XZ
+0x004ab4c3	48	fn_004ab4c3(int *,int,int *)	unsorted/tState_Namespace_Tactical__tState_Tactical.cpp	vc6	?fn_004ab4c3@@YIXPAHH0@Z
+0x004ab4f3	211	fn_004ab4f3(float *)	unsorted/tState_Namespace_Tactical__tState_Tactical.cpp	vc6 guest	?fn_004ab4f3@@YAXPAM@Z
+0x004ab5c6	211	fn_004ab5c6(float *)	unsorted/tState_Namespace_Tactical__tState_Tactical.cpp	vc6 guest	?fn_004ab5c6@@YAXPAM@Z
+0x004ab699	35	fn_004ab699(unsigned char *)	unsorted/tState_Namespace_Tactical__tState_Tactical.cpp	vc6 guest	?fn_004ab699@@YAXPAE@Z
+0x004ab6bc	78	fn_004ab6bc(int)	unsorted/tState_Namespace_Tactical__tState_Tactical.cpp	vc6 guest	?fn_004ab6bc@@YAXH@Z
 0x004ab70a	818	tState_Tactical::vfunction4()	unsorted/tState_Namespace_Tactical__tState_Tactical.cpp	partial	?vfunction4@tState_Tactical@tState_Namespace_Tactical@@UAE_NXZ
+0x004aba3c	10	fn_004aba3c(char)	unsorted/tState_Namespace_Tactical__tState_Tactical.cpp	vc6 guest	?fn_004aba3c@@YAXD@Z
+0x004aba46	9	fn_004aba46()	unsorted/tState_Namespace_Tactical__tState_Tactical.cpp	vc6 guest	?fn_004aba46@@YAXXZ
+0x004aba4f	142	tState_Tactical::fn_004aba4f()	unsorted/tState_Namespace_Tactical__tState_Tactical.cpp	vc6 guest	?fn_004aba4f@tState_Tactical@tState_Namespace_Tactical@@QAEXXZ
+0x004ad878	37	tState_Tactical::fn_004ad878()	unsorted/fn_004AD000.cpp	vc6 guest	?fn_004ad878@tState_Tactical@tState_Namespace_Tactical@@QAEPAHXZ
+0x004ad89d	37	tState_Tactical::fn_004ad89d()	unsorted/fn_004AD000.cpp	vc6 guest	?fn_004ad89d@tState_Tactical@tState_Namespace_Tactical@@QAEPAHXZ
+0x004adc4c	6	tState_Tactical::vfunction13()	unsorted/tState_Namespace_Tactical__tState_Tactical.cpp	vc6 guest	?vfunction13@tState_Tactical@tState_Namespace_Tactical@@UAEPADXZ
+0x004adc52	7	tState_Tactical::fn_004adc52()	unsorted/tState_Namespace_Tactical__tState_Tactical.cpp	vc6 guest	?fn_004adc52@tState_Tactical@tState_Namespace_Tactical@@QAEEXZ
+0x004adc63	10	g_tState_Tactical (dynamic initializer)	unsorted/tState_Namespace_Tactical__tState_Tactical.cpp	vc6	
+0x004adc6d	12	g_tState_Tactical (atexit registration)	unsorted/tState_Namespace_Tactical__tState_Tactical.cpp	vc6	
+0x004adc83	6	fn_004adc83()	unsorted/tState_Namespace_Tactical__tState_Tactical.cpp	vc6 guest	?fn_004adc83@tState_Namespace_Tactical@@YAPAVtState_Tactical@1@XZ
+0x004add21	10	g_00918890 (dynamic initializer)	unsorted/fn_004AD000.cpp	vc6	
+0x004add2b	12	g_00918890 (atexit registration)	unsorted/fn_004AD000.cpp	vc6	
+0x004add41	36	tCameraMgrEx::~tCameraMgrEx()	unsorted/fn_004AD000.cpp	vc6	??1tCameraMgrEx@tState_Namespace_Tactical@@UAE@XZ
+0x004af706	201	fn_004af706(const tPoint3 &,const tPoint3 &,const tPoint3 &,tMatrix &)	unsorted/fn_004AF706.cpp	vc6 guest	?fn_004af706@@YAXABUtPoint3@@00AAVtMatrix@@@Z
+0x004af807	6	tState_Tactical::vfunction19()	unsorted/tState_Namespace_Tactical__tState_Tactical.cpp	vc6 guest	?vfunction19@tState_Tactical@tState_Namespace_Tactical@@UAEPAXXZ
+0x004af94b	153	fn_004af94b()	unsorted/fn_004AF706.cpp	vc6 guest	?fn_004af94b@@YAXXZ
+0x004afa1c	36	fn_004afa1c(void *,int,unsigned capacity)	unsorted/fn_004AF706.cpp	vc6	?fn_004afa1c@@YIPAXPAXHI@Z
+0x004afa40	14	fn_004afa40(void *)	unsorted/fn_004AF706.cpp	vc6	?fn_004afa40@@YIXPAX@Z
+0x004afa4e	123	fn_004afa4e(void *,int,const tPoint4 *,int,int,int)	unsorted/fn_004AF706.cpp	vc6	?fn_004afa4e@@YIXPAXHPBUtPoint4@@HHH@Z
+0x004afac9	122	fn_004afac9(void *,int,const tPoint4 *,int)	unsorted/fn_004AF706.cpp	vc6	?fn_004afac9@@YIXPAXHPBUtPoint4@@H@Z
+0x004afb43	36	fn_004afb43(void *,int,unsigned capacity)	unsorted/fn_004AF706.cpp	vc6	?fn_004afb43@@YIPAXPAXHI@Z
+0x004afb67	93	fn_004afb67(void *,int,int)	unsorted/fn_004AF706.cpp	vc6	?fn_004afb67@@YIXPAXHH@Z
+0x004afbc4	39	fn_004afbc4(void *,int,unsigned capacity)	unsorted/fn_004AF706.cpp	vc6	?fn_004afbc4@@YIPAXPAXHI@Z
+0x004afbeb	120	fn_004afbeb(void *,int,int,const tPoint4 *)	unsorted/fn_004AF706.cpp	vc6	?fn_004afbeb@@YIXPAXHHPBUtPoint4@@@Z
+0x004afc63	36	fn_004afc63(void *,int,unsigned capacity)	unsorted/fn_004AF706.cpp	vc6	?fn_004afc63@@YIPAXPAXHI@Z
+0x004afc87	106	fn_004afc87(void *,int,int,int)	unsorted/fn_004AF706.cpp	vc6	?fn_004afc87@@YIXPAXHHH@Z
+0x004afcf1	21	fn_004afcf1(void *)	unsorted/fn_004AF706.cpp	vc6	?fn_004afcf1@@YIXPAX@Z
+0x004afd4d	105	fn_004afd4d(void *)	unsorted/fn_004AF706.cpp	vc6	?fn_004afd4d@@YIPAXPAX@Z
+0x004aff50	142	fn_004aff50(void *,int,const tPoint3 &,float)	unsorted/fn_004AF706.cpp	vc6	?fn_004aff50@@YI_NPAXHABUtPoint3@@M@Z
 0x004b0a39	994	tMyHud3D::vfunction2(tObject_004b0a39_entity *,tObject_00413ac3_arg *)	unsorted/tMyHud3D.cpp	vc6 guest	?vfunction2@tMyHud3D@@UAEXPAVtObject_004b0a39_entity@@PAVtObject_00413ac3_arg@@@Z
 0x004b0e1b	1372	fn_004b0e1b(tObject_00413ac3_arg *,int,tObject_00852448 *,int,float,bool)	unsorted/tMyHud3D.cpp	partial	?fn_004b0e1b@@YAXPAVtObject_00413ac3_arg@@HPAUtObject_00852448@@HM_N@Z
 0x004b14aa	48	fn_004b14aa(int)	unsorted/tMyHud3D.cpp	vc6 guest	?fn_004b14aa@@YA?AUtPoint2@@H@Z
@@ -1536,7 +1685,29 @@ address	size	symbol	source	modes	decorated
 0x004b2ae6	112	tMatrix::tMatrix(const float,const float,const float,const float,const float,const float,const float,const float,const float,const float,const float,const float,const float,const float,const float,const float)	unsorted/tMyHud3D.cpp	vc6	??0tMatrix@@QAE@MMMMMMMMMMMMMMMM@Z
 0x004b2b56	301	tMyHud3D::vfunction11(int,int,char,int)	unsorted/tMyHud3D.cpp	vc6 guest	?vfunction11@tMyHud3D@@UAEXHHDH@Z
 0x004b2c83	24	tMyHud3D::vfunction10(int)	unsorted/tMyHud3D.cpp	vc6 guest	?vfunction10@tMyHud3D@@UAEXH@Z
+0x004b2cd3	137	fn_004b2cd3_View::fn_004b2cd3(float,float,float,float)	unsorted/fn_004B2000.cpp	vc6 guest	?fn_004b2cd3@fn_004b2cd3_View@@QAEXMMMM@Z
+0x004b2eb9	123	fn_004b2cd3_View::fn_004b2eb9(int,int,tPoint2 *)	unsorted/fn_004B2000.cpp	vc6 guest	?fn_004b2eb9@fn_004b2cd3_View@@QAE_NHHPAUtPoint2@@@Z
+0x004b2f6c	31	fn_004b2f6c()	unsorted/fn_004B2000.cpp	vc6 guest	?fn_004b2f6c@@YAXXZ
+0x004b2fe6	111	fn_004b2fe6()	unsorted/fn_004B2000.cpp	partial	?fn_004b2fe6@@YAXXZ
+0x004b35db	83	tState_Tactical::fn_004b35db(long *)	unsorted/fn_004B3000.cpp	vc6 guest	?fn_004b35db@tState_Tactical@tState_Namespace_Tactical@@QAEXPAJ@Z
+0x004b3758	59	tState_Tactical::fn_004b3758(long *)	unsorted/fn_004B3000.cpp	vc6 guest	?fn_004b3758@tState_Tactical@tState_Namespace_Tactical@@QAEXPAJ@Z
+0x004b3793	59	tState_Tactical::fn_004b3793(long *)	unsorted/fn_004B3000.cpp	vc6 guest	?fn_004b3793@tState_Tactical@tState_Namespace_Tactical@@QAEXPAJ@Z
+0x004b37ce	59	tState_Tactical::fn_004b37ce(long *)	unsorted/fn_004B3000.cpp	vc6 guest	?fn_004b37ce@tState_Tactical@tState_Namespace_Tactical@@QAEXPAJ@Z
+0x004b3f79	159	fn_004b3f79(int)	unsorted/fn_004B3000.cpp	vc6 guest	?fn_004b3f79@@YAXH@Z
+0x004b6647	13	tState_Tactical::vfunction10(int)	unsorted/tState_Namespace_Tactical__tState_Tactical.cpp	vc6 guest	?vfunction10@tState_Tactical@tState_Namespace_Tactical@@UAEXH@Z
+0x004b70ac	161	fn_004b70ac(fn_004b70ac_Surface *,int,RECT *)	unsorted/fn_004B7000.cpp	vc6 guest	?fn_004b70ac@@YAXPAVfn_004b70ac_Surface@@HPAUtagRECT@@@Z
+0x004b714d	20	tState_Tactical::vfunction7(int)	unsorted/tState_Namespace_Tactical__tState_Tactical.cpp	vc6 guest	?vfunction7@tState_Tactical@tState_Namespace_Tactical@@UAEXH@Z
+0x004b7161	78	fn_004b7161(const char *,RECT *)	unsorted/fn_004B7000.cpp	vc6	?fn_004b7161@@YGXPBDPAUtagRECT@@@Z
+0x004b71af	94	tState_Tactical::fn_004b71af(int *)	unsorted/fn_004B7000.cpp	vc6 guest	?fn_004b71af@tState_Tactical@tState_Namespace_Tactical@@QAEXPAH@Z
+0x004b720d	49	tState_Tactical::fn_004b720d()	unsorted/fn_004B7000.cpp	vc6 guest	?fn_004b720d@tState_Tactical@tState_Namespace_Tactical@@QAEPAVtEntity@@XZ
+0x004b7f9e	48	fn_004b7f9e_Rect::fn_004b7f9e(const fn_004b7f9e_Rect *)	unsorted/fn_004B7000.cpp	vc6 guest	?fn_004b7f9e@fn_004b7f9e_Rect@@QAEXPBU1@@Z
+0x004b7fce	95	fn_004b7fce(float *,float *,int,float)	unsorted/fn_004B7000.cpp	vc6 guest	?fn_004b7fce@@YAXPAM0HM@Z
+0x004b94dc	7	fn_004b94dc(void *)	unsorted/fn_004B9000.cpp	vc6	?fn_004b94dc@@YIHPAX@Z
+0x004b99a4	83	fn_004b7f9e_Rect::fn_004b99a4(fn_004b7f9e_Rect *,const fn_004b7f9e_Rect *) const	unsorted/fn_004B9000.cpp	vc6 guest	?fn_004b99a4@fn_004b7f9e_Rect@@QBEXPAU1@PBU1@@Z
+0x004b99f7	67	tState_Tactical::vfunction8(int *)	unsorted/tState_Namespace_Tactical__tState_Tactical.cpp	vc6 guest	?vfunction8@tState_Tactical@tState_Namespace_Tactical@@UAEXPAH@Z
 0x004b9a3a	728	tState_Tactical::vfunction9(int *)	unsorted/tState_Namespace_Tactical__tState_Tactical.cpp	partial	?vfunction9@tState_Tactical@tState_Namespace_Tactical@@UAEXPAH@Z
+0x004b9d12	196	fn_0092f478_object::fn_004b9d12(fn_0092f478_object *)	unsorted/fn_004B9000.cpp	vc6 guest	?fn_004b9d12@fn_0092f478_object@@QAEAAV1@PAV1@@Z
+0x004b9dd6	59	tState_Tactical::vfunction11(int)	unsorted/tState_Namespace_Tactical__tState_Tactical.cpp	vc6 guest	?vfunction11@tState_Tactical@tState_Namespace_Tactical@@UAEXH@Z
 0x004bd443	241	tListBox_Base::fn_004bd443(tString *,int)	unsorted/fn_004BD43E.cpp	partial	?fn_004bd443@tListBox_Base@@QAEHPAVtString@@H@Z
 0x004bd534	136	fn_004bd534()	unsorted/fn_004BD43E.cpp	vc6 guest	?fn_004bd534@@YAXXZ
 0x004bd5bc	137	fn_004bd5bc()	unsorted/fn_004BD43E.cpp	vc6 guest	?fn_004bd5bc@@YAHXZ
@@ -1869,6 +2040,24 @@ address	size	symbol	source	modes	decorated
 0x004d3b6a	10	g_0092e4a0 (dynamic initializer)	unsorted/fn_004D3143.cpp	vc6	
 0x004d3b74	25	tUIStage::tUIStage()	unsorted/fn_004D3143.cpp	vc6	??0tUIStage@@QAE@XZ
 0x004d3b8d	18	tStageBase::vfunction32(long)	unsorted/fn_004D3143.cpp	vc6 guest	?vfunction32@tStageBase@@QAEXJ@Z
+0x004d703f	61	fn_004d703f_Array::fn_004d703f()	unsorted/fn_004D7000.cpp	vc6 guest	?fn_004d703f@fn_004d703f_Array@@QAEXXZ
+0x004d707c	29	fn_004d703f_Array::fn_004d707c(unsigned char)	unsorted/fn_004D7000.cpp	vc6 guest	?fn_004d707c@fn_004d703f_Array@@QAEME@Z
+0x004d7099	53	fn_004d703f_Array::fn_004d7099(float)	unsorted/fn_004D7000.cpp	vc6 guest	?fn_004d7099@fn_004d703f_Array@@QAEEM@Z
+0x004d70ce	29	fn_004d703f_Array::fn_004d70ce(unsigned char)	unsorted/fn_004D7000.cpp	vc6 guest	?fn_004d70ce@fn_004d703f_Array@@QAEME@Z
+0x004d7292	34	tBaseWeapon::vfunction52()	unsorted/fn_004D7000.cpp	vc6 guest	?vfunction52@tBaseWeapon@@UAEXXZ
+0x004d72dc	40	tBaseWeapon::vfunction54(int)	unsorted/fn_004D7000.cpp	vc6 guest	?vfunction54@tBaseWeapon@@UAEXH@Z
+0x004d7304	8	tBaseWeapon::vfunction108()	unsorted/fn_004D7000.cpp	vc6 guest	?vfunction108@tBaseWeapon@@UAEHXZ
+0x004d730c	7	tBaseWeapon::vfunction109()	unsorted/fn_004D7000.cpp	vc6 guest	?vfunction109@tBaseWeapon@@UAEMXZ
+0x004d7313	7	tBaseWeapon::vfunction110()	unsorted/fn_004D7000.cpp	vc6 guest	?vfunction110@tBaseWeapon@@UAEMXZ
+0x004d731a	7	tBaseWeapon::vfunction111()	unsorted/fn_004D7000.cpp	vc6 guest	?vfunction111@tBaseWeapon@@UAEMXZ
+0x004d7321	13	tBaseWeapon::vfunction124(int)	unsorted/fn_004D7000.cpp	vc6 guest	?vfunction124@tBaseWeapon@@UAEXH@Z
+0x004d732e	13	tBaseWeapon::vfunction125(int)	unsorted/fn_004D7000.cpp	vc6 guest	?vfunction125@tBaseWeapon@@UAEXH@Z
+0x004d733b	7	tBaseWeapon::vfunction129()	unsorted/fn_004D7000.cpp	vc6 guest	?vfunction129@tBaseWeapon@@UAEHXZ
+0x004d7342	18	tBaseWeapon::vfunction138()	unsorted/fn_004D7000.cpp	vc6 guest	?vfunction138@tBaseWeapon@@UAE_NXZ
+0x004d7354	7	tBaseWeapon::vfunction139()	unsorted/fn_004D7000.cpp	vc6 guest	?vfunction139@tBaseWeapon@@UAEPAXXZ
+0x004d735b	7	tBaseWeapon::vfunction66()	unsorted/fn_004D7000.cpp	vc6 guest	?vfunction66@tBaseWeapon@@UAEDXZ
+0x004d7362	22	tBaseWeapon::vfunction140()	unsorted/fn_004D7000.cpp	vc6 guest	?vfunction140@tBaseWeapon@@UAEDXZ
+0x004d7378	13	tBaseWeapon::vfunction141(char)	unsorted/fn_004D7000.cpp	vc6 guest	?vfunction141@tBaseWeapon@@UAEXD@Z
 0x004d7402	61	tBaseWeapon::vfunction101(int,int)	unsorted/tBaseWeapon.cpp	vc6 guest	?vfunction101@tBaseWeapon@@UAEHHH@Z
 0x004d743f	183	tBaseWeapon::vfunction102()	unsorted/tBaseWeapon.cpp	vc6 guest	?vfunction102@tBaseWeapon@@UAEXXZ
 0x004d74f6	338	tBaseWeapon::fn_004d74f6()	unsorted/tBaseWeapon.cpp	vc6 guest	?fn_004d74f6@tBaseWeapon@@QAEXXZ
@@ -1910,6 +2099,9 @@ address	size	symbol	source	modes	decorated
 0x004d8916	70	fn_004d8916(int,int,float,int,int)	unsorted/tBaseWeapon.cpp	vc6 guest	?fn_004d8916@@YAXHHMHH@Z
 0x004d895c	7	tBaseWeapon::vfunction144()	unsorted/tBaseWeapon.cpp	vc6 guest	?vfunction144@tBaseWeapon@@UAEHXZ
 0x004d8963	4	tBaseWeapon::vfunction146()	unsorted/tBaseWeapon.cpp	vc6 guest	?vfunction146@tBaseWeapon@@UAEHXZ
+0x004de035	201	tESGLance::fn_004de035(float)	unsorted/fn_004DE000.cpp	vc6 guest	?fn_004de035@tESGLance@@QAEXM@Z
+0x004de200	10	g_0092ec98 (dynamic initializer)	unsorted/fn_004DE000.cpp	vc6	
+0x004de20a	12	g_0092ec98 (atexit registration)	unsorted/fn_004DE000.cpp	vc6	
 0x004e1e8f	209	tPhaserBank::tPhaserBank(int,fn_004e1e99_arg*)	unsorted/tPhaserBank.cpp	vc6	??0tPhaserBank@@QAE@HPAUfn_004e1e99_arg@@@Z
 0x004e1f61	367	tPhaserBank::mStreamOutSystemSpecificData(tSFCStream &,unsigned aFlags,unsigned mode)	unsorted/tPhaserBank.cpp	vc6 guest	?mStreamOutSystemSpecificData@tPhaserBank@@UAEIAAVtSFCStream@@II@Z
 0x004e20d1	35	tPhaserBank::fn_004e20d1(const char*,int)	unsorted/tPhaserBank.cpp	vc6 guest	?fn_004e20d1@tPhaserBank@@QAEXPBDH@Z
@@ -1932,6 +2124,12 @@ address	size	symbol	source	modes	decorated
 0x004e28fc	430	tPhaserBank::vfunction136(char)	unsorted/tPhaserBank.cpp	vc6 guest	?vfunction136@tPhaserBank@@UAEHD@Z
 0x004e2aaa	88	tPhaserBank::fn_004e2aaa(int,char)	unsorted/tPhaserBank.cpp	vc6 guest	?fn_004e2aaa@tPhaserBank@@QAEMHD@Z
 0x004e2b02	505	tPhaserBank::vfunction39(float)	unsorted/tPhaserBank.cpp	vc6 guest	?vfunction39@tPhaserBank@@UAEXM@Z
+0x004e492c	201	tPhaserA::fn_004e492c(float)	unsorted/fn_004E492C.cpp	vc6 guest	?fn_004e492c@tPhaserA@@QAEXM@Z
+0x004e4b0c	10	g_0092ef58 (dynamic initializer)	unsorted/fn_004E492C.cpp	vc6	
+0x004e4b16	12	g_0092ef58 (atexit registration)	unsorted/fn_004E492C.cpp	vc6	
+0x004e5022	201	tPhaserB::fn_004e5022(float)	unsorted/fn_004E5000.cpp	vc6 guest	?fn_004e5022@tPhaserB@@QAEXM@Z
+0x004e5218	10	g_0092efb0 (dynamic initializer)	unsorted/fn_004E5000.cpp	vc6	
+0x004e5222	12	g_0092efb0 (atexit registration)	unsorted/fn_004E5000.cpp	vc6	
 0x004e531b	231	tPhaserXBank::tPhaserXBank(int,fn_004e1e99_arg*)	unsorted/tPhaserXBank.cpp	vc6	??0tPhaserXBank@@QAE@HPAUfn_004e1e99_arg@@@Z
 0x004e5403	367	tPhaserXBank::mStreamOutSystemSpecificData(tSFCStream &,unsigned aFlags,unsigned mode)	unsorted/tPhaserXBank.cpp	vc6 guest	?mStreamOutSystemSpecificData@tPhaserXBank@@UAEIAAVtSFCStream@@II@Z
 0x004e5573	23	tPhaserXBank::vfunction105(int)	unsorted/tPhaserXBank.cpp	vc6 guest	?vfunction105@tPhaserXBank@@UAEXH@Z
@@ -1954,8 +2152,43 @@ address	size	symbol	source	modes	decorated
 0x004e5b75	100	tPhaserXBank::vfunction114(unsigned char,int,int)	unsorted/tPhaserXBank.cpp	vc6 guest	?vfunction114@tPhaserXBank@@UAEMEHH@Z
 0x004e5bd9	43	tPhaserXBank::vfunction116(unsigned char)	unsorted/tPhaserXBank.cpp	vc6 guest	?vfunction116@tPhaserXBank@@UAEME@Z
 0x004e5c04	43	tPhaserXBank::vfunction118(unsigned char)	unsorted/tPhaserXBank.cpp	vc6 guest	?vfunction118@tPhaserXBank@@UAEME@Z
+0x004e5e83	9	fn_004e5e83()	unsorted/fn_004E5C2F.cpp	partial	?fn_004e5e83@@YAMXZ
+0x004e770a	81	tPlasmaLauncher::fn_004e770a()	unsorted/tPlasmaLauncher.cpp	vc6 guest	?fn_004e770a@tPlasmaLauncher@@QAEHXZ
+0x004e775b	64	tPlasmaLauncher::mStreamOutSystemSpecificData(tSFCStream &,unsigned aFlags,unsigned mode)	unsorted/tPlasmaLauncher.cpp	vc6 guest	?mStreamOutSystemSpecificData@tPlasmaLauncher@@UAEIAAVtSFCStream@@II@Z
+0x004e779b	174	tPlasmaLauncher::vfunction142(char,unsigned char)	unsorted/tPlasmaLauncher.cpp	vc6 guest	?vfunction142@tPlasmaLauncher@@UAEMDE@Z
+0x004e7869	192	tPlasmaLauncher::vfunction143(char,unsigned char)	unsorted/tPlasmaLauncher.cpp	vc6 guest	?vfunction143@tPlasmaLauncher@@UAEMDE@Z
+0x004e7bb8	41	tPlasmaLauncher::vfunction80()	unsorted/tPlasmaLauncher.cpp	vc6 guest	?vfunction80@tPlasmaLauncher@@UAEXXZ
+0x004e7be6	12	tPlasmaLauncher::vfunction105(int)	unsorted/tPlasmaLauncher.cpp	vc6 guest	?vfunction105@tPlasmaLauncher@@UAEXH@Z
 0x004e80b0	378	tPlasmaLauncher::vfunction125(int)	unsorted/tPlasmaLauncher.cpp	vc6 guest	?vfunction125@tPlasmaLauncher@@UAEXH@Z
+0x004e83ab	45	tPlasmaLauncher::vfunction114(unsigned char,int,int)	unsorted/tPlasmaLauncher.cpp	partial	?vfunction114@tPlasmaLauncher@@UAEMEHH@Z
+0x004e83d8	27	tPlasmaLauncher::vfunction118(unsigned char)	unsorted/tPlasmaLauncher.cpp	vc6 guest	?vfunction118@tPlasmaLauncher@@UAEME@Z
+0x004e83f3	48	tPlasmaLauncher::vfunction148()	unsorted/tPlasmaLauncher.cpp	vc6 guest	?vfunction148@tPlasmaLauncher@@UAEXXZ
 0x004e8a69	480	tPlasmaLauncher::vfunction65(char)	unsorted/tPlasmaLauncher.cpp	partial	?vfunction65@tPlasmaLauncher@@UAEXD@Z
+0x004e924d	10	g_0092f0f0 (dynamic initializer)	unsorted/fn_004E9000.cpp	vc6	
+0x004e9257	12	g_0092f0f0 (atexit registration)	unsorted/fn_004E9000.cpp	vc6	
+0x004ea379	141	tPlasmaDRackTube::fn_004ea379(int,int)	unsorted/fn_004EA000.cpp	vc6 guest	?fn_004ea379@tPlasmaDRackTube@@QAEXHH@Z
+0x004ea4cd	10	g_0092f168 (dynamic initializer)	unsorted/fn_004EA000.cpp	vc6	
+0x004ea4d7	12	g_0092f168 (atexit registration)	unsorted/fn_004EA000.cpp	vc6	
+0x004eb7f9	201	tTRBeam::fn_004eb7f9(float)	unsorted/fn_004EB7F9.cpp	vc6 guest	?fn_004eb7f9@tTRBeam@@QAEXM@Z
+0x004eb9da	10	g_0092f220 (dynamic initializer)	unsorted/fn_004EB7F9.cpp	vc6	
+0x004eb9e4	12	g_0092f220 (atexit registration)	unsorted/fn_004EB7F9.cpp	vc6	
+0x004f851f	92	fn_004f851f()	unsorted/fn_004F851F.cpp	vc6 guest	?fn_004f851f@@YAPAVtFx_Hypermass@@XZ
+0x004f857c	81	tHypermass()	unsorted/fn_004F851F.cpp	vc6 guest	??0?$tHypermass@$0M@@@QAE@XZ
+0x004f8a02	81	tHypermass()	unsorted/fn_004F851F.cpp	vc6 guest	??0?$tHypermass@$0BA@@@QAE@XZ
+0x004f8e88	81	tHypermass()	unsorted/fn_004F851F.cpp	vc6 guest	??0?$tHypermass@$0BE@@@QAE@XZ
+0x004f930e	81	tHypermass()	unsorted/fn_004F9000.cpp	vc6 guest	??0?$tHypermass@$0BI@@@QAE@XZ
+0x004f9794	81	tHypermass()	unsorted/fn_004F9000.cpp	vc6 guest	??0?$tHypermass@$0BM@@@QAE@XZ
+0x004f9c1a	81	tHypermass()	unsorted/fn_004F9000.cpp	vc6 guest	??0?$tHypermass@$0CA@@@QAE@XZ
+0x004fa0a0	81	tHypermass()	unsorted/fn_004FA000.cpp	vc6 guest	??0?$tHypermass@$0CE@@@QAE@XZ
+0x004fa526	105	fn_004fa526(unsigned int,unsigned int)	unsorted/fn_004FA000.cpp	vc6 guest	?fn_004fa526@?$tHypermass@$0M@@@QAE?AUtPoint3@@II@Z
+0x004fa58f	211	fn_004fa58f(unsigned int,unsigned int)	unsorted/fn_004FA000.cpp	partial	?fn_004fa58f@?$tHypermass@$0M@@@QAE?AUtPoint2@@II@Z
+0x004fa662	138	fn_004fa662(tPoint3 *,float,char)	unsorted/fn_004FA000.cpp	vc6 guest	?fn_004fa662@?$tHypermass@$0M@@@QAEXPAUtPoint3@@MD@Z
+0x004fa9bc	102	fn_004fa526(unsigned int,unsigned int)	unsorted/fn_004FA000.cpp	vc6 guest	?fn_004fa526@?$tHypermass@$0BA@@@QAE?AUtPoint3@@II@Z
+0x004faa22	210	fn_004fa58f(unsigned int,unsigned int)	unsorted/fn_004FA000.cpp	partial	?fn_004fa58f@?$tHypermass@$0BA@@@QAE?AUtPoint2@@II@Z
+0x004faaf4	138	fn_004fa662(tPoint3 *,float,char)	unsorted/fn_004FA000.cpp	vc6 guest	?fn_004fa662@?$tHypermass@$0BA@@@QAEXPAUtPoint3@@MD@Z
+0x004fae4d	105	fn_004fa526(unsigned int,unsigned int)	unsorted/fn_004FA000.cpp	vc6 guest	?fn_004fa526@?$tHypermass@$0BE@@@QAE?AUtPoint3@@II@Z
+0x004faeb6	211	fn_004fa58f(unsigned int,unsigned int)	unsorted/fn_004FA000.cpp	partial	?fn_004fa58f@?$tHypermass@$0BE@@@QAE?AUtPoint2@@II@Z
+0x004faf89	138	fn_004fa662(tPoint3 *,float,char)	unsorted/fn_004FA000.cpp	vc6 guest	?fn_004fa662@?$tHypermass@$0BE@@@QAEXPAUtPoint3@@MD@Z
 0x0050037b	95	fn_0050037b(tBmpSurf *)	unsorted/fn_00500000.cpp	vc6 guest	?fn_0050037b@@YAPAVtFx_Phaser@@PAVtBmpSurf@@@Z
 0x00500847	43	fn_00500847()	unsorted/fn_00500000.cpp	vc6 guest	?fn_00500847@@YAXXZ
 0x00500872	91	tFx_Photon::tFx_Photon()	unsorted/fn_00500000.cpp	partial	??0tFx_Photon@@QAE@XZ
@@ -1975,9 +2208,7 @@ address	size	symbol	source	modes	decorated
 0x00503fed	139	tProbeHead::tProbeHead(void*)	unsorted/fn_00503DAC.cpp	vc6	??0tProbeHead@@QAE@PAX@Z
 0x00504316	35	fn_00504316()	unsorted/fn_00504316.cpp	vc6 guest	?fn_00504316@@YAXXZ
 0x00504339	95	fn_00504339()	unsorted/fn_00504316.cpp	partial	?fn_00504339@@YAXXZ
-0x00504433	15	fn_00504433()	unsorted/fn_00504316.cpp	partial	?fn_00504433@@YAMXZ
 0x00504b65	92	fn_00504b65()	unsorted/fn_00504B65.cpp	vc6 guest	?fn_00504b65@@YAPAVtFx_ProximityDetonation@@XZ
-0x00504bff	11	fn_00504bff()	unsorted/fn_00504B65.cpp	vc6 guest	?fn_00504bff@@YAXXZ
 0x005050e2	11	fn_005050e2(float)	unsorted/fn_00505000.cpp	vc6 guest	?fn_005050e2@@YAMM@Z
 0x005050ed	70	fn_005050ed()	unsorted/fn_00505000.cpp	vc6 guest	?fn_005050ed@@YAXXZ
 0x005053ec	50	fn_005053ec()	unsorted/fn_005053EC.cpp	vc6 guest	?fn_005053ec@@YAPAVtFx_Pulsar@@XZ
@@ -2147,6 +2378,15 @@ address	size	symbol	source	modes	decorated
 0x00522b29	107	fn_00522b29(fn_0090bed4_Object *,int,void *)	unsorted/fn_00522679.cpp	vc6	?fn_00522b29@@YIDPAVfn_0090bed4_Object@@HPAX@Z
 0x00522b94	75	fn_00522b94(fn_0090bed4_Object *,int,vfunction33_result *,int)	unsorted/fn_00522679.cpp	vc6	?fn_00522b94@@YIDPAVfn_0090bed4_Object@@HPAUvfunction33_result@@H@Z
 0x00522bdf	33	fn_0090bed4_Object::fn_00522bdf(int,tCommandDestination *)	unsorted/fn_00522679.cpp	vc6 guest	?fn_00522bdf@fn_0090bed4_Object@@QAEXHPAVtCommandDestination@@@Z
+0x00522c00	70	tObject_00522c00::fn_00522c00(void *,tCommandDestination *)	unsorted/fn_00522679.cpp	vc6 guest	?fn_00522c00@tObject_00522c00@@QAEDPAXPAVtCommandDestination@@@Z
+0x00522c46	32	fn_00522c46(fn_0090bed4_Object *,int,tEntity *)	unsorted/fn_00522679.cpp	vc6	?fn_00522c46@@YIXPAVfn_0090bed4_Object@@HPAVtEntity@@@Z
+0x00522c66	32	fn_00522c66(fn_0090bed4_Object *,int,tEntity *)	unsorted/fn_00522679.cpp	vc6	?fn_00522c66@@YIXPAVfn_0090bed4_Object@@HPAVtEntity@@@Z
+0x00522c86	13	fn_00522c86(fn_0090bed4_Object *,int,float)	unsorted/fn_00522679.cpp	vc6	?fn_00522c86@@YIXPAVfn_0090bed4_Object@@HM@Z
+0x00522da1	37	fn_00522da1(char *,int,int,int)	unsorted/fn_00520AB2.cpp	partial	?fn_00522da1@@YIXPADHHH@Z
+0x00522dc6	85	fn_00522dc6(fn_0090bed4_Object *,int,int,int,int,float)	unsorted/fn_00522679.cpp	partial	?fn_00522dc6@@YIDPAVfn_0090bed4_Object@@HHHHM@Z
+0x00522e1b	82	tObject_00522e1b::fn_00522e1b(int)	unsorted/fn_00522679.cpp	partial	?fn_00522e1b@tObject_00522e1b@@QAEHH@Z
+0x00522e6d	25	fn_00522e6d(fn_0090bed4_Object *,int,char,int)	unsorted/fn_00522679.cpp	vc6	?fn_00522e6d@@YIXPAVfn_0090bed4_Object@@HDH@Z
+0x00522e86	152	fn_00522e86(char *)	unsorted/fn_00522679.cpp	partial	?fn_00522e86@@YIXPAD@Z
 0x00523027	95	fn_0090bed4_Object::fn_00523027(int,int)	unsorted/fn_00523000.cpp	vc6 guest	?fn_00523027@fn_0090bed4_Object@@QAE_NHH@Z
 0x00523086	87	fn_0090bed4_Object::fn_00523086(int,int)	unsorted/fn_00523000.cpp	vc6 guest	?fn_00523086@fn_0090bed4_Object@@QAE_NHH@Z
 0x005230dd	35	fn_0090bed4_Object::fn_005230dd(int,int,int,int)	unsorted/fn_00523000.cpp	vc6 guest	?fn_005230dd@fn_0090bed4_Object@@QAE_NHHHH@Z
@@ -2512,6 +2752,7 @@ address	size	symbol	source	modes	decorated
 0x0054841d	12	mAssignAllocID(iAllocatorID)	unsorted/tBattles.cpp	vc6 guest	?mAssignAllocID@?$tClassAllocator@VtBattles@@@@MAEXJ@Z
 0x00549d84	6	tCampaignInfo::SQLTableName() const	unsorted/tCampaignInfo.cpp	vc6 guest	?SQLTableName@tCampaignInfo@@UBEPBDXZ
 0x00549d8a	6	tCampaignInfo::SQLFieldNames() const	unsorted/tCampaignInfo.cpp	vc6 guest	?SQLFieldNames@tCampaignInfo@@UBEPBDXZ
+0x0054b552	4	fn_0054b552(char*)	unsorted/fn_0054B552.cpp	vc6	?fn_0054b552@@YIJPAD@Z
 0x0054bd73	464	tMetaMapDataRequest::tResponse::tClientHex::tClientHex(tMetaMapHex&,int32,int32)	Meta/MetaDatabase/StoredProcedures/MapProcedures/MetaMapDataRequest.cpp	vc6	??0tClientHex@tResponse@tMetaMapDataRequest@nStoredProcedureArguments@@QAE@AAVtMetaMapHex@@JJ@Z
 0x0054bf43	20	tMetaMapDataRequest::tResponse::tClientHex::tClientHex()	Meta/MetaDatabase/StoredProcedures/MapProcedures/MetaMapDataRequest.cpp	vc6	??0tClientHex@tResponse@tMetaMapDataRequest@nStoredProcedureArguments@@QAE@XZ
 0x0054bf57	206	tMetaMapDataRequest::tResponse::tClientHex::StreamOut(nDataStore::tOutput&) const	Meta/MetaDatabase/StoredProcedures/MapProcedures/MetaMapDataRequest.cpp	vc6 guest	?StreamOut@tClientHex@tResponse@tMetaMapDataRequest@nStoredProcedureArguments@@UBEXAAVtOutput@nDataStore@@@Z
@@ -2526,6 +2767,7 @@ address	size	symbol	source	modes	decorated
 0x0054c471	26	tMetaMapDataRequest::tResponse::fn_0054c471(long,long)	Meta/MetaDatabase/StoredProcedures/MapProcedures/MetaMapDataRequest.cpp	vc6 guest	?fn_0054c471@tResponse@tMetaMapDataRequest@nStoredProcedureArguments@@QAEAAVtClientHex@123@JJ@Z
 0x0054c48b	88	tMetaMapDataRequest::tResponse::fn_0054c48b(int32*,int32*)	Meta/MetaDatabase/StoredProcedures/MapProcedures/MetaMapDataRequest.cpp	vc6 guest	?fn_0054c48b@tResponse@tMetaMapDataRequest@nStoredProcedureArguments@@QAEPAVtClientHex@123@PAJ0@Z
 0x0054c4e3	97	tMetaMapDataRequest::tResponse::fn_0054c4e3(long,long)	Meta/MetaDatabase/StoredProcedures/MapProcedures/MetaMapDataRequest.cpp	vc6 guest	?fn_0054c4e3@tResponse@tMetaMapDataRequest@nStoredProcedureArguments@@QAEJJJ@Z
+0x0054deec	4	fn_0054deec(char*)	unsorted/fn_0054DEEC.cpp	vc6	?fn_0054deec@@YIJPAD@Z
 0x0054fa6d	117	tAddPreparedMissionRequest::vfunction3(nDataStore::tInput&)	Meta/MetaDatabase/StoredProcedures/MissionProcedures/AddPreparedMissionRequest.cpp	vc6 guest	?vfunction3@tAddPreparedMissionRequest@nStoredProcedureArguments@@UAEXAAVtInput@nDataStore@@@Z
 0x0054ffe5	173	tChooseMissionRequest::vfunction3(nDataStore::tInput&)	Meta/MetaDatabase/StoredProcedures/MissionProcedures/ChooseMissionRequest.cpp	vc6 guest	?vfunction3@tChooseMissionRequest@@UAEXAAVtInput@nDataStore@@@Z
 0x0055095b	102	tExistPreparedMissionRequest::vfunction3(nDataStore::tInput&)	Meta/MetaDatabase/StoredProcedures/MissionProcedures/ExistPreparedMissionRequest.cpp	vc6 guest	?vfunction3@tExistPreparedMissionRequest@@UAEXAAVtInput@nDataStore@@@Z
@@ -3499,19 +3741,20 @@ address	size	symbol	source	modes	decorated
 0x0060378d	111	fn_006032e7_object::fn_0060378d(int*)	unsorted/fn_00603000.cpp	vc6 guest	?fn_0060378d@fn_006032e7_object@@QAEXPAH@Z
 0x006037fc	119	fn_006032e7_object::fn_006037fc(int*)	unsorted/fn_00603000.cpp	vc6 guest	?fn_006037fc@fn_006032e7_object@@QAEHPAH@Z
 0x00603873	261	fn_006032e7_object::fn_00603873(const std::string&,int,int)	unsorted/fn_00603000.cpp	partial	?fn_00603873@fn_006032e7_object@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HH@Z
-0x00603978	144	fn_006032e7_object::fn_00603978(void*)	unsorted/fn_00603000.cpp	partial	?fn_00603978@fn_006032e7_object@@QAEXPAX@Z
+0x00603978	144	fn_006032e7_object::fn_00603978(void*)	unsorted/fn_00603000.cpp	vc6 guest	?fn_00603978@fn_006032e7_object@@QAEXPAX@Z
 0x00603a08	87	fn_006032e7_object::fn_00603a08(int,int)	unsorted/fn_00603000.cpp	vc6 guest	?fn_00603a08@fn_006032e7_object@@QAEXHH@Z
 0x00603c9a	176	fn_006032e7_object::fn_00603c9a(int,int,int)	unsorted/fn_00603000.cpp	partial	?fn_00603c9a@fn_006032e7_object@@QAEXHHH@Z
-0x00603d4a	69	fn_00603d4a_node::fn_00603d4a_node(const std::string&,int,int)	unsorted/fn_00603000.cpp	partial	??0fn_00603d4a_node@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HH@Z
+0x00603d4a	69	fn_00603d4a_node::fn_00603d4a_node(const std::string&,int,int)	unsorted/fn_00603000.cpp	vc6	??0fn_00603d4a_node@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HH@Z
 0x00603d8f	95	fn_00603d8f_object::fn_00603d8f(int)	unsorted/fn_00603000.cpp	partial	?fn_00603d8f@fn_00603d8f_object@@QAEXH@Z
 0x00603e24	17	fn_00603e24_object::fn_00603e24(int)	unsorted/fn_00603000.cpp	vc6 guest	?fn_00603e24@fn_00603e24_object@@QAEXH@Z
 0x00603e35	12	fn_00603351_vector::fn_00603e35()	unsorted/fn_00603000.cpp	vc6 guest	?fn_00603e35@fn_00603351_vector@@QAEXXZ
-0x00603ebe	50	fn_00603351_vector::fn_00603ebe(void**,void**)	unsorted/fn_00603000.cpp	partial	?fn_00603ebe@fn_00603351_vector@@QAEPAPAXPAPAX0@Z
+0x00603ebe	50	fn_00603351_vector::fn_00603ebe(void**,void**)	unsorted/fn_00603000.cpp	vc6 guest	?fn_00603ebe@fn_00603351_vector@@QAEPAPAXPAPAX0@Z
 0x006041a1	47	tRemoveItem::~tRemoveItem()	unsorted/tMetaClientPlayerListPanel__tRemoveItem.cpp	partial	??1tRemoveItem@@QAE@XZ
 0x006041d0	47	tRemoveItem_0060435f::~tRemoveItem_0060435f()	unsorted/tMetaClientPlayerListPanel__tRemoveItem.cpp	partial	??1tRemoveItem_0060435f@@QAE@XZ
 0x006041ff	47	tRemoveItem_00604390::~tRemoveItem_00604390()	unsorted/tMetaClientPlayerListPanel__tRemoveItem.cpp	partial	??1tRemoveItem_00604390@@QAE@XZ
 0x0060422e	43	tAccessPointer_0060422e::~tAccessPointer_0060422e()	unsorted/tMetaClientPlayerListPanel__tRemoveItem.cpp	partial	??1tAccessPointer_0060422e@@QAE@XZ
 0x00604259	24	operator*()	unsorted/tMetaClientPlayerListPanel__tRemoveItem.cpp	vc6 guest	??D?$tAccessPointer@HH@@QAEAAHXZ
+0x00606efd	13	tBaseWeapon::vfunction145(int)	unsorted/fn_00606EFD.cpp	vc6 guest	?vfunction145@tBaseWeapon@@UAEXH@Z
 0x00607faa	28	tPanelMgr::scalar_deleting_destructor(unsigned char)	unsorted/tPanelMgr.cpp	vc6 guest	?scalar_deleting_destructor@tPanelMgr@@QAEPAV1@E@Z
 0x00607fd5	313	tPanelMgr::~tPanelMgr()	unsorted/tPanelMgr.cpp	vc6	??1tPanelMgr@@UAE@XZ
 0x0060810e	468	fn_0060810e()	unsorted/tPanelMgr.cpp	vc6 guest	?fn_0060810e@@YAXXZ
@@ -4656,7 +4899,7 @@ address	size	symbol	source	modes	decorated
 0x0066d340	36	tBasicFileCRT::mSeekEnd(long)	unsorted/tBasicFileCRTNamespace__tBasicFileCRT.cpp	vc6 guest	?mSeekEnd@tBasicFileCRT@tBasicFileCRTNamespace@@UAEEJ@Z
 0x0066d370	239	_InitNewBasicFileCRT(unsigned char)	unsorted/tBasicFileCRTNamespace__tBasicFileCRT.cpp	vc6 guest	?_InitNewBasicFileCRT@@YAEE@Z
 0x0066d460	17	_DoneNewBasicFileCRT()	unsorted/tBasicFileCRTNamespace__tBasicFileCRT.cpp	vc6 guest	?_DoneNewBasicFileCRT@@YAXXZ
-0x0066d480	259	_NewBasicFileCRT()	unsorted/tBasicFileCRTNamespace__tBasicFileCRT.cpp	vc6 guest	?_NewBasicFileCRT@tBasicFileCRTNamespace@@YAPAVtBasicFile@1@XZ
+0x0066d480	259	_NewBasicFileCRT()	unsorted/tBasicFileCRTNamespace__tBasicFileCRT.cpp	vc6 guest	?_NewBasicFileCRT@@YAPAVtBasicFile@@XZ
 0x0066d680	97	tItemBag::tItemBag()	Tiger/tBag.cpp	vc6	??0tItemBag@@QAE@XZ
 0x0066d6f0	30	tItemBag::scalar_deleting_destructor(unsigned char)	Tiger/tBag.cpp	vc6 guest	?scalar_deleting_destructor@tItemBag@@QAEPAXE@Z
 0x0066d710	194	tItemBag::~tItemBag()	Tiger/tBag.cpp	vc6	??1tItemBag@@UAE@XZ
@@ -4822,6 +5065,12 @@ address	size	symbol	source	modes	decorated
 0x0067e1a0	44	tSeqScene::vfunction44()	unsorted/tSeqScene.cpp	vc6 guest	?vfunction44@tSeqScene@@UAEXXZ
 0x0067e1d0	253	tSeqScene::fn_0067e1d0()	unsorted/tSeqScene.cpp	vc6 guest	?fn_0067e1d0@tSeqScene@@QAE_NXZ
 0x0067e2d0	102	tSeqScene::vfunction30()	unsorted/tSeqScene.cpp	vc6 guest	?vfunction30@tSeqScene@@UAEXXZ
+0x00686640	162	tPushBtnBase::vfunction43(tPoint)	unsorted/tPushBtnBase.cpp	vc6 guest	?vfunction43@tPushBtnBase@@UAEXUtPoint@@@Z
+0x006866f0	35	tPushBtnBase::vfunction44(tPoint)	unsorted/tPushBtnBase.cpp	vc6 guest	?vfunction44@tPushBtnBase@@UAEXUtPoint@@@Z
+0x00686720	35	tPushBtnBase::vfunction45(tPoint)	unsorted/tPushBtnBase.cpp	vc6 guest	?vfunction45@tPushBtnBase@@UAEXUtPoint@@@Z
+0x00686750	21	tPushBtnBase::vfunction47()	unsorted/tPushBtnBase.cpp	vc6 guest	?vfunction47@tPushBtnBase@@UAEXXZ
+0x00686770	12	tPushBtnBase::vfunction39()	unsorted/tPushBtnBase.cpp	vc6 guest	?vfunction39@tPushBtnBase@@UAEXXZ
+0x00686780	42	tPushBtnBase::fn_00686780(int)	unsorted/tPushBtnBase.cpp	vc6 guest	?fn_00686780@tPushBtnBase@@QAEXH@Z
 0x00687060	76	tActionUser::tActionUser()	unsorted/fn_00687000.cpp	vc6	??0tActionUser@@QAE@XZ
 0x006896d0	70	tTableAsset::tTableAsset()	unsorted/tTableAsset.cpp	vc6	??0tTableAsset@@QAE@XZ
 0x0068ff60	534	fn_0068ff60(iBasicStringElement *,tString &,fn_0068ff60_Root *,tDir)	unsorted/tSession.cpp	partial	?fn_0068ff60@@YAPAVfn_0068ff60_Root@@PAGAAVtString@@PAV1@VtDir@@@Z
@@ -4857,16 +5106,46 @@ address	size	symbol	source	modes	decorated
 0x00691530	442	tHtmlParser::fn_00691530()	unsorted/tSession.cpp	partial	?fn_00691530@tHtmlParser@@QAEXXZ
 0x00693ef0	172	fn_00693ef0_Owner::fn_00693ef0(void *)	unsorted/tStageBase.cpp	partial	?fn_00693ef0@fn_00693ef0_Owner@@QAE_NPAX@Z
 0x00693fc0	107	fn_00693ef0_Owner::fn_00693fc0(int,int,int,int,short *,int)	unsorted/tStageBase.cpp	vc6 guest	?fn_00693fc0@fn_00693ef0_Owner@@QAEXHHHHPAFH@Z
-0x0069fb90	294	tSWView3D::vfunction29(int,int,int,int,bool,bool)	unsorted/tSWView3D.cpp	partial	?vfunction29@tSWView3D@@UAE_NHHHH_N0@Z
-0x006a2dc0	127	tStream_BasicFile::mGet(void *,unsigned long)	dmp3d/common/stream_basicfile.cpp	vc6 guest	?mGet@tStream_BasicFile@@UAE_NPAXK@Z
-0x006a2e40	127	tStream_BasicFile::mPut(const void *,unsigned long)	dmp3d/common/stream_basicfile.cpp	vc6 guest	?mPut@tStream_BasicFile@@UAE_NPBXK@Z
-0x006a48d0	1305	tTexBmp::vfunction2(tBasicFile *)	dmp3d/common/texBmp.cpp	vc6 guest	?vfunction2@tTexBmp@@UAEXPAVtBasicFile@@@Z
-0x006a4df0	3117	tTexBmp::vfunction3(tBasicFile *)	dmp3d/common/texBmp.cpp	vc6 guest	?vfunction3@tTexBmp@@UAEXPAVtBasicFile@@@Z
-0x006a5a20	307	tTexBmp::vfunction7(const char *)	dmp3d/common/texBmp.cpp	partial	?vfunction7@tTexBmp@@UAE_NPBD@Z
-0x006a5b90	139	tTexBmp::vfunction8()	dmp3d/common/texBmp.cpp	vc6 guest	?vfunction8@tTexBmp@@UAE_NXZ
-0x006a5c20	93	tTexBmp::fn_006a5c20()	dmp3d/common/texBmp.cpp	vc6 guest	?fn_006a5c20@tTexBmp@@QAEXXZ
-0x006a5c80	709	tTexBmp::vfunction4(tBasicFile *)	dmp3d/common/texBmp.cpp	vc6 guest	?vfunction4@tTexBmp@@UAEXPAVtBasicFile@@@Z
-0x006a5f50	913	tTexBmp::vfunction5(tBasicFile *)	dmp3d/common/texBmp.cpp	partial	?vfunction5@tTexBmp@@UAEXPAVtBasicFile@@@Z
+0x0069e2a0	7	fn_0069e2a0()	unsorted/tD3DViewMgr.cpp	vc6 guest	?fn_0069e2a0@@YAXXZ
+0x0069e490	115	tD3DViewMgr_State::fn_0069e490(int)	unsorted/tD3DViewMgr.cpp	vc6 guest	?fn_0069e490@tD3DViewMgr_State@@QAEHH@Z
+0x0069e670	7	tD3DViewMgr_State::fn_0069e670()	unsorted/tD3DViewMgr.cpp	vc6 guest	?fn_0069e670@tD3DViewMgr_State@@QAEDXZ
+0x0069e950	90	fn_0069e950(unsigned long)	unsorted/tD3DViewMgr.cpp	vc6 guest	?fn_0069e950@@YAKK@Z
+0x0069f190	7	tView3DExt::mLightingEnabled()	unsorted/tView3DExt.cpp	vc6 guest	?mLightingEnabled@tView3DExt@@UAEEXZ
+0x0069f350	63	tD3DViewSurfMgr::~tD3DViewSurfMgr()	unsorted/fn_0069F000.cpp	partial	??1tD3DViewSurfMgr@@UAE@XZ
+0x0069f3b0	189	tSWView3D::tSWView3D()	unsorted/tSWView3D.cpp	partial	??0tSWView3D@@QAE@XZ
+0x0069f480	7	tSWView3D::mGetSurfMgr()	unsorted/tSWView3D.cpp	vc6 guest	?mGetSurfMgr@tSWView3D@@UAEPAVtGLSurfMgr@@XZ
+0x0069f490	30	tSWView3D::`scalar deleting destructor'	unsorted/tSWView3D.cpp	vc6	??_GtSWView3D@@UAEPAXI@Z
+0x0069f4b0	89	tSWView3D::~tSWView3D()	unsorted/tSWView3D.cpp	partial	??1tSWView3D@@UAE@XZ
+0x0069f510	190	tSWView3D::mEnumDispModes(fn_0069f510_Callback,void *)	unsorted/tSWView3D.cpp	vc6 guest	?mEnumDispModes@tSWView3D@@UAEEP6AEHHPAX@Z0@Z
+0x0069f850	76	tSWView3D::mInitFullscreen(void *,void *,int,int,const tGLRectI *,unsigned char)	unsorted/tSWView3D.cpp	vc6 guest	?mInitFullscreen@tSWView3D@@UAEEPAX0HHPBUtGLRectI@@E@Z
+0x0069f8a0	90	tSWView3D::mInitWindowed(void *,void *,const tGLRectI *,unsigned char)	unsorted/tSWView3D.cpp	vc6 guest	?mInitWindowed@tSWView3D@@UAEEPAX0PBUtGLRectI@@E@Z
+0x0069f900	144	tSWView3D::mDone()	unsorted/tSWView3D.cpp	vc6 guest	?mDone@tSWView3D@@UAEEXZ
+0x0069f990	124	tSWView3D::mBeginScene()	unsorted/tSWView3D.cpp	vc6 guest	?mBeginScene@tSWView3D@@UAEEXZ
+0x0069fa10	59	tSWView3D::mEndScene()	unsorted/tSWView3D.cpp	vc6 guest	?mEndScene@tSWView3D@@UAEEXZ
+0x0069fa50	8	tSWView3D::mSetPolygonMode(unsigned int)	unsorted/tSWView3D.cpp	vc6 guest	?mSetPolygonMode@tSWView3D@@UAEII@Z
+0x0069fa60	6	tSWView3D::mGetPolygonMode()	unsorted/tSWView3D.cpp	vc6 guest	?mGetPolygonMode@tSWView3D@@UAEIXZ
+0x0069fa70	70	tSWView3D::mSetViewport(int,int,int,int)	unsorted/tSWView3D.cpp	vc6 guest	?mSetViewport@tSWView3D@@UAEXHHHH@Z
+0x0069fad0	21	tSWView3D::mGetCaps()	unsorted/tSWView3D.cpp	vc6 guest	?mGetCaps@tSWView3D@@UAEKXZ
+0x0069faf0	23	tSWView3D::mSetClearColor(tGLRgbQuad)	unsorted/tSWView3D.cpp	vc6 guest	?mSetClearColor@tSWView3D@@UAEEUtGLRgbQuad@@@Z
+0x0069fb10	56	tSWView3D::mSetClearColor(unsigned char,unsigned char,unsigned char)	unsorted/tSWView3D.cpp	vc6 guest	?mSetClearColor@tSWView3D@@UAEEEEE@Z
+0x0069fb50	56	tSWView3D::mClear(unsigned char,unsigned char)	unsorted/tSWView3D.cpp	vc6 guest	?mClear@tSWView3D@@UAEEEE@Z
+0x0069fb90	294	tSWView3D::mClear(int,int,int,int,unsigned char,unsigned char)	unsorted/tSWView3D.cpp	partial	?mClear@tSWView3D@@UAEEHHHHEE@Z
+0x0069fd20	115	dmpGetSWView3D()	unsorted/tSWView3D.cpp	vc6 guest	?dmpGetSWView3D@@YAPAVtView3D@@XZ
+0x0069fda0	24	tView3DExt::mEnableGlobalBlend(unsigned char)	unsorted/tView3DExt.cpp	vc6 guest	?mEnableGlobalBlend@tView3DExt@@UAEEE@Z
+0x0069fdc0	6	tSWView3D::mGetSrcBlendCaps()	unsorted/tSWView3D.cpp	vc6 guest	?mGetSrcBlendCaps@tSWView3D@@UAEKXZ
+0x0069fde0	24	tSWView3D::mAlphaTestEnable(unsigned char)	unsorted/tSWView3D.cpp	vc6 guest	?mAlphaTestEnable@tSWView3D@@UAEEE@Z
+0x0069fe00	26	tSWView3D::mEnableZWriteAndTest(unsigned char)	unsorted/tSWView3D.cpp	vc6 guest	?mEnableZWriteAndTest@tSWView3D@@UAEEE@Z
+0x0069fe20	20	tSWView3D::mEnableZWrite(unsigned char)	unsorted/tSWView3D.cpp	vc6 guest	?mEnableZWrite@tSWView3D@@UAEEE@Z
+0x0069fe40	20	tSWView3D::mEnableZTest(unsigned char)	unsorted/tSWView3D.cpp	vc6 guest	?mEnableZTest@tSWView3D@@UAEEE@Z
+0x006a2dc0	127	tStream_BasicFile::mGet(void *,unsigned long)	dmp3d/common/stream_basicfile.cpp	vc6 guest	?mGet@tStream_BasicFile@@UAEEPAXK@Z
+0x006a2e40	127	tStream_BasicFile::mPut(const void *,unsigned long)	dmp3d/common/stream_basicfile.cpp	vc6 guest	?mPut@tStream_BasicFile@@UAEEPBXK@Z
+0x006a48d0	1305	tTexBmp::mInitAsBMP(tBasicFile *)	dmp3d/common/texBmp.cpp	vc6 guest	?mInitAsBMP@tTexBmp@@MAEXPAVtBasicFile@@@Z
+0x006a4df0	3117	tTexBmp::mInitAsPCX(tBasicFile *)	dmp3d/common/texBmp.cpp	vc6 guest	?mInitAsPCX@tTexBmp@@MAEXPAVtBasicFile@@@Z
+0x006a5a20	307	tTexBmp::mInit(const char *)	dmp3d/common/texBmp.cpp	partial	?mInit@tTexBmp@@UAEEPBD@Z
+0x006a5b90	139	tTexBmp::mDone()	dmp3d/common/texBmp.cpp	vc6 guest	?mDone@tTexBmp@@UAEEXZ
+0x006a5c20	93	tTexBmp::mResetDataMembers()	dmp3d/common/texBmp.cpp	vc6 guest	?mResetDataMembers@tTexBmp@@IAEXXZ
+0x006a5c80	709	tTexBmp::mReadBMP(tBasicFile *)	dmp3d/common/texBmp.cpp	vc6 guest	?mReadBMP@tTexBmp@@MAEXPAVtBasicFile@@@Z
+0x006a5f50	913	tTexBmp::mReadPCX(tBasicFile *)	dmp3d/common/texBmp.cpp	vc6 guest	?mReadPCX@tTexBmp@@MAEXPAVtBasicFile@@@Z
 0x006a62f0	436	tTexBmp::mLock()	dmp3d/common/texBmp.cpp	partial	?mLock@tTexBmp@@QAE_NXZ
 0x006a7c20	46	CD3DFramework::CD3DFramework()	dmp3d/dx6/d3dframe.cpp	vc6	??0CD3DFramework@@QAE@XZ
 0x006a7c60	190	CD3DFramework::DestroyObjects()	dmp3d/dx6/d3dframe.cpp	vc6 guest	?DestroyObjects@CD3DFramework@@QAEJXZ
@@ -4883,18 +5162,80 @@ address	size	symbol	source	modes	decorated
 0x006a8930	1180	tD3DViewMgr::fn_006a8930(int,tTexFormat *,int,int,unsigned char *)	dmp3d/d3d/d3dViewMgr_Tex.cpp	partial	?fn_006a8930@tD3DViewMgr@@QAEPAVtTexFace@@HPAUtTexFormat@@HHPAE@Z
 0x006a94a0	45	D3DUtil_InitSurfaceDesc(DDSURFACEDESC2&,DWORD,DWORD)	dmp3d/dx6/d3dutil.cpp	vc6 guest	?D3DUtil_InitSurfaceDesc@@YAXAAU_DDSURFACEDESC2@@KK@Z
 0x006a94d0	67	D3DUtil_InitViewport(D3DVIEWPORT2&,DWORD,DWORD)	dmp3d/dx6/d3dutil.cpp	vc6 guest	?D3DUtil_InitViewport@@YAXAAU_D3DVIEWPORT2@@KK@Z
-0x006aa550	327	tView3DExt::vfunction58(tMatrix *)	unsorted/tView3DExt.cpp	partial	?vfunction58@tView3DExt@@UAEXPAVtMatrix@@@Z
-0x006abe00	176	tView3DExt::mAssertVtxCache(int)	dmp3d/view3d/drawPoly.cpp	vc6 guest	?mAssertVtxCache@tView3DExt@@QAEXH@Z
+0x006a9540	176	tView3DExt::mInitExt()	unsorted/fn_006A9540.cpp	vc6 guest	?mInitExt@tView3DExt@@IAEXXZ
+0x006a95f0	37	tView3DExt::mDone()	unsorted/fn_006A9540.cpp	vc6 guest	?mDone@tView3DExt@@UAEEXZ
+0x006a9620	64	tView3DExt::mSetWinding(unsigned int)	unsorted/tView3DExt.cpp	vc6 guest	?mSetWinding@tView3DExt@@UAEII@Z
+0x006a9660	7	tView3DExt::mGetWinding()	unsorted/tView3DExt.cpp	vc6 guest	?mGetWinding@tView3DExt@@UAEIXZ
+0x006a9670	84	tView3DExt::mSetCullMode(unsigned int)	unsorted/tView3DExt.cpp	vc6 guest	?mSetCullMode@tView3DExt@@UAEII@Z
+0x006a96d0	7	tView3DExt::mGetCullMode()	unsorted/tView3DExt.cpp	vc6 guest	?mGetCullMode@tView3DExt@@UAEIXZ
+0x006a96e0	29	tView3DExt::mSetShadeMode(unsigned int)	unsorted/tView3DExt.cpp	vc6 guest	?mSetShadeMode@tView3DExt@@UAEII@Z
+0x006a9700	7	tView3DExt::mGetShadeMode()	unsorted/tView3DExt.cpp	vc6 guest	?mGetShadeMode@tView3DExt@@UAEIXZ
+0x006a9710	109	tView3DExt::mSetGlobalBlend(float)	unsorted/tView3DExt.cpp	vc6 guest	?mSetGlobalBlend@tView3DExt@@UAEMM@Z
+0x006a9780	7	tView3DExt::mGetGlobalBlend()	unsorted/tView3DExt.cpp	vc6 guest	?mGetGlobalBlend@tView3DExt@@UAEMXZ
+0x006a9aa0	6	tView3DExt::mGetMaxNumLights() const	unsorted/tView3DExt.cpp	vc6 guest	?mGetMaxNumLights@tView3DExt@@UBEKXZ
+0x006a9ab0	230	tView3DExt::mSetLightDescription(unsigned long,const tGLLightDesc &)	unsorted/tView3DExt.cpp	vc6 guest	?mSetLightDescription@tView3DExt@@UAEXKABVtGLLightDesc@@@Z
+0x006a9ba0	125	tView3DExt::mGetLightDescription(unsigned long,tGLLightDesc &) const	unsorted/tView3DExt.cpp	vc6 guest	?mGetLightDescription@tView3DExt@@UBEXKAAVtGLLightDesc@@@Z
+0x006a9c20	19	tView3DExt::mEnableLighting(unsigned char)	unsorted/tView3DExt.cpp	vc6 guest	?mEnableLighting@tView3DExt@@UAEEE@Z
+0x006a9c40	30	tView3DExt::mEnableLight(unsigned long,unsigned char)	unsorted/tView3DExt.cpp	vc6 guest	?mEnableLight@tView3DExt@@UAEEKE@Z
+0x006a9e80	30	tView3DExt::`scalar deleting destructor'	unsorted/tView3DExt.cpp	vc6	??_GtView3DExt@@UAEPAXI@Z
+0x006a9eb0	109	tView3DExt::~tView3DExt()	unsorted/tView3DExt.cpp	vc6	??1tView3DExt@@UAE@XZ
+0x006a9f20	29	tView3DExt::mSetBeginCallback(fn_006a9f20_Callback,void *)	unsorted/tView3DExt.cpp	vc6 guest	?mSetBeginCallback@tView3DExt@@UAEP6AXPAVtGLSurface@@PAX@ZP6AX01@Z1@Z
+0x006a9f40	7	tView3DExt::mGetBeginCallback()	unsorted/tView3DExt.cpp	vc6 guest	?mGetBeginCallback@tView3DExt@@UAEP6AXPAVtGLSurface@@PAX@ZXZ
+0x006a9f50	29	tView3DExt::mSetEndCallback(fn_006a9f20_Callback,void *)	unsorted/tView3DExt.cpp	vc6 guest	?mSetEndCallback@tView3DExt@@UAEP6AXPAVtGLSurface@@PAX@ZP6AX01@Z1@Z
+0x006a9f70	7	tView3DExt::mGetEndCallback()	unsorted/tView3DExt.cpp	vc6 guest	?mGetEndCallback@tView3DExt@@UAEP6AXPAVtGLSurface@@PAX@ZXZ
+0x006a9f80	112	tView3DExt::mSetLightPosition(const tPoint3 &)	unsorted/tView3DExt.cpp	vc6 guest	?mSetLightPosition@tView3DExt@@UAEXABUtPoint3@@@Z
+0x006a9ff0	7	tView3DExt::mGetLightPosition()	unsorted/tView3DExt.cpp	vc6 guest	?mGetLightPosition@tView3DExt@@UAEABUtPoint3@@XZ
+0x006aa000	128	tView3DExt::mSetViewport(int,int,int,int)	unsorted/tView3DExt.cpp	vc6 guest	?mSetViewport@tView3DExt@@UAEXHHHH@Z
+0x006aa080	93	tView3DExt::mGetViewport(int *,int *,int *,int *)	unsorted/tView3DExt.cpp	vc6 guest	?mGetViewport@tView3DExt@@UAEXPAH000@Z
+0x006aa0e0	216	tView3DExt::mCreatePerspective(tMatrix &,float,float,float)	unsorted/tView3DExt.cpp	partial	?mCreatePerspective@tView3DExt@@UAEXAAVtMatrix@@MMM@Z
+0x006aa1c0	72	tView3DExt::mSetPerspective(float,float,float)	unsorted/tView3DExt.cpp	vc6 guest	?mSetPerspective@tView3DExt@@UAEXMMM@Z
+0x006aa210	87	tView3DExt::mSetOrtho(float,float,float,float,float,float)	unsorted/tView3DExt.cpp	vc6 guest	?mSetOrtho@tView3DExt@@UAEXMMMMMM@Z
+0x006aa270	67	tView3DExt::mSetOrthoIdentity(float,float)	unsorted/tView3DExt.cpp	vc6 guest	?mSetOrthoIdentity@tView3DExt@@UAEXMM@Z
+0x006aa2c0	205	tView3DExt::mCreateOrtho(tMatrix &,float,float,float,float,float,float)	unsorted/tView3DExt.cpp	partial	?mCreateOrtho@tView3DExt@@UAEXAAVtMatrix@@MMMMMM@Z
+0x006aa390	90	tView3DExt::mCreateOrthoIdentity(tMatrix &,float,float)	unsorted/tView3DExt.cpp	vc6 guest	?mCreateOrthoIdentity@tView3DExt@@UAEXAAVtMatrix@@MM@Z
+0x006aa490	7	tView3DExt::mGetProjMtx()	unsorted/tView3DExt.cpp	vc6 guest	?mGetProjMtx@tView3DExt@@UAEABVtMatrix@@XZ
+0x006aa4a0	47	tView3DExt::mSetCameraMtx(const tMatrix &)	unsorted/tView3DExt.cpp	vc6 guest	?mSetCameraMtx@tView3DExt@@UAEXABVtMatrix@@@Z
+0x006aa4d0	7	tView3DExt::mGetCameraMtx()	unsorted/tView3DExt.cpp	vc6 guest	?mGetCameraMtx@tView3DExt@@UAEABVtMatrix@@XZ
+0x006aa4e0	93	tView3DExt::mGetCameraPosition(tPoint3 &)	unsorted/tView3DExt.cpp	vc6 guest	?mGetCameraPosition@tView3DExt@@UAEXAAUtPoint3@@@Z
+0x006aa550	327	tView3DExt::mSetModelMtx(const tMatrix &)	unsorted/tView3DExt.cpp	partial	?mSetModelMtx@tView3DExt@@UAEXABVtMatrix@@@Z
+0x006aa6c0	7	tView3DExt::vfunction59()	unsorted/tView3DExt.cpp	vc6 guest	?vfunction59@tView3DExt@@UAEPAVtMatrix@@XZ
+0x006aa6d0	13	tView3DExt::mSetDriver(int)	unsorted/tView3DExt.cpp	vc6 guest	?mSetDriver@tView3DExt@@UAEXH@Z
+0x006aa6e0	51	tView3DExt::mResetCounts()	unsorted/tView3DExt.cpp	vc6 guest	?mResetCounts@tView3DExt@@UAEXXZ
+0x006aa720	7	tView3DExt::mGetRawCountPoints()	unsorted/tView3DExt.cpp	vc6 guest	?mGetRawCountPoints@tView3DExt@@UAEKXZ
+0x006aa730	7	tView3DExt::mGetRawCountLines()	unsorted/tView3DExt.cpp	vc6 guest	?mGetRawCountLines@tView3DExt@@UAEKXZ
+0x006aa740	7	tView3DExt::mGetRawCountTris()	unsorted/tView3DExt.cpp	vc6 guest	?mGetRawCountTris@tView3DExt@@UAEKXZ
+0x006aa750	7	tView3DExt::mGetRawCountQuads()	unsorted/tView3DExt.cpp	vc6 guest	?mGetRawCountQuads@tView3DExt@@UAEKXZ
+0x006aa760	7	tView3DExt::mGetRawCountNGons()	unsorted/tView3DExt.cpp	vc6 guest	?mGetRawCountNGons@tView3DExt@@UAEKXZ
+0x006aa770	7	tView3DExt::mGetTrueCountPoints()	unsorted/tView3DExt.cpp	vc6 guest	?mGetTrueCountPoints@tView3DExt@@UAEKXZ
+0x006aa780	7	tView3DExt::mGetTrueCountLines()	unsorted/tView3DExt.cpp	vc6 guest	?mGetTrueCountLines@tView3DExt@@UAEKXZ
+0x006aa790	7	tView3DExt::mGetTrueCountTris()	unsorted/tView3DExt.cpp	vc6 guest	?mGetTrueCountTris@tView3DExt@@UAEKXZ
+0x006abe00	176	tView3DExt::mAssertVtxCache(int)	dmp3d/view3d/drawPoly.cpp	vc6 guest	?mAssertVtxCache@tView3DExt@@IAEXH@Z
+0x006abeb0	200	tView3DExt::mGetPolyNormalZ()	unsorted/fn_006ABEB0.cpp	vc6 guest	?mGetPolyNormalZ@tView3DExt@@IAEMXZ
+0x006abf80	48	tView3DExt::mSubmitVertices(int,const tPoint3 *)	unsorted/fn_006ABEB0.cpp	vc6 guest	?mSubmitVertices@tView3DExt@@UAEXHPBUtPoint3@@@Z
+0x006abfb0	13	tView3DExt::vfunction80(void *)	unsorted/fn_006ABEB0.cpp	vc6 guest	?vfunction80@tView3DExt@@UAEXPAX@Z
 0x006ac5a0	439	tView3DExt::vfunction81(int,void **,bool)	unsorted/tView3DExt.cpp	partial	?vfunction81@tView3DExt@@UAEXHPAPAX_N@Z
+0x006ac780	59	tView3DExt::tPrimitive::mInit()	unsorted/fn_006AC000.cpp	vc6 guest	?mInit@tPrimitive@tView3DExt@@QAEXXZ
+0x006ac7c0	66	tView3DExt::mBeginPrimitive(ePrimitiveType)	unsorted/fn_006AC000.cpp	vc6 guest	?mBeginPrimitive@tView3DExt@@UAEEW4ePrimitiveType@@@Z
+0x006ac810	32	tView3DExt::mEndPrimitive()	unsorted/fn_006AC000.cpp	vc6 guest	?mEndPrimitive@tView3DExt@@UAEEXZ
+0x006ac830	199	tView3DExt::mFlushPolygon(unsigned long,int,int)	unsorted/fn_006AC000.cpp	partial	?mFlushPolygon@tView3DExt@@IAEXKHH@Z
+0x006ad130	249	tView3DExt::mVtxCoord(const tPoint3 &)	unsorted/fn_006AD000.cpp	vc6 guest	?mVtxCoord@tView3DExt@@UAEXABUtPoint3@@@Z
+0x006ad230	46	tView3DExt::mVtxCoord(float,float,float)	unsorted/fn_006AD000.cpp	vc6 guest	?mVtxCoord@tView3DExt@@UAEXMMM@Z
+0x006ad260	104	tView3DExt::mVtxNormal(const tPoint3 &)	unsorted/fn_006AD000.cpp	vc6 guest	?mVtxNormal@tView3DExt@@UAEXABUtPoint3@@@Z
+0x006ad2d0	46	tView3DExt::mVtxNormal(float,float,float)	unsorted/fn_006AD000.cpp	vc6 guest	?mVtxNormal@tView3DExt@@UAEXMMM@Z
+0x006ad300	24	tView3DExt::mVtxTexCoord(const tPoint2 &)	unsorted/fn_006AD000.cpp	vc6 guest	?mVtxTexCoord@tView3DExt@@UAEXABUtPoint2@@@Z
+0x006ad320	23	tView3DExt::mVtxTexCoord(float,float)	unsorted/fn_006AD000.cpp	vc6 guest	?mVtxTexCoord@tView3DExt@@UAEXMM@Z
+0x006ad340	43	tView3DExt::mVtxColor(float,float,float)	unsorted/fn_006AD000.cpp	vc6 guest	?mVtxColor@tView3DExt@@UAEXMMM@Z
+0x006ad370	103	tView3DExt::mVtxColor(tGLRgbQuad)	unsorted/fn_006AD000.cpp	vc6 guest	?mVtxColor@tView3DExt@@UAEXUtGLRgbQuad@@@Z
+0x006ad3e0	33	tView3DExt::mPrimitiveTexID(int)	unsorted/fn_006AD000.cpp	vc6 guest	?mPrimitiveTexID@tView3DExt@@UAEXH@Z
 0x006ad410	924	GetDXVersion(DWORD*,DWORD*)	dmp3d/dx6/getdxver.cpp	vc6 guest	?GetDXVersion@@YAXPAK0@Z
 0x006b1050	327	tSWView3D::vfunction98(int,int,int,bool)	unsorted/fn_006B1000.cpp	partial	?vfunction98@tSWView3D@@UAE_NHHH_N@Z
-0x006b23c0	315	tSWView3D::vfunction85(int,tBmpSurf *,char,int)	unsorted/tSWView3D.cpp	vc6 guest	?vfunction85@tSWView3D@@UAE_NHPAVtBmpSurf@@DH@Z
+0x006b23c0	315	tSWView3D::mLoadTexture(int,tGLSurface &,unsigned char,unsigned long)	unsorted/tSWView3D.cpp	vc6 guest	?mLoadTexture@tSWView3D@@UAEEHAAVtGLSurface@@EK@Z
 0x006b32c0	8	tGLFontEx::mAddRef()	dmp3d/glFont/tGLFont.cpp	vc6 guest	?mAddRef@tGLFontEx@@UAEJXZ
 0x006b32d0	4	tChannelAttributes::mGet3DSoundProfile()	Source/Scripting/ScriptMapData.cpp	vc6 guest	?mGet3DSoundProfile@tChannelAttributes@@UAEPAVt3DSoundProfile@@XZ
 0x006b32e0	4	tScriptMapData::mGetItemList() const	Source/Scripting/ScriptMapData.cpp	vc6 guest	?mGetItemList@tScriptMapData@@QBEABV?$vector@VtMapObject@@V?$allocator@VtMapObject@@@std@@@std@@XZ
 0x006b3e10	273	tDDSurfMgr::fn_006b3e10()	dmp3d/glsurface/tDDSurfMgr.cpp	partial	?fn_006b3e10@tDDSurfMgr@@QAE_NXZ
-0x006b3f80	126	fn_006b3f80(tDDSurfMgr*,HRESULT,const char*,int,const char*,...)	dmp3d/glsurface/tDDSurfMgr.cpp	partial	?fn_006b3f80@@YAXPAVtDDSurfMgr@@JPBDH1ZZ
-0x006b4010	117	fn_006b4010(tDDSurfMgr*,HRESULT,const char*,int,const char*,...)	dmp3d/glsurface/tDDSurfMgr.cpp	vc6 guest	?fn_006b4010@@YA_NPAVtDDSurfMgr@@JPBDH1ZZ
+0x006b3f80	126	tDDSurfMgr::mDDThrow(HRESULT,const char*,int,const char*,...)	dmp3d/glsurface/tDDSurfMgr.cpp	partial	?mDDThrow@tDDSurfMgr@@IAAXJPBDH0ZZ
+0x006b4010	117	tDDSurfMgr::mDDCheck(HRESULT,const char*,int,const char*,...)	dmp3d/glsurface/tDDSurfMgr.cpp	vc6 guest	?mDDCheck@tDDSurfMgr@@IAAEJPBDH0ZZ
 0x006b4090	695	tDDSurfMgr::fn_006b4090(int,int,int,int,int,bool,bool,int,HWND,int)	dmp3d/glsurface/tDDSurfMgr.cpp	vc6 guest	?fn_006b4090@tDDSurfMgr@@QAE_NHHHHH_N0HPAUHWND__@@H@Z
 0x006b4350	5	t00c7c608Guard::~t00c7c608Guard()	dmp3d/glsurface/tDDSurfMgr.cpp	vc6	??1t00c7c608Guard@@QAE@XZ
 0x006b4360	249	tDDSurfMgr::mSetDisplayMode(int,int,int)	dmp3d/glsurface/tDDSurfMgr.cpp	vc6 guest	?mSetDisplayMode@tDDSurfMgr@@QAE_NHHH@Z

@@ -44,8 +44,12 @@ public:
 
     ~tMouseMgr_Ex();
     tMouseMgr_Ex *scalar_deleting_destructor(unsigned char flags);
-    void fn_006a35e0();
-    void fn_006a3350();
+    // The SDK's symbols: mDone is virtual, mAsync protected (the timer is a friend).
+    virtual void mDone();
+protected:
+    friend class tTimer;
+    void mAsync();
+public:
     unsigned char m_4[0x10]; // HYPOTHESIS: fields +4..+0x13, not touched here
     tAtomicLock m_lock;      // +0x14
 };
@@ -63,16 +67,16 @@ tMouseMgr_Ex *tMouseMgr_Ex::scalar_deleting_destructor(unsigned char flags)
     return this;
 }
 
-// The destructor calls fn_006a3350, then destroys the tAtomicLock member at +0x14; the original
+// The destructor calls mDone, then destroys the tAtomicLock member at +0x14; the original
 // inlines ~tMouseMgr_Base here.
 #include "Tiger/tatomic.h"
 // FUNCTION: STARFLEETOP 0x0040bdb1
 tMouseMgr_Ex::~tMouseMgr_Ex()
 {
-    fn_006a3350();
+    mDone();
 }
 // FUNCTION: STARFLEETOP 0x0040bd8d
 void tMouseMgr_Ex::tTimer::fn_0040bd8d()
 {
-    m_owner->fn_006a35e0();
+    m_owner->mAsync();
 }

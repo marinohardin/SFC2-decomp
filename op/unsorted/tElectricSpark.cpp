@@ -12,7 +12,7 @@ extern int g_00898ca4;
 extern tPoint3* g_00898c9c;
 
 // HYPOTHESIS: a free function at 0x0069b0e0 returning a float on the FPU stack (a random value).
-float fn_0069b0e0();
+float frand();
 
 // HYPOTHESIS: the object 0x0040ca18 draws with; slot 49 takes a flag around the draw. It may
 // be the viewer class declared in unsorted/t3DVisual_Model.cpp.
@@ -147,7 +147,7 @@ void tElectricSpark::vfunction2(fn_0040ca18_viewer *param_1, const tMatrix *para
 		// MATCH-ONLY: the float casts keep VC6 from reordering the multiplications; the
 		// original may have reached the same trees through float temporaries.
 		scale = fn_00737fa4((float)(i * 3.14159265359) * step);
-		offset.mSet((float)((fn_0069b0e0() - 0.5f) * m04) * scale, (float)((fn_0069b0e0() - 0.5f) * m04) * scale, (float)((fn_0069b0e0() - 0.5f) * m04) * scale);
+		offset.mSet((float)((frand() - 0.5f) * m04) * scale, (float)((frand() - 0.5f) * m04) * scale, (float)((frand() - 0.5f) * m04) * scale);
 		g_00898c9c[i] = m10 + m28 * (float)i + offset;
 	}
 
@@ -157,7 +157,7 @@ void tElectricSpark::vfunction2(fn_0040ca18_viewer *param_1, const tMatrix *para
 
 	static tPoint3 origin(0.0f, 0.0f, 0.0f);
 	tPoint3 position;
-	world.fn_0069cbc0(position, origin);
+	world.mInverseTransform(position, origin);
 	// The original computes this squared distance and discards it.
 	float distance = position * position;
 

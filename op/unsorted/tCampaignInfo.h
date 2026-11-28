@@ -7,30 +7,12 @@
 #include <iosfwd>
 #include <memory>
 #include <string>
+#include <vector>
 #include "Common/Database/DatabaseObject.h"
 #include "unsorted/tCurrentTime.h"
 
-// HYPOTHESIS: 16-byte members of tCampaignInfo assigned through their own out-of-line
-// assignments (0x0046090a, 0x00604f1d); their types are not identified.
-// HYPOTHESIS: 0x0046090a is the library's vector assignment for 16-byte strings (allocator,
-// first, last, end); the members and helpers below follow that layout.
-class fn_0046090a_object
-{
-public:
-    fn_0046090a_object &operator=(const fn_0046090a_object &other);
-    const std::string *begin() const;
-    const std::string *end() const;
-    unsigned int size() const;
-    unsigned int capacity() const;
-    void _Destroy(std::string *first, std::string *last);
-    std::string *_Ucopy(const std::string *first, const std::string *last, std::string *dest);
-
-    std::allocator<std::string> allocator;
-    std::string *_First;
-    std::string *_Last;
-    std::string *_End;
-};
-
+// HYPOTHESIS: the 16-byte member at +0xa8 is assigned through its own out-of-line assignment
+// (0x00604f1d); its type is not identified.
 class fn_00604f1d_object
 {
 public:
@@ -74,7 +56,7 @@ public:
     std::string m_68;
     std::string m_78;
     std::string m_88;
-    fn_0046090a_object m_98;
+    std::vector<std::string> m_98;
     fn_00604f1d_object m_a8;
     long m_b8;
     long m_bc;

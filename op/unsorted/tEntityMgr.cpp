@@ -6,7 +6,7 @@
 
 // HYPOTHESIS: the bearing of a direction (x, y) as an angle; unsorted/tSfcApp3d.cpp
 // and unsorted/tEntityControlShip.cpp declare it the same way inside those units.
-short fn_0069afc0(float x, float y);
+short ArcTangent(float x, float y);
 
 typedef int32 tID;
 
@@ -951,7 +951,7 @@ tAngle tEntityMgr::mDirectionToPoint(tEntity *From, tPoint3 location)
     tPoint3 direction;
     direction = location - position;
     direction.mNormalize();
-    return (facing - (fn_0069afc0(direction.x, direction.y) & 0x1fff)) & 0x1fff;
+    return (facing - (ArcTangent(direction.x, direction.y) & 0x1fff)) & 0x1fff;
 }
 
 // FUNCTION: STARFLEETOP 0x004245e1
@@ -970,7 +970,7 @@ tAngle tEntityMgr::fn_004245e1(tEntity *pFrom, tEntity *pTarget)
     tPoint3 direction;
     direction = target - position;
     direction.mNormalize();
-    return (facing - (fn_0069afc0(direction.x, direction.y) & 0x1fff)) & 0x1fff;
+    return (facing - (ArcTangent(direction.x, direction.y) & 0x1fff)) & 0x1fff;
 }
 
 // FUNCTION: STARFLEETOP 0x004246ab

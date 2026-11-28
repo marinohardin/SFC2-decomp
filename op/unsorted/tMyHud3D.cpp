@@ -374,7 +374,7 @@ void tMyHud3D::vfunction2(tObject_004b0a39_entity *aEntity, tObject_00413ac3_arg
 	mtx[2][3] = position.z;
 
 	tPoint3 view(position);
-	aView->vfunction55()->mTransform3x3(view);
+	aView->vfunction55()->mTransform(view);
 	float distance = view * view;
 
 	bool flag = true;

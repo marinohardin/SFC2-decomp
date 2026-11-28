@@ -163,9 +163,9 @@ void fn_00496330_object::fn_0049647e()
 }
 
 // HYPOTHESIS: a free function at 0x0069b0e0 returning a float on the FPU stack (a random value).
-float fn_0069b0e0();
+float frand();
 
-// HYPOTHESIS: a record initialised from two draws of fn_0069b0e0; 0x0049670b keeps the
+// HYPOTHESIS: a record initialised from two draws of frand; 0x0049670b keeps the
 // fractional part of m00 + m04 * (0x0092f61c - 0x0091a22c) in m08 (a phase).
 class fn_004966e7_object
 {
@@ -181,8 +181,8 @@ public:
 // FUNCTION: STARFLEETOP 0x004966e7
 fn_004966e7_object::fn_004966e7_object()
 {
-	m00 = fn_0069b0e0();
-	float r = fn_0069b0e0() * 0.25f;
+	m00 = frand();
+	float r = frand() * 0.25f;
 	m04 = r + r - 0.25f;
 }
 
@@ -199,7 +199,7 @@ void fn_004966e7_object::fn_0049670b()
 		m08 = f + 1.0f;
 }
 
-// HYPOTHESIS: a record with a byte at +0x00, a float at +0x04 and two draws of fn_0069b0e0;
+// HYPOTHESIS: a record with a byte at +0x00, a float at +0x04 and two draws of frand;
 // m08 is moved away from zero by 0.35.
 class fn_0049674e_object
 {
@@ -224,8 +224,8 @@ fn_0049674e_object::fn_0049674e_object()
 	m00 = 0;
 	m04 = 0.0f;
 	float range = g_007a08e4 - g_007a08e8;
-	m0c = fn_0069b0e0();
-	float r = fn_0069b0e0() * range;
+	m0c = frand();
+	float r = frand() * range;
 	m08 = r + r - range;
 	if( m08 > 0.0f )
 		m08 += g_007a08e8;
@@ -242,7 +242,7 @@ void fn_0049674e_object::fn_004967a5()
 {
 	if( gObject_0092f61c - m04 > g_007a08ec )
 	{
-		m04 = gObject_0092f61c - fn_0069b0e0() * g_007a08ec;
+		m04 = gObject_0092f61c - frand() * g_007a08ec;
 		m00 = !m00;
 	}
 	if( !m00 )
@@ -252,13 +252,13 @@ void fn_0049674e_object::fn_004967a5()
 		if( m0c < 0.0f )
 		{
 			m0c = 0.0f;
-			m08 = fn_0069b0e0() * range;
+			m08 = frand() * range;
 			m08 += g_007a08e8;
 		}
 		else if( m0c > 1.0f )
 		{
 			m0c = 1.0f;
-			m08 = -( fn_0069b0e0() * range );
+			m08 = -( frand() * range );
 			m08 -= g_007a08e8;
 		}
 	}

@@ -55,16 +55,19 @@ public:
     virtual char vfunction5(int handle);
 };
 
-// HYPOTHESIS: the texture handle table built at 0x006a0490 (0x1000 slots, linked through
-// g_00c7c118); its own unit has not landed, so it is declared here with the members used.
-class fn_006a0490_Mgr
+// HYPOTHESIS: the texture handle table built at 0x006a0490 (0x1000 slots); its own unit has not
+// landed, so it is declared here with the members used, by their SDK symbols. The list pointer is
+// a protected static member, so the managers that read it are declared friends here.
+class tTexMgr
 {
+    friend class tSFCTexMgr;
+    friend class tSFCTexMgrEx;
 public:
-    int fn_006a07d0(char *name);
-    void fn_006a08e0(int handle);
-    tTexBmp* fn_006a0920(int handle);
+    int mNewTexBmp(const char *name);
+    void mDeleteTexBmp(int handle);
+    tTexBmp* mIDToTexBmp(int handle);
+protected:
+    static tTexMgr* fList;
 };
-
-extern fn_006a0490_Mgr* g_00c7c118;
 
 #endif

@@ -17,6 +17,7 @@ address	size	mangled_name	library	tier	score	notes
 00402fa5	16	?MaxRetrieveable@RandomPool@CryptoPP@@UAEKXZ	cryptlibR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 00402fa5 0069f470 006fe8a0 0073ea74
 00402fa5	16	?MaxRetrieveable@Sink@CryptoPP@@UAEKXZ	cryptlibR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 00402fa5 0069f470 006fe8a0 0073ea74
 00402fa5	16	?ReadBand_Fail@@YAJPAUAudioDecoder@@JJ@Z	sfcTiger_MSVCR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 00402fa5 0069f470 006fe8a0 0073ea74
+00402fa5	16	?mChooseInitialSurfMgr@t2DAppBase@@MAEHXZ	dmp3D_MSVCR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 00402fa5 0069f470 006fe8a0 0073ea74
 00402fa5	16	?mGetBPV@tShipInfo@@QAEJXZ	ScriptInterfaceR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 00402fa5 0069f470 006fe8a0 0073ea74
 00402fa5	16	?mGetTotalBPV@tShipInfo@@QAEJXZ	ScriptInterfaceR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 00402fa5 0069f470 006fe8a0 0073ea74
 00402fa5	16	?showmanyc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEHXZ	SharedR.lib,ScriptInterfaceR.lib,cryptlibR.lib	exact+ctx	0.713	cands=4 ctx_agree=0 caller_votes=0.8 ntok=2
@@ -61,6 +62,7 @@ address	size	mangled_name	library	tier	score	notes
 004088d6	16	?mGetLastListMemberHandle@tDynamicMemoryFreeListViaHandles@@UAEJXZ	sfcTiger_MSVCR.lib	exact+ctx	0.905	cands=4 ctx_agree=0 caller_votes=2.4 ntok=2
 0040a9ca	46	??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBDABV?$allocator@D@1@@Z	SharedR.lib,ScriptInterfaceR.lib	ref	0.891	body differs (ratio 0.09); votes=4 from ??0tSettings@@QAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z,?ReadProfile@tSettings@@IAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z,?push_back@?$deque@VtLockInfo@tDatabase@nDatabase@@V?$allocator@VtLockInfo@tDatabase@nDatabase@@@std@@@std@@QAEXABVtLockInfo@tDatabase@nDatabase@@@Z
 0040aa67	16	?mGetFontIndexFilename@tFontFileIOBase@@SAPBDXZ	sfcTiger_MSVCR.lib	exact+ctx	0.75	cands=215 ctx_agree=0 caller_votes=1.0 ntok=2
+0040b4bf	16	??1tGLPixFmt@@UAE@XZ	dmp3D_MSVCR.lib	exact+ctx	0.938	cands=95 ctx_agree=1 caller_votes=2.0 ntok=2
 0040bd8d	16	?AgreedValueLength@?$ECDHC@VECP@CryptoPP@@@CryptoPP@@UBEIXZ	cryptlibR.lib	multi	0.125	ambiguous group of 8 identical-structure addresses: 0040bd8d 00486a1d 005df479 005e5edc 00690fb0 006d7350 006db920 006db930
 0040bd8d	16	?AgreedValueLength@?$ECMQVC@VECP@CryptoPP@@@CryptoPP@@UBEIXZ	cryptlibR.lib	multi	0.125	ambiguous group of 8 identical-structure addresses: 0040bd8d 00486a1d 005df479 005e5edc 00690fb0 006d7350 006db920 006db930
 0040c08b	16	?Zero@?$QuotientRing@V?$EuclideanDomainOf@VPolynomialMod2@CryptoPP@@@CryptoPP@@@CryptoPP@@UBEABVPolynomialMod2@2@XZ	cryptlibR.lib	exact-short	0.5	cands=1 ctx_agree=0 caller_votes=0.0 ntok=3
@@ -127,6 +129,7 @@ address	size	mangled_name	library	tier	score	notes
 004350bb	16	?mIsValid@twClock@@UAEEXZ	sfcTiger_MSVCR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 004350bb 004bc9a7 00637810 00673940
 004350bb	16	?mIsValid@twDebugPart@@UAEEXZ	sfcTiger_MSVCR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 004350bb 004bc9a7 00637810 00673940
 004350bb	16	?mIsValid@twMemoryPart@@UAEEXZ	sfcTiger_MSVCR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 004350bb 004bc9a7 00637810 00673940
+004350bb	16	?mOkToUsePalettizedTextures@tD3DViewMgr@@IAEEXZ	dmp3D_MSVCR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 004350bb 004bc9a7 00637810 00673940
 00435391	13	?mInitDynamicMemoryFreeListViaHandles@tDynamicMemoryFreeListViaHandles@@UAEXXZ	sfcTiger_MSVCR.lib	ref	0.868	body differs (ratio 0.22); votes=3 from data:.\sfcTiger Release\tgSound.obj|.rdata#761,data:.\sfcTiger Release\tgSound.obj|.rdata#927,data:.\sfcTiger Release\twSound.obj|.rdata#157
 0043539e	9	?mGetFirstListMember@tDynamicMemoryFreeListViaHandles@@UAEPAVtListMemberWithHandle@@XZ	sfcTiger_MSVCR.lib	ref	0.964	body differs (ratio 0.67); votes=3 from data:.\sfcTiger Release\tgSound.obj|.rdata#761,data:.\sfcTiger Release\tgSound.obj|.rdata#927,data:.\sfcTiger Release\twSound.obj|.rdata#157
 004353a7	9	?mGetLastListMember@tDynamicMemoryFreeListViaHandles@@UAEPAVtListMemberWithHandle@@XZ	sfcTiger_MSVCR.lib	ref	0.964	body differs (ratio 0.67); votes=3 from data:.\sfcTiger Release\tgSound.obj|.rdata#761,data:.\sfcTiger Release\tgSound.obj|.rdata#927,data:.\sfcTiger Release\twSound.obj|.rdata#157
@@ -184,6 +187,7 @@ address	size	mangled_name	library	tier	score	notes
 0046aa94	16	?BoldFontsOverridden@@YAEXZ	sfcTiger_MSVCR.lib	multi	0.2	ambiguous group of 5 identical-structure addresses: 00434584 0045c701 0046aa94 006071d4 0060ca7d
 0046aa94	16	?ItalicFontsOverridden@@YAEXZ	sfcTiger_MSVCR.lib	multi	0.2	ambiguous group of 5 identical-structure addresses: 00434584 0045c701 0046aa94 006071d4 0060ca7d
 0046c44f	16	?Attachable@BufferedTransformation@CryptoPP@@UAE_NXZ	cryptlibR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 0046c44f 004bc9b0 006313d0 00673900
+0046c44f	16	?mSinglePassMultiTexturing@tView3D@@UBEEXZ	dmp3D_MSVCR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 0046c44f 004bc9b0 006313d0 00673900
 004793a8	48	?_Lbound@?$_Tree@JU?$pair@$$CBJJ@std@@U_Kfn@?$map@JJU?$less@J@std@@V?$allocator@J@2@@2@U?$less@J@2@V?$allocator@J@2@@std@@IBEPAU_Node@12@ABJ@Z	sfcTiger_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=18
 00480672	16	??1tMetaLocationSpec@@UAE@XZ	SharedR.lib,ScriptInterfaceR.lib	exact+ctx	0.875	cands=156 ctx_agree=0 caller_votes=2.0 ntok=1
 00486a1d	16	?AgreedValueLength@?$ECDHC@VECP@CryptoPP@@@CryptoPP@@UBEIXZ	cryptlibR.lib	multi	0.125	ambiguous group of 8 identical-structure addresses: 0040bd8d 00486a1d 005df479 005e5edc 00690fb0 006d7350 006db920 006db930
@@ -193,6 +197,7 @@ address	size	mangled_name	library	tier	score	notes
 004aba3c	16	?OverrideItalicFonts@@YAXE@Z	sfcTiger_MSVCR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 004aba3c 004ca9ff 006fd720 0070c770
 004aba3c	16	?mSetShowLevelsOnOff@tSay@@SAXE@Z	sfcTiger_MSVCR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 004aba3c 004ca9ff 006fd720 0070c770
 004aba3c	16	?mSetShowNamesOnOff@tSay@@SAXE@Z	sfcTiger_MSVCR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 004aba3c 004ca9ff 006fd720 0070c770
+004b65af	74	??RtGLPixFmt@@QBEKABUtGLRgbQuad@@@Z	dmp3D_MSVCR.lib	ref	0.75	body differs (ratio 0.63); votes=1 from .\dmp3D_Release\tGLSpriteUtils.obj|?_RunLenCompressSprite@@YAKPAXABVtGLPixFmt@@PAVtGLSurface@@EI@Z
 004bc9a7	16	?Attachable@Filter@CryptoPP@@UAE_NXZ	cryptlibR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 004350bb 004bc9a7 00637810 00673940
 004bc9a7	16	?Attachable@Fork@CryptoPP@@UAE_NXZ	cryptlibR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 004350bb 004bc9a7 00637810 00673940
 004bc9a7	16	?Attachable@JoinInterface@CryptoPP@@UAE_NXZ	cryptlibR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 004350bb 004bc9a7 00637810 00673940
@@ -211,7 +216,9 @@ address	size	mangled_name	library	tier	score	notes
 004bc9a7	16	?mIsValid@twClock@@UAEEXZ	sfcTiger_MSVCR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 004350bb 004bc9a7 00637810 00673940
 004bc9a7	16	?mIsValid@twDebugPart@@UAEEXZ	sfcTiger_MSVCR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 004350bb 004bc9a7 00637810 00673940
 004bc9a7	16	?mIsValid@twMemoryPart@@UAEEXZ	sfcTiger_MSVCR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 004350bb 004bc9a7 00637810 00673940
+004bc9a7	16	?mOkToUsePalettizedTextures@tD3DViewMgr@@IAEEXZ	dmp3D_MSVCR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 004350bb 004bc9a7 00637810 00673940
 004bc9b0	16	?Attachable@BufferedTransformation@CryptoPP@@UAE_NXZ	cryptlibR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 0046c44f 004bc9b0 006313d0 00673900
+004bc9b0	16	?mSinglePassMultiTexturing@tView3D@@UBEEXZ	dmp3D_MSVCR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 0046c44f 004bc9b0 006313d0 00673900
 004bd431	16	?id@?$codecvt@DDH@std@@$E	SharedR.lib,ScriptInterfaceR.lib,cryptlibR.lib	exact+ctx	0.732	cands=370 ctx_agree=0 caller_votes=0.9 ntok=1
 004bd431	16	?id@?$ctype@G@std@@$E	SharedR.lib,ScriptInterfaceR.lib,sfcTiger_MSVCR.lib,cryptlibR.lib	exact+ctx	0.75	cands=370 ctx_agree=0 caller_votes=1.0 ntok=1
 004bd431	16	?id@?$num_put@DV?$ostreambuf_iterator@DU?$char_traits@D@std@@@$E	SharedR.lib,ScriptInterfaceR.lib	exact+ctx	0.732	cands=370 ctx_agree=0 caller_votes=0.9 ntok=1
@@ -270,8 +277,10 @@ address	size	mangled_name	library	tier	score	notes
 0054627c	16	?mSetIndentChar@tSay@@QAEXD@Z	sfcTiger_MSVCR.lib	exact-short	0.5	cands=1 ctx_agree=0 caller_votes=0.0 ntok=3
 00548c4f	92	?GetEntryValue@tGFEntry@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAV23@PAW4eGFEntryType@1@@Z	SharedR.lib,ScriptInterfaceR.lib	ref	0.891	body differs (ratio 0.14); votes=4 from ?AddItem@tGFSection@@QAEPAVtGFItem@@PAV2@@Z,?GetList@tSettings@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAV?$vector@JV?$allocator@J@std@@@3@PAV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@3@@Z,?GetList@tSettings@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAV?$vector@MV?$allocator@M@std@@@3@PAV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@3@@Z
 00548cab	77	?FindSection@tGFSection@@QAEPAV1@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z	SharedR.lib,ScriptInterfaceR.lib	ref	0.891	body differs (ratio 0.42); votes=4 from ?GetList@tSettings@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAV?$vector@JV?$allocator@J@std@@@3@PAV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@3@@Z,?GetList@tSettings@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAV?$vector@MV?$allocator@M@std@@@3@PAV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@3@@Z,?GetList@tSettings@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@3@1@Z
+0054deec	16	?mGetSurfMgrIndex@t2DAppBase@@UAEHXZ	dmp3D_MSVCR.lib	exact-short	0.5	cands=1 ctx_agree=0 caller_votes=0.0 ntok=2
 0054eddb	32	??0tVictoryCondition@@QAE@XZ	ScriptInterfaceR.lib	multi	0.5	ambiguous group of 2 identical-structure addresses: 0054eddb 0055771c
 0055771c	32	??0tVictoryCondition@@QAE@XZ	ScriptInterfaceR.lib	multi	0.5	ambiguous group of 2 identical-structure addresses: 0054eddb 0055771c
+00559cb4	16	?mGetSurfMgrCount@t2DAppBase@@UAEHXZ	dmp3D_MSVCR.lib	exact-short	0.5	cands=1 ctx_agree=0 caller_votes=0.0 ntok=2
 00560275	10	??1tInput@nDataStore@@QAE@XZ	SharedR.lib,ScriptInterfaceR.lib	ref	0.938	body differs (ratio 0.59); votes=2 from .\Common_Release\FileDatabaseMgr.obj:.text$x#246,.\Common_Release\StreamDatabaseStorage.obj:.text$x#33
 0056027f	45	?Close@tInput@nDataStore@@QAEPAVtBuffer@2@_N@Z	SharedR.lib,ScriptInterfaceR.lib	ref	0.938	body differs (ratio 0.52); votes=2 from ??5nDatabase@@YAAAV?$basic_istream@DU?$char_traits@D@std@@@std@@AAV12@AAVtBlock@tStreamDatabaseStorage@0@@Z,?ReadDatabaseInfo@tFileDatabaseMgr@nDatabase@@MAE_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVtDatabaseInfo@12@@Z
 005610f5	32	?IsUnit@GF2NP@CryptoPP@@UBE_NABVPolynomialMod2@2@@Z	cryptlibR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=6
@@ -351,6 +360,7 @@ address	size	mangled_name	library	tier	score	notes
 00611980	16	?Get@Sink@CryptoPP@@UAEIPAEI@Z	cryptlibR.lib	multi	0.125	ambiguous group of 8 identical-structure addresses: 0042f300 00444391 0060cdb8 00611980 006123a0 00612a90 006db8f0 0074fd64
 00611980	16	?xsgetn@tStreamBuf@tLogStream@nLog@@UAEHPADH@Z	SharedR.lib,ScriptInterfaceR.lib	multi	0.125	ambiguous group of 8 identical-structure addresses: 0042f300 00444391 0060cdb8 00611980 006123a0 00612a90 006db8f0 0074fd64
 006123a0	16	?Get@Sink@CryptoPP@@UAEIPAEI@Z	cryptlibR.lib	multi	0.125	ambiguous group of 8 identical-structure addresses: 0042f300 00444391 0060cdb8 00611980 006123a0 00612a90 006db8f0 0074fd64
+006123a0	16	?mDrawText@tGLDC@@UAEHPBGAAUtGLRectI@@KH@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
 006123a0	16	?xsgetn@tStreamBuf@tLogStream@nLog@@UAEHPADH@Z	SharedR.lib,ScriptInterfaceR.lib	multi	0.125	ambiguous group of 8 identical-structure addresses: 0042f300 00444391 0060cdb8 00611980 006123a0 00612a90 006db8f0 0074fd64
 00612750	64	??1?$vector@U?$WindowSlider@UEC2NPoint@CryptoPP@@@CryptoPP@@V?$allocator@U?$WindowSlider@UEC2NPoint@CryptoPP@@@CryptoPP@@@std@@@std@@QAE@XZ	cryptlibR.lib	multi	0.143	ambiguous group of 7 identical-structure addresses: 00612750 00612790 00678040 006785c0 0068ed40 00722690 0072e610
 00612750	64	??1?$vector@U?$WindowSlider@UECPPoint@CryptoPP@@@CryptoPP@@V?$allocator@U?$WindowSlider@UECPPoint@CryptoPP@@@CryptoPP@@@std@@@std@@QAE@XZ	cryptlibR.lib	multi	0.143	ambiguous group of 7 identical-structure addresses: 00612750 00612790 00678040 006785c0 0068ed40 00722690 0072e610
@@ -718,6 +728,7 @@ address	size	mangled_name	library	tier	score	notes
 006210a0	16	?MultiplicativeGroup@?$RingWithDefaultMultiplicativeGroup@VInteger@CryptoPP@@@CryptoPP@@UBEABV?$AbstractGroup@VInteger@CryptoPP@@@2@XZ	cryptlibR.lib	exact+ctx	0.646	cands=3 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
 006210a0	16	?MultiplicativeGroup@?$RingWithDefaultMultiplicativeGroup@VPolynomialMod2@CryptoPP@@@CryptoPP@@UBEABV?$AbstractGroup@VPolynomialMod2@CryptoPP@@@2@XZ	cryptlibR.lib	exact+ctx	0.646	cands=3 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
 006210a0	16	?mGetName@tgVolume@@UAEAAVtString@@XZ	sfcTiger_MSVCR.lib	exact+ctx	0.646	cands=3 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
+006210a0	16	?mGetPixFmt@tDDSurface@@UAEABVtGLPixFmt@@XZ	dmp3D_MSVCR.lib	exact+ctx	0.646	cands=3 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
 006210b0	32	??8tgVolume@@UBEEABV0@@Z	sfcTiger_MSVCR.lib	exact+ctx	0.823	cands=2 ctx_agree=1 caller_votes=0.0 ntok=8
 006210d0	32	??MtgVolume@@UBEEABV0@@Z	sfcTiger_MSVCR.lib	exact+ctx	0.942	cands=2 ctx_agree=1 caller_votes=1.6 ntok=8
 006210f0	16	??1tTypefaceName@@QAE@XZ	sfcTiger_MSVCR.lib	exact+ctx	0.956	cands=10 ctx_agree=1 caller_votes=2.0 ntok=2
@@ -924,7 +935,7 @@ address	size	mangled_name	library	tier	score	notes
 00627120	16	?mGetMemory@tString@@KAPAXJ@Z	sfcTiger_MSVCR.lib	multi	0.167	ambiguous group of 6 identical-structure addresses: 00627120 006903f0 00695140 006a2f00 006c54f0 006c57a0
 00627120	16	?mInit@tBasicFile@@SAEE@Z	sfcTiger_MSVCR.lib	exact+ctx	0.823	cands=6 ctx_agree=1 caller_votes=0.0 ntok=5
 00627130	16	?mDone@tBasicFile@@SAXXZ	sfcTiger_MSVCR.lib	exact+ctx	0.823	cands=156 ctx_agree=1 caller_votes=0.0 ntok=1
-00627140	16	?mNewBasicFile@tBasicFile@@SAPAV1@XZ	sfcTiger_MSVCR.lib	exact+ctx	0.978	cands=156 ctx_agree=1 caller_votes=3.0 ntok=1
+00627140	16	?mNewBasicFile@tBasicFile@@SAPAV1@XZ	sfcTiger_MSVCR.lib	exact+ctx	0.989	cands=156 ctx_agree=1 caller_votes=4.0 ntok=1
 00627150	32	.\sfcTiger Release\tStrMgrCore.obj|_$E6	sfcTiger_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=7
 00627170	16	.\sfcTiger Release\tStrMgrCore.obj|_$E4	sfcTiger_MSVCR.lib	exact+ctx	0.956	cands=644 ctx_agree=2 caller_votes=1.0 ntok=2
 00627180	128	?mDone@tStrMgrCore@@UAEXXZ	sfcTiger_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=53; libmatch=same
@@ -1037,7 +1048,11 @@ address	size	mangled_name	library	tier	score	notes
 0062a9f0	32	??_GtDebugPart@@UAEPAXI@Z	sfcTiger_MSVCR.lib	exact+ctx	0.912	cands=237 ctx_agree=2 caller_votes=0.0 ntok=11
 0062aa10	32	??_GtDbgTarget@twDebugPart@@UAEPAXI@Z	sfcTiger_MSVCR.lib	exact+ctx	0.875	cands=22 ctx_agree=2 caller_votes=0.0 ntok=12
 0062aa30	2322	_M3DK6_LpSqrt	sfcTiger_MSVCR.lib,dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=790; libmatch=same
+0062accc	1323	_M3DK6_Mat4Mul4x4_4x4	-	ref	0.6	votes=1 from ?ThreeDMult@@YAXPAM00@Z; no library body (callee/vtable name only)
+0062b1f7	227	_M3DK6_Mat4TransformVec4	-	ref	0.6	votes=1 from ??0t3DTableInitializer@@QAE@XZ; no library body (callee/vtable name only)
+0062b2da	118	_M3DK6_Mat4InvTransform3x3Vec3	-	ref	0.6	votes=1 from ??0t3DTableInitializer@@QAE@XZ; no library body (callee/vtable name only)
 0062b350	501	_CPU_CmpStrings	sfcTiger_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=179; libmatch=same
+0062b390	448	_CPU_Identify	-	ref	0.6	votes=1 from ??0t3DTableInitializer@@QAE@XZ; no library body (callee/vtable name only)
 0062b550	160	?mFindLine@tINISectionSimple@tINISimpleNamespace@@AAEPAUtINILine@2@PBDPAPBD@Z	sfcTiger_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=70; libmatch=same
 0062b5f0	416	?mGetInteger@tINISectionSimple@tINISimpleNamespace@@AAEKPBDKE@Z	sfcTiger_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=158; libmatch=same
 0062b790	640	?mPutInteger@tINISectionSimple@tINISimpleNamespace@@AAEEPBDKE@Z	sfcTiger_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=255; libmatch=same
@@ -1130,6 +1145,7 @@ address	size	mangled_name	library	tier	score	notes
 00631320	176	?mGetVolType@twVolume@@UAE?AW4eVolType@@XZ	sfcTiger_MSVCR.lib	exact	1.0	cands=1 ctx_agree=3 caller_votes=0.0 ntok=48; libmatch=same
 006313d0	16	?Attachable@BufferedTransformation@CryptoPP@@UAE_NXZ	cryptlibR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 0046c44f 004bc9b0 006313d0 00673900
 006313d0	16	?mIsEjectable@twVolume@@UAEEXZ	sfcTiger_MSVCR.lib	exact+ctx	0.797	cands=4 ctx_agree=0 caller_votes=0.8 ntok=2
+006313d0	16	?mSinglePassMultiTexturing@tView3D@@UBEEXZ	dmp3D_MSVCR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 0046c44f 004bc9b0 006313d0 00673900
 006313e0	496	?mGetRoot@twVolume@@UAE?AVtDir@@XZ	sfcTiger_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=122; libmatch=same
 006315d0	624	?mMakeFullPath@twDir@@IAEXXZ	sfcTiger_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=166; libmatch=same
 00631840	32	?mGetSortName@twDir@@UAE?AVtString@@XZ	sfcTiger_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=12; libmatch=same
@@ -1309,6 +1325,7 @@ address	size	mangled_name	library	tier	score	notes
 00637810	16	?mIsValid@twClock@@UAEEXZ	sfcTiger_MSVCR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 004350bb 004bc9a7 00637810 00673940
 00637810	16	?mIsValid@twDebugPart@@UAEEXZ	sfcTiger_MSVCR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 004350bb 004bc9a7 00637810 00673940
 00637810	16	?mIsValid@twMemoryPart@@UAEEXZ	sfcTiger_MSVCR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 004350bb 004bc9a7 00637810 00673940
+00637810	16	?mOkToUsePalettizedTextures@tD3DViewMgr@@IAEEXZ	dmp3D_MSVCR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 004350bb 004bc9a7 00637810 00673940
 00637820	112	?mActivate@twClock@@UAEXXZ	sfcTiger_MSVCR.lib	exact	1.0	cands=1 ctx_agree=1 caller_votes=0.0 ntok=33; libmatch=same
 00637890	96	?mDeactivate@twClock@@UAEXXZ	sfcTiger_MSVCR.lib	exact	1.0	cands=1 ctx_agree=1 caller_votes=0.0 ntok=29; libmatch=same
 006378f0	128	?mGetMicroseconds@twClock@@UAENXZ	sfcTiger_MSVCR.lib	exact	1.0	cands=1 ctx_agree=2 caller_votes=0.0 ntok=36; libmatch=same
@@ -1452,6 +1469,7 @@ address	size	mangled_name	library	tier	score	notes
 00645490	16	?mInitListMemberWithHandle@tListMemberWithHandle@@UAEXXZ	sfcTiger_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=5; libmatch=same
 006454a0	16	?mRemoveFromList@tListMemberWithHandle@@UAEXXZ	sfcTiger_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=4.0 ntok=4; libmatch=same
 006454b0	16	?mGetBufferLength@tSoundChannelFormat@@UAEJXZ	sfcTiger_MSVCR.lib	exact+ctx	0.797	cands=4 ctx_agree=0 caller_votes=0.8 ntok=2
+006454b0	16	?mGetErrorCode@tGLSurfMgr@@UAE?AW4eErrCode@1@XZ	dmp3D_MSVCR.lib	exact+ctx	0.933	cands=4 ctx_agree=0 caller_votes=2.4 ntok=2
 006454b0	16	?mGetPreviousListHandle@tListMemberWithHandle@@UAEJXZ	sfcTiger_MSVCR.lib	exact+ctx	0.978	cands=4 ctx_agree=0 caller_votes=4.0 ntok=2
 006454b0	16	?mNumberOfMembers@tHandleList@@UAEJXZ	sfcTiger_MSVCR.lib	exact+ctx	0.883	cands=4 ctx_agree=0 caller_votes=1.6 ntok=2
 006454c0	16	?mSetBufferLength@tSoundChannelFormat@@UAEXJ@Z	sfcTiger_MSVCR.lib	exact+ctx	0.797	cands=4 ctx_agree=0 caller_votes=0.8 ntok=3
@@ -1536,6 +1554,7 @@ address	size	mangled_name	library	tier	score	notes
 006462e0	16	?mGet3DSoundConeAngleForNoAttenuation@t3DSoundProfile@@UAEMXZ	sfcTiger_MSVCR.lib	exact+ctx	0.646	cands=2 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
 006462f0	16	?mSet3DSoundConeAttenuationLevel@t3DSoundProfile@@UAEXJ@Z	sfcTiger_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=3; libmatch=same
 00646300	16	?mGet3DSoundConeAttenuationLevel@t3DSoundProfile@@UAEJXZ	sfcTiger_MSVCR.lib	exact+ctx	0.646	cands=2 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
+00646300	16	?mGetFrameCounter@t2DAppBase@@UAEKXZ	dmp3D_MSVCR.lib	exact+ctx	0.646	cands=2 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
 00646310	32	??_Gt3DSoundProfile@@UAEPAXI@Z	sfcTiger_MSVCR.lib	exact+ctx	0.875	cands=22 ctx_agree=2 caller_votes=0.0 ntok=12
 00646330	16	?LoadPrecomputation@?$ECDHC@VEC2N@CryptoPP@@@CryptoPP@@UAEXAAVBufferedTransformation@2@@Z	cryptlibR.lib	multi	0.333	ambiguous group of 3 identical-structure addresses: 00646330 0071d090 0071f630
 00646330	16	?LoadPrecomputation@?$ECDHC@VECP@CryptoPP@@@CryptoPP@@UAEXAAVBufferedTransformation@2@@Z	cryptlibR.lib	multi	0.333	ambiguous group of 3 identical-structure addresses: 00646330 0071d090 0071f630
@@ -1704,6 +1723,7 @@ address	size	mangled_name	library	tier	score	notes
 0064d860	16	?mSetExecuteAfterThisNumberAttaches@tSoundChannelCommand@@UAEXJ@Z	sfcTiger_MSVCR.lib	exact+ctx	0.797	cands=4 ctx_agree=0 caller_votes=0.8 ntok=3
 0064d860	16	?mSetPreviousBlock@tSoundMemoryBlock@@UAEXJ@Z	sfcTiger_MSVCR.lib	exact+ctx	0.797	cands=4 ctx_agree=0 caller_votes=0.8 ntok=3
 0064d860	16	?mSetVolume@tChannelAttributes@@UAEXJ@Z	sfcTiger_MSVCR.lib	exact+ctx	0.797	cands=4 ctx_agree=0 caller_votes=0.8 ntok=3
+0064d870	16	?mGetBackBuffer@tD3DViewSurfMgr@@UAEPAVtGLSurface@@XZ	dmp3D_MSVCR.lib	exact+ctx	0.797	cands=4 ctx_agree=0 caller_votes=0.8 ntok=2
 0064d870	16	?mGetNextBlock@tSoundMemoryBlock@@UAEJXZ	sfcTiger_MSVCR.lib	exact+ctx	0.797	cands=4 ctx_agree=0 caller_votes=0.8 ntok=2
 0064d870	16	?mGetSoundChannelCommand@tSoundChannelCommand@@UAE?AW4eSoundChannelCommand@@XZ	sfcTiger_MSVCR.lib	exact+ctx	0.797	cands=4 ctx_agree=0 caller_votes=0.8 ntok=2
 0064d870	16	?mGetSoundType@tSoundChannelFormat@@UAEJXZ	sfcTiger_MSVCR.lib	exact+ctx	0.797	cands=4 ctx_agree=0 caller_votes=0.8 ntok=2
@@ -2214,13 +2234,13 @@ address	size	mangled_name	library	tier	score	notes
 0066c270	96	?mSetFontID@tUniFont@@QAEXK@Z	sfcTiger_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=25; libmatch=same
 0066c2d0	160	??0tUniFont@@QAE@W4eTypeface@@W4eFontStyle@@W4ePointSize@@@Z	sfcTiger_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=46; libmatch=same
 0066c370	32	??_GtUniFont@@UAEPAXI@Z	sfcTiger_MSVCR.lib	exact+ctx	0.875	cands=22 ctx_agree=2 caller_votes=0.0 ntok=12
-0066c390	16	??1tUniFont@@UAE@XZ	sfcTiger_MSVCR.lib	exact+ctx	0.823	cands=95 ctx_agree=1 caller_votes=0.0 ntok=2
-0066c3a0	32	?mGetCharInfo@tUniFont@@QBEPBUtCharInfo@@G@Z	sfcTiger_MSVCR.lib	exact	1.0	cands=1 ctx_agree=1 caller_votes=2.0 ntok=7; libmatch=same
+0066c390	16	??1tUniFont@@UAE@XZ	sfcTiger_MSVCR.lib	exact+ctx	0.912	cands=95 ctx_agree=1 caller_votes=1.0 ntok=2
+0066c3a0	32	?mGetCharInfo@tUniFont@@QBEPBUtCharInfo@@G@Z	sfcTiger_MSVCR.lib	exact	1.0	cands=1 ctx_agree=1 caller_votes=4.0 ntok=7; libmatch=same
 0066c3c0	144	?mChangePtSize@tUniFont@@QAEXW4ePointSize@@@Z	sfcTiger_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=42; libmatch=same
 0066c450	160	?mSetFont@tUniFont@@QAEXW4eTypeface@@W4eFontStyle@@W4ePointSize@@@Z	sfcTiger_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=44; libmatch=same
 0066c4f0	32	?mGetCharWidth@tUniFont@@QBE?BKG@Z	sfcTiger_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=12; libmatch=same
 0066c510	64	?mGetTextWidth@tUniFont@@QBE?BKPBG@Z	sfcTiger_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=25; libmatch=same
-0066c550	32	?mGetFontHeight@tUniFont@@QBE?BKG@Z	sfcTiger_MSVCR.lib	exact	1.0	cands=1 ctx_agree=1 caller_votes=2.0 ntok=7; libmatch=same
+0066c550	32	?mGetFontHeight@tUniFont@@QBE?BKG@Z	sfcTiger_MSVCR.lib	exact	1.0	cands=1 ctx_agree=1 caller_votes=4.0 ntok=7; libmatch=same
 0066c570	16	?mGetTypefaceID@tUniFont@@QBE?BW4eTypeface@@ABVtString@@@Z	sfcTiger_MSVCR.lib	exact-short	0.5	cands=1 ctx_agree=0 caller_votes=0.0 ntok=5
 0066c580	32	.\sfcTiger Release\tsay.obj|_$E15	sfcTiger_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=8
 0066c5a0	32	.\sfcTiger Release\tsay.obj|_$E13	sfcTiger_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=5; libmatch=same
@@ -2428,20 +2448,30 @@ address	size	mangled_name	library	tier	score	notes
 006729e0	16	?TStringStreamUncompress@@YAXAAVtString@@AAVtSFCStream@@@Z	SharedR.lib,ScriptInterfaceR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=5; libmatch=same
 006729e0	16	?TextStreamCompress@@YAXPADAAVtSFCStream@@@Z	SharedR.lib,ScriptInterfaceR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=5; libmatch=same
 006729e0	16	?TextStreamUncompress@@YAXPADAAVtSFCStream@@@Z	SharedR.lib,ScriptInterfaceR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=5; libmatch=same
+006738e0	16	?mEnableLuminanceTexturing@tView3DExt@@UAEEE@Z	dmp3D_MSVCR.lib	exact+ctx	0.883	cands=4 ctx_agree=0 caller_votes=1.6 ntok=2
 00673900	16	?Attachable@BufferedTransformation@CryptoPP@@UAE_NXZ	cryptlibR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 0046c44f 004bc9b0 006313d0 00673900
 00673900	16	?mIsAsyncReadInProgress@tSoundFileIO@@UAEEXZ	sfcTiger_MSVCR.lib	exact+ctx	0.797	cands=4 ctx_agree=0 caller_votes=0.8 ntok=2
+00673900	16	?mIsLost@tGDISurface@@UAEEXZ	dmp3D_MSVCR.lib	exact+ctx	0.797	cands=4 ctx_agree=0 caller_votes=0.8 ntok=2
+00673900	16	?mIsLost@tSysMemSurf@@UAEEXZ	dmp3D_MSVCR.lib	exact+ctx	0.962	cands=4 ctx_agree=0 caller_votes=3.2 ntok=2
+00673900	16	?mIsVideoMemory@tGDISurface@@UAEEXZ	dmp3D_MSVCR.lib	exact+ctx	0.797	cands=4 ctx_agree=0 caller_votes=0.8 ntok=2
+00673900	16	?mIsVideoMemory@tSysMemSurf@@UAEEXZ	dmp3D_MSVCR.lib	exact+ctx	0.962	cands=4 ctx_agree=0 caller_votes=3.2 ntok=2
 00673900	16	?mPauseRecordChannel@twStandardSoundChannel@@UAEEXZ	sfcTiger_MSVCR.lib	exact+ctx	0.797	cands=4 ctx_agree=0 caller_votes=0.8 ntok=2
 00673900	16	?mRecordChannel@twStandardSoundChannel@@UAEEXZ	sfcTiger_MSVCR.lib	exact+ctx	0.797	cands=4 ctx_agree=0 caller_votes=0.8 ntok=2
+00673900	16	?mSinglePassMultiTexturing@tSWView3D@@UBEEXZ	dmp3D_MSVCR.lib	exact+ctx	0.797	cands=4 ctx_agree=0 caller_votes=0.8 ntok=2
+00673900	16	?mSinglePassMultiTexturing@tView3D@@UBEEXZ	dmp3D_MSVCR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 0046c44f 004bc9b0 006313d0 00673900
+00673900	16	?mSinglePassMultiTexturing@tView3DExt@@UBEEXZ	dmp3D_MSVCR.lib	exact+ctx	0.797	cands=4 ctx_agree=0 caller_votes=0.8 ntok=2
 00673900	16	?mStopAndClearRecordChannel@twStandardSoundChannel@@UAEEXZ	sfcTiger_MSVCR.lib	exact+ctx	0.797	cands=4 ctx_agree=0 caller_votes=0.8 ntok=2
 00673940	16	?Attachable@Filter@CryptoPP@@UAE_NXZ	cryptlibR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 004350bb 004bc9a7 00637810 00673940
 00673940	16	?Attachable@Fork@CryptoPP@@UAE_NXZ	cryptlibR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 004350bb 004bc9a7 00637810 00673940
 00673940	16	?Attachable@JoinInterface@CryptoPP@@UAE_NXZ	cryptlibR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 004350bb 004bc9a7 00637810 00673940
 00673940	16	?CheckIntegrity@tObject@@MBE_NXZ	SharedR.lib,ScriptInterfaceR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 004350bb 004bc9a7 00637810 00673940
 00673940	16	?do_always_noconv@codecvt_base@std@@MBE_NXZ	SharedR.lib,ScriptInterfaceR.lib,cryptlibR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 004350bb 004bc9a7 00637810 00673940
+00673940	16	?mIsCopyComplete@tGDISurfMgr@@UAEEXZ	dmp3D_MSVCR.lib	exact+ctx	0.797	cands=4 ctx_agree=0 caller_votes=0.8 ntok=2
 00673940	16	?mIsReady@tBasicFile@@SAEXZ	sfcTiger_MSVCR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 004350bb 004bc9a7 00637810 00673940
 00673940	16	?mIsReady@twClock@@UAEEXZ	sfcTiger_MSVCR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 004350bb 004bc9a7 00637810 00673940
 00673940	16	?mIsReady@twDebugPart@@UAEEXZ	sfcTiger_MSVCR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 004350bb 004bc9a7 00637810 00673940
 00673940	16	?mIsReady@twMemoryPart@@UAEEXZ	sfcTiger_MSVCR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 004350bb 004bc9a7 00637810 00673940
+00673940	16	?mIsSwapComplete@tGDISurfMgr@@UAEEXZ	dmp3D_MSVCR.lib	exact+ctx	0.797	cands=4 ctx_agree=0 caller_votes=0.8 ntok=2
 00673940	16	?mIsValid@tAudioFileInfoPart@@UAEEXZ	sfcTiger_MSVCR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 004350bb 004bc9a7 00637810 00673940
 00673940	16	?mIsValid@tAudioPriorityManagerPart@@UAEEXZ	sfcTiger_MSVCR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 004350bb 004bc9a7 00637810 00673940
 00673940	16	?mIsValid@tBasicSoundFileManager@@UAEEXZ	sfcTiger_MSVCR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 004350bb 004bc9a7 00637810 00673940
@@ -2451,6 +2481,9 @@ address	size	mangled_name	library	tier	score	notes
 00673940	16	?mIsValid@twClock@@UAEEXZ	sfcTiger_MSVCR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 004350bb 004bc9a7 00637810 00673940
 00673940	16	?mIsValid@twDebugPart@@UAEEXZ	sfcTiger_MSVCR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 004350bb 004bc9a7 00637810 00673940
 00673940	16	?mIsValid@twMemoryPart@@UAEEXZ	sfcTiger_MSVCR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 004350bb 004bc9a7 00637810 00673940
+00673940	16	?mOkToUsePalettizedTextures@tD3DViewMgr@@IAEEXZ	dmp3D_MSVCR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 004350bb 004bc9a7 00637810 00673940
+00673940	16	?mRestore@tGDISurface@@UAEEXZ	dmp3D_MSVCR.lib	exact+ctx	0.797	cands=4 ctx_agree=0 caller_votes=0.8 ntok=2
+00673940	16	?mRestore@tSysMemSurf@@UAEEXZ	dmp3D_MSVCR.lib	exact+ctx	0.962	cands=4 ctx_agree=0 caller_votes=3.2 ntok=2
 00673940	16	?mStopAndClearChannel@tSoundChannel@@UAEEXZ	sfcTiger_MSVCR.lib	exact+ctx	0.797	cands=4 ctx_agree=0 caller_votes=0.8 ntok=2
 00673940	16	?mValidate@tFormatTag@@UAEEXZ	sfcTiger_MSVCR.lib	exact+ctx	0.797	cands=4 ctx_agree=0 caller_votes=0.8 ntok=2
 00673950	16	?mIsCommon@tPart@@UAEEPAV1@@Z	sfcTiger_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=5; libmatch=same
@@ -2666,6 +2699,7 @@ address	size	mangled_name	library	tier	score	notes
 00692790	32	?_Construct@std@@YAXPAU?$pair@$$CBDW4eMapObjectType@@@1@ABU21@@Z	SharedR.lib,ScriptInterfaceR.lib	exact+ctx	0.646	cands=2 ctx_agree=0 caller_votes=0.0 ntok=9; libmatch=same
 00692790	32	?_Construct@std@@YAXPAU?$pair@$$CBJJ@1@ABU21@@Z	sfcTiger_MSVCR.lib	exact+ctx	0.646	cands=2 ctx_agree=0 caller_votes=0.0 ntok=9; libmatch=same
 00693490	48	??_GtDynamicMemoryFreeListViaHandles@@UAEPAXI@Z	sfcTiger_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=12; libmatch=same
+00693490	48	??_GtTexBmp@@UAEPAXI@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=12; libmatch=same
 00695140	16	?_InitNewBasicFileBufFile@@YAEE@Z	sfcTiger_MSVCR.lib	multi	0.167	ambiguous group of 6 identical-structure addresses: 00627120 006903f0 00695140 006a2f00 006c54f0 006c57a0
 00695140	16	?_InitNewBasicFileSearch@@YAEE@Z	sfcTiger_MSVCR.lib	multi	0.167	ambiguous group of 6 identical-structure addresses: 00627120 006903f0 00695140 006a2f00 006c54f0 006c57a0
 00695140	16	?mGetMemory@tString@@KAPAXJ@Z	sfcTiger_MSVCR.lib	multi	0.167	ambiguous group of 6 identical-structure addresses: 00627120 006903f0 00695140 006a2f00 006c54f0 006c57a0
@@ -2677,26 +2711,239 @@ address	size	mangled_name	library	tier	score	notes
 00698e60	16	?mGetFirst@tGLFont@@SAPAV1@XZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=3
 00699560	16	?GetLockEvent@tDatabaseObject@nDatabase@@MAEPAVtThreadEvent@@XZ	SharedR.lib,ScriptInterfaceR.lib	exact+ctx	0.797	cands=3 ctx_agree=0 caller_votes=0.8 ntok=2
 0069a9e0	16	?mEject@twVolume@@UAEEE@Z	sfcTiger_MSVCR.lib	exact+ctx	0.797	cands=4 ctx_agree=0 caller_votes=0.8 ntok=2
-0069c250	64	?D3DUtil_SetIdentityMatrix@@YAXAAU_D3DMATRIX@@@Z	dmp3D_MSVCR.lib	fuzzy	0.612	ratio=0.900 runner_up=0.000 ctx_agree=0 calls=0/0 ntok=20/20
+0069a9f0	16	?mHandleMouse@t2D_3D_AppBase@@UAEEHHHI@Z	dmp3D_MSVCR.lib	exact+ctx	0.646	cands=2 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
+0069ab80	144	?mGetLocalMousePos@tDMPEvt@@SAEPAH0PAX1@Z	-	ref	0.99	votes=5 from ?mPreFlip@tMouseMgr_Ex@@UAEEPAVtGLSurface@@@Z,?mSetImage@tMouseMgr_Ex@@UAEXPBEIIJPBUtGLRgbQuad@@HH0J@Z,?mSetImage@tMouseMgr_Ex@@UAEXPBEIIJPBUtGLRgbQuad@@HHI@Z; no library body (callee/vtable name only)
+0069ae80	16	.\dmp3D_Release\tvectormath.obj|_$E6	dmp3D_MSVCR.lib	exact+ctx	0.823	cands=644 ctx_agree=1 caller_votes=0.0 ntok=2
+0069ae90	304	??0t3DTableInitializer@@QAE@XZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=64; libmatch=same
+0069afc0	288	?ArcTangent@@YAFMM@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=88; libmatch=same
+0069b0e0	64	?frand@@YAMXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=17; libmatch=same
+0069b120	64	??HtPoint3@@QBE?AU0@ABU0@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=17; libmatch=same
+0069b160	48	??YtPoint3@@QAEAAU0@ABU0@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=12; libmatch=same
+0069b190	64	??GtPoint3@@QBE?AU0@ABU0@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=17; libmatch=same
+0069b1d0	48	??ZtPoint3@@QAEAAU0@ABU0@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=12; libmatch=same
+0069b200	80	??LtPoint3@@QBE?AU0@ABU0@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=26; libmatch=same
+0069b200	80	?mCrossProduct@tPoint3@@QBE?AU1@ABU1@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=26; libmatch=same
+0069b250	32	??DtPoint3@@QBEMABU0@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=10; libmatch=same
+0069b250	32	?mDotProduct@tPoint3@@QBEMABU1@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=10; libmatch=same
+0069b270	64	??DtPoint3@@QBE?AU0@M@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=16; libmatch=same
+0069b2b0	48	??XtPoint3@@QAEAAU0@M@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=11; libmatch=same
+0069b2e0	64	??KtPoint3@@QBE?AU0@M@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=16; libmatch=same
+0069b320	48	??_0tPoint3@@QAEAAU0@M@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=11; libmatch=same
+0069b350	64	??9tPoint3@@QBEEABU0@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=20; libmatch=same
+0069b390	64	?mLength@tPoint3@@QBEMXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=23; libmatch=same
+0069b3d0	128	?mNormalize@tPoint3@@QAEEXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=49; libmatch=same
+0069b450	1696	?mMult@tMatrix@@QAEXABV1@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=675; libmatch=same
+0069baf0	1856	?mMult@tMatrix@@QBEXAAV1@ABV1@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=674; libmatch=same
+0069c230	32	?ThreeDMult@@YAXPAM00@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=9; libmatch=same
+0069c250	64	?mIdentity@tMatrix@@QAEXXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=20; libmatch=same
+0069c290	224	?mRotX@tMatrix@@QAEXF@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=78; libmatch=same
+0069c370	224	?mRotXRadians@tMatrix@@QAEXM@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=77; libmatch=same
+0069c450	224	?mRotY@tMatrix@@QAEXF@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=78; libmatch=same
+0069c530	208	?mRotYRadians@tMatrix@@QAEXM@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=74; libmatch=same
+0069c600	224	?mRotZ@tMatrix@@QAEXF@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=78; libmatch=same
+0069c6e0	224	?mRotZRadians@tMatrix@@QAEXM@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=77; libmatch=same
+0069c7c0	176	?mScale@tMatrix@@QAEXMMM@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=52; libmatch=same
+0069c870	176	?mTranslate@tMatrix@@QAEXMMM@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=56; libmatch=same
+0069c920	32	?mForceTranslate@tMatrix@@QAEXMMM@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=8; libmatch=same
+0069c940	48	?mPostTranslate@tMatrix@@QAEXMMM@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=11; libmatch=same
+0069c970	96	?mTransform@tMatrix@@QBEXAAUtPoint3@@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=34; libmatch=same
+0069c9d0	96	?mTransform@tMatrix@@QBEXAAUtPoint3@@ABU2@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=33; libmatch=same
+0069ca30	176	?mTransform@tMatrix@@QBEXAAUtPoint4@@ABUtPoint3@@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=61; libmatch=same
+0069cae0	96	?mTransform3x3@tMatrix@@QBEXAAUtPoint3@@ABU2@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=32; libmatch=same
+0069cb40	128	?mInverseTransform@tMatrix@@QBEXAAUtPoint3@@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=41; libmatch=same
+0069cbc0	128	?mInverseTransform@tMatrix@@QBEXAAUtPoint3@@ABU2@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=42; libmatch=same
+0069cc40	128	?mInverseTransform3x3@tMatrix@@QBEXAAUtPoint3@@ABU2@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=43; libmatch=same
+0069ccc0	32	?ThreeDSquareRoot@@YAXMAAM@Z	dmp3D_MSVCR.lib	exact+ctx	0.912	cands=4 ctx_agree=1 caller_votes=1.0 ntok=7
+0069cce0	16	?IntelSquareRoot@@YAXMAAM@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=5; libmatch=same
+0069ccf0	176	.\dmp3D_Release\tvectormath.obj|_$E3	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=20
+0069d080	560	?mCreateSurface@tD3DViewSurfMgr@@UAEPAVtGLSurface@@ABVtGLPixFmt@@IIE@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=153; libmatch=same
+0069d2b0	240	?mResetDataMembers@tD3DViewMgr@@IAEXXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=1 caller_votes=0.0 ntok=53; libmatch=same
+0069d3a0	16	?mGetView3DName@tD3DViewMgr@@UAEPBDXZ	dmp3D_MSVCR.lib	exact+ctx	0.797	cands=215 ctx_agree=0 caller_votes=0.8 ntok=2
+0069d3b0	48	?mGetCaps@tD3DViewMgr@@UAEKXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=14; libmatch=same
+0069d3f0	744	?mInitD3D@tD3DViewMgr@@IAEEPAUHWND__@@PAU_GUID@@1PAU_DDSURFACEDESC2@@EE@Z	dmp3D_MSVCR.lib	ref	0.938	body differs (ratio 0.99); votes=2 from ?mInitFullscreen@tD3DViewMgr@@UAEEPAX0HHPBUtGLRectI@@E@Z,?mInitWindowed@tD3DViewMgr@@UAEEPAX0PBUtGLRectI@@E@Z; libmatch=same
+0069dcb0	32	?mEnableLuminanceTexturing@tD3DViewMgr@@UAEEE@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=4; libmatch=same
+0069dcd0	288	?mSetupTexture@tD3DViewMgr@@UBEXW4eMultipassTextures@tView3D@@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=96; libmatch=same
+0069ddf0	352	?mTestLuminanceTexturing@tD3DViewMgr@@UAEXXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=112; libmatch=same
+0069df50	240	?mInitView3D@tD3DViewMgr@@IAEXPBUtGLRectI@@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=98; libmatch=same
+0069e040	272	?mDoneD3D@tD3DViewMgr@@IAEXXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=3 caller_votes=0.0 ntok=79; libmatch=same
+0069e150	16	?mBlendFunc@tSWView3D@@UAEEW4eBlendFactor@@0@Z	dmp3D_MSVCR.lib	exact+ctx	0.797	cands=4 ctx_agree=0 caller_votes=0.8 ntok=2
+0069e150	16	?mEnumDispModes@tD3DViewMgr@@UAEEP6AEHHPAX@Z0@Z	dmp3D_MSVCR.lib	exact+ctx	0.797	cands=4 ctx_agree=0 caller_votes=0.8 ntok=2
+0069e160	160	?mInitFullscreen@tD3DViewMgr@@UAEEPAX0HHPBUtGLRectI@@E@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=1 caller_votes=0.0 ntok=71; libmatch=same
+0069e200	112	?mInitWindowed@tD3DViewMgr@@UAEEPAX0PBUtGLRectI@@E@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=46; libmatch=same
+0069e270	48	?mDone@tD3DViewMgr@@UAEEXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=13; libmatch=same
+0069e2a0	16	?mAddRef@tD3DViewMgr@@UAEXXZ	dmp3D_MSVCR.lib	exact+ctx	0.823	cands=2 ctx_agree=1 caller_votes=0.0 ntok=2
+0069e2b0	80	?mDispose@tD3DViewMgr@@UAEPAXXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=24; libmatch=same
+0069e300	208	?mBeginScene@tD3DViewMgr@@UAEEXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=65; libmatch=same
+0069e3d0	192	?mEndScene@tD3DViewMgr@@UAEEXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=69; libmatch=same
+0069e490	128	?mSetPolygonMode@tD3DViewMgr@@UAEII@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=44; libmatch=same
+0069e510	16	?mGetPolygonMode@tD3DViewMgr@@UAEIXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
+0069e520	112	?mSetClearColor@tD3DViewMgr@@UAEEEEE@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=29; libmatch=same
+0069e590	224	?mEnableGlobalBlend@tD3DViewMgr@@UAEEE@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=67; libmatch=same
+0069e670	16	?mIsBlendEnabled@tD3DViewMgr@@UAEEXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
+0069e670	16	?mIsBlendEnabled@tSWView3D@@UAEEXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
+0069e680	128	?mBlendEnable@tD3DViewMgr@@UAEEE@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=40; libmatch=same
+0069e700	576	?mBlendFunc@tD3DViewMgr@@UAEEW4eBlendFactor@@0@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=159; libmatch=same
+0069e940	16	?mGetSrcBlendCaps@tD3DViewMgr@@UAEKXZ	dmp3D_MSVCR.lib	exact-short	0.5	cands=1 ctx_agree=0 caller_votes=0.0 ntok=5
+0069e950	96	.\dmp3D_Release\d3dViewMgr.obj|?D3DBlendCapsTo_eBlendFactor@@YAKK@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=36; libmatch=same
+0069e9b0	16	?mGetDstBlendCaps@tD3DViewMgr@@UAEKXZ	dmp3D_MSVCR.lib	exact-short	0.5	cands=1 ctx_agree=0 caller_votes=0.0 ntok=5
+0069e9c0	224	?mAlphaTestEnable@tD3DViewMgr@@UAEEE@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=73; libmatch=same
+0069eaa0	240	?mClear@tD3DViewMgr@@UAEEHHHHEE@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=84; libmatch=same
+0069eb90	96	?mFlip@tD3DViewMgr@@UAEEXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=1 caller_votes=0.0 ntok=34; libmatch=same
+0069ebf0	112	?mEnableZWriteAndTest@tD3DViewMgr@@UAEEE@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=35; libmatch=same
+0069ec60	96	?mEnableZWrite@tD3DViewMgr@@UAEEE@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=27; libmatch=same
+0069ecc0	80	?mEnableZTest@tD3DViewMgr@@UAEEE@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=28; libmatch=same
+0069ed10	80	?mWndProcStub@tD3DViewMgr@@KGJPAUHWND__@@IIJ@Z	dmp3D_MSVCR.lib	exact+ctx	0.956	cands=2 ctx_agree=3 caller_votes=0.0 ntok=24
+0069ed60	704	?mWndProc@tD3DViewMgr@@IAGJPAUHWND__@@IIJ@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=6 caller_votes=0.0 ntok=187; libmatch=same
+0069f020	288	?dmpGetD3DView3D@@YAPAVtView3D@@XZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=1 caller_votes=0.0 ntok=72; libmatch=same
+0069f160	16	?mTrueRelease@tGLSurfMgr@@MAEXXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=4
+0069f170	16	?mAddRef@tGLSurfMgr@@UAEHXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=4; libmatch=same
+0069f180	16	?mDispose@tGLSurfMgr@@UAEPAV1@XZ	dmp3D_MSVCR.lib	exact+ctx	0.646	cands=2 ctx_agree=0 caller_votes=0.0 ntok=4; libmatch=same
+0069f190	16	?mLightingEnabled@tView3DExt@@UAEEXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
+0069f1a0	16	?mEnumDispModes@tD3DViewSurfMgr@@UAEEP6AEHHHPAX@Z0@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=3; libmatch=same
+0069f1b0	16	?mInitFullScreenBitBlt@tD3DViewSurfMgr@@UAEEIIIIIPAX0@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=3; libmatch=same
+0069f1c0	16	?mInitWindowed@tD3DViewSurfMgr@@UAEEIIIPAX0@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=3; libmatch=same
+0069f1d0	64	?mDone@tD3DViewSurfMgr@@UAEXXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=19; libmatch=same
 0069f210	16	?mGetBitsPerSample@tSoundChannelFormat@@UAEJXZ	sfcTiger_MSVCR.lib	exact+ctx	0.797	cands=4 ctx_agree=0 caller_votes=0.8 ntok=2
 0069f210	16	?mGetExecuteAfterThisNumberAttaches@tSoundChannelCommand@@UAEJXZ	sfcTiger_MSVCR.lib	exact+ctx	0.797	cands=4 ctx_agree=0 caller_votes=0.8 ntok=2
+0069f210	16	?mGetFrontBuffer@tD3DViewSurfMgr@@UAEPAVtGLSurface@@XZ	dmp3D_MSVCR.lib	exact+ctx	0.797	cands=4 ctx_agree=0 caller_votes=0.8 ntok=2
 0069f210	16	?mGetPreviousBlock@tSoundMemoryBlock@@UAEJXZ	sfcTiger_MSVCR.lib	exact+ctx	0.797	cands=4 ctx_agree=0 caller_votes=0.8 ntok=2
 0069f210	16	?mGetSeed@tSequencePart@@UAEKXZ	sfcTiger_MSVCR.lib	exact+ctx	0.883	cands=4 ctx_agree=0 caller_votes=1.6 ntok=2
 0069f210	16	?mGetVolume@tChannelAttributes@@UAEJXZ	sfcTiger_MSVCR.lib	exact+ctx	0.797	cands=4 ctx_agree=0 caller_votes=0.8 ntok=2
+0069f220	16	?mSwapBuffers@tD3DViewSurfMgr@@UAEEE@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=3; libmatch=same
+0069f230	16	?mCopyToFront@tD3DViewSurfMgr@@UAEEABUtGLRectI@@0PAVtGLSurface@@E@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=3; libmatch=same
+0069f240	16	?mIsCopyComplete@tD3DViewSurfMgr@@UAEEXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=3; libmatch=same
+0069f240	16	?mIsSwapComplete@tD3DViewSurfMgr@@UAEEXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=3; libmatch=same
+0069f250	16	?mGetSurfMgr@tD3DViewMgr@@UAEPAVtGLSurfMgr@@XZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
+0069f260	16	?mSinglePassMultiTexturing@tD3DViewMgr@@UBEEXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
+0069f270	16	?mGetTexturingCaps@tD3DViewMgr@@UBEKXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
+0069f280	32	??_GtD3DViewMgr@@UAEPAXI@Z	dmp3D_MSVCR.lib	exact+ctx	0.912	cands=237 ctx_agree=2 caller_votes=0.0 ntok=11
+0069f2a0	176	??1tD3DViewMgr@@UAE@XZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=50; libmatch=same
+0069f350	64	??1tD3DViewSurfMgr@@IAE@XZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=20; libmatch=same
+0069f3b0	192	??0tSWView3D@@QAE@XZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=46; libmatch=same
 0069f470	16	?GetType@tGFEntry@@UAE?AW4eGFItemType@tGFItem@@XZ	SharedR.lib,ScriptInterfaceR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 00402fa5 0069f470 006fe8a0 0073ea74
 0069f470	16	?MaxRetrieveable@RandomPool@CryptoPP@@UAEKXZ	cryptlibR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 00402fa5 0069f470 006fe8a0 0073ea74
 0069f470	16	?MaxRetrieveable@Sink@CryptoPP@@UAEKXZ	cryptlibR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 00402fa5 0069f470 006fe8a0 0073ea74
 0069f470	16	?ReadBand_Fail@@YAJPAUAudioDecoder@@JJ@Z	sfcTiger_MSVCR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 00402fa5 0069f470 006fe8a0 0073ea74
+0069f470	16	?mChooseInitialSurfMgr@t2DAppBase@@MAEHXZ	dmp3D_MSVCR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 00402fa5 0069f470 006fe8a0 0073ea74
 0069f470	16	?mGetBPV@tShipInfo@@QAEJXZ	ScriptInterfaceR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 00402fa5 0069f470 006fe8a0 0073ea74
+0069f470	16	?mGetFrontBuffer@tGDISurfMgr@@UAEPAVtGLSurface@@XZ	dmp3D_MSVCR.lib	exact+ctx	0.797	cands=4 ctx_agree=0 caller_votes=0.8 ntok=2
+0069f470	16	?mGetOSSpecificPtr@tSysMemSurf@@UAEPAXXZ	dmp3D_MSVCR.lib	exact+ctx	0.962	cands=4 ctx_agree=0 caller_votes=3.2 ntok=2
+0069f470	16	?mGetSurfMgr@tView3DExt@@UAEPAVtGLSurfMgr@@XZ	dmp3D_MSVCR.lib	exact+ctx	0.797	cands=4 ctx_agree=0 caller_votes=0.8 ntok=2
+0069f470	16	?mGetTexturingCaps@tView3DExt@@UBEKXZ	dmp3D_MSVCR.lib	exact+ctx	0.883	cands=4 ctx_agree=0 caller_votes=1.6 ntok=2
 0069f470	16	?mGetTotalBPV@tShipInfo@@QAEJXZ	ScriptInterfaceR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 00402fa5 0069f470 006fe8a0 0073ea74
 0069f470	16	?sync@tStreamBuf@tLogStream@nLog@@UAEHXZ	SharedR.lib,ScriptInterfaceR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 00402fa5 0069f470 006fe8a0 0073ea74
 0069f470	16	?uflow@tStreamBuf@tLogStream@nLog@@UAEHXZ	SharedR.lib,ScriptInterfaceR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 00402fa5 0069f470 006fe8a0 0073ea74
 0069f470	16	?underflow@tStreamBuf@tLogStream@nLog@@UAEHXZ	SharedR.lib,ScriptInterfaceR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 00402fa5 0069f470 006fe8a0 0073ea74
+0069f480	16	?mGetSurfMgr@tSWView3D@@UAEPAVtGLSurfMgr@@XZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
+0069f490	32	??_GtSWView3D@@UAEPAXI@Z	dmp3D_MSVCR.lib	exact+ctx	0.912	cands=237 ctx_agree=2 caller_votes=0.0 ntok=11
+0069f4b0	96	??1tSWView3D@@UAE@XZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=21; libmatch=same
+0069f510	192	?mEnumDispModes@tSWView3D@@UAEEP6AEHHPAX@Z0@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=74; libmatch=same
+0069f5d0	48	.\dmp3D_Release\swView3D.obj|?MyCallback@@YAEHHHPAX@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=13; libmatch=same
+0069f600	592	?mInit@tSWView3D@@AAEEPAX0HHPBUtGLRectI@@EE@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=209; libmatch=same
+0069f850	80	?mInitFullscreen@tSWView3D@@UAEEPAX0HHPBUtGLRectI@@E@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=29; libmatch=same
+0069f8a0	96	?mInitWindowed@tSWView3D@@UAEEPAX0PBUtGLRectI@@E@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=37; libmatch=same
+0069f900	144	?mDone@tSWView3D@@UAEEXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=47; libmatch=same
+0069f990	128	?mBeginScene@tSWView3D@@UAEEXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=37; libmatch=same
+0069fa10	64	?mEndScene@tSWView3D@@UAEEXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=27; libmatch=same
+0069fa50	16	?mSetPolygonMode@tSWView3D@@UAEII@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
+0069fa60	16	?mGetPolygonMode@tSWView3D@@UAEIXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
+0069fa70	80	?mSetViewport@tSWView3D@@UAEXHHHH@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=26; libmatch=same
+0069fac0	16	?mGetView3DName@tSWView3D@@UAEPBDXZ	dmp3D_MSVCR.lib	exact+ctx	0.797	cands=215 ctx_agree=0 caller_votes=0.8 ntok=2
+0069fad0	32	?mGetCaps@tSWView3D@@UAEKXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=6; libmatch=same
+0069faf0	32	?mSetClearColor@tD3DViewMgr@@UAEEUtGLRgbQuad@@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=9; libmatch=same
+0069faf0	32	?mSetClearColor@tSWView3D@@UAEEUtGLRgbQuad@@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=9; libmatch=same
+0069fb10	64	?mSetClearColor@tSWView3D@@UAEEEEE@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=14; libmatch=same
+0069fb50	64	?mClear@tD3DViewMgr@@UAEEEE@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=22; libmatch=same
+0069fb50	64	?mClear@tSWView3D@@UAEEEE@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=22; libmatch=same
+0069fb90	304	?mClear@tSWView3D@@UAEEHHHHEE@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=106; libmatch=same
+0069fcc0	32	?mFlip@tSWView3D@@UAEEXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=9; libmatch=same
+0069fce0	16	?mAddRef@tSWView3D@@UAEXXZ	dmp3D_MSVCR.lib	exact+ctx	0.823	cands=2 ctx_agree=1 caller_votes=0.0 ntok=2
+0069fcf0	48	?mDispose@tSWView3D@@UAEPAXXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=15; libmatch=same
+0069fd20	128	?dmpGetSWView3D@@YAPAVtView3D@@XZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=32; libmatch=same
+0069fda0	32	?mBlendEnable@tSWView3D@@UAEEE@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=6; libmatch=same
+0069fda0	32	?mEnableGlobalBlend@tView3DExt@@UAEEE@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=6; libmatch=same
+0069fdc0	16	?mGetSrcBlendCaps@tSWView3D@@UAEKXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
 0069fdd0	16	?GetType@tGFSection@@UAE?AW4eGFItemType@tGFItem@@XZ	SharedR.lib,ScriptInterfaceR.lib	exact+ctx	0.646	cands=3 ctx_agree=0 caller_votes=0.0 ntok=2
 0069fdd0	16	?do_encoding@codecvt_base@std@@MBEHXZ	SharedR.lib,ScriptInterfaceR.lib,cryptlibR.lib	exact+ctx	0.646	cands=3 ctx_agree=0 caller_votes=0.0 ntok=2
 0069fdd0	16	?do_max_length@codecvt_base@std@@MBEHXZ	SharedR.lib,ScriptInterfaceR.lib,cryptlibR.lib	exact+ctx	0.646	cands=3 ctx_agree=0 caller_votes=0.0 ntok=2
-0069ff20	32	??_GByteQueue@CryptoPP@@UAEPAXI@Z	cryptlibR.lib	exact+ctx	0.912	cands=237 ctx_agree=2 caller_votes=0.0 ntok=11
-0069ff40	80	??1ByteQueue@CryptoPP@@UAE@XZ	cryptlibR.lib	fuzzy	0.572	ratio=0.973 runner_up=0.900 ctx_agree=0 calls=1/1 ntok=18/19
+0069fdd0	16	?mGetDstBlendCaps@tSWView3D@@UAEKXZ	dmp3D_MSVCR.lib	exact+ctx	0.646	cands=3 ctx_agree=0 caller_votes=0.0 ntok=2
+0069fdd0	16	?tGLSurfMgr_GetVersion@@YAHXZ	dmp3D_MSVCR.lib	exact+ctx	0.646	cands=3 ctx_agree=0 caller_votes=0.0 ntok=2
+0069fde0	32	?mAlphaTestEnable@tSWView3D@@UAEEE@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=6; libmatch=same
+0069fe00	32	?mEnableZWriteAndTest@tSWView3D@@UAEEE@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=7; libmatch=same
+0069fe20	32	?mEnableZWrite@tSWView3D@@UAEEE@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=6; libmatch=same
+0069fe40	32	?mEnableZTest@tSWView3D@@UAEEE@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=6; libmatch=same
+0069fe60	192	??0tGLDC@@QAE@XZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=52; libmatch=same
+0069ff20	32	??_GtGLDC@@UAEPAXI@Z	dmp3D_MSVCR.lib	exact+ctx	0.912	cands=237 ctx_agree=2 caller_votes=0.0 ntok=11
+0069ff40	80	??1tGLDC@@UAE@XZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=19; libmatch=same
+0069ff90	384	?mSetSurface@tGLDC@@UAEPAVtGLSurface@@PAV2@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=133; libmatch=same
+006a0110	16	?mGetSurface@tGLDC@@UAEPAVtGLSurface@@XZ	dmp3D_MSVCR.lib	exact+ctx	0.797	cands=4 ctx_agree=0 caller_votes=0.8 ntok=2
+006a0120	48	?mGetSurfaceWidth@tGLDC@@UAEJXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=15; libmatch=same
+006a0150	48	?mGetSurfaceHeight@tGLDC@@UAEJXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=15; libmatch=same
+006a0180	160	?mSetClipRect@tGLDC@@UAEXABUtGLRectI@@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=52; libmatch=same
+006a0220	16	?mGetClipRect@tGLDC@@UAEABUtGLRectI@@XZ	dmp3D_MSVCR.lib	exact+ctx	0.646	cands=2 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
+006a0230	16	?mFont@tGLDC@@UAEAAVtUniFont@@XZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
+006a0240	64	?mSetFgColor@tGLDC@@UAE?AUtGLRgbQuad@@ABU2@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=26; libmatch=same
+006a0280	64	?mSetBgColor@tGLDC@@UAE?AUtGLRgbQuad@@ABU2@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=26; libmatch=same
+006a02c0	16	?mGetFgColor@tGLDC@@UAE?AUtGLRgbQuad@@XZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=4; libmatch=same
+006a02d0	16	?mGetBgColor@tGLDC@@UAE?AUtGLRgbQuad@@XZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=4; libmatch=same
+006a02e0	32	?mEnableOpaqueBkgnd@tGLDC@@UAEEE@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=5; libmatch=same
+006a0300	16	?mSetTextAlign@tGLDC@@UAEKK@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=4; libmatch=same
+006a0310	32	?mMoveTo@tGLDC@@UAEXHH@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=5; libmatch=same
+006a0330	16	?mMoveToY@tGLDC@@UAEXH@Z	dmp3D_MSVCR.lib	exact+ctx	0.797	cands=4 ctx_agree=0 caller_votes=0.8 ntok=3
+006a0340	32	?mGetCurrentPosition@tGLDC@@UAEXPAH0@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=11; libmatch=same
+006a0360	48	?mTextOut@tGLDC@@UAEEHHPBDHH@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=15; libmatch=same
+006a0390	48	?mTextOut@tGLDC@@UAEEHHPBGHH@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=15; libmatch=same
+006a03c0	80	?mFillRect@tGLDC@@UAEEPBUtGLRectI@@PBUtGLRgbQuad@@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=31; libmatch=same
+006a0410	80	?mCopyBits@tGLDC@@UAEEABUtGLRectI@@AAV1@HH@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=31; libmatch=same
+006a0460	48	?mNewBasicFile@tTexMgrBmp@@MAEPAVtBasicFile@@XZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=10; libmatch=same
+006a0490	64	??0tTexMgr@@QAE@H@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=15; libmatch=same
+006a04d0	160	??1tTexMgr@@QAE@XZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=57; libmatch=same
+006a0570	464	?mInit@tTexMgr@@QAEEPBD@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=148; libmatch=same
+006a0740	32	??_GtTexMgrBmp@@UAEPAXI@Z	dmp3D_MSVCR.lib	exact+ctx	0.912	cands=237 ctx_agree=2 caller_votes=0.0 ntok=11
+006a0760	16	??1tTexMgrBmp@@UAE@XZ	dmp3D_MSVCR.lib	exact+ctx	0.823	cands=257 ctx_agree=1 caller_votes=0.0 ntok=2
+006a0770	96	?mDone@tTexMgr@@QAEXXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=33; libmatch=same
+006a07d0	272	?mNewTexBmp@tTexMgr@@QAEHPBD@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=101; libmatch=same
+006a08e0	64	?mDeleteTexBmp@tTexMgr@@QAEXH@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=19; libmatch=same
+006a0920	48	?mIDToTexBmp@tTexMgr@@QAEPAVtTexBmp@@H@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=14; libmatch=same
+006a0950	128	.\dmp3D_Release\frameTimer.obj|_$E12	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=23; libmatch=same
+006a09d0	480	?mPause@tFrameTimer@@QAEXE@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=158; libmatch=same
+006a0bb0	416	?mNewFrame@tFrameTimer@@QAEXXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=134; libmatch=same
+006a0d50	320	?mGetTick@tFrameTimer@@QAENXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=108; libmatch=same
+006a0e90	80	?mSetMask@tComponent@tGLPixFmt@@QAEXK@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=29; libmatch=same
+006a0ee0	176	??0tGLPixFmt@@QAE@W4ePixFmtID@0@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=69; libmatch=same
+006a0f90	464	?mSetFormatRGB@tGLPixFmt@@QAEEKKKKK@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=186; libmatch=same
+006a1160	64	?mSetFormatPAL8@tGLPixFmt@@QAEEXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=18; libmatch=same
+006a11a0	80	??9tGLPixFmt@@QBEEABV0@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=31; libmatch=same
+006a1230	112	?mDeterminePixFmtID@tGLPixFmt@@SA?AW4ePixFmtID@1@KKKKK@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=47; libmatch=same
+006a12a0	288	?mRGBToNative@tGLSurface@@UAEKABUtGLRgbQuad@@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=112; libmatch=same
+006a13c0	944	?mFillRect@tGLSurface@@UAEEIPBUtGLRectI@@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=333; libmatch=same
+006a1770	1376	?mCopyBits@tGLSurface@@UAEEABUtGLRectI@@PAV1@HH@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=494; libmatch=same
+006a1cd0	368	.\dmp3D_Release\tGLSurface.obj|?PAL8_To_RGB565@@YAXABUtGLRectI@@AAVtGLSurface@@1HH@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=129; libmatch=same
+006a1e40	384	.\dmp3D_Release\tGLSurface.obj|?PAL8_To_ARGB1555@@YAXABUtGLRectI@@AAVtGLSurface@@1HH@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=129; libmatch=same
+006a1fc0	304	.\dmp3D_Release\tGLSurface.obj|?ARGB1555_To_RGB888@@YAXABUtGLRectI@@AAVtGLSurface@@1HH@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=116; libmatch=same
+006a1fc0	304	.\dmp3D_Release\tGLSurface.obj|?RGB555_To_RGB888@@YAXABUtGLRectI@@AAVtGLSurface@@1HH@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=116; libmatch=same
+006a20f0	304	.\dmp3D_Release\tGLSurface.obj|?RGB565_To_RGB888@@YAXABUtGLRectI@@AAVtGLSurface@@1HH@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=116; libmatch=same
+006a2220	32	?mWidth@tGLRectI@@QBEHXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=8; libmatch=same
+006a2240	32	?mHeight@tGLRectI@@QBEHXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=8; libmatch=same
+006a2260	320	.\dmp3D_Release\tGLSurface.obj|?RGB888_To_RGB555@@YAXABUtGLRectI@@AAVtGLSurface@@1HH@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=116; libmatch=same
+006a23a0	320	.\dmp3D_Release\tGLSurface.obj|?RGB888_To_RGB565@@YAXABUtGLRectI@@AAVtGLSurface@@1HH@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=117; libmatch=same
+006a24e0	320	.\dmp3D_Release\tGLSurface.obj|?RGB888_To_ARGB1555@@YAXABUtGLRectI@@AAVtGLSurface@@1HH@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=117; libmatch=same
+006a2620	992	?mBltTrans@tGLSurface@@UAEEABUtGLRectI@@PAV1@HHI@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=371; libmatch=same
+006a2a00	112	??0tSysMemSurf@@QAE@XZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=33; libmatch=same
+006a2a70	16	??1tGLSurface@@UAE@XZ	dmp3D_MSVCR.lib	exact+ctx	0.912	cands=95 ctx_agree=1 caller_votes=1.0 ntok=2
+006a2a80	32	??_GtGLSurface@@UAEPAXI@Z	dmp3D_MSVCR.lib	exact+ctx	0.875	cands=22 ctx_agree=2 caller_votes=0.0 ntok=12
+006a2aa0	32	??_GtSysMemSurf@@UAEPAXI@Z	dmp3D_MSVCR.lib	exact+ctx	0.912	cands=237 ctx_agree=2 caller_votes=0.0 ntok=11
+006a2ac0	32	?mLock@tSysMemSurf@@UAEEXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=10; libmatch=same
+006a2ae0	32	?mRelease@tGDISurface@@UAEHXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=16; libmatch=same
+006a2ae0	32	?mRelease@tSysMemSurf@@UAEHXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=16; libmatch=same
+006a2b00	32	?mUnlock@tGDISurface@@UAEEXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=9; libmatch=same
+006a2b00	32	?mUnlock@tSysMemSurf@@UAEEXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=9; libmatch=same
+006a2b20	368	?mSetSurfaceDesc@tSysMemSurf@@UAEEABVtGLPixFmt@@IIJPAXPBUtGLRgbQuad@@I@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=132; libmatch=same
+006a2c90	96	??1tSysMemSurf@@UAE@XZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=24; libmatch=same
+006a2cf0	16	?mGetPalette@tSysMemSurf@@UAEPBUtGLRgbQuad@@XZ	dmp3D_MSVCR.lib	exact+ctx	0.962	cands=3 ctx_agree=0 caller_votes=3.2 ntok=2
+006a2d00	80	?mSetPaletteEntries@tSysMemSurf@@UAEEKKPBUtGLRgbQuad@@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=29; libmatch=same
+006a2d50	80	?mGetPaletteEntries@tSysMemSurf@@UAEEKKPAUtGLRgbQuad@@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=27; libmatch=same
+006a2da0	16	?mGetPos@tStream_BasicFile@@UAEKXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=3; libmatch=same
 006a2db0	16	?Attach@JoinInterface@CryptoPP@@UAEXPAVBufferedTransformation@2@@Z	cryptlibR.lib	multi	0.333	ambiguous group of 3 identical-structure addresses: 006a2db0 00713fb0 0071b660
 006a2db0	16	?Detach@JoinInterface@CryptoPP@@UAEXPAVBufferedTransformation@2@@Z	cryptlibR.lib	multi	0.333	ambiguous group of 3 identical-structure addresses: 006a2db0 00713fb0 0071b660
 006a2db0	16	?Double@?$MultiplicativeGroup@V?$PolynomialOver@VField@?%D:\Work\Sfc\crypto31\secshare.cpp378418273@@@CryptoPP@@@CryptoPP@@UBEABV?$PolynomialOver@VField@?%D:\Work\Sfc\crypto31\secshare.cpp378418273@@@2@ABV32@@Z	cryptlibR.lib	multi	0.333	ambiguous group of 3 identical-structure addresses: 006a2db0 00713fb0 0071b660
@@ -2715,24 +2962,115 @@ address	size	mangled_name	library	tier	score	notes
 006a2db0	16	?Put@Join@CryptoPP@@UAEXE@Z	cryptlibR.lib	multi	0.333	ambiguous group of 3 identical-structure addresses: 006a2db0 00713fb0 0071b660
 006a2db0	16	?Run@tCallbackAction@nTestSim@@UAEXABVtSimEvent@2@@Z	SharedR.lib,ScriptInterfaceR.lib	multi	0.333	ambiguous group of 3 identical-structure addresses: 006a2db0 00713fb0 0071b660
 006a2db0	16	?mNewTeam@tScriptInterface@@UAEXABVtTeamScriptDescription@@@Z	ScriptInterfaceR.lib	multi	0.333	ambiguous group of 3 identical-structure addresses: 006a2db0 00713fb0 0071b660
+006a2db0	16	?mSetPos@tStream_BasicFile@@UAEEK@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=6; libmatch=same
+006a2dc0	128	?mGet@tStream_BasicFile@@UAEEPAXK@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=41; libmatch=same
+006a2e40	128	?mPut@tStream_BasicFile@@UAEEPBXK@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=41; libmatch=same
+006a2ec0	64	??0tErrInfo@@QAA@PBDH0ZZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=20; libmatch=same
 006a2f00	16	??2tBaseItemBag@@SAPAXI@Z	sfcTiger_MSVCR.lib	exact+ctx	0.956	cands=6 ctx_agree=1 caller_votes=2.0 ntok=5
 006a2f00	16	??2tItemBag@@SAPAXI@Z	sfcTiger_MSVCR.lib	exact+ctx	0.956	cands=6 ctx_agree=1 caller_votes=2.0 ntok=5
 006a2f00	16	?_InitNewBasicFileBufFile@@YAEE@Z	sfcTiger_MSVCR.lib	multi	0.167	ambiguous group of 6 identical-structure addresses: 00627120 006903f0 00695140 006a2f00 006c54f0 006c57a0
 006a2f00	16	?_InitNewBasicFileSearch@@YAEE@Z	sfcTiger_MSVCR.lib	multi	0.167	ambiguous group of 6 identical-structure addresses: 00627120 006903f0 00695140 006a2f00 006c54f0 006c57a0
+006a2f00	16	?_dmpMalloc@@YAPAXI@Z	dmp3D_MSVCR.lib	exact+ctx	0.956	cands=6 ctx_agree=1 caller_votes=2.0 ntok=5
+006a2f00	16	?_dmpMalloc_dbg@@YAPAXIPBDH@Z	dmp3D_MSVCR.lib	exact+ctx	0.823	cands=6 ctx_agree=1 caller_votes=0.0 ntok=5
 006a2f00	16	?mGetMemory@tBaseItemBag@@SAPAEJ@Z	sfcTiger_MSVCR.lib	exact+ctx	0.823	cands=6 ctx_agree=1 caller_votes=0.0 ntok=5
 006a2f00	16	?mGetMemory@tString@@KAPAXJ@Z	sfcTiger_MSVCR.lib	multi	0.167	ambiguous group of 6 identical-structure addresses: 00627120 006903f0 00695140 006a2f00 006c54f0 006c57a0
 006a2f10	16	??3tBaseItemBag@@SAXPAX@Z	sfcTiger_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=5
 006a2f10	16	??3tItemBag@@SAXPAX@Z	sfcTiger_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=5
+006a2f10	16	?_dmpFree@@YAXPAX@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=5
+006a2f10	16	?_dmpFree_dbg@@YAXPAXPBDH@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=5
 006a2f10	16	?mFreeMemory@tBaseItemBag@@SAXPAXJ@Z	sfcTiger_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=5
+006a2f20	96	?mByteOutput@tStream_Base@@QAEEPBXK@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=42; libmatch=same
+006a2f80	96	?mByteInput@tStream_Base@@QAEEPAXK@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=42; libmatch=same
+006a2fe0	256	?mCopyImage@tMouseMgr_Ex@@IAEEABUtGLRectI@@PAVtGLSurface@@1IIEI@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=110; libmatch=same
+006a30e0	96	?mResetMembers@tMouseMgr_Ex@@IAEXXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=24; libmatch=same
+006a3140	528	?mInit@tMouseMgr_Ex@@UAEEPAX0PAVtGLSurfMgr@@EE@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=167; libmatch=same
+006a3350	352	?mDone@tMouseMgr_Ex@@UAEXXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=111; libmatch=same
+006a34b0	272	?mPreFlip@tMouseMgr_Ex@@UAEEPAVtGLSurface@@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=103; libmatch=same
+006a35c0	32	?mPostFlip@tMouseMgr_Ex@@UAEXPAVtGLSurface@@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=9; libmatch=same
+006a35e0	32	?mAsync@tMouseMgr_Ex@@IAEXXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=12; libmatch=same
+006a3600	304	?mShowCursor@tMouseMgr_Ex@@UAEEE@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=117; libmatch=same
+006a3730	32	?mEnterCriticalSection@tMouseMgr_Ex@@UAEXXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=12; libmatch=same
+006a3730	32	?mLock@tMouseMgr_Ex@@IAEXXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=12; libmatch=same
 006a3750	8	?CipherTextLength@PK_FixedLengthCryptoSystem@CryptoPP@@WPPPPPPOM@BEII@Z	cryptlibR.lib	exact-short	0.5	cands=1 ctx_agree=0 caller_votes=0.0 ntok=2
 006a3750	8	?MaxPlainTextLength@PK_FixedLengthCryptoSystem@CryptoPP@@WPPPPPPOM@BEII@Z	cryptlibR.lib	exact-short	0.5	cands=1 ctx_agree=0 caller_votes=0.0 ntok=2
+006a3750	16	?mLeaveCriticalSection@tMouseMgr_Ex@@UAEXXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=2
+006a3750	16	?mUnlock@tMouseMgr_Ex@@IAEXXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=2
+006a3760	1152	?mSetImage@tMouseMgr_Ex@@UAEXPBEIIJPBUtGLRgbQuad@@HHI@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=383; libmatch=same
+006a3be0	1376	?mSetImage@tMouseMgr_Ex@@UAEXPBEIIJPBUtGLRgbQuad@@HH0J@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=439; libmatch=same
+006a4140	384	?mUpdateMouse@tMouseMgr_Ex@@UAEXXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=140; libmatch=same
+006a42c0	240	?mSaveMouseImage@tMouseMgr_Ex@@IAEEABUtGLRectI@@PAVtGLSurface@@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=93; libmatch=same
+006a43b0	736	?mEraseOldSaveNew@tMouseMgr_Ex@@IAEEABUtGLRectI@@PAE@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=274; libmatch=same
+006a4690	96	??0tBmpSurf@@QAE@AAVtTexBmp@@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=25; libmatch=same
+006a46f0	32	??_GtBmpSurf@@UAEPAXI@Z	dmp3D_MSVCR.lib	exact+ctx	0.912	cands=237 ctx_agree=2 caller_votes=0.0 ntok=11
+006a4710	96	??1tBmpSurf@@UAE@XZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=26; libmatch=same
+006a4770	336	?mSetSurfaceDesc@tBmpSurf@@UAEEAAVtTexBmp@@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=102; libmatch=same
 006a48c0	16	?mNewBasicFile@tFontFileIOBase@@SAPAVtBasicFile@@XZ	sfcTiger_MSVCR.lib	exact+ctx	0.823	cands=156 ctx_agree=1 caller_votes=0.0 ntok=1
 006a48c0	16	?mNewBasicFile@tGLFont@@SAPAVtBasicFile@@XZ	dmp3D_MSVCR.lib	exact+ctx	0.823	cands=156 ctx_agree=1 caller_votes=0.0 ntok=1
 006a48c0	16	?mNewBasicFile@tINIFile@@SAPAVtBasicFile@@XZ	sfcTiger_MSVCR.lib	exact+ctx	0.823	cands=156 ctx_agree=0 caller_votes=1.0 ntok=1
+006a48c0	16	?mNewBasicFile@tTexBmp@@MAEPAVtBasicFile@@XZ	dmp3D_MSVCR.lib	exact+ctx	0.823	cands=156 ctx_agree=1 caller_votes=0.0 ntok=1
+006a48d0	1312	?mInitAsBMP@tTexBmp@@MAEXPAVtBasicFile@@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=386; libmatch=same
+006a4df0	3120	?mInitAsPCX@tTexBmp@@MAEXPAVtBasicFile@@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=836; libmatch=same
+006a5a20	368	?mInit@tTexBmp@@UAEEPBD@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=138; libmatch=same
+006a5b90	144	?mDone@tTexBmp@@UAEEXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=36; libmatch=same
+006a5c20	96	?mResetDataMembers@tTexBmp@@IAEXXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=18; libmatch=same
+006a5c80	720	?mReadBMP@tTexBmp@@MAEXPAVtBasicFile@@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=201; libmatch=same
+006a5f50	928	?mReadPCX@tTexBmp@@MAEXPAVtBasicFile@@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=267; libmatch=same
+006a62f0	500	?mLock@tTexBmp@@QAEEXZ	dmp3D_MSVCR.lib	ref	0.75	body differs (ratio 0.99); votes=1 from ?mSetSurfaceDesc@tBmpSurf@@UAEEAAVtTexBmp@@@Z; libmatch=same
+006a6500	112	?mUnlock@tTexBmp@@QAEEXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=35; libmatch=same
+006a6590	32	.\dmp3D_Release\twGLSurfMgrInterfaceDLL.obj|_$E14	dmp3D_MSVCR.lib	exact+ctx	0.912	cands=6 ctx_agree=2 caller_votes=0.0 ntok=6
+006a6590	32	.\dmp3D_Release\view3DMgrDLLW.obj|_$E17	dmp3D_MSVCR.lib	exact+ctx	0.912	cands=6 ctx_agree=2 caller_votes=0.0 ntok=6
+006a65b0	32	.\dmp3D_Release\twGLSurfMgrInterfaceDLL.obj|_$E12	dmp3D_MSVCR.lib	exact+ctx	0.912	cands=5 ctx_agree=2 caller_votes=0.0 ntok=3
+006a65b0	32	.\dmp3D_Release\view3DMgrDLLW.obj|_$E15	dmp3D_MSVCR.lib	exact+ctx	0.912	cands=5 ctx_agree=2 caller_votes=0.0 ntok=3
+006a65d0	176	?mActivate@twGLSurfMgrInterfaceDLL@@UAEXXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=1 caller_votes=0.0 ntok=55; libmatch=same
+006a65d0	176	?mActivate@twView3DMgrDLL@@UAEXXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=1 caller_votes=0.0 ntok=55; libmatch=same
+006a6680	16	?mDeactivate@twGLSurfMgrInterfaceDLL@@UAEXXZ	dmp3D_MSVCR.lib	exact+ctx	0.823	cands=644 ctx_agree=1 caller_votes=0.0 ntok=2
+006a6680	16	?mDeactivate@twView3DMgrDLL@@UAEXXZ	dmp3D_MSVCR.lib	exact+ctx	0.823	cands=644 ctx_agree=1 caller_votes=0.0 ntok=2
+006a6690	64	?mEnumerate@twGLSurfMgrInterfaceDLL@@UAEEP6AEPAUtGLSurfMgrInfo@@PAX@Z1@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=14; libmatch=same
+006a6690	64	?mEnumerate@twView3DMgrDLL@@UAEEP6AEPAUtView3DInfo@@PAX@Z1@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=14; libmatch=same
+006a66d0	64	.\dmp3D_Release\twGLSurfMgrInterfaceDLL.obj|?EnumCallback@@YAEPAVtDLLInfo@twDLLMgrBase@@PAX@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=15; libmatch=same
+006a66d0	64	.\dmp3D_Release\view3DMgrDLLW.obj|?EnumCallback@@YAEPAVtDLLInfo@twDLLMgrBase@@PAX@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=15; libmatch=same
+006a6710	48	?mCreateGLSurfMgr@twGLSurfMgrInterfaceDLL@@UAEPAVtGLSurfMgr@@PAUtGLSurfMgrInfo@@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=13; libmatch=same
+006a6710	48	?mCreateView3D@twView3DMgrDLL@@UAEPAVtView3D@@PAUtView3DInfo@@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=13; libmatch=same
+006a6780	48	?mResetDataMembers@tGLSprite@@MAEXXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=22; libmatch=same
+006a67b0	80	?mDone@tGLSprite@@UAEXXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=28; libmatch=same
+006a6800	304	?mSetImageData@tGLSprite@@UAEEABVtGLPixFmt@@PAVtGLSurface@@EI@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=120; libmatch=same
+006a6930	16	?mGetRefPtX@tGLSprite@@UAEHXZ	dmp3D_MSVCR.lib	exact+ctx	0.646	cands=2 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
+006a6940	16	?mGetRefPtY@tGLSprite@@UAEHXZ	dmp3D_MSVCR.lib	exact+ctx	0.646	cands=2 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
+006a6950	32	?mSetRefPt@tGLSprite@@UAEXHH@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=5; libmatch=same
+006a6970	48	?mDrawOntoSurface@tGLSprite@@UAEEPAVtGLSurface@@PBUtGLRectI@@HH@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=17; libmatch=same
+006a69a0	784	?mDrawOntoSurface@tGLSprite@@UAEEPAVtGLSurface@@PBUtGLRectI@@HHHHHH@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=287; libmatch=same
+006a6cb0	272	?mSetFormat@tDDPixFmt@@UAEEABU_DDPIXELFORMAT@@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=97; libmatch=same
+006a6dc0	32	?mRelease@tDDSurface@@UAEHXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=16; libmatch=same
+006a6e70	32	??_GtDDSurface@@UAEPAXI@Z	dmp3D_MSVCR.lib	exact+ctx	0.912	cands=237 ctx_agree=2 caller_votes=0.0 ntok=11
+006a6e90	32	??_GtDDPixFmt@@UAEPAXI@Z	dmp3D_MSVCR.lib	exact+ctx	0.912	cands=237 ctx_agree=2 caller_votes=0.0 ntok=11
+006a6e90	32	??_GtDDTexFmt@@UAEPAXI@Z	dmp3D_MSVCR.lib	exact+ctx	0.912	cands=237 ctx_agree=2 caller_votes=0.0 ntok=11
+006a6eb0	144	??1tDDSurface@@UAE@XZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=44; libmatch=same
+006a6f40	160	?mLock@tDDSurface@@UAEEXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=66; libmatch=same
+006a6fe0	96	?mUnlock@tDDSurface@@UAEEXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=47; libmatch=same
+006a7040	32	?mIsLost@tDDSurface@@UAEEXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=12; libmatch=same
+006a7060	32	?mRestore@tDDSurface@@UAEEXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=12; libmatch=same
+006a7080	16	?mGetPalette@tDDSurface@@UAEPBUtGLRgbQuad@@XZ	dmp3D_MSVCR.lib	exact+ctx	0.646	cands=3 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
+006a7090	288	?mSetPaletteEntries@tDDSurface@@UAEEKKPBUtGLRgbQuad@@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=98; libmatch=same
+006a71b0	80	?mGetPaletteEntries@tDDSurface@@UAEEKKPAUtGLRgbQuad@@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=27; libmatch=same
+006a7200	368	?mFillRect@tDDSurface@@UAEEIPBUtGLRectI@@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=138; libmatch=same
+006a7370	448	?mCopyBits@tDDSurface@@UAEEABUtGLRectI@@PAVtGLSurface@@HH@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=170; libmatch=same
+006a7530	560	?mBltTrans@tDDSurface@@UAEEABUtGLRectI@@PAVtGLSurface@@HHI@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=187; libmatch=same
+006a78f0	16	?mAddRef@tDDSurface@@UAEHXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=4; libmatch=same
 006a7900	16	?BasePoint@?$ECPublicKey@VECP@CryptoPP@@@CryptoPP@@QBEABUECPPoint@2@XZ	cryptlibR.lib	exact+ctx	0.646	cands=2 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
+006a7900	16	?mGetBounds@tDDSurface@@UAEABUtGLRectI@@XZ	dmp3D_MSVCR.lib	exact+ctx	0.646	cands=2 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
+006a7910	16	?mIsVideoMemory@tDDSurface@@UAEEXZ	dmp3D_MSVCR.lib	exact+ctx	0.646	cands=2 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
 006a7920	16	?mGetChannelNumber@tOneChannelInfo@@UAEJXZ	sfcTiger_MSVCR.lib	exact+ctx	0.646	cands=2 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
+006a7920	16	?mGetOSSpecificPtr@tDDSurface@@UAEPAXXZ	dmp3D_MSVCR.lib	exact+ctx	0.646	cands=2 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
+006a7930	16	?mGetPitch@tDDSurface@@UAEJXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=7; libmatch=same
+006a7940	16	?mGetBitsPtr@tDDSurface@@UAEPAXXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=7; libmatch=same
+006a7950	208	??0tGLSurfMgrSurf@@QAE@ABVtGLPixFmt@@II@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=74; libmatch=same
+006a7a20	32	??_GtGLSurfMgrSurf@@UAEPAXI@Z	dmp3D_MSVCR.lib	exact+ctx	0.912	cands=237 ctx_agree=2 caller_votes=0.0 ntok=11
+006a7a40	112	??1tGLSurfMgrSurf@@UAE@XZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=26; libmatch=same
+006a7ab0	80	?mSetSurfaceDesc@tGLSurfMgrSurf@@UAEEABVtGLPixFmt@@IIJPAX@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=31; libmatch=same
+006a7b00	32	?mRelease@tGLSurfMgr@@UAEHXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=13; libmatch=same
+006a7b20	256	?mCreateSurface@tGLSurfMgr@@UAEPAVtGLSurface@@ABVtGLPixFmt@@IIE@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=76; libmatch=same
 006a7c20	48	??0CD3DFramework@@QAE@XZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=16; libmatch=same
-006a7c50	16	??1CD3DFramework@@QAE@XZ	dmp3D_MSVCR.lib	exact+ctx	0.823	cands=156 ctx_agree=1 caller_votes=0.0 ntok=1
+006a7c50	16	??1CD3DFramework@@QAE@XZ	dmp3D_MSVCR.lib	exact+ctx	0.912	cands=156 ctx_agree=1 caller_votes=1.0 ntok=1
 006a7c60	192	?DestroyObjects@CD3DFramework@@QAEJXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=92; libmatch=same
 006a7d20	112	?Initialize@CD3DFramework@@QAEJPAUHWND__@@PAU_GUID@@1PAU_DDSURFACEDESC2@@K@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=39; libmatch=same
 006a7d90	336	?CreateEnvironment@CD3DFramework@@AAEJPAU_GUID@@0PAU_DDSURFACEDESC2@@K@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=127; libmatch=same
@@ -2745,24 +3083,273 @@ address	size	mangled_name	library	tier	score	notes
 006a8500	64	?FlipToGDISurface@CD3DFramework@@QAEJH@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=2 caller_votes=0.0 ntok=26; libmatch=same
 006a8540	96	?RestoreSurfaces@CD3DFramework@@QAEJXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=41; libmatch=same
 006a85a0	80	?Move@CD3DFramework@@QAEXHH@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=1 caller_votes=0.0 ntok=34; libmatch=same
+006a85f0	320	?mEnumTexFmtsCallback@tD3DViewMgr@@IAEJABU_DDPIXELFORMAT@@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=88; libmatch=same
+006a8730	16	??1tDDPixFmt@@UAE@XZ	dmp3D_MSVCR.lib	exact+ctx	0.912	cands=95 ctx_agree=1 caller_votes=1.0 ntok=2
+006a8730	16	??1tDDTexFmt@@UAE@XZ	dmp3D_MSVCR.lib	exact+ctx	0.912	cands=95 ctx_agree=1 caller_votes=1.0 ntok=2
+006a8740	48	?_mEnumTexFmtsCallback@tD3DViewMgr@@KGJPAU_DDPIXELFORMAT@@PAX@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=11; libmatch=same
+006a8770	48	?mInitTextures@tD3DViewMgr@@IAEEXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=13; libmatch=same
+006a87a0	192	?mDoneTextures@tD3DViewMgr@@IAEXXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=69; libmatch=same
+006a8860	160	?mSetCurrentTexture@tD3DViewMgr@@IAEEHH@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=54; libmatch=same
+006a8900	48	?mEnumTextureFormats@tD3DViewMgr@@UAEEP6AEABVtGLPixFmt@@PAX@Z1@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=22; libmatch=same
+006a8930	1264	?mCreateTexture@tD3DViewMgr@@UAEPAVtGLSurface@@JABVtGLPixFmt@@KKPBUtGLRgbQuad@@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=399; libmatch=same
+006a8dcc	84	?mDone@tD3DTexInfo@@QAEXXZ	dmp3D_MSVCR.lib	fuzzy	0.702	ratio=0.877 runner_up=0.000 ctx_agree=1 calls=1/1 ntok=30/27
+006a8e20	48	?mGetTexture@tD3DViewMgr@@UAEPAVtGLSurface@@H@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=11; libmatch=same
+006a8e50	1360	?mLoadTexture@tD3DViewMgr@@UAEEHAAVtGLSurface@@EK@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=425; libmatch=same
+006a93a0	80	?mRestoreTextures@tD3DViewMgr@@IAEEXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=34; libmatch=same
+006a9410	144	??1tD3DTexInfo@@QAE@XZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=45; libmatch=same
 006a94a0	48	?D3DUtil_InitSurfaceDesc@@YAXAAU_DDSURFACEDESC2@@KK@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=14; libmatch=same
 006a94d0	80	?D3DUtil_InitViewport@@YAXAAU_D3DVIEWPORT2@@KK@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=20; libmatch=same
-006a9ba0	128	??4tChannelAttributes@@QAEAAV0@AAV0@@Z	sfcTiger_MSVCR.lib	fuzzy	0.625	ratio=0.919 runner_up=0.775 ctx_agree=0 calls=0/0 ntok=35/39
+006a9540	176	?mInitExt@tView3DExt@@IAEXXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=50; libmatch=same
+006a95f0	48	?mDone@tView3DExt@@UAEEXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=13; libmatch=same
+006a9620	64	?mSetWinding@tView3DExt@@UAEII@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=12; libmatch=same
+006a9660	16	?mGetWinding@tView3DExt@@UAEIXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
+006a9670	96	?mSetCullMode@tView3DExt@@UAEII@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=19; libmatch=same
+006a96d0	16	?mGetCullMode@tView3DExt@@UAEIXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
+006a96e0	32	?mSetShadeMode@tView3DExt@@UAEII@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=8; libmatch=same
+006a9700	16	?mGetShadeMode@tView3DExt@@UAEIXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
+006a9710	112	?mSetGlobalBlend@tView3DExt@@UAEMM@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=24; libmatch=same
+006a9780	16	?mGetGlobalBlend@tView3DExt@@UAEMXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
+006a9790	784	?mCalcLightColor@tView3DExt@@IBE?AUtPoint3@@ABU2@0@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=207; libmatch=same
+006a9aa0	16	?mGetMaxNumLights@tView3DExt@@UBEKXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
+006a9ab0	240	?mSetLightDescription@tView3DExt@@UAEXKABVtGLLightDesc@@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=59; libmatch=same
+006a9ba0	128	?mGetLightDescription@tView3DExt@@UBEXKAAVtGLLightDesc@@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=39; libmatch=same
+006a9c20	32	?mEnableLighting@tView3DExt@@UAEEE@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=4; libmatch=same
+006a9c40	32	?mEnableLight@tView3DExt@@UAEEKE@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=9; libmatch=same
+006a9e50	16	??1tView3D@@MAE@XZ	dmp3D_MSVCR.lib	exact+ctx	0.823	cands=95 ctx_agree=1 caller_votes=0.0 ntok=2
+006a9e60	32	??_GtView3D@@MAEPAXI@Z	dmp3D_MSVCR.lib	exact+ctx	0.875	cands=22 ctx_agree=2 caller_votes=0.0 ntok=12
+006a9e80	32	??_GtView3DExt@@UAEPAXI@Z	dmp3D_MSVCR.lib	exact+ctx	0.912	cands=237 ctx_agree=2 caller_votes=0.0 ntok=11
+006a9ea0	16	??0tGLLightDesc@@QAE@XZ	dmp3D_MSVCR.lib	exact+ctx	0.823	cands=3 ctx_agree=0 caller_votes=1.0 ntok=2
 006a9ea0	16	?mGetChannelAttributes@tOneChannelInfo@@UAEPAVtChannelAttributes@@XZ	sfcTiger_MSVCR.lib	multi	0.333	ambiguous group of 3 identical-structure addresses: 005cf073 006a9ea0 00727a30
-006ad300	32	?mSetDate@tMissionInfo@@QAEXABVtMissionDate@tDynaverseScriptInfo@@@Z	ScriptInterfaceR.lib	masked	0.8	cands=1 ctx_agree=0 caller_votes=0.0 ntok=6
+006a9eb0	112	??1tView3DExt@@UAE@XZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=36; libmatch=same
+006a9f20	32	?mSetBeginCallback@tView3DExt@@UAEP6AXPAVtGLSurface@@PAX@ZP6AX01@Z1@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=6; libmatch=same
+006a9f40	16	?mGetBeginCallback@tView3DExt@@UAEP6AXPAVtGLSurface@@PAX@ZXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
+006a9f50	32	?mSetEndCallback@tView3DExt@@UAEP6AXPAVtGLSurface@@PAX@ZP6AX01@Z1@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=6; libmatch=same
+006a9f70	16	?mGetEndCallback@tView3DExt@@UAEP6AXPAVtGLSurface@@PAX@ZXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
+006a9f80	112	?mSetLightPosition@tView3DExt@@UAEXABUtPoint3@@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=39; libmatch=same
+006a9ff0	16	?mGetLightPosition@tView3DExt@@UAEABUtPoint3@@XZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
+006aa000	128	?mSetViewport@tView3DExt@@UAEXHHHH@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=24; libmatch=same
+006aa080	96	?mGetViewport@tView3DExt@@UAEXPAH000@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=30; libmatch=same
+006aa0e0	224	?mCreatePerspective@tView3DExt@@UAEXAAVtMatrix@@MMM@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=68; libmatch=same
+006aa1c0	80	?mSetPerspective@tView3DExt@@UAEXMMM@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=25; libmatch=same
+006aa210	96	?mSetOrtho@tView3DExt@@UAEXMMMMMM@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=31; libmatch=same
+006aa270	80	?mSetOrthoIdentity@tView3DExt@@UAEXMM@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=23; libmatch=same
+006aa2c0	208	?mCreateOrtho@tView3DExt@@UAEXAAVtMatrix@@MMMMMM@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=59; libmatch=same
+006aa390	96	?mCreateOrthoIdentity@tView3DExt@@UAEXAAVtMatrix@@MM@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=27; libmatch=same
+006aa3f0	160	?mSetProjMtx@tView3DExt@@UAEXABVtMatrix@@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=49; libmatch=same
+006aa490	16	?mGetProjMtx@tView3DExt@@UAEABVtMatrix@@XZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
+006aa4a0	48	?mSetCameraMtx@tView3DExt@@UAEXABVtMatrix@@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=16; libmatch=same
+006aa4d0	16	?mGetCameraMtx@tView3DExt@@UAEABVtMatrix@@XZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
+006aa4e0	96	?mGetCameraPosition@tView3DExt@@UAEXAAUtPoint3@@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=22
+006aa540	16	.\dmp3D_Release\view3DExt.obj|_$E16	dmp3D_MSVCR.lib	exact+ctx	0.823	cands=370 ctx_agree=0 caller_votes=1.0 ntok=1
+006aa550	352	?mSetModelMtx@tView3DExt@@UAEXABVtMatrix@@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=98; libmatch=same
+006aa6c0	16	?mGetModelMtx@tView3DExt@@UAEABVtMatrix@@XZ	dmp3D_MSVCR.lib	exact+ctx	0.646	cands=3 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
+006aa6d0	16	?mSetDriver@tView3DExt@@UAEXH@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=3; libmatch=same
+006aa6e0	64	?mResetCounts@tView3DExt@@UAEXXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=10; libmatch=same
+006aa720	16	?mGetRawCountPoints@tView3DExt@@UAEKXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
+006aa730	16	?mGetRawCountLines@tView3DExt@@UAEKXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
+006aa740	16	?mGetRawCountTris@tView3DExt@@UAEKXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
+006aa750	16	?mGetRawCountQuads@tView3DExt@@UAEKXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
+006aa760	16	?mGetRawCountNGons@tView3DExt@@UAEKXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
+006aa770	16	?mGetTrueCountPoints@tView3DExt@@UAEKXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
+006aa780	16	?mGetTrueCountLines@tView3DExt@@UAEKXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
+006aa790	16	?mGetTrueCountTris@tView3DExt@@UAEKXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
+006aa7a0	864	?mChooseWindowed@tD3DViewMgr@@IAEEPAUHWND__@@PAPAU_GUID@@1@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=268; libmatch=same
+006aab00	544	.\dmp3D_Release\d3dViewMgr_Choose.obj|?ChooseDriver@@YAPAUD3DEnum_DriverInfo@@PAUHWND__@@PAU1@P6AE1AAUtParams@@@Z2@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=6 caller_votes=0.0 ntok=174; libmatch=same
+006aad20	112	.\dmp3D_Release\d3dViewMgr_Choose.obj|?DlgProc@@YGHPAUHWND__@@IIJ@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=3 caller_votes=0.0 ntok=32; libmatch=same
+006aad90	80	.\dmp3D_Release\d3dViewMgr_Choose.obj|?CanWindowAndHardware@@YAEPAUD3DEnum_DriverInfo@@AAUtParams@@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=21; libmatch=same
+006aade0	64	.\dmp3D_Release\d3dViewMgr_Choose.obj|?CanWindow@@YAEPAUD3DEnum_DriverInfo@@AAUtParams@@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=18; libmatch=same
+006aae20	1120	?mChooseFullscreen@tD3DViewMgr@@IAEEPAUHWND__@@PAPAU_GUID@@1PAPAU_DDSURFACEDESC2@@KKK@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=353; libmatch=same
+006ab280	112	.\dmp3D_Release\d3dViewMgr_Choose.obj|?CanRenderAtModeHW@@YAEPAUD3DEnum_DriverInfo@@AAUtParams@@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=47; libmatch=same
+006ab2f0	112	.\dmp3D_Release\d3dViewMgr_Choose.obj|?CanRenderAtMode@@YAEPAUD3DEnum_DriverInfo@@AAUtParams@@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=44; libmatch=same
+006ab410	1056	?mDrawPolygon@tD3DViewMgr@@MAEEHHHE@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=316; libmatch=same
+006ab830	576	?mDrawLine@tD3DViewMgr@@MAEEH@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=186; libmatch=same
+006aba70	848	?mDrawPoints@tD3DViewMgr@@MAEEHH@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=258; libmatch=same
+006abe00	176	?mAssertVtxCache@tView3DExt@@IAEXH@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=58; libmatch=same
+006abeb0	208	?mGetPolyNormalZ@tView3DExt@@IAEMXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=78; libmatch=same
+006abf80	48	?mSubmitVertices@tView3DExt@@UAEXHPBUtPoint3@@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=18; libmatch=same
+006abfb0	16	?mSubmitMaterials@tView3DExt@@UAEXPBUtMaterial@@@Z	dmp3D_MSVCR.lib	exact+ctx	0.646	cands=2 ctx_agree=0 caller_votes=0.0 ntok=3; libmatch=same
+006abfc0	1504	?mDrawPolygonListSelectTexture@tView3DExt@@UAEEW4eTextureSelect@1@HPAPAUtPolyFaceEx@@E@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=436; libmatch=same
+006ac5a0	448	?mDrawPolygonList@tView3DExt@@UAEEHPAPAUtPolyFaceEx@@E@Z	dmp3D_MSVCR.lib	masked	0.8	cands=1 ctx_agree=0 caller_votes=0.0 ntok=167
+006ac780	64	?mInit@tPrimitive@tView3DExt@@QAEXXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=19; libmatch=same
+006ac7c0	80	?mBeginPrimitive@tView3DExt@@UAEEW4ePrimitiveType@@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=17; libmatch=same
+006ac810	32	?mEndPrimitive@tView3DExt@@UAEEXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=8; libmatch=same
+006ac830	208	?mFlushPolygon@tView3DExt@@IAEXKHH@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=69; libmatch=same
+006ac900	2096	?mFlushPrimitiveVtxs@tView3DExt@@IAEEE@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=671; libmatch=same
+006ad130	256	?mVtxCoord@tView3DExt@@UAEXABUtPoint3@@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=60; libmatch=same
+006ad230	48	?mVtxCoord@tView3DExt@@UAEXMMM@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=13; libmatch=same
+006ad260	112	?mVtxNormal@tView3DExt@@UAEXABUtPoint3@@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=26; libmatch=same
+006ad2d0	48	?mVtxNormal@tView3DExt@@UAEXMMM@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=13; libmatch=same
+006ad300	32	?mVtxTexCoord@tView3DExt@@UAEXABUtPoint2@@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=2.4 ntok=6; libmatch=same
+006ad320	32	?mVtxTexCoord@tView3DExt@@UAEXMM@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=5; libmatch=same
+006ad340	48	?mVtxColor@tView3DExt@@UAEXMMM@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=8; libmatch=same
+006ad370	112	?mVtxColor@tView3DExt@@UAEXUtGLRgbQuad@@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=22; libmatch=same
+006ad3e0	48	?mPrimitiveTexID@tView3DExt@@UAEXH@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=7; libmatch=same
 006ad410	928	?GetDXVersion@@YAXPAK0@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=21 caller_votes=0.0 ntok=314; libmatch=same
+006ad7d0	192	?mNewRight@tEdge@@QAEXXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=59; libmatch=same
+006ad890	512	?mNewLeft@tEdge@@QAEXXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=146; libmatch=same
+006ada90	512	?mNewLeftRGB@tEdge@@QAEXXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=146; libmatch=same
+006adc90	128	?mStepLeft@tEdge@@QAEEXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=46; libmatch=same
+006add10	80	?mStepRight@tEdge@@QAEEXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=30; libmatch=same
+006add60	128	?mStepLeftRGB@tEdge@@QAEEXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=46; libmatch=same
+006adde0	208	?mSetVtxs@tEdge@@SAJXZ	dmp3D_MSVCR.lib	exact+ctx	1.0	cands=2 ctx_agree=23 caller_votes=1.0 ntok=68
+006adeb0	208	?mSetVtxsRGB@tEdge@@SAJXZ	dmp3D_MSVCR.lib	exact+ctx	1.0	cands=2 ctx_agree=23 caller_votes=3.0 ntok=68
+006adf80	3632	?mDrawTriangle@tSWView3D@@AAEXHAAUtPolyVtx@tView3DExt@@00@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=1011; libmatch=same
+006aedb0	192	.\dmp3D_Release\swView3D_Draw.obj|?NativeColor@@YAIKKK@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=54; libmatch=same
+006aee70	496	.\dmp3D_Release\swView3D_Draw.obj|?Gouraud_Tex_ZTest_ZWrite@@YAXHPAG0JJJJ@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=153; libmatch=same
+006af060	480	.\dmp3D_Release\swView3D_Draw.obj|?Gouraud_Tex_ZTest@@YAXHPAG0JJJJ@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=149; libmatch=same
+006af240	400	.\dmp3D_Release\swView3D_Draw.obj|?Gouraud_Tex@@YAXHPAGJJJ@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=125; libmatch=same
+006af3d0	432	.\dmp3D_Release\swView3D_Draw.obj|?Flat_Tex_ZTest_ZWrite@@YAXHPAG0JJJJ@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=138; libmatch=same
+006af580	416	.\dmp3D_Release\swView3D_Draw.obj|?Flat_Tex_ZTest@@YAXHPAG0JJJJ@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=136; libmatch=same
+006af720	336	.\dmp3D_Release\swView3D_Draw.obj|?Flat_Tex@@YAXHPAGJJJ@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=109; libmatch=same
+006af870	528	.\dmp3D_Release\swView3D_Draw.obj|?Gouraud_Tex_ColorKey_ZTest_ZWrite@@YAXHPAG0JJJJ@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=157; libmatch=same
+006afa80	512	.\dmp3D_Release\swView3D_Draw.obj|?Gouraud_Tex_ColorKey_ZTest@@YAXHPAG0JJJJ@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=155; libmatch=same
+006afc80	416	.\dmp3D_Release\swView3D_Draw.obj|?Gouraud_Tex_ColorKey@@YAXHPAGJJJ@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=126; libmatch=same
+006afe20	464	.\dmp3D_Release\swView3D_Draw.obj|?Flat_Tex_ColorKey_ZTest_ZWrite@@YAXHPAG0JJJJ@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=143; libmatch=same
+006afff0	464	.\dmp3D_Release\swView3D_Draw.obj|?Flat_Tex_ColorKey_ZTest@@YAXHPAG0JJJJ@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=142; libmatch=same
+006b01c0	352	.\dmp3D_Release\swView3D_Draw.obj|?Flat_Tex_ColorKey@@YAXHPAGJJJ@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=114; libmatch=same
+006b0320	592	.\dmp3D_Release\swView3D_Draw.obj|?Gouraud@@YAXHPAGJJJ@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=187; libmatch=same
+006b0570	128	.\dmp3D_Release\swView3D_Draw.obj|?Flat@@YAXHPAGK@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=55; libmatch=same
+006b05f0	1296	.\dmp3D_Release\swView3D_Draw.obj|?Triangle_ZTest_ZWrite@@YAXXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=381; libmatch=same
+006b0b00	96	??RtGLPixFmt@@QBEKKKKK@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=31; libmatch=same
+006b0b60	1264	.\dmp3D_Release\swView3D_Draw.obj|?Triangle_ZTest@@YAXXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=371; libmatch=same
+006b1050	336	?mDrawPolygon@tSWView3D@@MAEEHHHE@Z	dmp3D_MSVCR.lib	masked	0.8	cands=1 ctx_agree=0 caller_votes=0.0 ntok=110
+006b11a0	144	?mSetPixelFormat@tSWView3D@@AAEXABVtGLPixFmt@@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=46; libmatch=same
+006b1230	1072	?mDrawPoints@tSWView3D@@MAEEHH@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=294; libmatch=same
+006b1660	1392	?mDrawLine@tSWView3D@@MAEEH@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=456; libmatch=same
+006b1bf0	32	.\dmp3D_Release\swView3D_Tex.obj|_$E27	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=7; libmatch=same
+006b1c10	32	.\dmp3D_Release\swView3D_Tex.obj|_$E24	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=8; libmatch=same
+006b1c30	208	?mNew@tClut@@SAPAV1@PBUtGLRgbQuad@@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=63; libmatch=same
+006b1d00	480	?mBuildRamps@tClut@@IAEXXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=120; libmatch=same
+006b1ee0	128	?mSetPixelFormat@tClut@@SAXABVtGLPixFmt@@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=42; libmatch=same
+006b1f60	32	??_GtTexInfo@@UAEPAXI@Z	dmp3D_MSVCR.lib	exact+ctx	0.912	cands=237 ctx_agree=2 caller_votes=0.0 ntok=11
+006b1f80	144	??1tTexInfo@@UAE@XZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=47; libmatch=same
+006b2010	176	?mSetPaletteEntries@tTexInfo@@UAEEKKPBUtGLRgbQuad@@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=69; libmatch=same
+006b20c0	16	?mSetSurfaceDesc@tTexInfo@@UAEEABVtGLPixFmt@@IIJPAXPBUtGLRgbQuad@@I@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
+006b20d0	352	?mSetProperties@tTexInfo@@IAEEHHPBUtGLRgbQuad@@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=141; libmatch=same
+006b2230	80	?mEnumTextureFormats@tSWView3D@@UAEEP6AEABVtGLPixFmt@@PAX@Z1@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=20; libmatch=same
+006b2280	320	?mCreateTexture@tSWView3D@@UAEPAVtGLSurface@@JABVtGLPixFmt@@KKPBUtGLRgbQuad@@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=97; libmatch=same
+006b23c0	320	?mLoadTexture@tSWView3D@@UAEEHAAVtGLSurface@@EK@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=119; libmatch=same
+006b2500	32	?mGetTexture@tSWView3D@@UAEPAVtGLSurface@@H@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=9; libmatch=same
+006b2520	384	??0tGDISurface@@IAE@PAUHBITMAP__@@ABVtGLPixFmt@@IIJPAX@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=6 caller_votes=0.0 ntok=109; libmatch=same
+006b26a0	32	??_GtGDISurface@@MAEPAXI@Z	dmp3D_MSVCR.lib	exact+ctx	0.912	cands=237 ctx_agree=2 caller_votes=0.0 ntok=11
+006b26c0	80	??1tGDISurface@@MAE@XZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=2 caller_votes=0.0 ntok=23; libmatch=same
+006b2710	16	?mGetPalette@tGDISurface@@UAEPBUtGLRgbQuad@@XZ	dmp3D_MSVCR.lib	exact+ctx	0.646	cands=2 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
+006b2720	160	?mSetPaletteEntries@tGDISurface@@UAEEKKPBUtGLRgbQuad@@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=1 caller_votes=0.0 ntok=52; libmatch=same
+006b27c0	160	?mGetPaletteEntries@tGDISurface@@UAEEKKPAUtGLRgbQuad@@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=1 caller_votes=0.0 ntok=55; libmatch=same
+006b2860	48	?mEnumDispModes@tGDISurfMgr@@UAEEP6AEHHHPAX@Z0@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=14; libmatch=same
+006b2890	304	?mInitFullScreenBitBlt@tGDISurfMgr@@UAEEIIIIIPAX0@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=5 caller_votes=0.0 ntok=118; libmatch=same
+006b29c0	272	?mInitBackBuffer@tGDISurfMgr@@IAEEIII@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=71; libmatch=same
+006b2ad0	96	?mInitWindowed@tGDISurfMgr@@UAEEIIIPAX0@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=1 caller_votes=0.0 ntok=31; libmatch=same
+006b2b30	80	?mDone@tGDISurfMgr@@UAEXXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=1 caller_votes=0.0 ntok=21; libmatch=same
+006b2b80	240	?mSwapBuffers@tGDISurfMgr@@UAEEE@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=5 caller_votes=0.0 ntok=95; libmatch=same
+006b2c70	464	?mCopyToFront@tGDISurfMgr@@UAEEABUtGLRectI@@0PAVtGLSurface@@E@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=6 caller_votes=0.0 ntok=180; libmatch=same
+006b2e40	960	?mCreateSurface@tGDISurfMgr@@UAEPAVtGLSurface@@ABVtGLPixFmt@@IIE@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=8 caller_votes=0.0 ntok=220; libmatch=same
+006b3200	96	?mTrueRelease@tGDISurfMgr@@MAEXXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=1 caller_votes=0.0 ntok=31; libmatch=same
+006b3260	96	?dmpCreateGDISurfMgr@@YAPAVtGLSurfMgr@@XZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=23; libmatch=same
+006b32c0	16	?mAddRef@tGDISurface@@UAEHXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=4; libmatch=same
 006b32c0	16	?mAddRef@tGLFontEx@@UAEJXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=4; libmatch=same
+006b32c0	16	?mAddRef@tSysMemSurf@@UAEHXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=4; libmatch=same
 006b32d0	16	?mGet3DSoundProfile@tChannelAttributes@@UAEPAVt3DSoundProfile@@XZ	sfcTiger_MSVCR.lib	exact+ctx	0.646	cands=3 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
 006b32d0	16	?mGetMapName@tScriptMapData@@QBEABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ	SharedR.lib,ScriptInterfaceR.lib	exact+ctx	0.646	cands=3 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
+006b32d0	16	?mGetPixFmt@tGDISurface@@UAEABVtGLPixFmt@@XZ	dmp3D_MSVCR.lib	exact+ctx	0.646	cands=3 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
+006b32d0	16	?mGetPixFmt@tSysMemSurf@@UAEABVtGLPixFmt@@XZ	dmp3D_MSVCR.lib	exact+ctx	0.646	cands=3 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
 006b32e0	16	?mGet3DPosition@t3DListenerProfile@@UAEPAUtPoint3@@XZ	sfcTiger_MSVCR.lib	exact+ctx	0.646	cands=3 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
 006b32e0	16	?mGet3DSoundPosition@t3DSoundProfile@@UAEPAUtPoint3@@XZ	sfcTiger_MSVCR.lib	exact+ctx	0.646	cands=3 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
+006b32e0	16	?mGetBounds@tGDISurface@@UAEABUtGLRectI@@XZ	dmp3D_MSVCR.lib	exact+ctx	0.646	cands=3 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
+006b32e0	16	?mGetBounds@tSysMemSurf@@UAEABUtGLRectI@@XZ	dmp3D_MSVCR.lib	exact+ctx	0.646	cands=3 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
 006b32e0	16	?mGetItemList@tScriptMapData@@QBEABV?$vector@VtMapObject@@V?$allocator@VtMapObject@@@std@@@std@@XZ	SharedR.lib,ScriptInterfaceR.lib	exact+ctx	0.646	cands=3 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
+006b32f0	16	?mGetLockCnt@tDDSurface@@UAEHXZ	dmp3D_MSVCR.lib	exact+ctx	0.797	cands=3 ctx_agree=0 caller_votes=0.8 ntok=2
+006b32f0	16	?mGetOSSpecificPtr@tGDISurface@@UAEPAXXZ	dmp3D_MSVCR.lib	exact+ctx	0.797	cands=3 ctx_agree=0 caller_votes=0.8 ntok=2
+006b3300	16	?mLock@tGDISurface@@UAEEXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=5
 006b3310	16	?mGetGlobalVolume@tgSoundPart@@UAEJXZ	sfcTiger_MSVCR.lib	exact+ctx	0.646	cands=3 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
+006b3310	16	?mGetLockCnt@tGDISurface@@UAEHXZ	dmp3D_MSVCR.lib	exact+ctx	0.646	cands=3 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
+006b3310	16	?mGetLockCnt@tSysMemSurf@@UAEHXZ	dmp3D_MSVCR.lib	exact+ctx	0.646	cands=3 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
+006b3320	16	?mGetPitch@tGDISurface@@UAEJXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=7; libmatch=same
+006b3320	16	?mGetPitch@tSysMemSurf@@UAEJXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=7; libmatch=same
+006b3330	16	?mGetBitsPtr@tGDISurface@@UAEPAXXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=7; libmatch=same
+006b3330	16	?mGetBitsPtr@tSysMemSurf@@UAEPAXXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=7; libmatch=same
+006b3340	16	?mInitFullScreenFlipping@tD3DViewSurfMgr@@UAEEIIIPAX0I@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=3; libmatch=same
+006b3340	16	?mInitFullScreenFlipping@tGDISurfMgr@@UAEEIIIPAX0I@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=3; libmatch=same
+006b3350	16	?mGetBackBuffer@tGDISurfMgr@@UAEPAVtGLSurface@@XZ	dmp3D_MSVCR.lib	exact+ctx	0.797	cands=4 ctx_agree=0 caller_votes=0.8 ntok=2
 006b3350	16	?mGetBlockSize@tSoundMemoryBlockManager@@UAEJXZ	sfcTiger_MSVCR.lib	exact+ctx	0.797	cands=4 ctx_agree=0 caller_votes=0.8 ntok=2
 006b3350	16	?mGetChannelNumber@tSoundChannel@@UAEJXZ	sfcTiger_MSVCR.lib	exact+ctx	0.883	cands=4 ctx_agree=0 caller_votes=1.6 ntok=2
 006b3350	16	?mGetMyHandle@tListMemberWithHandle@@UAEJXZ	sfcTiger_MSVCR.lib	exact+ctx	0.978	cands=4 ctx_agree=0 caller_votes=4.0 ntok=2
 006b3350	16	?mGetPan@tChannelAttributes@@UAEJXZ	sfcTiger_MSVCR.lib	exact+ctx	0.797	cands=4 ctx_agree=0 caller_votes=0.8 ntok=2
 006b3350	16	?mGetSamplesPerSec@tSoundChannelFormat@@UAEJXZ	sfcTiger_MSVCR.lib	exact+ctx	0.797	cands=4 ctx_agree=0 caller_votes=0.8 ntok=2
+006b3360	224	?mResetDataMembers@tDDSurfMgr@@IAEXXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=46; libmatch=same
+006b3440	304	??_GtDDSurfMgr@@UAEPAXI@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=2 caller_votes=0.0 ntok=90; libmatch=same
+006b3570	80	?mEnumDisplayModesCallback@tDDSurfMgr@@KGJPAU_DDSURFACEDESC2@@PAX@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=24; libmatch=same
+006b35c0	272	?mEnumDispModes@tDDSurfMgr@@UAEEP6AEHHHPAX@Z0@Z	dmp3D_MSVCR.lib	masked	0.8	cands=1 ctx_agree=0 caller_votes=0.0 ntok=98
+006b36d0	48	?mInitFullScreenFlipping@tDDSurfMgr@@UAEEIIIPAX0I@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=18; libmatch=same
+006b3700	64	?mInitFullScreenBitBlt@tDDSurfMgr@@UAEEIIIIIPAX0@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=19; libmatch=same
+006b3740	112	?mInitWindowed@tDDSurfMgr@@UAEEIIIPAX0@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=4 caller_votes=0.0 ntok=47; libmatch=same
+006b37b0	272	?mDone@tDDSurfMgr@@UAEXXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=2 caller_votes=0.0 ntok=81; libmatch=same
+006b38c0	368	?mSwapBuffers@tDDSurfMgr@@UAEEE@Z	dmp3D_MSVCR.lib	masked	0.8	cands=1 ctx_agree=0 caller_votes=0.0 ntok=131
+006b3a30	384	?mCopyToFront@tDDSurfMgr@@UAEEABUtGLRectI@@0PAVtGLSurface@@E@Z	dmp3D_MSVCR.lib	masked	0.9	cands=1 ctx_agree=1 caller_votes=0.0 ntok=142
+006b3bb0	16	?mIsCopyComplete@tDDSurfMgr@@UAEEXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=3; libmatch=same
+006b3bb0	16	?mIsSwapComplete@tDDSurfMgr@@UAEEXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=3; libmatch=same
+006b3bc0	592	?mCreateSurface@tDDSurfMgr@@UAEPAVtGLSurface@@ABVtGLPixFmt@@IIE@Z	dmp3D_MSVCR.lib	masked	0.8	cands=1 ctx_agree=0 caller_votes=0.0 ntok=164
+006b3e10	368	?mInitInterfaces@tDDSurfMgr@@IAEEXZ	dmp3D_MSVCR.lib	masked	0.8	cands=1 ctx_agree=0 caller_votes=0.0 ntok=120
+006b3f80	144	?mDDThrow@tDDSurfMgr@@IAAXJPBDH0ZZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=49; libmatch=same
+006b4010	128	?mDDCheck@tDDSurfMgr@@IAAEJPBDH0ZZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=48; libmatch=same
+006b4090	704	?mInit@tDDSurfMgr@@IAEEIIIIIEEIPAX0@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=11 caller_votes=0.0 ntok=216; libmatch=same
+006b4350	16	??1tSemaphore@?7??mInit@tDDSurfMgr@@IAEEIIIIIEEIPAX0@Z@QAE@XZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=3; libmatch=same
+006b4360	256	?mSetDisplayMode@tDDSurfMgr@@IAEEIII@Z	dmp3D_MSVCR.lib	masked	0.8	cands=1 ctx_agree=0 caller_votes=0.0 ntok=87
+006b4460	224	?mRestoreDisplayMode@tDDSurfMgr@@IAEEXZ	dmp3D_MSVCR.lib	masked	0.8	cands=1 ctx_agree=0 caller_votes=0.0 ntok=77
+006b4540	1296	?mInitBuffers@tDDSurfMgr@@IAEEI@Z	dmp3D_MSVCR.lib	masked	0.8	cands=1 ctx_agree=0 caller_votes=0.0 ntok=377
+006b4a50	192	?mSetupPalette@tDDSurfMgr@@IAEJXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=3 caller_votes=0.0 ntok=59; libmatch=same
+006b4b10	128	?mPause@tDDSurfMgr@@IAEEE@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=1 caller_votes=0.0 ntok=37; libmatch=same
+006b4b90	80	?mWndProcStub@tDDSurfMgr@@KGJPAUHWND__@@IIJ@Z	dmp3D_MSVCR.lib	exact+ctx	0.956	cands=2 ctx_agree=2 caller_votes=1.0 ntok=24
+006b4fc0	32	?mTrueRelease@tDDSurfMgr@@MAEXXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=7; libmatch=same
+006b4fe0	96	?dmpCreateDDSurfMgr@@YAPAVtGLSurfMgr@@XZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=28; libmatch=same
+006b5040	16	?mGetFrontBuffer@tDDSurfMgr@@UAEPAVtGLSurface@@XZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
+006b5050	16	?mGetBackBuffer@tDDSurfMgr@@UAEPAVtGLSurface@@XZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
+006b5060	48	?GetWindowWidth@@YAHPAX@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=1 caller_votes=0.0 ntok=15; libmatch=same
+006b5090	48	?GetWindowHeight@@YAHPAX@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=1 caller_votes=0.0 ntok=15; libmatch=same
+006b50c0	1440	?_mTextOut@tGLDC@@IAEEKHHHPBXEH@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=502; libmatch=same
+006b5660	144	.\dmp3D_Release\tgldctextout.obj|?ComputeBoundingWidth@@YAHAAVtUniFont@@PBXHEE@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=63; libmatch=same
+006b56f0	432	?mDrawText@tGLDC@@UAEHPBDAAUtGLRectI@@KH@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=185; libmatch=same
+006b58a0	32	??0twDLLMgrBase@@QAE@XZ	dmp3D_MSVCR.lib	exact+ctx	0.949	cands=2 ctx_agree=1 caller_votes=1.8 ntok=6
+006b58c0	992	?mInit@twDLLMgrBase@@UAEEPBD00@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=12 caller_votes=0.0 ntok=302; libmatch=same
+006b5d30	432	?mEnumerate@twDLLMgrBase@@UAEEPBDP6AEPAVtDLLInfo@1@PAX@Z20H@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=7 caller_votes=0.0 ntok=136; libmatch=same
+006b5ee0	192	?mCreateInterface@twDLLMgrBase@@UAEPAXPBDH@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=3 caller_votes=0.0 ntok=58; libmatch=same
+006b5fa0	64	?mFreeInterface@twDLLMgrBase@@UAEXPAVtDLLInfo@1@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=1 caller_votes=0.0 ntok=15; libmatch=same
+006b5fe0	16	?tView3D_GetVersion@@YAHXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
+006b5ff0	144	?CompressSprite@@YAPAXABVtGLPixFmt@@PAVtGLSurface@@EI@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=69; libmatch=same
+006b6080	2272	.\dmp3D_Release\tGLSpriteUtils.obj|?_RunLenCompressSprite@@YAKPAXABVtGLPixFmt@@PAVtGLSurface@@EI@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=604; libmatch=same
+006b6960	176	.\dmp3D_Release\tGLSpriteUtils.obj|?EmitTransparentRun@@YAKPAXKHI@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=37; libmatch=same
+006b6a10	224	.\dmp3D_Release\tGLSpriteUtils.obj|?ConvertToNative@@YAIABVtGLPixFmt@@IPBUtGLRgbQuad@@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=80; libmatch=same
+006b6af0	656	.\dmp3D_Release\tGLSpriteUtils.obj|?EmitRun@@YAKPAXKHABVtGLPixFmt@@IIPBUtGLRgbQuad@@E@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=187; libmatch=same
+006b6d80	848	.\dmp3D_Release\tGLSpriteUtils.obj|?EmitAntiRun@@YAKPAXKHABVtGLPixFmt@@IPBXPBUtGLRgbQuad@@E@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=232; libmatch=same
+006b70d0	496	?Draw8BitRunLenSpriteTo8BitSurface@@YAXUtGLRectI@@PAXJHHHHHHPBX@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=183; libmatch=same
+006b72c0	544	?Draw16BitRunLenSpriteTo16BitSurface@@YAXUtGLRectI@@PAXJHHHHHHPBX@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=186; libmatch=same
+006b74e0	544	?Draw24BitRunLenSpriteTo24BitSurface@@YAXUtGLRectI@@PAXJHHHHHHPBX@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=189; libmatch=same
+006b7700	512	?Draw32BitRunLenSpriteTo32BitSurface@@YAXUtGLRectI@@PAXJHHHHHHPBX@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=178; libmatch=same
+006b7900	128	?D3DEnum_FreeResources@@YAXXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=38; libmatch=same
+006b7980	112	?D3DEnum_EnumerateDevices@@YAJP6AJPAU_DDCAPS_DX7@@PAU_D3DDeviceDesc@@@Z@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=2 caller_votes=0.0 ntok=29; libmatch=same
+006b79f0	400	.\dmp3D_Release\d3denum.obj|?DirectDrawEnumCallbackEx@@YGHPAU_GUID@@PAD1PAXPAUHMONITOR__@@@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=141; libmatch=same
+006b7b80	592	.\dmp3D_Release\d3denum.obj|?Enum3DDevicesCallback@@YGJPAU_GUID@@PAD1PAU_D3DDeviceDesc@@2PAX@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=185; libmatch=same
+006b7dd0	304	.\dmp3D_Release\d3denum.obj|?EnumDisplayModesCallback@@YGJPAU_DDSURFACEDESC2@@PAX@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=100; libmatch=same
+006b7f00	32	.\dmp3D_Release\d3denum.obj|?DirectDrawEnumCallback@@YGHPAU_GUID@@PAD1PAX@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=10; libmatch=same
+006b7f20	416	?D3DEnum_SelectDefaultDriver@@YAJK@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=151; libmatch=same
+006b80c0	160	.\dmp3D_Release\d3denum.obj|?RefreshListForDesktopCompatibility@@YAXXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=52; libmatch=same
+006b8160	16	?D3DEnum_GetFirstDriver@@YAPAUD3DEnum_DriverInfo@@XZ	dmp3D_MSVCR.lib	exact+ctx	0.956	cands=92 ctx_agree=1 caller_votes=2.0 ntok=2
+006b8190	704	?mClip@tView3DExt@@IAEHHI@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=230; libmatch=same
+006b8450	1104	?mClipToPlane@tView3DExt@@IAEHHIIIM@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=354; libmatch=same
+006b88a0	912	?mClipLineToPlane@tView3DExt@@IAEEPAUtPolyVtx@1@0IIIM@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=314; libmatch=same
+006b8c30	944	?mClipLine@tView3DExt@@IAEEI@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=360; libmatch=same
+006b8fe0	32	.\dmp3D_Release\twDisplayMgr.obj|_$E5	dmp3D_MSVCR.lib	exact+ctx	0.978	cands=6 ctx_agree=4 caller_votes=0.0 ntok=6
+006b9000	32	??0twDisplayMgr@@QAE@XZ	dmp3D_MSVCR.lib	exact+ctx	0.823	cands=3 ctx_agree=1 caller_votes=0.0 ntok=7
+006b9020	32	??_GtwDisplayMgr@@UAEPAXI@Z	dmp3D_MSVCR.lib	exact+ctx	0.912	cands=237 ctx_agree=2 caller_votes=0.0 ntok=11
+006b9040	80	??1twDisplayMgr@@UAE@XZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=1 caller_votes=0.0 ntok=21; libmatch=same
+006b9090	16	.\dmp3D_Release\twDisplayMgr.obj|_$E3	dmp3D_MSVCR.lib	exact+ctx	0.823	cands=644 ctx_agree=1 caller_votes=0.0 ntok=2
+006b90a0	16	.\dmp3D_Release\twDisplayMgr.obj|_$E8	dmp3D_MSVCR.lib	exact+ctx	0.823	cands=3 ctx_agree=1 caller_votes=0.0 ntok=2
+006b90b0	192	?mInit@twDisplayMgr@@UAEEXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=1 caller_votes=0.0 ntok=87; libmatch=same
+006b9170	64	?mDone@twDisplayMgr@@UAEXXZ	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=1 caller_votes=0.0 ntok=19; libmatch=same
+006b91b0	96	?mSetDispMode@twDisplayMgr@@UAEEHHH@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=1 caller_votes=0.0 ntok=41; libmatch=same
+006b9210	96	?mEnumDispModes@twDisplayMgr@@UAEEP6AEHHHPAX@Z0@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=1 caller_votes=0.0 ntok=45; libmatch=same
+006b9270	32	??_GtOSDisplayMgr@@UAEPAXI@Z	dmp3D_MSVCR.lib	exact+ctx	0.875	cands=22 ctx_agree=2 caller_votes=0.0 ntok=12
+006b9290	2160	?D3DErrorCodeToString@@YAPBDJ@Z	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=318; libmatch=same
 006b9b00	16	??0CRC32@CryptoPP@@QAE@XZ	cryptlibR.lib	exact-short	0.5	cands=1 ctx_agree=0 caller_votes=0.0 ntok=4
 006b9b10	16	?DigestSize@CRC32@CryptoPP@@UBEIXZ	cryptlibR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
 006b9b50	64	?Update@CRC32@CryptoPP@@UAEXPBEI@Z	cryptlibR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=27; libmatch=same
@@ -2780,11 +3367,14 @@ address	size	mangled_name	library	tier	score	notes
 006c9980	16	?ClearExceptionCallstack@nFunctionWrapper@@YAXXZ	SharedR.lib,ScriptInterfaceR.lib	exact+ctx	0.75	cands=370 ctx_agree=0 caller_votes=0.5 ntok=1
 006c9980	16	?LogThreadEvent@@YAXPADJ@Z	sfcTiger_MSVCR.lib	exact+ctx	0.978	cands=370 ctx_agree=0 caller_votes=4.0 ntok=1
 006c9980	16	?ReportFooter@tBaseException@nException@@UAEXXZ	SharedR.lib,ScriptInterfaceR.lib	exact+ctx	0.933	cands=370 ctx_agree=0 caller_votes=2.4 ntok=1
+006c9980	16	?mDone@tGLSurfMgr@@UAEXXZ	dmp3D_MSVCR.lib	exact+ctx	0.997	cands=370 ctx_agree=0 caller_votes=7.0 ntok=1
 006c9980	16	?mDump@tDynamicMemoryFreeListViaHandles@@UAEXXZ	sfcTiger_MSVCR.lib	exact+ctx	0.933	cands=370 ctx_agree=0 caller_votes=2.4 ntok=1
 006c9980	16	?mDump@tListMemberWithHandle@@UAEXXZ	sfcTiger_MSVCR.lib	exact+ctx	0.956	cands=370 ctx_agree=0 caller_votes=3.0 ntok=1
 006d1700	208	??1?$set@V?$tSmartPtr@VtLanguageTag@@@@U?$less@V?$tSmartPtr@VtLanguageTag@@@@@std@@V?$allocator@V?$tSmartPtr@VtLanguageTag@@@@@3@@std@@QAE@XZ	SharedR.lib,ScriptInterfaceR.lib	exact+ctx	0.989	cands=15 ctx_agree=5 caller_votes=0.0 ntok=78
 006d1e30	16	?mDoAllImmediateNonInterruptCommands@tSoundChannel@@UAEXXZ	sfcTiger_MSVCR.lib	exact+ctx	0.797	cands=370 ctx_agree=0 caller_votes=0.8 ntok=1
 006d1e40	16	?mAddCopy@tFormatTag@@UAEXPAVtFormatStr@@@Z	sfcTiger_MSVCR.lib	exact+ctx	0.797	cands=4 ctx_agree=0 caller_votes=0.8 ntok=1
+006d1e40	16	?mSetupTexture@tSWView3D@@UBEXW4eMultipassTextures@tView3D@@@Z	dmp3D_MSVCR.lib	exact+ctx	0.797	cands=4 ctx_agree=0 caller_votes=0.8 ntok=1
+006d1e40	16	?mSetupTexture@tView3DExt@@UBEXW4eMultipassTextures@tView3D@@@Z	dmp3D_MSVCR.lib	exact+ctx	0.797	cands=4 ctx_agree=0 caller_votes=0.8 ntok=1
 006d1e50	16	??0?$EcPrecomputation@VECP@CryptoPP@@@CryptoPP@@QAE@XZ	cryptlibR.lib	exact+ctx	0.646	cands=2 ctx_agree=0 caller_votes=0.0 ntok=6; libmatch=same
 006d1e50	16	??0iterator@?$tValueCountMap@VtVolume@@VtwVolume@@U?$less@VtVolume@@@std@@@@QAE@XZ	sfcTiger_MSVCR.lib	exact+ctx	0.646	cands=2 ctx_agree=0 caller_votes=0.0 ntok=6; libmatch=same
 006d2800	16	?GetCategoryID@tJob@tJobManager@@QBEKXZ	SharedR.lib,ScriptInterfaceR.lib	exact+ctx	0.646	cands=3 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
@@ -2920,7 +3510,9 @@ address	size	mangled_name	library	tier	score	notes
 006f278c	6	_GetOpenFileNameA@4	-	ref	0.6	votes=1 from .\sfcTiger Release\twfsys.obj|?WinFileOpenDlg@@YA_NAAVtString@@00@Z; no library body (callee/vtable name only)
 006f2792	6	_GetSaveFileNameW@4	-	ref	0.6	votes=1 from ?mFileSaveDialog@twFileSystemPart@@UAE?AVtPath@@VtSession@@AAVtString@@1VtDir@@@Z; no library body (callee/vtable name only)
 006f2798	6	_GetSaveFileNameA@4	-	ref	0.6	votes=1 from .\sfcTiger Release\twfsys.obj|?WinFileSaveDlg@@YA_NAAVtString@@00@Z; no library body (callee/vtable name only)
-006f283a	6	_DirectDrawCreate@12	-	ref	0.6	votes=1 from ?CreateDirectDraw@CD3DFramework@@AAEJPAU_GUID@@K@Z; no library body (callee/vtable name only)
+006f283a	6	_DirectDrawCreate@12	-	ref	0.99	votes=6 from .\dmp3D_Release\d3denum.obj|?DirectDrawEnumCallbackEx@@YGHPAU_GUID@@PAD1PAXPAUHMONITOR__@@@Z,.\dmp3D_Release\d3denum.obj|?RefreshListForDesktopCompatibility@@YAXXZ,?CreateDirectDraw@CD3DFramework@@AAEJPAU_GUID@@K@Z; no library body (callee/vtable name only)
+006f2840	6	_DirectDrawCreateClipper@12	-	ref	0.57	votes=1 from ?mInitBuffers@tDDSurfMgr@@IAEEI@Z; no library body (callee/vtable name only)
+006f2846	6	_DirectDrawEnumerateA@8	-	ref	0.6	votes=1 from ?D3DEnum_EnumerateDevices@@YAJP6AJPAU_DDCAPS_DX7@@PAU_D3DDeviceDesc@@@Z@Z; no library body (callee/vtable name only)
 006f284c	20	_DirectSoundCreate@12	-	ref	0.6	votes=1 from ?mInitDirectSound@twSoundPart@@UAEEPAVtInitSoundPartInfo@@@Z; no library body (callee/vtable name only)
 006f3920	16	.\Common_Release\ThreadPool.obj|_$E49	SharedR.lib,ScriptInterfaceR.lib	exact+ctx	0.823	cands=565 ctx_agree=1 caller_votes=0.0 ntok=2
 006f3930	32	.\Common_Release\ThreadPool.obj|_$E45	SharedR.lib,ScriptInterfaceR.lib	exact+ctx	0.823	cands=4 ctx_agree=1 caller_votes=0.0 ntok=3
@@ -3066,6 +3658,7 @@ address	size	mangled_name	library	tier	score	notes
 006f8ed0	16	??1tStreamable@nDataStore@@UAE@XZ	SharedR.lib,ScriptInterfaceR.lib	exact+ctx	1.0	cands=95 ctx_agree=1 caller_votes=16.0 ntok=2
 006f8ee0	592	?GetObjectID@tStreamable@nDataStore@@QBEKXZ	SharedR.lib,ScriptInterfaceR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=180; libmatch=same
 006f9130	16	?GetVersion@tStreamable@nDataStore@@QBEEXZ	SharedR.lib,ScriptInterfaceR.lib	exact+ctx	0.646	cands=2 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
+006f9130	16	?mOpaqueBkgndEnabled@tGLDC@@UAEEXZ	dmp3D_MSVCR.lib	exact+ctx	0.646	cands=2 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
 006f9140	384	??5nDataStore@@YAAAVtInput@0@AAV10@AAVtStreamable@0@@Z	SharedR.lib,ScriptInterfaceR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=122; libmatch=same
 006f92c0	352	??0tCRCFailed@tStreamable@nDataStore@@QAE@ABV012@@Z	SharedR.lib,ScriptInterfaceR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=121; libmatch=same
 006f9420	544	??6nDataStore@@YAAAVtOutput@0@AAV10@ABVtStreamable@0@@Z	SharedR.lib,ScriptInterfaceR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=214; libmatch=same
@@ -3262,6 +3855,7 @@ address	size	mangled_name	library	tier	score	notes
 006fe8a0	16	?MaxRetrieveable@RandomPool@CryptoPP@@UAEKXZ	cryptlibR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 00402fa5 0069f470 006fe8a0 0073ea74
 006fe8a0	16	?MaxRetrieveable@Sink@CryptoPP@@UAEKXZ	cryptlibR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 00402fa5 0069f470 006fe8a0 0073ea74
 006fe8a0	16	?ReadBand_Fail@@YAJPAUAudioDecoder@@JJ@Z	sfcTiger_MSVCR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 00402fa5 0069f470 006fe8a0 0073ea74
+006fe8a0	16	?mChooseInitialSurfMgr@t2DAppBase@@MAEHXZ	dmp3D_MSVCR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 00402fa5 0069f470 006fe8a0 0073ea74
 006fe8a0	16	?mGetBPV@tShipInfo@@QAEJXZ	ScriptInterfaceR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 00402fa5 0069f470 006fe8a0 0073ea74
 006fe8a0	16	?mGetTotalBPV@tShipInfo@@QAEJXZ	ScriptInterfaceR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 00402fa5 0069f470 006fe8a0 0073ea74
 006fe8a0	16	?sync@tStreamBuf@tLogStream@nLog@@UAEHXZ	SharedR.lib,ScriptInterfaceR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 00402fa5 0069f470 006fe8a0 0073ea74
@@ -3287,7 +3881,7 @@ address	size	mangled_name	library	tier	score	notes
 006ff6f0	16	?Working@tThread@@QBE_NXZ	SharedR.lib,ScriptInterfaceR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=2
 006ff700	16	??1tShipSystemsInfo@@QAE@XZ	ScriptInterfaceR.lib	exact+ctx	0.646	cands=2 ctx_agree=0 caller_votes=0.0 ntok=2
 006ff700	16	?Alive@tThread@@QBE_NXZ	SharedR.lib,ScriptInterfaceR.lib	exact+ctx	0.646	cands=2 ctx_agree=0 caller_votes=0.0 ntok=2
-006ff710	834	?Work@tThread@@IAEXXZ	SharedR.lib,ScriptInterfaceR.lib	fuzzy	0.675	ratio=0.903 runner_up=0.817 ctx_agree=40 calls=27/29 ntok=250/257
+006ff710	834	?Work@tThread@@IAEXXZ	SharedR.lib,ScriptInterfaceR.lib	fuzzy	0.675	ratio=0.903 runner_up=0.817 ctx_agree=42 calls=27/29 ntok=250/257
 006ffa70	48	?ThreadProc@tThread@@KGIPAX@Z	SharedR.lib,ScriptInterfaceR.lib	ref	0.75	body differs (ratio 0.75); votes=1 from ??0tThread@@QAE@XZ; libmatch=same
 006ffb20	16	??0tObject@@QAE@XZ	SharedR.lib,ScriptInterfaceR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=4
 006ffb30	16	??1tObject@@UAE@XZ	SharedR.lib,ScriptInterfaceR.lib	exact+ctx	0.999	cands=95 ctx_agree=1 caller_votes=7.0 ntok=2
@@ -3596,6 +4190,7 @@ address	size	mangled_name	library	tier	score	notes
 0070e520	16	??BtThreadEvent@@QAEPAXXZ	SharedR.lib,ScriptInterfaceR.lib	exact+ctx	0.912	cands=4 ctx_agree=0 caller_votes=2.0 ntok=2
 0070e520	16	?DefaultThreadObjectUse@tThreadState@@UAE?AW4eUse@1@XZ	SharedR.lib,ScriptInterfaceR.lib	exact+ctx	0.797	cands=4 ctx_agree=0 caller_votes=0.8 ntok=2
 0070e520	16	?mGetAllocatorID@tAllocatedClass@@UBEJXZ	SharedR.lib,ScriptInterfaceR.lib	exact+ctx	0.797	cands=4 ctx_agree=0 caller_votes=0.8 ntok=2
+0070e520	16	?mGetTextAlign@tGLDC@@UAEKXZ	dmp3D_MSVCR.lib	exact+ctx	0.797	cands=4 ctx_agree=0 caller_votes=0.8 ntok=2
 0070e530	32	?Signal@tThreadEvent@@QAEXXZ	SharedR.lib,ScriptInterfaceR.lib	exact+ctx	0.823	cands=2 ctx_agree=1 caller_votes=0.0 ntok=7
 0070e550	32	?Reset@tThreadEvent@@QAEXXZ	SharedR.lib,ScriptInterfaceR.lib	exact+ctx	0.823	cands=2 ctx_agree=1 caller_votes=0.0 ntok=7
 0070e6b0	16	??0?$OAEP@VSHA@CryptoPP@@V?$MGF1@VSHA@CryptoPP@@@2@$1?OAEP_P_DEFAULT@2@3PAEA$0A@@CryptoPP@@QAE@XZ	cryptlibR.lib	multi	0.2	ambiguous group of 5 identical-structure addresses: 0057444c 005e1e24 00600396 006fe030 0070e6b0
@@ -3783,6 +4378,7 @@ address	size	mangled_name	library	tier	score	notes
 00714a90	16	??1tShipStrength@@UAE@XZ	SharedR.lib,ScriptInterfaceR.lib	exact+ctx	0.823	cands=156 ctx_agree=1 caller_votes=0.0 ntok=1
 00714aa0	32	??_GtDateAndTime@@UAEPAXI@Z	SharedR.lib,ScriptInterfaceR.lib	exact+ctx	0.912	cands=237 ctx_agree=2 caller_votes=0.0 ntok=11
 00714aa0	32	??_GtShipStrength@@UAEPAXI@Z	SharedR.lib,ScriptInterfaceR.lib	exact+ctx	0.912	cands=237 ctx_agree=2 caller_votes=0.0 ntok=11
+00716310	16	?mMoveToX@tGLDC@@UAEXH@Z	dmp3D_MSVCR.lib	exact+ctx	0.797	cands=4 ctx_agree=0 caller_votes=0.8 ntok=3
 007168e0	16	?do_decimal_point@?$numpunct@D@std@@MBEDXZ	SharedR.lib,ScriptInterfaceR.lib	exact+ctx	0.646	cands=3 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
 00716950	16	?mStrLen@tString@@QBEHXZ	sfcTiger_MSVCR.lib	exact+ctx	1.0	cands=4 ctx_agree=0 caller_votes=17.0 ntok=2
 00716950	16	?size@tString@@QBEJXZ	sfcTiger_MSVCR.lib	exact+ctx	0.823	cands=4 ctx_agree=0 caller_votes=1.0 ntok=2
@@ -4026,9 +4622,10 @@ address	size	mangled_name	library	tier	score	notes
 0072e610	64	??1?$vector@UProjectivePoint@CryptoPP@@V?$allocator@UProjectivePoint@CryptoPP@@@std@@@std@@QAE@XZ	cryptlibR.lib	multi	0.143	ambiguous group of 7 identical-structure addresses: 00612750 00612790 00678040 006785c0 0068ed40 00722690 0072e610
 0072e610	64	??1?$vector@VPolynomialMod2@CryptoPP@@V?$allocator@VPolynomialMod2@CryptoPP@@@std@@@std@@QAE@XZ	cryptlibR.lib	multi	0.143	ambiguous group of 7 identical-structure addresses: 00612750 00612790 00678040 006785c0 0068ed40 00722690 0072e610
 0072e880	16	?GetUpdateID@tDatabaseObjectUpdate@nDatabase@@QBEABVtID@2@XZ	SharedR.lib,ScriptInterfaceR.lib	exact+ctx	0.646	cands=2 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
-0072eea0	32	??2@YAPAXI@Z	-	ref	0.99	votes=154 from ??0?$list@VtJob@tJobManager@@V?$allocator@VtJob@tJobManager@@@std@@@std@@QAE@ABV?$allocator@VtJob@tJobManager@@@1@@Z,??0?$map@DJU?$less@D@std@@V?$allocator@J@2@@std@@QAE@ABU?$less@D@1@ABV?$allocator@J@1@@Z,??0?$map@PBVtype_info@@VtObjectIDInfo@tStreamable@nDataStore@@U?$less@PBVtype_info@@@std@@V?$allocator@VtObjectIDInfo@tStreamable@nDataStore@@@6@@std@@QAE@ABU?$less@PBVtype_info@@@1@ABV?$allocator@VtObjectIDInfo@tStreamable@nDataStore@@@1@@Z; no library body (callee/vtable name only)
-0072eec0	16	??3@YAXPAX@Z	-	ref	0.99	votes=281 from .\Common_Release\CallStack.obj|_$E43,.\Common_Release\Database.obj:.text$x#41,.\Common_Release\DatabaseObject.obj:.text$x#21; no library body (callee/vtable name only)
-0072eec0	16	_free	-	ref	0.99	votes=7 from ??1tBufFile@@UAE@XZ,??1tItemBag@@UAE@XZ,??3tBaseItemBag@@SAXPAX@Z; no library body (callee/vtable name only)
+0072e880	16	?mGetSurfMgrInfoList@t2DAppBase@@UAEPAPAUtGLSurfMgrInfo@@XZ	dmp3D_MSVCR.lib	exact+ctx	0.646	cands=2 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
+0072eea0	32	??2@YAPAXI@Z	-	ref	0.99	votes=183 from .\dmp3D_Release\d3dViewMgr_Choose.obj|?ChooseDriver@@YAPAUD3DEnum_DriverInfo@@PAUHWND__@@PAU1@P6AE1AAUtParams@@@Z2@Z,.\dmp3D_Release\d3denum.obj|?DirectDrawEnumCallbackEx@@YGHPAU_GUID@@PAD1PAXPAUHMONITOR__@@@Z,.\dmp3D_Release\d3denum.obj|?Enum3DDevicesCallback@@YGJPAU_GUID@@PAD1PAU_D3DDeviceDesc@@2PAX@Z; no library body (callee/vtable name only)
+0072eec0	16	??3@YAXPAX@Z	-	ref	0.99	votes=317 from .\Common_Release\CallStack.obj|_$E43,.\Common_Release\Database.obj:.text$x#41,.\Common_Release\DatabaseObject.obj:.text$x#21; no library body (callee/vtable name only)
+0072eec0	16	_free	-	ref	0.99	votes=9 from ??1tBufFile@@UAE@XZ,??1tItemBag@@UAE@XZ,??3tBaseItemBag@@SAXPAX@Z; no library body (callee/vtable name only)
 0072eed0	112	_malloc	-	ref	0.938	votes=2 from ??0tBufFile@@QAE@K@Z,?mAddToList@tItemBag@@IAEJPAVtBaseItemBag@@PAD@Z; no library body (callee/vtable name only)
 0072ef40	96	_calloc	-	ref	0.6	votes=1 from _CPU_CmpStrings; no library body (callee/vtable name only)
 0072f020	16	?MaxDigestLength@DSABase@CryptoPP@@UBEIXZ	cryptlibR.lib	exact+ctx	0.646	cands=3 ctx_agree=0 caller_votes=0.0 ntok=2; libmatch=same
@@ -4039,15 +4636,15 @@ address	size	mangled_name	library	tier	score	notes
 00734810	16	?MaxPlainTextLength@?$ECPublicKey@VEC2N@CryptoPP@@@CryptoPP@@UBEIXZ	cryptlibR.lib	masked	0.8	cands=1 ctx_agree=0 caller_votes=0.0 ntok=3
 00734810	16	?MaxPlainTextLength@?$ECPublicKey@VECP@CryptoPP@@@CryptoPP@@UBEIXZ	cryptlibR.lib	masked	0.8	cands=1 ctx_agree=0 caller_votes=0.0 ntok=3
 00735cd5	27	??8type_info@@QBEHABV0@@Z	-	ref	0.938	votes=2 from ??8tAllocatedClass@@UAEJABVtype_info@@@Z,??8tAllocatorInfo@tDynamicAllocator@@QBEJABVtype_info@@@Z; no library body (callee/vtable name only)
-00735dbd	18	_atexit	-	ref	0.99	votes=8 from .\sfcTiger Release\tBag.obj|_$E6,.\sfcTiger Release\tFile.obj|_$E31,.\sfcTiger Release\tFile.obj|_$E61; no library body (callee/vtable name only)
-00735f0c	54	___CxxFrameHandler	-	ref	0.99	votes=188 from .\Common_Release\CallStack.obj:.text$x#122,.\Common_Release\CallStack.obj:.text$x#50,.\Common_Release\CallStack.obj:.text$x#63; no library body (callee/vtable name only)
+00735dbd	18	_atexit	-	ref	0.99	votes=11 from .\dmp3D_Release\swView3D_Tex.obj|_$E27,.\sfcTiger Release\tBag.obj|_$E6,.\sfcTiger Release\tFile.obj|_$E31; no library body (callee/vtable name only)
+00735f0c	54	___CxxFrameHandler	-	ref	0.99	votes=197 from .\Common_Release\CallStack.obj:.text$x#122,.\Common_Release\CallStack.obj:.text$x#50,.\Common_Release\CallStack.obj:.text$x#63; no library body (callee/vtable name only)
 00736273	104	??_M@YGXPAXIHP6EX0@Z@Z	-	ref	0.99	votes=15 from .\Common_Release\CallStack.obj:.text$x#50,.\Common_Release\CallStack.obj:.text$x#63,.\Release\Script.obj:.text$x#27; no library body (callee/vtable name only)
 00736367	106	??_L@YGXPAXIHP6EX0@Z1@Z	-	ref	0.99	votes=9 from .\sfcTiger Release\tFontmgr.obj|_$E17,??0tBasicSoundFileManager@@QAE@XZ,??0tCallStack@@QAE@_N@Z; no library body (callee/vtable name only)
-007363f0	47	__chkstk	-	ref	0.984	votes=3 from ?CalcFileCRC@tCRC32@@QAEKABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@K@Z,?ReadStream@tGFSection@@UAEXPAV?$basic_istream@DU?$char_traits@D@std@@@std@@@Z,?mGenFormattedStr@tFormatStr@@QAEXAAVtString@@V2@@Z; no library body (callee/vtable name only)
+007363f0	47	__chkstk	-	ref	0.99	votes=5 from ?CalcFileCRC@tCRC32@@QAEKABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@K@Z,?ReadStream@tGFSection@@UAEXPAV?$basic_istream@DU?$char_traits@D@std@@@std@@@Z,?mGenFormattedStr@tFormatStr@@QAEXAAVtString@@V2@@Z; no library body (callee/vtable name only)
 007364aa	22	_atoi	-	ref	0.938	votes=2 from ?GetList@tSettings@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAV?$vector@JV?$allocator@J@std@@@3@PAV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@3@@Z,?GetValue@tSettings@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAJ@Z; no library body (callee/vtable name only)
 007368e5	47	_fwrite	-	ref	0.57	votes=1 from ?mWrite@tBasicFileCRT@tBasicFileCRTNamespace@@UAEKPBXK@Z; no library body (callee/vtable name only)
 00736b43	44	_fseek	-	ref	0.99	votes=4 from ?mFileSize@tBasicFileCRT@tBasicFileCRTNamespace@@UAEKXZ,?mSeekCur@tBasicFileCRT@tBasicFileCRTNamespace@@UAEEJ@Z,?mSeekEnd@tBasicFileCRT@tBasicFileCRTNamespace@@UAEEJ@Z; no library body (callee/vtable name only)
-00736e90	92	_memmove	-	ref	0.99	votes=26 from ??0length_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z,??0tCRCFailed@tStreamable@nDataStore@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0PBDJ@Z,??0tObjectIDInfo@tStreamable@nDataStore@@QAE@ABV012@@Z; no library body (callee/vtable name only)
+00736e90	92	_memmove	-	ref	0.99	votes=27 from ??0length_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z,??0tCRCFailed@tStreamable@nDataStore@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0PBDJ@Z,??0tObjectIDInfo@tStreamable@nDataStore@@QAE@ABV012@@Z; no library body (callee/vtable name only)
 00737280	165	_memchr	-	ref	0.99	votes=4 from ??RtCompactStackPred@tCallStack@@QAE_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z,?ParameterPresent@tCommandLineArgs@@QBE_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z,?Setup@tCommandLineArgs@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z; no library body (callee/vtable name only)
 00737325	21	_fclose	-	ref	0.938	votes=2 from ?DumpEventLog@@YAXXZ,?mClose@tBasicFileCRT@tBasicFileCRTNamespace@@UAEEXZ; no library body (callee/vtable name only)
 007373cf	61	??0exception@@QAE@ABQBD@Z	-	ref	0.984	votes=3 from ??0length_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z,??0tBaseException@nException@@QAE@PBD0J@Z,?_Xran@?$vector@VtAllocatorInfo@tDynamicAllocator@@V?$allocator@VtAllocatorInfo@tDynamicAllocator@@@std@@@std@@IBEXXZ; no library body (callee/vtable name only)
@@ -4055,23 +4652,23 @@ address	size	mangled_name	library	tier	score	notes
 00737456	22	??1exception@@UAE@XZ	-	ref	0.57	votes=1 from ??1tBaseException@nException@@UAE@XZ; no library body (callee/vtable name only)
 0073746c	16	?mGetCustomName@tShipInfo@@QAEPBDXZ	ScriptInterfaceR.lib	multi	0.2	ambiguous group of 5 identical-structure addresses: 0052da1d 005ed7ac 0060f6d0 0073746c 0074bf30
 0073746c	13	?what@exception@@UBEPBDXZ	-	ref	0.964	votes=3 from data:.\Common_Release\Database.obj|.rdata#126,data:.\Common_Release\DatabaseID.obj|.rdata#66,data:.\Common_Release\Streamable.obj|.rdata#33; no library body (callee/vtable name only)
-00737479	58	__CxxThrowException@8	-	ref	0.99	votes=387 from .\sfcTiger Release\twfsys.obj|?WinFileOpenDlg@@YA_NAAVtString@@00@Z,.\sfcTiger Release\twfsys.obj|?WinFileSaveDlg@@YA_NAAVtString@@00@Z,.\sfcTiger Release\twfsys.obj|?WinParsePath@@YA?AVtPath@@VtSession@@AAVtString@@@Z; no library body (callee/vtable name only)
+00737479	58	__CxxThrowException@8	-	ref	0.99	votes=403 from .\sfcTiger Release\twfsys.obj|?WinFileOpenDlg@@YA_NAAVtString@@00@Z,.\sfcTiger Release\twfsys.obj|?WinFileSaveDlg@@YA_NAAVtString@@00@Z,.\sfcTiger Release\twfsys.obj|?WinParsePath@@YA?AVtPath@@VtSession@@AAVtString@@@Z; no library body (callee/vtable name only)
 00737771	63	_sscanf	-	ref	0.984	votes=3 from ?mIsThisInThisGroup@tAFPlayInfo@@UAEEJ@Z,?mIsThisInThisThreshold@tAFPlayInfo@@UAEEJ@Z,?mParseAllSoundsFile@tBasicSoundFileManager@@UAEXPADJJ@Z; no library body (callee/vtable name only)
 007377c0	188	_strchr	-	ref	0.99	votes=5 from ?mPutInteger@tINISectionSimple@tINISimpleNamespace@@AAEEPBDKE@Z,?mPutString@tINISectionSimple@tINISimpleNamespace@@UAEEPBD0@Z,?mPuts@tWinComPort@@UAEXPBD@Z; no library body (callee/vtable name only)
-0073787c	84	_sprintf	-	ref	0.99	votes=27 from ?mAddPage@tPagingMechanism@@IAEEXZ,?mCheckForBoundsError@tPagingBlock@@QAEEJ@Z,?mCheckForBoundsError@twMemoryBlock@@IAEFXZ; no library body (callee/vtable name only)
-007378d0	254	_strncpy	-	ref	0.938	votes=2 from ??0tStat@tStats@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z,?mInit@tWinDbgFile@@QAEHPBDEE@Z; no library body (callee/vtable name only)
+0073787c	84	_sprintf	-	ref	0.99	votes=32 from .\dmp3D_Release\d3denum.obj|?EnumDisplayModesCallback@@YGJPAU_DDSURFACEDESC2@@PAX@Z,??0tErrInfo@@QAA@PBDH0ZZ,?TraceErrorD3D@@YAXJPADH@Z; no library body (callee/vtable name only)
+007378d0	254	_strncpy	-	ref	0.99	votes=4 from .\dmp3D_Release\d3denum.obj|?DirectDrawEnumCallbackEx@@YGHPAU_GUID@@PAD1PAXPAUHMONITOR__@@@Z,.\dmp3D_Release\d3denum.obj|?Enum3DDevicesCallback@@YGJPAU_GUID@@PAD1PAU_D3DDeviceDesc@@2PAX@Z,??0tStat@tStats@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z; no library body (callee/vtable name only)
 007379ce	87	_atof	-	ref	0.938	votes=2 from ?GetList@tSettings@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAV?$vector@MV?$allocator@M@std@@@3@PAV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@3@@Z,?GetValue@tSettings@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAM@Z; no library body (callee/vtable name only)
 00737a93	168	___RTtypeid	-	ref	0.99	votes=7 from ??5nDataStore@@YAAAVtInput@0@AAV10@AAVtStreamable@0@@Z,??6nDatabase@@YAAAVtOutput@nDataStore@@AAV12@AAVtBlock@tStreamDatabaseStorage@0@@Z,??8tAllocatedClass@@UAEJABVtype_info@@@Z; no library body (callee/vtable name only)
 00737b59	32	??0bad_cast@std@@QAE@PBD@Z	SharedR.lib,ScriptInterfaceR.lib,cryptlibR.lib	multi	0.5	ambiguous group of 2 identical-structure addresses: 00737b59 0074e5a7
-00737b72	249	___RTDynamicCast	-	ref	0.99	votes=257 from .\sfcTiger Release\twfsys.obj|?WinParseVolume@@YA?AVtVolume@@VtSession@@AAVtString@@@Z,??0tFileSession@@QAE@XZ,??1tAudioFileInfoPart@@UAE@XZ; no library body (callee/vtable name only)
-00737f86	10	__purecall	-	ref	0.99	votes=6 from data:.\Common_Release\Timer.obj|.rdata#9,data:.\sfcTiger Release\tcrandsequence.obj|.rdata#15,data:.\sfcTiger Release\twSound.obj|.rdata#156; no library body (callee/vtable name only)
-00738040	48	__ftol	-	ref	0.99	votes=10 from ?Heartbeat@tThreadPool@@QAEXXZ,?mAdjustGlobalVolume@tBasicSoundFileManager@@UAEXXZ,?mDoCommand@tSoundChannel@@UAEEPAVtSoundChannelCommand@@@Z; no library body (callee/vtable name only)
+00737b72	249	___RTDynamicCast	-	ref	0.99	votes=262 from .\sfcTiger Release\twfsys.obj|?WinParseVolume@@YA?AVtVolume@@VtSession@@AAVtString@@@Z,??0tFileSession@@QAE@XZ,??1tAudioFileInfoPart@@UAE@XZ; no library body (callee/vtable name only)
+00737f86	10	__purecall	-	ref	0.99	votes=8 from data:.\Common_Release\Timer.obj|.rdata#9,data:.\dmp3D_Release\tGLSurface.obj|.rdata#98,data:.\dmp3D_Release\view3DExt.obj|.rdata#76; no library body (callee/vtable name only)
+00738040	48	__ftol	-	ref	0.99	votes=14 from ?Heartbeat@tThreadPool@@QAEXXZ,?mAdjustGlobalVolume@tBasicSoundFileManager@@UAEXXZ,?mClear@tD3DViewMgr@@UAEEEE@Z; no library body (callee/vtable name only)
 0073812a	60	_fprintf	-	ref	0.6	votes=1 from ?DumpEventLog@@YAXXZ; no library body (callee/vtable name only)
 00738197	25	_fopen	-	ref	0.6	votes=1 from ?DumpEventLog@@YAXXZ; no library body (callee/vtable name only)
-0073825e	111	_tolower	-	ref	0.99	votes=8 from .\sfcTiger Release\tZipInfoMgr.obj|?BsearchCompare@@YAHPBX0@Z,.\sfcTiger Release\tZipInfoMgr.obj|?QsortCompare@@YAHPBX0@Z,.\sfcTiger Release\tbasicsoundfilezip.obj|?QsortCompare@@YAHPBX0@Z; no library body (callee/vtable name only)
+0073825e	111	_tolower	-	ref	0.99	votes=9 from .\sfcTiger Release\tZipInfoMgr.obj|?BsearchCompare@@YAHPBX0@Z,.\sfcTiger Release\tZipInfoMgr.obj|?QsortCompare@@YAHPBX0@Z,.\sfcTiger Release\tbasicsoundfilezip.obj|?QsortCompare@@YAHPBX0@Z; no library body (callee/vtable name only)
 007383a0	208	__stricmp	-	ref	0.6	votes=1 from ?mGetConfiguration@twDebugPart@@IAEXXZ; no library body (callee/vtable name only)
 007383a0	208	_stricmp	-	ref	0.938	votes=2 from ?mCloseLogFileTarget@twDebugPart@@UAEXPBD@Z,?mCreateLogFileTarget@twDebugPart@@UAEKPBDEE@Z; no library body (callee/vtable name only)
-00738470	48	_strrchr	-	ref	0.99	votes=4 from ?_InitNewBasicFileCRT@@YAEE@Z,?_NewBasicFileCRT@@YAPAVtBasicFile@@XZ,?mInit@tBasicFileCRT@tBasicFileCRTNamespace@@SAEE@Z; no library body (callee/vtable name only)
+00738470	48	_strrchr	-	ref	0.99	votes=7 from ?_InitNewBasicFileCRT@@YAEE@Z,?_NewBasicFileCRT@@YAPAVtBasicFile@@XZ,?mActivate@twGLSurfMgrInterfaceDLL@@UAEXXZ; no library body (callee/vtable name only)
 007385de	13	_srand	-	ref	0.6	votes=1 from ?mSetSeed@tCRandomSequence@@UAEXK@Z; no library body (callee/vtable name only)
 007385eb	34	_rand	-	ref	0.99	votes=5 from ?mGenerateNumber@tCRandomSequence@@MAEKXZ,?mGetAcualIndexOffsetIfRandom@tAFPlayInfo@@UAEJXZ,?mGetRandStr@tStrMgrCore@@UAEABVtString@@J@Z; no library body (callee/vtable name only)
 007389f1	40	_isdigit	-	ref	0.6	votes=1 from ?mGetInteger@tINISectionSimple@tINISimpleNamespace@@AAEKPBDKE@Z; no library body (callee/vtable name only)
@@ -4080,11 +4677,12 @@ address	size	mangled_name	library	tier	score	notes
 00738bb6	39	_getcwd	-	ref	0.984	votes=3 from ?_InitNewBasicFileCRT@@YAEE@Z,?_NewBasicFileCRT@@YAPAVtBasicFile@@XZ,?mInit@tBasicFileCRT@tBasicFileCRTNamespace@@SAEE@Z; no library body (callee/vtable name only)
 007390fa	220	_time	-	ref	0.99	votes=5 from ??0tDateAndTime@@QAE@XZ,?GetTickCount@tDateAndTime@@SA?AV1@XZ,?OnTick@tDatabase@nDatabase@@IAEXK@Z; no library body (callee/vtable name only)
 00739412	340	_qsort	-	ref	0.938	votes=2 from ?mInit@tSndZipInfoMgr@@QAEEPBD@Z,?mInit@tZipInfoMgr@@QAEEPBD@Z; no library body (callee/vtable name only)
+00739750	25	__CIpow	-	ref	0.6	votes=1 from ?mBuildRamps@tClut@@IAEXXZ; no library body (callee/vtable name only)
 00739a74	47	_fread	-	ref	0.57	votes=1 from ?mRead@tBasicFileCRT@tBasicFileCRTNamespace@@UAEKPAXK@Z; no library body (callee/vtable name only)
 00739b8b	34	_ftell	-	ref	0.938	votes=2 from ?mFilePos@tBasicFileCRT@tBasicFileCRTNamespace@@UAEKXZ,?mFileSize@tBasicFileCRT@tBasicFileCRTNamespace@@UAEKXZ; no library body (callee/vtable name only)
 00739dba	358	_localtime	-	ref	0.6	votes=1 from ?GetLocalTm@tDateAndTime@@QBEPAUtm@@PAU2@@Z; no library body (callee/vtable name only)
 0073a032	126	?name@type_info@@QBEPBDXZ	-	ref	0.984	votes=3 from ??5nDataStore@@YAAAVtInput@0@AAV10@AAVtStreamable@0@@Z,?GetObjectID@tStreamable@nDataStore@@QBEKXZ,?UpdateObject@tDatabase@nDatabase@@UAEXABVtDatabaseObjectUpdate@2@_N@Z; no library body (callee/vtable name only)
-0073a3f1	95	_vsprintf	-	ref	0.984	votes=3 from ?AddSoundErrorDuringInterrupt@@YAXPBDZZ,?mJustSayIt@tSay@@QAAXPBDZZ,?mSay@tSay@@QAAXPBDZZ; no library body (callee/vtable name only)
+0073a3f1	95	_vsprintf	-	ref	0.99	votes=6 from ??0tErrInfo@@QAA@PBDH0ZZ,?AddSoundErrorDuringInterrupt@@YAXPBDZZ,?mDDCheck@tDDSurfMgr@@IAAEJPBDH0ZZ; no library body (callee/vtable name only)
 0073a484	140	_bsearch	-	ref	0.57	votes=1 from ?mFindEntry@tZipInfoMgr@@QBEPBVtZipEntry@1@PBD@Z; no library body (callee/vtable name only)
 0073ace0	104	__aulldiv	-	ref	0.938	votes=2 from ??0tThreadPool@@AAE@XZ,?Heartbeat@tThreadPool@@QAEXXZ; no library body (callee/vtable name only)
 0073ae52	107	__beginthreadex	-	ref	0.6	votes=1 from ??0tThread@@QAE@XZ; no library body (callee/vtable name only)
@@ -4093,6 +4691,7 @@ address	size	mangled_name	library	tier	score	notes
 0073ea74	16	?MaxRetrieveable@RandomPool@CryptoPP@@UAEKXZ	cryptlibR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 00402fa5 0069f470 006fe8a0 0073ea74
 0073ea74	16	?MaxRetrieveable@Sink@CryptoPP@@UAEKXZ	cryptlibR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 00402fa5 0069f470 006fe8a0 0073ea74
 0073ea74	16	?ReadBand_Fail@@YAJPAUAudioDecoder@@JJ@Z	sfcTiger_MSVCR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 00402fa5 0069f470 006fe8a0 0073ea74
+0073ea74	16	?mChooseInitialSurfMgr@t2DAppBase@@MAEHXZ	dmp3D_MSVCR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 00402fa5 0069f470 006fe8a0 0073ea74
 0073ea74	16	?mGetBPV@tShipInfo@@QAEJXZ	ScriptInterfaceR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 00402fa5 0069f470 006fe8a0 0073ea74
 0073ea74	16	?mGetTotalBPV@tShipInfo@@QAEJXZ	ScriptInterfaceR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 00402fa5 0069f470 006fe8a0 0073ea74
 0073ea74	16	?sync@tStreamBuf@tLogStream@nLog@@UAEHXZ	SharedR.lib,ScriptInterfaceR.lib	multi	0.25	ambiguous group of 4 identical-structure addresses: 00402fa5 0069f470 006fe8a0 0073ea74
@@ -4670,8 +5269,22 @@ address	size	mangled_name	library	tier	score	notes
 0078a173	45	.\Common_Release\Validate.obj:.text$x#145	SharedR.lib,ScriptInterfaceR.lib	multi	0.5	ambiguous group of 2 identical-structure addresses: 0078a173 00792290
 0078a173	45	.\release\files.obj:.text$x#440	cryptlibR.lib	multi	0.5	ambiguous group of 2 identical-structure addresses: 0078a173 00792290
 0078a511	34	.\release\secshare.obj:.text$x#177	cryptlibR.lib	masked+ctx	0.844	cands=887 ctx_agree=3 caller_votes=0.0 ntok=8
+0078ab90	43	.\dmp3D_Release\d3dViewMgr.obj:.text$x#178	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=17
+0078abe0	32	.\dmp3D_Release\d3dViewMgr.obj:.text$x#375	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=7; libmatch=same
+0078ac00	18	.\dmp3D_Release\swView3D.obj:.text$x#22	dmp3D_MSVCR.lib	exact+ctx	0.875	cands=932 ctx_agree=2 caller_votes=0.0 ntok=4
+0078ac20	32	.\dmp3D_Release\swView3D.obj:.text$x#54	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=7; libmatch=same
+0078aca0	32	.\dmp3D_Release\texMgr.obj:.text$x#28	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=12
+0078ace0	29	.\dmp3D_Release\tGLSurface.obj:.text$x#154	dmp3D_MSVCR.lib	exact+ctx	0.938	cands=28 ctx_agree=3 caller_votes=0.0 ntok=7
+0078ada0	29	.\dmp3D_Release\tDDSurface.obj:.text$x#49	dmp3D_MSVCR.lib	exact+ctx	0.938	cands=3 ctx_agree=3 caller_votes=0.0 ntok=7
+0078ae20	45	.\dmp3D_Release\d3dViewMgr_Tex.obj:.text$x#25	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=13
 0078ae28	37	.\sfcTiger Release\tbasicfilebuffile.obj:.text$x#92	sfcTiger_MSVCR.lib	multi	0.5	ambiguous group of 2 identical-structure addresses: 0078ae28 0078f0c8
 0078ae28	37	.\sfcTiger Release\tbasicfilesearch.obj:.text$x#83	sfcTiger_MSVCR.lib	multi	0.5	ambiguous group of 2 identical-structure addresses: 0078ae28 0078f0c8
+0078ae70	21	.\dmp3D_Release\d3dViewMgr_Tex.obj:.text$x#71	dmp3D_MSVCR.lib	exact-short	0.5	cands=1 ctx_agree=0 caller_votes=0.0 ntok=4
+0078ae90	24	.\dmp3D_Release\d3dViewMgr_Tex.obj:.text$x#89	dmp3D_MSVCR.lib	exact+ctx	0.875	cands=3 ctx_agree=2 caller_votes=0.0 ntok=5
+0078af30	29	.\dmp3D_Release\swView3D_Tex.obj:.text$x#131	dmp3D_MSVCR.lib	exact+ctx	0.938	cands=3 ctx_agree=3 caller_votes=0.0 ntok=9
+0078af50	35	.\dmp3D_Release\tGDISurfMgr.obj:.text$x#21	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=7; libmatch=same
+0078afa0	24	.\dmp3D_Release\tGDISurfMgr.obj:.text$x#84	dmp3D_MSVCR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=7
+0078aff0	18	.\dmp3D_Release\tDDSurfMgr.obj:.text$x#93	dmp3D_MSVCR.lib	exact-short	0.5	cands=1 ctx_agree=0 caller_votes=0.0 ntok=4
 0078c0d0	45	.\Release\Strength.obj:.text$x#20	SharedR.lib,ScriptInterfaceR.lib	multi	0.2	ambiguous group of 5 identical-structure addresses: 00769634 0076b8b4 0076bb5c 0076c774 0078c0d0
 0078c278	26	.\release\secshare.obj:.text$x#126	cryptlibR.lib	exact	1.0	cands=1 ctx_agree=0 caller_votes=0.0 ntok=6
 0078c710	37	.\Common_Release\BaseException.obj:.text$x#151	SharedR.lib,ScriptInterfaceR.lib	multi	0.143	ambiguous group of 7 identical-structure addresses: 0078748b 00788880 00788a86 0078a130 0078c710 0078ce78 0078d133
@@ -6119,9 +6732,51 @@ address	size	mangled_name	library	tier	score	notes
 -	16	.\Release\teamtracker.obj|_$E34	ScriptInterfaceR.lib	multi	0.002	ambiguous: 565 identical-structure addresses, not listed
 -	16	.\Release\teamtracker.obj|_$E56	ScriptInterfaceR.lib	multi	0.001	ambiguous: 941 identical-structure addresses, not listed
 -	32	.\Release\teamtracker.obj|_$E57	ScriptInterfaceR.lib	multi	0.01	ambiguous: 103 identical-structure addresses, not listed
+-	32	.\dmp3D_Release\clip.obj|_$E2	dmp3D_MSVCR.lib	multi	0.048	ambiguous: 21 identical-structure addresses, not listed
+-	24	.\dmp3D_Release\d3dViewMgr.obj:.text$x#151	dmp3D_MSVCR.lib	multi	0.01	ambiguous: 103 identical-structure addresses, not listed
+-	21	.\dmp3D_Release\d3dViewMgr.obj:.text$x#303	dmp3D_MSVCR.lib	multi	0.01	ambiguous: 103 identical-structure addresses, not listed
+-	32	.\dmp3D_Release\d3dViewMgr.obj|_$E3	dmp3D_MSVCR.lib	multi	0.048	ambiguous: 21 identical-structure addresses, not listed
+-	32	.\dmp3D_Release\d3dViewMgr_Choose.obj|_$E3	dmp3D_MSVCR.lib	multi	0.048	ambiguous: 21 identical-structure addresses, not listed
+-	32	.\dmp3D_Release\d3dViewMgr_Draw.obj|_$E3	dmp3D_MSVCR.lib	multi	0.048	ambiguous: 21 identical-structure addresses, not listed
+-	21	.\dmp3D_Release\d3dViewMgr_Tex.obj:.text$x#62	dmp3D_MSVCR.lib	multi	0.01	ambiguous: 103 identical-structure addresses, not listed
+-	32	.\dmp3D_Release\d3dViewMgr_Tex.obj|_$E3	dmp3D_MSVCR.lib	multi	0.048	ambiguous: 21 identical-structure addresses, not listed
+-	32	.\dmp3D_Release\drawPoly.obj|_$E2	dmp3D_MSVCR.lib	multi	0.048	ambiguous: 21 identical-structure addresses, not listed
+-	32	.\dmp3D_Release\plane.obj|_$E2	dmp3D_MSVCR.lib	multi	0.048	ambiguous: 21 identical-structure addresses, not listed
+-	32	.\dmp3D_Release\primitive.obj|_$E2	dmp3D_MSVCR.lib	multi	0.048	ambiguous: 21 identical-structure addresses, not listed
+-	21	.\dmp3D_Release\swView3D.obj:.text$x#128	dmp3D_MSVCR.lib	multi	0.01	ambiguous: 103 identical-structure addresses, not listed
+-	32	.\dmp3D_Release\swView3D.obj|_$E2	dmp3D_MSVCR.lib	multi	0.048	ambiguous: 21 identical-structure addresses, not listed
+-	32	.\dmp3D_Release\swView3D_Draw.obj|_$E3	dmp3D_MSVCR.lib	multi	0.048	ambiguous: 21 identical-structure addresses, not listed
+-	18	.\dmp3D_Release\swView3D_Tex.obj:.text$x#123	dmp3D_MSVCR.lib	multi	0.0	ambiguous: 2520 identical-structure addresses, not listed
+-	21	.\dmp3D_Release\swView3D_Tex.obj:.text$x#38	dmp3D_MSVCR.lib	multi	0.01	ambiguous: 103 identical-structure addresses, not listed
+-	18	.\dmp3D_Release\swView3D_Tex.obj:.text$x#66	dmp3D_MSVCR.lib	multi	0.001	ambiguous: 1155 identical-structure addresses, not listed
+-	32	.\dmp3D_Release\swView3D_Tex.obj|_$E3	dmp3D_MSVCR.lib	multi	0.048	ambiguous: 21 identical-structure addresses, not listed
+-	18	.\dmp3D_Release\t2DAppBase.obj:.text$x#26	dmp3D_MSVCR.lib	multi	0.001	ambiguous: 1155 identical-structure addresses, not listed
+-	18	.\dmp3D_Release\tBmpSurf.obj:.text$x#14	dmp3D_MSVCR.lib	multi	0.001	ambiguous: 1155 identical-structure addresses, not listed
+-	18	.\dmp3D_Release\tBmpSurf.obj:.text$x#23	dmp3D_MSVCR.lib	multi	0.001	ambiguous: 1155 identical-structure addresses, not listed
+-	18	.\dmp3D_Release\tBmpSurf.obj:.text$x#28	dmp3D_MSVCR.lib	multi	0.0	ambiguous: 2520 identical-structure addresses, not listed
+-	32	.\dmp3D_Release\tDDSurfMgr.obj:.text$x#115	dmp3D_MSVCR.lib	multi	0.067	ambiguous: 15 identical-structure addresses, not listed
+-	24	.\dmp3D_Release\tDDSurfMgr.obj:.text$x#62	dmp3D_MSVCR.lib	multi	0.01	ambiguous: 103 identical-structure addresses, not listed
+-	10	.\dmp3D_Release\tDDSurfMgr.obj:.text$x#73	dmp3D_MSVCR.lib	multi	0.0	ambiguous: 5504 identical-structure addresses, not listed
+-	18	.\dmp3D_Release\tDDSurface.obj:.text$x#28	dmp3D_MSVCR.lib	multi	0.001	ambiguous: 1155 identical-structure addresses, not listed
+-	18	.\dmp3D_Release\tGDISurfMgr.obj:.text$x#67	dmp3D_MSVCR.lib	multi	0.0	ambiguous: 2520 identical-structure addresses, not listed
 -	18	.\dmp3D_Release\tGLFont.obj:.text$x#54	dmp3D_MSVCR.lib	multi	0.001	ambiguous: 1155 identical-structure addresses, not listed
 -	10	.\dmp3D_Release\tGLFont.obj:.text$x#90	dmp3D_MSVCR.lib	multi	0.0	ambiguous: 5504 identical-structure addresses, not listed
 -	10	.\dmp3D_Release\tGLFont.obj:.text$x#94	dmp3D_MSVCR.lib	multi	0.0	ambiguous: 5504 identical-structure addresses, not listed
+-	18	.\dmp3D_Release\tGLSurfMgr.obj:.text$x#14	dmp3D_MSVCR.lib	multi	0.001	ambiguous: 1155 identical-structure addresses, not listed
+-	18	.\dmp3D_Release\tGLSurfMgr.obj:.text$x#23	dmp3D_MSVCR.lib	multi	0.001	ambiguous: 1155 identical-structure addresses, not listed
+-	21	.\dmp3D_Release\tGLSurfMgr.obj:.text$x#37	dmp3D_MSVCR.lib	multi	0.01	ambiguous: 103 identical-structure addresses, not listed
+-	18	.\dmp3D_Release\tGLSurface.obj:.text$x#96	dmp3D_MSVCR.lib	multi	0.001	ambiguous: 1155 identical-structure addresses, not listed
+-	10	.\dmp3D_Release\texBmp.obj:.text$x#28	dmp3D_MSVCR.lib	multi	0.0	ambiguous: 5504 identical-structure addresses, not listed
+-	10	.\dmp3D_Release\texBmp.obj:.text$x#50	dmp3D_MSVCR.lib	multi	0.0	ambiguous: 5504 identical-structure addresses, not listed
+-	21	.\dmp3D_Release\tgldc.obj:.text$x#10	dmp3D_MSVCR.lib	multi	0.001	ambiguous: 753 identical-structure addresses, not listed
+-	21	.\dmp3D_Release\tgldc.obj:.text$x#24	dmp3D_MSVCR.lib	multi	0.001	ambiguous: 753 identical-structure addresses, not listed
+-	32	.\dmp3D_Release\view3D.obj|_$E2	dmp3D_MSVCR.lib	multi	0.048	ambiguous: 21 identical-structure addresses, not listed
+-	18	.\dmp3D_Release\view3DExt.obj:.text$x#118	dmp3D_MSVCR.lib	multi	0.001	ambiguous: 1155 identical-structure addresses, not listed
+-	18	.\dmp3D_Release\view3DExt.obj:.text$x#75	dmp3D_MSVCR.lib	multi	0.001	ambiguous: 1155 identical-structure addresses, not listed
+-	16	.\dmp3D_Release\view3DExt.obj|_$E18	dmp3D_MSVCR.lib	multi	0.003	ambiguous: 370 identical-structure addresses, not listed
+-	32	.\dmp3D_Release\view3DExt.obj|_$E2	dmp3D_MSVCR.lib	multi	0.048	ambiguous: 21 identical-structure addresses, not listed
+-	32	.\dmp3D_Release\view3DMgrDLLW.obj|_$E3	dmp3D_MSVCR.lib	multi	0.048	ambiguous: 21 identical-structure addresses, not listed
+-	32	.\dmp3D_Release\view3dMgrNonDLL.obj|_$E3	dmp3D_MSVCR.lib	multi	0.048	ambiguous: 21 identical-structure addresses, not listed
 -	18	.\release\3way.obj:.text$x#22	cryptlibR.lib	multi	0.001	ambiguous: 1155 identical-structure addresses, not listed
 -	29	.\release\3way.obj:.text$x#4	cryptlibR.lib	multi	0.004	ambiguous: 241 identical-structure addresses, not listed
 -	16	.\release\3way.obj|_$E18	cryptlibR.lib	multi	0.001	ambiguous: 941 identical-structure addresses, not listed
@@ -7187,6 +7842,7 @@ address	size	mangled_name	library	tier	score	notes
 -	16	??1Tiger@CryptoPP@@UAE@XZ	cryptlibR.lib	multi	0.022	ambiguous: 46 identical-structure addresses, not listed
 -	16	??1TrapdoorFunction@CryptoPP@@UAE@XZ	cryptlibR.lib	multi	0.011	ambiguous: 95 identical-structure addresses, not listed
 -	16	??1bad_cast@std@@UAE@XZ	SharedR.lib,ScriptInterfaceR.lib,cryptlibR.lib	multi	0.004	ambiguous: 257 identical-structure addresses, not listed
+-	16	??1t2D_3D_AppBase@@UAE@XZ	dmp3D_MSVCR.lib	multi	0.011	ambiguous: 95 identical-structure addresses, not listed
 -	16	??1tAllocator@@MAE@XZ	SharedR.lib,ScriptInterfaceR.lib	multi	0.011	ambiguous: 95 identical-structure addresses, not listed
 -	16	??1tBasicIniReader@@UAE@XZ	SharedR.lib,ScriptInterfaceR.lib	multi	0.011	ambiguous: 95 identical-structure addresses, not listed
 -	16	??1tCallbackAction@nTestSim@@UAE@XZ	SharedR.lib,ScriptInterfaceR.lib	multi	0.011	ambiguous: 95 identical-structure addresses, not listed
@@ -7267,6 +7923,7 @@ address	size	mangled_name	library	tier	score	notes
 -	32	??_GBlowfish@CryptoPP@@UAEPAXI@Z	cryptlibR.lib	multi	0.004	ambiguous: 237 identical-structure addresses, not listed
 -	32	??_GBodyProcesser@Gunzip@CryptoPP@@UAEPAXI@Z	cryptlibR.lib	multi	0.004	ambiguous: 237 identical-structure addresses, not listed
 -	32	??_GBufferedTransformation@CryptoPP@@UAEPAXI@Z	cryptlibR.lib	multi	0.045	ambiguous: 22 identical-structure addresses, not listed
+-	32	??_GByteQueue@CryptoPP@@UAEPAXI@Z	cryptlibR.lib	multi	0.004	ambiguous: 237 identical-structure addresses, not listed
 -	32	??_GCAST128@CryptoPP@@UAEPAXI@Z	cryptlibR.lib	multi	0.004	ambiguous: 237 identical-structure addresses, not listed
 -	32	??_GCBCPaddedDecryptor@CryptoPP@@UAEPAXI@Z	cryptlibR.lib	multi	0.004	ambiguous: 237 identical-structure addresses, not listed
 -	32	??_GCBCPaddedEncryptor@CryptoPP@@UAEPAXI@Z	cryptlibR.lib	multi	0.004	ambiguous: 237 identical-structure addresses, not listed
@@ -7372,6 +8029,8 @@ address	size	mangled_name	library	tier	score	notes
 -	32	??_Glength_error@std@@UAEPAXI@Z	SharedR.lib,ScriptInterfaceR.lib	multi	0.004	ambiguous: 237 identical-structure addresses, not listed
 -	32	??_Glogic_error@std@@UAEPAXI@Z	SharedR.lib,ScriptInterfaceR.lib	multi	0.004	ambiguous: 237 identical-structure addresses, not listed
 -	32	??_Gout_of_range@std@@UAEPAXI@Z	SharedR.lib,ScriptInterfaceR.lib	multi	0.004	ambiguous: 237 identical-structure addresses, not listed
+-	32	??_Gt2DAppBase@@UAEPAXI@Z	dmp3D_MSVCR.lib	multi	0.004	ambiguous: 237 identical-structure addresses, not listed
+-	32	??_Gt2D_3D_AppBase@@UAEPAXI@Z	dmp3D_MSVCR.lib	multi	0.045	ambiguous: 22 identical-structure addresses, not listed
 -	32	??_Gt3DListenerProfile@@UAEPAXI@Z	sfcTiger_MSVCR.lib	multi	0.045	ambiguous: 22 identical-structure addresses, not listed
 -	32	??_GtActor@@UAEPAXI@Z	ScriptInterfaceR.lib	multi	0.004	ambiguous: 237 identical-structure addresses, not listed
 -	32	??_GtAllocator@@MAEPAXI@Z	SharedR.lib,ScriptInterfaceR.lib	multi	0.004	ambiguous: 237 identical-structure addresses, not listed
@@ -7395,6 +8054,7 @@ address	size	mangled_name	library	tier	score	notes
 -	32	??_GtFileDatabaseStorage@nDatabase@@UAEPAXI@Z	SharedR.lib,ScriptInterfaceR.lib	multi	0.004	ambiguous: 237 identical-structure addresses, not listed
 -	32	??_GtGLFont@@MAEPAXI@Z	dmp3D_MSVCR.lib	multi	0.045	ambiguous: 22 identical-structure addresses, not listed
 -	32	??_GtGLFontEx@@UAEPAXI@Z	dmp3D_MSVCR.lib	multi	0.004	ambiguous: 237 identical-structure addresses, not listed
+-	32	??_GtGLPixFmt@@UAEPAXI@Z	dmp3D_MSVCR.lib	multi	0.045	ambiguous: 22 identical-structure addresses, not listed
 -	32	??_GtID@nDatabase@@UAEPAXI@Z	SharedR.lib,ScriptInterfaceR.lib	multi	0.004	ambiguous: 237 identical-structure addresses, not listed
 -	32	??_GtInterplayCompressionAudioFile@@UAEPAXI@Z	sfcTiger_MSVCR.lib	multi	0.004	ambiguous: 237 identical-structure addresses, not listed
 -	32	??_GtJobManager@@UAEPAXI@Z	SharedR.lib,ScriptInterfaceR.lib	multi	0.004	ambiguous: 237 identical-structure addresses, not listed
@@ -7584,6 +8244,7 @@ address	size	mangled_name	library	tier	score	notes
 -	16	?mASCIIOverrides@tScript@@UAEXPAVtMapOverrides@@@Z	ScriptInterfaceR.lib	multi	0.059	ambiguous: 17 identical-structure addresses, not listed
 -	16	?mActivate@tBasicSoundFileManager@@UAEXXZ	sfcTiger_MSVCR.lib	multi	0.003	ambiguous: 370 identical-structure addresses, not listed
 -	16	?mActivate@tChannelGroupManagerPart@@UAEXXZ	sfcTiger_MSVCR.lib	multi	0.003	ambiguous: 370 identical-structure addresses, not listed
+-	16	?mActivate@tGLSurfMgrInterfaceNonDLL@@UAEXXZ	dmp3D_MSVCR.lib	multi	0.003	ambiguous: 370 identical-structure addresses, not listed
 -	16	?mActivate@tgStrManager@@UAEXXZ	sfcTiger_MSVCR.lib	multi	0.003	ambiguous: 370 identical-structure addresses, not listed
 -	16	?mActivate@twDebugPart@@UAEXXZ	sfcTiger_MSVCR.lib	multi	0.003	ambiguous: 370 identical-structure addresses, not listed
 -	32	?mAddToActiveSoundChannelList@tgSoundPart@@UAEEJ@Z	sfcTiger_MSVCR.lib	multi	0.067	ambiguous: 15 identical-structure addresses, not listed
@@ -7607,6 +8268,7 @@ address	size	mangled_name	library	tier	score	notes
 -	16	?mCreateShipsForTeam@tTeamInfo@@UAEXXZ	ScriptInterfaceR.lib	multi	0.003	ambiguous: 370 identical-structure addresses, not listed
 -	16	?mCurrentlyControlledShip@tTeamInfo@@QAEPAVtShipInfo@@XZ	ScriptInterfaceR.lib	multi	0.004	ambiguous: 252 identical-structure addresses, not listed
 -	16	?mDataStr@tString@@IAEPAGXZ	sfcTiger_MSVCR.lib	multi	0.004	ambiguous: 252 identical-structure addresses, not listed
+-	16	?mDeactivate@tGLSurfMgrInterfaceNonDLL@@UAEXXZ	dmp3D_MSVCR.lib	multi	0.003	ambiguous: 370 identical-structure addresses, not listed
 -	16	?mDeactivate@twDebugPart@@UAEXXZ	sfcTiger_MSVCR.lib	multi	0.003	ambiguous: 370 identical-structure addresses, not listed
 -	16	?mDefineBriefings@tScript@@UAEXXZ	ScriptInterfaceR.lib	multi	0.003	ambiguous: 370 identical-structure addresses, not listed
 -	16	?mDefineTeamShipStrengths@tScript@@UAEXXZ	ScriptInterfaceR.lib	multi	0.003	ambiguous: 370 identical-structure addresses, not listed
@@ -7626,6 +8288,7 @@ address	size	mangled_name	library	tier	score	notes
 -	16	?mGetAmountPlayed@tSoundSelection@@UAEJXZ	sfcTiger_MSVCR.lib	multi	0.004	ambiguous: 252 identical-structure addresses, not listed
 -	16	?mGetAmountRead@tSoundSelection@@UAEJXZ	sfcTiger_MSVCR.lib	multi	0.004	ambiguous: 252 identical-structure addresses, not listed
 -	16	?mGetAmountRecorded@tSoundSelection@@UAEJXZ	sfcTiger_MSVCR.lib	multi	0.004	ambiguous: 252 identical-structure addresses, not listed
+-	16	?mGetApplication@t2DAppBase@@UAEPAVtApplication@@XZ	dmp3D_MSVCR.lib	multi	0.004	ambiguous: 252 identical-structure addresses, not listed
 -	16	?mGetBonusPrestige@tVictoryState@@UAEJXZ	ScriptInterfaceR.lib	multi	0.004	ambiguous: 252 identical-structure addresses, not listed
 -	16	?mGetCombatBPV@tTeamInfo@@QAEJXZ	ScriptInterfaceR.lib	multi	0.004	ambiguous: 252 identical-structure addresses, not listed
 -	16	?mGetDataCount@tString@@QAEJXZ	sfcTiger_MSVCR.lib	multi	0.004	ambiguous: 252 identical-structure addresses, not listed
@@ -7648,6 +8311,7 @@ address	size	mangled_name	library	tier	score	notes
 -	16	?mGetStartTime@tOneChannelInfo@@UAENXZ	sfcTiger_MSVCR.lib	multi	0.1	ambiguous: 10 identical-structure addresses, not listed
 -	16	?mGetState@tActor@@UBEPAVtState@@J@Z	ScriptInterfaceR.lib	multi	0.077	ambiguous: 13 identical-structure addresses, not listed
 -	16	?mGetStateID@tState@@UAEJXZ	ScriptInterfaceR.lib	multi	0.004	ambiguous: 252 identical-structure addresses, not listed
+-	16	?mGetSurfMgr@t2DAppBase@@UAEPAVtGLSurfMgr@@XZ	dmp3D_MSVCR.lib	multi	0.004	ambiguous: 252 identical-structure addresses, not listed
 -	16	?mGetTag@tTeamInfo@@QAE?AW4eTeamTag@@XZ	ScriptInterfaceR.lib	multi	0.004	ambiguous: 252 identical-structure addresses, not listed
 -	16	?mGetTagJustification@tTagToken@@QAEDXZ	sfcTiger_MSVCR.lib	multi	0.011	ambiguous: 91 identical-structure addresses, not listed
 -	16	?mGetTeam@tTeamInfo@@QAE?AW4eTeamID@@XZ	ScriptInterfaceR.lib	multi	0.004	ambiguous: 252 identical-structure addresses, not listed
@@ -7657,6 +8321,8 @@ address	size	mangled_name	library	tier	score	notes
 -	16	?mGetTotalDataSizeInBytes@tBasicAudioFile@@UAEJXZ	sfcTiger_MSVCR.lib	multi	0.004	ambiguous: 252 identical-structure addresses, not listed
 -	16	?mGetUserData@tSoundSelection@@UAEJXZ	sfcTiger_MSVCR.lib	multi	0.004	ambiguous: 252 identical-structure addresses, not listed
 -	16	?mGetVelocity@t3DListenerProfile@@UAEPAUtPoint3@@XZ	sfcTiger_MSVCR.lib	multi	0.007	ambiguous: 150 identical-structure addresses, not listed
+-	16	?mHandleKeyDown@t2D_3D_AppBase@@UAEEI@Z	dmp3D_MSVCR.lib	multi	0.067	ambiguous: 15 identical-structure addresses, not listed
+-	16	?mHandleMenu@t2D_3D_AppBase@@UAEEI@Z	dmp3D_MSVCR.lib	multi	0.067	ambiguous: 15 identical-structure addresses, not listed
 -	16	?mHasMissionBegun@tScript@@UAEEXZ	ScriptInterfaceR.lib	multi	0.011	ambiguous: 91 identical-structure addresses, not listed
 -	16	?mHosting@tScript@@UBEEXZ	ScriptInterfaceR.lib	multi	0.011	ambiguous: 91 identical-structure addresses, not listed
 -	16	?mInUse@tOneChannelInfo@@UAEEXZ	sfcTiger_MSVCR.lib	multi	0.011	ambiguous: 91 identical-structure addresses, not listed
@@ -7694,10 +8360,13 @@ address	size	mangled_name	library	tier	score	notes
 -	16	?mOnShipSystemUpdate@tState@@UAEXPAVtShipInfo@@W4eShipUpdateType@@W4eSystemHardPoint@@M@Z	ScriptInterfaceR.lib	multi	0.059	ambiguous: 17 identical-structure addresses, not listed
 -	16	?mOnSpecialTransport@tState@@UAEXPAVtShipInfo@@@Z	ScriptInterfaceR.lib	multi	0.059	ambiguous: 17 identical-structure addresses, not listed
 -	16	?mOnTimedInterval@tState@@UAEXJ@Z	ScriptInterfaceR.lib	multi	0.059	ambiguous: 17 identical-structure addresses, not listed
+-	16	?mPreDestroySurfMgr@t2DAppBase@@MAEXPAVtGLSurfMgr@@@Z	dmp3D_MSVCR.lib	multi	0.059	ambiguous: 17 identical-structure addresses, not listed
+-	16	?mPrepForNewSurfMgr@t2DAppBase@@MAEXPAVtGLSurfMgr@@@Z	dmp3D_MSVCR.lib	multi	0.059	ambiguous: 17 identical-structure addresses, not listed
 -	16	?mRandomCallback@tScriptInterface@@UAEXP6GJJJ@Z@Z	ScriptInterfaceR.lib	multi	0.005	ambiguous: 182 identical-structure addresses, not listed
 -	16	?mReadUnlock@tAsynchSoundQueue@@QAEXXZ	sfcTiger_MSVCR.lib	multi	0.022	ambiguous: 46 identical-structure addresses, not listed
 -	16	?mReadingTemporarilyFailed@tSoundSelection@@UAEXXZ	sfcTiger_MSVCR.lib	multi	0.077	ambiguous: 13 identical-structure addresses, not listed
 -	16	?mRegisterState@tVictoryCondition@@EAEXPAVtState@@@Z	ScriptInterfaceR.lib	multi	0.059	ambiguous: 17 identical-structure addresses, not listed
+-	16	?mRender2D@t2DAppBase@@MAEXPAVtGLSurfMgr@@@Z	dmp3D_MSVCR.lib	multi	0.059	ambiguous: 17 identical-structure addresses, not listed
 -	16	?mReplaceTokens@tMissionInfo@@QAEXPAD@Z	ScriptInterfaceR.lib	multi	0.059	ambiguous: 17 identical-structure addresses, not listed
 -	16	?mRespond@tSoundTimerResponse@@UAEXXZ	sfcTiger_MSVCR.lib	multi	0.003	ambiguous: 370 identical-structure addresses, not listed
 -	16	?mScheduleNextMission@tTeamInfo@@UAEXPAVtVictoryCondition@@@Z	ScriptInterfaceR.lib	multi	0.059	ambiguous: 17 identical-structure addresses, not listed

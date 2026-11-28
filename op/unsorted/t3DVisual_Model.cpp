@@ -572,12 +572,12 @@ bool t3DVisual_Model::fn_0042fef9(const char *name)
 		fn_0042dd9b(&stream, &header);
 		if (header.mTag != 0x534c444d)
 			throw "Model file seems corrupt\n";
-		unsigned long end = (stream.fn_006a2da0() + header.mSize + 3) & ~3;
+		unsigned long end = (stream.mGetPos() + header.mSize + 3) & ~3;
 
 		unsigned long version;
-		stream.fn_006a2f80(&version, 4);
-		stream.fn_006a2f80(&m118, 4);
-		stream.fn_006a2f80(&m11c, 4);
+		stream.mByteInput(&version, 4);
+		stream.mByteInput(&m118, 4);
+		stream.mByteInput(&m11c, 4);
 		if (m11c <= 0 || m11c >= 5)
 			throw "Model has invalid number of LODs\n";
 		if ((version & 0xffffff00) < 0x200)
@@ -588,9 +588,9 @@ bool t3DVisual_Model::fn_0042fef9(const char *name)
 		// in the original.
 		{
 			float base;
-			stream.fn_006a2f80(&base, 4);
+			stream.mByteInput(&base, 4);
 			for (int i = 0; i < 5; i++)
-				stream.fn_006a2f80(&ranges[i], 4);
+				stream.mByteInput(&ranges[i], 4);
 			if (m11c > 1)
 			{
 				for (int j = 1; j < m11c; j++)
@@ -604,11 +604,11 @@ bool t3DVisual_Model::fn_0042fef9(const char *name)
 		}
 
 		int part = 0;
-		while (stream.fn_006a2da0() < end)
+		while (stream.mGetPos() < end)
 		{
 			tChunk_0042dd9b chunk;
 			fn_0042dd9b(&stream, &chunk);
-			unsigned long start = stream.fn_006a2da0();
+			unsigned long start = stream.mGetPos();
 			switch (chunk.mTag)
 			{
 			case 0x53544e50:
@@ -628,7 +628,7 @@ bool t3DVisual_Model::fn_0042fef9(const char *name)
 				}
 				break;
 			}
-			stream.fn_006a2db0((chunk.mSize + start + 3) & ~3);
+			stream.mSetPos((chunk.mSize + start + 3) & ~3);
 		}
 
 		file->mClose();
@@ -649,7 +649,7 @@ bool t3DVisual_Model::fn_0042fef9(const char *name)
 		}
 		return false;
 	}
-	catch (fn_006a2ec0_Error error)
+	catch (tErrInfo error)
 	{
 		if (file != 0)
 		{
@@ -677,8 +677,8 @@ void fn_0042de34(tStream_BasicFile *stream, tEntry_0042f918 *entry);
 void t3DVisual_Model::fn_004301e9(unsigned long size, tStream_BasicFile *stream)
 {
 	std::vector<tEntry_0042f918> entries;
-	unsigned long start = stream->fn_006a2da0();
-	while (stream->fn_006a2da0() - start < size)
+	unsigned long start = stream->mGetPos();
+	while (stream->mGetPos() - start < size)
 	{
 		tEntry_0042f918 entry;
 		fn_0042de34(stream, &entry);
@@ -704,7 +704,7 @@ tStream_BasicFile &operator>>(tStream_BasicFile &stream, tPoint3 &point);
 // MATCH-ONLY: inlined in the original, so it has no address of its own.
 inline tStream_BasicFile &operator>>(tStream_BasicFile &stream, int &value)
 {
-	stream.fn_006a2f80(&value, 4);
+	stream.mByteInput(&value, 4);
 	return stream;
 }
 

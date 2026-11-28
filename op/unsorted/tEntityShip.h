@@ -8,8 +8,28 @@
 
 #include "Source/entity/entity_physical.h"
 #include "unsorted/tShipSpecs.h"
+#include "unsorted/tIndividualShipSystem.h"
 
 class tCloakSystem;
+class tSensorGroupSystem;
+
+// HYPOTHESIS: tTractorSystem (RTTI, vftable 0x0079e2a4, base tRepairableShipSystem) has no header
+// of its own yet; only the method the ship calls is declared, until one is written.
+class tTractorSystem : public tRepairableShipSystem
+{
+public:
+	// HYPOTHESIS: a test tEntityShip::vfunction38 (0x00417b57) makes with its two arguments
+	// before handing them on.
+	bool fn_004546f0(int aID, bool aValue);
+	// HYPOTHESIS: releases the tractor lock; tEntityShip::vfunction39 (0x00417b92) calls it when
+	// field_144 holds the ID it is given.
+	void fn_004546e1();
+
+	// tRepairableShipSystem ends at 0x7c and is aligned to 8, so this class starts at 0x80.
+	char pad80[0x144 - 0x80];
+	// HYPOTHESIS: the ID of the entity held by the beam (compared with an ID at 0x00417b92).
+	int field_144;
+};
 
 // HYPOTHESIS: the record slot 34 (offset 0x88) of the object at 0xad4 returns; 0x004162b9 reads
 // three floats from it, at 0x18, 0x1c and 0x20.
@@ -32,6 +52,75 @@ public:
 	virtual int vfunction9();
 };
 
+// HYPOTHESIS: the object slot 88 (offset 0x160) of the object at 0xad4 returns; 0x00416085 calls
+// slot 116 (offset 0x1d0) with the indices 0 to 3 and compares each result with an entity ID.
+class fn_00416085_Object
+{
+public:
+	virtual void vfunction0(); virtual void vfunction1(); virtual void vfunction2();
+	virtual void vfunction3(); virtual void vfunction4(); virtual void vfunction5();
+	virtual void vfunction6(); virtual void vfunction7(); virtual void vfunction8();
+	virtual void vfunction9(); virtual void vfunction10(); virtual void vfunction11();
+	virtual void vfunction12(); virtual void vfunction13(); virtual void vfunction14();
+	virtual void vfunction15(); virtual void vfunction16(); virtual void vfunction17();
+	virtual void vfunction18(); virtual void vfunction19(); virtual void vfunction20();
+	virtual void vfunction21(); virtual void vfunction22(); virtual void vfunction23();
+	virtual void vfunction24(); virtual void vfunction25(); virtual void vfunction26();
+	virtual void vfunction27(); virtual void vfunction28(); virtual void vfunction29();
+	virtual void vfunction30(); virtual void vfunction31(); virtual void vfunction32();
+	virtual void vfunction33(); virtual void vfunction34(); virtual void vfunction35();
+	virtual void vfunction36(); virtual void vfunction37(); virtual void vfunction38();
+	virtual void vfunction39(); virtual void vfunction40(); virtual void vfunction41();
+	virtual void vfunction42(); virtual void vfunction43(); virtual void vfunction44();
+	virtual void vfunction45(); virtual void vfunction46(); virtual void vfunction47();
+	virtual void vfunction48(); virtual void vfunction49(); virtual void vfunction50();
+	virtual void vfunction51(); virtual void vfunction52(); virtual void vfunction53();
+	virtual void vfunction54(); virtual void vfunction55(); virtual void vfunction56();
+	virtual void vfunction57(); virtual void vfunction58(); virtual void vfunction59();
+	virtual void vfunction60(); virtual void vfunction61(); virtual void vfunction62();
+	virtual void vfunction63(); virtual void vfunction64(); virtual void vfunction65();
+	virtual void vfunction66(); virtual void vfunction67(); virtual void vfunction68();
+	virtual void vfunction69(); virtual void vfunction70(); virtual void vfunction71();
+	virtual void vfunction72(); virtual void vfunction73(); virtual void vfunction74();
+	virtual void vfunction75(); virtual void vfunction76(); virtual void vfunction77();
+	virtual void vfunction78(); virtual void vfunction79(); virtual void vfunction80();
+	virtual void vfunction81(); virtual void vfunction82(); virtual void vfunction83();
+	virtual void vfunction84(); virtual void vfunction85(); virtual void vfunction86();
+	virtual void vfunction87(); virtual void vfunction88(); virtual void vfunction89();
+	virtual void vfunction90(); virtual void vfunction91(); virtual void vfunction92();
+	virtual void vfunction93(); virtual void vfunction94(); virtual void vfunction95();
+	virtual void vfunction96(); virtual void vfunction97(); virtual void vfunction98();
+	virtual void vfunction99(); virtual void vfunction100(); virtual void vfunction101();
+	virtual void vfunction102(); virtual void vfunction103(); virtual void vfunction104();
+	virtual void vfunction105(); virtual void vfunction106(); virtual void vfunction107();
+	virtual void vfunction108(); virtual void vfunction109(); virtual void vfunction110();
+	virtual void vfunction111(); virtual void vfunction112(); virtual void vfunction113();
+	virtual void vfunction114(); virtual void vfunction115();
+	virtual tID vfunction116(int aIndex);
+};
+
+// HYPOTHESIS: the object slot 83 (offset 0x14c) of the object at 0xad4 returns; 0x00416944 calls
+// 0x00437d8d on it for a truth value.
+class fn_00437d8d_Object
+{
+public:
+	bool fn_00437d8d();
+};
+
+// HYPOTHESIS: one of the 25 hardpoint entries slot 57 of the object at 0xad4 returns; 0x004199f4
+// calls 0x00419a83 on each with the point found for it, passed by value (three dwords pushed).
+// 0x00419a83 stores the point at the unaligned offset 0x137, so the layout is packed.
+#pragma pack(push, 1)
+class fn_00419a83_Object
+{
+public:
+	void fn_00419a83(tPoint3 aPoint);
+
+	char field_0[0x137];
+	tPoint3 field_137;
+};
+#pragma pack(pop)
+
 // HYPOTHESIS: the object at 0xad4 (0x00416da2 calls through it); only slots 34 and 86 are called
 // by 0x004162b9, the slots before them are not known.
 class tObject_00416d41_ad4
@@ -46,10 +135,22 @@ public:
 	// HYPOTHESIS: a test; 0x00416a0e acts on its result.
 	virtual bool vfunction16();
 	virtual void vfunction17();
-	virtual void vfunction18(); virtual void vfunction19(); virtual void vfunction20();
-	virtual void vfunction21(); virtual void vfunction22(); virtual void vfunction23();
+	// HYPOTHESIS: takes two values; 0x004168cc forwards its two arguments.
+	virtual void vfunction18(int param_1, int param_2);
+	virtual void vfunction19();
+	// HYPOTHESIS: a yes/no question; 0x004168e2 forwards its argument and the fleet entry's
+	// 0x004c3a36 reads the result.
+	virtual unsigned char vfunction20(int param_1);
+	virtual void vfunction21();
+	// HYPOTHESIS: takes a float and returns one; 0x00416bea forwards its argument and drops the result.
+	virtual float vfunction22(float param_1);
+	virtual void vfunction23();
 	virtual void vfunction24(); virtual void vfunction25(); virtual void vfunction26();
-	virtual void vfunction27(); virtual void vfunction28(); virtual void vfunction29();
+	// HYPOTHESIS: returns a record with a float at 0x18; 0x004198e0 reads it.
+	virtual tObject_00416d41_bounds *vfunction27();
+	// HYPOTHESIS: returns a record with a float at 0x18; 0x0041687b reads it.
+	virtual tObject_00416d41_bounds *vfunction28();
+	virtual void vfunction29();
 	virtual void vfunction30(); virtual void vfunction31(); virtual void vfunction32();
 	virtual void vfunction33();
 	virtual tObject_00416d41_bounds *vfunction34();
@@ -60,20 +161,36 @@ public:
 	virtual void vfunction47(); virtual void vfunction48(); virtual void vfunction49();
 	virtual void vfunction50(); virtual void vfunction51(); virtual void vfunction52();
 	virtual void vfunction53(); virtual void vfunction54(); virtual void vfunction55();
-	virtual void vfunction56(); virtual void vfunction57(); virtual void vfunction58();
+	virtual void vfunction56();
+	// HYPOTHESIS: returns 25 hardpoint entries, 0 where none is mounted (0x004199f4).
+	virtual fn_00419a83_Object **vfunction57();
+	virtual void vfunction58();
 	virtual void vfunction59(); virtual void vfunction60(); virtual void vfunction61();
 	virtual void vfunction62(); virtual void vfunction63(); virtual void vfunction64();
 	virtual void vfunction65(); virtual void vfunction66(); virtual void vfunction67();
 	virtual void vfunction68(); virtual void vfunction69(); virtual void vfunction70();
 	virtual void vfunction71(); virtual void vfunction72(); virtual void vfunction73();
-	virtual void vfunction74(); virtual void vfunction75(); virtual void vfunction76();
+	virtual void vfunction74();
+	// HYPOTHESIS: returns the ship's tractor system or 0; tEntityShip::vfunction38 (0x00417b57)
+	// calls 0x004546f0, in tTractorSystem's range, on it.
+	virtual tTractorSystem *vfunction75();
+	virtual void vfunction76();
 	virtual void vfunction77(); virtual void vfunction78(); virtual void vfunction79();
 	virtual void vfunction80(); virtual void vfunction81(); virtual void vfunction82();
-	virtual void vfunction83(); virtual void vfunction84(); virtual void vfunction85();
+	// HYPOTHESIS: returns a system or 0; 0x00416944 calls 0x00437d8d on it.
+	virtual fn_00437d8d_Object *vfunction83();
+	// HYPOTHESIS: returns the ship's sensor group; 0x00415ff4 calls 0x0043eca6 on it.
+	virtual tSensorGroupSystem *vfunction84();
+	virtual void vfunction85();
 	virtual tObject_00416d41_list *vfunction86();
-	virtual void vfunction87(); virtual void vfunction88(); virtual void vfunction89();
+	virtual void vfunction87();
+	// HYPOTHESIS: returns an object holding four entity IDs; 0x00416085 reads them.
+	virtual fn_00416085_Object *vfunction88();
+	virtual void vfunction89();
 	virtual void vfunction90(); virtual void vfunction91(); virtual void vfunction92();
-	virtual void vfunction93(); virtual void vfunction94();
+	// HYPOTHESIS: returns an object whose slot 97 0x00415672 calls.
+	virtual void *vfunction93();
+	virtual void vfunction94();
 	// HYPOTHESIS: returns the ship's cloak system; 0x00416a0e calls 0x00438390 on it.
 	virtual tCloakSystem *vfunction95();
 	virtual void vfunction96(); virtual void vfunction97(); virtual void vfunction98();
@@ -81,7 +198,9 @@ public:
 	virtual void vfunction102(); virtual void vfunction103(); virtual void vfunction104();
 	virtual void vfunction105(); virtual void vfunction106(); virtual void vfunction107();
 	virtual void vfunction108(); virtual void vfunction109(); virtual void vfunction110();
-	virtual void vfunction111(); virtual void vfunction112(); virtual void vfunction113();
+	virtual void vfunction111(); virtual void vfunction112();
+		// HYPOTHESIS: takes a float (0x00414d70 passes 1.0).
+		virtual void vfunction113(float aValue);
 	virtual void vfunction114(); virtual void vfunction115(); virtual void vfunction116();
 	virtual void vfunction117(); virtual void vfunction118(); virtual void vfunction119();
 	virtual void vfunction120(); virtual void vfunction121(); virtual void vfunction122();
@@ -91,10 +210,14 @@ public:
 	virtual void vfunction132(); virtual void vfunction133(); virtual void vfunction134();
 	virtual void vfunction135(); virtual void vfunction136(); virtual void vfunction137();
 	virtual void vfunction138(); virtual void vfunction139(); virtual void vfunction140();
-	virtual void vfunction141(); virtual void vfunction142(); virtual void vfunction143();
+	// HYPOTHESIS: returns a value tEntityShip::vfunction23 (0x00416c02) passes on.
+	virtual int vfunction141();
+	virtual void vfunction142(); virtual void vfunction143();
 	// HYPOTHESIS: takes the arguments of tEntityShip::vfunction26 and returns a truth value.
 	virtual bool vfunction144(short a1, int a2, int a3, int a4, int a5);
-	virtual void vfunction145(); virtual void vfunction146(); virtual void vfunction147();
+	virtual void vfunction145(); virtual void vfunction146();
+	// HYPOTHESIS: returns the system at an index (0x004157ee passes 0x31 to 0x49), or 0.
+	virtual void *vfunction147(int aIndex);
 	virtual void vfunction148(); virtual void vfunction149(); virtual void vfunction150();
 	virtual void vfunction151(); virtual void vfunction152(); virtual void vfunction153();
 	virtual int vfunction154();
@@ -109,6 +232,14 @@ public:
 	// HYPOTHESIS: the object is a fn_00426141_Class (declared only in fn_00426000.cpp), whose
 	// member this is; declared here until that class has a header.
 	void fn_00426886(unsigned int aMask);
+};
+
+// HYPOTHESIS: the object of 0x20e0 bytes at 0xa44 of the ship, built by 0x004287d9; its class
+// is not known. 0x004156e3 calls 0x004288d1 on it before returning it.
+class fn_004288d1_Object
+{
+public:
+	void fn_004288d1();
 };
 
 // HYPOTHESIS: members are placed by the constructor's stores and the offsets the class's
@@ -162,17 +293,20 @@ public:
 	// HYPOTHESIS: the original returns a 16-bit angle (0x004155ed ends with xor ax, ax).
 	virtual short vfunction66(char param_1);
 	virtual void vfunction67(void *param_1);
-	virtual void vfunction68();
-	virtual void vfunction69(int param_1);
+	// HYPOTHESIS: a truth value: 0x004160ee ends in mov al, 1 or xor al, al.
+	virtual bool vfunction68();
+	// HYPOTHESIS: a truth value: 0x00416944 tests it as a byte.
+	virtual void vfunction69(bool param_1);
 	// HYPOTHESIS: returns the dword at 0x878.
 	virtual int vfunction70();
-	virtual int vfunction71(tID aID);
+	// HYPOTHESIS: takes an entity (0x00415ff4 reads its ID at 0x1c and looks it up).
+	virtual int vfunction71(tEntity *aEntity);
 	// HYPOTHESIS: copies a tPoint3 (three dwords) from the entity table's record for the ID at
 	// 0x194 to the address given; 0x00417b2a pops 8 bytes, so it takes a second argument.
 	virtual tPoint3 vfunction72(int param_1);
 	virtual void vfunction73(int param_1, int param_2);
-	// HYPOTHESIS: takes a float (0x004162b9 passes 0.0 or 1.0 minus a ratio) and returns one.
-	virtual float vfunction74(float aValue);
+	// HYPOTHESIS: a factor from the cloak system's level (0x00416db7); 1.0 without a cloak.
+	virtual float vfunction74();
 	// HYPOTHESIS: returns the 16-bit value at 0x92e.
 	virtual short vfunction75();
 	virtual void vfunction76(int param_1);
@@ -182,9 +316,45 @@ public:
 	void fn_004103e2(tObject_00413ac3_arg *aView);
 	// HYPOTHESIS: a test of the ship, called by 0x004162b9 to choose between two ways to draw.
 	bool fn_00419c87();
+	void fn_00419818(const tPoint3 &aPoint);
+	void fn_00419873(short param_1, short param_2, short param_3);
+	void fn_004198e0();
+	void fn_0041994b();
+	void fn_004199f4();
 	// HYPOTHESIS: takes the ID of the entity 0x00416a0e acted for; the symbol table names 0x00419e84
 	// a destructor of tNetMsg_kSendVoice, which its callers' use contradicts.
 	void fn_00419e84(int aID);
+	void fn_00414b47(int param_1);
+	// HYPOTHESIS: queues a movement message; callers reach it through tObject_0042496f.
+	void fn_00414bfa(tNetMsg *aMsg);
+	void fn_00414cad(tNetMsg *aMsg);
+	void fn_00414cf5(tNetMsg *aMsg);
+	void fn_00414d2f(tNetMsg *aMsg);
+	int fn_00414d69();
+	tPoint3 fn_00415479();
+	void fn_0041553a(tPoint3 *aPoint, char *aFlag);
+	void fn_004155c1(tPoint3 *aPoint);
+	void fn_00415628(int param_1, int param_2);
+	void fn_0041563f(int param_1);
+	void fn_00415652(int param_1);
+	int fn_00415672(int param_1);
+	int fn_004156b8(int param_1);
+	fn_004288d1_Object *fn_004156e3();
+	int fn_004157ee(int param_1, int param_2, int param_3);
+	// HYPOTHESIS: orders two ships by the ratio of slot 13 to slot 62, then by radius and ID.
+	bool fn_00415aed(tEntityShip *aOther);
+	void fn_00419e4a(int param_1);
+	bool fn_00416085();
+	void fn_004160c2();
+	void fn_004165b7();
+	void fn_004165d4();
+	void fn_0041687b();
+	double fn_0041689a(int param_1);
+	void fn_004168b5(double param_1, int param_2);
+	void fn_004168cc(int param_1, int param_2);
+	unsigned char fn_004168e2(int param_1);
+	void fn_004168f4();
+	void fn_00416bea(float param_1);
 
 	// 0x1bc is cleared by the constructor.
 	tObject_00426563_1bc *field_1bc;
@@ -245,9 +415,10 @@ public:
 	float field_a28[6];
 	int field_a40;
 	// HYPOTHESIS: an object of 0x20e0 bytes, built by 0x004287d9 with this entity.
-	void *field_a44;
+	fn_004288d1_Object *field_a44;
 	char pada48[0xa54 - 0xa48];
-	int field_a54[10];
+	// HYPOTHESIS: records of 100 bytes, allocated and cleared by 0x00414b47.
+	void *field_a54[10];
 	float field_a7c;
 	float field_a80;
 	float field_a84;

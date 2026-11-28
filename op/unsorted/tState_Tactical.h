@@ -8,6 +8,76 @@
 #include "unsorted/tGameState.h"
 #include "unsorted/tTacticalSubStateMan.h"
 
+class tEntity;
+
+void __fastcall fn_004afa40( void *self );
+void __fastcall fn_004bc256( void *self );
+
+// HYPOTHESIS: the member type of the seven growable arrays: {data, count, capacity}, whose
+// destructor is the function at 0x004afa40.
+class fn_004afa40_Array
+{
+public:
+	~fn_004afa40_Array() { fn_004afa40( this ); }
+	unsigned char m_data[0xc];
+};
+
+// HYPOTHESIS: the member type of the list head at +0x1ac, whose destructor is 0x004bc256.
+class fn_004bc256_List
+{
+public:
+	~fn_004bc256_List() { fn_004bc256( this ); }
+	unsigned char m_data[0xc];
+};
+
+// HYPOTHESIS: the static object at 0x00919f00, on which slots 7 and 10 call 0x004b6642.
+class fn_00919f00_object
+{
+public:
+	void fn_004b6642();
+};
+
+extern fn_00919f00_object g_00919f00;
+
+// HYPOTHESIS: an int rectangle (left, top, right, bottom) with methods and no RTTI; the exe
+// names neither it nor its methods. tState_Tactical::field_1f0 has the same shape.
+struct fn_004b7f9e_Rect {
+	int left;
+	int top;
+	int right;
+	int bottom;
+	void fn_004b7f9e(const fn_004b7f9e_Rect *other);
+	void fn_004b99a4(fn_004b7f9e_Rect *out, const fn_004b7f9e_Rect *other) const;
+};
+
+// HYPOTHESIS: the 0xb0-byte object built by 0x004afd4d (tState_Tactical's field_360, and the
+// global at 0x0092f478 that the three matrices at 0x0092f528 to 0x0092f5b8 follow). The member
+// split follows 0x004afd4d's stores and 0x004b9d12's copy, which copies +0x40 and +0x70 as
+// four 12-byte elements each.
+class fn_0092f478_object
+{
+public:
+	void fn_004afec0( tPoint3 *point, int kind, tMatrix *matrix );
+	fn_0092f478_object &fn_004b9d12( fn_0092f478_object *other );
+	int field_00;
+	int field_04;
+	int field_08;
+	int field_0c;
+	float field_10;
+	float field_14;
+	float field_18;
+	float field_1c;
+	float field_20;
+	float field_24;
+	float field_28;
+	float field_2c;
+	// HYPOTHESIS: a rectangle: 0x004b9d12 copies these four dwords as one plain struct.
+	fn_004b7f9e_Rect field_30;
+	tPoint3 field_40[4];
+	tPoint3 field_70[4];
+	float field_a0[4];
+};
+
 namespace tState_Namespace_Tactical
 {
 
@@ -23,7 +93,7 @@ class tState_Tactical : public tGameState
 {
 public:
 	tState_Tactical();
-	// No destructor declared: the implicit one is the original's (0x004ab015).
+	virtual ~tState_Tactical();	// 0x004ab015
 	virtual bool vfunction2();	// 0x004ab0f1
 	virtual void vfunction3();	// 0x004abadd, the per-frame update (6690 bytes)
 	virtual bool vfunction4();	// 0x004ab70a
@@ -38,10 +108,24 @@ public:
 	virtual void vfunction17(int *param_1);	// 0x004b3809
 	virtual void *vfunction19();	// 0x004af807: returns a constant address
 
+	// HYPOTHESIS: 0x004b35db keeps ecx live up to its call of 0x004bc55a, which it makes
+	// without loading ecx: both are members of one class, and the class is only a guess.
+	void fn_004b35db(long *event);
+	void fn_004b3758(long *event);
+	void fn_004b3793(long *event);
+	void fn_004b37ce(long *event);
+	void fn_004bc55a(long x, long y, char *out);
 	void fn_004ba05b(int *param_1);
 	void fn_004ba5ea(int *param_1);
 	void fn_004ba7c7(int *param_1);
 	void fn_004ba9eb(int *param_1);
+	unsigned char fn_004adc52();
+	void fn_004aba4f();
+	int *fn_004ad878();
+	int *fn_004ad89d();
+	void fn_004b71af(int *rect);
+	void fn_004b97cc(int *rect);
+	tEntity *fn_004b720d();
 
 	int field_0c;	// 0x1e
 	float field_10;
@@ -52,7 +136,7 @@ public:
 	float field_24;	// 1.0
 	unsigned char field_28[0x1ac - 0x28];
 	// 3 dwords zeroed by 0x004230b9, released by 0x004bc256 (a list head).
-	unsigned char field_1ac[0xc];
+	fn_004bc256_List field_1ac;
 	unsigned char field_1b8[0x1e0 - 0x1b8];
 	// Two screen rectangles (left, top, right, bottom): the slots compare a point against them.
 	int field_1e0[4];
@@ -82,16 +166,17 @@ public:
 	// 0x004afa40. Element sizes from the allocating constructors: 0x1c at +0x410 and +0x41c
 	// (0x004afa1c), 4 at +0x428, +0x434 and +0x458 (0x004afb43), 8 at +0x440 (0x004afc63),
 	// 0x14 at +0x44c (0x004afbc4).
-	unsigned char field_410[0xc];
-	unsigned char field_41c[0xc];
-	unsigned char field_428[0xc];
-	unsigned char field_434[0xc];
-	unsigned char field_440[0xc];
-	unsigned char field_44c[0xc];
-	unsigned char field_458[0xc];
+	fn_004afa40_Array field_410;
+	fn_004afa40_Array field_41c;
+	fn_004afa40_Array field_428;
+	fn_004afa40_Array field_434;
+	fn_004afa40_Array field_440;
+	fn_004afa40_Array field_44c;
+	fn_004afa40_Array field_458;
 	int field_464;
-	int field_468;
-	int field_46c;
+	// HYPOTHESIS: names of states (strings), as 0x004aba4f stores them.
+	const char *field_468;
+	const char *field_46c;
 	int field_470;
 	unsigned char field_474;
 	unsigned char field_475[3];
@@ -114,6 +199,144 @@ public:
 
 typedef char tState_Tactical_size_is_0x4b0[ sizeof( tState_Tactical ) == 0x4b0 ? 1 : -1 ];
 
+// A camera (RTTI); the base of the five camera kinds. Destructor 0x004af2cd.
+// HYPOTHESIS: only the vtable pointer is known; the size of 0x10 is the smallest gap between two
+// cameras in tCameraMgrEx.
+class tCamera
+{
+public:
+	virtual ~tCamera();
+	unsigned char field_04[0xc];
+};
+
+inline tCamera::~tCamera()
+{
+}
+
+// The base of tCameraMgrEx (RTTI). Destructor 0x004af1bc.
+// HYPOTHESIS: the layout up to +0x50 is not recovered yet.
+class tCameraMgr
+{
+public:
+	virtual ~tCameraMgr();
+	unsigned char field_04[0x50 - 0x04];
+};
+
+inline tCameraMgr::~tCameraMgr()
+{
+}
+
+// The five camera kinds (RTTI). Each derives from tCamera: the destructor 0x004add41 leaves
+// tCamera's vtable in every camera member, which needs a derived destructor inlined before it.
+// HYPOTHESIS: each derives from tCamera directly; their own members are not recovered yet.
+class tCamera_CenteredShip : public tCamera
+{
+public:
+	virtual ~tCamera_CenteredShip();
+};
+
+inline tCamera_CenteredShip::~tCamera_CenteredShip()
+{
+}
+
+class tCamera_TopDownAutoZoom : public tCamera
+{
+public:
+	virtual ~tCamera_TopDownAutoZoom();
+};
+
+inline tCamera_TopDownAutoZoom::~tCamera_TopDownAutoZoom()
+{
+}
+
+class tCamera_OverTheShoulder : public tCamera
+{
+public:
+	virtual ~tCamera_OverTheShoulder();
+};
+
+inline tCamera_OverTheShoulder::~tCamera_OverTheShoulder()
+{
+}
+
+class tCamera_ReverseOverTheShoulder : public tCamera
+{
+public:
+	virtual ~tCamera_ReverseOverTheShoulder();
+};
+
+inline tCamera_ReverseOverTheShoulder::~tCamera_ReverseOverTheShoulder()
+{
+}
+
+class tCamera_TopDownOrthographic : public tCamera
+{
+public:
+	virtual ~tCamera_TopDownOrthographic();
+};
+
+inline tCamera_TopDownOrthographic::~tCamera_TopDownOrthographic()
+{
+}
+
+// The camera manager (RTTI). Constructor 0x004aefd4, deleting destructor 0x004af2d4; one static
+// object at 0x00918890. Its destructor 0x004add41 resets five cameras at +0x50, +0x60, +0x8c,
+// +0xc8 and +0xf4. HYPOTHESIS: which kind sits at which offset follows the order of the kinds'
+// functions in the exe; the bytes after each camera's tCamera part are not recovered yet.
+class tCameraMgrEx : public tCameraMgr
+{
+public:
+	tCameraMgrEx();
+	virtual ~tCameraMgrEx();
+	tCamera_CenteredShip field_50;
+	tCamera_TopDownAutoZoom field_60;
+	unsigned char field_70[0x8c - 0x70];
+	tCamera_OverTheShoulder field_8c;
+	unsigned char field_9c[0xc8 - 0x9c];
+	tCamera_ReverseOverTheShoulder field_c8;
+	unsigned char field_d8[0xf4 - 0xd8];
+	tCamera_TopDownOrthographic field_f4;
+};
+
 }	// namespace tState_Namespace_Tactical
+
+void __fastcall fn_004c5b95( void *self );
+
+// HYPOTHESIS: the type of the object at 0x00919b44, whose destructor is the function at 0x004c5b95.
+// 0x004c5d2e, called on it with a binding id, gives that binding's text or null.
+class fn_004c5b95_Object
+{
+public:
+	~fn_004c5b95_Object() { fn_004c5b95( this ); }
+	const char *fn_004c5d2e( long id, long param_2 );
+	unsigned char m_data[4];
+};
+
+extern fn_004c5b95_Object *g_00919b44;
+
+// HYPOTHESIS: the mouse at 0x00898c24: slot 9 selects a cursor by name, slot 10 a race's cursor.
+class fn_00898c24_object
+{
+public:
+	virtual void vfunction0();
+	virtual void vfunction1();
+	virtual void vfunction2();
+	virtual void vfunction3();
+	virtual void vfunction4();
+	virtual void vfunction5();
+	virtual void vfunction6();
+	virtual void vfunction7();
+	virtual void vfunction8();
+	virtual void vfunction9(const char *name);
+	virtual void vfunction10(int kind);
+};
+
+extern fn_00898c24_object *g_00898c24;
+
+// HYPOTHESIS: 0x004b4018 shows or hides an interface panel by name; 0x004a634c and 0x004a6670
+// take panel names too.
+void fn_004b4018( const char *name, bool show );
+void fn_004a634c( const char *name );
+void fn_004a6670( const char *name, const char *empty );
 
 #endif	// tState_Tactical_h

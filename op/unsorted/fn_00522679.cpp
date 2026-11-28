@@ -2,7 +2,7 @@
 #include "unsorted/tIndividualShipSystem.h"
 #include "unsorted/tEntityMgr.h"
 #include "unsorted/tObject_0090be60.h"
-
+#include "unsorted/tAICaptain.h"
 // FUNCTION: STARFLEETOP 0x00522679
 void __fastcall fn_00522679(char* self)
 {
@@ -88,6 +88,7 @@ class tObject_0051c668 {
 public:
 	void fn_0051c668(int param_1);
 	void fn_0051c5f2(int param_1);
+	char fn_0051c5d1(int param_1, tCommandDestination *pDestination);
 };
 
 // HYPOTHESIS: an object in the table of 0x4000 object pointers indexed by ID, with a virtual
@@ -218,7 +219,7 @@ char __fastcall fn_00522b94(fn_0090bed4_Object *self, int, vfunction33_result *p
 // HYPOTHESIS: 0x00522c00 is a member of fn_0090bed4_Object (this in ecx); it is reached through this one-member class until that header declares it.
 class tObject_00522c00 {
 public:
-	void fn_00522c00(void *pEntity, tCommandDestination *pDestination);
+	char fn_00522c00(void *pEntity, tCommandDestination *pDestination);
 };
 
 extern tEntityMgr g_008e1060;
@@ -228,5 +229,154 @@ void fn_0090bed4_Object::fn_00522bdf(int param_1, tCommandDestination *pDestinat
 {
 	void *pEntity = g_008e1060.fn_0042496f(param_1);
 	((tObject_00522c00 *)this)->fn_00522c00(pEntity, pDestination);
+}
+
+// HYPOTHESIS: 0x0051c5d1 is a member of the object fn_00523543 returns, taking the entity's
+// +0x1c value and the destination.
+
+// FUNCTION: STARFLEETOP 0x00522c00
+char tObject_00522c00::fn_00522c00(void *pEntity, tCommandDestination *pDestination)
+{
+	vfunction33_result *pShip = (vfunction33_result *)pEntity;
+	fn_0090bed4_Object *self = (fn_0090bed4_Object *)this;
+	if (pShip != 0) {
+		if (pShip->fn_00410223() == -1)
+			self->fn_0052280a((tEntity *)pShip);
+		tObject_0051c668 *pFleet = (tObject_0051c668 *)self->fn_00523543(pShip->field_60);
+		if (pFleet != 0) {
+			int value = pShip->field_1c;
+			return pFleet->fn_0051c5d1(value, pDestination);
+		}
+	}
+	return 0;
+}
+
+// FUNCTION: STARFLEETOP 0x00522c46
+// HYPOTHESIS: the object 0x005235c8 returns for the ship is its AI captain; the ship's byte at +0x5c is cleared after.
+// HYPOTHESIS: a member of fn_0090bed4_Object; a fastcall like its neighbours until the header's declaration parses.
+void __fastcall fn_00522c46(fn_0090bed4_Object *self, int, tEntity *pEntity)
+{
+	tAICaptain *pCaptain = (tAICaptain *)self->fn_005235c8((fn_004e2b02_ship_type *)pEntity);
+	if (pCaptain != 0) {
+		pCaptain->fn_0051f0c3(1);
+		*(char *)((char *)pEntity + 0x5c) = 0;
+	}
+}
+
+// FUNCTION: STARFLEETOP 0x00522c66
+// HYPOTHESIS: the counterpart of 0x00522c46: the captain's flag is set and the ship's byte at +0x5c raised.
+void __fastcall fn_00522c66(fn_0090bed4_Object *self, int, tEntity *pEntity)
+{
+	tAICaptain *pCaptain = (tAICaptain *)self->fn_005235c8((fn_004e2b02_ship_type *)pEntity);
+	if (pCaptain != 0) {
+		pCaptain->fn_0051f0c3(0);
+		*(char *)((char *)pEntity + 0x5c) = 1;
+	}
+}
+
+// FUNCTION: STARFLEETOP 0x00522c86
+// HYPOTHESIS: stores a float setting at +0x1b8c; its use is not known.
+void __fastcall fn_00522c86(fn_0090bed4_Object *self, int, float param_1)
+{
+	*(float *)((char *)self + 0x1b8c) = param_1;
+}
+
+// HYPOTHESIS: the object 0x00523543 returns (tObject_0051c7af, declared only in fn_00523000.cpp)
+// has this member, taking an ID and returning a pointer or 0.
+class tObject_0051bfce {
+public:
+	int fn_0051bfce(int param_1);
+};
+
+// HYPOTHESIS: a member of tAIUnitDataList (declared only in fn_00520AB2.cpp), reached as a
+// fastcall like fn_00522e1b there; the original passes the third argument as a float.
+void __fastcall fn_00520dad(char *self, int, int a, int b, float c, int d);
+
+// FUNCTION: STARFLEETOP 0x00522dc6
+// HYPOTHESIS: a member of fn_0090bed4_Object, a fastcall like its neighbours.
+char __fastcall fn_00522dc6(fn_0090bed4_Object *self, int, int param_1, int param_2, int param_3, float param_4)
+{
+	tObject_0051bfce *pObject = (tObject_0051bfce *)self->fn_00523543(param_1);
+	if (pObject != 0) {
+		int iVar1 = pObject->fn_0051bfce(param_2);
+		if (iVar1 != 0) {
+			int index = ((tObject_00522e1b *)self)->fn_00522e1b(param_1);
+			if (index != -1) {
+				fn_00520dad((char *)self + 0x218, 0, index, param_3, param_4, iVar1);
+				return 1;
+			}
+		}
+	}
+	return 0;
+}
+
+// HYPOTHESIS: really a member of the object at 0x0096ed60 (thiscall on it); that header is
+// outside this lane, so it is declared as a free function until it can be added there.
+int fn_0052dab9(int param_1, int param_2);
+
+// FUNCTION: STARFLEETOP 0x00522e1b
+int tObject_00522e1b::fn_00522e1b(int param_1)
+{
+	int iVar1 = gObject_0092deb4->vfunction33();
+	int iVar2 = gObject_0090be60->fn_00427581(iVar1, param_1);
+	if (iVar2 == 0) {
+		iVar2 = fn_0052dab9(iVar1, param_1);
+	}
+	if (0 < iVar2) {
+		if (iVar2 > 5) {
+			if (iVar2 == 6) {
+				return 0;
+			}
+		} else {
+			return 1;
+		}
+	}
+	return -1;
+}
+
+// HYPOTHESIS: the container at +0x1b90 of fn_0090bed4_Object; the member returns a pointer
+// to the slot for a key.
+class tObject_00479331 {
+public:
+	int *fn_00479331(char *key);
+};
+
+// FUNCTION: STARFLEETOP 0x00522e6d
+// HYPOTHESIS: a member of fn_0090bed4_Object, a fastcall like its neighbours.
+void __fastcall fn_00522e6d(fn_0090bed4_Object *self, int, char param_1, int param_2)
+{
+	*((tObject_00479331 *)((char *)self + 0x1b90))->fn_00479331(&param_1) = param_2;
+}
+
+// HYPOTHESIS: a member of fn_0090bed4_Object that runs after the table is filled; it takes no arguments.
+void fn_00522f1e();
+
+// FUNCTION: STARFLEETOP 0x00522e86
+// HYPOTHESIS: the two blocks at +0x1698 and +0x16a8 are begin/end pairs of 0x1a0-byte records.
+void __fastcall fn_00522e86(char *self)
+{
+	int n = 2;
+	int **pPair = (int **)(self + 0x169c);
+	do {
+		int *rec = pPair[-1];
+		while (rec != *pPair) {
+			int i = 0;
+			if (0 < rec[100]) {
+				int *p = rec;
+				do {
+					*p = *((tObject_00479331 *)(self + 0x1b90))->fn_00479331((char *)p);
+					int *r = ((tObject_00479331 *)(self + 0x1b90))->fn_00479331((char *)(p + 1));
+					i++;
+					p[1] = *r;
+					p += 2;
+				} while (i < rec[100]);
+			}
+			rec += 0x68;
+		}
+		pPair += 4;
+		n--;
+	} while (n != 0);
+	*(char *)(self + 0x16b4) = 1;
+	fn_00522f1e();
 }
 

@@ -209,7 +209,7 @@ unsigned int tNetMsg::mStream(const void *pStreamBuffer, unsigned char bOutput, 
 			{
 				// Unknown commands are currently fatal!
 				//
-				throw fn_006a2ec0(__FILE__,__LINE__,
+				throw tErrInfo(__FILE__,__LINE__,
 					"tNetMsg::mStream(): Don't know how to stream this!\n"
 				);
 			}

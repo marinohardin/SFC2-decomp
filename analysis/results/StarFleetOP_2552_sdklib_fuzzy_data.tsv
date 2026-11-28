@@ -16,12 +16,24 @@ address	name	tier	score	notes
 00795044	__imp__SymSetOptions@4	import	1.0	IAT
 00795048	__imp__StackWalk@36	import	1.0	IAT
 00795070	__imp__DeleteObject@4	import	1.0	IAT
+00795074	__imp__PatBlt@24	import	1.0	IAT
+00795078	__imp__TextOutA@20	import	1.0	IAT
+0079507c	__imp__SetTextColor@8	import	1.0	IAT
 0079508c	__imp__ExtTextOutA@32	import	1.0	IAT
 00795090	__imp__SetBkMode@8	import	1.0	IAT
 00795094	__imp__SelectObject@8	import	1.0	IAT
 00795098	__imp__GetTextMetricsA@8	import	1.0	IAT
 0079509c	__imp__CreateFontA@56	import	1.0	IAT
 007950a0	__imp__GetDeviceCaps@8	import	1.0	IAT
+007950a4	__imp__GetDIBColorTable@16	import	1.0	IAT
+007950a8	__imp__CreateCompatibleDC@4	import	1.0	IAT
+007950ac	__imp__DeleteDC@4	import	1.0	IAT
+007950b0	__imp__SetDIBColorTable@16	import	1.0	IAT
+007950b4	__imp__BitBlt@36	import	1.0	IAT
+007950b8	__imp__StretchBlt@44	import	1.0	IAT
+007950bc	__imp__CreateDIBSection@24	import	1.0	IAT
+007950c0	__imp__GetSystemPaletteEntries@16	import	1.0	IAT
+007950c4	__imp__GetTextExtentPoint32A@16	import	1.0	IAT
 007950cc	__imp__OutputDebugStringA@4	import	1.0	IAT
 007950d0	__imp__GetCurrentDirectoryA@8	import	1.0	IAT
 007950d4	__imp__CreateFileA@28	import	1.0	IAT
@@ -74,6 +86,7 @@ address	name	tier	score	notes
 00795194	__imp__GetCurrentThread@0	import	1.0	IAT
 0079519c	__imp__LocalFree@4	import	1.0	IAT
 007951a0	__imp__MultiByteToWideChar@24	import	1.0	IAT
+007951a4	__imp__GetEnvironmentVariableA@12	import	1.0	IAT
 007951a8	__imp__TerminateProcess@8	import	1.0	IAT
 007951ac	__imp__GetCurrentProcess@0	import	1.0	IAT
 007951b0	__imp__WideCharToMultiByte@32	import	1.0	IAT
@@ -118,6 +131,7 @@ address	name	tier	score	notes
 0079531c	__imp__GetDiskFreeSpaceA@20	import	1.0	IAT
 00795320	__imp__GetFileAttributesA@4	import	1.0	IAT
 00795324	__imp__SetFileAttributesA@8	import	1.0	IAT
+00795328	__imp__SetErrorMode@4	import	1.0	IAT
 0079532c	__imp__GetVolumeInformationA@32	import	1.0	IAT
 00795330	__imp__GetDriveTypeA@4	import	1.0	IAT
 00795334	__imp__FindFirstFileA@8	import	1.0	IAT
@@ -138,11 +152,24 @@ address	name	tier	score	notes
 007953c0	__imp__AppendMenuA@16	import	1.0	IAT
 007953c4	__imp__SetWindowPos@28	import	1.0	IAT
 007953c8	__imp__CheckMenuItem@12	import	1.0	IAT
+007953cc	__imp__ChangeDisplaySettingsA@8	import	1.0	IAT
+007953d0	__imp__EnumDisplaySettingsA@12	import	1.0	IAT
 007953d4	__imp__EndDialog@8	import	1.0	IAT
+007953d8	__imp__OffsetRect@12	import	1.0	IAT
+007953dc	__imp__GetDesktopWindow@0	import	1.0	IAT
 007953e0	__imp__ClientToScreen@8	import	1.0	IAT
+007953e4	__imp__DialogBoxIndirectParamA@20	import	1.0	IAT
 007953e8	__imp__RedrawWindow@16	import	1.0	IAT
+007953ec	__imp__CallWindowProcA@20	import	1.0	IAT
+007953f4	__imp__SetCursor@4	import	1.0	IAT
 007953f8	__imp__SetRect@20	import	1.0	IAT
 00795414	__imp__DrawMenuBar@4	import	1.0	IAT
+00795418	__imp__SetWindowLongA@12	import	1.0	IAT
+00795424	__imp__GetWindowRect@8	import	1.0	IAT
+00795428	__imp__IsWindow@4	import	1.0	IAT
+00795430	__imp__IsIconic@4	import	1.0	IAT
+00795438	__imp__GetWindowLongA@8	import	1.0	IAT
+00795440	__imp__InvalidateRect@12	import	1.0	IAT
 00795474	__imp__MessageBoxA@16	import	1.0	IAT
 00795478	__imp__LoadCursorA@8	import	1.0	IAT
 0079547c	__imp__RegisterClassA@4	import	1.0	IAT
@@ -156,7 +183,7 @@ address	name	tier	score	notes
 007954a0	__imp__timeKillEvent@4	import	1.0	IAT
 007954a4	__imp__timeSetEvent@20	import	1.0	IAT
 007954a8	__imp__timeGetTime@0	import	1.0	IAT
-0079561c	__real@4@00000000000000000000	data	0.984	votes=3 from ?mGet3DSoundConeAngleForNoAttenuation@tBasicSoundFileManager@@UAEMKJ@Z,?mGet3DSoundConeAngleForNoAttenuation@tChannelGroup@@UAEMKJ@Z,?mGet3DSoundConeAngleForNoAttenuation@tgSoundPart@@UAEMJ@Z
+0079561c	__real@4@00000000000000000000	data	0.99	votes=10 from ?ArcTangent@@YAFMM@Z,?mBuildRamps@tClut@@IAEXXZ,?mCalcLightColor@tView3DExt@@IBE?AUtPoint3@@ABU2@0@Z
 00795648	?npos@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@2IB	data	0.99	votes=60 from ??0length_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z,??0tCRCFailed@tStreamable@nDataStore@@QAE@ABV012@@Z,??0tCRCFailed@tStreamable@nDataStore@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0PBDJ@Z
 0079564c	?_C@?1??_Nullstr@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@CAPBDXZ@4DB	data	0.99	votes=66 from ??0length_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z,??0tCRCFailed@tStreamable@nDataStore@@QAE@ABV012@@Z,??0tCRCFailed@tStreamable@nDataStore@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0PBDJ@Z
 0079565c	??_7?$basic_ios@DU?$char_traits@D@std@@@std@@6B@	data	0.99	votes=12 from ??0tLogStream@nLog@@QAE@W4tEventType@tLog@1@@Z,??0tSettings@@QAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z,?CreateFileA@tStreamDatabaseStorage@nDatabase@@IAEXXZ
@@ -175,14 +202,23 @@ address	name	tier	score	notes
 00795820	??_7tDir@@6B@	data	0.99	votes=32 from .\sfcTiger Release\twfsys.obj|?WinParseDir@@YA?AVtDir@@VtSession@@AAVtString@@@Z,??0tMapPair@?$tCountMap@VtDir@@VtwDir@@U?$less@VtDir@@@std@@@@QAE@AAVtDir@@AAVtwDir@@@Z,??0tgDir@@QAE@ABVtString@@VtVolume@@VtDir@@@Z
 00795834	??_7tSession@@6B@	data	0.99	votes=80 from .\sfcTiger Release\twfsys.obj|?WinParseDir@@YA?AVtDir@@VtSession@@AAVtString@@@Z,.\sfcTiger Release\twfsys.obj|?WinParsePath@@YA?AVtPath@@VtSession@@AAVtString@@@Z,.\sfcTiger Release\twfsys.obj|?WinParseVolume@@YA?AVtVolume@@VtSession@@AAVtString@@@Z
 00795840	??_7tCookie@@6B@	data	0.99	votes=25 from ??0tCookie@@QAE@K@Z,??0tCookie@@QAE@XZ,??0tMapPair@?$tCountMap@VtDir@@VtwDir@@U?$less@VtDir@@@std@@@@QAE@AAVtDir@@AAVtwDir@@@Z
-00797048	__real@8@00000000000000000000	data	0.99	votes=9 from ?mActivate@twClock@@UAEXXZ,?mGet3DSoundReferenceDistance@tBasicSoundFileManager@@UAENKJ@Z,?mGet3DSoundReferenceDistance@tChannelGroup@@UAENKJ@Z
-007971c0	__real@8@3fff8000000000000000	data	0.99	votes=8 from ?mDoSleep@tCoopThreadPart@@UAEXNPAVtNativeThread@@@Z,?mGetBestNextThread@tCoopThreadPart@@UAEPAVtCoopThread@@PAV2@N@Z,?mResetPriorities@tCoopThreadPart@@UAEXXZ
+007959c8	__real@4@3ffe8000000000000000	data	0.6	votes=1 from ?mSetViewport@tView3DExt@@UAEXHHHH@Z
+007959cc	__real@4@3fff8000000000000000	data	0.99	votes=13 from ?mCalcLightColor@tView3DExt@@IBE?AUtPoint3@@ABU2@0@Z,?mDrawLine@tD3DViewMgr@@MAEEH@Z,?mDrawLine@tSWView3D@@MAEEH@Z
+007959d8	??_7tGLPixFmt@@6B@	data	0.99	votes=8 from .\dmp3D_Release\swView3D_Tex.obj|_$E24,??0tGDISurface@@IAE@PAUHBITMAP__@@ABVtGLPixFmt@@IIJPAX@Z,??0tGLPixFmt@@QAE@W4ePixFmtID@0@@Z
+007961d0	__real@4@4006ff00000000000000	data	0.99	votes=7 from ?mDrawLine@tD3DViewMgr@@MAEEH@Z,?mDrawLine@tSWView3D@@MAEEH@Z,?mDrawPoints@tD3DViewMgr@@MAEEHH@Z
+00797048	__real@8@00000000000000000000	data	0.99	votes=13 from ?mActivate@twClock@@UAEXXZ,?mDrawTriangle@tSWView3D@@AAEXHAAUtPolyVtx@tView3DExt@@00@Z,?mGet3DSoundReferenceDistance@tBasicSoundFileManager@@UAENKJ@Z
+00797070	__real@8@3ffbccccccccccccd000	data	0.6	votes=1 from ?mNewFrame@tFrameTimer@@QAEXXZ
+007971c0	__real@8@3fff8000000000000000	data	0.99	votes=11 from ?mDoSleep@tCoopThreadPart@@UAEXNPAVtNativeThread@@@Z,?mDrawTriangle@tSWView3D@@AAEXHAAUtPolyVtx@tView3DExt@@00@Z,?mGetBestNextThread@tCoopThreadPart@@UAEPAVtCoopThread@@PAV2@N@Z
 007971d0	__real@8@3ff583126e978d4fe000	data	0.938	votes=2 from ?GetCurrentSystemTimeInSeconds@tWinClock@@UBENXZ,?mGetMillisecondsBetweenUpdates@tSoundChannel@@UAENXZ
 007971f8	__real@8@400fc350000000000000	data	0.984	votes=3 from ?mNewThread@tCoopThreadPart@@UAEXPAVtClientThread@@J@Z,?mUpdateAtInterrupt@tgSoundPart@@UAEXXZ,?mUpdateTest@tBasicSoundFileManager@@QAEXXZ
 00797244	??_7?$basic_ofstream@DU?$char_traits@D@std@@@std@@6B@	data	0.99	votes=5 from ?CreateFileA@tStreamDatabaseStorage@nDatabase@@IAEXXZ,?Free@tStreamDatabaseStorage@nDatabase@@UAEXVtID@2@@Z,?SaveObjectsToFile@tStreamDatabaseStorage@nDatabase@@IAEXXZ
 00797248	??_8?$basic_ofstream@DU?$char_traits@D@std@@@std@@7B@	data	0.99	votes=5 from ?CreateFileA@tStreamDatabaseStorage@nDatabase@@IAEXXZ,?Free@tStreamDatabaseStorage@nDatabase@@UAEXVtID@2@@Z,?SaveObjectsToFile@tStreamDatabaseStorage@nDatabase@@IAEXXZ
+007972ac	__real@4@40098000000000000000	data	0.6	votes=1 from ??0t3DTableInitializer@@QAE@XZ
+007977c8	__real@8@3ffe8000000000000000	data	0.6	votes=1 from ?mCreatePerspective@tView3DExt@@UAEXAAVtMatrix@@MMM@Z
 00797a20	__real@8@400c9c40000000000000	data	0.984	votes=3 from ?mNewThread@tCoopThreadPart@@UAEXPAVtClientThread@@J@Z,?mUpdateAtInterrupt@tSoundChannel@@UAEEN@Z,?mUpdateAtInterrupt@tgSoundPart@@UAEXXZ
 007980a8	__real@8@3ff8a3d70a3d70a3d800	data	0.938	votes=2 from ?mSetGlobalVolume@tBasicSoundFileManager@@UAEXJ@Z,?mSetGlobalVolume@tgSoundPart@@UAEEJ@Z
+007981a8	__real@4@3fe7d6bf950000000000	data	0.938	votes=2 from ?mNormalize@tPoint3@@QAEEXZ,?mSetLightPosition@tView3DExt@@UAEXABUtPoint3@@@Z
+007981c4	__real@4@3ffa8000000000000000	data	0.6	votes=1 from ?mBuildRamps@tClut@@IAEXXZ
 007981e4	??_7tDateAndTime@@6B@	data	0.938	votes=2 from ??0tDateAndTime@@QAE@XZ,?GetCurDBInfo@tFileDatabaseMgr@nDatabase@@UAE?AVtDatabaseInfo@12@XZ
 007981f4	??_7tStreamable@nDataStore@@6B@	data	0.99	votes=7 from ??0?$pair@$$CBVtID@nDatabase@@VtBlock@tStreamDatabaseStorage@2@@std@@QAE@ABVtID@nDatabase@@ABVtBlock@tStreamDatabaseStorage@3@@Z,??0tID@nDatabase@@QAE@ABV01@@Z,??0tStreamable@nDataStore@@QAE@E@Z
 00798244	??_7tID@nDatabase@@6B@	data	0.99	votes=9 from ??0?$pair@$$CBVtID@nDatabase@@VtBlock@tStreamDatabaseStorage@2@@std@@QAE@ABVtID@nDatabase@@ABVtBlock@tStreamDatabaseStorage@3@@Z,??0tID@nDatabase@@QAE@ABV01@@Z,??0tID@nDatabase@@QAE@XZ
@@ -195,9 +231,14 @@ address	name	tier	score	notes
 00798f9c	??_7tSoundTimerResponse@@6B@	data	0.6	votes=1 from ??0tgSoundPart@@QAE@XZ
 00798fb0	??_7tgSoundPart@@6B@	data	0.6	votes=1 from ??0tgSoundPart@@QAE@XZ
 0079923c	??_7tClassTrackingInfo@@6B@	data	0.6	votes=1 from ?mClose@tAudioPriorityManagerPart@@MAEXXZ
+00799ed0	__real@4@4003f800000000000000	data	0.6	votes=1 from ?mDrawTriangle@tSWView3D@@AAEXHAAUtPolyVtx@tView3DExt@@00@Z
+0079e100	__real@8@40008000000000000000	data	0.6	votes=1 from ?mCreateOrtho@tView3DExt@@UAEXAAVtMatrix@@MMMMMM@Z
 0079e8a0	??_7length_error@std@@6B@	data	0.6	votes=1 from ??0length_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z
 0079e9a8	__real@8@4012f424000000000000	data	0.984	votes=3 from ?mParseAllSoundsFile@tBasicSoundFileManager@@UAEXPADJJ@Z,?mSetMainThreadFreq@tCoopThreadPart@@UAEXJ@Z,?mSetThreadFreq@tCoopThreadPart@@UAEXPAVtClientThread@@J@Z
 0079f318	__real@8@4013f424000000000000	data	0.6	votes=1 from ?mDoDefaultNextAttachment@tBasicSoundFileManager@@UAEXK@Z
+007a13a8	__real@8@3ff7b60b60b60b60b800	data	0.6	votes=1 from ?mCreatePerspective@tView3DExt@@UAEXAAVtMatrix@@MMM@Z
+007a1648	__real@8@4000c90fdaa22168c000	data	0.6	votes=1 from ?mCreatePerspective@tView3DExt@@UAEXAAVtMatrix@@MMM@Z
+007aa7f4	__real@4@3ff78080810000000000	data	0.938	votes=2 from ?mDrawPolygonListSelectTexture@tView3DExt@@UAEEW4eTextureSelect@1@HPAPAUtPolyFaceEx@@E@Z,?mVtxColor@tView3DExt@@UAEXUtGLRgbQuad@@@Z
 007aaef4	??_7tBasicFile@@6B@	data	0.984	votes=3 from ??1tBasicFileZip@tBasicFileZipNamespace@@MAE@XZ,??1tBasicSoundFileZip@@MAE@XZ,??1tSoundFileIO@@UAE@XZ
 007ab000	__real@8@4010927c000000000000	data	0.6	votes=1 from ?mActivate@tgSoundPart@@UAEXXZ
 007ab0c0	??_7?$tCallback@J@@6B@	data	0.6	votes=1 from ??1tHeartbeatTimerData@tHeartbeatTimer@@AAE@XZ
@@ -312,14 +353,55 @@ address	name	tier	score	notes
 007b78cc	??_7tSoundMemoryBlock@@6B@	data	0.6	votes=1 from ??0tSoundMemoryBlock@@QAE@XZ
 007b794c	??_7tSoundFileIO@@6B@	data	0.938	votes=2 from ??1tSoundFileIO@@UAE@XZ,?_NewSoundFileIO@@YAPAVtSoundFileIOBase@@XZ
 007b7994	??_7tTextFontFileIO@@6B@	data	0.6	votes=1 from ?mInit@tFontMgr@@QAE?AW4eInitStatus@1@XZ
+007b8d30	__real@8@3fffc90fdaa22168c000	data	0.6	votes=1 from ??0t3DTableInitializer@@QAE@XZ
+007b8d38	__real@4@3ff48000000000000000	data	0.6	votes=1 from ??0t3DTableInitializer@@QAE@XZ
+007b8d3c	__real@4@3ff08001000000000000	data	0.6	votes=1 from ?frand@@YAMXZ
+007b8d4c	??_7tD3DViewMgr@@6B@	data	0.938	votes=2 from ??1tD3DViewMgr@@UAE@XZ,?dmpGetD3DView3D@@YAPAVtView3D@@XZ
+007b8ee4	??_7tD3DViewSurfMgr@@6B@	data	0.984	votes=3 from ??1tD3DViewMgr@@UAE@XZ,??1tD3DViewSurfMgr@@IAE@XZ,?dmpGetD3DView3D@@YAPAVtView3D@@XZ
+007b90cc	??_7tGLDC@@6B@	data	0.938	votes=2 from ??0tGLDC@@QAE@XZ,??1tGLDC@@UAE@XZ
+007b9138	??_7tTexMgrBmp@@6B@	data	0.6	votes=1 from ?mInit@tTexMgr@@QAEEPBD@Z
+007b9158	.\dmp3D_Release\frameTimer.obj|_kMicroToSecond	data	0.6	votes=1 from ?mNewFrame@tFrameTimer@@QAEXXZ
+007b9164	??_7tSysMemSurf@@6B@	data	0.938	votes=2 from ??0tSysMemSurf@@QAE@XZ,??1tSysMemSurf@@UAE@XZ
+007b91c0	??_7tGLSurface@@6B@	data	0.99	votes=6 from ??0tDDSurface@@QAE@XZ,??0tGDISurface@@IAE@PAUHBITMAP__@@ABVtGLPixFmt@@IIJPAX@Z,??0tSysMemSurf@@QAE@XZ
+007b9218	??_7tBmpSurf@@6B@	data	0.938	votes=2 from ??0tBmpSurf@@QAE@AAVtTexBmp@@@Z,??1tBmpSurf@@UAE@XZ
+007b9274	.\dmp3D_Release\texBmp.obj|_gEndianFlag	data	0.6	votes=1 from ?mInitAsBMP@tTexBmp@@MAEXPAVtBasicFile@@@Z
+007b9284	??_7twDLLMgrBase@@6B@	data	0.918	votes=2 from .\dmp3D_Release\twGLSurfMgrInterfaceDLL.obj|_$E12,.\dmp3D_Release\view3DMgrDLLW.obj|_$E15
+007b929c	??_7tDDSurface@@6B@	data	0.938	votes=2 from ??0tDDSurface@@QAE@XZ,??1tDDSurface@@UAE@XZ
+007b92f4	??_7tDDPixFmt@@6B@	data	0.6	votes=1 from ??0tDDSurface@@QAE@XZ
+007b9300	??_7tGLSurfMgrSurf@@6B@	data	0.938	votes=2 from ??0tGLSurfMgrSurf@@QAE@ABVtGLPixFmt@@II@Z,??1tGLSurfMgrSurf@@UAE@XZ
+007b936c	??_7tDDTexFmt@@6B@	data	0.6	votes=1 from ?mEnumTexFmtsCallback@tD3DViewMgr@@IAEJABU_DDPIXELFORMAT@@@Z
+007b9380	.\dmp3D_Release\view3DExt.obj|_kFloatToInt	data	0.6	votes=1 from ?mSetGlobalBlend@tView3DExt@@UAEMM@Z
+007b9388	??_7tView3DExt@@6B@	data	0.938	votes=2 from ??0tView3DExt@@QAE@XZ,??1tView3DExt@@UAE@XZ
+007b951c	??_7tView3D@@6B@	data	0.938	votes=2 from ??0tView3DExt@@QAE@XZ,??1tView3DExt@@UAE@XZ
+007b9698	__real@4@3ffefff9720000000000	data	0.6	votes=1 from ?mSetLightPosition@tView3DExt@@UAEXABUtPoint3@@@Z
+007b96a0	__real@8@c0008000000000000000	data	0.6	votes=1 from ?mCreateOrtho@tView3DExt@@UAEXAAVtMatrix@@MMMMMM@Z
+007b96b8	.\dmp3D_Release\d3dViewMgr_Draw.obj|_kFloatToInt	data	0.984	votes=3 from ?mDrawLine@tD3DViewMgr@@MAEEH@Z,?mDrawPoints@tD3DViewMgr@@MAEEHH@Z,?mDrawPolygon@tD3DViewMgr@@MAEEHHHE@Z
+007b96d8	.\dmp3D_Release\swView3D_Draw.obj|_kFloatToInt	data	0.938	votes=2 from ?mDrawLine@tSWView3D@@MAEEH@Z,?mDrawPoints@tSWView3D@@MAEEHH@Z
+007b96e0	.\dmp3D_Release\swView3D_Draw.obj|_kDoubleToLong	data	0.99	votes=6 from .\dmp3D_Release\swView3D_Draw.obj|?Triangle_ZTest@@YAXXZ,.\dmp3D_Release\swView3D_Draw.obj|?Triangle_ZTest_ZWrite@@YAXXZ,?mDrawTriangle@tSWView3D@@AAEXHAAUtPolyVtx@tView3DExt@@00@Z
+007b96e8	.\dmp3D_Release\swView3D_Draw.obj|_kDoubleToFxdPt	data	0.99	votes=6 from ?mDrawLine@tSWView3D@@MAEEH@Z,?mDrawPoints@tSWView3D@@MAEEHH@Z,?mDrawTriangle@tSWView3D@@AAEXHAAUtPolyVtx@tView3DExt@@00@Z
+007b96f0	__real@8@3fec8000000000000000	data	0.99	votes=6 from .\dmp3D_Release\swView3D_Draw.obj|?Triangle_ZTest@@YAXXZ,.\dmp3D_Release\swView3D_Draw.obj|?Triangle_ZTest_ZWrite@@YAXXZ,?mDrawTriangle@tSWView3D@@AAEXHAAUtPolyVtx@tView3DExt@@00@Z
+007b96f8	__real@8@4006ff00000000000000	data	0.938	votes=2 from ?mBuildRamps@tClut@@IAEXXZ,?mDrawTriangle@tSWView3D@@AAEXHAAUtPolyVtx@tView3DExt@@00@Z
+007b9700	__real@8@4003f800000000000000	data	0.6	votes=1 from ?mDrawTriangle@tSWView3D@@AAEXHAAUtPolyVtx@tView3DExt@@00@Z
+007b9710	.\dmp3D_Release\swView3D_Tex.obj|_kFloatToInt	data	0.6	votes=1 from ?mBuildRamps@tClut@@IAEXXZ
+007b9718	__real@8@3ff78080808080808000	data	0.6	votes=1 from ?mBuildRamps@tClut@@IAEXXZ
+007b9724	??_7tTexInfo@@6B@	data	0.938	votes=2 from ??1tTexInfo@@UAE@XZ,?mCreateTexture@tSWView3D@@UAEPAVtGLSurface@@JABVtGLPixFmt@@KKPBUtGLRgbQuad@@@Z
+007b9780	??_7tGDISurface@@6B@	data	0.938	votes=2 from ??0tGDISurface@@IAE@PAUHBITMAP__@@ABVtGLPixFmt@@IIJPAX@Z,??1tGDISurface@@MAE@XZ
+007b97d8	??_7tGDISurfMgr@@6B@	data	0.938	votes=2 from ?dmpCreateGDISurfMgr@@YAPAVtGLSurfMgr@@XZ,?mTrueRelease@tGDISurfMgr@@MAEXXZ
+007b9820	??_7tDDSurfMgr@@6B@	data	0.938	votes=2 from ??_GtDDSurfMgr@@UAEPAXI@Z,?dmpCreateDDSurfMgr@@YAPAVtGLSurfMgr@@XZ
+007b9874	??_7twDisplayMgr@@6B@	data	0.6	votes=1 from ??1twDisplayMgr@@UAE@XZ
+007b988c	??_7tOSDisplayMgr@@6B@	data	0.6	votes=1 from ??1twDisplayMgr@@UAE@XZ
 007b98a0	?crc_32_tab@CRC32@CryptoPP@@0QBKB	data	0.6	votes=1 from ?Update@CRC32@CryptoPP@@UAEXPBEI@Z
 007bb038	_IID_IDirectSound3DBuffer	data	0.6	votes=1 from ?mCreate3DBuffer@twStandardSoundChannel@@MAEEXZ
 007bb048	_IID_IDirectSound3DListener	data	0.6	votes=1 from ?mCreatePrimaryBuffer@twSoundPart@@UAEEXZ
-007bb198	_IID_IDirect3D3	data	0.6	votes=1 from ?CreateDirect3D@CD3DFramework@@AAEJPAU_GUID@@K@Z
+007bb158	_IID_IDirect3DTexture2	data	0.6	votes=1 from ?mCreateTexture@tD3DViewMgr@@UAEPAVtGLSurface@@JABVtGLPixFmt@@KKPBUtGLRgbQuad@@@Z
+007bb168	_IID_IDirect3DNullDevice	data	0.6	votes=1 from .\dmp3D_Release\d3denum.obj|?Enum3DDevicesCallback@@YGJPAU_GUID@@PAD1PAU_D3DDeviceDesc@@2PAX@Z
+007bb178	_IID_IDirect3DRefDevice	data	0.938	votes=2 from .\dmp3D_Release\d3denum.obj|?Enum3DDevicesCallback@@YGJPAU_GUID@@PAD1PAU_D3DDeviceDesc@@2PAX@Z,?D3DEnum_SelectDefaultDriver@@YAJK@Z
+007bb188	_IID_IDirect3DRGBDevice	data	0.6	votes=1 from ?D3DEnum_SelectDefaultDriver@@YAJK@Z
+007bb198	_IID_IDirect3D3	data	0.938	votes=2 from .\dmp3D_Release\d3denum.obj|?DirectDrawEnumCallbackEx@@YGHPAU_GUID@@PAD1PAXPAUHMONITOR__@@@Z,?CreateDirect3D@CD3DFramework@@AAEJPAU_GUID@@K@Z
 007bb1a8	_IID_IDirectDrawSurface4	data	0.6	votes=1 from ?GetDXVersion@@YAXPAK0@Z
 007bb1b8	_IID_IDirectDrawSurface3	data	0.6	votes=1 from ?GetDXVersion@@YAXPAK0@Z
-007bb1c8	_IID_IDirectDraw4	data	0.6	votes=1 from ?CreateDirectDraw@CD3DFramework@@AAEJPAU_GUID@@K@Z
-007bb1d8	_IID_IDirectDraw2	data	0.6	votes=1 from ?GetDXVersion@@YAXPAK0@Z
+007bb1c8	_IID_IDirectDraw4	data	0.982	votes=3 from .\dmp3D_Release\d3denum.obj|?DirectDrawEnumCallbackEx@@YGHPAU_GUID@@PAD1PAXPAUHMONITOR__@@@Z,?CreateDirectDraw@CD3DFramework@@AAEJPAU_GUID@@K@Z,?mInitInterfaces@tDDSurfMgr@@IAEEXZ
+007bb1d8	_IID_IDirectDraw2	data	0.928	votes=2 from ?GetDXVersion@@YAXPAK0@Z,?mEnumDispModes@tDDSurfMgr@@UAEEP6AEHHHPAX@Z0@Z
 007bb204	??_7?$tCleanupGlobalPointer@VtThreadPool@@@@6B@	data	0.976	votes=3 from .\Common_Release\ThreadPool.obj|_$E45,.\Common_Release\ThreadPool.obj|_$E46,??_G?$tCleanupGlobalPointer@VtThreadPool@@@@UAEPAXI@Z
 007bb20c	??_7tThreadState@@6B@	data	0.6	votes=1 from ??0tThreadState@@QAE@W4eUse@0@@Z
 007bb21c	??_7?$tFunctionCallback@J@@6B@	data	0.6	votes=1 from ??0tHeartbeatTimerData@tHeartbeatTimer@@AAE@XZ
@@ -364,7 +446,8 @@ address	name	tier	score	notes
 007bda48	??_7tBufFile@@6B@	data	0.938	votes=2 from ??0tBufFile@@QAE@K@Z,??1tBufFile@@UAE@XZ
 007e7c28	__TI1E	data	0.984	votes=3 from ?mFlush@tINIFileSimple@tINISimpleNamespace@@UAEEXZ,?mInit@tSndZipInfoMgr@@QAEEPBD@Z,?mInit@tZipInfoMgr@@QAEEPBD@Z
 007e7ce8	.\Release\Script.obj|$T86099	data	0.57	votes=1 from .\Release\Script.obj:.text$x#27
-007e80c0	__TI1?AVtPartBindingException@tPart@@	data	0.99	votes=256 from .\sfcTiger Release\twfsys.obj|?WinParseVolume@@YA?AVtVolume@@VtSession@@AAVtString@@@Z,??0tFileSession@@QAE@XZ,??1tAudioFileInfoPart@@UAE@XZ
+007e80c0	__TI1?AVtPartBindingException@tPart@@	data	0.99	votes=261 from .\sfcTiger Release\twfsys.obj|?WinParseVolume@@YA?AVtVolume@@VtSession@@AAVtString@@@Z,??0tFileSession@@QAE@XZ,??1tAudioFileInfoPart@@UAE@XZ
+007e8128	__TI1?AVtErrInfo@@	data	0.99	votes=8 from ?mAssertVtxCache@tView3DExt@@IAEXH@Z,?mGet@tStream_BasicFile@@UAEEPAXK@Z,?mInit@tTexBmp@@UAEEPBD@Z
 007e9918	__TI3?AVtOutOfBounds@nException@@	data	0.99	votes=6 from ??6nDataStore@@YAAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@AAV12@ABVtBuffer@0@@Z,?StreamIn@tCallStack@@UAEXAAVtInput@nDataStore@@@Z,?StreamIn@tDatabaseInfo@tFileDatabaseMgr@nDatabase@@UAEXAAVtInput@nDataStore@@@Z
 007ea608	__TI2PAD	data	0.99	votes=136 from .\sfcTiger Release\twfsys.obj|?WinFileOpenDlg@@YA_NAAVtString@@00@Z,.\sfcTiger Release\twfsys.obj|?WinFileSaveDlg@@YA_NAAVtString@@00@Z,.\sfcTiger Release\twfsys.obj|?WinParsePath@@YA?AVtPath@@VtSession@@AAVtString@@@Z
 007eaac8	.\release\rw.obj|$T13913	data	0.6	votes=1 from .\release\rw.obj:.text$x#154
@@ -489,6 +572,19 @@ address	name	tier	score	notes
 00828208	.\Release\missionspec.obj|$T83091	data	0.6	votes=1 from .\Release\missionspec.obj:.text$x#63
 008282c8	.\Release\Actor.obj|$T89256	data	0.57	votes=1 from .\Release\Actor.obj:.text$x#30
 008282f8	.\Release\Actor.obj|$T89318	data	0.6	votes=1 from .\Release\Actor.obj:.text$x#36
+00829b60	__TI1J	data	0.982	votes=3 from ?mCreateTexture@tD3DViewMgr@@UAEPAVtGLSurface@@JABVtGLPixFmt@@KKPBUtGLRgbQuad@@@Z,?mDDThrow@tDDSurfMgr@@IAAXJPBDH0ZZ,?mInitBuffers@tDDSurfMgr@@IAEEI@Z
+00829b70	.\dmp3D_Release\d3dViewMgr.obj|$T65063	data	0.6	votes=1 from .\dmp3D_Release\d3dViewMgr.obj:.text$x#178
+00829c08	.\dmp3D_Release\d3dViewMgr.obj|$T65583	data	0.6	votes=1 from .\dmp3D_Release\d3dViewMgr.obj:.text$x#375
+00829c38	.\dmp3D_Release\swView3D.obj|$T4832	data	0.57	votes=1 from .\dmp3D_Release\swView3D.obj:.text$x#22
+00829c60	.\dmp3D_Release\swView3D.obj|$T4870	data	0.6	votes=1 from .\dmp3D_Release\swView3D.obj:.text$x#54
+00829d08	.\dmp3D_Release\texMgr.obj|$T11016	data	0.6	votes=1 from .\dmp3D_Release\texMgr.obj:.text$x#28
+00829d60	.\dmp3D_Release\tGLSurface.obj|$T4289	data	0.57	votes=1 from .\dmp3D_Release\tGLSurface.obj:.text$x#154
+00829ee0	.\dmp3D_Release\tDDSurface.obj|$T60284	data	0.57	votes=1 from .\dmp3D_Release\tDDSurface.obj:.text$x#49
+00829f88	.\dmp3D_Release\d3dViewMgr_Tex.obj|$T63212	data	0.6	votes=1 from .\dmp3D_Release\d3dViewMgr_Tex.obj:.text$x#25
+0082a050	.\dmp3D_Release\d3dViewMgr_Tex.obj|$T63685	data	0.57	votes=1 from .\dmp3D_Release\d3dViewMgr_Tex.obj:.text$x#89
+0082a118	.\dmp3D_Release\swView3D_Tex.obj|$T14602	data	0.57	votes=1 from .\dmp3D_Release\swView3D_Tex.obj:.text$x#131
+0082a148	.\dmp3D_Release\tGDISurfMgr.obj|$T35905	data	0.6	votes=1 from .\dmp3D_Release\tGDISurfMgr.obj:.text$x#21
+0082a1a0	.\dmp3D_Release\tGDISurfMgr.obj|$T36110	data	0.6	votes=1 from .\dmp3D_Release\tGDISurfMgr.obj:.text$x#84
 0082b658	.\release\secshare.obj|$T19696	data	0.6	votes=1 from .\release\secshare.obj:.text$x#126
 0082bc54	.\release\queue.obj|$T11337	data	0.6	votes=1 from .\release\queue.obj:.text$x#16
 0082bc54	.\release\filters.obj|$T11502	data	0.6	votes=1 from .\release\filters.obj:.text$x#4
@@ -611,7 +707,7 @@ address	name	tier	score	notes
 0083ae70	??_C@_03JFOM@?$CFld?$AA@	data	0.984	votes=3 from ?mIsThisInThisGroup@tAFPlayInfo@@UAEEJ@Z,?mIsThisInThisThreshold@tAFPlayInfo@@UAEEJ@Z,?mParseAllSoundsFile@tBasicSoundFileManager@@UAEXPADJJ@Z
 0083b344	??_C@_03NMFM@?$DP?$DP?$DP?$AA@	data	0.6	votes=1 from .\sfcTiger Release\tStrMgrCore.obj|_$E6
 0083b3f4	??_C@_0L@MEMH@FONTID?4NDX?$AA@	data	0.57	votes=1 from ?mGetFontIndexFilename@tFontFileIOBase@@SAPBDXZ
-0083b558	??_R0?AVtPart@@@8	data	0.99	votes=256 from .\sfcTiger Release\twfsys.obj|?WinParseVolume@@YA?AVtVolume@@VtSession@@AAVtString@@@Z,??0tFileSession@@QAE@XZ,??1tAudioFileInfoPart@@UAE@XZ
+0083b558	??_R0?AVtPart@@@8	data	0.99	votes=261 from .\sfcTiger Release\twfsys.obj|?WinParseVolume@@YA?AVtVolume@@VtSession@@AAVtString@@@Z,??0tFileSession@@QAE@XZ,??1tAudioFileInfoPart@@UAE@XZ
 0083b570	??_R0?AVtStrManagerPart@@@8	data	0.938	votes=2 from ?mGetNumElements@tStringGroupTag@@QAEJXZ,?mGetString@tStringTag@@QAEABVtString@@XZ
 0083b8cc	??_C@_01BJG@?6?$AA@	data	0.6	votes=1 from .\Common_Release\CallStack.obj|?ConvertAddress@@YAKKPAD@Z
 0083bbb4	??_C@_02DILL@?$CFs?$AA@	data	0.6	votes=1 from .\Common_Release\CallStack.obj|?ConvertAddress@@YAKKPAD@Z
@@ -625,7 +721,7 @@ address	name	tier	score	notes
 0083e23c	??_C@_0CB@PNCP@sysInfo?4dwNumberOfProcessors?5?$DO?50@	data	0.99	votes=6 from ??0tDatabaseObject@nDatabase@@QAE@ABV01@@Z,??0tLog@nLog@@AAE@XZ,??0tResourceGuard@@QAE@XZ
 0083ec84	??_C@_01PCFE@?2?$AA@	data	0.99	votes=20 from ??0tStreamDatabaseStorage@nDatabase@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z,?CopyDirectory@tFileDatabaseMgr@nDatabase@@MAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z,?Delete@tFileDatabaseMgr@nDatabase@@UAEXABVtDatabaseInfo@12@@Z
 0083f188	??_R0?AVtFSCookiePart@@@8	data	0.99	votes=65 from .\sfcTiger Release\twfsys.obj|?WinParseVolume@@YA?AVtVolume@@VtSession@@AAVtString@@@Z,??0tFileSession@@QAE@XZ,??1tFSSession@@UAE@XZ
-0083f1d0	??_R0?AVtClockPart@@@8	data	0.99	votes=7 from ?SoundPartCurrentTime@@YANXZ,?mFreeAsynchReadInfo@tAudioFileInfoPart@@UAEXJ@Z,?mGetNewAsynchReadInfo@tAudioFileInfoPart@@UAEJKJ@Z
+0083f1d0	??_R0?AVtClockPart@@@8	data	0.99	votes=12 from ?SoundPartCurrentTime@@YANXZ,?mDone@tMouseMgr_Ex@@UAEXXZ,?mFreeAsynchReadInfo@tAudioFileInfoPart@@UAEXJ@Z
 0083f248	??_R0?AVtgFileSystemPart@@@8	data	0.57	votes=1 from ?Search_tgFileSystemPart@tgFileSystemPart@@SAPAV1@XZ
 0083f288	??_R0?AVtCoopThreadPart@@@8	data	0.984	votes=3 from ?mDelThread@tCoopThreadPart@@UAEXPAVtClientThread@@@Z,?mGotoThread@twNativeThread@@UAEXPAVtNativeThread@@@Z,?twNativeThreadEntryProc@twNativeThread@@SAKPAVtNativeThread@@@Z
 0083f308	??_R0?AVtSoundPart@@@8	data	0.99	votes=50 from ?mAddDelayCommand@tChannelGroup@@UAEEKNJE@Z,?mAddGetNextAttachmentFunction@tChannelGroup@@UAEEKP6AXKJ@ZJNJ@Z,?mAddUpdateSoundPositionFunction@tChannelGroup@@UAEEKP6AXKJ@ZJNJE@Z
@@ -777,6 +873,7 @@ address	name	tier	score	notes
 0087fe8c	??_C@_0EP@GMBC@Bounds?5error?5?9?9?5Front?5overwritte@	data	0.6	votes=1 from ?mCheckForBoundsError@tPagingBlock@@QAEEJ@Z
 0087fedc	??_C@_0EI@CAOI@Couldn?8t?5remove?5locks?5while?5tryi@	data	0.6	votes=1 from ?mDelBlock@tPagingMechanism@@UAEEPAX@Z
 0087ff24	??_C@_0CM@CAGB@Trying?5to?5delete?5a?5nonexistant?5p@	data	0.6	votes=1 from ?mDelBlock@tPagingMechanism@@UAEEPAX@Z
+0087ff50	??_C@_05CKBG@Error?$AA@	data	0.6	votes=1 from ?dmpGetD3DView3D@@YAPAVtView3D@@XZ
 0087ff58	??_C@_0DA@CHLL@You?5are?5deleting?5a?5Handle?5for?5th@	data	0.6	votes=1 from ?mDelHandle@tPagingMechanism@@UAEEJ@Z
 0087ff88	??_C@_0BM@POIO@Unable?5to?5Delete?5Handle?5?$CFld?$AA@	data	0.6	votes=1 from ?mDelHandle@tPagingMechanism@@UAEEJ@Z
 0087ffa4	??_C@_0CM@CGC@Trying?5to?5resize?5an?5invalid?5page@	data	0.6	votes=1 from ?mResizeHandle@tPagingMechanism@@UAEJJJ@Z
@@ -1009,17 +1106,254 @@ address	name	tier	score	notes
 00882b38	??_C@_0M@HLIB@Courier?5New?$AA@	data	0.6	votes=1 from ?mGetTypefacebyName@tFontMgr@@QAE?AW4eTypeface@@ABVtString@@@Z
 00882b44	??_C@_0BD@HIAL@Bitstream?5Cyberbit?$AA@	data	0.6	votes=1 from ?mGetTypefacebyName@tFontMgr@@QAE?AW4eTypeface@@ABVtString@@@Z
 00884024	.\release\secshare.obj|_field	data	0.6	votes=1 from .\release\secshare.obj|_$E34
+0088412c	.\dmp3D_Release\tvectormath.obj|_?holdrand@?1??frand@@YAMXZ@4JA	data	0.6	votes=1 from ?frand@@YAMXZ
+00884134	.\dmp3D_Release\d3dViewMgr.obj|_fCurrZCmpFunc	data	0.6	votes=1 from ?mEnableZTest@tD3DViewMgr@@UAEEE@Z
+00884138	.\dmp3D_Release\d3dViewMgr.obj|_fZEnabled	data	0.6	votes=1 from ?mEnableZWriteAndTest@tD3DViewMgr@@UAEEE@Z
+0088413c	.\dmp3D_Release\d3dViewMgr.obj|_fZWriteEnabled	data	0.938	votes=2 from ?mEnableZWrite@tD3DViewMgr@@UAEEE@Z,?mEnableZWriteAndTest@tD3DViewMgr@@UAEEE@Z
+008841a8	??_C@_0O@NKPL@Unknown?5Error?$AA@	data	0.6	votes=1 from ?TraceErrorD3D@@YAXJPADH@Z
+008841b8	??_C@_0CI@LLDC@Direct3D?5Error?5?$CFs?6in?5file?5?$CFs?5at?5@	data	0.6	votes=1 from ?TraceErrorD3D@@YAXJPADH@Z
+008841e0	??_C@_0BI@PEFM@D3DERR_SCENE_END_FAILED?$AA@	data	0.6	votes=1 from ?TraceErrorD3D@@YAXJPADH@Z
+008841f8	??_C@_0BK@MFPI@D3DERR_SCENE_BEGIN_FAILED?$AA@	data	0.6	votes=1 from ?TraceErrorD3D@@YAXJPADH@Z
+00884214	??_C@_0BK@MACG@D3DERR_SCENE_NOT_IN_SCENE?$AA@	data	0.6	votes=1 from ?TraceErrorD3D@@YAXJPADH@Z
+00884230	??_C@_0BG@NLAI@D3DERR_SCENE_IN_SCENE?$AA@	data	0.6	votes=1 from ?TraceErrorD3D@@YAXJPADH@Z
+00884248	??_C@_0BI@INDJ@D3DERR_LIGHT_SET_FAILED?$AA@	data	0.6	votes=1 from ?TraceErrorD3D@@YAXJPADH@Z
+00884260	??_C@_0BP@NABA@D3DERR_MATERIAL_GETDATA_FAILED?$AA@	data	0.6	votes=1 from ?TraceErrorD3D@@YAXJPADH@Z
+00884280	??_C@_0BP@FEED@D3DERR_MATERIAL_SETDATA_FAILED?$AA@	data	0.6	votes=1 from ?TraceErrorD3D@@YAXJPADH@Z
+008842a0	??_C@_0BP@EGGO@D3DERR_MATERIAL_DESTROY_FAILED?$AA@	data	0.6	votes=1 from ?TraceErrorD3D@@YAXJPADH@Z
+008842c0	??_C@_0BO@IAKI@D3DERR_MATERIAL_CREATE_FAILED?$AA@	data	0.6	votes=1 from ?TraceErrorD3D@@YAXJPADH@Z
+008842e0	??_C@_0BO@DGJL@D3DERR_SETVIEWPORTDATA_FAILED?$AA@	data	0.6	votes=1 from ?TraceErrorD3D@@YAXJPADH@Z
+00884300	??_C@_0BN@GEGP@D3DERR_MATRIX_GETDATA_FAILED?$AA@	data	0.6	votes=1 from ?TraceErrorD3D@@YAXJPADH@Z
+00884320	??_C@_0BN@OADM@D3DERR_MATRIX_SETDATA_FAILED?$AA@	data	0.6	votes=1 from ?TraceErrorD3D@@YAXJPADH@Z
+00884340	??_C@_0BN@PCBB@D3DERR_MATRIX_DESTROY_FAILED?$AA@	data	0.6	votes=1 from ?TraceErrorD3D@@YAXJPADH@Z
+00884360	??_C@_0BM@PPFH@D3DERR_MATRIX_CREATE_FAILED?$AA@	data	0.6	votes=1 from ?TraceErrorD3D@@YAXJPADH@Z
+0088437c	??_C@_0BO@NIBM@D3DERR_TEXTURE_GETSURF_FAILED?$AA@	data	0.6	votes=1 from ?TraceErrorD3D@@YAXJPADH@Z
+0088439c	??_C@_0BK@JOKK@D3DERR_TEXTURE_NOT_LOCKED?$AA@	data	0.6	votes=1 from ?TraceErrorD3D@@YAXJPADH@Z
+008843b8	??_C@_0BG@KDAJ@D3DERR_TEXTURE_LOCKED?$AA@	data	0.6	votes=1 from ?TraceErrorD3D@@YAXJPADH@Z
+008843d0	??_C@_0BL@FKPD@D3DERR_TEXTURE_SWAP_FAILED?$AA@	data	0.6	votes=1 from ?TraceErrorD3D@@YAXJPADH@Z
+008843ec	??_C@_0BL@BDLL@D3DERR_TEXTURE_LOAD_FAILED?$AA@	data	0.6	votes=1 from ?TraceErrorD3D@@YAXJPADH@Z
+00884408	??_C@_0BN@GKO@D3DERR_TEXTURE_UNLOCK_FAILED?$AA@	data	0.6	votes=1 from ?TraceErrorD3D@@YAXJPADH@Z
+00884428	??_C@_0BL@COJG@D3DERR_TEXTURE_LOCK_FAILED?$AA@	data	0.6	votes=1 from ?TraceErrorD3D@@YAXJPADH@Z
+00884444	??_C@_0BO@MFGF@D3DERR_TEXTURE_DESTROY_FAILED?$AA@	data	0.6	votes=1 from ?TraceErrorD3D@@YAXJPADH@Z
+00884464	??_C@_0BN@ILMN@D3DERR_TEXTURE_CREATE_FAILED?$AA@	data	0.6	votes=1 from ?TraceErrorD3D@@YAXJPADH@Z
+00884484	??_C@_0BK@BIHB@D3DERR_TEXTURE_NO_SUPPORT?$AA@	data	0.6	votes=1 from ?TraceErrorD3D@@YAXJPADH@Z
+008844a0	??_C@_0BO@PHIG@D3DERR_EXECUTE_CLIPPED_FAILED?$AA@	data	0.6	votes=1 from ?TraceErrorD3D@@YAXJPADH@Z
+008844c0	??_C@_0BG@MNJL@D3DERR_EXECUTE_FAILED?$AA@	data	0.6	votes=1 from ?TraceErrorD3D@@YAXJPADH@Z
+008844d8	??_C@_0BK@CHFH@D3DERR_EXECUTE_NOT_LOCKED?$AA@	data	0.6	votes=1 from ?TraceErrorD3D@@YAXJPADH@Z
+008844f4	??_C@_0BG@FEHK@D3DERR_EXECUTE_LOCKED?$AA@	data	0.6	votes=1 from ?TraceErrorD3D@@YAXJPADH@Z
+0088450c	??_C@_0BN@BLHG@D3DERR_EXECUTE_UNLOCK_FAILED?$AA@	data	0.6	votes=1 from ?TraceErrorD3D@@YAXJPADH@Z
+0088452c	??_C@_0BL@HMCP@D3DERR_EXECUTE_LOCK_FAILED?$AA@	data	0.6	votes=1 from ?TraceErrorD3D@@YAXJPADH@Z
+00884548	??_C@_0BO@KOHI@D3DERR_EXECUTE_DESTROY_FAILED?$AA@	data	0.6	votes=1 from ?TraceErrorD3D@@YAXJPADH@Z
+00884568	??_C@_0BN@JGBF@D3DERR_EXECUTE_CREATE_FAILED?$AA@	data	0.6	votes=1 from ?TraceErrorD3D@@YAXJPADH@Z
+00884588	??_C@_0BH@BCJD@D3DERR_BADMINORVERSION?$AA@	data	0.6	votes=1 from ?TraceErrorD3D@@YAXJPADH@Z
+008845a0	??_C@_0BH@HJOE@D3DERR_BADMAJORVERSION?$AA@	data	0.6	votes=1 from ?TraceErrorD3D@@YAXJPADH@Z
+008845b8	??_C@_08DCBM@Direct3D?$AA@	data	0.57	votes=1 from ?mGetView3DName@tD3DViewMgr@@UAEPBDXZ
+00884678	??_C@_0DC@NECI@This?5program?5requires?5at?5least?5D@	data	0.6	votes=1 from ?dmpGetD3DView3D@@YAPAVtView3D@@XZ
+008846b0	.\dmp3D_Release\swView3D.obj|_kWhiteRGBA	data	0.6	votes=1 from ?mInit@tSWView3D@@AAEEPAX0HHPBUtGLRectI@@EE@Z
+008846b4	.\dmp3D_Release\swView3D.obj|_?kINIFilename@?1??GetSurfaceManager@@YAPAVtGLSurfMgr@@XZ@4PBDB	data	0.938	votes=2 from ?mEnumDispModes@tSWView3D@@UAEEP6AEHHPAX@Z0@Z,?mInit@tSWView3D@@AAEEPAX0HHPBUtGLRectI@@EE@Z
+008846b8	.\dmp3D_Release\swView3D.obj|_?kStrSection@?1??GetSurfaceManager@@YAPAVtGLSurfMgr@@XZ@4PBDB	data	0.938	votes=2 from ?mEnumDispModes@tSWView3D@@UAEEP6AEHHPAX@Z0@Z,?mInit@tSWView3D@@AAEEPAX0HHPBUtGLRectI@@EE@Z
+008846f0	??_C@_05FLHP@debug?$AA@	data	0.938	votes=2 from ?mEnumDispModes@tSWView3D@@UAEEP6AEHHPAX@Z0@Z,?mInit@tSWView3D@@AAEEPAX0HHPBUtGLRectI@@EE@Z
+008846f8	??_C@_0BA@HOOD@Software?5View3D?$AA@	data	0.57	votes=1 from ?mGetView3DName@tSWView3D@@UAEPBDXZ
+00884758	.\dmp3D_Release\tGLSurface.obj|_gPixFmtTable	data	0.984	votes=3 from ??0tGLPixFmt@@QAE@W4ePixFmtID@0@@Z,?mDeterminePixFmtID@tGLPixFmt@@SA?AW4ePixFmtID@1@KKKKK@Z,?mSetFormatRGB@tGLPixFmt@@QAEEKKKKK@Z
+00884858	??_C@_0DM@BIJL@C?3?2Gold?2Qsi?2Projects?2Core?2dmp3d?2@	data	0.938	votes=2 from ?mGet@tStream_BasicFile@@UAEEPAXK@Z,?mPut@tStream_BasicFile@@UAEEPBXK@Z
+00884894	??_C@_0CH@FNAC@tStream_BasicFile?3?3mGet?$CI?$CJ?3?5Read?5@	data	0.6	votes=1 from ?mGet@tStream_BasicFile@@UAEEPAXK@Z
+008848bc	??_C@_0CI@GEPG@tStream_BasicFile?3?3mPut?$CI?$CJ?3?5Write@	data	0.6	votes=1 from ?mPut@tStream_BasicFile@@UAEEPBXK@Z
+008848e8	??_C@_0BH@CKNK@Line?3?5?$CF5d?0?5Module?3?5?$CFs?6?$AA@	data	0.6	votes=1 from ??0tErrInfo@@QAA@PBDH0ZZ
+00884900	.\dmp3D_Release\stream_base.obj|_gTigerEndianWord	data	0.938	votes=2 from ?mByteInput@tStream_Base@@QAEEPAXK@Z,?mByteOutput@tStream_Base@@QAEEPBXK@Z
+0088492c	??_C@_0CI@IMPJ@Invalid?5bitmap?5file?5?$CIno?5?8BM?8?5sig@	data	0.6	votes=1 from ?mInitAsBMP@tTexBmp@@MAEXPAVtBasicFile@@@Z
+00884954	??_C@_0BD@GGMD@Error?5seeking?5file?$AA@	data	0.984	votes=3 from ?mInitAsBMP@tTexBmp@@MAEXPAVtBasicFile@@@Z,?mReadBMP@tTexBmp@@MAEXPAVtBasicFile@@@Z,?mReadPCX@tTexBmp@@MAEXPAVtBasicFile@@@Z
+00884968	??_C@_0CI@MIPO@Unable?5to?5read?5BITMAPINFOHEADER?5@	data	0.6	votes=1 from ?mInitAsBMP@tTexBmp@@MAEXPAVtBasicFile@@@Z
+00884990	??_C@_0DC@PDBL@C?3?2Gold?2Qsi?2Projects?2Core?2dmp3d?2@	data	0.99	votes=5 from ?mInit@tTexBmp@@UAEEPBD@Z,?mInitAsBMP@tTexBmp@@MAEXPAVtBasicFile@@@Z,?mInitAsPCX@tTexBmp@@MAEXPAVtBasicFile@@@Z
+008849c4	??_C@_0CI@BPKE@Unable?5to?5read?5BITMAPFILEHEADER?5@	data	0.6	votes=1 from ?mInitAsBMP@tTexBmp@@MAEXPAVtBasicFile@@@Z
+008849ec	??_C@_0CA@COPF@Invalid?5or?5unsupported?5PCX?5file?$AA@	data	0.6	votes=1 from ?mInitAsPCX@tTexBmp@@MAEXPAVtBasicFile@@@Z
+00884a0c	??_C@_0BG@BKJM@Unexpected?5seek?5error?$AA@	data	0.6	votes=1 from ?mInitAsPCX@tTexBmp@@MAEXPAVtBasicFile@@@Z
+00884a24	??_C@_0BG@IKB@Unexpected?5read?5error?$AA@	data	0.938	votes=2 from ?mInitAsPCX@tTexBmp@@MAEXPAVtBasicFile@@@Z,?mReadPCX@tTexBmp@@MAEXPAVtBasicFile@@@Z
+00884a3c	??_C@_0DF@GFBI@tTexBmp?3?3mInit?$CI?$CJ?3?5Unable?5to?5crea@	data	0.6	votes=1 from ?mInit@tTexBmp@@UAEEPBD@Z
+00884a74	??_C@_0BN@CMAN@Error?5reading?5BMP?5pixel?5bits?$AA@	data	0.6	votes=1 from ?mReadBMP@tTexBmp@@MAEXPAVtBasicFile@@@Z
+00884a94	??_C@_0BN@PFKI@Unable?5to?5read?5RGBQUAD?5array?$AA@	data	0.6	votes=1 from ?mReadBMP@tTexBmp@@MAEXPAVtBasicFile@@@Z
+00884ab4	??_C@_0BP@OJEK@Unable?5to?5read?5RGBTRIPLE?5array?$AA@	data	0.938	votes=2 from ?mReadBMP@tTexBmp@@MAEXPAVtBasicFile@@@Z,?mReadPCX@tTexBmp@@MAEXPAVtBasicFile@@@Z
+00884ad4	??_C@_0O@MNOP@Out?5of?5memory?$AA@	data	0.938	votes=2 from ?mReadBMP@tTexBmp@@MAEXPAVtBasicFile@@@Z,?mReadPCX@tTexBmp@@MAEXPAVtBasicFile@@@Z
+00884ae4	??_C@_0P@HKEP@Internal?5error?$AA@	data	0.6	votes=1 from ?mReadPCX@tTexBmp@@MAEXPAVtBasicFile@@@Z
+00884b30	.\dmp3D_Release\view3DMgrDLLW.obj|_gStrVersion	data	0.6	votes=1 from ?mEnumerate@twView3DMgrDLL@@UAEEP6AEPAUtView3DInfo@@PAX@Z1@Z
+00884b30	.\dmp3D_Release\twGLSurfMgrInterfaceDLL.obj|_gStrVersion	data	0.6	votes=1 from ?mEnumerate@twGLSurfMgrInterfaceDLL@@UAEEP6AEPAUtGLSurfMgrInfo@@PAX@Z1@Z
+00884b34	.\dmp3D_Release\view3DMgrDLLW.obj|_gStrQuery	data	0.6	votes=1 from ?mEnumerate@twView3DMgrDLL@@UAEEP6AEPAUtView3DInfo@@PAX@Z1@Z
+00884b34	.\dmp3D_Release\twGLSurfMgrInterfaceDLL.obj|_gStrQuery	data	0.6	votes=1 from ?mEnumerate@twGLSurfMgrInterfaceDLL@@UAEEP6AEPAUtGLSurfMgrInfo@@PAX@Z1@Z
+00884b38	.\dmp3D_Release\view3DMgrDLLW.obj|_gStrCreate	data	0.6	votes=1 from ?mCreateView3D@twView3DMgrDLL@@UAEPAVtView3D@@PAUtView3DInfo@@@Z
+00884b38	.\dmp3D_Release\twGLSurfMgrInterfaceDLL.obj|_gStrCreate	data	0.6	votes=1 from ?mCreateGLSurfMgr@twGLSurfMgrInterfaceDLL@@UAEPAVtGLSurfMgr@@PAUtGLSurfMgrInfo@@@Z
+00884bcc	??_C@_0M@FLIH@?2work?2dmp3d?$AA@	data	0.938	votes=2 from ?mActivate@twGLSurfMgrInterfaceDLL@@UAEXXZ,?mActivate@twView3DMgrDLL@@UAEXXZ
+00884bd8	??_C@_06BPMB@?2dmp3d?$AA@	data	0.938	votes=2 from ?mActivate@twGLSurfMgrInterfaceDLL@@UAEXXZ,?mActivate@twView3DMgrDLL@@UAEXXZ
+00884be0	??_C@_0BB@MMHA@dmp3dDLL_Release?$AA@	data	0.938	votes=2 from ?mActivate@twGLSurfMgrInterfaceDLL@@UAEXXZ,?mActivate@twView3DMgrDLL@@UAEXXZ
+00884bf4	??_C@_0M@IIAN@dmp3d_?$CK?4dll?$AA@	data	0.6	votes=1 from ?mActivate@twView3DMgrDLL@@UAEXXZ
+00884bf4	??_C@_0M@MACD@dmp2d_?$CK?4dll?$AA@	data	0.6	votes=1 from ?mActivate@twGLSurfMgrInterfaceDLL@@UAEXXZ
+00884c88	??_C@_0DH@CM@C?3?2Gold?2Qsi?2Projects?2Core?2dmp3d?2@	data	0.6	votes=1 from ?mCreateTexture@tD3DViewMgr@@UAEPAVtGLSurface@@JABVtGLPixFmt@@KKPBUtGLRgbQuad@@@Z
+00884cc8	??_C@_06GACA@BUTTON?$AA@	data	0.6	votes=1 from .\dmp3D_Release\d3dViewMgr_Choose.obj|?ChooseDriver@@YAPAUD3DEnum_DriverInfo@@PAUHWND__@@PAU1@P6AE1AAUtParams@@@Z2@Z
+00884cd0	??_C@_05CNHG@Arial?$AA@	data	0.6	votes=1 from .\dmp3D_Release\d3dViewMgr_Choose.obj|?ChooseDriver@@YAPAUD3DEnum_DriverInfo@@PAUHWND__@@PAU1@P6AE1AAUtParams@@@Z2@Z
+00884cd8	??_C@_0BB@FNBD@Choose?5a?5Display?$AA@	data	0.6	votes=1 from .\dmp3D_Release\d3dViewMgr_Choose.obj|?ChooseDriver@@YAPAUD3DEnum_DriverInfo@@PAUHWND__@@PAU1@P6AE1AAUtParams@@@Z2@Z
+00884cf4	??_C@_0DE@GLFB@C?3?2Gold?2Qsi?2Projects?2Core?2dmp3d?2@	data	0.6	votes=1 from ?mAssertVtxCache@tView3DExt@@IAEXH@Z
+00884d28	??_C@_0DP@BGD@tView3DExt?3?3mAssertVtxCache?$CI?$CJ?3?5U@	data	0.6	votes=1 from ?mAssertVtxCache@tView3DExt@@IAEXH@Z
 00884d6c	??_C@_0BJ@JFAA@Couldn?8t?5CreateSurface?$AN?6?$AA@	data	0.6	votes=1 from ?GetDXVersion@@YAXPAK0@Z
 00884d88	??_C@_0BK@EJJB@Couldn?8t?5Set?5coop?5level?$AN?6?$AA@	data	0.6	votes=1 from ?GetDXVersion@@YAXPAK0@Z
 00884da4	??_C@_0BF@PMJP@Couldn?8t?5QI?5DDraw2?$AN?6?$AA@	data	0.6	votes=1 from ?GetDXVersion@@YAXPAK0@Z
 00884dbc	??_C@_0BI@DKND@Couldn?8t?5create?5DDraw?$AN?6?$AA@	data	0.6	votes=1 from ?GetDXVersion@@YAXPAK0@Z
 00884dd4	??_C@_0BN@IKPG@Couldn?8t?5LoadLibrary?5DDraw?$AN?6?$AA@	data	0.6	votes=1 from ?GetDXVersion@@YAXPAK0@Z
 00884df4	??_C@_0BB@DLNE@DirectDrawCreate?$AA@	data	0.6	votes=1 from ?GetDXVersion@@YAXPAK0@Z
-00884e08	??_C@_09LLMO@DDRAW?4DLL?$AA@	data	0.6	votes=1 from ?GetDXVersion@@YAXPAK0@Z
+00884e08	??_C@_09LLMO@DDRAW?4DLL?$AA@	data	0.938	votes=2 from ?D3DEnum_EnumerateDevices@@YAJP6AJPAU_DDCAPS_DX7@@PAU_D3DDeviceDesc@@@Z@Z,?GetDXVersion@@YAXPAK0@Z
 00884e14	??_C@_0CH@KDJF@Couldn?8t?5GetProcAddress?5DInputCr@	data	0.6	votes=1 from ?GetDXVersion@@YAXPAK0@Z
 00884e3c	??_C@_0BD@NJCB@DirectInputCreateA?$AA@	data	0.6	votes=1 from ?GetDXVersion@@YAXPAK0@Z
 00884e50	??_C@_0BO@FIMG@Couldn?8t?5LoadLibrary?5DInput?$AN?6?$AA@	data	0.6	votes=1 from ?GetDXVersion@@YAXPAK0@Z
 00884e70	??_C@_0L@MNJD@DINPUT?4DLL?$AA@	data	0.6	votes=1 from ?GetDXVersion@@YAXPAK0@Z
+00884e84	?fGamma@tClut@@1MA	data	0.6	votes=1 from ?mBuildRamps@tClut@@IAEXXZ
+00884f04	??_C@_0EG@GKBI@tDDSurfMgr?3?3mEnumDispModes?$CI?$CJ?3?5ID@	data	0.57	votes=1 from ?mEnumDispModes@tDDSurfMgr@@UAEEP6AEHHHPAX@Z0@Z
+00884f4c	??_C@_0EF@GFBK@tDDSurfMgr?3?3mEnumDispModes?$CI?$CJ?3?5Co@	data	0.57	votes=1 from ?mEnumDispModes@tDDSurfMgr@@UAEEP6AEHHHPAX@Z0@Z
+00884f94	??_C@_0DJ@OKPB@C?3?2Gold?2Qsi?2Projects?2Core?2dmp3d?2@	data	0.99	votes=8 from ?mCopyToFront@tDDSurfMgr@@UAEEABUtGLRectI@@0PAVtGLSurface@@E@Z,?mCreateSurface@tDDSurfMgr@@UAEPAVtGLSurface@@ABVtGLPixFmt@@IIE@Z,?mEnumDispModes@tDDSurfMgr@@UAEEP6AEHHHPAX@Z0@Z
+00884fd0	??_C@_0DI@PPJM@tDDSurfMgr?3?3mEnumDispModes?$CI?$CJ?3?5Di@	data	0.57	votes=1 from ?mEnumDispModes@tDDSurfMgr@@UAEEP6AEHHHPAX@Z0@Z
+00885008	??_C@_0DE@DGDG@tDDSurfMgr?3?3mSwapBuffers?$CI?$CJ?3?5Dire@	data	0.57	votes=1 from ?mSwapBuffers@tDDSurfMgr@@UAEEE@Z
+0088503c	??_C@_0DI@LDCA@tDDSurfMgr?3?3mCopyToFront?$CI?$CJ?3?5Dire@	data	0.57	votes=1 from ?mCopyToFront@tDDSurfMgr@@UAEEABUtGLRectI@@0PAVtGLSurface@@E@Z
+00885074	??_C@_0ED@OFIA@tDDSurfMgr?3?3mCreateSurface?$CI?$CJ?3?5Co@	data	0.57	votes=1 from ?mCreateSurface@tDDSurfMgr@@UAEPAVtGLSurface@@ABVtGLPixFmt@@IIE@Z
+008850b8	??_C@_0DH@DABJ@tDDSurfMgr?3?3mCreateSurface?$CI?$CJ?3?5Co@	data	0.57	votes=1 from ?mCreateSurface@tDDSurfMgr@@UAEPAVtGLSurface@@ABVtGLPixFmt@@IIE@Z
+008850f0	??_C@_0DI@NLII@tDDSurfMgr?3?3mInitInterfaces?$CI?$CJ?3?5C@	data	0.57	votes=1 from ?mInitInterfaces@tDDSurfMgr@@IAEEXZ
+00885128	??_C@_0EG@PFFD@tDDSurfMgr?3?3mInitInterfaces?$CI?$CJ?3?5C@	data	0.57	votes=1 from ?mInitInterfaces@tDDSurfMgr@@IAEEXZ
+00885170	??_C@_0DJ@NGCI@tDDSurfMgr?3?3mInitInterfaces?$CI?$CJ?3?5D@	data	0.57	votes=1 from ?mInitInterfaces@tDDSurfMgr@@IAEEXZ
+008851ac	??_C@_0BG@EMIP@Line?3?5?$CF5d?0?5Module?3?5?$CFs?$AA@	data	0.938	votes=2 from ?mDDCheck@tDDSurfMgr@@IAAEJPBDH0ZZ,?mDDThrow@tDDSurfMgr@@IAAXJPBDH0ZZ
+008851c4	??_C@_0DM@DEJA@tDDSurfMgr?3?3mSetDisplayMode?$CI?$CJ?3?5C@	data	0.918	votes=2 from ?mRestoreDisplayMode@tDDSurfMgr@@IAEEXZ,?mSetDisplayMode@tDDSurfMgr@@IAEEIII@Z
+00885200	??_C@_0EH@LCKB@tDDSurfMgr?3?3mSetDisplayMode?$CI?$CJ?3?5U@	data	0.57	votes=1 from ?mSetDisplayMode@tDDSurfMgr@@IAEEIII@Z
+00885248	??_C@_0DI@CKEM@tDDSurfMgr?3?3mSetDisplayMode?$CI?$CJ?3?5C@	data	0.57	votes=1 from ?mSetDisplayMode@tDDSurfMgr@@IAEEIII@Z
+00885280	??_C@_0EC@DOH@tDDSurfMgr?3?3mRestoreDisplayMode?$CI@	data	0.57	votes=1 from ?mRestoreDisplayMode@tDDSurfMgr@@IAEEXZ
+008852c4	??_C@_0DM@JOGI@tDDSurfMgr?3?3mRestoreDisplayMode?$CI@	data	0.57	votes=1 from ?mRestoreDisplayMode@tDDSurfMgr@@IAEEXZ
+00885300	??_C@_0DA@PDEG@tDDSurfMgr?3?3mInitBuffers?$CI?$CJ?3?5SetP@	data	0.57	votes=1 from ?mInitBuffers@tDDSurfMgr@@IAEEI@Z
+00885330	??_C@_0DA@FBPI@tDDSurfMgr?3?3mInitBuffers?$CI?$CJ?3?5Can?8@	data	0.57	votes=1 from ?mInitBuffers@tDDSurfMgr@@IAEEI@Z
+00885360	??_C@_0EG@BJFM@tDDSurfMgr?3?3mInitBuffers?$CI?$CJ?3?5Coul@	data	0.57	votes=1 from ?mInitBuffers@tDDSurfMgr@@IAEEI@Z
+008853a8	??_C@_0EH@FJGF@tDDSurfMgr?3?3mInitBuffers?$CI?$CJ?3?5Coul@	data	0.57	votes=1 from ?mInitBuffers@tDDSurfMgr@@IAEEI@Z
+008853f0	??_C@_0EJ@FBDO@tD3DMgr?3?3mInitD3DDevice?$CI?$CJ?3?5Could@	data	0.57	votes=1 from ?mInitBuffers@tDDSurfMgr@@IAEEI@Z
+0088543c	??_C@_0EI@KDCK@tD3DMgr?3?3mInitD3DDevice?$CI?$CJ?3?5Could@	data	0.57	votes=1 from ?mInitBuffers@tDDSurfMgr@@IAEEI@Z
+00885484	??_C@_0DK@FCDF@tDDSurfMgr?3?3mInitBuffers?$CI?$CJ?3?5fDDF@	data	0.57	votes=1 from ?mInitBuffers@tDDSurfMgr@@IAEEI@Z
+008854c0	??_C@_0DG@PAND@tDDSurfMgr?3?3mInitBuffers?$CI?$CJ?3?5Clip@	data	0.57	votes=1 from ?mInitBuffers@tDDSurfMgr@@IAEEI@Z
+008854f8	??_C@_0DF@IACG@tDDSurfMgr?3?3mInitBuffers?$CI?$CJ?3?5Fail@	data	0.57	votes=1 from ?mInitBuffers@tDDSurfMgr@@IAEEI@Z
+00885530	??_C@_0DL@CLOB@tDDSurfMgr?3?3mInitBuffers?$CI?$CJ?3?5Fail@	data	0.57	votes=1 from ?mInitBuffers@tDDSurfMgr@@IAEEI@Z
+0088556c	??_C@_0EB@NABE@tDDSurfMgr?3?3mInitBuffers?$CI?$CJ?3?5Coul@	data	0.57	votes=1 from ?mInitBuffers@tDDSurfMgr@@IAEEI@Z
+008855b0	??_C@_0DO@GDPE@tDDSurfMgr?3?3mInitBuffers?$CI?$CJ?3?5Fail@	data	0.57	votes=1 from ?mInitBuffers@tDDSurfMgr@@IAEEI@Z
+00885604	.\dmp3D_Release\twDLLMgr.obj|_?kEnvStr@?BJ@??mInit@twDLLMgrBase@@UAEEPBD00@Z@4PBDB	data	0.6	votes=1 from ?mInit@twDLLMgrBase@@UAEEPBD00@Z
+00885614	??_C@_05MBM@?$CK?4dll?$AA@	data	0.6	votes=1 from ?mInit@twDLLMgrBase@@UAEEPBD00@Z
+0088561c	??_C@_07PBNA@DRIVERS?$AA@	data	0.6	votes=1 from ?mInit@twDLLMgrBase@@UAEEPBD00@Z
+00885624	??_C@_03NDIP@DLL?$AA@	data	0.6	votes=1 from ?mInit@twDLLMgrBase@@UAEEPBD00@Z
+0088562c	??_C@_0BH@LAMO@DirectDrawEnumerateExA?$AA@	data	0.6	votes=1 from ?D3DEnum_EnumerateDevices@@YAJP6AJPAU_DDCAPS_DX7@@PAU_D3DDeviceDesc@@@Z@Z
+00885644	??_C@_0BA@NMAE@?$CFld?5x?5?$CFld?5x?5?$CFld?$AA@	data	0.6	votes=1 from .\dmp3D_Release\d3denum.obj|?EnumDisplayModesCallback@@YGJPAU_DDSURFACEDESC2@@PAX@Z
+008856a0	??_C@_0L@FHPB@No?5error?4?$AA?$AA@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+008856ac	??_C@_0BL@ICEC@Unrecognized?5error?5value?4?$AA?$AA@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+008856c8	??_C@_0BJ@NKIN@D3DERR_LIGHT_SET_FAILED?$AA?$AA@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+008856e4	??_C@_0CA@NDFE@D3DERR_MATERIAL_SETDATA_FAILED?$AA?$AA@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00885704	??_C@_0CA@GPEG@D3DERR_MATERIAL_DESTROY_FAILED?$AA?$AA@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00885724	??_C@_0BP@OKIA@D3DERR_MATERIAL_CREATE_FAILED?$AA?$AA@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00885744	??_C@_0BP@BIDG@D3DERR_SETVIEWPORTDATA_FAILED?$AA?$AA@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00885764	??_C@_0BO@HJOA@D3DERR_MATRIX_SETDATA_FAILED?$AA?$AA@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00885784	??_C@_0BO@MFPC@D3DERR_MATRIX_DESTROY_FAILED?$AA?$AA@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+008857a4	??_C@_0BN@FOPP@D3DERR_MATRIX_CREATE_FAILED?$AA?$AA@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+008857c4	??_C@_0BM@CEBD@D3DERR_TEXTURE_LOAD_FAILED?$AA?$AA@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+008857e0	??_C@_0BO@JAAG@D3DERR_TEXTURE_UNLOCK_FAILED?$AA?$AA@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00885800	??_C@_0BG@EJNG@D3DERR_TEXTURELOCKED?$AA?$AA@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00885818	??_C@_0BL@EBJO@D3DERR_TEXTURE_NOT_LOCKED?$AA?$AA@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00885834	??_C@_0BM@GGCO@D3DERR_TEXTURE_LOCK_FAILED?$AA?$AA@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00885850	??_C@_0BP@IEMF@D3DERR_TEXTURE_DESTROY_FAILED?$AA?$AA@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00885870	??_C@_0BO@GJIL@D3DERR_TEXTURE_CREATE_FAILED?$AA?$AA@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00885890	??_C@_0BL@FKBI@D3DERR_TEXTURE_NO_SUPPORT?$AA?$AA@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+008858ac	??_C@_0BP@GGPH@D3DERR_EXECUTE_CLIPPED_FAILED?$AA?$AA@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+008858cc	??_C@_0BH@FPMN@D3DERR_EXECUTE_FAILED?$AA?$AA@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+008858e4	??_C@_0BO@PLBL@D3DERR_EXECUTE_UNLOCK_FAILED?$AA?$AA@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00885904	??_C@_0BM@LOHM@D3DERR_EXECUTE_LOCK_FAILED?$AA?$AA@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00885920	??_C@_0BP@EIKO@D3DERR_EXECUTE_DESTROY_FAILED?$AA?$AA@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00885940	??_C@_0BO@CJG@D3DERR_EXECUTE_CREATE_FAILED?$AA?$AA@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00885960	??_C@_0BL@BDCH@D3DERR_EXECUTE_NOT_LOCKED?$AA?$AA@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+0088597c	??_C@_0BH@BNFE@D3DERR_EXECUTE_LOCKED?$AA?$AA@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00885994	??_C@_0BI@DABC@D3DERR_BADMINORVERSION?$AA?$AA@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+008859ac	??_C@_0BI@PFHJ@D3DERR_BADMAJORVERSION?$AA?$AA@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+008859c4	??_C@_0DI@NFLD@The?5surface?5being?5used?5is?5not?5a?5@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+008859fc	??_C@_0EP@JFNC@This?5surface?5can?5not?5be?5restored@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00885a4c	??_C@_0EH@KEBA@Rectangle?5provided?5was?5not?5horiz@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00885a94	??_C@_0EO@BJGI@This?5surface?5can?5not?5be?5restored@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00885ae4	??_C@_0HC@IMEL@Informs?5DirectDraw?5that?5the?5prev@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00885b58	??_C@_0DF@ECGF@Region?5passed?5to?5Clipper?3?3GetCli@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00885b90	??_C@_0DF@MFPM@This?5process?5already?5has?5created@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00885bc8	??_C@_0EB@MNHN@Returned?5when?5GetOverlayPosition@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00885c0c	??_C@_0HN@FFJN@Surface?5was?5not?5locked?4?5?5An?5atte@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00885c8c	??_C@_0ED@DNBA@An?5attempt?5has?5been?5made?5to?5flip@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00885cd0	??_C@_0EG@PNII@Returned?5when?5an?5overlay?5member?5@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00885d18	??_C@_0DD@DCCL@No?5hardware?5support?5for?516?5or?525@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00885d4c	??_C@_0CN@CAME@No?5palette?5object?5attached?5to?5th@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00885d7c	??_C@_0IC@PNEC@Returned?5when?5GetOverlayPosition@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00885e00	??_C@_0GI@HHHM@Clipper?5notification?5requires?5an@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00885e68	??_C@_0CD@IDMB@Software?5emulation?5not?5available@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00885e8c	??_C@_0GH@BMAJ@A?5hardware?9only?5DirectDraw?5objec@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00885ef4	??_C@_0BN@GPP@No?5DirectDraw?5ROP?5hardware?4?$AA?$AA@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00885f14	??_C@_0CK@CDKH@No?5DC?5was?5ever?5created?5for?5this?5@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00885f40	??_C@_0CP@OGMA@No?5clipper?5object?5attached?5to?5su@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00885f70	??_C@_0BO@OIGG@No?5blitter?5hardware?5present?4?$AA?$AA@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00885f90	??_C@_0GH@DDBN@Returned?5when?5the?5position?5of?5th@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00885ff8	??_C@_0FC@OPDP@The?5GUID?5passed?5to?5DirectDrawCre@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+0088604c	??_C@_0GO@OLEA@HWND?5used?5by?5DirectDraw?5Cooperat@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+008860bc	??_C@_0HJ@NBFH@The?5CooperativeLevel?5HWND?5has?5al@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00886138	??_C@_0FI@OPNG@An?5attempt?5was?5made?5to?5set?5the?5c@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00886190	??_C@_0FJ@LIA@A?5DirectDraw?5object?5representing@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+008861ec	??_C@_0GA@NADG@An?5attempt?5was?5made?5to?5set?5a?5cli@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+0088624c	??_C@_0FB@FKBN@Can?8t?5duplicate?5primary?5?$CG?53D?5sur@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+008862a0	??_C@_0CG@BCBM@Windows?5can?5not?5create?5any?5more?5@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+008862c8	??_C@_0FK@LIIM@Return?5if?5a?5clipper?5object?5is?5at@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00886324	??_C@_0CA@IJBK@Vertical?5blank?5is?5in?5progress?4?$AA?$AA@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00886344	??_C@_0EF@FEKI@Bitmask?5in?5the?5pixel?5format?5requ@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+0088638c	??_C@_0DH@OHPK@FOURCC?5format?5requested?5is?5unsup@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+008863c4	??_C@_0CN@KJJG@Width?5requested?5by?5DirectDraw?5is@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+008863f4	??_C@_0FI@JDHA@Size?5requested?5by?5DirectDraw?5is?5@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+0088644c	??_C@_0CO@JGCA@Height?5requested?5by?5DirectDraw?5i@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+0088647c	??_C@_0CI@ENBM@The?5requested?5surface?5is?5not?5att@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+008864a4	??_C@_0KG@HAEB@Access?5to?5this?5surface?5is?5being?5@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+0088654c	??_C@_0DM@FHGC@Access?5to?5surface?5refused?5becaus@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00886588	??_C@_0GC@NAKB@Access?5to?5this?5surface?5is?5being?5@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+008865ec	??_C@_0FH@MKKD@This?5surface?5is?5already?5a?5depend@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00886644	??_C@_0EK@FCAH@This?5surface?5is?5already?5attached@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00886690	??_C@_0GC@JCLK@Access?5to?5this?5palette?5is?5being?5@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+008866f4	??_C@_0DA@NDND@No?5src?5color?5key?5specified?5for?5t@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00886724	??_C@_0DO@LOID@Can?5only?5have?5ony?5color?5key?5acti@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00886764	??_C@_0DB@IBGK@The?5hardware?5does?5not?5support?5cl@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00886798	??_C@_0EN@OPCP@The?5hardware?5needed?5for?5the?5requ@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+008867e8	??_C@_0HP@OBII@Overlay?5surfaces?5could?5not?5be?5z?5@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00886868	??_C@_0FP@PCHK@Operation?5could?5not?5be?5carried?5o@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+008868c8	??_C@_0HF@PPAF@Operation?5could?5not?5be?5carried?5o@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00886940	??_C@_0GH@JAAN@Operation?5could?5not?5be?5carried?5o@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+008869a8	??_C@_0GA@JDIF@DirectDrawSurface?5is?5not?5in?58?5bi@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00886a08	??_C@_0HH@KIKF@DirectDrawSurface?5is?5not?5in?54?5bi@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00886a80	??_C@_0GL@MKDM@DirectDrawSurface?5is?5not?5in?54?5bi@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00886aec	??_C@_0FJ@IKND@Operation?5could?5not?5be?5carried?5o@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00886b48	??_C@_0GA@DDDK@Operation?5could?5not?5be?5carried?5o@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00886ba8	??_C@_0GN@LFJM@Operation?5could?5not?5be?5carried?5o@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00886c18	??_C@_0FP@DBCG@Operation?5could?5not?5be?5carried?5o@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00886c78	??_C@_0BP@GACL@Requested?5item?5was?5not?5found?4?$AA?$AA@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00886c98	??_C@_0FH@MFFK@Operation?5could?5not?5be?5carried?5o@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00886cf0	??_C@_0BK@NIFJ@There?5is?5no?5GDI?5present?4?$AA?$AA@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00886d0c	??_C@_0CN@JCJA@Flipping?5visible?5surfaces?5is?5not@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00886d3c	??_C@_0GN@NGG@Operation?5requires?5the?5applicati@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00886dac	??_C@_0FL@FGLB@Create?5function?5called?5without?5D@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00886e08	??_C@_0GH@POMM@Operation?5could?5not?5be?5carried?5o@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00886e70	??_C@_0CM@OMAB@Surface?5doesn?8t?5currently?5have?5a@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00886e9c	??_C@_0GI@BDAL@Operation?5could?5not?5be?5carried?5o@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00886f04	??_C@_0BI@FOAO@No?5cliplist?5available?4?$AA?$AA@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00886f1c	??_C@_0GJ@FDHB@Operation?5could?5not?5be?5carried?5o@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00886f88	??_C@_0BJ@BMEE@There?5is?5no?53D?5present?4?$AA?$AA@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00886fa4	??_C@_0EN@ELIH@Operation?5could?5not?5be?5carried?5o@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00886ff4	??_C@_0CB@MLLB@Rectangle?5provided?5was?5invalid?4?$AA@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00887018	??_C@_0CM@MBGD@The?5pixel?5format?5was?5invalid?5as?5@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00887044	??_C@_0EG@NLJ@DirectDraw?5received?5a?5pointer?5th@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+0088708c	??_C@_0DB@HCNM@DirectDraw?5does?5not?5support?5the?5@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+008870c0	??_C@_0DE@LCDA@DirectDraw?5does?5not?5support?5the?5@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+008870f4	??_C@_0EE@IPJK@One?5or?5more?5of?5the?5caps?5bits?5pas@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00887138	??_C@_0FB@ENCE@Unable?5to?5match?5primary?5surface?5@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+0088718c	??_C@_0ED@MID@Height?5of?5rectangle?5provided?5is?5@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+008871d0	??_C@_0EI@DJDL@An?5exception?5was?5encountered?5whi@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00887218	??_C@_0CF@KJPN@Support?5is?5currently?5not?5availab@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00887240	??_C@_0CF@NPLB@This?5object?5is?5already?5initializ@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00887268	??_C@_0DM@MBHG@This?5surface?5can?5not?5be?5attached@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+008872a4	??_C@_0DO@BGNF@This?5surface?5can?5not?5be?5detached@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+008872e4	??_C@_0EF@ODHN@One?5or?5more?5of?5the?5parameters?5pa@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+0088732c	??_C@_0BH@OIBG@Action?5not?5supported?4?$AA?$AA@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00887344	??_C@_0BC@FPFN@Generic?5failure?4?$AA?$AA@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
+00887358	??_C@_0EC@BCMK@DirectDraw?5does?5not?5have?5enough?5@	data	0.6	votes=1 from ?D3DErrorCodeToString@@YAPBDJ@Z
 0088bad8	??_C@_0BH@CJIL@fCounterFrequency?5?$CB?$DN?50?$AA@	data	0.6	votes=1 from ??0tThreadPool@@AAE@XZ
 0088baf0	??_C@_0BP@GLDI@?4?2Timer?2PerformanceCounter?4cpp?$AA@	data	0.6	votes=1 from ??0tThreadPool@@AAE@XZ
 0088bb10	??_C@_0BC@KBNF@fRunning?5?$DN?$DN?5false?$AA@	data	0.6	votes=1 from ??1tThreadPool@@AAE@XZ
@@ -1139,19 +1473,19 @@ address	name	tier	score	notes
 00898b80	?partCachePtr@?1??Search_tStrManagerPart@tStrManagerPart@@SAPAV2@XZ@4PAV2@A	data	0.938	votes=2 from ?mGetNumElements@tStringGroupTag@@QAEJXZ,?mGetString@tStringTag@@QAEABVtString@@XZ
 008e0b54	?partCachePtr@?1??Search_tMemoryPart@tMemoryPart@@SAPAV2@XZ@4PAV2@A	data	0.99	votes=51 from ??1tAudioFileInfoPart@@UAE@XZ,??1tChannelGroupManagerPart@@UAE@XZ,??_G?$tSafeArray@VtBasicAudioFile@@@@UAEPAXI@Z
 0090bf7c	?partCachePtr@?1??Search_tCoopThreadPart@tCoopThreadPart@@SAPAV2@XZ@4PAV2@A	data	0.984	votes=3 from ?mDelThread@tCoopThreadPart@@UAEXPAVtClientThread@@@Z,?mGotoThread@twNativeThread@@UAEXPAVtNativeThread@@@Z,?twNativeThreadEntryProc@twNativeThread@@SAKPAVtNativeThread@@@Z
-009251a8	?partCachePtr@?1??Search_tClockPart@tClockPart@@SAPAV2@XZ@4PAV2@A	data	0.99	votes=7 from ?SoundPartCurrentTime@@YANXZ,?mFreeAsynchReadInfo@tAudioFileInfoPart@@UAEXJ@Z,?mGetNewAsynchReadInfo@tAudioFileInfoPart@@UAEJKJ@Z
+009251a8	?partCachePtr@?1??Search_tClockPart@tClockPart@@SAPAV2@XZ@4PAV2@A	data	0.99	votes=12 from ?SoundPartCurrentTime@@YANXZ,?mDone@tMouseMgr_Ex@@UAEXXZ,?mFreeAsynchReadInfo@tAudioFileInfoPart@@UAEXJ@Z
 0092f100	.\release\secshare.obj|_polynomialRing	data	0.57	votes=1 from .\release\secshare.obj|_$E29
 0092f160	?partCachePtr@?1??Search_tDebugPart@tDebugPart@@SAPAV2@XZ@4PAV2@A	data	0.938	votes=2 from ?mHandleOutput@tSay@@IAEXHPBD@Z,?mJustSayIt@tSay@@QAAXPBDZZ
 00c3b648	?partCachePtr@?1??Search_tFSCookiePart@tFSCookiePart@@SAPAV2@XZ@4PAV2@A	data	0.99	votes=65 from .\sfcTiger Release\twfsys.obj|?WinParseVolume@@YA?AVtVolume@@VtSession@@AAVtString@@@Z,??0tFileSession@@QAE@XZ,??1tFSSession@@UAE@XZ
 00c3b64c	?partCachePtr@?1??Search_tgFileSystemPart@tgFileSystemPart@@SAPAV2@XZ@4PAV2@A	data	0.57	votes=1 from ?Search_tgFileSystemPart@tgFileSystemPart@@SAPAV1@XZ
 00c3b650	.\sfcTiger Release\tStrMgrCore.obj|_gErrStr	data	0.99	votes=4 from .\sfcTiger Release\tStrMgrCore.obj|_$E6,?mGetGrpStr@tStrMgrCore@@UAEABVtString@@JJ@Z,?mGetRandStr@tStrMgrCore@@UAEABVtString@@J@Z
 00c3b678	?fStaticPartValidList@tPart@@1PAPAV1@A	data	0.938	votes=2 from ?mActivateParts@tPart@@SAXXZ,?mValidateParts@tPart@@SAXXZ
-00c3b808	?fStaticPartActivateList@tPart@@1PAPAV1@A	data	0.99	votes=258 from .\sfcTiger Release\twfsys.obj|?WinParseVolume@@YA?AVtVolume@@VtSession@@AAVtString@@@Z,??0tFileSession@@QAE@XZ,??1tAudioFileInfoPart@@UAE@XZ
+00c3b808	?fStaticPartActivateList@tPart@@1PAPAV1@A	data	0.99	votes=263 from .\sfcTiger Release\twfsys.obj|?WinParseVolume@@YA?AVtVolume@@VtSession@@AAVtString@@@Z,??0tFileSession@@QAE@XZ,??1tAudioFileInfoPart@@UAE@XZ
 00c3b998	?fStaticPartRegList@tPart@@1PAPAV1@A	data	0.938	votes=2 from ??0tPart@@QAE@XZ,?mValidateParts@tPart@@SAXXZ
 00c3bb28	?fStaticPartCachedPtrList@tPart@@1PAPAPAV1@A	data	0.6	votes=1 from ?mAddToPartCachePtrList@tPart@@SAXPAPAV1@@Z
 00c3cac8	?fStaticPartRegCount@tPart@@1JA	data	0.938	votes=2 from ??0tPart@@QAE@XZ,?mValidateParts@tPart@@SAXXZ
 00c3cacc	?fStaticPartValidCount@tPart@@1JA	data	0.984	votes=3 from ?mActivateParts@tPart@@SAXXZ,?mDeactivateParts@tPart@@SAXXZ,?mValidateParts@tPart@@SAXXZ
-00c3cad0	?fStaticPartActivateCount@tPart@@1JA	data	0.99	votes=258 from .\sfcTiger Release\twfsys.obj|?WinParseVolume@@YA?AVtVolume@@VtSession@@AAVtString@@@Z,??0tFileSession@@QAE@XZ,??1tAudioFileInfoPart@@UAE@XZ
+00c3cad0	?fStaticPartActivateCount@tPart@@1JA	data	0.99	votes=263 from .\sfcTiger Release\twfsys.obj|?WinParseVolume@@YA?AVtVolume@@VtSession@@AAVtString@@@Z,??0tFileSession@@QAE@XZ,??1tAudioFileInfoPart@@UAE@XZ
 00c3cad4	?fStaticPartCachedPtrCount@tPart@@1JA	data	0.938	votes=2 from ?mAddToPartCachePtrList@tPart@@SAXPAPAV1@@Z,?mValidateParts@tPart@@SAXXZ
 00c3cad8	?fTheDebugPart@tDebugPart@@1PAV1@A	data	0.99	votes=6 from ??0twDebugPart@@QAE@XZ,??1twDebugPart@@UAE@XZ,?mCloseLogFileTarget@twDebugPart@@UAEXK@Z
 00c3cadc	?fWindowTarget@twDebugPart@@1PAVtDbgTarget@1@A	data	0.99	votes=4 from ??0twDebugPart@@QAE@XZ,??1twDebugPart@@UAE@XZ,?mSendLine@twDebugPart@@UAEXPBDK@Z
@@ -1254,6 +1588,85 @@ address	name	tier	score	notes
 00c692ec	.\Release\MissionInfo.obj|_$S54	data	0.57	votes=1 from .\Release\MissionInfo.obj|_$E53
 00c692ec	.\Release\MissionInfo.obj|_$S60	data	0.57	votes=1 from .\Release\MissionInfo.obj|_$E59
 00c69cfc	?fixedRing@?$PolynomialOverFixedRing@VField@?%D:\Work\Sfc\crypto31\secshare.cpp378418273@@$0A@@CryptoPP@@0VField@?%D:\Work\Sfc\crypto31\secshare.cpp378418273@@B	data	0.6	votes=1 from .\release\secshare.obj|_$E34
+00c69ff0	?BestTransform@@3P6AXPAM00@ZA	data	0.938	votes=2 from ??0t3DTableInitializer@@QAE@XZ,?mTransform@tMatrix@@QBEXAAUtPoint4@@ABUtPoint3@@@Z
+00c69ff4	?BestMult@@3P6AXPAM00@ZA	data	0.984	votes=3 from ??0t3DTableInitializer@@QAE@XZ,?mMult@tMatrix@@QAEXABV1@@Z,?mMult@tMatrix@@QBEXAAV1@ABV1@@Z
+00c69ff8	.\dmp3D_Release\tvectormath.obj|_gInitializer	data	0.57	votes=1 from .\dmp3D_Release\tvectormath.obj|_$E6
+00c6a004	?gSinCosTable@@3PAMA	data	0.99	votes=4 from ??0t3DTableInitializer@@QAE@XZ,?mRotX@tMatrix@@QAEXF@Z,?mRotY@tMatrix@@QAEXF@Z
+00c74008	?BestSqrt@@3P6AXMAAM@ZA	data	0.984	votes=3 from ??0t3DTableInitializer@@QAE@XZ,?mLength@tPoint3@@QBEMXZ,?mNormalize@tPoint3@@QAEEXZ
+00c74010	.\dmp3D_Release\tvectormath.obj|_kIdentityMtx	data	0.6	votes=1 from .\dmp3D_Release\tvectormath.obj|_$E3
+00c74058	?BestInverseTransform3x3@@3P6AXPAM00@ZA	data	0.938	votes=2 from ??0t3DTableInitializer@@QAE@XZ,?mInverseTransform3x3@tMatrix@@QBEXAAUtPoint3@@ABU2@@Z
+00c7405c	?gTangentTable@@3PAMA	data	0.938	votes=2 from ??0t3DTableInitializer@@QAE@XZ,?ArcTangent@@YAFMM@Z
+00c7c0ac	?fTheMgr@tD3DViewMgr@@1PAV1@A	data	0.938	votes=2 from ?dmpGetD3DView3D@@YAPAVtView3D@@XZ,?mDispose@tD3DViewMgr@@UAEPAXXZ
+00c7c0b0	?fRefCnt@tD3DViewMgr@@1HA	data	0.6	votes=1 from ?mDispose@tD3DViewMgr@@UAEPAXXZ
+00c7c0b4	?fOldWndProc@tD3DViewMgr@@1P6GJPAUHWND__@@IIJ@ZA	data	0.938	votes=2 from ?mDoneD3D@tD3DViewMgr@@IAEXXZ,?mWndProc@tD3DViewMgr@@IAGJPAUHWND__@@IIJ@Z
+00c7c0b8	?fHWnd@tD3DViewMgr@@1PAUHWND__@@A	data	0.938	votes=2 from ?mDoneD3D@tD3DViewMgr@@IAEXXZ,?mFlip@tD3DViewMgr@@UAEEXZ
+00c7c0c0	.\dmp3D_Release\swView3D.obj|_gNativeWhite	data	0.6	votes=1 from ?mInit@tSWView3D@@AAEEPAX0HHPBUtGLRectI@@EE@Z
+00c7c10c	.\dmp3D_Release\swView3D.obj|_gCallback	data	0.938	votes=2 from .\dmp3D_Release\swView3D.obj|?MyCallback@@YAEHHHPAX@Z,?mEnumDispModes@tSWView3D@@UAEEP6AEHHPAX@Z0@Z
+00c7c110	?fMaster@tSWView3D@@1PAV1@A	data	0.938	votes=2 from ?dmpGetSWView3D@@YAPAVtView3D@@XZ,?mDispose@tSWView3D@@UAEPAXXZ
+00c7c114	?fRefCnt@tSWView3D@@1HA	data	0.6	votes=1 from ?mDispose@tSWView3D@@UAEPAXXZ
+00c7c118	?fList@tTexMgr@@1PAV1@A	data	0.938	votes=2 from ??0tTexMgr@@QAE@H@Z,??1tTexMgr@@QAE@XZ
+00c7c120	?gFrameTimer@@3VtFrameTimer@@A	data	0.6	votes=1 from .\dmp3D_Release\frameTimer.obj|_$E12
+00c7c190	.\dmp3D_Release\view3DMgrDLLW.obj|_gDLLMgr	data	0.984	votes=3 from ?mActivate@twView3DMgrDLL@@UAEXXZ,?mCreateView3D@twView3DMgrDLL@@UAEPAVtView3D@@PAUtView3DInfo@@@Z,?mEnumerate@twView3DMgrDLL@@UAEEP6AEPAUtView3DInfo@@PAX@Z1@Z
+00c7c190	.\dmp3D_Release\twGLSurfMgrInterfaceDLL.obj|_gDLLMgr	data	0.984	votes=3 from ?mActivate@twGLSurfMgrInterfaceDLL@@UAEXXZ,?mCreateGLSurfMgr@twGLSurfMgrInterfaceDLL@@UAEPAVtGLSurfMgr@@PAUtGLSurfMgrInfo@@@Z,?mEnumerate@twGLSurfMgrInterfaceDLL@@UAEEP6AEPAUtGLSurfMgrInfo@@PAX@Z1@Z
+00c7c1e4	.\dmp3D_Release\view3DMgrDLLW.obj|_gCB	data	0.938	votes=2 from .\dmp3D_Release\view3DMgrDLLW.obj|?EnumCallback@@YAEPAVtDLLInfo@twDLLMgrBase@@PAX@Z,?mEnumerate@twView3DMgrDLL@@UAEEP6AEPAUtView3DInfo@@PAX@Z1@Z
+00c7c1e4	.\dmp3D_Release\twGLSurfMgrInterfaceDLL.obj|_gCB	data	0.938	votes=2 from .\dmp3D_Release\twGLSurfMgrInterfaceDLL.obj|?EnumCallback@@YAEPAVtDLLInfo@twDLLMgrBase@@PAX@Z,?mEnumerate@twGLSurfMgrInterfaceDLL@@UAEEP6AEPAUtGLSurfMgrInfo@@PAX@Z1@Z
+00c7c230	.\dmp3D_Release\view3DExt.obj|_?p@?1??mSetModelMtx@tView3DExt@@UAEXABVtMatrix@@@Z@4UtPoint3@@B	data	0.6	votes=1 from ?mSetModelMtx@tView3DExt@@UAEXABVtMatrix@@@Z
+00c7c240	.\dmp3D_Release\view3DExt.obj|_?origin@?1??mGetCameraPosition@tView3DExt@@UAEXAAUtPoint3@@@Z@4U3@B	data	0.6	votes=1 from ?mGetCameraPosition@tView3DExt@@UAEXAAUtPoint3@@@Z
+00c7c250	?fClipMin@tView3DExt@@2UtPoint2@@A	data	0.99	votes=8 from ??0tView3DExt@@QAE@XZ,?mClip@tView3DExt@@IAEHHI@Z,?mClipLine@tView3DExt@@IAEEI@Z
+00c7c29c	.\dmp3D_Release\view3DExt.obj|_?$S17@?1??mSetModelMtx@tView3DExt@@UAEXABVtMatrix@@@Z@4EA	data	0.6	votes=1 from ?mSetModelMtx@tView3DExt@@UAEXABVtMatrix@@@Z
+00c7c29d	.\dmp3D_Release\view3DExt.obj|_?$S15@?1??mGetCameraPosition@tView3DExt@@UAEXAAUtPoint3@@@Z@4EA	data	0.6	votes=1 from ?mGetCameraPosition@tView3DExt@@UAEXAAUtPoint3@@@Z
+00c7c2a0	?fClipMax@tView3DExt@@2UtPoint2@@A	data	0.99	votes=8 from ??0tView3DExt@@QAE@XZ,?mClip@tView3DExt@@IAEHHI@Z,?mClipLine@tView3DExt@@IAEEI@Z
+00c7c3c8	.\dmp3D_Release\swView3D_Draw.obj|_gDrDx	data	0.99	votes=10 from .\dmp3D_Release\swView3D_Draw.obj|?Gouraud@@YAXHPAGJJJ@Z,.\dmp3D_Release\swView3D_Draw.obj|?Gouraud_Tex@@YAXHPAGJJJ@Z,.\dmp3D_Release\swView3D_Draw.obj|?Gouraud_Tex_ColorKey@@YAXHPAGJJJ@Z
+00c7c3d0	.\dmp3D_Release\swView3D_Draw.obj|_gLtEdge	data	0.984	votes=3 from .\dmp3D_Release\swView3D_Draw.obj|?Triangle_ZTest@@YAXXZ,.\dmp3D_Release\swView3D_Draw.obj|?Triangle_ZTest_ZWrite@@YAXXZ,?mDrawTriangle@tSWView3D@@AAEXHAAUtPolyVtx@tView3DExt@@00@Z
+00c7c40c	.\dmp3D_Release\swView3D_Draw.obj|_gDstPtr	data	0.99	votes=4 from .\dmp3D_Release\swView3D_Draw.obj|?Triangle_ZTest@@YAXXZ,.\dmp3D_Release\swView3D_Draw.obj|?Triangle_ZTest_ZWrite@@YAXXZ,?mDrawPolygon@tSWView3D@@MAEEHHHE@Z
+00c7c410	.\dmp3D_Release\swView3D_Draw.obj|_gDuDx	data	0.99	votes=13 from .\dmp3D_Release\swView3D_Draw.obj|?Flat_Tex@@YAXHPAGJJJ@Z,.\dmp3D_Release\swView3D_Draw.obj|?Flat_Tex_ColorKey@@YAXHPAGJJJ@Z,.\dmp3D_Release\swView3D_Draw.obj|?Flat_Tex_ColorKey_ZTest@@YAXHPAG0JJJJ@Z
+00c7c414	.\dmp3D_Release\swView3D_Draw.obj|_gDvDx	data	0.99	votes=13 from .\dmp3D_Release\swView3D_Draw.obj|?Flat_Tex@@YAXHPAGJJJ@Z,.\dmp3D_Release\swView3D_Draw.obj|?Flat_Tex_ColorKey@@YAXHPAGJJJ@Z,.\dmp3D_Release\swView3D_Draw.obj|?Flat_Tex_ColorKey_ZTest@@YAXHPAG0JJJJ@Z
+00c7c418	.\dmp3D_Release\swView3D_Draw.obj|_gDwDx	data	0.99	votes=11 from .\dmp3D_Release\swView3D_Draw.obj|?Flat_Tex_ColorKey_ZTest@@YAXHPAG0JJJJ@Z,.\dmp3D_Release\swView3D_Draw.obj|?Flat_Tex_ColorKey_ZTest_ZWrite@@YAXHPAG0JJJJ@Z,.\dmp3D_Release\swView3D_Draw.obj|?Flat_Tex_ZTest@@YAXHPAG0JJJJ@Z
+00c7c41c	.\dmp3D_Release\swView3D_Draw.obj|_gDepthBuffer	data	0.99	votes=4 from .\dmp3D_Release\swView3D_Draw.obj|?Triangle_ZTest@@YAXXZ,.\dmp3D_Release\swView3D_Draw.obj|?Triangle_ZTest_ZWrite@@YAXXZ,?mDrawPolygon@tSWView3D@@MAEEHHHE@Z
+00c7c420	.\dmp3D_Release\swView3D_Draw.obj|_gVMask	data	0.99	votes=13 from .\dmp3D_Release\swView3D_Draw.obj|?Flat_Tex@@YAXHPAGJJJ@Z,.\dmp3D_Release\swView3D_Draw.obj|?Flat_Tex_ColorKey@@YAXHPAGJJJ@Z,.\dmp3D_Release\swView3D_Draw.obj|?Flat_Tex_ColorKey_ZTest@@YAXHPAG0JJJJ@Z
+00c7c424	.\dmp3D_Release\swView3D_Draw.obj|_gMaxVtx	data	0.99	votes=6 from .\dmp3D_Release\swView3D_Draw.obj|?Triangle_ZTest@@YAXXZ,.\dmp3D_Release\swView3D_Draw.obj|?Triangle_ZTest_ZWrite@@YAXXZ,?mDrawTriangle@tSWView3D@@AAEXHAAUtPolyVtx@tView3DExt@@00@Z
+00c7c428	.\dmp3D_Release\swView3D_Draw.obj|_gDstMaxY	data	0.99	votes=4 from .\dmp3D_Release\swView3D_Draw.obj|?Triangle_ZTest@@YAXXZ,.\dmp3D_Release\swView3D_Draw.obj|?Triangle_ZTest_ZWrite@@YAXXZ,?mDrawPolygon@tSWView3D@@MAEEHHHE@Z
+00c7c42c	.\dmp3D_Release\swView3D_Draw.obj|_gDstMaxX	data	0.99	votes=4 from .\dmp3D_Release\swView3D_Draw.obj|?Triangle_ZTest@@YAXXZ,.\dmp3D_Release\swView3D_Draw.obj|?Triangle_ZTest_ZWrite@@YAXXZ,?mDrawPolygon@tSWView3D@@MAEEHHHE@Z
+00c7c430	.\dmp3D_Release\swView3D_Draw.obj|_gDepthBufferPitch	data	0.99	votes=4 from .\dmp3D_Release\swView3D_Draw.obj|?Triangle_ZTest@@YAXXZ,.\dmp3D_Release\swView3D_Draw.obj|?Triangle_ZTest_ZWrite@@YAXXZ,?mDrawPolygon@tSWView3D@@MAEEHHHE@Z
+00c7c438	.\dmp3D_Release\swView3D_Draw.obj|_gTriPts	data	0.6	votes=1 from ?mDrawTriangle@tSWView3D@@AAEXHAAUtPolyVtx@tView3DExt@@00@Z
+00c7c4a4	.\dmp3D_Release\swView3D_Draw.obj|_gCLUT	data	0.99	votes=13 from .\dmp3D_Release\swView3D_Draw.obj|?Flat_Tex@@YAXHPAGJJJ@Z,.\dmp3D_Release\swView3D_Draw.obj|?Flat_Tex_ColorKey@@YAXHPAGJJJ@Z,.\dmp3D_Release\swView3D_Draw.obj|?Flat_Tex_ColorKey_ZTest@@YAXHPAG0JJJJ@Z
+00c7c4a8	.\dmp3D_Release\swView3D_Draw.obj|_gTexHt	data	0.6	votes=1 from ?mDrawTriangle@tSWView3D@@AAEXHAAUtPolyVtx@tView3DExt@@00@Z
+00c7c4ac	.\dmp3D_Release\swView3D_Draw.obj|_gTexWd	data	0.6	votes=1 from ?mDrawTriangle@tSWView3D@@AAEXHAAUtPolyVtx@tView3DExt@@00@Z
+00c7c4b0	.\dmp3D_Release\swView3D_Draw.obj|_gRtVtx	data	0.99	votes=5 from .\dmp3D_Release\swView3D_Draw.obj|?Triangle_ZTest@@YAXXZ,.\dmp3D_Release\swView3D_Draw.obj|?Triangle_ZTest_ZWrite@@YAXXZ,?mDrawTriangle@tSWView3D@@AAEXHAAUtPolyVtx@tView3DExt@@00@Z
+00c7c4fc	.\dmp3D_Release\swView3D_Draw.obj|_gVShift	data	0.99	votes=13 from .\dmp3D_Release\swView3D_Draw.obj|?Flat_Tex@@YAXHPAGJJJ@Z,.\dmp3D_Release\swView3D_Draw.obj|?Flat_Tex_ColorKey@@YAXHPAGJJJ@Z,.\dmp3D_Release\swView3D_Draw.obj|?Flat_Tex_ColorKey_ZTest@@YAXHPAG0JJJJ@Z
+00c7c500	.\dmp3D_Release\swView3D_Draw.obj|_gColorKeyEnabled	data	0.6	votes=1 from ?mDrawTriangle@tSWView3D@@AAEXHAAUtPolyVtx@tView3DExt@@00@Z
+00c7c504	.\dmp3D_Release\swView3D_Draw.obj|_gDstPitch	data	0.99	votes=4 from .\dmp3D_Release\swView3D_Draw.obj|?Triangle_ZTest@@YAXXZ,.\dmp3D_Release\swView3D_Draw.obj|?Triangle_ZTest_ZWrite@@YAXXZ,?mDrawPolygon@tSWView3D@@MAEEHHHE@Z
+00c7c508	.\dmp3D_Release\swView3D_Draw.obj|_gCLUT2	data	0.6	votes=1 from ?mDrawTriangle@tSWView3D@@AAEXHAAUtPolyVtx@tView3DExt@@00@Z
+00c7c50c	.\dmp3D_Release\swView3D_Draw.obj|_gTexBits	data	0.99	votes=13 from .\dmp3D_Release\swView3D_Draw.obj|?Flat_Tex@@YAXHPAGJJJ@Z,.\dmp3D_Release\swView3D_Draw.obj|?Flat_Tex_ColorKey@@YAXHPAGJJJ@Z,.\dmp3D_Release\swView3D_Draw.obj|?Flat_Tex_ColorKey_ZTest@@YAXHPAG0JJJJ@Z
+00c7c510	.\dmp3D_Release\swView3D_Draw.obj|_gRtEdge	data	0.984	votes=3 from .\dmp3D_Release\swView3D_Draw.obj|?Triangle_ZTest@@YAXXZ,.\dmp3D_Release\swView3D_Draw.obj|?Triangle_ZTest_ZWrite@@YAXXZ,?mDrawTriangle@tSWView3D@@AAEXHAAUtPolyVtx@tView3DExt@@00@Z
+00c7c54c	.\dmp3D_Release\swView3D_Draw.obj|_gOverflowBits	data	0.99	votes=17 from .\dmp3D_Release\swView3D_Draw.obj|?Flat@@YAXHPAGK@Z,.\dmp3D_Release\swView3D_Draw.obj|?Flat_Tex@@YAXHPAGJJJ@Z,.\dmp3D_Release\swView3D_Draw.obj|?Flat_Tex_ColorKey@@YAXHPAGJJJ@Z
+00c7c550	.\dmp3D_Release\swView3D_Draw.obj|_gDbDx	data	0.99	votes=4 from .\dmp3D_Release\swView3D_Draw.obj|?Gouraud@@YAXHPAGJJJ@Z,.\dmp3D_Release\swView3D_Draw.obj|?Triangle_ZTest@@YAXXZ,.\dmp3D_Release\swView3D_Draw.obj|?Triangle_ZTest_ZWrite@@YAXXZ
+00c7c554	.\dmp3D_Release\swView3D_Draw.obj|_gStartVtx	data	0.984	votes=3 from ?mNewLeft@tEdge@@QAEXXZ,?mNewLeftRGB@tEdge@@QAEXXZ,?mNewRight@tEdge@@QAEXXZ
+00c7c558	.\dmp3D_Release\swView3D_Draw.obj|_gDgDx	data	0.99	votes=4 from .\dmp3D_Release\swView3D_Draw.obj|?Gouraud@@YAXHPAGJJJ@Z,.\dmp3D_Release\swView3D_Draw.obj|?Triangle_ZTest@@YAXXZ,.\dmp3D_Release\swView3D_Draw.obj|?Triangle_ZTest_ZWrite@@YAXXZ
+00c7c55c	.\dmp3D_Release\swView3D_Draw.obj|_gEndVtx	data	0.984	votes=3 from ?mNewLeft@tEdge@@QAEXXZ,?mNewLeftRGB@tEdge@@QAEXXZ,?mNewRight@tEdge@@QAEXXZ
+00c7c560	.\dmp3D_Release\swView3D_Draw.obj|_gColorKey	data	0.99	votes=7 from .\dmp3D_Release\swView3D_Draw.obj|?Flat_Tex_ColorKey@@YAXHPAGJJJ@Z,.\dmp3D_Release\swView3D_Draw.obj|?Flat_Tex_ColorKey_ZTest@@YAXHPAG0JJJJ@Z,.\dmp3D_Release\swView3D_Draw.obj|?Flat_Tex_ColorKey_ZTest_ZWrite@@YAXHPAG0JJJJ@Z
+00c7c564	.\dmp3D_Release\swView3D_Draw.obj|_gLtVtx	data	0.99	votes=7 from .\dmp3D_Release\swView3D_Draw.obj|?Triangle_ZTest@@YAXXZ,.\dmp3D_Release\swView3D_Draw.obj|?Triangle_ZTest_ZWrite@@YAXXZ,?mDrawTriangle@tSWView3D@@AAEXHAAUtPolyVtx@tView3DExt@@00@Z
+00c7c568	.\dmp3D_Release\swView3D_Draw.obj|_gUMask	data	0.99	votes=13 from .\dmp3D_Release\swView3D_Draw.obj|?Flat_Tex@@YAXHPAGJJJ@Z,.\dmp3D_Release\swView3D_Draw.obj|?Flat_Tex_ColorKey@@YAXHPAGJJJ@Z,.\dmp3D_Release\swView3D_Draw.obj|?Flat_Tex_ColorKey_ZTest@@YAXHPAG0JJJJ@Z
+00c7c56c	.\dmp3D_Release\swView3D_Draw.obj|_gBlend	data	0.99	votes=17 from .\dmp3D_Release\swView3D_Draw.obj|?Flat@@YAXHPAGK@Z,.\dmp3D_Release\swView3D_Draw.obj|?Flat_Tex@@YAXHPAGJJJ@Z,.\dmp3D_Release\swView3D_Draw.obj|?Flat_Tex_ColorKey@@YAXHPAGJJJ@Z
+00c7c570	?fPixFmt@tClut@@1VtGLPixFmt@@A	data	0.99	votes=8 from .\dmp3D_Release\swView3D_Draw.obj|?Gouraud@@YAXHPAGJJJ@Z,.\dmp3D_Release\swView3D_Draw.obj|?NativeColor@@YAIKKK@Z,.\dmp3D_Release\swView3D_Draw.obj|?Triangle_ZTest@@YAXXZ
+00c7c5ac	?fMasterList@tClut@@1PAV1@A	data	0.99	votes=5 from ??1tTexInfo@@UAE@XZ,?mNew@tClut@@SAPAV1@PBUtGLRgbQuad@@@Z,?mSetPaletteEntries@tTexInfo@@UAEEKKPBUtGLRgbQuad@@@Z
+00c7c5f4	.\dmp3D_Release\swView3D_Tex.obj|_$S25	data	0.6	votes=1 from .\dmp3D_Release\swView3D_Tex.obj|_$E24
+00c7c5f8	.\dmp3D_Release\tGDISurfMgr.obj|_gSurfMgr	data	0.938	votes=2 from ?dmpCreateGDISurfMgr@@YAPAVtGLSurfMgr@@XZ,?mTrueRelease@tGDISurfMgr@@MAEXXZ
+00c7c5fc	?fMemDC@tGDISurfMgr@@1PAUHDC__@@A	data	0.99	votes=5 from ?mCopyToFront@tGDISurfMgr@@UAEEABUtGLRectI@@0PAVtGLSurface@@E@Z,?mCreateSurface@tGDISurfMgr@@UAEPAVtGLSurface@@ABVtGLPixFmt@@IIE@Z,?mDone@tGDISurfMgr@@UAEXXZ
+00c7c600	?fMaster@tDDSurfMgr@@1PAV1@A	data	0.938	votes=2 from ??_GtDDSurfMgr@@UAEPAXI@Z,?dmpCreateDDSurfMgr@@YAPAVtGLSurfMgr@@XZ
+00c7c604	?fHWnd@tDDSurfMgr@@1PAUHWND__@@A	data	0.99	votes=9 from ??_GtDDSurfMgr@@UAEPAXI@Z,?mDone@tDDSurfMgr@@UAEXXZ,?mInit@tDDSurfMgr@@IAEEIIIIIEEIPAX0@Z
+00c7c608	.\dmp3D_Release\tDDSurfMgr.obj|_gIgnoreWindowChanges	data	0.6	votes=1 from ?mInit@tDDSurfMgr@@IAEEIIIIIEEIPAX0@Z
+00c7c60c	.\dmp3D_Release\tDDSurfMgr.obj|_gEnumCallback	data	0.928	votes=2 from ?mEnumDispModes@tDDSurfMgr@@UAEEP6AEHHHPAX@Z0@Z,?mEnumDisplayModesCallback@tDDSurfMgr@@KGJPAU_DDSURFACEDESC2@@PAX@Z
+00c7c610	?fOldWndProc@tDDSurfMgr@@1P6GJPAUHWND__@@IIJ@ZA	data	0.99	votes=4 from ??_GtDDSurfMgr@@UAEPAXI@Z,?mDone@tDDSurfMgr@@UAEXXZ,?mInit@tDDSurfMgr@@IAEEIIIIIEEIPAX0@Z
+00c7c614	.\dmp3D_Release\tDDSurfMgr.obj|_gDDSurfMgr	data	0.938	votes=2 from ?dmpCreateDDSurfMgr@@YAPAVtGLSurfMgr@@XZ,?mTrueRelease@tDDSurfMgr@@MAEXXZ
+00c7c618	.\dmp3D_Release\d3denum.obj|_g_pDD	data	0.938	votes=2 from .\dmp3D_Release\d3denum.obj|?DirectDrawEnumCallbackEx@@YGHPAU_GUID@@PAD1PAXPAUHMONITOR__@@@Z,.\dmp3D_Release\d3denum.obj|?Enum3DDevicesCallback@@YGJPAU_GUID@@PAD1PAU_D3DDeviceDesc@@2PAX@Z
+00c7c61c	.\dmp3D_Release\d3denum.obj|_g_bRefRastEnumerated	data	0.984	votes=3 from .\dmp3D_Release\d3denum.obj|?Enum3DDevicesCallback@@YGJPAU_GUID@@PAD1PAU_D3DDeviceDesc@@2PAX@Z,?D3DEnum_EnumerateDevices@@YAJP6AJPAU_DDCAPS_DX7@@PAU_D3DDeviceDesc@@@Z@Z,?D3DEnum_SelectDefaultDriver@@YAJK@Z
+00c7c620	.\dmp3D_Release\d3denum.obj|_g_bDevicesEnumerated	data	0.938	votes=2 from .\dmp3D_Release\d3denum.obj|?Enum3DDevicesCallback@@YGJPAU_GUID@@PAD1PAU_D3DDeviceDesc@@2PAX@Z,?D3DEnum_SelectDefaultDriver@@YAJK@Z
+00c7c624	?g_pFirstDriver@@3PAUD3DEnum_DriverInfo@@A	data	0.99	votes=4 from .\dmp3D_Release\d3denum.obj|?DirectDrawEnumCallbackEx@@YGHPAU_GUID@@PAD1PAXPAUHMONITOR__@@@Z,.\dmp3D_Release\d3denum.obj|?RefreshListForDesktopCompatibility@@YAXXZ,?D3DEnum_FreeResources@@YAXXZ
+00c7c62c	?g_pCurrentDriver@@3PAUD3DEnum_DriverInfo@@A	data	0.938	votes=2 from .\dmp3D_Release\d3denum.obj|?DirectDrawEnumCallbackEx@@YGHPAU_GUID@@PAD1PAXPAUHMONITOR__@@@Z,?D3DEnum_SelectDefaultDriver@@YAJK@Z
+00c7c630	.\dmp3D_Release\d3denum.obj|_g_fnAppConfirmFn	data	0.938	votes=2 from .\dmp3D_Release\d3denum.obj|?Enum3DDevicesCallback@@YGJPAU_GUID@@PAD1PAU_D3DDeviceDesc@@2PAX@Z,?D3DEnum_EnumerateDevices@@YAJP6AJPAU_DDCAPS_DX7@@PAU_D3DDeviceDesc@@@Z@Z
+00c7c680	?gOSDisplayMgr@@3AAVtOSDisplayMgr@@A	data	0.99	votes=4 from ?mDone@tGDISurfMgr@@UAEXXZ,?mEnumDispModes@tGDISurfMgr@@UAEEP6AEHHHPAX@Z0@Z,?mInitFullScreenBitBlt@tGDISurfMgr@@UAEEIIIIIPAX0@Z
+00c7c688	.\dmp3D_Release\twDisplayMgr.obj|_gWin32DisplayMgr	data	0.918	votes=2 from .\dmp3D_Release\twDisplayMgr.obj|_$E3,.\dmp3D_Release\twDisplayMgr.obj|_$E8
 00c7f770	.\Common_Release\ThreadPool.obj|_$S47	data	0.57	votes=1 from .\Common_Release\ThreadPool.obj|_$E46
 00c7f778	?fCleanupSingletion@tThreadPool@@0V?$tCleanupGlobalPointer@VtThreadPool@@@@A	data	0.918	votes=2 from .\Common_Release\ThreadPool.obj|_$E45,.\Common_Release\ThreadPool.obj|_$E46
 00c7f784	?fThreadPool@tThreadPool@@0PAV1@A	data	0.6	votes=1 from ?Instance@tThreadPool@@SAPAV1@XZ

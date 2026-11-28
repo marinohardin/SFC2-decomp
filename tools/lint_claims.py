@@ -55,6 +55,29 @@ address-order
     form exists only to make VC6 emit the original bytes). Headers are not units: their claims
     compile in the unit op/UNITS.tsv names, so their order is not checked.
 
+falls-through
+    A claim whose original bytes end by falling through into code that is not part of it: the
+    analysis cut a longer function short, typically at a call it took for no-return, and the
+    claim covers only the first bytes (`fldz; push ecx; fstp [esp]; call X`, then the original
+    goes on for a thousand bytes). The harness scores those bytes exact, a consumer that compiles
+    the claims links them in, and execution falls off the end into the original's own
+    continuation, which is not a function. The rule reads the executable's .text: the claim's
+    bytes, with trailing padding (0x90, 0xCC) stripped, end in `E8 rel32` (a near call), and
+    nothing in the image refers to the claim's end address (address + size, and the address after
+    any padding that follows the call: the next function starts there). A real function that
+    ends in a call to a no-return function is followed by the next function, which something
+    refers to; a cut-off one is followed by its own unreferenced continuation. "Refers" is any
+    `E8`/`E9`/`0F 8x` rel32 in .text whose target is that address, or any 4-byte little-endian
+    value equal to it at any byte offset of the mapped image (a pointer, a vftable entry, a jump
+    table); a byte scan over-approximates, which only lets a doubtful claim through. The claim's
+    size is its ghidra/exports/functions.csv row's. A claim that is exact (matched_set.json) is
+    never excused by the baseline: the harness says it is right and it is wrong, so it fails
+    until the claim is removed (move the address to boundary_errors.tsv). A non-exact one may be
+    baselined as a break known when the check started. The rule needs the retail executable
+    (checked against analysis/results/retail_hashes.sha256 first): without it (a fork's or a
+    hosted job's checkout) it prints an INFO line, skips, and leaves its baseline rows alone.
+    `--exe FILE` names another file.
+
 non-source
     A file under op/ that is not a source or header (`.cpp`, `.c`, `.h`, `.inl`), a `README.md`,
     or one of the tables at op/'s root (`UNITS.tsv`, `manifest.tsv`), or one of the original's
@@ -94,11 +117,13 @@ import csv
 import json
 import os
 import re
+import struct
 import sys
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, REPO)
 from harness.lib import deleting  # noqa: E402  (the one rule for deleting destructors)
+from harness.lib.coff import CoffError, PeImage  # noqa: E402
 
 MODULE = 'STARFLEETOP'
 ANNOTATION = re.compile(r'^\s*//\s*(FUNCTION|STUB):\s*(\w+)\s+0x([0-9A-Fa-f]{1,8})\s*$')
@@ -115,17 +140,20 @@ BASELINE_COLUMNS = ('check', 'path', 'address', 'reason')
 LINE_DIRECTIVE = re.compile(r'^[ \t]*#[ \t]*line\b', re.M)
 DEFINE = re.compile(r'^[ \t]*#[ \t]*define[ \t]+(\w+)((?:[^\n]|(?<=\\)\n)*)', re.M)
 BASE_LINE_MACROS = ('__LINE__', '__FILE__', 'assert')
-CHECKS = ('empty-body', 'fragment-claim', 'address-order', 'non-source')
+CHECKS = ('empty-body', 'fragment-claim', 'falls-through', 'address-order', 'non-source')
+PADDING = b'\x90\xcc'
+CALL_REL32 = 0xE8
 
 csv.field_size_limit(1 << 24)
 
 
 class Break:
-    __slots__ = ('check', 'path', 'line', 'address', 'message')
+    __slots__ = ('check', 'path', 'line', 'address', 'message', 'hard')
 
-    def __init__(self, check, path, line, address, message):
+    def __init__(self, check, path, line, address, message, hard=False):
         self.check, self.path, self.line = check, path, line
         self.address, self.message = address, message
+        self.hard = hard    # never excused by the baseline
 
     @property
     def key(self):
@@ -312,9 +340,62 @@ def load_baseline(path):
                 for r in csv.DictReader(f, delimiter='\t') if r.get('check')}
 
 
+class Image:
+    """The executable's mapped sections, for the falls-through rule: what the claim's bytes end
+    in, and whether anything refers to an address."""
+
+    def __init__(self, raw):
+        pe = PeImage(raw)
+        self.pe = pe
+        self.sections = [(pe.image_base + va, raw[roff:roff + rsize])
+                         for _, va, vsize, roff, rsize in pe.sections if rsize]
+        self.text = [(pe.image_base + va, raw[roff:roff + rsize])
+                     for name, va, vsize, roff, rsize in pe.sections if name == '.text' and rsize]
+        self._targets = None
+
+    def code_targets(self):
+        """Every address an E8, E9 or 0F 8x rel32 in .text points at, any byte offset (built
+        once; overlapping matches included, so it over-approximates)."""
+        if self._targets is None:
+            t = set()
+            for base, data in self.text:
+                for m in re.finditer(rb'(?=([\xe8\xe9]|\x0f[\x80-\x8f]))', data):
+                    i = m.start() + len(m.group(1))
+                    if i + 4 <= len(data):
+                        t.add((base + i + 4 + struct.unpack_from('<i', data, i)[0]) & 0xFFFFFFFF)
+            self._targets = t
+        return self._targets
+
+    def referenced(self, address):
+        if address in self.code_targets():
+            return True
+        pat = struct.pack('<I', address)
+        return any(data.find(pat) != -1 for _, data in self.sections)
+
+    def falls_through(self, address, size):
+        """The address the bytes fall through to, or None. They fall through when the `size`
+        bytes at `address` end in a near call (padding stripped) and nothing refers to the
+        address after them: address + size, or where the padding that follows the call ends
+        (functions.csv sizes stop at the code, the matched set's include the padding)."""
+        if size <= 0:
+            return None
+        try:
+            body = self.pe.read(address, size).rstrip(PADDING)
+            if len(body) < 5 or body[-5] != CALL_REL32:
+                return None
+            end = address + len(body)
+            while self.pe.read(end, 1) in (b'\x90', b'\xcc'):
+                end += 1
+        except CoffError:
+            return None
+        ends = {address + size, end}
+        return None if any(self.referenced(e) for e in ends) else max(ends)
+
+
 class Evidence:
-    def __init__(self, matched, boundaries, functions):
+    def __init__(self, matched, boundaries, functions, image=None):
         self.matched, self.boundaries, self.functions = matched, boundaries, functions
+        self.image = image
         self.rows = sorted((a, v[0]) for a, v in functions.items())
 
     def kind(self, address):
@@ -383,6 +464,25 @@ def check_fragments(rel, stack, ev):
                              + (f' ({JOINED_TAG}: its exception prolog and body joined)'
                                 if joined else '')
                              + ' in functions.csv: the tail of its neighbour'))
+    return out
+
+
+def check_falls_through(rel, stack, ev):
+    out = []
+    if ev.image is None:
+        return out
+    for kind, a, n in stack.anns:
+        row = ev.functions.get(a)
+        end = None if row is None else ev.image.falls_through(a, row[0])
+        if end is None:
+            continue
+        exact = ev.exact(a)
+        out.append(Break('falls-through', rel, n, hx(a),
+                         f'{kind} {hx(a)} ({row[0]} bytes) ends in a call and nothing refers to '
+                         f'{hx(end)}: the original goes on past the claim, which is the '
+                         'head of a longer function'
+                         + ('; it is exact, so the baseline cannot excuse it' if exact else ''),
+                         hard=exact))
     return out
 
 
@@ -479,6 +579,7 @@ def lint(repo, op_root, ev, baseline=()):
             for s in stacks:
                 out += check_empty(rel, s, ev)
                 out += check_fragments(rel, s, ev)
+                out += check_falls_through(rel, s, ev)
             if low.endswith(SOURCE_EXTS):
                 known = {k[2] for k in baseline if k[0] == 'address-order' and k[1] == rel}
                 out += check_order(rel, stacks, ev, known)
@@ -584,12 +685,31 @@ def baseline_text(breaks, old):
     rows = ['\t'.join(BASELINE_COLUMNS)]
     seen = set()
     for b in sorted(breaks, key=lambda b: (b.check, b.path, b.address)):
-        if b.key in seen:
+        if b.key in seen or b.hard:
             continue
         seen.add(b.key)
         reason = old.get(b.key) or b.message
         rows.append('\t'.join((b.check, b.path, b.address, reason.replace('\t', ' '))))
     return '\n'.join(rows) + '\n'
+
+
+def load_image(exe, no_hash):
+    """The executable as an Image, or None (after an INFO line) when there is none. A file that
+    is not the retail one raises OSError: the rule would judge the wrong bytes."""
+    if exe is None:
+        from harness.lib import paths
+        exe = paths.EXE
+    if not os.path.isfile(exe):
+        print(f'lint_claims: INFO no executable at {exe}: the falls-through rule is skipped')
+        return None
+    if not no_hash:
+        sys.path.insert(0, os.path.join(REPO, 'tools'))
+        import rtti_symbols
+        problem = rtti_symbols.exe_hash_problem(exe)
+        if problem:
+            raise OSError(problem)
+    with open(exe, 'rb') as f:
+        return Image(f.read())
 
 
 def main(argv=None):
@@ -600,6 +720,9 @@ def main(argv=None):
     ap.add_argument('--boundaries', help='default: <repo>/analysis/results/boundary_errors.tsv')
     ap.add_argument('--functions', help='default: <repo>/ghidra/exports/functions.csv')
     ap.add_argument('--baseline', help='default: <repo>/analysis/results/lint_baseline.tsv')
+    ap.add_argument('--exe', help='the retail executable for the falls-through rule '
+                    '(default: the install the harness uses; absent: the rule is skipped)')
+    ap.add_argument('--no-hash', action='store_true', help='skip the retail hash check (tests)')
     ap.add_argument('--all', action='store_true', help='also print the breaks the baseline holds')
     ap.add_argument('--write-baseline', action='store_true',
                     help='rewrite the baseline to the breaks found now, keeping existing reasons')
@@ -609,17 +732,24 @@ def main(argv=None):
     op_root = os.path.abspath(args.op or os.path.join(repo, 'op'))
     baseline_path = args.baseline or os.path.join(res, 'lint_baseline.tsv')
     try:
+        image = load_image(args.exe, args.no_hash)
         ev = Evidence(load_matched(args.matched_set or os.environ.get('HARNESS_MATCHED_SET')
                                    or os.path.join(res, 'matched_set.json')),
                       load_boundaries(args.boundaries or os.path.join(res, 'boundary_errors.tsv')),
                       load_functions(args.functions
-                                     or os.path.join(repo, 'ghidra', 'exports', 'functions.csv')))
+                                     or os.path.join(repo, 'ghidra', 'exports', 'functions.csv')),
+                      image)
         baseline = load_baseline(baseline_path)
-    except (OSError, ValueError, KeyError) as e:
+    except (OSError, ValueError, KeyError, CoffError) as e:
         print(f'lint_claims: cannot read an input: {e}', file=sys.stderr)
         return 2
     if not os.path.isdir(op_root):
         print(f'lint_claims: no source tree at {op_root}', file=sys.stderr)
+        return 2
+    if args.write_baseline and image is None and any(k[0] == 'falls-through' for k in baseline):
+        print('lint_claims: --write-baseline needs the executable here: without it the '
+              'falls-through rule does not run, and its baseline rows would be dropped',
+              file=sys.stderr)
         return 2
     breaks = lint(repo, op_root, ev, () if args.write_baseline else baseline)
     if args.write_baseline:
@@ -629,9 +759,11 @@ def main(argv=None):
         return 0
     warnings, uses, governed = lint_lines(repo, op_root)
     found = {b.key for b in breaks}
-    new = [b for b in breaks if b.key not in baseline]
-    known = [b for b in breaks if b.key in baseline]
-    stale = sorted(k for k in baseline if k not in found)
+    new = [b for b in breaks if b.hard or b.key not in baseline]
+    known = [b for b in breaks if not b.hard and b.key in baseline]
+    # Without the executable the falls-through rule did not run: its rows cannot be judged.
+    stale = sorted(k for k in baseline if k not in found
+                   and not (image is None and k[0] == 'falls-through'))
     for b in new:
         print(b)
     if args.all:

@@ -812,7 +812,7 @@ void tSndMgr_Miles::vfunction22( double param_1, char param_2 )
 		{
 			field_10[0].field_58 = param_1 * 1000.0;
 			field_10[0].field_5c = 0;
-			field_10[0].field_60 = g_00c7c120.fn_006a0d50();
+			field_10[0].field_60 = g_00c7c120.mGetTick();
 			field_10[0].field_57 = 1;
 		}
 	}
@@ -1090,7 +1090,7 @@ char tSndMgr_Miles::fn_0050ffb1( long param_1 )
 			volume = field_1f14 * 127 / 100;
 		else
 			volume = field_10[param_1].field_6c;
-		long now = g_00c7c120.fn_006a0d50();
+		long now = g_00c7c120.mGetTick();
 		field_10[param_1].field_5c += now - field_10[param_1].field_60;
 		if ( field_10[param_1].field_5c < field_10[param_1].field_58 )
 		{

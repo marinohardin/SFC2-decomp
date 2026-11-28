@@ -680,18 +680,16 @@ void fn_00425fef(unsigned int* first, unsigned int* last, int depth)
 		}
 		unsigned int* p = last;
 		unsigned int* q = first;
-		for (;;) {
-			if (!(*q < pivot)) {
-				do {
-					--p;
-				} while (pivot < *p);
-				if (p <= q)
-					break;
-				unsigned int t = *q;
-				*q = *p;
-				*p = t;
-			}
-			++q;
+		for (;; ++q) {
+			for (; *q < pivot; ++q)
+				;
+			for (; pivot < *--p;)
+				;
+			if (p <= q)
+				break;
+			unsigned int t = *q;
+			*q = *p;
+			*p = t;
 		}
 		if (last - q <= q - first) {
 			fn_00425fef(q, last, 0);

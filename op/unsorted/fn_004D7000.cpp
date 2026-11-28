@@ -1,6 +1,152 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/fn_004D7000.cpp
-// Functions: 0x004d703f to 0x004d73a1, 23 in op/UNITS.tsv
-// Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
-// Profile:   game-release (harness/units.json)
+// HYPOTHESIS: the object is a counted array of 16-byte records at +4; the two callees
+// are cdecl range helpers (sort, then compact) whose real names are unknown.
+struct fn_004d703f_Array
+{
+    unsigned char m_count;
+    unsigned char m_pad[3];
+    char m_items[1][16];
+
+    void fn_004d703f();
+    float fn_004d707c(unsigned char index);
+    unsigned char fn_004d7099(float value);
+    float fn_004d70ce(unsigned char index);
+};
+
+void fn_004d8999(void* first, void* last, int arg);
+void* fn_004d8967(void* first, void* last);
+
+// FUNCTION: STARFLEETOP 0x004d703f
+void fn_004d703f_Array::fn_004d703f()
+{
+    fn_004d8999(m_items, m_items[m_count], 0);
+    m_count = ((char*)fn_004d8967(m_items, m_items[m_count]) - (char*)m_items) >> 4;
+}
+
+// FUNCTION: STARFLEETOP 0x004d707c
+float fn_004d703f_Array::fn_004d707c(unsigned char index)
+{
+    if (index < m_count)
+        return *(float*)m_items[index];
+    return 0.0f;
+}
+
+// FUNCTION: STARFLEETOP 0x004d7099
+unsigned char fn_004d703f_Array::fn_004d7099(float value)
+{
+    unsigned char i = 0;
+    if (m_count <= 0)
+        return 0xff;
+    while (value > *(float*)m_items[i]) {
+        i++;
+        if (i >= m_count)
+            return 0xff;
+    }
+    return i;
+}
+
+// FUNCTION: STARFLEETOP 0x004d70ce
+float fn_004d703f_Array::fn_004d70ce(unsigned char index)
+{
+    if (index < m_count)
+        return *(float*)(m_items[index] + 4);
+    return 0.0f;
+}
+
+#include "unsorted/tBaseWeapon.h"
+#include "unsorted/tIndividualShipSystem.h"
+
+// FUNCTION: STARFLEETOP 0x004d7292
+void tBaseWeapon::vfunction52()
+{
+    ((tIndividualShipSystem *)this)->tIndividualShipSystem::vfunction52();
+    if (vfunction106())
+    {
+        vfunction62();
+    }
+}
+
+// FUNCTION: STARFLEETOP 0x004d72dc
+void tBaseWeapon::vfunction54(int param_1)
+{
+    ((tRepairableShipSystem *)this)->tRepairableShipSystem::vfunction54(param_1);
+    if (vfunction106())
+    {
+        vfunction62();
+    }
+}
+
+// FUNCTION: STARFLEETOP 0x004d7304
+int tBaseWeapon::vfunction108()
+{
+    return field_104 + 1;
+}
+
+// FUNCTION: STARFLEETOP 0x004d730c
+float tBaseWeapon::vfunction109()
+{
+    return field_dc;
+}
+
+// FUNCTION: STARFLEETOP 0x004d7313
+float tBaseWeapon::vfunction110()
+{
+    return field_e0;
+}
+
+// FUNCTION: STARFLEETOP 0x004d731a
+float tBaseWeapon::vfunction111()
+{
+    return field_e4;
+}
+
+// FUNCTION: STARFLEETOP 0x004d7321
+void tBaseWeapon::vfunction124(int param_1)
+{
+    field_e8 = param_1;
+}
+
+// FUNCTION: STARFLEETOP 0x004d732e
+void tBaseWeapon::vfunction125(int param_1)
+{
+    field_10c = param_1;
+}
+
+// FUNCTION: STARFLEETOP 0x004d733b
+int tBaseWeapon::vfunction129()
+{
+    return field_114;
+}
+
+// FUNCTION: STARFLEETOP 0x004d7342
+bool tBaseWeapon::vfunction138()
+{
+    return vfunction106() > 0;
+}
+
+// FUNCTION: STARFLEETOP 0x004d7354
+void* tBaseWeapon::vfunction139()
+{
+    // HYPOTHESIS: returns the address of an embedded member at offset 0x80.
+    return (char*)this + 0x80;
+}
+
+// FUNCTION: STARFLEETOP 0x004d735b
+char tBaseWeapon::vfunction66()
+{
+    return field_fc;
+}
+
+// FUNCTION: STARFLEETOP 0x004d7362
+char tBaseWeapon::vfunction140()
+{
+    if (fn_004d76f8() == true) {
+        return 5;
+    }
+    return field_110;
+}
+
+// FUNCTION: STARFLEETOP 0x004d7378
+void tBaseWeapon::vfunction141(char param_1)
+{
+    field_110 = param_1;
+}

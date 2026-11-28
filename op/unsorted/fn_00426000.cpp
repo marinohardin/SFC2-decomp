@@ -318,9 +318,9 @@ float fn_0042653f(float x)
 
 int fn_00454339(unsigned int);
 
-// HYPOTHESIS: two float tables at 0x00c6c004 and 0x00c6a004, indexed by an angle in 8192 steps.
+// HYPOTHESIS: two float tables at 0x00c6c004 and 0x00c6a004 (gSinCosTable), indexed by an angle in 8192 steps.
 extern float g_00c6c004[];
-extern float g_00c6a004[];
+extern float gSinCosTable[];
 
 // FUNCTION: STARFLEETOP 0x00426886
 void fn_00426141_Class::fn_00426886(unsigned int mask)
@@ -341,7 +341,7 @@ void fn_00426141_Class::fn_00426886(unsigned int mask)
 	m20[index] = g_00c7c148;
 	tPoint3 q;
 	q.x = g_00c6c004[mask & 0x1fff] + pos.x;
-	q.y = g_00c6a004[mask & 0x1fff] + pos.y;
+	q.y = gSinCosTable[mask & 0x1fff] + pos.y;
 	q.z = pos.z;
 	m50[index] = q - pos;
 	m98[index] = 1;

@@ -19,9 +19,25 @@ struct fn_006abe00_Vtx
 {
 	fn_006abe00_Vtx() {}
 
-	char	data[0x40];
+	unsigned int	field_0x00;    // flags; 0x10: field_0x20 holds 1 / field_0x10 (0x006abeb0)
+	float			field_0x04;    // x
+	float			field_0x08;    // y
+	float			field_0x0c;
+	float			field_0x10;    // w
+	char			field_0x14[0x0c];
+	float			field_0x20;    // 1 / w, cached
+	char			field_0x24[0x08];
+	float			field_0x2c;    // the view's +0x1ef4 (vfunction71)
+	float			field_0x30;    // the view's +0x1ef8
+	float			field_0x34;    // colour (vfunction71)
+	float			field_0x38;
+	float			field_0x3c;
 };
 
+typedef char fn_006abe00_Vtx_size_is_0x40[ sizeof( fn_006abe00_Vtx ) == 0x40 ? 1 : -1 ];
+
+class tGLSurface;
+typedef void (*fn_006a9f20_Callback)(tGLSurface *, void *);    // the begin and end callbacks (SDK signature)
 // HYPOTHESIS: derived from tView3D (both carry the vtable slots the units call). Its size is
 // 0x1f4c: tSWView3D and tD3DViewMgr (allocated as 0x8010 bytes) both start their own members
 // there, and no method of this class touches a byte beyond it. No member is named in the exe,
@@ -37,83 +53,120 @@ struct fn_006abe00_Vtx
 // (0x0069f470) and are left undeclared; slots 97 and up are not evidenced.
 class tView3DExt : public tView3D {
 public:
+	// The 0x40-byte member at the view's +0x1eec (class name from the SDK's symbol of mInit,
+	// 0x006ac780, which sets +0x00 to -1, the next three words to 0 and the following eight to
+	// 1.0). Fields carry their offsets in this struct; the view's offset is 0x1eec more.
+	struct tPrimitive
+	{
+		void	mInit();
+
+		int					field_0x00;    // -1, or 0..9 (vfunction68)
+		int					field_0x04;    // the next cache entry, below 0x150
+		float				field_0x08;    // vfunction74
+		float				field_0x0c;
+		// HYPOTHESIS: a point; vfunction73 takes a tPoint3 * and vfunction68 sets it with tPoint3::mSet
+		tPoint3				field_0x10;    // vfunction73
+		// HYPOTHESIS: a colour point; vfunction77 sets it with tPoint3::mSet (the store order shows it)
+		tPoint3				field_0x1c;    // vfunction77, vfunction76
+		float				field_0x28;
+		float				field_0x2c;
+		float				field_0x30;
+		int					field_0x34;
+		unsigned int		field_0x38;    // at most 0x1000, vfunction78
+		int					field_0x3c;
+	};
+
+	tView3DExt();    // 0x006a9c60
 	virtual ~tView3DExt();    // slot 0, 0x006a9e80 is its deleting destructor
 
-	void	mAssertVtxCache( int count );
-
-	// Overrides, by tView3D's names (slot = number - 1). HYPOTHESIS: 0x006a95f0, the function
-	// in slot 5, is this class's (it frees the vertex cache); the symbol table now says so too,
-	// as a placeholder name.
-	virtual bool vfunction6();
-	virtual void (*vfunction13(void (*)(), void *))();    // 0x006a9f20, returns the old callback
-	virtual void (*vfunction14())();    // 0x006a9f40
-	virtual void (*vfunction15(void (*)(), void *))();    // 0x006a9f50, likewise
-	virtual void (*vfunction16())();    // 0x006a9f70
-	virtual void vfunction17(int, int, int, int);    // 0x006aa000, sets the viewport
-	virtual void vfunction18(int *, int *, int *, int *);    // 0x006aa080, reads it back
-	virtual int vfunction19(int);    // 0x006a9670, returns the old setting
-	virtual int vfunction20();    // 0x006a96d0
-	virtual int vfunction21(int);    // 0x006a96e0, accepts 3..5
-	virtual int vfunction22();    // 0x006a9700
-	virtual int vfunction23(int);    // 0x006a9620, accepts 6 and 7
-	virtual int vfunction24();    // 0x006a9660
-	virtual int vfunction32();    // 0x006a9aa0, returns 0x40 (the number of lights)
-	virtual void vfunction33(unsigned int, const void *);    // 0x006a9ab0, sets a 0x40-byte light
-	virtual void vfunction34(unsigned int, void *);    // 0x006a9ba0, reads one back
-	virtual fn_0040105e_Vector *vfunction36();    // 0x006a9ff0, the vector at +0x738
-	virtual bool vfunction37(bool);    // 0x006a9c20, returns the old flag
-	virtual bool vfunction38();    // 0x0069f190
-	virtual bool vfunction39(unsigned int, bool);    // 0x006a9c40, light enable, false past 0x40
-	virtual void vfunction45(float);    // 0x006a9710, clamps to 0..1 and keeps a byte copy
-	virtual float vfunction46();    // 0x006a9780
-	virtual bool vfunction47(bool);    // 0x0069fda0, returns the old flag
-	virtual void vfunction55(tMatrix *);    // 0x006aa4a0
-	virtual tMatrix *vfunction56();    // 0x006aa4d0
-	virtual void vfunction57(tPoint3 *);    // 0x006aa4e0
-	virtual void vfunction58(tMatrix *);    // 0x006aa550
+	// Overrides, by tView3D's names (SDK symbols).
+	virtual void mSetDriver(int);    // 0x006aa6d0, stores its argument at +0x774
+	virtual unsigned char mDone();    // 0x006a95f0, frees the vertex cache
+	virtual fn_006a9f20_Callback mSetBeginCallback(fn_006a9f20_Callback, void *);    // 0x006a9f20, returns the old callback
+	virtual fn_006a9f20_Callback mGetBeginCallback();    // 0x006a9f40
+	virtual fn_006a9f20_Callback mSetEndCallback(fn_006a9f20_Callback, void *);    // 0x006a9f50, likewise
+	virtual fn_006a9f20_Callback mGetEndCallback();    // 0x006a9f70
+	virtual void mSetViewport(int, int, int, int);    // 0x006aa000
+	virtual void mGetViewport(int *, int *, int *, int *);    // 0x006aa080, reads it back
+	virtual unsigned int mSetCullMode(unsigned int);    // 0x006a9670, returns the old setting
+	virtual unsigned int mGetCullMode();    // 0x006a96d0
+	virtual unsigned int mSetShadeMode(unsigned int);    // 0x006a96e0, accepts 3..5
+	virtual unsigned int mGetShadeMode();    // 0x006a9700
+	virtual unsigned int mSetWinding(unsigned int);    // 0x006a9620, accepts 6 and 7
+	virtual unsigned int mGetWinding();    // 0x006a9660
+	virtual unsigned long mGetMaxNumLights() const;    // 0x006a9aa0, returns 0x40
+	virtual void mSetLightDescription(unsigned long, const tGLLightDesc &);    // 0x006a9ab0, a 0x40-byte light
+	virtual void mGetLightDescription(unsigned long, tGLLightDesc &) const;    // 0x006a9ba0
+	virtual void mSetLightPosition(const tPoint3 &);    // 0x006a9f80, normalizes into +0x738
+	virtual const tPoint3 &mGetLightPosition();    // 0x006a9ff0, the vector at +0x738
+	virtual unsigned char mEnableLighting(unsigned char);    // 0x006a9c20, returns the old flag
+	virtual unsigned char mLightingEnabled();    // 0x0069f190
+	virtual unsigned char mEnableLight(unsigned long, unsigned char);    // 0x006a9c40, false past 0x40
+	virtual float mSetGlobalBlend(float);    // 0x006a9710, clamps to 0..1 and keeps a byte copy
+	virtual float mGetGlobalBlend();    // 0x006a9780
+	virtual unsigned char mEnableGlobalBlend(unsigned char);    // 0x0069fda0, returns the old flag
+	virtual void mSetCameraMtx(const tMatrix &);    // 0x006aa4a0
+	virtual const tMatrix &mGetCameraMtx();    // 0x006aa4d0
+	virtual void mGetCameraPosition(tPoint3 &);    // 0x006aa4e0
+	virtual void mSetModelMtx(const tMatrix &);    // 0x006aa550
 	virtual tMatrix *vfunction59();    // 0x006aa6c0
-	virtual void vfunction60(tMatrix *);    // 0x006aa3f0
-	virtual tMatrix *vfunction61();    // 0x006aa490
-	virtual void vfunction63(float, float, float, float, float, float);    // 0x006aa210
-	virtual void vfunction65(tMatrix *, float, float, float);    // 0x006aa0e0
-	virtual void vfunction66(tMatrix *, float, float);    // 0x006aa390
-	virtual void vfunction67(tMatrix *, float, float, float, float, float, float);    // 0x006aa2c0
-	virtual bool vfunction68(int);    // 0x006ac7c0
-	virtual void vfunction69();    // 0x006ac810
-	virtual void vfunction70(float, float, float);    // 0x006ad230
-	virtual void vfunction71(tPoint3 *);    // 0x006ad130
-	virtual void vfunction72(float, float, float);    // 0x006ad2d0
-	virtual void vfunction73(tPoint3 *);    // 0x006ad260
-	virtual void vfunction74(float, float);    // 0x006ad320
-	virtual void vfunction75(tPoint2 *);    // 0x006ad300
-	virtual void vfunction76(unsigned int);    // 0x006ad370
-	virtual void vfunction77(float, float, float);    // 0x006ad340
-	virtual void vfunction78(unsigned int);    // 0x006ad3e0
-	virtual void vfunction79(int, int);    // 0x006abf80
+	virtual void mSetProjMtx(const tMatrix &);    // 0x006aa3f0
+	virtual const tMatrix &mGetProjMtx();    // 0x006aa490
+	virtual void mSetPerspective(float, float, float);    // 0x006aa1c0, builds through mCreatePerspective and sets through mSetProjMtx
+	virtual void mSetOrtho(float, float, float, float, float, float);    // 0x006aa210
+	virtual void mSetOrthoIdentity(float, float);    // 0x006aa270
+	virtual void mCreatePerspective(tMatrix &, float, float, float);    // 0x006aa0e0
+	virtual void mCreateOrthoIdentity(tMatrix &, float, float);    // 0x006aa390
+	virtual void mCreateOrtho(tMatrix &, float, float, float, float, float, float);    // 0x006aa2c0
+	virtual unsigned char mBeginPrimitive(ePrimitiveType);    // 0x006ac7c0
+	virtual unsigned char mEndPrimitive();    // 0x006ac810
+	virtual void mVtxCoord(const tPoint3 &);    // 0x006ad130
+	virtual void mVtxCoord(float, float, float);    // 0x006ad230
+	virtual void mVtxNormal(const tPoint3 &);    // 0x006ad260
+	virtual void mVtxNormal(float, float, float);    // 0x006ad2d0
+	virtual void mVtxTexCoord(const tPoint2 &);    // 0x006ad300
+	virtual void mVtxTexCoord(float, float);    // 0x006ad320
+	virtual void mVtxColor(float, float, float);    // 0x006ad340
+	virtual void mVtxColor(tGLRgbQuad);    // 0x006ad370
+	virtual void mPrimitiveTexID(int);    // 0x006ad3e0
+	virtual void mSubmitVertices(int, const tPoint3 *);    // 0x006abf80
 	virtual void vfunction80(void *);    // 0x006abfb0
 	virtual void vfunction81(int, void **, bool);    // 0x006ac5a0
 
 	// New slots.
-	virtual void vfunction87();    // slot 86, 0x006aa6e0 clears the counters
-	virtual int vfunction88();    // slot 87..94, 0x006aa720..0x006aa790 return the counters
-	virtual int vfunction89();
-	virtual int vfunction90();
-	virtual int vfunction91();
-	virtual int vfunction92();
-	virtual int vfunction93();
-	virtual int vfunction94();
-	virtual int vfunction95();
+	virtual void mResetCounts();    // slot 86, 0x006aa6e0 clears the counters
+	virtual unsigned long mGetRawCountPoints();    // slot 87..94, 0x006aa720..0x006aa790 return the counters
+	virtual unsigned long mGetRawCountLines();
+	virtual unsigned long mGetRawCountTris();
+	virtual unsigned long mGetRawCountQuads();
+	virtual unsigned long mGetRawCountNGons();
+	virtual unsigned long mGetTrueCountPoints();
+	virtual unsigned long mGetTrueCountLines();
+	virtual unsigned long mGetTrueCountTris();
 	virtual int vfunction96();    // slot 95, not this class's (0x0069f470)
 	virtual bool vfunction97(int, int, void **, bool);    // slot 96, 0x006abfc0 draws a list
 	virtual bool vfunction98(int, int, int, bool) = 0;    // slot 97, pure here (+0x184); both implementations return a bool
 
+	// The clip rectangle mSetViewport writes (public statics, SDK symbols).
+	static tPoint2 fClipMin;
+	static tPoint2 fClipMax;
+
+protected:
+	void	mAssertVtxCache( int count );
+	void	mInitExt();    // 0x006a9540, resets the view's state
+	float	mGetPolyNormalZ();    // 0x006abeb0, the screen-space cross product of the first three indexed vertices
+	unsigned char	mFlushPrimitiveVtxs( unsigned char );    // 0x006ac900 (mEndPrimitive calls it with 1)
+	void	mFlushPolygon( unsigned long, int, int );    // 0x006ac830, counts a primitive by type and draws it through vfunction98
+	tPoint3	mCalcLightColor( const tPoint3 &, const tPoint3 & ) const;    // 0x006a9790 (mVtxNormal calls it), returns a point by value
+
+public:
 	fn_006abe00_Vtx		*mVtxCache;    // +0x04
 	int					mVtxCacheSize;    // +0x08
 	fn_006abe00_Vtx		*mVtxCacheEnd;    // +0x0c HYPOTHESIS: the first of the 16 spare entries
 	int					field_0x10;
 	// HYPOTHESIS: indices into the cache, written two bytes apart and read three at a time.
 	unsigned short		field_0x14[0x2a0];
-	int					field_0x554;    // 0x006abf80's second argument
+	const tPoint3		*field_0x554;    // mSubmitVertices' second argument
 	void				*field_0x558;    // 0x006abfb0's argument, read with a 0x24-byte stride
 	// The constructor builds these seven with tMatrix's constructor (0x0069c250).
 	tMatrix				field_0x55c;    // vfunction61, vfunction60
@@ -140,7 +193,7 @@ public:
 	float				field_0x17b8[0x40][3];
 	float				field_0x1ab8[0x40][3];
 	float				field_0x1db8[0x40];    // 1 / range, set by vfunction33
-	char				field_0x1eb8;    // vfunction37, vfunction38
+	unsigned char		field_0x1eb8;   // mEnableLighting, mLightingEnabled
 	int					field_0x1ebc;    // 6 or 7, vfunction23
 	int					field_0x1ec0;
 	int					field_0x1ec4;    // vfunction19
@@ -148,32 +201,14 @@ public:
 	int					field_0x1ecc;    // 3..5, vfunction21
 	char				field_0x1ed0;
 	float				field_0x1ed4;    // vfunction45
-	char				field_0x1ed8;    // vfunction47
+	bool				field_0x1ed8;    // vfunction47
 	unsigned char		field_0x1ed9;
-	void				(*field_0x1edc)();    // vfunction13
+	fn_006a9f20_Callback	field_0x1edc;    // vfunction13
 	void				*field_0x1ee0;
-	void				(*field_0x1ee4)();    // vfunction15
+	fn_006a9f20_Callback	field_0x1ee4;    // vfunction15
 	void				*field_0x1ee8;
-	// HYPOTHESIS: +0x1eec..+0x1f2b is one 0x40-byte member whose function 0x006ac780 (called
-	// with its address) sets +0x1eec to -1, the next three words to 0 and the following eight
-	// to 1.0; kept flat because nothing else is known of its type.
-	int					field_0x1eec;    // -1, or 0..9 (vfunction68)
-	int					field_0x1ef0;    // the next cache entry, below 0x150
-	float				field_0x1ef4;    // vfunction74
-	float				field_0x1ef8;
-	float				field_0x1efc;    // vfunction73
-	float				field_0x1f00;
-	float				field_0x1f04;
-	float				field_0x1f08;    // vfunction77, vfunction76
-	float				field_0x1f0c;
-	float				field_0x1f10;
-	float				field_0x1f14;
-	float				field_0x1f18;
-	float				field_0x1f1c;
-	int					field_0x1f20;
-	unsigned int		field_0x1f24;    // at most 0x1000, vfunction78
-	int					field_0x1f28;
-	int					field_0x1f2c[8];    // counters, cleared by vfunction87, read by vfunction88..95
+	tPrimitive			field_0x1eec;    // +0x1eec..+0x1f2b
+	unsigned long		field_0x1f2c[8];    // counters, cleared by mResetCounts, read by mGetRawCountPoints..mGetTrueCountTris
 };
 
 typedef char tView3DExt_size_is_0x1f4c[ sizeof( tView3DExt ) == 0x1f4c ? 1 : -1 ];
@@ -191,7 +226,12 @@ typedef char tView3DExt_field_0x1eb8_is_0x1eb8[ offsetof( tView3DExt, field_0x1e
 typedef char tView3DExt_field_0x1ed4_is_0x1ed4[ offsetof( tView3DExt, field_0x1ed4 ) == 0x1ed4 ? 1 : -1 ];
 typedef char tView3DExt_field_0x1edc_is_0x1edc[ offsetof( tView3DExt, field_0x1edc ) == 0x1edc ? 1 : -1 ];
 typedef char tView3DExt_field_0x1eec_is_0x1eec[ offsetof( tView3DExt, field_0x1eec ) == 0x1eec ? 1 : -1 ];
-typedef char tView3DExt_field_0x1f20_is_0x1f20[ offsetof( tView3DExt, field_0x1f20 ) == 0x1f20 ? 1 : -1 ];
 typedef char tView3DExt_field_0x1f2c_is_0x1f2c[ offsetof( tView3DExt, field_0x1f2c ) == 0x1f2c ? 1 : -1 ];
+
+// HYPOTHESIS: tView3D's destructor is empty and inline; ~tView3DExt (0x006a9eb0) ends with only the
+// base vtable store. It belongs after tView3D in tApp3dBase.h, which is outside this lane.
+inline tView3D::~tView3D()
+{
+}
 
 #endif

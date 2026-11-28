@@ -1,0 +1,10 @@
+file	address	name	tier	score	reason	claimed_functions
+data	007b8f38	??_7tSWView3D@@6B@	data	0.938	claim	0x0069f3b0
+fuzzy	0069cda0	?TraceErrorD3D@@YAXJPADH@Z	exact	1.0	claim	0x006a8930
+fuzzy	0069d3e0	?mGetDirectDraw@tD3DViewMgr@@IAEPAUIDirectDraw4@@XZ	exact	1.0	claim	0x006a8930
+fuzzy	006a11f0	??8tGLPixFmt@@QBEEABV0@@Z	exact	1.0	claim	0x006a8930
+fuzzy	006a6de0	??0tDDSurface@@QAE@XZ	exact	1.0	claim	0x006a8930
+fuzzy	006a7760	?mSetDDSurface@tDDSurface@@QAEXPAUIDirectDrawSurface4@@ABU_DDSURFACEDESC2@@E@Z	exact	1.0	claim	0x006a8930
+fuzzy	006a9c60	??0tView3DExt@@QAE@XZ	exact	1.0	claim	0x0069f3b0
+fuzzy	006ab380	?mRealFlush@tD3DBatch@tD3DViewMgr@@IAEXXZ	exact	1.0	claim	0x0069e490
+fuzzy	006b5c80	?mDone@twDLLMgrBase@@UAEXXZ	fuzzy	0.708	wrong-placement

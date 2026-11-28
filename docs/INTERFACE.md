@@ -8,7 +8,7 @@ version and says what changed, then the consumer's pull request that moves its p
 
 ## Format version
 
-`3`, the only line of the file `INTERFACE_VERSION` at the root of this repository. A consumer
+`5`, the only line of the file `INTERFACE_VERSION` at the root of this repository. A consumer
 reads it and stops with an error on a version it does not know.
 
 ## Source
@@ -75,6 +75,16 @@ reads it and stops with an error on a version it does not know.
 
 ## Version history
 
+- `5`: `analysis/results/retail_hashes.sha256` lists one server kit file where it listed two:
+  `SFCOPServer2552_B36/ServerPlatform.exe`, the 2.5.5.2 kit's server, replaces the 2.5.0.0 kit's
+  `SFCOPServer/ServerPlatform.exe` and `SFCOPServer/Assets/StarFleetOP.exe`. No tool here reads
+  those lines, and the game executable's and the SDK libraries' lines are unchanged; a consumer
+  that checks only those needs no change beyond the version.
+- `4`: `analysis/results/retail_hashes.sha256` lists a different hash for the SDK's
+  `dmp3D_MSVCR.lib`: that of the whole library (4,229,212 bytes, 56 objects). Version `3` listed
+  the hash of a copy cut off in its tenth object (848,082 bytes). No other line changed. A
+  consumer that checks an SDK against this list now accepts the whole library and refuses the
+  cut-off copy; one that reads only the executable's line needs no change beyond the version.
 - `3`: `harness/lib/funcs.py` and `harness/lib/target.py` gain a claimed-address rule, additive.
   `FunctionIndex.add_claims(addresses, table)` fills `FunctionIndex.claimed` (symbol -> addresses
   a source claim gives it), and `target.build` accepts a relocation to such an address, with

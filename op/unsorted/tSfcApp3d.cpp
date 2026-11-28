@@ -502,10 +502,10 @@ extern short g_00898ca8[4][10001];
 // HYPOTHESIS: a function pointer at 0x008ac574 that stores the square root of its first
 // argument through its second.
 extern void (*g_p008ac574)(float, float *);
-short fn_0069afc0(float, float);
+short ArcTangent(float, float);
 
 // HYPOTHESIS: builds the four quadrant tables from the unit circle: entry i of each holds the
-// value fn_0069afc0 gives for the point (+-x, +-sqrt(1 - x*x)), x = i / 10000; then counts
+// value ArcTangent gives for the point (+-x, +-sqrt(1 - x*x)), x = i / 10000; then counts
 // the entries left unset (the count is not used).
 // FUNCTION: STARFLEETOP 0x0040b14a
 void fn_0040b14a()
@@ -524,11 +524,11 @@ void fn_0040b14a()
 	for (i = 0; i <= 10000; i++) {
 		x = i * 0.0001f;
 		g_p008ac574(1.0f - x * x, &y);
-		g_00898ca8[0][i] = fn_0069afc0(x, y);
+		g_00898ca8[0][i] = ArcTangent(x, y);
 		negX = -x;
-		g_00898ca8[1][i] = fn_0069afc0(negX, y);
-		g_00898ca8[2][i] = fn_0069afc0(negX, -y);
-		g_00898ca8[3][i] = fn_0069afc0(x, -y);
+		g_00898ca8[1][i] = ArcTangent(negX, y);
+		g_00898ca8[2][i] = ArcTangent(negX, -y);
+		g_00898ca8[3][i] = ArcTangent(x, -y);
 	}
 	count = 0;
 	for (i = 0; i < 4; i++) {
@@ -587,7 +587,7 @@ bool fn_0046aa94();
 // FUNCTION: STARFLEETOP 0x0040b241
 bool tSfcApp3d::vfunction13()
 {
-	g_00c7c120.fn_006a0bb0();
+	g_00c7c120.mNewFrame();
 	g_0090bf18.fn_0045a76a();
 	fn_0060b3f4()->fn_005d80e0();
 	tThreadPool::Instance()->Heartbeat();

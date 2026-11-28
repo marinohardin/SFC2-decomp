@@ -1,4 +1,5 @@
 address	date	reason
 0x00427366	2026-11-24	Its unit defined nDataStore::tStreamable's destructor a second time, which no link accepts; the single definition stays at 0x006f8ed0.
+0x00504bff	2026-11-27	Its 11 bytes are the start of a 1,251-byte static initializer the analysis cut at its first call; a claim on them alone falls through into code that is not a function, so the claim is removed until the whole initializer is written.
 0x006e3000	2026-11-26	Its recorded score rested on the compiler's stock tree layout (a static nil node), which the original does not use; with the original's per-object nil node it scores 36.378%.
 0x007090b0	2026-11-26	objdiff cannot score it since the original's string header changed the code inlined into it (the tool does not finish); it was never exact and its recorded score is kept.

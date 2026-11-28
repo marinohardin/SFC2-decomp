@@ -319,3 +319,17 @@ fn_005224d8_holder::fn_005224d8_holder()
 	field_0 = 0;
 	field_8 = 0.0;
 }
+
+// HYPOTHESIS: the index lookup is a member of the owner object (class not declared yet);
+// a fastcall with an unused edx pushes the same arguments as its thiscall.
+int __fastcall fn_00522e1b(char *self, int, int param_1);
+
+// FUNCTION: STARFLEETOP 0x00522da1
+// HYPOTHESIS: a member of the owner object; its tAIUnitDataList sits at +0x218.
+void __fastcall fn_00522da1(char *self, int, int param_1, int param_2)
+{
+	int index = fn_00522e1b(self, 0, param_2);
+	if (index != -1) {
+		((tAIUnitDataList *)(self + 0x218))->fn_00520d69(param_1, index);
+	}
+}

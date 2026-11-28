@@ -539,13 +539,13 @@ tPoint3 tPhysicalEntity::vfunction29(const tPoint3 &aPoint, bool aValue)
 	vfunction28(aValue)->mTransform(point);
 	return point;
 }
-// HYPOTHESIS: the callee (0x0069c97c) takes the point alone and sits just after mTransform
-// (0x0069c970), so it is read as the rotation-only mTransform3x3; not yet confirmed.
+// The callee (0x0069c970) is tMatrix::mTransform( tPoint3 & ), the overload that transforms the
+// point in place (SDK match).
 // FUNCTION: STARFLEETOP 0x00413c24
 tPoint3 tPhysicalEntity::vfunction30(const tPoint3 &aPoint)
 {
 	tPoint3 point = aPoint;
-	fn_00413b34(false)->mTransform3x3(point);
+	fn_00413b34(false)->mTransform(point);
 	return point;
 }
 // FUNCTION: STARFLEETOP 0x00413c68

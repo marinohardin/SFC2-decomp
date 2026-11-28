@@ -6,13 +6,23 @@
 
 #include "unsorted/tApplication.h"
 
+#include "unsorted/tGLRgbQuad.h"
+
 class tBmpSurf;
+class tGLLightDesc;
+class tGLSurface;
 class tTexInfo;
+struct tGLRectI;
 class tMatrix;
 struct tPoint2;
 struct tPoint3;
 struct tagRECT;
 typedef tagRECT RECT;
+
+// The primitive kinds tView3D::mBeginPrimitive takes (0 to 9 are accepted); the enumerators
+// are not known, so none is declared.
+enum ePrimitiveType {
+};
 
 // HYPOTHESIS: a three-float vector built through float arguments (the copy goes through the FPU).
 struct fn_0040105e_Vector {
@@ -23,104 +33,106 @@ struct fn_0040105e_Vector {
 	float m_z;
 };
 
-// HYPOTHESIS: the view tApp3dBase::vfunction11 creates (tSWView3D or a Direct3D view, both
-// tView3D); only the vtable offsets the units use are evidenced.
+// The view tApp3dBase::vfunction11 creates (tSWView3D or a Direct3D view, both tView3D). The
+// slots that carry a name take it, with its signature, from the SDK's symbols for the classes that
+// implement them (tSWView3D, tView3DExt and tD3DViewMgr agree slot by slot); the others keep the
+// placeholder names and the signatures the units use. Overloads of one name are declared in
+// reverse slot order: VC6 lays out the virtual overloads of a name in reverse declaration order.
+typedef unsigned char (*fn_0069f510_Callback)(int, int, void *);    // mEnumDispModes' callback (SDK signature)
 class tView3D {
 public:
 	// +0x00 is the virtual destructor (tSWView3D 0x0069f490, tView3DExt 0x006a9e80).
 	virtual ~tView3D();
-	// +0x04 is tSWView3D 0x0069f510: stores its first argument and passes the second to a
-	// call on the surface object together with a callback.
-	virtual bool vfunction2(int, int);
-	// HYPOTHESIS: +0x08 and +0x0c open the view (with and without a display mode, as
-	// tApp3dBase::vfunction7 calls them); the trailing bool lets the view try its best setting first.
-	virtual bool vfunction3(int, int, int, int, RECT *, bool);    // +0x08
-	virtual bool vfunction4(int, int, RECT *, bool);    // +0x0c
+	virtual unsigned char mEnumDispModes(fn_0069f510_Callback callback, void *data);    // +0x04
+	// tApp3dBase::vfunction7 opens the view full screen or windowed; the trailing flag lets the
+	// view try its best setting first.
+	virtual unsigned char mInitFullscreen(void *, void *, int, int, const tGLRectI *, unsigned char);    // +0x08
+	virtual unsigned char mInitWindowed(void *, void *, const tGLRectI *, unsigned char);    // +0x0c
 	// HYPOTHESIS: +0x10 takes the "3D" "driver" setting.
-	virtual void vfunction5(int);    // +0x10
-	virtual bool vfunction6();    // +0x14, closes the view (tSWView3D 0x0069f900 returns true)
+	virtual void mSetDriver(int);    // +0x10
+	virtual unsigned char mDone();    // +0x14, closes the view (tSWView3D 0x0069f900 returns true)
 	virtual void vfunction7();
 	// HYPOTHESIS: +0x1c reports whether the view can draw this frame (tSfcApp3d::vfunction4
 	// tests it).
 	virtual bool vfunction8();    // +0x1c
 	virtual void vfunction9();    // +0x20
-	virtual int vfunction10();
-	virtual bool vfunction11();
-	virtual bool vfunction12();
-	virtual void (*vfunction13(void (*)(), void *))();    // +0x30
-	virtual void (*vfunction14())();
-	virtual void (*vfunction15(void (*)(), void *))();    // +0x38
-	virtual void (*vfunction16())();
-	virtual void vfunction17(int, int, int, int);
-	virtual void vfunction18(int *, int *, int *, int *);
-	virtual int vfunction19(int);
-	virtual int vfunction20();
-	virtual int vfunction21(int);
-	virtual int vfunction22();
-	virtual int vfunction23(int);
-	virtual int vfunction24();
-	virtual int vfunction25(int);
-	virtual int vfunction26();
-	virtual bool vfunction27(unsigned char, unsigned char, unsigned char);
-	virtual bool vfunction28(unsigned int);
-	virtual bool vfunction29(int, int, int, int, bool, bool);
-	virtual bool vfunction30(bool, bool);
-	virtual bool vfunction31();
-	virtual int vfunction32();
-	virtual void vfunction33(unsigned int, const void *);
-	virtual void vfunction34(unsigned int, void *);
-	virtual void vfunction35(fn_0040105e_Vector *);    // +0x88
-	virtual fn_0040105e_Vector *vfunction36();
-	virtual bool vfunction37(bool);
-	virtual bool vfunction38();
-	virtual bool vfunction39(unsigned int, bool);
-	virtual void vfunction40();
-	virtual void vfunction41();
+	virtual unsigned long mGetCaps();
+	virtual unsigned char mBeginScene();
+	virtual unsigned char mEndScene();
+	virtual void (*mSetBeginCallback(void (*)(tGLSurface *, void *), void *))(tGLSurface *, void *);    // +0x30
+	virtual void (*mGetBeginCallback())(tGLSurface *, void *);
+	virtual void (*mSetEndCallback(void (*)(tGLSurface *, void *), void *))(tGLSurface *, void *);    // +0x38
+	virtual void (*mGetEndCallback())(tGLSurface *, void *);
+	virtual void mSetViewport(int, int, int, int);
+	virtual void mGetViewport(int *, int *, int *, int *);
+	virtual unsigned int mSetCullMode(unsigned int);
+	virtual unsigned int mGetCullMode();
+	virtual unsigned int mSetShadeMode(unsigned int);
+	virtual unsigned int mGetShadeMode();
+	virtual unsigned int mSetWinding(unsigned int);
+	virtual unsigned int mGetWinding();
+	virtual unsigned int mSetPolygonMode(unsigned int);
+	virtual unsigned int mGetPolygonMode();
+	virtual unsigned char mSetClearColor(tGLRgbQuad);    // +0x6c
+	virtual unsigned char mSetClearColor(unsigned char, unsigned char, unsigned char);    // +0x68
+	virtual unsigned char mClear(unsigned char, unsigned char);    // +0x74
+	virtual unsigned char mClear(int, int, int, int, unsigned char, unsigned char);    // +0x70
+	virtual unsigned char mFlip();
+	virtual unsigned long mGetMaxNumLights() const;
+	virtual void mSetLightDescription(unsigned long, const tGLLightDesc &);
+	virtual void mGetLightDescription(unsigned long, tGLLightDesc &) const;
+	virtual void mSetLightPosition(const tPoint3 &);    // +0x88
+	virtual const tPoint3 &mGetLightPosition();
+	virtual unsigned char mEnableLighting(unsigned char);
+	virtual unsigned char mLightingEnabled();
+	virtual unsigned char mEnableLight(unsigned long, unsigned char);
+	virtual unsigned char mIsBlendEnabled();
+	virtual unsigned char mBlendEnable(unsigned char);
 	virtual void vfunction42();
-	virtual int vfunction43();
+	virtual unsigned long mGetSrcBlendCaps();
 	virtual void vfunction44();
-	virtual void vfunction45(float);
-	virtual float vfunction46();
-	virtual bool vfunction47(bool);
-	virtual bool vfunction48(bool);
-	virtual bool vfunction49(bool);
-	virtual bool vfunction50(bool);
-	virtual bool vfunction51(bool);
+	virtual float mSetGlobalBlend(float);
+	virtual float mGetGlobalBlend();
+	virtual unsigned char mEnableGlobalBlend(unsigned char);
+	virtual unsigned char mAlphaTestEnable(unsigned char);
+	virtual unsigned char mEnableZWriteAndTest(unsigned char);
+	virtual unsigned char mEnableZWrite(unsigned char);
+	virtual unsigned char mEnableZTest(unsigned char);
 	virtual void vfunction52();
 	virtual void vfunction53();
 	virtual void vfunction54();
-	virtual void vfunction55(tMatrix *);
-	virtual tMatrix *vfunction56();
-	virtual void vfunction57(tPoint3 *);
-	virtual void vfunction58(tMatrix *);
+	virtual void mSetCameraMtx(const tMatrix &);
+	virtual const tMatrix &mGetCameraMtx();
+	virtual void mGetCameraPosition(tPoint3 &);
+	virtual void mSetModelMtx(const tMatrix &);
 	virtual tMatrix *vfunction59();
-	virtual void vfunction60(tMatrix *);
-	virtual tMatrix *vfunction61();
-	virtual void vfunction62(float, float, float);    // +0xf4
-	virtual void vfunction63(float, float, float, float, float, float);
-	virtual void vfunction64(float, float);    // +0xfc
-	virtual void vfunction65(tMatrix *, float, float, float);
-	virtual void vfunction66(tMatrix *, float, float);
-	virtual void vfunction67(tMatrix *, float, float, float, float, float, float);
-	virtual bool vfunction68(int);
-	virtual void vfunction69();
-	virtual void vfunction70(float, float, float);
-	virtual void vfunction71(tPoint3 *);
-	virtual void vfunction72(float, float, float);
-	virtual void vfunction73(tPoint3 *);
-	virtual void vfunction74(float, float);
-	virtual void vfunction75(tPoint2 *);
-	virtual void vfunction76(unsigned int);
-	virtual void vfunction77(float, float, float);
-	virtual void vfunction78(unsigned int);
-	virtual void vfunction79(int, int);
+	virtual void mSetProjMtx(const tMatrix &);
+	virtual const tMatrix &mGetProjMtx();
+	virtual void mSetPerspective(float, float, float);    // +0xf4
+	virtual void mSetOrtho(float, float, float, float, float, float);
+	virtual void mSetOrthoIdentity(float, float);    // +0xfc
+	virtual void mCreatePerspective(tMatrix &, float, float, float);
+	virtual void mCreateOrthoIdentity(tMatrix &, float, float);
+	virtual void mCreateOrtho(tMatrix &, float, float, float, float, float, float);
+	virtual unsigned char mBeginPrimitive(ePrimitiveType);
+	virtual unsigned char mEndPrimitive();
+	virtual void mVtxCoord(const tPoint3 &);    // +0x118
+	virtual void mVtxCoord(float, float, float);    // +0x114
+	virtual void mVtxNormal(const tPoint3 &);    // +0x120
+	virtual void mVtxNormal(float, float, float);    // +0x11c
+	virtual void mVtxTexCoord(const tPoint2 &);    // +0x128
+	virtual void mVtxTexCoord(float, float);    // +0x124
+	virtual void mVtxColor(float, float, float);    // +0x130
+	virtual void mVtxColor(tGLRgbQuad);    // +0x12c
+	virtual void mPrimitiveTexID(int);
+	virtual void mSubmitVertices(int, const tPoint3 *);
 	virtual void vfunction80(void *);
 	virtual void vfunction81(int, void **, bool);
 	virtual bool vfunction82(void (__stdcall *)(void *, int), int);
 	virtual tTexInfo *vfunction83(int, void *, int, int, int);
 	virtual tTexInfo *vfunction84(int);
-	// HYPOTHESIS: +0x150 takes a texture handle and its surface (tSFCTexMgrEx::vfunction4).
-	virtual bool vfunction85(int, tBmpSurf *, char, int);    // +0x150
+	// +0x150 takes a texture handle and its surface (tSFCTexMgrEx::vfunction4).
+	virtual unsigned char mLoadTexture(int, tGLSurface &, unsigned char, unsigned long);    // +0x150
 	// HYPOTHESIS: tSfcApp3d::vfunction21 calls +0x154 with the two "Mouse" settings (async,
 	// hwblit) and passes its result to the mouse at 0x00898c24.
 	virtual int vfunction86(int, int);    // +0x154
@@ -162,7 +174,7 @@ public:
 	virtual void vfunction4();
 	virtual void vfunction5();
 	virtual void vfunction6();
-	virtual bool vfunction7(tView3D *, int, int, fn_0040105e_Params *);    // +0x18
+	virtual unsigned char vfunction7(tView3D *, int, int, fn_0040105e_Params *);    // +0x18, returns what the view's mInitFullscreen returns
 	virtual void vfunction8(tView3D *);    // +0x1c
 	virtual void vfunction9(tView3D *);    // +0x20
 	virtual void vfunction10();

@@ -25,7 +25,7 @@ float fn_00516733(float param_1);
 float fn_005167ee(float param_1);
 short fn_00516825(float param_1);
 // HYPOTHESIS: the arc tangent of a point as an angle, as tSfcApp3d.cpp declares it.
-short fn_0069afc0(float, float);
+short ArcTangent(float, float);
 
 // FUNCTION: STARFLEETOP 0x00515daa
 tAIHelmOfficer::~tAIHelmOfficer()
@@ -130,7 +130,7 @@ void tAIHelmOfficer::fn_00515f27()
 		tPoint3 toLeader;
 		toPoint = shipPos - field_0x80;
 		toLeader = shipPos - field_0x8c;
-		short bearing = fn_0069afc0(toPoint.x, toPoint.y);
+		short bearing = ArcTangent(toPoint.x, toPoint.y);
 		bool b5 = false;
 		bool b4 = false;
 		float dist = sqrt(toPoint.x * toPoint.x + toPoint.y * toPoint.y);
@@ -228,7 +228,7 @@ void tAIHelmOfficer::fn_00515f27()
 				field_0x80 = object->fn_00527bfd(turnedOne || turnedOther ? 0.99 : 0.2f);
 				field_0x140->fn_005252b0(field_0x20, &field_0x80);
 				toPoint = shipPos - field_0x80;
-				field_0x14c = fn_0069afc0(toPoint.x, toPoint.y) + 0x1000;
+				field_0x14c = ArcTangent(toPoint.x, toPoint.y) + 0x1000;
 				field_0x144 = fn_00516733(dist) + speed;
 				field_0x154 = turnedOne && field_0x156;
 				field_0x155 = turnedOther && field_0x156;

@@ -19,13 +19,25 @@ class tEntity_Seeker : public tEntity_Weapon
 public:
 	tEntity_Seeker();
 
+	virtual void vfunction5();
+
 	virtual void vfunction11(tSFCStream &s, int32u mode);
+	virtual float vfunction14();
+	// HYPOTHESIS: the entity kind; the seeker answers 0xc.
+	virtual int vfunction18();
+	virtual void vfunction22(unsigned aIndex, void *aRecord);
+	// HYPOTHESIS: slot 22, returns the int at +0x268 (0x0041e93f).
+	virtual int vfunction23();
+	// HYPOTHESIS: slot 23, the int at +0x268 over the int at +0x270 as a fraction.
+	virtual float vfunction24();
 	virtual void vfunction26(short a1, int a2, int a3, int a4, int a5);
+	virtual bool vfunction31();
 
 	// HYPOTHESIS: slot 62, returns the float at +0x260 (0x0041e09b).
 	virtual float vfunction63();
-	// HYPOTHESIS: returns a one-byte member at +0x275.
-	virtual bool vfunction70();
+	// HYPOTHESIS: returns the "fActive" byte at +0x275 (0x0041e0a2); a plain byte load, so
+	// the return type is char, not bool.
+	virtual char vfunction70();
 	// HYPOTHESIS: returns the int at +0x270.
 	virtual int vfunction71();
 
@@ -34,6 +46,9 @@ public:
 	void fn_0041ee42( unsigned char *a, char *b, char *c );
 	void fn_0041eeaf();
 	void fn_0041ef62();
+	// HYPOTHESIS: a member of this class (it follows slot 21 in the unit); tests the int at
+	// +0x1bc for 15 to 17 and the byte at +0x1c0 for 3.
+	bool fn_00420493();
 
 	char field_0x248[0x18];
 	// HYPOTHESIS: a float; the constructor sets it to 0.0 and slot 62 returns it.
@@ -53,5 +68,26 @@ public:
 };
 
 typedef char tEntity_Seeker_size_is_0x288[ sizeof( tEntity_Seeker ) == 0x288 ? 1 : -1 ];
+
+// HYPOTHESIS: the class of the 0xa0-byte entity tEntity_HellboreSeeker's slot 4 (0x004204b2)
+// creates; RTTI names it, the base is taken to be tEntity. The constructor (0x0042135f) takes
+// the seeker's target ID and the int at +0x26c.
+class tEntity_HellboreBlast : public tEntity
+{
+public:
+	tEntity_HellboreBlast( tID aTarget, int aValue );
+
+	// HYPOTHESIS: places the entity at the point; the symbol table's lead puts 0x0041089e in
+	// tEntity_Tractor, which is declared only inside another unit.
+	void fn_0041089e( tPoint3 *aPos );
+
+	char field_0x88[0xa0 - sizeof( tEntity )];
+};
+
+class tEntity_HellboreSeeker : public tEntity_Seeker
+{
+public:
+	virtual void vfunction5();
+};
 
 #endif	// tEntity_Seeker_h

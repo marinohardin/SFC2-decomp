@@ -9,7 +9,6 @@
 
 extern float g_00799ed0;
 extern double g_0090bef0;
-extern float g_007959cc;
 extern int g_008e0cd0;
 extern double g_00c7c148;
 
@@ -381,7 +380,7 @@ tValue<float>* tShipSystemsFighter::vfunction42()
 // FUNCTION: STARFLEETOP 0x004443e1
 float tShipSystemsFighter::vfunction51( int )
 {
-    return g_007959cc;
+    return 1.0f;
 }
 
 // HYPOTHESIS: the return type; the original returns the address of m5c4.

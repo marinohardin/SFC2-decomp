@@ -723,6 +723,8 @@ std::string g_s00c39a28 = "MinChat";
 // once the class is instantiated. Drop this line when the caller lands.
 template class std::map<int, int>;
 template class std::map<int, std::vector<int> >;
-template class std::vector<std::string>;
+// MATCH-ONLY: never called; it instantiates the vector class so VC6 emits the insert specialization at
+// 0x005fb124, without the explicit instantiation's copies of every other member.
+std::vector<std::string>::iterator (std::vector<std::string>::*g_fn_005fb124)( std::vector<std::string>::iterator, const std::string& ) = &std::vector<std::string>::insert;
 template class std::map<int, std::string>;
 template class std::map<std::string, int>;

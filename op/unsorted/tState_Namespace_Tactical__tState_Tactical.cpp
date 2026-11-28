@@ -20,22 +20,22 @@ public:
 	virtual fn_00918838_object *vfunction1();
 };
 
-// HYPOTHESIS: the mouse at 0x00898c24: slot 9 selects a cursor by name, slot 10 a race's cursor.
-class fn_00898c24_object
-{
-public:
-	virtual void vfunction0();
-	virtual void vfunction1();
-	virtual void vfunction2();
-	virtual void vfunction3();
-	virtual void vfunction4();
-	virtual void vfunction5();
-	virtual void vfunction6();
-	virtual void vfunction7();
-	virtual void vfunction8();
-	virtual void vfunction9(const char *name);
-	virtual void vfunction10(int kind);
-};
+// The type of the mouse at 0x00898c24 is declared in unsorted/tState_Tactical.h.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // HYPOTHESIS: the object at 0x00969088, slot 1 takes nothing.
 class fn_00969088_object
@@ -100,7 +100,7 @@ public:
 void __fastcall fn_0069b450( tMatrix *self, int unused, tMatrix *other );
 void __fastcall fn_0069c7c0( tMatrix *self, int unused, float x, float y, float z );
 
-extern fn_00898c24_object *g_00898c24;
+
 extern fn_00918838_object *g_00918838;
 extern fn_00918838_object *g_0091883c;
 extern fn_00918838_object *g_00918840;
@@ -114,16 +114,27 @@ extern fn_00918838_object *g_0091885c;
 extern fn_00918838_object *g_00918860;
 extern fn_00969088_object *g_00969088;
 extern fn_0084b47c_object *g_0084b47c;
+// The type of the object at 0x00919b44 is declared in unsorted/tState_Tactical.h.
 
-// HYPOTHESIS: the 0xb0-byte object built by 0x004afd4d (tState_Tactical's field_360, and the
-// global at 0x0092f478 that the three matrices at 0x0092f528 to 0x0092f5b8 follow).
-class fn_0092f478_object
-{
-public:
-	void fn_004afec0( tPoint3 *point, int kind, tMatrix *matrix );
-	void fn_004b9d12( fn_0092f478_object *other );
-	unsigned char m_data[0xb0];
-};
+
+
+
+
+
+
+
+
+
+
+// fn_0092f478_object is declared in unsorted/tState_Tactical.h.
+
+
+
+
+
+
+
+
 
 // HYPOTHESIS: the list head at tState_Tactical's field_1ac.
 class fn_004bc3e1_owner
@@ -148,8 +159,8 @@ extern char g_b00850b62;
 extern char g_b008930a2;
 
 
-// MATCH-ONLY: tObject_00918888 declares slots 5 and 6 as void and nullary; the calls here need
-// slot 5 to return an int and slot 6 to take a point and return a truth value.
+// MATCH-ONLY: tObject_00918888 declares slots 4 to 6 as void and nullary; the calls here need
+// slot 4 to return a matrix, slot 5 an int and slot 6 to take a point and return a truth value.
 class fn_00918888_slots
 {
 public:
@@ -157,7 +168,7 @@ public:
 	virtual void vfunction1();
 	virtual void vfunction2();
 	virtual void vfunction3();
-	virtual void vfunction4();
+	virtual tMatrix *vfunction4();
 	virtual int vfunction5();
 	virtual bool vfunction6( tPoint3 *point );
 	virtual void vfunction7();
@@ -190,6 +201,118 @@ bool fn_00434584();
 
 extern "C" unsigned long __stdcall timeGetTime();
 extern "C" void __stdcall Sleep( unsigned long ms );
+
+namespace tState_Namespace_Tactical
+{
+
+// FUNCTION: STARFLEETOP 0x004aaff9
+// FUNCTION: STARFLEETOP 0x004ab015
+tState_Tactical::~tState_Tactical()
+{
+	// HYPOTHESIS: the object at 0x00919b44 is owned by the state and deleted with it.
+	if ( g_00919b44 )
+		delete g_00919b44;
+}
+
+}	// namespace tState_Namespace_Tactical
+
+// HYPOTHESIS: a member of an int rectangle {left, top, right, bottom}: it grows the first two
+// fields and shrinks the last two toward the rectangle given.
+// FUNCTION: STARFLEETOP 0x004ab4c3
+void __fastcall fn_004ab4c3( int *self, int unused, int *other )
+{
+	if ( self[0] < other[0] )
+		self[0] = other[0];
+	if ( self[1] < other[1] )
+		self[1] = other[1];
+	if ( self[2] > other[2] )
+		self[2] = other[2];
+	if ( self[3] > other[3] )
+		self[3] = other[3];
+}
+
+extern unsigned char g_009186c4;
+extern unsigned char g_009186c5;
+extern unsigned char g_009186c6;
+extern unsigned char g_009186c7;
+
+#define TACT_CLAMP01( x ) ( ( ( ( x ) > 0.0f ? ( x ) : 0.0f ) < 1.0f ) ? ( ( x ) > 0.0f ? ( x ) : 0.0f ) : 1.0f )
+
+extern unsigned char g_009186c0;
+extern unsigned char g_009186c1;
+extern unsigned char g_009186c2;
+extern unsigned char g_009186c3;
+
+#define TACT_CLAMP01G( x ) ( ( ( ( x ) > zero ? ( x ) : 0.0f ) < 1.0f ) ? ( ( x ) > zero ? ( x ) : 0.0f ) : 1.0f )
+
+// HYPOTHESIS: sets a global colour from three floats in 0..1 (red, green, blue).
+// FUNCTION: STARFLEETOP 0x004ab4f3
+void __cdecl fn_004ab4f3( float *rgb )
+{
+	g_009186c6 = (unsigned char)( TACT_CLAMP01( rgb[0] ) * 255.0f );
+	g_009186c5 = (unsigned char)( TACT_CLAMP01( rgb[1] ) * 255.0f );
+	g_009186c4 = (unsigned char)( TACT_CLAMP01( rgb[2] ) * 255.0f );
+	g_009186c7 = 0xff;
+}
+
+// FUNCTION: STARFLEETOP 0x004ab5c6
+void __cdecl fn_004ab5c6( float *rgb )
+{
+	float zero = 0.0f;
+	g_009186c2 = (unsigned char)( TACT_CLAMP01G( rgb[0] ) * 255.0f );
+	g_009186c1 = (unsigned char)( TACT_CLAMP01G( rgb[1] ) * 255.0f );
+	g_009186c0 = (unsigned char)( TACT_CLAMP01G( rgb[2] ) * 255.0f );
+	g_009186c3 = 0xff;
+}
+
+// FUNCTION: STARFLEETOP 0x004ab699
+void __cdecl fn_004ab699( unsigned char *rgba )
+{
+	rgba[2] = g_009186c2;
+	rgba[1] = g_009186c1;
+	unsigned char r = g_009186c0;
+	rgba[3] = 0xff;
+	rgba[0] = r;
+}
+
+// HYPOTHESIS: the object at 0x009199c8, whose slot 9 takes a mode.
+class fn_009199c8_object
+{
+public:
+	virtual void vfunction0();
+	virtual void vfunction1();
+	virtual void vfunction2();
+	virtual void vfunction3();
+	virtual void vfunction4();
+	virtual void vfunction5();
+	virtual void vfunction6();
+	virtual void vfunction7();
+	virtual void vfunction8();
+	virtual void vfunction9( int mode );
+};
+
+extern fn_009199c8_object *g_009199c8;
+extern int g_009186bc;
+
+// FUNCTION: STARFLEETOP 0x004ab6bc
+void __cdecl fn_004ab6bc( int kind )
+{
+	switch ( kind )
+	{
+	case 0:
+		g_009186bc = 0;
+		g_009199c8->vfunction9( 0 );
+		break;
+	case 1:
+		g_009186bc = 1;
+		g_009199c8->vfunction9( 1 );
+		break;
+	case 2:
+		g_009186bc = 2;
+		g_009199c8->vfunction9( 3 );
+		break;
+	}
+}
 
 namespace tState_Namespace_Tactical
 {
@@ -316,6 +439,128 @@ bool tState_Tactical::vfunction4()
 	return true;
 }
 
+}	// namespace tState_Namespace_Tactical
+
+// FUNCTION: STARFLEETOP 0x004aba3c
+void __cdecl fn_004aba3c( char value )
+{
+	g_b00850b62 = value;
+}
+
+// FUNCTION: STARFLEETOP 0x004aba46
+void __cdecl fn_004aba46()
+{
+	fn_004aba3c( 0 );
+}
+
+#include "unsorted/tObject_0090b730.h"
+
+// HYPOTHESIS: pointers to the names of the states, held in variables.
+extern const char *g_00850bd0;
+extern const char *g_00850bc4;
+extern int gValue_0090b670;
+
+namespace tState_Namespace_Tactical
+{
+
+// FUNCTION: STARFLEETOP 0x004aba4f
+void tState_Tactical::fn_004aba4f()
+{
+	const char *name;
+	if ( gObject_0092deb4->vfunction57() )
+	{
+		int state = gObject_0090b730.fn_0060ca4f();
+		if ( state != 0 )
+		{
+			if ( state <= 0 )
+				return;
+			if ( state > 5 )
+				return;
+			field_468 = g_00850bc4;
+			name = g_00850bc4;
+		}
+		else
+		{
+			field_468 = g_00850bd0;
+			return;
+		}
+	}
+	else
+	{
+		int state = gObject_0090b730.fn_0060ca4f();
+		if ( state != 0 )
+		{
+			if ( state > 0 && state <= 5 )
+				field_468 = g_00850bc4;
+		}
+		else
+		{
+			if ( gValue_0090b670 != 2 )
+				field_468 = g_00850bd0;
+			else
+				field_468 = "FilmRoom";
+		}
+		name = field_468;
+	}
+	field_46c = name;
+}
+
+// FUNCTION: STARFLEETOP 0x004adc4c
+char *tState_Tactical::vfunction13()
+{
+	return "tactical";
+}
+
+// FUNCTION: STARFLEETOP 0x004adc52
+unsigned char tState_Tactical::fn_004adc52()
+{
+	return field_48e;
+}
+
+// FUNCTION: STARFLEETOP 0x004adc6d
+// FUNCTION: STARFLEETOP 0x004adc63
+tState_Tactical g_tState_Tactical;
+
+// HYPOTHESIS: a free accessor for the one tactical state; whether it was a static member is not known.
+// FUNCTION: STARFLEETOP 0x004adc83
+tState_Tactical *fn_004adc83()
+{
+	return &g_tState_Tactical;
+}
+
+// HYPOTHESIS: an object of unknown type at 0x008515c8; the slot returns only its address.
+extern int g_008515c8;
+
+// FUNCTION: STARFLEETOP 0x004af807
+void *tState_Tactical::vfunction19()
+{
+	return &g_008515c8;
+}
+
+// FUNCTION: STARFLEETOP 0x004b6647
+void tState_Tactical::vfunction10( int param_1 )
+{
+	g_00919f00.fn_004b6642();
+}
+
+// FUNCTION: STARFLEETOP 0x004b714d
+void tState_Tactical::vfunction7( int param_1 )
+{
+	field_240 = 0;
+	g_00919f00.fn_004b6642();
+}
+
+// FUNCTION: STARFLEETOP 0x004b99f7
+void tState_Tactical::vfunction8( int *param_1 )
+{
+	// HYPOTHESIS: the argument is the view, as in vfunction9.
+	tView3D *view = (tView3D *)param_1;
+	view->mSetClearColor( 0, 0, 0 );
+	view->mClear( true, true );
+	gObject_00918888->vfunction3();
+	view->mSetCameraMtx( *( (fn_00918888_slots *)gObject_00918888 )->vfunction4() );
+}
+
 // FUNCTION: STARFLEETOP 0x004b9a3a
 void tState_Tactical::vfunction9( int *param_1 )
 {
@@ -324,16 +569,16 @@ void tState_Tactical::vfunction9( int *param_1 )
 	if ( param_1 )
 	{
 		// HYPOTHESIS: the counts of the seven growable arrays (+4 of each {data, count, capacity}).
-		*(int *)&field_410[4] = 0;
-		*(int *)&field_41c[4] = 0;
-		*(int *)&field_428[4] = 0;
-		*(int *)&field_434[4] = 0;
-		*(int *)&field_440[4] = 0;
-		*(int *)&field_44c[4] = 0;
-		*(int *)&field_458[4] = 0;
+		*(int *)&field_410.m_data[4] = 0;
+		*(int *)&field_41c.m_data[4] = 0;
+		*(int *)&field_428.m_data[4] = 0;
+		*(int *)&field_434.m_data[4] = 0;
+		*(int *)&field_440.m_data[4] = 0;
+		*(int *)&field_44c.m_data[4] = 0;
+		*(int *)&field_458.m_data[4] = 0;
 		// HYPOTHESIS: the argument is the view (slot 55 returns its matrix, slot 60 its projection).
 		tView3D *view = (tView3D *)param_1;
-		tMatrix *matrix = view->vfunction56();
+		const tMatrix *matrix = &view->mGetCameraMtx();
 		field_294 = *matrix;
 		gMatrix_0092f5b8 = *matrix;
 		float halfWidth = (float)( ( field_1f0[2] - field_1f0[0] ) >= 0 ? ( field_1f0[2] - field_1f0[0] ) : 0 ) * 0.5f;
@@ -342,7 +587,7 @@ void tState_Tactical::vfunction9( int *param_1 )
 			tMatrix screen;
 			screen.mTranslate( (float)field_1f0[0] + halfWidth, (float)field_1f0[1] + halfHeight, 0.0f );
 			fn_0069c7c0( &screen, 0, halfWidth, -halfHeight, 1.0f );
-			fn_0069b450( &screen, 0, view->vfunction61() );
+			fn_0069b450( &screen, 0, (tMatrix *)&view->mGetProjMtx() );
 
 
 			field_31c = screen;
@@ -357,7 +602,7 @@ void tState_Tactical::vfunction9( int *param_1 )
 		if ( g_00850bd4 != 0 && !g_b008930a2 )
 		{
 			fn_00509aaf( param_1 );
-			( (fn_004bc3e1_owner *)field_1ac )->fn_004bc3e1( param_1 );
+			( (fn_004bc3e1_owner *)&field_1ac )->fn_004bc3e1( param_1 );
 			fn_0050a25d( param_1 );
 			if ( haveTarget )
 			{
@@ -392,17 +637,31 @@ void tState_Tactical::vfunction9( int *param_1 )
 			light.f6 = 1.0f;
 			light.f1 = 0.0f;
 			light.f2 = 0.0f;
-			light.f7 = ( view->vfunction10() & 0x20 ) ? 1.5f : 4.0f;
-			view->vfunction33( 0, (void *)&light.type );
-			view->vfunction39( 0, true );
-			if ( (unsigned int)view->vfunction32() > 1 )
-				view->vfunction39( 1, false );
+			light.f7 = ( view->mGetCaps() & 0x20 ) ? 1.5f : 4.0f;
+			view->mSetLightDescription( 0, *(const tGLLightDesc *)&light.type );
+			view->mEnableLight( 0, true );
+			if ( view->mGetMaxNumLights() > 1 )
+				view->mEnableLight( 1, false );
 			fn_004ba7c7( param_1 );
 			fn_004ecfb3( param_1 );
 			g_00967af4->vfunction2( param_1 );
 		}
 		fn_004ba9eb( param_1 );
 	}
+}
+
+// FUNCTION: STARFLEETOP 0x004b9dd6
+void tState_Tactical::vfunction11( int param_1 )
+{
+	int *rect = field_1f0;
+	if ( rect[0] < rect[2] && rect[1] < rect[3] )
+	{
+		fn_004b97cc( rect );
+		return;
+	}
+	rect = field_1e0;
+	if ( rect[0] < rect[2] && rect[1] < rect[3] )
+		fn_004b97cc( rect );
 }
 
 }	// namespace tState_Namespace_Tactical

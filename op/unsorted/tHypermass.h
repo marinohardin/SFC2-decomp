@@ -4,6 +4,8 @@
 #ifndef tHypermass_h
 #define tHypermass_h 1
 
+#include "Tiger/tvectormath.h"
+
 // Seven instances exist, static objects with N = 12, 16, 20, 24, 28, 32 and 36 (constructors
 // 0x004f857c, 0x004f8a02, 0x004f8e88, 0x004f930e, 0x004f9794, 0x004f9c1a, 0x004fa0a0; the
 // vtables 0x007aa5c4 to 0x007aa624 each hold one slot, the draw routine). The constructors are
@@ -16,6 +18,10 @@ class tHypermass
 public:
 	tHypermass();
 	virtual void vfunction1(int *param_1);
+	tPoint3 fn_004fa526(unsigned int param_2, unsigned int param_3);
+	tPoint2 fn_004fa58f(unsigned int param_2, unsigned int param_3);
+	void fn_004fa662(tPoint3 *param_1, float param_2, char param_3);
+	void fn_004fa6ec();
 
 	int field_04;	// N
 	float field_08;	// 1 / 12 in the first instance

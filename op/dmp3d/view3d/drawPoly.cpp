@@ -39,7 +39,7 @@ void tView3DExt::mAssertVtxCache( int count )
 
 		mVtxCache = new fn_006abe00_Vtx[ count + 16 ];
 		if ( mVtxCache == NULL )
-			throw fn_006a2ec0( __FILE__, __LINE__, "tView3DExt::mAssertVtxCache(): Unable to allocate vertex cache" );
+			throw tErrInfo( __FILE__, __LINE__, "tView3DExt::mAssertVtxCache(): Unable to allocate vertex cache" );
 
 		mVtxCacheSize = count;
 		mVtxCacheEnd = mVtxCache + count;
