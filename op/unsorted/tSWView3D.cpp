@@ -114,7 +114,7 @@ tSWView3D::~tSWView3D()
 }
 
 // FUNCTION: STARFLEETOP 0x0069f510
-unsigned char tSWView3D::mEnumDispModes(unsigned char (*a)(int, int, void *), void *b)
+unsigned char tSWView3D::mEnumDispModes(fn_0069f510_Callback a, void *b)
 {
 	fn_0069f510_Device *device = (fn_0069f510_Device *)field_1f68;
 	bool created = false;

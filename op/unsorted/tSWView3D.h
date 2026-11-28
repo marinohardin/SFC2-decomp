@@ -30,7 +30,7 @@ class tSWView3D : public tView3DExt {
 public:
 	tSWView3D();
 	virtual ~tSWView3D();    // +0x00 0x0069f490, the body is 0x0069f4b0
-	virtual unsigned char mEnumDispModes(unsigned char (*)(int, int, void *), void *);    // +0x04 0x0069f510
+	virtual unsigned char mEnumDispModes(fn_0069f510_Callback, void *);    // +0x04 0x0069f510
 	virtual unsigned char mInitFullscreen(void *, void *, int, int, const tGLRectI *, unsigned char);    // +0x08 0x0069f850
 	virtual unsigned char mInitWindowed(void *, void *, const tGLRectI *, unsigned char);    // +0x0c 0x0069f8a0
 	virtual unsigned char mDone();    // +0x14 0x0069f900

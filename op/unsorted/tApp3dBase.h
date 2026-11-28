@@ -38,11 +38,12 @@ struct fn_0040105e_Vector {
 // implement them (tSWView3D, tView3DExt and tD3DViewMgr agree slot by slot); the others keep the
 // placeholder names and the signatures the units use. Overloads of one name are declared in
 // reverse slot order: VC6 lays out the virtual overloads of a name in reverse declaration order.
+typedef unsigned char (*fn_0069f510_Callback)(int, int, void *);    // mEnumDispModes' callback (SDK signature)
 class tView3D {
 public:
 	// +0x00 is the virtual destructor (tSWView3D 0x0069f490, tView3DExt 0x006a9e80).
 	virtual ~tView3D();
-	virtual unsigned char mEnumDispModes(unsigned char (*callback)(int, int, void *), void *data);    // +0x04
+	virtual unsigned char mEnumDispModes(fn_0069f510_Callback callback, void *data);    // +0x04
 	// tApp3dBase::vfunction7 opens the view full screen or windowed; the trailing flag lets the
 	// view try its best setting first.
 	virtual unsigned char mInitFullscreen(void *, void *, int, int, const tGLRectI *, unsigned char);    // +0x08
