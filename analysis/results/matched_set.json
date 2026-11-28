@@ -18883,6 +18883,114 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x004db93e": {
+   "name": "FUN_004db93e",
+   "symbol": "_$E1",
+   "unit": "unsorted/fn_004DB93E.cpp",
+   "size": 10,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-28"
+  },
+  "0x004db948": {
+   "name": "FUN_004db948",
+   "symbol": "_$E3",
+   "unit": "unsorted/fn_004DB93E.cpp",
+   "size": 12,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-28"
+  },
+  "0x004dba29": {
+   "name": "FUN_004dba29",
+   "symbol": "_$E1",
+   "unit": "unsorted/fn_004DBA29.cpp",
+   "size": 10,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-28"
+  },
+  "0x004dba33": {
+   "name": "FUN_004dba33",
+   "symbol": "_$E3",
+   "unit": "unsorted/fn_004DBA29.cpp",
+   "size": 12,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-28"
+  },
+  "0x004dbb16": {
+   "name": "FUN_004dbb16",
+   "symbol": "_$E1",
+   "unit": "unsorted/fn_004DBB16.cpp",
+   "size": 10,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-28"
+  },
+  "0x004dbb20": {
+   "name": "FUN_004dbb20",
+   "symbol": "_$E3",
+   "unit": "unsorted/fn_004DBB16.cpp",
+   "size": 12,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-28"
+  },
+  "0x004dbc01": {
+   "name": "FUN_004dbc01",
+   "symbol": "_$E1",
+   "unit": "unsorted/fn_004DBC01.cpp",
+   "size": 10,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-28"
+  },
+  "0x004dbc0b": {
+   "name": "FUN_004dbc0b",
+   "symbol": "_$E3",
+   "unit": "unsorted/fn_004DBC01.cpp",
+   "size": 12,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-28"
+  },
+  "0x004dbcee": {
+   "name": "FUN_004dbcee",
+   "symbol": "_$E1",
+   "unit": "unsorted/fn_004DBCEE.cpp",
+   "size": 10,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-28"
+  },
+  "0x004dbcf8": {
+   "name": "FUN_004dbcf8",
+   "symbol": "_$E3",
+   "unit": "unsorted/fn_004DBCEE.cpp",
+   "size": 12,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-28"
+  },
+  "0x004dbddb": {
+   "name": "FUN_004dbddb",
+   "symbol": "_$E1",
+   "unit": "unsorted/fn_004DBDDB.cpp",
+   "size": 10,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-28"
+  },
+  "0x004dbde5": {
+   "name": "FUN_004dbde5",
+   "symbol": "_$E3",
+   "unit": "unsorted/fn_004DBDDB.cpp",
+   "size": 12,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-28"
+  },
   "0x004de035": {
    "name": "tNetMsg_kCreateDirect::~tNetMsg_kCreateDirect",
    "symbol": "?fn_004de035@tESGLance@@QAEXM@Z",
