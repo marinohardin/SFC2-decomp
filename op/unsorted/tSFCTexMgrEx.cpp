@@ -24,17 +24,17 @@ int tSFCTexMgrEx::vfunction3(char *name, char param_2, char param_3, int param_4
         }
     }
 
-    fn_006a0490_Mgr* mgr = g_00c7c118;
+    tTexMgr* mgr = tTexMgr::fList;
     if (!mgr)
         return 0;
-    i = mgr->fn_006a07d0(name);
+    i = mgr->mNewTexBmp(name);
     if (!i)
         return 0;
 
     entry = &m_entries[i - 1];
     entry->m00 = 1;
     entry->m04 = 1;
-    entry->m08 = mgr->fn_006a0920(i);
+    entry->m08 = mgr->mIDToTexBmp(i);
     entry->m0c = param_3;
     entry->m10 = param_4;
     if (param_2)
@@ -63,8 +63,8 @@ int tSFCTexMgrEx::vfunction2(int handle)
             {
                 entry->m00 = 0;
                 entry->m08 = 0;
-                if (g_00c7c118)
-                    g_00c7c118->fn_006a08e0(handle);
+                if (tTexMgr::fList)
+                    tTexMgr::fList->mDeleteTexBmp(handle);
             }
             return entry->m04;
         }
@@ -85,11 +85,11 @@ void tSFCTexMgrEx::vfunction4(int handle)
             if (bmp && g_pApp3dBase)
             {
                 tView3D* view = g_pApp3dBase->m_field10;
-                if (view && g_00c7c118 && bmp->mLock())
+                if (view && tTexMgr::fList && bmp->mLock())
                 {
-                    tBmpSurf surf(bmp);
-                    view->vfunction85(handle, &surf, entry->m0c, entry->m10);
-                    bmp->fn_006a6500();
+                    tBmpSurf surf(*bmp);
+                    view->mLoadTexture(handle, *(tGLSurface *)&surf, entry->m0c, entry->m10);
+                    bmp->mUnlock();
                     entry->m00 = 0;
                 }
             }

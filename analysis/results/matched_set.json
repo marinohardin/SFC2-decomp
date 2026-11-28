@@ -57,7 +57,7 @@
   },
   "0x00401209": {
    "name": "tApp3dBase::vfunction7",
-   "symbol": "?vfunction7@tApp3dBase@@UAE_NPAVtView3D@@HHPAUfn_0040105e_Params@@@Z",
+   "symbol": "?vfunction7@tApp3dBase@@UAEEPAVtView3D@@HHPAUfn_0040105e_Params@@@Z",
    "unit": "unsorted/tApp3dBase.cpp",
    "size": 210,
    "score": 100.0,
@@ -1509,9 +1509,9 @@
    "symbol": "??_GtGLPixFmt@@UAEPAXI@Z",
    "unit": "unsorted/tGLPixFmt.cpp",
    "size": 29,
-   "score": 5.0,
+   "score": 9.333,
    "exact": false,
-   "recorded": "2026-11-19"
+   "recorded": "2026-11-27"
   },
   "0x0040bd69": {
    "name": "tMouseMgr_Base::~tMouseMgr_Base",
@@ -2955,7 +2955,7 @@
   },
   "0x0040eddb": {
    "name": "FUN_0040eddb",
-   "symbol": "_$E1",
+   "symbol": "_$E2",
    "unit": "unsorted/fn_0040E000.cpp",
    "size": 10,
    "score": 100.0,
@@ -2964,7 +2964,7 @@
   },
   "0x0040ede5": {
    "name": "FUN_0040ede5",
-   "symbol": "_$E3",
+   "symbol": "_$E4",
    "unit": "unsorted/fn_0040E000.cpp",
    "size": 12,
    "score": 100.0,
@@ -3135,7 +3135,7 @@
   },
   "0x0040f99d": {
    "name": "tSphere::vfunction10",
-   "symbol": "?vfunction10@tSphere@@UAEXVfn_0069c970_Owner@@@Z",
+   "symbol": "?vfunction10@tSphere@@UAEXVtMatrix@@@Z",
    "unit": "unsorted/tSphere.cpp",
    "size": 44,
    "score": 100.0,
@@ -4956,9 +4956,9 @@
    "symbol": "?fn_00421ea9@tEntityControlShip@@UAEXPAVtObject_0042310b_entry@@@Z",
    "unit": "unsorted/tEntityControlShip.cpp",
    "size": 556,
-   "score": 17.092,
+   "score": 17.879,
    "exact": false,
-   "recorded": "2026-11-10"
+   "recorded": "2026-11-27"
   },
   "0x004220d5": {
    "name": "tEntityControlShip::vfunction14",
@@ -5343,18 +5343,18 @@
    "symbol": "?mDetectCollision@tEntityMgr@@QAEEPAVtEntity@@0E@Z",
    "unit": "unsorted/tEntityMgr.cpp",
    "size": 1265,
-   "score": 90.512,
+   "score": 92.548,
    "exact": false,
-   "recorded": "2026-11-10"
+   "recorded": "2026-11-27"
   },
   "0x0042402d": {
    "name": "FUN_0042402d",
    "symbol": "?mDetectProximityCollision@tEntityMgr@@QAEEPAVtEntity@@0ME@Z",
    "unit": "unsorted/tEntityMgr.cpp",
    "size": 1278,
-   "score": 91.51,
+   "score": 93.148,
    "exact": false,
-   "recorded": "2026-11-10"
+   "recorded": "2026-11-27"
   },
   "0x0042452c": {
    "name": "FUN_0042452c",
@@ -5892,9 +5892,9 @@
    "symbol": "?fn_00426886@fn_00426141_Class@@QAEXI@Z",
    "unit": "unsorted/fn_00426000.cpp",
    "size": 201,
-   "score": 83.191,
+   "score": 86.209,
    "exact": false,
-   "recorded": "2026-11-25"
+   "recorded": "2026-11-27"
   },
   "0x00426988": {
    "name": "FUN_00426988",
@@ -8943,9 +8943,9 @@
    "symbol": "?fn_0043e911@tSensorGroupSystem@@QAEDH@Z",
    "unit": "unsorted/tSensorGroupSystem.cpp",
    "size": 590,
-   "score": 83.971,
+   "score": 85.406,
    "exact": false,
-   "recorded": "2026-11-16"
+   "recorded": "2026-11-27"
   },
   "0x0043eb5f": {
    "name": "FUN_0043eb5f",
@@ -10920,7 +10920,7 @@
   },
   "0x0044c276": {
    "name": "FUN_0044c276",
-   "symbol": "?FUN_0044c276@@YADPAUfn_0044c185_vec3@@PAVfn_0044c185_object@@PBD@Z",
+   "symbol": "?FUN_0044c276@@YADPAUtPoint3@@PAVfn_0044c185_object@@PBD@Z",
    "unit": "unsorted/fn_0044C000.cpp",
    "size": 146,
    "score": 100.0,
@@ -19284,9 +19284,9 @@
    "symbol": "?vfunction135@tPhaserXBank@@UAEME@Z",
    "unit": "unsorted/tPhaserXBank.cpp",
    "size": 146,
-   "score": 92.939,
+   "score": 94.143,
    "exact": false,
-   "recorded": "2026-11-10"
+   "recorded": "2026-11-27"
   },
   "0x004e57c0": {
    "name": "tPhaserXBank::vfunction74",
@@ -44058,7 +44058,7 @@
   },
   "0x0066d480": {
    "name": "_NewBasicFileCRT",
-   "symbol": "?_NewBasicFileCRT@tBasicFileCRTNamespace@@YAPAVtBasicFile@1@XZ",
+   "symbol": "?_NewBasicFileCRT@@YAPAVtBasicFile@@XZ",
    "unit": "unsorted/tBasicFileCRTNamespace__tBasicFileCRT.cpp",
    "size": 272,
    "score": 100.0,
@@ -45957,7 +45957,7 @@
   },
   "0x0069f190": {
    "name": "tView3DExt::vfunction38",
-   "symbol": "?vfunction38@tView3DExt@@UAE_NXZ",
+   "symbol": "?mLightingEnabled@tView3DExt@@UAEEXZ",
    "unit": "unsorted/tView3DExt.cpp",
    "size": 16,
    "score": 100.0,
@@ -45984,7 +45984,7 @@
   },
   "0x0069f480": {
    "name": "tSWView3D::vfunction86",
-   "symbol": "?vfunction86@tSWView3D@@UAEHXZ",
+   "symbol": "?mGetSurfMgr@tSWView3D@@UAEPAVtGLSurfMgr@@XZ",
    "unit": "unsorted/tSWView3D.cpp",
    "size": 16,
    "score": 100.0,
@@ -46011,16 +46011,16 @@
   },
   "0x0069f510": {
    "name": "tSWView3D::vfunction2",
-   "symbol": "?vfunction2@tSWView3D@@UAE_NHH@Z",
+   "symbol": "?mEnumDispModes@tSWView3D@@UAEEP6AEHHPAX@Z0@Z",
    "unit": "unsorted/tSWView3D.cpp",
    "size": 192,
-   "score": 99.932,
-   "exact": false,
+   "score": 100.0,
+   "exact": true,
    "recorded": "2026-11-27"
   },
   "0x0069f850": {
    "name": "tSWView3D::vfunction3",
-   "symbol": "?vfunction3@tSWView3D@@UAE_NHHHHPAUtagRECT@@_N@Z",
+   "symbol": "?mInitFullscreen@tSWView3D@@UAEEPAX0HHPBUtGLRectI@@E@Z",
    "unit": "unsorted/tSWView3D.cpp",
    "size": 80,
    "score": 100.0,
@@ -46029,7 +46029,7 @@
   },
   "0x0069f8a0": {
    "name": "tSWView3D::vfunction4",
-   "symbol": "?vfunction4@tSWView3D@@UAE_NHHPAUtagRECT@@_N@Z",
+   "symbol": "?mInitWindowed@tSWView3D@@UAEEPAX0PBUtGLRectI@@E@Z",
    "unit": "unsorted/tSWView3D.cpp",
    "size": 96,
    "score": 100.0,
@@ -46038,7 +46038,7 @@
   },
   "0x0069f900": {
    "name": "tSWView3D::scalar_deleting_destructor",
-   "symbol": "?vfunction6@tSWView3D@@UAE_NXZ",
+   "symbol": "?mDone@tSWView3D@@UAEEXZ",
    "unit": "unsorted/tSWView3D.cpp",
    "size": 144,
    "score": 100.0,
@@ -46047,7 +46047,7 @@
   },
   "0x0069f990": {
    "name": "tSWView3D::vfunction11",
-   "symbol": "?vfunction11@tSWView3D@@UAE_NXZ",
+   "symbol": "?mBeginScene@tSWView3D@@UAEEXZ",
    "unit": "unsorted/tSWView3D.cpp",
    "size": 128,
    "score": 100.0,
@@ -46056,7 +46056,7 @@
   },
   "0x0069fa10": {
    "name": "tSWView3D::vfunction12",
-   "symbol": "?vfunction12@tSWView3D@@UAE_NXZ",
+   "symbol": "?mEndScene@tSWView3D@@UAEEXZ",
    "unit": "unsorted/tSWView3D.cpp",
    "size": 64,
    "score": 100.0,
@@ -46065,7 +46065,7 @@
   },
   "0x0069fa50": {
    "name": "tSWView3D::vfunction25",
-   "symbol": "?vfunction25@tSWView3D@@UAEHH@Z",
+   "symbol": "?mSetPolygonMode@tSWView3D@@UAEII@Z",
    "unit": "unsorted/tSWView3D.cpp",
    "size": 16,
    "score": 100.0,
@@ -46074,7 +46074,7 @@
   },
   "0x0069fa60": {
    "name": "tSWView3D::vfunction26",
-   "symbol": "?vfunction26@tSWView3D@@UAEHXZ",
+   "symbol": "?mGetPolygonMode@tSWView3D@@UAEIXZ",
    "unit": "unsorted/tSWView3D.cpp",
    "size": 16,
    "score": 100.0,
@@ -46083,7 +46083,7 @@
   },
   "0x0069fa70": {
    "name": "tSWView3D::vfunction17",
-   "symbol": "?vfunction17@tSWView3D@@UAEXHHHH@Z",
+   "symbol": "?mSetViewport@tSWView3D@@UAEXHHHH@Z",
    "unit": "unsorted/tSWView3D.cpp",
    "size": 80,
    "score": 100.0,
@@ -46092,7 +46092,7 @@
   },
   "0x0069fad0": {
    "name": "tSWView3D::vfunction10",
-   "symbol": "?vfunction10@tSWView3D@@UAEHXZ",
+   "symbol": "?mGetCaps@tSWView3D@@UAEKXZ",
    "unit": "unsorted/tSWView3D.cpp",
    "size": 32,
    "score": 100.0,
@@ -46101,7 +46101,7 @@
   },
   "0x0069faf0": {
    "name": "tSWView3D::vfunction28",
-   "symbol": "?vfunction28@tSWView3D@@UAE_NI@Z",
+   "symbol": "?mSetClearColor@tSWView3D@@UAEEUtGLRgbQuad@@@Z",
    "unit": "unsorted/tSWView3D.cpp",
    "size": 32,
    "score": 100.0,
@@ -46110,7 +46110,7 @@
   },
   "0x0069fb10": {
    "name": "tSWView3D::vfunction27",
-   "symbol": "?vfunction27@tSWView3D@@UAE_NEEE@Z",
+   "symbol": "?mSetClearColor@tSWView3D@@UAEEEEE@Z",
    "unit": "unsorted/tSWView3D.cpp",
    "size": 64,
    "score": 100.0,
@@ -46119,7 +46119,7 @@
   },
   "0x0069fb50": {
    "name": "tSWView3D::vfunction30",
-   "symbol": "?vfunction30@tSWView3D@@UAE_N_N0@Z",
+   "symbol": "?mClear@tSWView3D@@UAEEEE@Z",
    "unit": "unsorted/tSWView3D.cpp",
    "size": 64,
    "score": 100.0,
@@ -46128,7 +46128,7 @@
   },
   "0x0069fb90": {
    "name": "tSWView3D::vfunction29",
-   "symbol": "?vfunction29@tSWView3D@@UAE_NHHHH_N0@Z",
+   "symbol": "?mClear@tSWView3D@@UAEEHHHHEE@Z",
    "unit": "unsorted/tSWView3D.cpp",
    "size": 294,
    "score": 69.028,
@@ -46137,7 +46137,7 @@
   },
   "0x0069fd20": {
    "name": "FUN_0069fd20",
-   "symbol": "?fn_0069fd20@@YAPAVtSWView3D@@XZ",
+   "symbol": "?dmpGetSWView3D@@YAPAVtView3D@@XZ",
    "unit": "unsorted/tSWView3D.cpp",
    "size": 128,
    "score": 100.0,
@@ -46146,7 +46146,7 @@
   },
   "0x0069fda0": {
    "name": "tView3DExt::vfunction47",
-   "symbol": "?vfunction47@tView3DExt@@UAE_N_N@Z",
+   "symbol": "?mEnableGlobalBlend@tView3DExt@@UAEEE@Z",
    "unit": "unsorted/tView3DExt.cpp",
    "size": 32,
    "score": 100.0,
@@ -46155,7 +46155,7 @@
   },
   "0x0069fdc0": {
    "name": "tSWView3D::vfunction43",
-   "symbol": "?vfunction43@tSWView3D@@UAEHXZ",
+   "symbol": "?mGetSrcBlendCaps@tSWView3D@@UAEKXZ",
    "unit": "unsorted/tSWView3D.cpp",
    "size": 16,
    "score": 100.0,
@@ -46164,7 +46164,7 @@
   },
   "0x0069fde0": {
    "name": "tSWView3D::vfunction48",
-   "symbol": "?vfunction48@tSWView3D@@UAE_N_N@Z",
+   "symbol": "?mAlphaTestEnable@tSWView3D@@UAEEE@Z",
    "unit": "unsorted/tSWView3D.cpp",
    "size": 32,
    "score": 100.0,
@@ -46173,7 +46173,7 @@
   },
   "0x0069fe00": {
    "name": "tSWView3D::vfunction49",
-   "symbol": "?vfunction49@tSWView3D@@UAE_N_N@Z",
+   "symbol": "?mEnableZWriteAndTest@tSWView3D@@UAEEE@Z",
    "unit": "unsorted/tSWView3D.cpp",
    "size": 32,
    "score": 100.0,
@@ -46182,7 +46182,7 @@
   },
   "0x0069fe20": {
    "name": "tSWView3D::vfunction50",
-   "symbol": "?vfunction50@tSWView3D@@UAE_N_N@Z",
+   "symbol": "?mEnableZWrite@tSWView3D@@UAEEE@Z",
    "unit": "unsorted/tSWView3D.cpp",
    "size": 32,
    "score": 100.0,
@@ -46191,7 +46191,7 @@
   },
   "0x0069fe40": {
    "name": "tSWView3D::vfunction51",
-   "symbol": "?vfunction51@tSWView3D@@UAE_N_N@Z",
+   "symbol": "?mEnableZTest@tSWView3D@@UAEEE@Z",
    "unit": "unsorted/tSWView3D.cpp",
    "size": 32,
    "score": 100.0,
@@ -46200,7 +46200,7 @@
   },
   "0x006a2dc0": {
    "name": "FUN_006a2dc0",
-   "symbol": "?mGet@tStream_BasicFile@@UAE_NPAXK@Z",
+   "symbol": "?mGet@tStream_BasicFile@@UAEEPAXK@Z",
    "unit": "dmp3d/common/stream_basicfile.cpp",
    "size": 128,
    "score": 100.0,
@@ -46209,7 +46209,7 @@
   },
   "0x006a2e40": {
    "name": "FUN_006a2e40",
-   "symbol": "?mPut@tStream_BasicFile@@UAE_NPBXK@Z",
+   "symbol": "?mPut@tStream_BasicFile@@UAEEPBXK@Z",
    "unit": "dmp3d/common/stream_basicfile.cpp",
    "size": 128,
    "score": 100.0,
@@ -46218,7 +46218,7 @@
   },
   "0x006a48d0": {
    "name": "tTexBmp::vfunction2",
-   "symbol": "?vfunction2@tTexBmp@@UAEXPAVtBasicFile@@@Z",
+   "symbol": "?mInitAsBMP@tTexBmp@@MAEXPAVtBasicFile@@@Z",
    "unit": "dmp3d/common/texBmp.cpp",
    "size": 1312,
    "score": 100.0,
@@ -46227,7 +46227,7 @@
   },
   "0x006a4df0": {
    "name": "tTexBmp::vfunction3",
-   "symbol": "?vfunction3@tTexBmp@@UAEXPAVtBasicFile@@@Z",
+   "symbol": "?mInitAsPCX@tTexBmp@@MAEXPAVtBasicFile@@@Z",
    "unit": "dmp3d/common/texBmp.cpp",
    "size": 3120,
    "score": 100.0,
@@ -46236,7 +46236,7 @@
   },
   "0x006a5a20": {
    "name": "tTexBmp::vfunction7",
-   "symbol": "?vfunction7@tTexBmp@@UAE_NPBD@Z",
+   "symbol": "?mInit@tTexBmp@@UAEEPBD@Z",
    "unit": "dmp3d/common/texBmp.cpp",
    "size": 307,
    "score": 78.947,
@@ -46245,7 +46245,7 @@
   },
   "0x006a5b90": {
    "name": "tTexBmp::vfunction8",
-   "symbol": "?vfunction8@tTexBmp@@UAE_NXZ",
+   "symbol": "?mDone@tTexBmp@@UAEEXZ",
    "unit": "dmp3d/common/texBmp.cpp",
    "size": 144,
    "score": 100.0,
@@ -46254,7 +46254,7 @@
   },
   "0x006a5c20": {
    "name": "FUN_006a5c20",
-   "symbol": "?fn_006a5c20@tTexBmp@@QAEXXZ",
+   "symbol": "?mResetDataMembers@tTexBmp@@IAEXXZ",
    "unit": "dmp3d/common/texBmp.cpp",
    "size": 96,
    "score": 100.0,
@@ -46263,7 +46263,7 @@
   },
   "0x006a5c80": {
    "name": "tTexBmp::vfunction4",
-   "symbol": "?vfunction4@tTexBmp@@UAEXPAVtBasicFile@@@Z",
+   "symbol": "?mReadBMP@tTexBmp@@MAEXPAVtBasicFile@@@Z",
    "unit": "dmp3d/common/texBmp.cpp",
    "size": 720,
    "score": 100.0,
@@ -46272,12 +46272,12 @@
   },
   "0x006a5f50": {
    "name": "tTexBmp::vfunction5",
-   "symbol": "?vfunction5@tTexBmp@@UAEXPAVtBasicFile@@@Z",
+   "symbol": "?mReadPCX@tTexBmp@@MAEXPAVtBasicFile@@@Z",
    "unit": "dmp3d/common/texBmp.cpp",
    "size": 928,
-   "score": 99.955,
-   "exact": false,
-   "recorded": "2026-11-13"
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-27"
   },
   "0x006a62f0": {
    "name": "FUN_006a62f0",
@@ -46425,16 +46425,16 @@
   },
   "0x006a9540": {
    "name": "FUN_006a9540",
-   "symbol": "?fn_006a9540@tView3DExt@@QAEXXZ",
+   "symbol": "?mInitExt@tView3DExt@@IAEXXZ",
    "unit": "unsorted/fn_006A9540.cpp",
    "size": 176,
-   "score": 93.2,
-   "exact": false,
+   "score": 100.0,
+   "exact": true,
    "recorded": "2026-11-27"
   },
   "0x006a95f0": {
    "name": "tSWView3D::~tSWView3D",
-   "symbol": "?vfunction6@tView3DExt@@UAE_NXZ",
+   "symbol": "?mDone@tView3DExt@@UAEEXZ",
    "unit": "unsorted/fn_006A9540.cpp",
    "size": 48,
    "score": 100.0,
@@ -46443,7 +46443,7 @@
   },
   "0x006a9620": {
    "name": "tView3DExt::vfunction23",
-   "symbol": "?vfunction23@tView3DExt@@UAEHH@Z",
+   "symbol": "?mSetWinding@tView3DExt@@UAEII@Z",
    "unit": "unsorted/tView3DExt.cpp",
    "size": 64,
    "score": 100.0,
@@ -46452,7 +46452,7 @@
   },
   "0x006a9660": {
    "name": "tView3DExt::vfunction24",
-   "symbol": "?vfunction24@tView3DExt@@UAEHXZ",
+   "symbol": "?mGetWinding@tView3DExt@@UAEIXZ",
    "unit": "unsorted/tView3DExt.cpp",
    "size": 16,
    "score": 100.0,
@@ -46461,7 +46461,7 @@
   },
   "0x006a9670": {
    "name": "tView3DExt::vfunction19",
-   "symbol": "?vfunction19@tView3DExt@@UAEHH@Z",
+   "symbol": "?mSetCullMode@tView3DExt@@UAEII@Z",
    "unit": "unsorted/tView3DExt.cpp",
    "size": 96,
    "score": 100.0,
@@ -46470,7 +46470,7 @@
   },
   "0x006a96d0": {
    "name": "tView3DExt::vfunction20",
-   "symbol": "?vfunction20@tView3DExt@@UAEHXZ",
+   "symbol": "?mGetCullMode@tView3DExt@@UAEIXZ",
    "unit": "unsorted/tView3DExt.cpp",
    "size": 16,
    "score": 100.0,
@@ -46479,7 +46479,7 @@
   },
   "0x006a96e0": {
    "name": "tView3DExt::vfunction21",
-   "symbol": "?vfunction21@tView3DExt@@UAEHH@Z",
+   "symbol": "?mSetShadeMode@tView3DExt@@UAEII@Z",
    "unit": "unsorted/tView3DExt.cpp",
    "size": 32,
    "score": 100.0,
@@ -46488,7 +46488,7 @@
   },
   "0x006a9700": {
    "name": "tView3DExt::vfunction22",
-   "symbol": "?vfunction22@tView3DExt@@UAEHXZ",
+   "symbol": "?mGetShadeMode@tView3DExt@@UAEIXZ",
    "unit": "unsorted/tView3DExt.cpp",
    "size": 16,
    "score": 100.0,
@@ -46497,16 +46497,16 @@
   },
   "0x006a9710": {
    "name": "tView3DExt::vfunction45",
-   "symbol": "?vfunction45@tView3DExt@@UAEXM@Z",
+   "symbol": "?mSetGlobalBlend@tView3DExt@@UAEMM@Z",
    "unit": "unsorted/tView3DExt.cpp",
    "size": 112,
-   "score": 10.587,
-   "exact": false,
+   "score": 100.0,
+   "exact": true,
    "recorded": "2026-11-27"
   },
   "0x006a9780": {
    "name": "tView3DExt::vfunction46",
-   "symbol": "?vfunction46@tView3DExt@@UAEMXZ",
+   "symbol": "?mGetGlobalBlend@tView3DExt@@UAEMXZ",
    "unit": "unsorted/tView3DExt.cpp",
    "size": 16,
    "score": 100.0,
@@ -46515,7 +46515,7 @@
   },
   "0x006a9aa0": {
    "name": "tView3DExt::vfunction32",
-   "symbol": "?vfunction32@tView3DExt@@UAEHXZ",
+   "symbol": "?mGetMaxNumLights@tView3DExt@@UBEKXZ",
    "unit": "unsorted/tView3DExt.cpp",
    "size": 16,
    "score": 100.0,
@@ -46524,7 +46524,7 @@
   },
   "0x006a9ab0": {
    "name": "tView3DExt::vfunction33",
-   "symbol": "?vfunction33@tView3DExt@@UAEXIPBX@Z",
+   "symbol": "?mSetLightDescription@tView3DExt@@UAEXKABVtGLLightDesc@@@Z",
    "unit": "unsorted/tView3DExt.cpp",
    "size": 240,
    "score": 100.0,
@@ -46533,7 +46533,7 @@
   },
   "0x006a9ba0": {
    "name": "tView3DExt::vfunction34",
-   "symbol": "?vfunction34@tView3DExt@@UAEXIPAX@Z",
+   "symbol": "?mGetLightDescription@tView3DExt@@UBEXKAAVtGLLightDesc@@@Z",
    "unit": "unsorted/tView3DExt.cpp",
    "size": 128,
    "score": 100.0,
@@ -46542,7 +46542,7 @@
   },
   "0x006a9c20": {
    "name": "tView3DExt::vfunction37",
-   "symbol": "?vfunction37@tView3DExt@@UAE_N_N@Z",
+   "symbol": "?mEnableLighting@tView3DExt@@UAEEE@Z",
    "unit": "unsorted/tView3DExt.cpp",
    "size": 32,
    "score": 100.0,
@@ -46551,7 +46551,7 @@
   },
   "0x006a9c40": {
    "name": "tView3DExt::vfunction39",
-   "symbol": "?vfunction39@tView3DExt@@UAE_NI_N@Z",
+   "symbol": "?mEnableLight@tView3DExt@@UAEEKE@Z",
    "unit": "unsorted/tView3DExt.cpp",
    "size": 32,
    "score": 100.0,
@@ -46578,7 +46578,7 @@
   },
   "0x006a9f20": {
    "name": "tView3DExt::vfunction13",
-   "symbol": "?vfunction13@tView3DExt@@UAEP6AXXZP6AXXZPAX@Z",
+   "symbol": "?mSetBeginCallback@tView3DExt@@UAEP6AXPAVtGLSurface@@PAX@ZP6AX01@Z1@Z",
    "unit": "unsorted/tView3DExt.cpp",
    "size": 32,
    "score": 100.0,
@@ -46587,7 +46587,7 @@
   },
   "0x006a9f40": {
    "name": "tView3DExt::vfunction14",
-   "symbol": "?vfunction14@tView3DExt@@UAEP6AXXZXZ",
+   "symbol": "?mGetBeginCallback@tView3DExt@@UAEP6AXPAVtGLSurface@@PAX@ZXZ",
    "unit": "unsorted/tView3DExt.cpp",
    "size": 16,
    "score": 100.0,
@@ -46596,7 +46596,7 @@
   },
   "0x006a9f50": {
    "name": "tView3DExt::vfunction15",
-   "symbol": "?vfunction15@tView3DExt@@UAEP6AXXZP6AXXZPAX@Z",
+   "symbol": "?mSetEndCallback@tView3DExt@@UAEP6AXPAVtGLSurface@@PAX@ZP6AX01@Z1@Z",
    "unit": "unsorted/tView3DExt.cpp",
    "size": 32,
    "score": 100.0,
@@ -46605,7 +46605,7 @@
   },
   "0x006a9f70": {
    "name": "tView3DExt::vfunction16",
-   "symbol": "?vfunction16@tView3DExt@@UAEP6AXXZXZ",
+   "symbol": "?mGetEndCallback@tView3DExt@@UAEP6AXPAVtGLSurface@@PAX@ZXZ",
    "unit": "unsorted/tView3DExt.cpp",
    "size": 16,
    "score": 100.0,
@@ -46614,7 +46614,7 @@
   },
   "0x006a9f80": {
    "name": "tView3DExt::vfunction35",
-   "symbol": "?vfunction35@tView3DExt@@UAEXPAUfn_0040105e_Vector@@@Z",
+   "symbol": "?mSetLightPosition@tView3DExt@@UAEXABUtPoint3@@@Z",
    "unit": "unsorted/tView3DExt.cpp",
    "size": 112,
    "score": 100.0,
@@ -46623,7 +46623,7 @@
   },
   "0x006a9ff0": {
    "name": "tView3DExt::vfunction36",
-   "symbol": "?vfunction36@tView3DExt@@UAEPAUfn_0040105e_Vector@@XZ",
+   "symbol": "?mGetLightPosition@tView3DExt@@UAEABUtPoint3@@XZ",
    "unit": "unsorted/tView3DExt.cpp",
    "size": 16,
    "score": 100.0,
@@ -46632,7 +46632,7 @@
   },
   "0x006aa000": {
    "name": "tView3DExt::vfunction17",
-   "symbol": "?vfunction17@tView3DExt@@UAEXHHHH@Z",
+   "symbol": "?mSetViewport@tView3DExt@@UAEXHHHH@Z",
    "unit": "unsorted/tView3DExt.cpp",
    "size": 128,
    "score": 100.0,
@@ -46641,7 +46641,7 @@
   },
   "0x006aa080": {
    "name": "tView3DExt::vfunction18",
-   "symbol": "?vfunction18@tView3DExt@@UAEXPAH000@Z",
+   "symbol": "?mGetViewport@tView3DExt@@UAEXPAH000@Z",
    "unit": "unsorted/tView3DExt.cpp",
    "size": 96,
    "score": 100.0,
@@ -46650,7 +46650,7 @@
   },
   "0x006aa0e0": {
    "name": "tView3DExt::vfunction65",
-   "symbol": "?vfunction65@tView3DExt@@UAEXPAVtMatrix@@MMM@Z",
+   "symbol": "?mCreatePerspective@tView3DExt@@UAEXAAVtMatrix@@MMM@Z",
    "unit": "unsorted/tView3DExt.cpp",
    "size": 224,
    "score": 13.559,
@@ -46659,7 +46659,7 @@
   },
   "0x006aa1c0": {
    "name": "tView3DExt::vfunction62",
-   "symbol": "?vfunction62@tView3DExt@@UAEXMMM@Z",
+   "symbol": "?mSetPerspective@tView3DExt@@UAEXMMM@Z",
    "unit": "unsorted/tView3DExt.cpp",
    "size": 80,
    "score": 100.0,
@@ -46668,7 +46668,7 @@
   },
   "0x006aa210": {
    "name": "tView3DExt::vfunction63",
-   "symbol": "?vfunction63@tView3DExt@@UAEXMMMMMM@Z",
+   "symbol": "?mSetOrtho@tView3DExt@@UAEXMMMMMM@Z",
    "unit": "unsorted/tView3DExt.cpp",
    "size": 96,
    "score": 100.0,
@@ -46677,7 +46677,7 @@
   },
   "0x006aa270": {
    "name": "tView3DExt::vfunction64",
-   "symbol": "?vfunction64@tView3DExt@@UAEXMM@Z",
+   "symbol": "?mSetOrthoIdentity@tView3DExt@@UAEXMM@Z",
    "unit": "unsorted/tView3DExt.cpp",
    "size": 80,
    "score": 100.0,
@@ -46686,7 +46686,7 @@
   },
   "0x006aa2c0": {
    "name": "tView3DExt::vfunction67",
-   "symbol": "?vfunction67@tView3DExt@@UAEXPAVtMatrix@@MMMMMM@Z",
+   "symbol": "?mCreateOrtho@tView3DExt@@UAEXAAVtMatrix@@MMMMMM@Z",
    "unit": "unsorted/tView3DExt.cpp",
    "size": 205,
    "score": 15.873,
@@ -46695,7 +46695,7 @@
   },
   "0x006aa390": {
    "name": "tView3DExt::vfunction66",
-   "symbol": "?vfunction66@tView3DExt@@UAEXPAVtMatrix@@MM@Z",
+   "symbol": "?mCreateOrthoIdentity@tView3DExt@@UAEXAAVtMatrix@@MM@Z",
    "unit": "unsorted/tView3DExt.cpp",
    "size": 96,
    "score": 100.0,
@@ -46704,7 +46704,7 @@
   },
   "0x006aa490": {
    "name": "tView3DExt::vfunction61",
-   "symbol": "?vfunction61@tView3DExt@@UAEPAVtMatrix@@XZ",
+   "symbol": "?mGetProjMtx@tView3DExt@@UAEABVtMatrix@@XZ",
    "unit": "unsorted/tView3DExt.cpp",
    "size": 16,
    "score": 100.0,
@@ -46713,7 +46713,7 @@
   },
   "0x006aa4a0": {
    "name": "tView3DExt::vfunction55",
-   "symbol": "?vfunction55@tView3DExt@@UAEXPAVtMatrix@@@Z",
+   "symbol": "?mSetCameraMtx@tView3DExt@@UAEXABVtMatrix@@@Z",
    "unit": "unsorted/tView3DExt.cpp",
    "size": 48,
    "score": 100.0,
@@ -46722,7 +46722,7 @@
   },
   "0x006aa4d0": {
    "name": "tView3DExt::vfunction56",
-   "symbol": "?vfunction56@tView3DExt@@UAEPAVtMatrix@@XZ",
+   "symbol": "?mGetCameraMtx@tView3DExt@@UAEABVtMatrix@@XZ",
    "unit": "unsorted/tView3DExt.cpp",
    "size": 16,
    "score": 100.0,
@@ -46731,7 +46731,7 @@
   },
   "0x006aa4e0": {
    "name": "tView3DExt::vfunction57",
-   "symbol": "?vfunction57@tView3DExt@@UAEXPAUtPoint3@@@Z",
+   "symbol": "?mGetCameraPosition@tView3DExt@@UAEXAAUtPoint3@@@Z",
    "unit": "unsorted/tView3DExt.cpp",
    "size": 96,
    "score": 100.0,
@@ -46740,7 +46740,7 @@
   },
   "0x006aa550": {
    "name": "tView3DExt::vfunction58",
-   "symbol": "?vfunction58@tView3DExt@@UAEXPAVtMatrix@@@Z",
+   "symbol": "?mSetModelMtx@tView3DExt@@UAEXABVtMatrix@@@Z",
    "unit": "unsorted/tView3DExt.cpp",
    "size": 352,
    "score": 81.027,
@@ -46758,7 +46758,7 @@
   },
   "0x006aa6d0": {
    "name": "tView3DExt::vfunction5",
-   "symbol": "?vfunction5@tView3DExt@@UAEXH@Z",
+   "symbol": "?mSetDriver@tView3DExt@@UAEXH@Z",
    "unit": "unsorted/tView3DExt.cpp",
    "size": 16,
    "score": 100.0,
@@ -46767,7 +46767,7 @@
   },
   "0x006aa6e0": {
    "name": "tView3DExt::vfunction87",
-   "symbol": "?vfunction87@tView3DExt@@UAEXXZ",
+   "symbol": "?mResetCounts@tView3DExt@@UAEXXZ",
    "unit": "unsorted/tView3DExt.cpp",
    "size": 64,
    "score": 100.0,
@@ -46776,7 +46776,7 @@
   },
   "0x006aa720": {
    "name": "tView3DExt::vfunction88",
-   "symbol": "?vfunction88@tView3DExt@@UAEHXZ",
+   "symbol": "?mGetRawCountPoints@tView3DExt@@UAEKXZ",
    "unit": "unsorted/tView3DExt.cpp",
    "size": 16,
    "score": 100.0,
@@ -46785,7 +46785,7 @@
   },
   "0x006aa730": {
    "name": "tView3DExt::vfunction89",
-   "symbol": "?vfunction89@tView3DExt@@UAEHXZ",
+   "symbol": "?mGetRawCountLines@tView3DExt@@UAEKXZ",
    "unit": "unsorted/tView3DExt.cpp",
    "size": 16,
    "score": 100.0,
@@ -46794,7 +46794,7 @@
   },
   "0x006aa740": {
    "name": "tView3DExt::vfunction90",
-   "symbol": "?vfunction90@tView3DExt@@UAEHXZ",
+   "symbol": "?mGetRawCountTris@tView3DExt@@UAEKXZ",
    "unit": "unsorted/tView3DExt.cpp",
    "size": 16,
    "score": 100.0,
@@ -46803,7 +46803,7 @@
   },
   "0x006aa750": {
    "name": "tView3DExt::vfunction91",
-   "symbol": "?vfunction91@tView3DExt@@UAEHXZ",
+   "symbol": "?mGetRawCountQuads@tView3DExt@@UAEKXZ",
    "unit": "unsorted/tView3DExt.cpp",
    "size": 16,
    "score": 100.0,
@@ -46812,7 +46812,7 @@
   },
   "0x006aa760": {
    "name": "tView3DExt::vfunction92",
-   "symbol": "?vfunction92@tView3DExt@@UAEHXZ",
+   "symbol": "?mGetRawCountNGons@tView3DExt@@UAEKXZ",
    "unit": "unsorted/tView3DExt.cpp",
    "size": 16,
    "score": 100.0,
@@ -46821,7 +46821,7 @@
   },
   "0x006aa770": {
    "name": "tView3DExt::vfunction93",
-   "symbol": "?vfunction93@tView3DExt@@UAEHXZ",
+   "symbol": "?mGetTrueCountPoints@tView3DExt@@UAEKXZ",
    "unit": "unsorted/tView3DExt.cpp",
    "size": 16,
    "score": 100.0,
@@ -46830,7 +46830,7 @@
   },
   "0x006aa780": {
    "name": "tView3DExt::vfunction94",
-   "symbol": "?vfunction94@tView3DExt@@UAEHXZ",
+   "symbol": "?mGetTrueCountLines@tView3DExt@@UAEKXZ",
    "unit": "unsorted/tView3DExt.cpp",
    "size": 16,
    "score": 100.0,
@@ -46839,7 +46839,7 @@
   },
   "0x006aa790": {
    "name": "tView3DExt::vfunction95",
-   "symbol": "?vfunction95@tView3DExt@@UAEHXZ",
+   "symbol": "?mGetTrueCountTris@tView3DExt@@UAEKXZ",
    "unit": "unsorted/tView3DExt.cpp",
    "size": 16,
    "score": 100.0,
@@ -46848,7 +46848,7 @@
   },
   "0x006abe00": {
    "name": "FUN_006abe00",
-   "symbol": "?mAssertVtxCache@tView3DExt@@QAEXH@Z",
+   "symbol": "?mAssertVtxCache@tView3DExt@@IAEXH@Z",
    "unit": "dmp3d/view3d/drawPoly.cpp",
    "size": 176,
    "score": 100.0,
@@ -46857,7 +46857,7 @@
   },
   "0x006abeb0": {
    "name": "FUN_006abeb0",
-   "symbol": "?fn_006abeb0@tView3DExt@@QAEMXZ",
+   "symbol": "?mGetPolyNormalZ@tView3DExt@@IAEMXZ",
    "unit": "unsorted/fn_006ABEB0.cpp",
    "size": 208,
    "score": 100.0,
@@ -46866,7 +46866,7 @@
   },
   "0x006abf80": {
    "name": "tView3DExt::vfunction79",
-   "symbol": "?vfunction79@tView3DExt@@UAEXHH@Z",
+   "symbol": "?mSubmitVertices@tView3DExt@@UAEXHPBUtPoint3@@@Z",
    "unit": "unsorted/fn_006ABEB0.cpp",
    "size": 48,
    "score": 100.0,
@@ -46893,7 +46893,7 @@
   },
   "0x006ac780": {
    "name": "FUN_006ac780",
-   "symbol": "?fn_006ac780@fn_006ac780_State@@QAEXXZ",
+   "symbol": "?mInit@tPrimitive@tView3DExt@@QAEXXZ",
    "unit": "unsorted/fn_006AC000.cpp",
    "size": 64,
    "score": 100.0,
@@ -46902,7 +46902,7 @@
   },
   "0x006ac7c0": {
    "name": "tView3DExt::vfunction68",
-   "symbol": "?vfunction68@tView3DExt@@UAE_NH@Z",
+   "symbol": "?mBeginPrimitive@tView3DExt@@UAEEW4ePrimitiveType@@@Z",
    "unit": "unsorted/fn_006AC000.cpp",
    "size": 80,
    "score": 100.0,
@@ -46911,7 +46911,7 @@
   },
   "0x006ac810": {
    "name": "tView3DExt::vfunction69",
-   "symbol": "?vfunction69@tView3DExt@@UAEXXZ",
+   "symbol": "?mEndPrimitive@tView3DExt@@UAEEXZ",
    "unit": "unsorted/fn_006AC000.cpp",
    "size": 32,
    "score": 100.0,
@@ -46920,16 +46920,16 @@
   },
   "0x006ac830": {
    "name": "FUN_006ac830",
-   "symbol": "?fn_006ac830@tView3DExt@@QAEXHHH@Z",
+   "symbol": "?mFlushPolygon@tView3DExt@@IAEXKHH@Z",
    "unit": "unsorted/fn_006AC000.cpp",
    "size": 208,
-   "score": 84.768,
+   "score": 86.797,
    "exact": false,
    "recorded": "2026-11-27"
   },
   "0x006ad130": {
    "name": "tView3DExt::vfunction71",
-   "symbol": "?vfunction71@tView3DExt@@UAEXPAUtPoint3@@@Z",
+   "symbol": "?mVtxCoord@tView3DExt@@UAEXABUtPoint3@@@Z",
    "unit": "unsorted/fn_006AD000.cpp",
    "size": 256,
    "score": 100.0,
@@ -46938,7 +46938,7 @@
   },
   "0x006ad230": {
    "name": "tView3DExt::vfunction70",
-   "symbol": "?vfunction70@tView3DExt@@UAEXMMM@Z",
+   "symbol": "?mVtxCoord@tView3DExt@@UAEXMMM@Z",
    "unit": "unsorted/fn_006AD000.cpp",
    "size": 48,
    "score": 100.0,
@@ -46947,7 +46947,7 @@
   },
   "0x006ad260": {
    "name": "tView3DExt::vfunction73",
-   "symbol": "?vfunction73@tView3DExt@@UAEXPAUtPoint3@@@Z",
+   "symbol": "?mVtxNormal@tView3DExt@@UAEXABUtPoint3@@@Z",
    "unit": "unsorted/fn_006AD000.cpp",
    "size": 112,
    "score": 100.0,
@@ -46956,7 +46956,7 @@
   },
   "0x006ad2d0": {
    "name": "tView3DExt::vfunction72",
-   "symbol": "?vfunction72@tView3DExt@@UAEXMMM@Z",
+   "symbol": "?mVtxNormal@tView3DExt@@UAEXMMM@Z",
    "unit": "unsorted/fn_006AD000.cpp",
    "size": 48,
    "score": 100.0,
@@ -46965,7 +46965,7 @@
   },
   "0x006ad300": {
    "name": "tView3DExt::vfunction75",
-   "symbol": "?vfunction75@tView3DExt@@UAEXPAUtPoint2@@@Z",
+   "symbol": "?mVtxTexCoord@tView3DExt@@UAEXABUtPoint2@@@Z",
    "unit": "unsorted/fn_006AD000.cpp",
    "size": 32,
    "score": 100.0,
@@ -46974,7 +46974,7 @@
   },
   "0x006ad320": {
    "name": "tView3DExt::vfunction74",
-   "symbol": "?vfunction74@tView3DExt@@UAEXMM@Z",
+   "symbol": "?mVtxTexCoord@tView3DExt@@UAEXMM@Z",
    "unit": "unsorted/fn_006AD000.cpp",
    "size": 32,
    "score": 100.0,
@@ -46983,7 +46983,7 @@
   },
   "0x006ad340": {
    "name": "tView3DExt::vfunction77",
-   "symbol": "?vfunction77@tView3DExt@@UAEXMMM@Z",
+   "symbol": "?mVtxColor@tView3DExt@@UAEXMMM@Z",
    "unit": "unsorted/fn_006AD000.cpp",
    "size": 48,
    "score": 100.0,
@@ -46992,7 +46992,7 @@
   },
   "0x006ad370": {
    "name": "tView3DExt::vfunction76",
-   "symbol": "?vfunction76@tView3DExt@@UAEXI@Z",
+   "symbol": "?mVtxColor@tView3DExt@@UAEXUtGLRgbQuad@@@Z",
    "unit": "unsorted/fn_006AD000.cpp",
    "size": 112,
    "score": 100.0,
@@ -47001,7 +47001,7 @@
   },
   "0x006ad3e0": {
    "name": "tView3DExt::vfunction78",
-   "symbol": "?vfunction78@tView3DExt@@UAEXI@Z",
+   "symbol": "?mPrimitiveTexID@tView3DExt@@UAEXH@Z",
    "unit": "unsorted/fn_006AD000.cpp",
    "size": 48,
    "score": 100.0,
@@ -47028,7 +47028,7 @@
   },
   "0x006b23c0": {
    "name": "tSWView3D::vfunction85",
-   "symbol": "?vfunction85@tSWView3D@@UAE_NHPAVtBmpSurf@@DH@Z",
+   "symbol": "?mLoadTexture@tSWView3D@@UAEEHAAVtGLSurface@@EK@Z",
    "unit": "unsorted/tSWView3D.cpp",
    "size": 320,
    "score": 100.0,
@@ -47073,7 +47073,7 @@
   },
   "0x006b3f80": {
    "name": "FUN_006b3f80",
-   "symbol": "?fn_006b3f80@@YAXPAVtDDSurfMgr@@JPBDH1ZZ",
+   "symbol": "?mDDThrow@tDDSurfMgr@@IAAXJPBDH0ZZ",
    "unit": "dmp3d/glsurface/tDDSurfMgr.cpp",
    "size": 126,
    "score": 91.111,
@@ -47082,7 +47082,7 @@
   },
   "0x006b4010": {
    "name": "FUN_006b4010",
-   "symbol": "?fn_006b4010@@YA_NPAVtDDSurfMgr@@JPBDH1ZZ",
+   "symbol": "?mDDCheck@tDDSurfMgr@@IAAEJPBDH0ZZ",
    "unit": "dmp3d/glsurface/tDDSurfMgr.cpp",
    "size": 128,
    "score": 100.0,

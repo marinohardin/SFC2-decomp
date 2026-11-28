@@ -237,7 +237,7 @@ float tEntity_Seeker::vfunction24()
 }
 
 extern float g_00c6c004[];
-extern float g_00c6a004[];
+extern float gSinCosTable[];
 
 // MATCH-ONLY: the original reads the two tables through inline functions returning float
 // (fld/fstp rather than a dword copy); their names are not known.
@@ -248,7 +248,7 @@ inline float fn_inline_cos(tAngle aAngle)
 
 inline float fn_inline_sin(tAngle aAngle)
 {
-	return g_00c6a004[aAngle & 0x1fff];
+	return gSinCosTable[aAngle & 0x1fff];
 }
 
 // HYPOTHESIS: places a point just ahead of an entity along its heading; the third

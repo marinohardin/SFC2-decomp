@@ -1,3 +1,4 @@
+#define tvectormath_mult_member
 #include "unsorted/tObject_0040ce21.h"
 #include "unsorted/tBmpSurf.h"
 #include "Source/entity/entity_physical.h"
@@ -120,7 +121,7 @@ tFx_Photon::tFx_Photon()
 	m10 = g_007aa8d0;
 }
 
-float fn_0069b0e0();
+float frand();
 extern double g_007aa8c8;
 extern float g_0096699c;
 extern float g_009669a0;
@@ -128,24 +129,17 @@ extern float g_009669a0;
 // FUNCTION: STARFLEETOP 0x005008f4
 fn_005008f4_element::fn_005008f4_element()
 {
-	float a = fn_0069b0e0() * 2.0f - 1.0f;
-	float b = fn_0069b0e0() * 2.0f - 1.0f;
-	float c = fn_0069b0e0() * 2.0f - 1.0f;
+	float a = frand() * 2.0f - 1.0f;
+	float b = frand() * 2.0f - 1.0f;
+	float c = frand() * 2.0f - 1.0f;
 	*(float *)&m00[4] = b;
 	*(float *)&m00[8] = a;
 	*(float *)&m00[0] = c;
-	double t = fn_0069b0e0() * g_007aa8c8;
+	double t = frand() * g_007aa8c8;
 	*(float *)&m00[12] = t + t;
-	*(float *)&m00[16] = (g_009669a0 - g_0096699c) * fn_0069b0e0() + g_0096699c;
-	*(float *)&m00[20] = fn_0069b0e0() * 5.0f;
+	*(float *)&m00[16] = (g_009669a0 - g_0096699c) * frand() + g_0096699c;
+	*(float *)&m00[20] = frand() * 5.0f;
 }
-
-// MATCH-ONLY: stand-in for the tMatrix member at 0x0069b450, which tvectormath.h does not declare yet.
-class fn_00500976_matrix : public tMatrix
-{
-public:
-	void fn_0069b450( tMatrix *other );
-};
 
 void fn_00500b46( tMatrix *, tPoint3, float );
 extern float g_0092f61c;
@@ -160,10 +154,10 @@ void fn_005008f4_element::fn_00500976( tObject_00413ac3_arg *renderer, float x, 
 {
 	tMatrix a;
 	fn_00500b46( &a, *(tPoint3 *)&m00[0], g_0092f61c * *(float *)&m00[16] + *(float *)&m00[12] );
-	fn_00500976_matrix b;
+	tMatrix b;
 	b.mIdentity();
 	b.mTranslate( x, y, z );
-	b.fn_0069b450( &a );
+	b.mMult( a );
 	renderer->vfunction57( &b );
 	float f = *(float *)&m00[20] * 0.1f;
 	float f2 = *(float *)&m00[20] * 0.1f;

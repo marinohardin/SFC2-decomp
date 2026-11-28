@@ -105,7 +105,7 @@ public:
 
 // HYPOTHESIS: returns the angle of the direction (x, y), in 0x2000 units to
 // the turn, as 0x00421ea9 masks it.
-short fn_0069afc0(float x, float y);
+short ArcTangent(float x, float y);
 
 // HYPOTHESIS: the controlled ship, seen only through the three shorts
 // this constructor copies.
@@ -518,7 +518,7 @@ void tEntityControlShip::fn_00421ea9(tObject_0042310b_entry *entry)
             // message waits for a shared header.
         }
         delta.mNormalize();
-        int angle = fn_0069afc0(delta.x, delta.y) & 0x1fff;
+        int angle = ArcTangent(delta.x, delta.y) & 0x1fff;
         m_48 = m_4c;
         int turn = (m_48 - angle) & 0x1fff;
         entry->m_14 = angle;
@@ -536,7 +536,7 @@ void tEntityControlShip::fn_004220d5(tObject_0042310b_entry *entry)
     if (target) {
         tPoint3 delta = target->fCurrPos - m_30;
         delta.mNormalize();
-        int angle = fn_0069afc0(delta.x, delta.y) & 0x1fff;
+        int angle = ArcTangent(delta.x, delta.y) & 0x1fff;
         m_48 = m_4c;
         int turn = (m_48 - angle) & 0x1fff;
         entry->m_14 = angle;
@@ -572,7 +572,7 @@ short tEntityControlShip::fn_004221a3(tPoint3 &point)
 {
     tPoint3 delta = point - m_30;
     delta.mNormalize();
-    int angle = fn_0069afc0(delta.x, delta.y) & 0x1fff;
+    int angle = ArcTangent(delta.x, delta.y) & 0x1fff;
     m_48 = m_4c;
     return (m_48 - angle) & 0x1fff;
 }

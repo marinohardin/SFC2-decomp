@@ -8,7 +8,7 @@
 
 extern char g_0090b750;
 extern tEntity *g_008e1090[];
-short fn_0069afc0(float x, float y);
+short ArcTangent(float x, float y);
 extern float g_00795620;
 extern double g_0079de48;
 extern float g_00855984[];
@@ -710,7 +710,7 @@ bool tBaseWeapon::vfunction132(int param_1)
             tPoint3 direction;
             direction = target - position;
             direction.mNormalize();
-            field_c8 = (heading - (fn_0069afc0(direction.x, direction.y) & 0x1fff)) & 0x1fff;
+            field_c8 = (heading - (ArcTangent(direction.x, direction.y) & 0x1fff)) & 0x1fff;
             if (vfunction130())
                 return true;
         }

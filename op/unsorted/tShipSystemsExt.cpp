@@ -9,7 +9,6 @@
 extern float g_00799ed0;
 extern float g_0079d528;
 extern float g_007977d0;
-extern float g_007959cc;
 extern float g_0079d524;
 extern double g_0090bef0;
 extern double g_00c7c148;
@@ -106,7 +105,7 @@ tShipSystemsExt::tShipSystemsExt( unsigned long param_1 )
     // as unsigned.
     param_1 = 0;
     gNetControl.fn_00431808( (int)&param_1 );
-    m6b8 = ( param_1 * g_007977d0 + g_007959cc ) * g_0079d524 + g_00c7c148;
+    m6b8 = ( param_1 * g_007977d0 + 1.0f ) * g_0079d524 + g_00c7c148;
     m944 = 1;
     m948 = 1;
     m940 = 0;

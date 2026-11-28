@@ -26,7 +26,7 @@ bool tMyApp::vfunction2()
 		if (!tBasicFile::mInit(true))
 		{
 #line 149
-			throw fn_006a2ec0(__FILE__, __LINE__, "Could not initialize file system");
+			throw tErrInfo(__FILE__, __LINE__, "Could not initialize file system");
 		}
 		fn_0069a9a0("Starfleet Command");
 		// HYPOTHESIS: fn_0069aa00 returns the window handle.
@@ -35,7 +35,7 @@ bool tMyApp::vfunction2()
 		if (!m_4->vfunction21(this))
 		{
 #line 177
-			throw fn_006a2ec0(__FILE__, __LINE__, "fTest3D.mInit() failed");
+			throw tErrInfo(__FILE__, __LINE__, "fTest3D.mInit() failed");
 		}
 		return true;
 	}
@@ -53,7 +53,7 @@ bool tMyApp::vfunction2()
 	{
 		fn_0069aa00();
 	}
-	catch (fn_006a2ec0_Error error)
+	catch (tErrInfo error)
 	{
 		fn_0069aa00();
 	}

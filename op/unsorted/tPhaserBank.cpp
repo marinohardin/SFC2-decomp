@@ -60,7 +60,6 @@ extern unsigned char g_00856b7c[6][8];
 extern float g_0079bc20;
 // HYPOTHESIS: a float constant 0x004e28fc compares each recovery timer with; below it a
 // bank is ready to fire.
-extern float g_007981a8;
 
 // HYPOTHESIS: per-type tables in the original's data, passed with their entry count; read
 // as floats, since 0x004e2aaa loads their first entries with fld.
@@ -604,7 +603,7 @@ int tPhaserBank::vfunction136(char param_1)
             fired = true;
             for (; j < n * 4; j++)
             {
-                if (field_480[j] < g_007981a8)
+                if (field_480[j] < 1e-07f)
                 {
                     field_480[j] = 0.0f;
                     field_4c8 = j / 4;
@@ -623,7 +622,7 @@ int tPhaserBank::vfunction136(char param_1)
             fired = true;
             for (; i < n; i++)
             {
-                if (field_470[i] < g_007981a8)
+                if (field_470[i] < 1e-07f)
                 {
                     field_470[i] = 0.0f;
                     field_4c8 = i;

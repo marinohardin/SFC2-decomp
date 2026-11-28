@@ -28,7 +28,6 @@ extern float g_007a166c;
 extern float g_0079d508;
 
 // HYPOTHESIS: a float constant (1.0) that 0x004e572e divides by the rate.
-extern float g_007959cc;
 
 // HYPOTHESIS: a float constant 0x004e5868 passes to slot 67, as tPhaserBank's 0x004e20f4
 // does for its fourth type.
@@ -330,7 +329,7 @@ float tPhaserXBank::vfunction135(unsigned char param_1)
     // HYPOTHESIS: the original also stores this pointer to the stack slot that t uses later,
     // as in tPhaserBank's 0x004e24b0, which suggests an inline helper not yet identified.
     fn_004e20f4_field2c_type* p = field_2c;
-    float t = g_007959cc / p->vfunction112();
+    float t = 1.0f / p->vfunction112();
     t *= p->vfunction119();
     if (t > field_470[param_1])
         return t;

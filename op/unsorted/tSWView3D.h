@@ -6,6 +6,8 @@
 
 #include "unsorted/tView3DExt.h"
 
+class tGLSurfMgr;
+
 // The layout below puts tSWView3D's first member at 0x1f4c, where tView3DExt ends (its own code
 // touches members up to 0x1f48, 0x006aa6e0 to 0x006aa790; the sibling tD3DViewMgr also starts
 // its own members there). The vtable is 0x007b8f38, 100 slots: slots 0 to 96 are tView3D's and
@@ -19,7 +21,8 @@
 //   vfunction8  (+0x1c) 0x0069fcf0 releases the shared instance and returns 0; tSfcApp3d tests
 //                       the slot's result as a bool.
 //   vfunction9  (+0x20) 0x0069fac0 returns a pointer to a string; tSfcApp3d calls it as a void.
-//   vfunction86 (+0x154) 0x0069f480 takes no arguments and returns field_1f68; tSfcApp3d passes two.
+//   vfunction86 (+0x154) 0x0069f480 (mGetSurfMgr in the SDK) takes no arguments and returns
+//                       field_1f68; tSfcApp3d passes two.
 // tD3DViewMgr's slots 6 to 8 (0x0069e2a0 and following) do the same as this class's
 // 0x0069fce0, 0x0069fcf0 and 0x0069fac0, so the unit that tSfcApp3d passes is probably not a
 // tView3D at those slots.
@@ -27,41 +30,48 @@ class tSWView3D : public tView3DExt {
 public:
 	tSWView3D();
 	virtual ~tSWView3D();    // +0x00 0x0069f490, the body is 0x0069f4b0
-	virtual bool vfunction2(int, int);    // +0x04 0x0069f510
-	virtual bool vfunction3(int, int, int, int, RECT *, bool);    // +0x08 0x0069f850
-	virtual bool vfunction4(int, int, RECT *, bool);    // +0x0c 0x0069f8a0
-	virtual bool vfunction6();    // +0x14 0x0069f900
+	virtual unsigned char mEnumDispModes(fn_0069f510_Callback, void *);    // +0x04 0x0069f510
+	virtual unsigned char mInitFullscreen(void *, void *, int, int, const tGLRectI *, unsigned char);    // +0x08 0x0069f850
+	virtual unsigned char mInitWindowed(void *, void *, const tGLRectI *, unsigned char);    // +0x0c 0x0069f8a0
+	virtual unsigned char mDone();    // +0x14 0x0069f900
 	virtual void vfunction7();    // +0x18 0x0069fce0, counts a reference to the shared instance
-	virtual int vfunction10();    // +0x24 0x0069fad0, 0x1f when field_5fb4 is set, else 0x0e
-	virtual bool vfunction11();    // +0x28 0x0069f990
-	virtual bool vfunction12();    // +0x2c 0x0069fa10
-	virtual void vfunction17(int, int, int, int);    // +0x40 0x0069fa70, sets the rectangle at +0x1f4c
-	virtual int vfunction25(int);    // +0x60 0x0069fa50, returns 10
-	virtual int vfunction26();    // +0x64 0x0069fa60, returns 10
-	virtual bool vfunction27(unsigned char, unsigned char, unsigned char);    // +0x68 0x0069fb10
-	virtual bool vfunction28(unsigned int);    // +0x6c 0x0069faf0
-	virtual bool vfunction29(int, int, int, int, bool, bool);    // +0x70 0x0069fb90
-	virtual bool vfunction30(bool, bool);    // +0x74 0x0069fb50
-	virtual bool vfunction31();    // +0x78 0x0069fcc0
-	virtual int vfunction43();    // +0xa8 0x0069fdc0, returns 2
-	virtual bool vfunction48(bool);    // +0xbc 0x0069fde0, sets field_5fc4
-	virtual bool vfunction49(bool);    // +0xc0 0x0069fe00, sets field_5fc5 and field_5fc6
-	virtual bool vfunction50(bool);    // +0xc4 0x0069fe20, sets field_5fc5
-	virtual bool vfunction51(bool);    // +0xc8 0x0069fe40, sets field_5fc6
+	virtual unsigned long mGetCaps();    // +0x24 0x0069fad0, 0x1f when field_5fb4 is set, else 0x0e
+	virtual unsigned char mBeginScene();    // +0x28 0x0069f990
+	virtual unsigned char mEndScene();    // +0x2c 0x0069fa10
+	virtual void mSetViewport(int, int, int, int);    // +0x40 0x0069fa70, sets the rectangle at +0x1f4c
+	virtual unsigned int mSetPolygonMode(unsigned int);    // +0x60 0x0069fa50, returns 10
+	virtual unsigned int mGetPolygonMode();    // +0x64 0x0069fa60, returns 10
+	virtual unsigned char mSetClearColor(unsigned char, unsigned char, unsigned char);    // +0x68 0x0069fb10
+	virtual unsigned char mSetClearColor(tGLRgbQuad);    // +0x6c 0x0069faf0
+	virtual unsigned char mClear(int, int, int, int, unsigned char, unsigned char);    // +0x70 0x0069fb90
+	virtual unsigned char mClear(unsigned char, unsigned char);    // +0x74 0x0069fb50
+	virtual unsigned char mFlip();    // +0x78 0x0069fcc0
+	virtual unsigned long mGetSrcBlendCaps();    // +0xa8 0x0069fdc0, returns 2
+	virtual unsigned char mAlphaTestEnable(unsigned char);    // +0xbc 0x0069fde0, sets field_5fc4
+	virtual unsigned char mEnableZWriteAndTest(unsigned char);    // +0xc0 0x0069fe00, sets field_5fc5 and field_5fc6
+	virtual unsigned char mEnableZWrite(unsigned char);    // +0xc4 0x0069fe20, sets field_5fc5
+	virtual unsigned char mEnableZTest(unsigned char);    // +0xc8 0x0069fe40, sets field_5fc6
 	virtual bool vfunction82(void (__stdcall *)(void *, int), int);    // +0x144 0x006b2230
 	virtual tTexInfo *vfunction83(int, void *, int, int, int);    // +0x148 0x006b2280
 	virtual tTexInfo *vfunction84(int);    // +0x14c 0x006b2500
-	virtual bool vfunction85(int, tBmpSurf *, char, int);    // +0x150 0x006b23c0
-	virtual int vfunction86();    // HYPOTHESIS: really slot +0x154 0x0069f480; tView3D declares it (int, int), so this is a stopgap overload
+	virtual unsigned char mLoadTexture(int, tGLSurface &, unsigned char, unsigned long);    // +0x150 0x006b23c0
+	virtual tGLSurfMgr *mGetSurfMgr();    // HYPOTHESIS: really slot +0x154 0x0069f480; tView3D declares that slot vfunction86(int, int), so this is a stopgap slot
 	virtual bool vfunction98(int, int, int, bool);    // +0x184 0x006b1050
 	virtual bool vfunction99(int);    // +0x188 0x006b1660
 	virtual bool vfunction100(int, int);    // +0x18c 0x006b1230
 
-	// Members the virtuals above call: not virtual, read and write this class's fields, and have
-	// no symbol.
-	bool fn_0069f600(int, int, int, int, RECT *, bool, bool);    // 0x0069f600, opens the view for vfunction3 and vfunction4
+	// Members the virtuals above call: not virtual, read and write this class's fields.
 	void fn_006adf80(int, void *, void *, void *);    // 0x006adf80, draws a triangle: a texture slot and three vertices
 	void fn_006b11a0(void *);    // 0x006b11a0, copies a tGLPixFmt into field_5f6c
+
+private:
+	unsigned char mInit(void *, void *, int, int, const tGLRectI *, unsigned char, unsigned char);    // 0x0069f600, opens the view for mInitFullscreen and mInitWindowed
+
+protected:
+	static tSWView3D *fMaster;    // the shared instance, created on first use
+	friend tView3D *dmpGetSWView3D();
+
+public:
 
 	// +0x1f4c to +0x1f58 are the clip rectangle (left, top, right, bottom as 0x0069fb90 clamps).
 	int field_1f4c;
