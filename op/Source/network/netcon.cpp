@@ -58,7 +58,7 @@ void tNetControl::mQueueMsg(tNetMsg *aMsg, int aCommand, int aDestination, doubl
 	if( size > 0x400 )
 	{
 #line 3504
-		throw fn_006a2ec0( __FILE__, __LINE__, "tNetControl::mQueueMsg(): Message buffer overrun\n" );
+		throw tErrInfo( __FILE__, __LINE__, "tNetControl::mQueueMsg(): Message buffer overrun\n" );
 #line 63
 	}
 
@@ -105,7 +105,7 @@ void tNetControl::mQueueMsg(tNetMsg *aMsg, int aCommand, int aPlayer, int aDesti
 	if( size > 0x400 )
 	{
 #line 3588
-		throw fn_006a2ec0( __FILE__, __LINE__, "tNetControl::mQueueMsg(): Message buffer overrun\n" );
+		throw tErrInfo( __FILE__, __LINE__, "tNetControl::mQueueMsg(): Message buffer overrun\n" );
 #line 110
 	}
 

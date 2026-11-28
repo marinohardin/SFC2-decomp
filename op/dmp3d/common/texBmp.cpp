@@ -17,7 +17,7 @@ extern bool g_007b9274;
 
 // FUNCTION: STARFLEETOP 0x006a48d0
 // HYPOTHESIS: as in stream_basicfile.cpp, the literals stand in for __FILE__ and __LINE__.
-void tTexBmp::vfunction2( tBasicFile *file )
+void tTexBmp::mInitAsBMP( tBasicFile *file )
 {
 	BITMAPFILEHEADER	fileHeader;
 	BITMAPINFOHEADER	infoHeader;
@@ -27,17 +27,17 @@ void tTexBmp::vfunction2( tBasicFile *file )
 
 	if ( file->mRead( &fileHeader, sizeof( fileHeader ) ) != sizeof( fileHeader ) )
 	{
-		throw fn_006a2ec0( "D:\\work\\QSI\\Projects\\CORE\\dmp3d\\common\\texBmp.cpp", 198,
+		throw tErrInfo( "D:\\work\\QSI\\Projects\\CORE\\dmp3d\\common\\texBmp.cpp", 198,
 			"Unable to read BITMAPFILEHEADER section" );
 	}
 	if ( ( (char *)&fileHeader.bfType )[0] != 'B' || ( (char *)&fileHeader.bfType )[1] != 'M' )
 	{
-		throw fn_006a2ec0( "D:\\work\\QSI\\Projects\\CORE\\dmp3d\\common\\texBmp.cpp", 207,
+		throw tErrInfo( "D:\\work\\QSI\\Projects\\CORE\\dmp3d\\common\\texBmp.cpp", 207,
 			"Invalid bitmap file (no 'BM' signature)" );
 	}
 	if ( file->mRead( &infoHeader, sizeof( infoHeader ) ) != sizeof( infoHeader ) )
 	{
-		throw fn_006a2ec0( "D:\\work\\QSI\\Projects\\CORE\\dmp3d\\common\\texBmp.cpp", 217,
+		throw tErrInfo( "D:\\work\\QSI\\Projects\\CORE\\dmp3d\\common\\texBmp.cpp", 217,
 			"Unable to read BITMAPINFOHEADER section" );
 	}
 
@@ -72,7 +72,7 @@ void tTexBmp::vfunction2( tBasicFile *file )
 		infoHeader.biClrImportant = 0;
 		if ( !file->mSeekCur( (long)sizeof( BITMAPCOREHEADER ) - (long)sizeof( BITMAPINFOHEADER ) ) )
 		{
-			throw fn_006a2ec0( "D:\\work\\QSI\\Projects\\CORE\\dmp3d\\common\\texBmp.cpp", 267,
+			throw tErrInfo( "D:\\work\\QSI\\Projects\\CORE\\dmp3d\\common\\texBmp.cpp", 267,
 				"Error seeking file" );
 		}
 	}
@@ -160,7 +160,7 @@ __forceinline unsigned char ReadByte( tBasicFile *file )
 
 	if ( file->mRead( &value, 1 ) != 1 )
 	{
-		throw fn_006a2ec0( "D:\\work\\QSI\\Projects\\CORE\\dmp3d\\common\\texBmp.cpp", 369,
+		throw tErrInfo( "D:\\work\\QSI\\Projects\\CORE\\dmp3d\\common\\texBmp.cpp", 369,
 			"Unexpected read error" );
 	}
 	return value;
@@ -175,7 +175,7 @@ inline short ReadWord( tBasicFile *file )
 }
 
 // FUNCTION: STARFLEETOP 0x006a4df0
-void tTexBmp::vfunction3( tBasicFile *file )
+void tTexBmp::mInitAsPCX( tBasicFile *file )
 {
 	PcxHeader	header;
 	int			width;
@@ -195,7 +195,7 @@ void tTexBmp::vfunction3( tBasicFile *file )
 	header.vDpi = ReadWord( file );
 	if ( file->mRead( header.colorMap, sizeof( header.colorMap ) ) != sizeof( header.colorMap ) )
 	{
-		throw fn_006a2ec0( "D:\\work\\QSI\\Projects\\CORE\\dmp3d\\common\\texBmp.cpp", 405,
+		throw tErrInfo( "D:\\work\\QSI\\Projects\\CORE\\dmp3d\\common\\texBmp.cpp", 405,
 			"Unexpected read error" );
 	}
 	header.reserved = ReadByte( file );
@@ -204,28 +204,28 @@ void tTexBmp::vfunction3( tBasicFile *file )
 	header.paletteInfo = ReadWord( file );
 	if ( file->mRead( header.filler, sizeof( header.filler ) ) != sizeof( header.filler ) )
 	{
-		throw fn_006a2ec0( "D:\\work\\QSI\\Projects\\CORE\\dmp3d\\common\\texBmp.cpp", 415,
+		throw tErrInfo( "D:\\work\\QSI\\Projects\\CORE\\dmp3d\\common\\texBmp.cpp", 415,
 			"Unexpected seek error" );
 	}
 
 	if ( header.manufacturer != 10 )
 	{
-		throw fn_006a2ec0( "D:\\work\\QSI\\Projects\\CORE\\dmp3d\\common\\texBmp.cpp", 424,
+		throw tErrInfo( "D:\\work\\QSI\\Projects\\CORE\\dmp3d\\common\\texBmp.cpp", 424,
 			"Invalid or unsupported PCX file" );
 	}
 	if ( header.version != 5 )
 	{
-		throw fn_006a2ec0( "D:\\work\\QSI\\Projects\\CORE\\dmp3d\\common\\texBmp.cpp", 428,
+		throw tErrInfo( "D:\\work\\QSI\\Projects\\CORE\\dmp3d\\common\\texBmp.cpp", 428,
 			"Invalid or unsupported PCX file" );
 	}
 	if ( header.encoding != 1 )
 	{
-		throw fn_006a2ec0( "D:\\work\\QSI\\Projects\\CORE\\dmp3d\\common\\texBmp.cpp", 432,
+		throw tErrInfo( "D:\\work\\QSI\\Projects\\CORE\\dmp3d\\common\\texBmp.cpp", 432,
 			"Invalid or unsupported PCX file" );
 	}
 	if ( header.bitsPerPixel != 8 )
 	{
-		throw fn_006a2ec0( "D:\\work\\QSI\\Projects\\CORE\\dmp3d\\common\\texBmp.cpp", 436,
+		throw tErrInfo( "D:\\work\\QSI\\Projects\\CORE\\dmp3d\\common\\texBmp.cpp", 436,
 			"Invalid or unsupported PCX file" );
 	}
 	numPlanes = header.numPlanes;
@@ -236,7 +236,7 @@ void tTexBmp::vfunction3( tBasicFile *file )
 	case 3:
 		break;
 	default:
-		throw fn_006a2ec0( "D:\\work\\QSI\\Projects\\CORE\\dmp3d\\common\\texBmp.cpp", 448,
+		throw tErrInfo( "D:\\work\\QSI\\Projects\\CORE\\dmp3d\\common\\texBmp.cpp", 448,
 			"Invalid or unsupported PCX file" );
 	}
 
@@ -245,12 +245,12 @@ void tTexBmp::vfunction3( tBasicFile *file )
 
 	if ( width <= 0 )
 	{
-		throw fn_006a2ec0( "D:\\work\\QSI\\Projects\\CORE\\dmp3d\\common\\texBmp.cpp", 457,
+		throw tErrInfo( "D:\\work\\QSI\\Projects\\CORE\\dmp3d\\common\\texBmp.cpp", 457,
 			"Invalid or unsupported PCX file" );
 	}
 	if ( header.yMax - header.yMin <= 0 )
 	{
-		throw fn_006a2ec0( "D:\\work\\QSI\\Projects\\CORE\\dmp3d\\common\\texBmp.cpp", 461,
+		throw tErrInfo( "D:\\work\\QSI\\Projects\\CORE\\dmp3d\\common\\texBmp.cpp", 461,
 			"Invalid or unsupported PCX file" );
 	}
 
@@ -275,7 +275,7 @@ void tTexBmp::vfunction3( tBasicFile *file )
 
 		if ( palettePos < 0 || !file->mSeekSet( palettePos ) )
 		{
-			throw fn_006a2ec0( "D:\\work\\QSI\\Projects\\CORE\\dmp3d\\common\\texBmp.cpp", 490,
+			throw tErrInfo( "D:\\work\\QSI\\Projects\\CORE\\dmp3d\\common\\texBmp.cpp", 490,
 				"Invalid or unsupported PCX file" );
 		}
 		if ( ReadByte( file ) == 12 )
@@ -289,16 +289,16 @@ void tTexBmp::vfunction3( tBasicFile *file )
 // FUNCTION: STARFLEETOP 0x006a5a20
 // The handler (after the function's ret in the exe) closes and releases the file, resets the
 // object through slot 7 and fails.
-bool tTexBmp::vfunction7( const char *name )
+unsigned char tTexBmp::mInit( const char *name )
 {
 	tBasicFile	*file = vfunction1();
 
 	try
 	{
-		vfunction8();
+		mDone();
 		if ( file == NULL )
 		{
-			throw fn_006a2ec0( "D:\\work\\QSI\\Projects\\CORE\\dmp3d\\common\\texBmp.cpp", 535,
+			throw tErrInfo( "D:\\work\\QSI\\Projects\\CORE\\dmp3d\\common\\texBmp.cpp", 535,
 				"tTexBmp::mInit(): Unable to create tBasicFile object" );
 		}
 
@@ -312,9 +312,9 @@ bool tTexBmp::vfunction7( const char *name )
 		file->mSeekSet( pos );
 
 		if ( isBmp )
-			vfunction2( file );
+			mInitAsBMP( file );
 		else
-			vfunction3( file );
+			mInitAsPCX( file );
 
 		field_08[0x103] = 0;
 		for ( int i = 0; i < 0x103; i++ )
@@ -327,14 +327,14 @@ bool tTexBmp::vfunction7( const char *name )
 		file->mClose();
 		delete file;
 	}
-	catch ( fn_006a2ec0_Error error )
+	catch ( tErrInfo error )
 	{
 		if ( file != NULL )
 		{
 			file->mClose();
 			delete file;
 		}
-		vfunction8();
+		mDone();
 		return false;
 	}
 	return true;
@@ -343,7 +343,7 @@ bool tTexBmp::vfunction7( const char *name )
 // FUNCTION: STARFLEETOP 0x006a5b90
 // HYPOTHESIS: fields 0x13c and 0x140 hold owned buffers; the reset frees them and clears the
 // whole description.
-bool tTexBmp::vfunction8( void )
+unsigned char tTexBmp::mDone( void )
 {
 	if ( field_13c != 0 )
 		tBaseItemBag::operator delete( (void *)field_13c );
@@ -371,8 +371,8 @@ bool tTexBmp::vfunction8( void )
 
 // FUNCTION: STARFLEETOP 0x006a5c20
 // HYPOTHESIS: clears the description without releasing the buffers, in the same order as
-// vfunction8.
-void tTexBmp::fn_006a5c20( void )
+// mDone.
+void tTexBmp::mResetDataMembers( void )
 {
 	field_04 = 0;
 	field_08[0] = 0;
@@ -395,19 +395,19 @@ void tTexBmp::fn_006a5c20( void )
 // FUNCTION: STARFLEETOP 0x006a5c80
 // HYPOTHESIS: reads the palette into field_140 as RGBQUADs, widening an OS/2 file's RGBTRIPLEs
 // in place, then reads the pixels into field_13c.
-void tTexBmp::vfunction4( tBasicFile *file )
+void tTexBmp::mReadBMP( tBasicFile *file )
 {
 	if ( field_138 != 0 )
 	{
 		if ( !file->mSeekSet( field_134 ) )
 		{
-			throw fn_006a2ec0( "D:\\work\\QSI\\Projects\\CORE\\dmp3d\\common\\texBmp.cpp", 643,
+			throw tErrInfo( "D:\\work\\QSI\\Projects\\CORE\\dmp3d\\common\\texBmp.cpp", 643,
 				"Error seeking file" );
 		}
 		field_140 = (long)tBaseItemBag::operator new( field_138 * 4 );
 		if ( field_140 == 0 )
 		{
-			throw fn_006a2ec0( "D:\\work\\QSI\\Projects\\CORE\\dmp3d\\common\\texBmp.cpp", 651,
+			throw tErrInfo( "D:\\work\\QSI\\Projects\\CORE\\dmp3d\\common\\texBmp.cpp", 651,
 				"Out of memory" );
 		}
 		if ( field_04 == 2 )
@@ -416,7 +416,7 @@ void tTexBmp::vfunction4( tBasicFile *file )
 
 			if ( file->mRead( (void *)field_140, size ) != size )
 			{
-				throw fn_006a2ec0( "D:\\work\\QSI\\Projects\\CORE\\dmp3d\\common\\texBmp.cpp", 663,
+				throw tErrInfo( "D:\\work\\QSI\\Projects\\CORE\\dmp3d\\common\\texBmp.cpp", 663,
 					"Unable to read RGBTRIPLE array" );
 			}
 			RGBTRIPLE	*triples = (RGBTRIPLE *)field_140;
@@ -436,7 +436,7 @@ void tTexBmp::vfunction4( tBasicFile *file )
 
 			if ( file->mRead( (void *)field_140, size ) != size )
 			{
-				throw fn_006a2ec0( "D:\\work\\QSI\\Projects\\CORE\\dmp3d\\common\\texBmp.cpp", 684,
+				throw tErrInfo( "D:\\work\\QSI\\Projects\\CORE\\dmp3d\\common\\texBmp.cpp", 684,
 					"Unable to read RGBQUAD array" );
 			}
 			RGBQUAD	*quads = (RGBQUAD *)field_140;
@@ -454,12 +454,12 @@ void tTexBmp::vfunction4( tBasicFile *file )
 
 	if ( !file->mSeekSet( field_130 ) )
 	{
-		throw fn_006a2ec0( "D:\\work\\QSI\\Projects\\CORE\\dmp3d\\common\\texBmp.cpp", 706,
+		throw tErrInfo( "D:\\work\\QSI\\Projects\\CORE\\dmp3d\\common\\texBmp.cpp", 706,
 			"Error seeking file" );
 	}
 	if ( file->mRead( (void *)field_13c, field_128 ) != (unsigned long)field_128 )
 	{
-		throw fn_006a2ec0( "D:\\work\\QSI\\Projects\\CORE\\dmp3d\\common\\texBmp.cpp", 712,
+		throw tErrInfo( "D:\\work\\QSI\\Projects\\CORE\\dmp3d\\common\\texBmp.cpp", 712,
 			"Error reading BMP pixel bits" );
 	}
 }
@@ -468,7 +468,7 @@ void tTexBmp::vfunction4( tBasicFile *file )
 // HYPOTHESIS: decodes a PCX file's run-length pixels into field_13c, one row of field_120
 // bytes at a time, interleaving the three planes of a 24-bit file, then reads its 256-entry
 // RGB palette into field_140 as RGBQUADs.
-void tTexBmp::vfunction5( tBasicFile *file )
+void tTexBmp::mReadPCX( tBasicFile *file )
 {
 	switch ( field_118 )
 	{
@@ -478,12 +478,12 @@ void tTexBmp::vfunction5( tBasicFile *file )
 	default:
 		// The exe's message here is its "Internal error" constant (0x00884ae4), the one the
 		// texture loader's default case throws.
-		throw fn_006a2ec0( "D:\\work\\QSI\\Projects\\CORE\\dmp3d\\common\\texBmp.cpp", 732,
+		throw tErrInfo( "D:\\work\\QSI\\Projects\\CORE\\dmp3d\\common\\texBmp.cpp", 732,
 			"Internal error" );
 	}
 	if ( !file->mSeekSet( field_130 ) )
 	{
-		throw fn_006a2ec0( "D:\\work\\QSI\\Projects\\CORE\\dmp3d\\common\\texBmp.cpp", 737,
+		throw tErrInfo( "D:\\work\\QSI\\Projects\\CORE\\dmp3d\\common\\texBmp.cpp", 737,
 			"Error seeking file" );
 	}
 
@@ -536,18 +536,18 @@ void tTexBmp::vfunction5( tBasicFile *file )
 	{
 		if ( !file->mSeekSet( field_134 ) )
 		{
-			throw fn_006a2ec0( "D:\\work\\QSI\\Projects\\CORE\\dmp3d\\common\\texBmp.cpp", 810,
+			throw tErrInfo( "D:\\work\\QSI\\Projects\\CORE\\dmp3d\\common\\texBmp.cpp", 810,
 				"Error seeking file" );
 		}
 		field_140 = (long)tBaseItemBag::operator new( field_138 * 4 );
 		if ( field_140 == 0 )
 		{
-			throw fn_006a2ec0( "D:\\work\\QSI\\Projects\\CORE\\dmp3d\\common\\texBmp.cpp", 818,
+			throw tErrInfo( "D:\\work\\QSI\\Projects\\CORE\\dmp3d\\common\\texBmp.cpp", 818,
 				"Out of memory" );
 		}
 		if ( file->mRead( (void *)field_140, 0x300 ) != 0x300 )
 		{
-			throw fn_006a2ec0( "D:\\work\\QSI\\Projects\\CORE\\dmp3d\\common\\texBmp.cpp", 826,
+			throw tErrInfo( "D:\\work\\QSI\\Projects\\CORE\\dmp3d\\common\\texBmp.cpp", 826,
 				"Unable to read RGBTRIPLE array" );
 		}
 		unsigned char	*triples = (unsigned char *)field_140;
@@ -582,7 +582,7 @@ bool tTexBmp::mLock( void )
 	{
 		if ( file == NULL )
 		{
-			throw fn_006a2ec0( "D:\\work\\QSI\\Projects\\CORE\\dmp3d\\common\\texBmp.cpp", 870,
+			throw tErrInfo( "D:\\work\\QSI\\Projects\\CORE\\dmp3d\\common\\texBmp.cpp", 870,
 				"tTexBmp::mLock(): Unable to create tBasicFile object" );
 		}
 
@@ -590,7 +590,7 @@ bool tTexBmp::mLock( void )
 		field_13c = (long)tBaseItemBag::operator new( field_128 );
 		if ( field_13c == 0 )
 		{
-			throw fn_006a2ec0( "D:\\work\\QSI\\Projects\\CORE\\dmp3d\\common\\texBmp.cpp", 885,
+			throw tErrInfo( "D:\\work\\QSI\\Projects\\CORE\\dmp3d\\common\\texBmp.cpp", 885,
 				"Out of memory" );
 		}
 
@@ -598,13 +598,13 @@ bool tTexBmp::mLock( void )
 		{
 		case 1:
 		case 2:
-			vfunction4( file );
+			mReadBMP( file );
 			break;
 		case 3:
-			vfunction5( file );
+			mReadPCX( file );
 			break;
 		default:
-			throw fn_006a2ec0( "D:\\work\\QSI\\Projects\\CORE\\dmp3d\\common\\texBmp.cpp", 904,
+			throw tErrInfo( "D:\\work\\QSI\\Projects\\CORE\\dmp3d\\common\\texBmp.cpp", 904,
 				"Internal error" );
 		}
 
@@ -612,7 +612,7 @@ bool tTexBmp::mLock( void )
 		delete file;
 		field_12c++;
 	}
-	catch ( fn_006a2ec0_Error error )
+	catch ( tErrInfo error )
 	{
 		if ( file != NULL )
 		{
