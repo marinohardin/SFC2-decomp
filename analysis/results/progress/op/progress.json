@@ -1,6 +1,6 @@
 {
  "schema": 3,
- "generated_at": "2026-11-27T12:35:58Z",
+ "generated_at": "2026-11-28T12:55:18Z",
  "text_bytes": 3751936,
  "inputs": {
   "functions_csv": {
@@ -16,7 +16,7 @@
   "sdk_fuzzy_tsv": {
    "path": "analysis/results/StarFleetOP_2552_sdklib_fuzzy.tsv",
    "present": true,
-   "sha256": "c9cf1afab1cab290b7ecfe6962ad31bdcaaebf234c71fa93a96e2e5e4b598108"
+   "sha256": "94c9972a72989d26d832d9f4d6593b1e58bdcdb4e30bb75e0301d7da3f02f971"
   },
   "eh_funclet_parents": {
    "path": "analysis/results/progress/op/eh_funclet_parents.tsv",
@@ -41,7 +41,7 @@
   "matched_set": {
    "path": "analysis/results/matched_set.json",
    "present": true,
-   "sha256": "2f4434294d6437390a2d29f040cc7d760da781f4511c4c32b0cd897b4739dde6"
+   "sha256": "f96b8dba18abe6c5bc4366a9c4d0b9886509f5756dd62764eb910535e094e4dc"
   },
   "functional_set": {
    "path": "harness/functional_set.json",
@@ -51,7 +51,7 @@
   "manifest": {
    "path": "op/manifest.tsv",
    "present": true,
-   "sha256": "904643ee671c1b83ad02b37f515b32eb13aac307772bf4c8dc2f50b07a3301e4"
+   "sha256": "e84e701657a20579f7e13627380b030bfe57ebb9434804a3ee2890b09824028e"
   }
  },
  "function_kinds": {
@@ -84,13 +84,13 @@
    "bytes": 3473841,
    "status": {
     "exact": {
-     "functions": 5127,
-     "pct_functions": 22.2227,
-     "function_bytes": 587126,
-     "funclet_bytes": 14076,
-     "bytes": 601202,
-     "pct_bytes": 17.3065,
-     "pct_text": 16.0238
+     "functions": 5157,
+     "pct_functions": 22.3527,
+     "function_bytes": 589294,
+     "funclet_bytes": 14122,
+     "bytes": 603416,
+     "pct_bytes": 17.3703,
+     "pct_text": 16.0828
     },
     "functional": {
      "functions": 0,
@@ -102,13 +102,13 @@
      "pct_text": 0.0
     },
     "partial": {
-     "functions": 466,
-     "pct_functions": 2.0199,
-     "function_bytes": 170161,
-     "funclet_bytes": 8969,
-     "bytes": 179130,
-     "pct_bytes": 5.1565,
-     "pct_text": 4.7743
+     "functions": 462,
+     "pct_functions": 2.0025,
+     "function_bytes": 168937,
+     "funclet_bytes": 8977,
+     "bytes": 177914,
+     "pct_bytes": 5.1215,
+     "pct_text": 4.7419
     },
     "lifted": {
      "functions": 0,
@@ -120,13 +120,13 @@
      "pct_text": 0.0
     },
     "original-x86": {
-     "functions": 17478,
-     "pct_functions": 75.7574,
-     "function_bytes": 2549013,
-     "funclet_bytes": 144496,
-     "bytes": 2693509,
-     "pct_bytes": 77.5369,
-     "pct_text": 71.7898
+     "functions": 17452,
+     "pct_functions": 75.6447,
+     "function_bytes": 2548069,
+     "funclet_bytes": 144442,
+     "bytes": 2692511,
+     "pct_bytes": 77.5082,
+     "pct_text": 71.7632
     }
    },
    "named": {
@@ -151,9 +151,9 @@
      "pct_functions": 0.0087
     },
     "sdk-fuzzy": {
-     "functions": 315,
-     "function_bytes": 23428,
-     "pct_functions": 1.3654
+     "functions": 695,
+     "function_bytes": 104753,
+     "pct_functions": 3.0124
     },
     "string": {
      "functions": 0,
@@ -161,28 +161,28 @@
      "pct_functions": 0.0
     },
     "claim": {
-     "functions": 579,
-     "function_bytes": 67713,
-     "pct_functions": 2.5096
+     "functions": 576,
+     "function_bytes": 67579,
+     "pct_functions": 2.4966
     },
     "rtti-class": {
-     "functions": 7303,
-     "function_bytes": 971306,
-     "pct_functions": 31.6545
+     "functions": 7088,
+     "function_bytes": 936159,
+     "pct_functions": 30.7226
     },
     "none": {
-     "functions": 12531,
-     "function_bytes": 1763064,
-     "pct_functions": 54.3149
+     "functions": 12369,
+     "function_bytes": 1717020,
+     "pct_functions": 53.6128
     }
    },
    "named_real_symbol": {
-    "functions": 3237,
-    "pct_functions": 14.0306
+    "functions": 3614,
+    "pct_functions": 15.6647
    },
    "named_with_class": {
-    "functions": 10540,
-    "pct_functions": 45.6851
+    "functions": 10702,
+    "pct_functions": 46.3872
    }
   },
   "game": {
@@ -192,12 +192,12 @@
    "bytes": 3330800,
    "status": {
     "exact": {
-     "functions": 5127,
-     "pct_functions": 23.1321,
-     "function_bytes": 587126,
-     "funclet_bytes": 14076,
-     "bytes": 601202,
-     "pct_bytes": 18.0498
+     "functions": 5156,
+     "pct_functions": 23.2629,
+     "function_bytes": 589266,
+     "funclet_bytes": 14122,
+     "bytes": 603388,
+     "pct_bytes": 18.1154
     },
     "functional": {
      "functions": 0,
@@ -208,12 +208,12 @@
      "pct_bytes": 0.0
     },
     "partial": {
-     "functions": 466,
-     "pct_functions": 2.1025,
-     "function_bytes": 170161,
-     "funclet_bytes": 8969,
-     "bytes": 179130,
-     "pct_bytes": 5.378
+     "functions": 462,
+     "pct_functions": 2.0845,
+     "function_bytes": 168937,
+     "funclet_bytes": 8977,
+     "bytes": 177914,
+     "pct_bytes": 5.3415
     },
     "lifted": {
      "functions": 0,
@@ -224,12 +224,12 @@
      "pct_bytes": 0.0
     },
     "original-x86": {
-     "functions": 16571,
-     "pct_functions": 74.7654,
-     "function_bytes": 2414157,
-     "funclet_bytes": 136311,
-     "bytes": 2550468,
-     "pct_bytes": 76.5722
+     "functions": 16546,
+     "pct_functions": 74.6526,
+     "function_bytes": 2413241,
+     "funclet_bytes": 136257,
+     "bytes": 2549498,
+     "pct_bytes": 76.5431
     }
    },
    "named": {
@@ -254,9 +254,9 @@
      "pct_functions": 0.009
     },
     "sdk-fuzzy": {
-     "functions": 303,
-     "function_bytes": 22696,
-     "pct_functions": 1.3671
+     "functions": 683,
+     "function_bytes": 104021,
+     "pct_functions": 3.0816
     },
     "string": {
      "functions": 0,
@@ -264,28 +264,28 @@
      "pct_functions": 0.0
     },
     "claim": {
-     "functions": 579,
-     "function_bytes": 67713,
-     "pct_functions": 2.6123
+     "functions": 576,
+     "function_bytes": 67579,
+     "pct_functions": 2.5988
     },
     "rtti-class": {
-     "functions": 6969,
-     "function_bytes": 927729,
-     "pct_functions": 31.4429
+     "functions": 6754,
+     "function_bytes": 892582,
+     "pct_functions": 30.4728
     },
     "none": {
-     "functions": 12530,
-     "function_bytes": 1763036,
-     "pct_functions": 56.5331
+     "functions": 12368,
+     "function_bytes": 1716992,
+     "pct_functions": 55.8022
     }
    },
    "named_real_symbol": {
-    "functions": 2665,
-    "pct_functions": 12.024
+    "functions": 3042,
+    "pct_functions": 13.725
    },
    "named_with_class": {
-    "functions": 9634,
-    "pct_functions": 43.4669
+    "functions": 9796,
+    "pct_functions": 44.1978
    }
   }
  },
@@ -8249,6 +8249,54 @@
    "name": "tBaseWeapon::vfunction146"
   },
   {
+   "address": "004db93e",
+   "name": "FUN_004db93e"
+  },
+  {
+   "address": "004db948",
+   "name": "FUN_004db948"
+  },
+  {
+   "address": "004dba29",
+   "name": "FUN_004dba29"
+  },
+  {
+   "address": "004dba33",
+   "name": "FUN_004dba33"
+  },
+  {
+   "address": "004dbb16",
+   "name": "FUN_004dbb16"
+  },
+  {
+   "address": "004dbb20",
+   "name": "FUN_004dbb20"
+  },
+  {
+   "address": "004dbc01",
+   "name": "FUN_004dbc01"
+  },
+  {
+   "address": "004dbc0b",
+   "name": "FUN_004dbc0b"
+  },
+  {
+   "address": "004dbcee",
+   "name": "FUN_004dbcee"
+  },
+  {
+   "address": "004dbcf8",
+   "name": "FUN_004dbcf8"
+  },
+  {
+   "address": "004dbddb",
+   "name": "FUN_004dbddb"
+  },
+  {
+   "address": "004dbde5",
+   "name": "FUN_004dbde5"
+  },
+  {
    "address": "004de035",
    "name": "tNetMsg_kCreateDirect::~tNetMsg_kCreateDirect"
   },
@@ -8639,10 +8687,6 @@
   {
    "address": "00504b65",
    "name": "FUN_00504b65"
-  },
-  {
-   "address": "00504bff",
-   "name": "FUN_00504bff"
   },
   {
    "address": "005050e2",
@@ -10629,6 +10673,10 @@
    "name": "tCampaignInfo::vfunction9_for_tAllocatedClass"
   },
   {
+   "address": "0054b552",
+   "name": "FUN_0054b552"
+  },
+  {
    "address": "0054bd73",
    "name": "nStoredProcedureArguments::tMetaMapDataRequest::tResponse::tClientHex::tClientHex"
   },
@@ -10683,6 +10731,10 @@
   {
    "address": "0054c4e3",
    "name": "FUN_0054c4e3"
+  },
+  {
+   "address": "0054deec",
+   "name": "FUN_0054deec"
   },
   {
    "address": "0054fa6d",
@@ -12779,6 +12831,34 @@
   {
    "address": "005c7fc6",
    "name": "FUN_005c7fc6"
+  },
+  {
+   "address": "005d37d2",
+   "name": "tIdiom::tIdiom"
+  },
+  {
+   "address": "005d37fb",
+   "name": "tIdiom::scalar_deleting_destructor"
+  },
+  {
+   "address": "005d3817",
+   "name": "tIdiom::~tIdiom"
+  },
+  {
+   "address": "005d3852",
+   "name": "tIdiom::tIdiom"
+  },
+  {
+   "address": "005d38a4",
+   "name": "tIdiom::tIdiom"
+  },
+  {
+   "address": "005d3906",
+   "name": "tIdiom::vfunction2"
+  },
+  {
+   "address": "005d3918",
+   "name": "tIdiom::vfunction3"
   },
   {
    "address": "005d913f",
@@ -18993,6 +19073,30 @@
    "name": "tSeqScene::vfunction30"
   },
   {
+   "address": "00686640",
+   "name": "tPushBtnBase::vfunction43"
+  },
+  {
+   "address": "006866f0",
+   "name": "tPushBtnBase::vfunction44"
+  },
+  {
+   "address": "00686720",
+   "name": "tPushBtnBase::vfunction45"
+  },
+  {
+   "address": "00686750",
+   "name": "tPushBtnBase::vfunction47"
+  },
+  {
+   "address": "00686770",
+   "name": "tPushBtnBase::vfunction39"
+  },
+  {
+   "address": "00686780",
+   "name": "tPushBtnBase::vfunction1"
+  },
+  {
    "address": "00687060",
    "name": "tNotifiee::~tNotifiee"
   },
@@ -19137,6 +19241,10 @@
    "name": "tSWView3D::scalar_deleting_destructor"
   },
   {
+   "address": "0069f510",
+   "name": "tSWView3D::vfunction2"
+  },
+  {
    "address": "0069f850",
    "name": "tSWView3D::vfunction3"
   },
@@ -19241,6 +19349,10 @@
    "name": "tTexBmp::vfunction4"
   },
   {
+   "address": "006a5f50",
+   "name": "tTexBmp::vfunction5"
+  },
+  {
    "address": "006a7c20",
    "name": "CD3DFramework::CD3DFramework"
   },
@@ -19297,6 +19409,10 @@
    "name": "D3DUtil_InitViewport"
   },
   {
+   "address": "006a9540",
+   "name": "FUN_006a9540"
+  },
+  {
    "address": "006a95f0",
    "name": "tSWView3D::~tSWView3D"
   },
@@ -19323,6 +19439,10 @@
   {
    "address": "006a9700",
    "name": "tView3DExt::vfunction22"
+  },
+  {
+   "address": "006a9710",
+   "name": "tView3DExt::vfunction45"
   },
   {
    "address": "006a9780",
@@ -21344,10 +21464,6 @@
    "name": "FUN_00504339"
   },
   {
-   "address": "00504433",
-   "name": "FUN_00504433"
-  },
-  {
    "address": "00506f07",
    "name": "FUN_00506f07"
   },
@@ -21702,6 +21818,10 @@
   {
    "address": "005c7fbb",
    "name": "FUN_005c7fbb"
+  },
+  {
+   "address": "005d39b7",
+   "name": "FUN_005d39b7"
   },
   {
    "address": "005d9cd3",
@@ -22452,10 +22572,6 @@
    "name": "tSWView3D::~tSWView3D"
   },
   {
-   "address": "0069f510",
-   "name": "tSWView3D::vfunction2"
-  },
-  {
    "address": "0069fb90",
    "name": "tSWView3D::vfunction29"
   },
@@ -22464,24 +22580,12 @@
    "name": "tTexBmp::vfunction7"
   },
   {
-   "address": "006a5f50",
-   "name": "tTexBmp::vfunction5"
-  },
-  {
    "address": "006a62f0",
    "name": "FUN_006a62f0"
   },
   {
    "address": "006a8930",
    "name": "FUN_006a8930"
-  },
-  {
-   "address": "006a9540",
-   "name": "FUN_006a9540"
-  },
-  {
-   "address": "006a9710",
-   "name": "tView3DExt::vfunction45"
   },
   {
    "address": "006aa0e0",
