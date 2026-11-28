@@ -62,7 +62,6 @@ address-order	op/unsorted/tAIWeaponOfficer.cpp	0x005145c6	out of address order b
 address-order	op/unsorted/tApp3dBase.cpp	0x00401057	out of address order before the check was added
 address-order	op/unsorted/tBaseWeapon.cpp	0x004d77ab	out of address order before the check was added
 address-order	op/unsorted/tBaseWeapon.cpp	0x004d82fb	out of address order before the check was added
-address-order	op/unsorted/tBasicFileCRTNamespace__tBasicFileCRT.cpp	0x0066d480	out of address order before the check was added
 address-order	op/unsorted/tCampaignState.cpp	0x0045ddc0	out of address order before the check was added
 address-order	op/unsorted/tCampaignState.cpp	0x0045deac	out of address order before the check was added
 address-order	op/unsorted/tClientCharacter.cpp	0x00429a18	out of address order before the check was added
