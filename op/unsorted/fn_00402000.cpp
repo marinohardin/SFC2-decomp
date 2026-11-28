@@ -718,31 +718,29 @@ void fn_00402d31_Obj::fn_00402d31(int a)
     fn_00402d31_Target::fn_0040441e(m8, 1, a);
 }
 
-// HYPOTHESIS: clear of a container of std::string (the inlined ~basic_string calls _Tidy(true)); names are placeholders.
-class fn_00402d42_Vec
-{
-public:
-    void fn_00402d42();
-    int m0;
-    std::string* m4;
-    std::string* m8;
-    std::string* mc;
-};
+#include <vector>
 
+// MATCH-ONLY: the library's vector destructor for strings (the inlined ~basic_string calls _Tidy(true)),
+// written out so that the claim has a line of its own; fn_emit_00402d42 makes this unit emit it.
 // FUNCTION: STARFLEETOP 0x00402d42
-void fn_00402d42_Vec::fn_00402d42()
+template<>
+inline std::vector<std::string>::~vector()
 {
-    std::string* last = m8;
-    for (std::string* it = m4; it != last; ++it)
-        it->~basic_string();
-    operator delete(m4);
-    m4 = 0;
-    m8 = 0;
-    mc = 0;
+    _Destroy( _First, _Last );
+    allocator.deallocate( _First, _End - _First );
+    _First = 0, _Last = 0, _End = 0;
 }
 
+// MATCH-ONLY: exists only to make this unit emit the destructor above out of line; not a function of
+// the original.
+#pragma inline_depth( 0 )
+void fn_emit_00402d42( std::vector<std::string> *v )
+{
+    v->~vector();
+}
+#pragma inline_depth()
+
 // HYPOTHESIS: names and the callee's parameter types are placeholders.
-#include <vector>
 class fn_00402d77_Obj
 {
 public:

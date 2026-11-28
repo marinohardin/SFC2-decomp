@@ -140,9 +140,11 @@ template<> void tSingleAccessWrapper< std::vector< fn_00544725_elem > >::Delete(
 // HYPOTHESIS: the vector writer instantiated for std::string (the size, then each string).
 namespace nDataStore
 {
+// MATCH-ONLY: the header's template, written out so that the claim has a line of its own; it is
+// inline, so the pointer below makes this unit emit it out of line.
 // FUNCTION: STARFLEETOP 0x0054491b
 template<>
-tOutput& operator<<( tOutput& output, const std::vector< std::string >& value )
+inline tOutput& operator<<( tOutput& output, const std::vector< std::string >& value )
 {
 	int32u size = value.size();
 	output.Write( (const byte*)&size, sizeof( size ) );
@@ -156,6 +158,10 @@ tOutput& operator<<( tOutput& output, const std::vector< std::string >& value )
 
 	return output;
 }
+
+// MATCH-ONLY: never called; it makes VC6 emit 0x0054491b out of line. HYPOTHESIS: a caller in the
+// original used it so.
+tOutput& (*g_fn_0054491b)( tOutput&, const std::vector< std::string >& ) = &operator<<;
 }
 
 extern "C" int atexit( void ( *func )( void ) );

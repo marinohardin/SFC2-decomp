@@ -41,7 +41,7 @@ address	size	symbol	source	modes	decorated
 0x00402cdf	26	fn_00402bb6_Streambuf::fn_00402cdf()	unsorted/fn_00402000.cpp	vc6 guest	?fn_00402cdf@fn_00402bb6_Streambuf@@QAEHXZ
 0x00402cf9	56	fn_00402cf9_Vec::fn_00402cf9()	unsorted/fn_00402000.cpp	vc6 guest	?fn_00402cf9@fn_00402cf9_Vec@@QAEXXZ
 0x00402d31	17	fn_00402d31_Obj::fn_00402d31(int)	unsorted/fn_00402000.cpp	vc6 guest	?fn_00402d31@fn_00402d31_Obj@@QAEXH@Z
-0x00402d42	53	fn_00402d42_Vec::fn_00402d42()	unsorted/fn_00402000.cpp	vc6 guest	?fn_00402d42@fn_00402d42_Vec@@QAEXXZ
+0x00402d42	53	~vector()	unsorted/fn_00402000.cpp	vc6 guest	??1?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@QAE@XZ
 0x00402d77	17	fn_00402d77_Obj::fn_00402d77(const std::string&)	unsorted/fn_00402000.cpp	vc6 guest	?fn_00402d77@fn_00402d77_Obj@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z
 0x004033ab	165	std::ifstream::ifstream(const char*,std::ios_base::openmode)	unsorted/fn_00403000.cpp	partial	??0?$basic_ifstream@DU?$char_traits@D@std@@@std@@QAE@PBDH@Z
 0x0040345f	70	std::ifstream::~ifstream()	unsorted/fn_00403000.cpp	vc6	??1?$basic_ifstream@DU?$char_traits@D@std@@@std@@UAE@XZ
@@ -1325,7 +1325,7 @@ address	size	symbol	source	modes	decorated
 0x00460736	426	tCampaignInfo::operator=(const tCampaignInfo &)	unsorted/fn_00460000.cpp	vc6 guest	??4tCampaignInfo@@QAEAAV0@ABV0@@Z
 0x004608ea	10	g_0090d158 (dynamic initializer)	unsorted/fn_00460000.cpp	vc6	
 0x004608f4	12	g_0090d158 (atexit registration)	unsorted/fn_00460000.cpp	vc6	
-0x0046090a	449	fn_0046090a_object::operator=(const fn_0046090a_object &)	unsorted/fn_00460000.cpp	vc6 guest	??4fn_0046090a_object@@QAEAAV0@ABV0@@Z
+0x0046090a	449	operator=(const std::vector<std::string> &)	unsorted/fn_00460000.cpp	vc6 guest	??4?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@QAEAAV01@ABV01@@Z
 0x00460acb	56	fn_00460acb_class::fn_00460acb()	unsorted/fn_00460000.cpp	vc6 guest	?fn_00460acb@fn_00460acb_class@@QAEXXZ
 0x00460b03	56	fn_00460b03_class::fn_00460b03()	unsorted/fn_00460000.cpp	vc6 guest	?fn_00460b03@fn_00460b03_class@@QAEXXZ
 0x00460b3b	56	fn_00460b3b_class::fn_00460b3b()	unsorted/fn_00460000.cpp	vc6 guest	?fn_00460b3b@fn_00460b3b_class@@QAEXXZ

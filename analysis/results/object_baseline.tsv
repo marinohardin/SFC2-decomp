@@ -31,6 +31,7 @@ copy	-	??1?$tQuery@VtServCharacter@@@nDatabase@@UAE@XZ
 copy	-	??1?$tQuery@VtShip@@@nDatabase@@UAE@XZ
 copy	-	??1?$tSingleAccessWrapper@V?$vector@HV?$allocator@H@std@@@std@@@@QAE@XZ
 copy	-	??1?$tSingleAccessWrapper@VtObject_005391b0@@@@QAE@XZ
+copy	-	??1?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@QAE@XZ
 copy	-	??1tCastItem@@UAE@XZ
 copy	-	??1tGuard@tOptex@@QAE@XZ
 copy	-	??1tOptex@@QAE@XZ
