@@ -5,5 +5,6 @@ public:
     virtual ~tPlasmaF_Creator();
 };
 
+// FUNCTION: STARFLEETOP 0x004e94ea
 // FUNCTION: STARFLEETOP 0x004e94e0
 tPlasmaF_Creator g_PlasmaF_Creator;
