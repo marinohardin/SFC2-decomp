@@ -1,6 +1,10 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/fn_004E97B6.cpp
-// Functions: 0x004e97b6 to 0x004e97c0, 2 in op/UNITS.tsv
-// Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
-// Profile:   game-release (harness/units.json)
+class tPlasmaE_Creator
+{
+public:
+    tPlasmaE_Creator();
+    virtual ~tPlasmaE_Creator();
+};
+
+// FUNCTION: STARFLEETOP 0x004e97c0
+// FUNCTION: STARFLEETOP 0x004e97b6
+tPlasmaE_Creator g_PlasmaE_Creator;
