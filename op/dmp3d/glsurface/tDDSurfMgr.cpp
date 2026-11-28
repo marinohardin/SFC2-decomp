@@ -4,13 +4,9 @@
 #include <stdarg.h>
 #include <string.h>
 #include "unsorted/tDDSurface.h"
-// HYPOTHESIS: the window handle the surfaces belong to (0x00c7c604).
-extern HWND g_00c7c604;
-// HYPOTHESIS: a nesting counter (0x00c7c608) and the window procedure replaced by fn_006b4b90
-// (0x00c7c610).
-extern int g_00c7c608;
-extern WNDPROC g_00c7c610;
-LRESULT CALLBACK fn_006b4b90(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
+// HYPOTHESIS: a nesting counter (0x00c7c608). The window handle (0x00c7c604) and the window
+// procedure mWndProcStub replaces (0x00c7c610) are tDDSurfMgr's statics (SDK symbols).
+extern int g_00c7c608; EXTERN_C const GUID IID_IDirectDraw4;    // the toolchain's ddraw.h predates it
 
 // HYPOTHESIS: layout from the offsets this unit's functions use; only what they touch is named.
 class tDDSurfMgr
@@ -32,8 +28,12 @@ public:
     bool mSetDisplayMode(int width, int height, int bpp);
     bool mRestoreDisplayMode();
     bool mInitBuffers(int a1);
-    HRESULT fn_006b4a50();
-    void fn_006b4b10(int a1);
+protected: HRESULT mSetupPalette(); unsigned char mPause(unsigned char a1); public:
+    // (mSetupPalette is 0x006b4a50 and mPause 0x006b4b10; both are protected in the SDK.)
+protected: static HWND fHWnd; static WNDPROC fOldWndProc;
+    static LRESULT CALLBACK mWndProcStub(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
+    void mDDThrow(HRESULT hr, const char* file, int line, const char* format, ...);
+    unsigned char mDDCheck(HRESULT hr, const char* file, int line, const char* format, ...); public:
 
     int m004;
     char m_pad8[0xc - 0x8];
@@ -79,12 +79,12 @@ public:
     int* fCount;
 };
 
-// HYPOTHESIS: a cdecl helper taking the manager first; it reports a failed HRESULT with
-// "Line: %5d, Module: %s".
-void fn_006b3f80(tDDSurfMgr* mgr, HRESULT hr, const char* file, int line, const char* format, ...);
+// tDDSurfMgr::mDDThrow (a cdecl member, as its varargs make it) reports a failed HRESULT with
+// "Line: %5d, Module: %s" and throws it; mDDCheck records it and returns false.
+
 
 // HYPOTHESIS: returns the name of a DirectDraw/Direct3D error code ("D3DERR_...").
-const char* fn_006b9290(HRESULT hr);
+const char* D3DErrorCodeToString(HRESULT hr);
 
 // MATCH-ONLY: the original's earlier lines are not recovered; the blank lines below keep
 // mInitInterfaces on its original line numbers, which its error reports carry. (A #line
@@ -676,13 +676,13 @@ bool tDDSurfMgr::fn_006b3e10()
 
     try
     {
-        fn_006b3f80(this, DirectDrawCreate(NULL, &fDD, NULL), __FILE__, __LINE__, "tDDSurfMgr::mInitInterfaces(): DirectDrawCreate() failed");
+        mDDThrow(DirectDrawCreate(NULL, &fDD, NULL), __FILE__, __LINE__, "tDDSurfMgr::mInitInterfaces(): DirectDrawCreate() failed");
 
 
 
 
 
-        fn_006b3f80(this, fDD->QueryInterface(IID_IDirectDraw2, (void**)&fDD2), __FILE__, __LINE__, "tDDSurfMgr::mInitInterfaces(): Could not obtain DirectDraw2 interface");
+        mDDThrow(fDD->QueryInterface(IID_IDirectDraw4, (void**)&fDD2), __FILE__, __LINE__, "tDDSurfMgr::mInitInterfaces(): Could not obtain DirectDraw2 interface");
 
 
 
@@ -692,7 +692,7 @@ bool tDDSurfMgr::fn_006b3e10()
 
         DWORD coop = fFlag0 ? (DDSCL_FULLSCREEN | DDSCL_EXCLUSIVE) : DDSCL_NORMAL;
 
-        fn_006b3f80(this, fDD->SetCooperativeLevel(g_00c7c604, coop), __FILE__, __LINE__, "tDDSurfMgr::mInitInterfaces(): Could not set coop level");
+        mDDThrow(fDD->SetCooperativeLevel(fHWnd, coop), __FILE__, __LINE__, "tDDSurfMgr::mInitInterfaces(): Could not set coop level");
         fCoopLevel = coop;
     }
     catch (...)
@@ -715,37 +715,37 @@ bool tDDSurfMgr::fn_006b3e10()
 }
 
 // FUNCTION: STARFLEETOP 0x006b3f80
-void fn_006b3f80(tDDSurfMgr* mgr, HRESULT hr, const char* file, int line, const char* format, ...)
+void tDDSurfMgr::mDDThrow(HRESULT hr, const char* file, int line, const char* format, ...)
 {
     if (hr == DD_OK)
         return;
 
     // MATCH-ONLY: the original loads the format into a register before the first sprintf.
     const char* fmt = format;
-    sprintf(mgr->m00c, "Line: %5d, Module: %s", line, file);
+    sprintf(m00c, "Line: %5d, Module: %s", line, file);
     va_list args;
     va_start(args, format);
-    vsprintf(mgr->m20c, fmt, args);
+    vsprintf(m20c, fmt, args);
     va_end(args);
-    strcpy(mgr->m40c, fn_006b9290(hr));
+    strcpy(m40c, D3DErrorCodeToString(hr));
     throw hr;
 }
 
 // FUNCTION: STARFLEETOP 0x006b4010
-// HYPOTHESIS: the non-throwing twin of fn_006b3f80; records the failure and returns false.
-bool fn_006b4010(tDDSurfMgr* mgr, HRESULT hr, const char* file, int line, const char* format, ...)
+// The non-throwing twin of mDDThrow; records the failure and returns false.
+unsigned char tDDSurfMgr::mDDCheck(HRESULT hr, const char* file, int line, const char* format, ...)
 {
     if (hr == DD_OK)
         return true;
 
     // MATCH-ONLY: the original loads the format into a register before the first sprintf.
     const char* fmt = format;
-    sprintf(mgr->m00c, "Line: %5d, Module: %s", line, file);
+    sprintf(m00c, "Line: %5d, Module: %s", line, file);
     va_list args;
     va_start(args, format);
-    vsprintf(mgr->m20c, fmt, args);
+    vsprintf(m20c, fmt, args);
     va_end(args);
-    strcpy(mgr->m40c, fn_006b9290(hr));
+    strcpy(m40c, D3DErrorCodeToString(hr));
     return false;
 }
 
@@ -774,9 +774,9 @@ bool tDDSurfMgr::fn_006b4090(int a1, int a2, int a3, int a4, int a5, bool a6, bo
     fFlag0 = a6;
     fFlag3 = a7;
 
-    g_00c7c604 = hwnd;
-    g_00c7c610 = (WNDPROC)GetWindowLong(hwnd, GWL_WNDPROC);
-    SetWindowLong(g_00c7c604, GWL_WNDPROC, (LONG)fn_006b4b90);
+    fHWnd = hwnd;
+    fOldWndProc = (WNDPROC)GetWindowLong(hwnd, GWL_WNDPROC);
+    SetWindowLong(fHWnd, GWL_WNDPROC, (LONG)mWndProcStub);
 
     t00c7c608Guard guard(g_00c7c608);
 
@@ -789,8 +789,8 @@ bool tDDSurfMgr::fn_006b4090(int a1, int a2, int a3, int a4, int a5, bool a6, bo
     POINT pt;
     pt.x = 0;
     pt.y = 0;
-    GetClientRect(g_00c7c604, &m748);
-    ClientToScreen(g_00c7c604, &pt);
+    GetClientRect(fHWnd, &m748);
+    ClientToScreen(fHWnd, &pt);
     OffsetRect(&m748, pt.x, pt.y);
 
     HWND desktop = GetDesktopWindow();
@@ -818,7 +818,7 @@ bool tDDSurfMgr::fn_006b4090(int a1, int a2, int a3, int a4, int a5, bool a6, bo
 
     m004 = 0;
     fFlag4 = 1;
-    fn_006b4b10(0);
+    mPause(0);
     return true;
 }
 
@@ -956,10 +956,10 @@ bool tDDSurfMgr::mSetDisplayMode(int width, int height, int bpp)
     int restore = !(fCoopLevel & DDSCL_EXCLUSIVE);
     if (restore)
     {
-        HRESULT hr = fDD->SetCooperativeLevel(g_00c7c604, DDSCL_FULLSCREEN | DDSCL_EXCLUSIVE);
+        HRESULT hr = fDD->SetCooperativeLevel(fHWnd, DDSCL_FULLSCREEN | DDSCL_EXCLUSIVE);
         if (hr != DD_OK)
         {
-            fn_006b4010(this, hr, __FILE__, __LINE__, "tDDSurfMgr::mSetDisplayMode(): Could not set coop level");
+            mDDCheck(hr, __FILE__, __LINE__, "tDDSurfMgr::mSetDisplayMode(): Could not set coop level");
             m004 = 2;
             return false;
         }
@@ -976,7 +976,7 @@ bool tDDSurfMgr::mSetDisplayMode(int width, int height, int bpp)
     HRESULT hr = fDD->SetDisplayMode(width, height, bpp);
     if (hr != DD_OK)
     {
-        fn_006b4010(this, hr, __FILE__, __LINE__, "tDDSurfMgr::mSetDisplayMode(): Unable to set display mode to %dx%dx%dx", width, height, bpp);
+        mDDCheck(hr, __FILE__, __LINE__, "tDDSurfMgr::mSetDisplayMode(): Unable to set display mode to %dx%dx%dx", width, height, bpp);
         m004 = 2;
         result = false;
     }
@@ -989,10 +989,10 @@ bool tDDSurfMgr::mSetDisplayMode(int width, int height, int bpp)
 
     if (restore)
     {
-        hr = fDD->SetCooperativeLevel(g_00c7c604, fCoopLevel);
+        hr = fDD->SetCooperativeLevel(fHWnd, fCoopLevel);
         if (hr != DD_OK)
         {
-            fn_006b4010(this, hr, __FILE__, __LINE__, "tDDSurfMgr::mSetDisplayMode(): Could not restore coop level");
+            mDDCheck(hr, __FILE__, __LINE__, "tDDSurfMgr::mSetDisplayMode(): Could not restore coop level");
         }
     }
     return result;
@@ -1008,7 +1008,7 @@ bool tDDSurfMgr::mRestoreDisplayMode()
     int restore = !(fCoopLevel & DDSCL_EXCLUSIVE);
     if (restore)
     {
-        HRESULT hr = fDD->SetCooperativeLevel(g_00c7c604, DDSCL_FULLSCREEN | DDSCL_EXCLUSIVE);
+        HRESULT hr = fDD->SetCooperativeLevel(fHWnd, DDSCL_FULLSCREEN | DDSCL_EXCLUSIVE);
         if (hr != DD_OK)
         {
 
@@ -1023,7 +1023,7 @@ bool tDDSurfMgr::mRestoreDisplayMode()
 
 
 
-            fn_006b4010(this, hr, __FILE__, __LINE__, "tDDSurfMgr::mRestoreDisplayMode(): Could not set coop level");
+            mDDCheck(hr, __FILE__, __LINE__, "tDDSurfMgr::mRestoreDisplayMode(): Could not set coop level");
             m004 = 2;
             return false;
         }
@@ -1035,7 +1035,7 @@ bool tDDSurfMgr::mRestoreDisplayMode()
     if (hr != DD_OK)
     {
 
-        fn_006b4010(this, hr, __FILE__, __LINE__, "tDDSurfMgr::mRestoreDisplayMode(): Could not restore display mode");
+        mDDCheck(hr, __FILE__, __LINE__, "tDDSurfMgr::mRestoreDisplayMode(): Could not restore display mode");
         result = false;
     }
 
@@ -1045,10 +1045,10 @@ bool tDDSurfMgr::mRestoreDisplayMode()
 
     if (restore)
     {
-        hr = fDD->SetCooperativeLevel(g_00c7c604, fCoopLevel);
+        hr = fDD->SetCooperativeLevel(fHWnd, fCoopLevel);
         if (hr != DD_OK)
         {
-            fn_006b4010(this, hr, __FILE__, __LINE__, "tDDSurfMgr::mSetDisplayMode(): Could not restore coop level");
+            mDDCheck(hr, __FILE__, __LINE__, "tDDSurfMgr::mSetDisplayMode(): Could not restore coop level");
         }
     }
     return result;
@@ -1099,7 +1099,7 @@ bool tDDSurfMgr::mInitBuffers(int a1)
             }
             m730 = ddsd.dwBackBufferCount;
             if (hr != DD_OK)
-                fn_006b3f80(this, hr, __FILE__, __LINE__, "tDDSurfMgr::mInitBuffers(): Failed to create primary surface\n");
+                mDDThrow(hr, __FILE__, __LINE__, "tDDSurfMgr::mInitBuffers(): Failed to create primary surface\n");
 
 
 
@@ -1111,7 +1111,7 @@ bool tDDSurfMgr::mInitBuffers(int a1)
             DDSCAPS2 caps;
             memset(&caps, 0, sizeof(caps));
             caps.dwCaps = DDSCAPS_BACKBUFFER;
-            fn_006b3f80(this, fDDFront->GetAttachedSurface((LPDDSCAPS)&caps, &m72c), __FILE__, __LINE__, "tDDSurfMgr::mInitBuffers(): Could not obtain back buffer surface");
+            mDDThrow(fDDFront->GetAttachedSurface((LPDDSCAPS)&caps, &m72c), __FILE__, __LINE__, "tDDSurfMgr::mInitBuffers(): Could not obtain back buffer surface");
         }
         else
         {
@@ -1127,7 +1127,7 @@ bool tDDSurfMgr::mInitBuffers(int a1)
             ddsd.dwSize = sizeof(ddsd);
             ddsd.dwFlags = DDSD_CAPS;
             ddsd.ddsCaps.dwCaps = DDSCAPS_PRIMARYSURFACE;
-            fn_006b3f80(this, fDD2->CreateSurface((LPDDSURFACEDESC)&ddsd, &fDDFront, NULL), __FILE__, __LINE__, "tDDSurfMgr::mInitBuffers(): Failed to create front surface");
+            mDDThrow(fDD2->CreateSurface((LPDDSURFACEDESC)&ddsd, &fDDFront, NULL), __FILE__, __LINE__, "tDDSurfMgr::mInitBuffers(): Failed to create front surface");
 
 
 
@@ -1138,19 +1138,19 @@ bool tDDSurfMgr::mInitBuffers(int a1)
 
 
 
-            fn_006b3f80(this, DirectDrawCreateClipper(0, &clipper, NULL), __FILE__, __LINE__, "tDDSurfMgr::mInitBuffers(): Failed to create clipper");
+            mDDThrow(DirectDrawCreateClipper(0, &clipper, NULL), __FILE__, __LINE__, "tDDSurfMgr::mInitBuffers(): Failed to create clipper");
 
 
 
 
 
-            fn_006b3f80(this, clipper->SetHWnd(0, g_00c7c604), __FILE__, __LINE__, "tDDSurfMgr::mInitBuffers(): Clipper->SetHWnd() failed");
+            mDDThrow(clipper->SetHWnd(0, fHWnd), __FILE__, __LINE__, "tDDSurfMgr::mInitBuffers(): Clipper->SetHWnd() failed");
 
 
 
 
 
-            fn_006b3f80(this, fDDFront->SetClipper(clipper), __FILE__, __LINE__, "tDDSurfMgr::mInitBuffers(): fDDFront->SetClipper() failed");
+            mDDThrow(fDDFront->SetClipper(clipper), __FILE__, __LINE__, "tDDSurfMgr::mInitBuffers(): fDDFront->SetClipper() failed");
             clipper->Release();
             clipper = NULL;
 
@@ -1180,7 +1180,7 @@ bool tDDSurfMgr::mInitBuffers(int a1)
             HRESULT hr = fDD2->CreateSurface((LPDDSURFACEDESC)&ddsd, &m72c, NULL);
             if (hr != DD_OK)
             {
-                fn_006b4010(this, hr, __FILE__, __LINE__, "tD3DMgr::mInitD3DDevice(): Could not create back buffer\nin video memory");
+                mDDCheck(hr, __FILE__, __LINE__, "tD3DMgr::mInitD3DDevice(): Could not create back buffer\nin video memory");
 
 
 
@@ -1192,7 +1192,7 @@ bool tDDSurfMgr::mInitBuffers(int a1)
 
 
                 ddsd.ddsCaps.dwCaps = DDSCAPS_OFFSCREENPLAIN | DDSCAPS_SYSTEMMEMORY;
-                fn_006b3f80(this, fDD2->CreateSurface((LPDDSURFACEDESC)&ddsd, &m72c, NULL), __FILE__, __LINE__, "tD3DMgr::mInitD3DDevice(): Could not create back buffer\nin system memory");
+                mDDThrow(fDD2->CreateSurface((LPDDSURFACEDESC)&ddsd, &m72c, NULL), __FILE__, __LINE__, "tD3DMgr::mInitD3DDevice(): Could not create back buffer\nin system memory");
             }
         }
 
@@ -1205,7 +1205,7 @@ bool tDDSurfMgr::mInitBuffers(int a1)
 
         memset(&m624, 0, sizeof(m624));
         m624.dwSize = sizeof(m624);
-        fn_006b3f80(this, fDDFront->GetSurfaceDesc((LPDDSURFACEDESC)&m624), __FILE__, __LINE__, "tDDSurfMgr::mInitBuffers(): Could not obtain front surface description");
+        mDDThrow(fDDFront->GetSurfaceDesc((LPDDSURFACEDESC)&m624), __FILE__, __LINE__, "tDDSurfMgr::mInitBuffers(): Could not obtain front surface description");
 
 
 
@@ -1213,7 +1213,7 @@ bool tDDSurfMgr::mInitBuffers(int a1)
 
         memset(&m6a8, 0, sizeof(m6a8));
         m6a8.dwSize = sizeof(m6a8);
-        fn_006b3f80(this, m72c->GetSurfaceDesc((LPDDSURFACEDESC)&m6a8), __FILE__, __LINE__, "tDDSurfMgr::mInitBuffers(): Could not obtain back surface description");
+        mDDThrow(m72c->GetSurfaceDesc((LPDDSURFACEDESC)&m6a8), __FILE__, __LINE__, "tDDSurfMgr::mInitBuffers(): Could not obtain back surface description");
 
 
 
@@ -1226,9 +1226,9 @@ bool tDDSurfMgr::mInitBuffers(int a1)
 
         if (m624.ddpfPixelFormat.dwFlags & DDPF_PALETTEINDEXED8)
         {
-            HRESULT hr = fn_006b4a50();
+            HRESULT hr = mSetupPalette();
             if (hr != DD_OK)
-                fn_006b3f80(this, hr, __FILE__, __LINE__, "tDDSurfMgr::mInitBuffers(): Can't make palette\n");
+                mDDThrow(hr, __FILE__, __LINE__, "tDDSurfMgr::mInitBuffers(): Can't make palette\n");
 
 
 
@@ -1237,12 +1237,12 @@ bool tDDSurfMgr::mInitBuffers(int a1)
 
 
 
-            fn_006b3f80(this, fDDFront->SetPalette(m758), __FILE__, __LINE__, "tDDSurfMgr::mInitBuffers(): SetPalette() failed");
+            mDDThrow(fDDFront->SetPalette(m758), __FILE__, __LINE__, "tDDSurfMgr::mInitBuffers(): SetPalette() failed");
 
 
 
 
-            fn_006b3f80(this, m72c->SetPalette(m758), __FILE__, __LINE__, "tDDSurfMgr::mInitBuffers(): SetPalette() failed");
+            mDDThrow(m72c->SetPalette(m758), __FILE__, __LINE__, "tDDSurfMgr::mInitBuffers(): SetPalette() failed");
         }
         m620 = new tDDSurface;
         if (!m620)
