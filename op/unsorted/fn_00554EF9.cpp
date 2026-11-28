@@ -1,6 +1,6 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/fn_00554EF9.cpp
-// Functions: 0x00554ef9 to 0x00554ef9, 1 in op/UNITS.tsv
-// Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
-// Profile:   game-release (harness/units.json)
+// Two different stored procedure request types call this shared accessor.
+// FUNCTION: STARFLEETOP 0x00554ef9
+unsigned char __fastcall fn_00554ef9( const unsigned char* request )
+{
+	return request[0x18];
+}
