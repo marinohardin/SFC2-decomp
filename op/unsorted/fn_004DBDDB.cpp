@@ -5,5 +5,6 @@ public:
     virtual ~tDroneRackG_Creator();
 };
 
+// FUNCTION: STARFLEETOP 0x004dbde5
 // FUNCTION: STARFLEETOP 0x004dbddb
 tDroneRackG_Creator g_DroneRackG_Creator;
