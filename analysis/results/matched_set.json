@@ -30097,6 +30097,78 @@
    "exact": true,
    "recorded": "2026-11-26"
   },
+  "0x005d37d2": {
+   "name": "tIdiom::tIdiom",
+   "symbol": "??0tIdiom@@QAE@XZ",
+   "unit": "Meta/Servers/Idiom.cpp",
+   "size": 41,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-28"
+  },
+  "0x005d37fb": {
+   "name": "tIdiom::scalar_deleting_destructor",
+   "symbol": "??_GtIdiom@@UAEPAXI@Z",
+   "unit": "Meta/Servers/Idiom.cpp",
+   "size": 28,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-28"
+  },
+  "0x005d3817": {
+   "name": "tIdiom::~tIdiom",
+   "symbol": "??1tIdiom@@UAE@XZ",
+   "unit": "Meta/Servers/Idiom.cpp",
+   "size": 59,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-28"
+  },
+  "0x005d3852": {
+   "name": "tIdiom::tIdiom",
+   "symbol": "??0tIdiom@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "unit": "Meta/Servers/Idiom.cpp",
+   "size": 82,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-28"
+  },
+  "0x005d38a4": {
+   "name": "tIdiom::tIdiom",
+   "symbol": "??0tIdiom@@QAE@ABV0@@Z",
+   "unit": "Meta/Servers/Idiom.cpp",
+   "size": 98,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-28"
+  },
+  "0x005d3906": {
+   "name": "tIdiom::vfunction2",
+   "symbol": "?StreamOut@tIdiom@@UBEXAAVtOutput@nDataStore@@@Z",
+   "unit": "Meta/Servers/Idiom.cpp",
+   "size": 18,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-28"
+  },
+  "0x005d3918": {
+   "name": "tIdiom::vfunction3",
+   "symbol": "?StreamIn@tIdiom@@UAEXAAVtInput@nDataStore@@@Z",
+   "unit": "Meta/Servers/Idiom.cpp",
+   "size": 18,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-28"
+  },
+  "0x005d39b7": {
+   "name": "FUN_005d39b7",
+   "symbol": "?fn_005d39b7@tIdiom@@QAEXHABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "unit": "Meta/Servers/Idiom.cpp",
+   "size": 179,
+   "score": 28.345,
+   "exact": false,
+   "recorded": "2026-11-28"
+  },
   "0x005d913f": {
    "name": "FUN_005d913f",
    "symbol": "??1fn_005d913f_object@@QAE@XZ",
