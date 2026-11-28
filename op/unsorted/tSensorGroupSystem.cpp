@@ -884,7 +884,6 @@ int fn_0043ed12(int param_1)
 }
 
 extern double g_0079a148;
-extern float g_007959cc;
 extern float g_007959c8;
 extern float g_00795bf0;
 
@@ -909,7 +908,7 @@ float tSensorGroupSystem::fn_0043ed38(int param_1, int param_2)
         level -= (int)((double)source->vfunction7() * g_0079a148 / (double)source->field_20);
     }
     if (level <= 5)
-        return g_007959cc;
+        return 1.0f;
     if (level <= 7)
         return g_007959c8;
     if (level <= 9)
@@ -1390,7 +1389,7 @@ float tSensorGroupSystem::vfunction74(float param_1, float param_2)
     if (max != 0.0f)
     {
         ratio = used / max;
-        if (ratio > g_007959cc)
+        if (ratio > 1.0f)
             ratio = 1.0f;
     }
     vfunction73(ratio, param_2);

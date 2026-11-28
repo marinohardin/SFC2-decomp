@@ -289,7 +289,6 @@ float tCloakSystem::mDetermineCloakWeaponRange(float range, int param_2)
 extern double g_0079a148;
 extern float g_007959c8;
 extern float g_00795bf0;
-extern float g_007959cc;
 
 // FUNCTION: STARFLEETOP 0x00438607
 // The name is the string the function hands to its marker object.
@@ -316,7 +315,7 @@ float tCloakSystem::mDetermineCloakSeekingWeaponDamageModifier(int param_1, int 
             return 0.0f;
         }
     }
-    return g_007959cc;
+    return 1.0f;
 }
 
 // FUNCTION: STARFLEETOP 0x004386bc

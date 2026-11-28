@@ -68,7 +68,6 @@ tPoint2 tHypermass<12>::fn_004fa58f(unsigned int param_2, unsigned int param_3)
 extern tPoint3 g_00946158;
 // A 1.0 the original reads from a shared constant slot (other units read it too), while its
 // first comparison uses a pooled 1.0.
-extern float g_007959cc;
 
 // HYPOTHESIS: a member of the N = 12 instance, like 0x004fa526; writes a grey or tinted
 // brightness from a distance, clamped to [0, 1].
@@ -78,12 +77,12 @@ void tHypermass<12>::fn_004fa662(tPoint3 *param_1, float param_2, char param_3)
 {
 	float d = param_2 - g_007aa560;
 	if (d >= 1.0f)
-		param_2 = g_007959cc - d * field_18;
+		param_2 = 1.0f - d * field_18;
 	else
 		param_2 = d;
 	if (param_2 < 0.0f)
 		param_2 = 0.0f;
-	else if (param_2 > g_007959cc)
+	else if (param_2 > 1.0f)
 		param_2 = 1.0f;
 	if (param_3)
 		param_1->mSet(g_00946158.x * param_2, g_00946158.y * param_2, g_00946158.z * param_2);
@@ -141,12 +140,12 @@ void tHypermass<16>::fn_004fa662(tPoint3 *param_1, float param_2, char param_3)
 {
 	float d = param_2 - g_007aa560;
 	if (d >= 1.0f)
-		param_2 = g_007959cc - d * field_18;
+		param_2 = 1.0f - d * field_18;
 	else
 		param_2 = d;
 	if (param_2 < 0.0f)
 		param_2 = 0.0f;
-	else if (param_2 > g_007959cc)
+	else if (param_2 > 1.0f)
 		param_2 = 1.0f;
 	if (param_3)
 		param_1->mSet(g_00946158.x * param_2, g_00946158.y * param_2, g_00946158.z * param_2);
@@ -204,12 +203,12 @@ void tHypermass<20>::fn_004fa662(tPoint3 *param_1, float param_2, char param_3)
 {
 	float d = param_2 - g_007aa560;
 	if (d >= 1.0f)
-		param_2 = g_007959cc - d * field_18;
+		param_2 = 1.0f - d * field_18;
 	else
 		param_2 = d;
 	if (param_2 < 0.0f)
 		param_2 = 0.0f;
-	else if (param_2 > g_007959cc)
+	else if (param_2 > 1.0f)
 		param_2 = 1.0f;
 	if (param_3)
 		param_1->mSet(g_00946158.x * param_2, g_00946158.y * param_2, g_00946158.z * param_2);
