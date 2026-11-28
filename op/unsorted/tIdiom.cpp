@@ -1,3 +1,4 @@
+#define DATASTORE_OUT_OF_LINE_BUFFER_GET	// MATCH-ONLY: tBuffer::Get is the out-of-line copy at 0x0042a31c
 // tIdiom.cpp
 
 #include "unsorted/tIdiom.h"
