@@ -5,6 +5,8 @@
 
 #include <string.h>
 
+#include "Tiger/tvectormath.h"
+
 // HYPOTHESIS: the class of the object tSphere::vfunction4 (0x0040f87f) is handed is not known.
 // Only the three slots it calls are given their types; the earlier slots hold their places.
 class fn_0040f87f_Target {
@@ -40,15 +42,8 @@ public:
     virtual void vfunction81(int param_1, int **param_2, int param_3); // +0x140
 };
 
-// HYPOTHESIS: tSphere::vfunction10 (0x0040f99d) takes a 0x44-byte object by value (it returns
-// with ret 0x44) and calls the method at 0x0069c970 on it once per 12-byte vertex of field_4.
-// The object's class and the method's name are not known; the size alone is given here.
-class fn_0069c970_Owner {
-public:
-    void fn_0069c970(void *param_1);
-    int field_0[17];
-};
-
+// tSphere::vfunction10 (0x0040f99d) takes a tMatrix by value (it returns with ret 0x44) and
+// transforms each 12-byte vertex of field_4 with tMatrix::mTransform (0x0069c970).
 class tSphere {
 public:
     // HYPOTHESIS: vtable 0x00798488 slot 1 (slot 0 is the deleting destructor). The body at
@@ -70,7 +65,7 @@ public:
     // HYPOTHESIS: a later vtable slot; its position is not yet placed.
     virtual void vfunction9(float param_1);
     // HYPOTHESIS: a later vtable slot; its position is not yet placed.
-    virtual void vfunction10(fn_0069c970_Owner param_1);
+    virtual void vfunction10(tMatrix param_1);
     // HYPOTHESIS: not a member of its own but the shared epilogue of a member that takes seven
     // stack arguments (0x0040f86c, see its definition); declared here so that it is a member.
     bool FUN_0040f86c(int param_1, int param_2, int param_3, int param_4, int param_5, int param_6, int param_7);
@@ -210,10 +205,10 @@ void tSphere::vfunction9(float param_1)
 }
 
 // FUNCTION: STARFLEETOP 0x0040f99d
-void tSphere::vfunction10(fn_0069c970_Owner param_1)
+void tSphere::vfunction10(tMatrix param_1)
 {
     // HYPOTHESIS: field_4 holds field_8 vertices of 12 bytes each (three floats).
     for (int i = 0; i < field_8; i++) {
-        param_1.fn_0069c970((char *)field_4 + i * 12);
+        param_1.mTransform(*(tPoint3 *)((char *)field_4 + i * 12));
     }
 }

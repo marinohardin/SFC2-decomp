@@ -135,7 +135,12 @@ public:
 	void mTranslate(const float x, const float y, const float z);
 #if defined( tvectormath_spark_members )
 	void mMult(tMatrix &a, const tMatrix &b) const;
-	void fn_0069cbc0(tPoint3 &out, const tPoint3 &in) const;
+	void mInverseTransform(tPoint3 &out, const tPoint3 &in) const;
+#endif
+// MATCH-ONLY: declared only for the units that call it, as the two members above: declared for
+// every unit it moves a register assignment in tgSound.cpp.
+#if defined( tvectormath_mult_member )
+	void mMult(const tMatrix &b);
 #endif
 	void mForceTranslate(const float x, const float y, const float z);
 	void mPostTranslate(const float x, const float y, const float z);

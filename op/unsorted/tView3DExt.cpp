@@ -405,11 +405,11 @@ tMatrix *tView3DExt::vfunction56()
 void tView3DExt::vfunction57(tPoint3 *p)
 {
 	static tPoint3 origin(0.0f, 0.0f, 0.0f);
-	field_0x628.fn_0069cbc0(*p, origin);
+	field_0x628.mInverseTransform(*p, origin);
 }
 
 // HYPOTHESIS: the original calls 0x0069cc40 (another tMatrix member taking an output point and an
-// input point) where this body calls fn_0069cbc0 three times; tMatrix declares no member for it yet.
+// input point) where this body calls mInverseTransform three times; tMatrix declares no member for it yet.
 // FUNCTION: STARFLEETOP 0x006aa550
 void tView3DExt::vfunction58(tMatrix *m)
 {
@@ -419,8 +419,8 @@ void tView3DExt::vfunction58(tMatrix *m)
 	tMatrix product(tMatrix::kUninitialized);
 	field_0x628.mMult(product, *m);
 	static tPoint3 origin(0.0f, 0.0f, 0.0f);
-	product.fn_0069cbc0(*(tPoint3 *)field_0x744, origin);
-	m->fn_0069cbc0(*(tPoint3 *)field_0x750, *(tPoint3 *)field_0x738);
+	product.mInverseTransform(*(tPoint3 *)field_0x744, origin);
+	m->mInverseTransform(*(tPoint3 *)field_0x750, *(tPoint3 *)field_0x738);
 	for (int i = 0; i < 0x40; i++) {
 		if (field_0x1778[i] == 0)
 			return;
@@ -431,16 +431,16 @@ void tView3DExt::vfunction58(tMatrix *m)
 		case 1:
 		case 3:
 		case 5:
-			m->fn_0069cbc0(*(tPoint3 *)field_0x17b8[i], *pos);
+			m->mInverseTransform(*(tPoint3 *)field_0x17b8[i], *pos);
 			break;
 		case 2:
 		case 4:
 		case 6:
-			m->fn_0069cbc0(*(tPoint3 *)field_0x1ab8[i], *dir);
-			m->fn_0069cbc0(*(tPoint3 *)field_0x17b8[i], *pos);
+			m->mInverseTransform(*(tPoint3 *)field_0x1ab8[i], *dir);
+			m->mInverseTransform(*(tPoint3 *)field_0x17b8[i], *pos);
 			break;
 		default:
-			m->fn_0069cbc0(*(tPoint3 *)field_0x1ab8[i], *dir);
+			m->mInverseTransform(*(tPoint3 *)field_0x1ab8[i], *dir);
 		}
 	}
 }
