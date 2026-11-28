@@ -18883,6 +18883,114 @@
    "exact": true,
    "recorded": "2026-11-17"
   },
+  "0x004db93e": {
+   "name": "FUN_004db93e",
+   "symbol": "_$E1",
+   "unit": "unsorted/fn_004DB93E.cpp",
+   "size": 10,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-28"
+  },
+  "0x004db948": {
+   "name": "FUN_004db948",
+   "symbol": "_$E3",
+   "unit": "unsorted/fn_004DB93E.cpp",
+   "size": 12,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-28"
+  },
+  "0x004dba29": {
+   "name": "FUN_004dba29",
+   "symbol": "_$E1",
+   "unit": "unsorted/fn_004DBA29.cpp",
+   "size": 10,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-28"
+  },
+  "0x004dba33": {
+   "name": "FUN_004dba33",
+   "symbol": "_$E3",
+   "unit": "unsorted/fn_004DBA29.cpp",
+   "size": 12,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-28"
+  },
+  "0x004dbb16": {
+   "name": "FUN_004dbb16",
+   "symbol": "_$E1",
+   "unit": "unsorted/fn_004DBB16.cpp",
+   "size": 10,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-28"
+  },
+  "0x004dbb20": {
+   "name": "FUN_004dbb20",
+   "symbol": "_$E3",
+   "unit": "unsorted/fn_004DBB16.cpp",
+   "size": 12,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-28"
+  },
+  "0x004dbc01": {
+   "name": "FUN_004dbc01",
+   "symbol": "_$E1",
+   "unit": "unsorted/fn_004DBC01.cpp",
+   "size": 10,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-28"
+  },
+  "0x004dbc0b": {
+   "name": "FUN_004dbc0b",
+   "symbol": "_$E3",
+   "unit": "unsorted/fn_004DBC01.cpp",
+   "size": 12,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-28"
+  },
+  "0x004dbcee": {
+   "name": "FUN_004dbcee",
+   "symbol": "_$E1",
+   "unit": "unsorted/fn_004DBCEE.cpp",
+   "size": 10,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-28"
+  },
+  "0x004dbcf8": {
+   "name": "FUN_004dbcf8",
+   "symbol": "_$E3",
+   "unit": "unsorted/fn_004DBCEE.cpp",
+   "size": 12,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-28"
+  },
+  "0x004dbddb": {
+   "name": "FUN_004dbddb",
+   "symbol": "_$E1",
+   "unit": "unsorted/fn_004DBDDB.cpp",
+   "size": 10,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-28"
+  },
+  "0x004dbde5": {
+   "name": "FUN_004dbde5",
+   "symbol": "_$E3",
+   "unit": "unsorted/fn_004DBDDB.cpp",
+   "size": 12,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-28"
+  },
   "0x004de035": {
    "name": "tNetMsg_kCreateDirect::~tNetMsg_kCreateDirect",
    "symbol": "?fn_004de035@tESGLance@@QAEXM@Z",
@@ -24751,6 +24859,15 @@
    "exact": true,
    "recorded": "2026-11-26"
   },
+  "0x0054b552": {
+   "name": "FUN_0054b552",
+   "symbol": "?fn_0054b552@@YIJPAD@Z",
+   "unit": "unsorted/fn_0054B552.cpp",
+   "size": 4,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-27"
+  },
   "0x0054bd73": {
    "name": "nStoredProcedureArguments::tMetaMapDataRequest::tResponse::tClientHex::tClientHex",
    "symbol": "??0tClientHex@tResponse@tMetaMapDataRequest@nStoredProcedureArguments@@QAE@AAVtMetaMapHex@@JJ@Z",
@@ -24876,6 +24993,15 @@
    "score": 100.0,
    "exact": true,
    "recorded": "2026-11-19"
+  },
+  "0x0054deec": {
+   "name": "FUN_0054deec",
+   "symbol": "?fn_0054deec@@YIJPAD@Z",
+   "unit": "unsorted/fn_0054DEEC.cpp",
+   "size": 4,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-27"
   },
   "0x0054fa6d": {
    "name": "nStoredProcedureArguments::tAddPreparedMissionRequest::vfunction3",
@@ -29970,6 +30096,78 @@
    "score": 100.0,
    "exact": true,
    "recorded": "2026-11-26"
+  },
+  "0x005d37d2": {
+   "name": "tIdiom::tIdiom",
+   "symbol": "??0tIdiom@@QAE@XZ",
+   "unit": "Meta/Servers/Idiom.cpp",
+   "size": 41,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-28"
+  },
+  "0x005d37fb": {
+   "name": "tIdiom::scalar_deleting_destructor",
+   "symbol": "??_GtIdiom@@UAEPAXI@Z",
+   "unit": "Meta/Servers/Idiom.cpp",
+   "size": 28,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-28"
+  },
+  "0x005d3817": {
+   "name": "tIdiom::~tIdiom",
+   "symbol": "??1tIdiom@@UAE@XZ",
+   "unit": "Meta/Servers/Idiom.cpp",
+   "size": 59,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-28"
+  },
+  "0x005d3852": {
+   "name": "tIdiom::tIdiom",
+   "symbol": "??0tIdiom@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "unit": "Meta/Servers/Idiom.cpp",
+   "size": 82,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-28"
+  },
+  "0x005d38a4": {
+   "name": "tIdiom::tIdiom",
+   "symbol": "??0tIdiom@@QAE@ABV0@@Z",
+   "unit": "Meta/Servers/Idiom.cpp",
+   "size": 98,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-28"
+  },
+  "0x005d3906": {
+   "name": "tIdiom::vfunction2",
+   "symbol": "?StreamOut@tIdiom@@UBEXAAVtOutput@nDataStore@@@Z",
+   "unit": "Meta/Servers/Idiom.cpp",
+   "size": 18,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-28"
+  },
+  "0x005d3918": {
+   "name": "tIdiom::vfunction3",
+   "symbol": "?StreamIn@tIdiom@@UAEXAAVtInput@nDataStore@@@Z",
+   "unit": "Meta/Servers/Idiom.cpp",
+   "size": 18,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-28"
+  },
+  "0x005d39b7": {
+   "name": "FUN_005d39b7",
+   "symbol": "?fn_005d39b7@tIdiom@@QAEXHABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "unit": "Meta/Servers/Idiom.cpp",
+   "size": 179,
+   "score": 28.345,
+   "exact": false,
+   "recorded": "2026-11-28"
   },
   "0x005d913f": {
    "name": "FUN_005d913f",

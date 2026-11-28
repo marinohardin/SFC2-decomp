@@ -1,6 +1,5 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/fn_0054B552.cpp
-// Functions: 0x0054b552 to 0x0054b552, 1 in op/UNITS.tsv
-// Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
-// Profile:   game-release (harness/units.json)
+// FUNCTION: STARFLEETOP 0x0054b552
+long __fastcall fn_0054b552(char* param_1)
+{
+    return *(long*)(param_1 + 0x40);
+}

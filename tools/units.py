@@ -15,6 +15,9 @@ Evidence, strongest first:
   (`analysis/results/StarFleetOP_2552_sdklib_matches.tsv`) whose defining object names one
   source file (its `.file` symbol). Select-any COMDATs (inline and template functions) are
   emitted by every object that uses them, so they are not evidence.
+- recorded: a function `analysis/results/unit_evidence.tsv` puts in a unit, with the reason
+  (a compiler experiment, the layout of the image). It joins a unit that the evidence above
+  already names, and the unit keeps that evidence's label; it never makes a unit of its own.
 - `class`: functions of one class, outside every unit above, go to `unsorted/<Class>.cpp`.
 - `page`: the rest go to `unsorted/fn_<page>.cpp`, by 4 KB address page.
 
@@ -38,6 +41,7 @@ import sys
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FUNCTIONS_CSV = os.path.join(REPO, 'ghidra', 'exports', 'functions.csv')
 SDK_MATCHES = os.path.join(REPO, 'analysis', 'results', 'StarFleetOP_2552_sdklib_matches.tsv')
+RECORDED = os.path.join(REPO, 'analysis', 'results', 'unit_evidence.tsv')
 GAME = os.path.join(REPO, 'op')
 UNITS_TSV = os.path.join(GAME, 'UNITS.tsv')
 UNITS_JSON = os.path.join(REPO, 'harness', 'units.json')
@@ -104,6 +108,23 @@ def read_functions(path=FUNCTIONS_CSV):
         fns = [Function(r) for r in csv.DictReader(f)]
     fns.sort(key=lambda fn: fn.address)
     return fns
+
+
+def read_recorded(path=RECORDED):
+    """{address: unit path} from the recorded evidence table (address, unit, reason); {} when
+    there is none."""
+    if not os.path.exists(path):
+        return {}
+    out = {}
+    with open(path, newline='') as f:
+        for row in csv.DictReader((line for line in f if not line.startswith('#')), delimiter='\t'):
+            address = int(row['address'], 16)
+            if address in out:
+                raise ValueError(f'{os.path.basename(path)}: 0x{address:08x} is listed twice')
+            if not row['reason'].strip():
+                raise ValueError(f'{os.path.basename(path)}: 0x{address:08x} gives no reason')
+            out[address] = row['unit']
+    return out
 
 
 def game_path(original):
@@ -279,10 +300,12 @@ def _class_of(fn):
     return m.group(1)
 
 
-def build(fns, sdk_units=None, headers=()):
+def build(fns, sdk_units=None, headers=(), recorded=None):
     """The unit map: a list of dicts with the COLUMNS, in address order, covering every function
-    once. `sdk_units` is {address: set of unit paths}; `headers` the evidenced header paths."""
+    once. `sdk_units` is {address: set of unit paths}; `headers` the evidenced header paths;
+    `recorded` is {address: unit path} from the recorded evidence table."""
     sdk_units = sdk_units or {}
+    recorded = recorded or {}
     spellings = []                                         # (path, evidence) for the spelling vote
     strong = {}                                            # position -> lower-case unit path
     kinds = collections.defaultdict(set)
@@ -298,6 +321,8 @@ def build(fns, sdk_units=None, headers=()):
             strong[pos] = unit.lower()
             kinds[unit.lower()].add(kind)
             spellings.append((unit, kind))
+        if fn.address in recorded:
+            strong[pos] = recorded[fn.address].lower()
         for h in filter(None, fn.headers.split(';')):
             hp = header_path(h)
             if hp:
@@ -305,6 +330,13 @@ def build(fns, sdk_units=None, headers=()):
     for h, kind in headers:
         spellings.append((h, kind))
     spell = _spelling(spellings)
+    known = {fn.address for fn in fns}
+    for address, unit in sorted(recorded.items()):
+        if address not in known:
+            raise ValueError(f'recorded evidence names 0x{address:08x}, which is no function')
+        if unit.lower() not in kinds:
+            raise ValueError(f'recorded evidence puts 0x{address:08x} in {unit}, which no other '
+                             'evidence names')
 
     strong = _resolve(strong)
     unit_of = _fill(len(fns), fns, strong)
@@ -568,13 +600,14 @@ def main(argv=None):
     fns = read_functions()
     sdk_units, object_headers = sdk_evidence(sdk)
     try:
-        rows = build(fns, sdk_units, [])
+        recorded = read_recorded()
+        rows = build(fns, sdk_units, [], recorded)
     except ValueError as e:
         sys.exit(f'units.py: {e}')
     units = {r['unit'].lower() for r in rows}
     evidenced = [(h, 'sdk-member') for u, hs in object_headers.items() if u.lower() in units for h in hs]
     evidenced += [(h, 'sdk-tree') for h in sdk_tree_headers(sdk)]
-    rows = build(fns, sdk_units, evidenced)
+    rows = build(fns, sdk_units, evidenced, recorded)
     text = format_tsv(rows)
     if args.check:
         with open(UNITS_TSV) as f:

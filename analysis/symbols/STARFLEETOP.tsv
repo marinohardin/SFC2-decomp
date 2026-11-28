@@ -9434,7 +9434,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005448c5	function	fn_005448c5					none
 0x005448f0	function	fn_005448f0					none
 0x0054491b	function	nDataStore::operator<<		??6nDataStore@@YAAAVtOutput@0@AAV10@ABV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@@Z	claim		claim
-0x00544970	function	fn_00544970					none
+0x00544970	function	fn_00544970		??5nDataStore@@YAAAVtInput@0@AAV10@AAV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@@Z	callers		none
 0x00544a0d	function	fn_00544a0d					none
 0x00544b06	function	fn_00544b06		?fn_00544b06@@YAXXZ	claim		none
 0x00544b12	function	fn_00544b12		?fn_00544b12@@YAXXZ	claim		none
@@ -9683,7 +9683,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0054b4a0	function	nStoredProcedureArguments::tEconomicStatusRequest::tEconomicStatusResponse::tEconomicStatusResponse	nStoredProcedureArguments::tEconomicStatusRequest::tEconomicStatusResponse				rtti
 0x0054b4ea	function	fn_0054b4ea	nStoredProcedureArguments::tEconomicStatusRequest::tEconomicStatusResponse				vtable
 0x0054b51d	function	fn_0054b51d	nStoredProcedureArguments::tEconomicStatusRequest::tEconomicStatusResponse				vtable
-0x0054b552	function	fn_0054b552					none
+0x0054b552	function	fn_0054b552		?fn_0054b552@@YIJPAD@Z	claim		none
 0x0054b556	function	nStoredProcedureArguments::tEconomicStatusRequest::tEconomicStatusRequest	nStoredProcedureArguments::tEconomicStatusRequest				rtti
 0x0054b568	function	nStoredProcedureArguments::tEconomicStatusRequest::scalar_deleting_destructor	nStoredProcedureArguments::tEconomicStatusRequest				rtti
 0x0054b584	function	nStoredProcedureArguments::tEconomicStatusRequest::tEconomicStatusRequest	nStoredProcedureArguments::tEconomicStatusRequest				rtti
@@ -9825,7 +9825,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0054ddd5	function	nStoredProcedureArguments::tMetaMapMoveRequest::tMetaMapMoveResponse::tMetaMapMoveResponse	nStoredProcedureArguments::tMetaMapMoveRequest::tMetaMapMoveResponse				rtti
 0x0054de6b	function	fn_0054de6b	nStoredProcedureArguments::tMetaMapMoveRequest::tMetaMapMoveResponse				vtable
 0x0054deab	function	fn_0054deab	nStoredProcedureArguments::tMetaMapMoveRequest::tMetaMapMoveResponse				vtable
-0x0054deec	function	fn_0054deec					none
+0x0054deec	function	fn_0054deec		?fn_0054deec@@YIJPAD@Z	claim		none
 0x0054def0	function	nStoredProcedureArguments::tMetaMapMoveRequest::tMetaMapMoveRequest	nStoredProcedureArguments::tMetaMapMoveRequest				rtti
 0x0054df33	function	nStoredProcedureArguments::tMetaMapMoveRequest::scalar_deleting_destructor	nStoredProcedureArguments::tMetaMapMoveRequest				rtti
 0x0054df4f	function	nStoredProcedureArguments::tMetaMapMoveRequest::~tMetaMapMoveRequest	nStoredProcedureArguments::tMetaMapMoveRequest				rtti
@@ -13710,16 +13710,16 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x005d3679	function	fn_005d3679					none
 0x005d374a	function	fn_005d374a					none
 0x005d3794	function	fn_005d3794					none
-0x005d37d2	function	tIdiom::tIdiom	tIdiom				rtti
-0x005d37fb	function	tIdiom::scalar_deleting_destructor	tIdiom				fid
-0x005d3817	function	tIdiom::~tIdiom	tIdiom				rtti
-0x005d3852	function	tIdiom::tIdiom	tIdiom				rtti
-0x005d38a4	function	tIdiom::tIdiom	tIdiom				rtti
-0x005d3906	function	fn_005d3906	tIdiom				vtable
-0x005d3918	function	fn_005d3918	tIdiom				vtable
+0x005d37d2	function	tIdiom::tIdiom	tIdiom	??0tIdiom@@QAE@XZ	claim		claim
+0x005d37fb	function	tIdiom::scalar_deleting_destructor	tIdiom	??_GtIdiom@@UAEPAXI@Z	claim		fid
+0x005d3817	function	tIdiom::~tIdiom	tIdiom	??1tIdiom@@UAE@XZ	claim		claim
+0x005d3852	function	tIdiom::tIdiom	tIdiom	??0tIdiom@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z	claim		claim
+0x005d38a4	function	tIdiom::tIdiom	tIdiom	??0tIdiom@@QAE@ABV0@@Z	claim		claim
+0x005d3906	function	tIdiom::StreamOut	tIdiom	?StreamOut@tIdiom@@UBEXAAVtOutput@nDataStore@@@Z	claim		claim
+0x005d3918	function	tIdiom::StreamIn	tIdiom	?StreamIn@tIdiom@@UAEXAAVtInput@nDataStore@@@Z	claim		claim
 0x005d392a	function	fn_005d392a					none
-0x005d39b7	function	fn_005d39b7					none
-0x005d3a6a	function	fn_005d3a6a					none
+0x005d39b7	function	fn_005d39b7	tIdiom	?fn_005d39b7@tIdiom@@QAEXHABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z	claim		none
+0x005d3a6a	function	fn_005d3a6a		?fn_005d3a6a@tIdiom@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z	callers		none
 0x005d3a78	function	fn_005d3a78					none
 0x005d3b25	function	fn_005d3b25					none
 0x005d3b34	function	fn_005d3b34					none

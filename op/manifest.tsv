@@ -2099,6 +2099,18 @@ address	size	symbol	source	modes	decorated
 0x004d8916	70	fn_004d8916(int,int,float,int,int)	unsorted/tBaseWeapon.cpp	vc6 guest	?fn_004d8916@@YAXHHMHH@Z
 0x004d895c	7	tBaseWeapon::vfunction144()	unsorted/tBaseWeapon.cpp	vc6 guest	?vfunction144@tBaseWeapon@@UAEHXZ
 0x004d8963	4	tBaseWeapon::vfunction146()	unsorted/tBaseWeapon.cpp	vc6 guest	?vfunction146@tBaseWeapon@@UAEHXZ
+0x004db93e	10	g_DroneRackB_Creator (dynamic initializer)	unsorted/fn_004DB93E.cpp	vc6	
+0x004db948	12	g_DroneRackB_Creator (atexit registration)	unsorted/fn_004DB93E.cpp	vc6	
+0x004dba29	10	g_DroneRackC_Creator (dynamic initializer)	unsorted/fn_004DBA29.cpp	vc6	
+0x004dba33	12	g_DroneRackC_Creator (atexit registration)	unsorted/fn_004DBA29.cpp	vc6	
+0x004dbb16	10	g_DroneRackD_Creator (dynamic initializer)	unsorted/fn_004DBB16.cpp	vc6	
+0x004dbb20	12	g_DroneRackD_Creator (atexit registration)	unsorted/fn_004DBB16.cpp	vc6	
+0x004dbc01	10	g_DroneRackE_Creator (dynamic initializer)	unsorted/fn_004DBC01.cpp	vc6	
+0x004dbc0b	12	g_DroneRackE_Creator (atexit registration)	unsorted/fn_004DBC01.cpp	vc6	
+0x004dbcee	10	g_DroneRackF_Creator (dynamic initializer)	unsorted/fn_004DBCEE.cpp	vc6	
+0x004dbcf8	12	g_DroneRackF_Creator (atexit registration)	unsorted/fn_004DBCEE.cpp	vc6	
+0x004dbddb	10	g_DroneRackG_Creator (dynamic initializer)	unsorted/fn_004DBDDB.cpp	vc6	
+0x004dbde5	12	g_DroneRackG_Creator (atexit registration)	unsorted/fn_004DBDDB.cpp	vc6	
 0x004de035	201	tESGLance::fn_004de035(float)	unsorted/fn_004DE000.cpp	vc6 guest	?fn_004de035@tESGLance@@QAEXM@Z
 0x004de200	10	g_0092ec98 (dynamic initializer)	unsorted/fn_004DE000.cpp	vc6	
 0x004de20a	12	g_0092ec98 (atexit registration)	unsorted/fn_004DE000.cpp	vc6	
@@ -2752,6 +2764,7 @@ address	size	symbol	source	modes	decorated
 0x0054841d	12	mAssignAllocID(iAllocatorID)	unsorted/tBattles.cpp	vc6 guest	?mAssignAllocID@?$tClassAllocator@VtBattles@@@@MAEXJ@Z
 0x00549d84	6	tCampaignInfo::SQLTableName() const	unsorted/tCampaignInfo.cpp	vc6 guest	?SQLTableName@tCampaignInfo@@UBEPBDXZ
 0x00549d8a	6	tCampaignInfo::SQLFieldNames() const	unsorted/tCampaignInfo.cpp	vc6 guest	?SQLFieldNames@tCampaignInfo@@UBEPBDXZ
+0x0054b552	4	fn_0054b552(char*)	unsorted/fn_0054B552.cpp	vc6	?fn_0054b552@@YIJPAD@Z
 0x0054bd73	464	tMetaMapDataRequest::tResponse::tClientHex::tClientHex(tMetaMapHex&,int32,int32)	Meta/MetaDatabase/StoredProcedures/MapProcedures/MetaMapDataRequest.cpp	vc6	??0tClientHex@tResponse@tMetaMapDataRequest@nStoredProcedureArguments@@QAE@AAVtMetaMapHex@@JJ@Z
 0x0054bf43	20	tMetaMapDataRequest::tResponse::tClientHex::tClientHex()	Meta/MetaDatabase/StoredProcedures/MapProcedures/MetaMapDataRequest.cpp	vc6	??0tClientHex@tResponse@tMetaMapDataRequest@nStoredProcedureArguments@@QAE@XZ
 0x0054bf57	206	tMetaMapDataRequest::tResponse::tClientHex::StreamOut(nDataStore::tOutput&) const	Meta/MetaDatabase/StoredProcedures/MapProcedures/MetaMapDataRequest.cpp	vc6 guest	?StreamOut@tClientHex@tResponse@tMetaMapDataRequest@nStoredProcedureArguments@@UBEXAAVtOutput@nDataStore@@@Z
@@ -2766,6 +2779,7 @@ address	size	symbol	source	modes	decorated
 0x0054c471	26	tMetaMapDataRequest::tResponse::fn_0054c471(long,long)	Meta/MetaDatabase/StoredProcedures/MapProcedures/MetaMapDataRequest.cpp	vc6 guest	?fn_0054c471@tResponse@tMetaMapDataRequest@nStoredProcedureArguments@@QAEAAVtClientHex@123@JJ@Z
 0x0054c48b	88	tMetaMapDataRequest::tResponse::fn_0054c48b(int32*,int32*)	Meta/MetaDatabase/StoredProcedures/MapProcedures/MetaMapDataRequest.cpp	vc6 guest	?fn_0054c48b@tResponse@tMetaMapDataRequest@nStoredProcedureArguments@@QAEPAVtClientHex@123@PAJ0@Z
 0x0054c4e3	97	tMetaMapDataRequest::tResponse::fn_0054c4e3(long,long)	Meta/MetaDatabase/StoredProcedures/MapProcedures/MetaMapDataRequest.cpp	vc6 guest	?fn_0054c4e3@tResponse@tMetaMapDataRequest@nStoredProcedureArguments@@QAEJJJ@Z
+0x0054deec	4	fn_0054deec(char*)	unsorted/fn_0054DEEC.cpp	vc6	?fn_0054deec@@YIJPAD@Z
 0x0054fa6d	117	tAddPreparedMissionRequest::vfunction3(nDataStore::tInput&)	Meta/MetaDatabase/StoredProcedures/MissionProcedures/AddPreparedMissionRequest.cpp	vc6 guest	?vfunction3@tAddPreparedMissionRequest@nStoredProcedureArguments@@UAEXAAVtInput@nDataStore@@@Z
 0x0054ffe5	173	tChooseMissionRequest::vfunction3(nDataStore::tInput&)	Meta/MetaDatabase/StoredProcedures/MissionProcedures/ChooseMissionRequest.cpp	vc6 guest	?vfunction3@tChooseMissionRequest@@UAEXAAVtInput@nDataStore@@@Z
 0x0055095b	102	tExistPreparedMissionRequest::vfunction3(nDataStore::tInput&)	Meta/MetaDatabase/StoredProcedures/MissionProcedures/ExistPreparedMissionRequest.cpp	vc6 guest	?vfunction3@tExistPreparedMissionRequest@@UAEXAAVtInput@nDataStore@@@Z
@@ -3332,6 +3346,14 @@ address	size	symbol	source	modes	decorated
 0x005c7fb7	4	fn_005c7fb7(tCurrentTime*)	unsorted/fn_005C7EAC.cpp	vc6	?fn_005c7fb7@@YIJPAVtCurrentTime@@@Z
 0x005c7fbb	11	fn_005c7fbb(tCurrentTime*,long)	unsorted/fn_005C7EAC.cpp	partial	?fn_005c7fbb@@YIJPAVtCurrentTime@@J@Z
 0x005c7fc6	10	fn_005c7fc6(char*,int,float)	unsorted/fn_005C7EAC.cpp	vc6	?fn_005c7fc6@@YIXPADHM@Z
+0x005d37d2	41	tIdiom::tIdiom()	Meta/Servers/Idiom.cpp	vc6	??0tIdiom@@QAE@XZ
+0x005d37fb	28	tIdiom::`scalar deleting destructor'	Meta/Servers/Idiom.cpp	vc6	??_GtIdiom@@UAEPAXI@Z
+0x005d3817	59	tIdiom::~tIdiom()	Meta/Servers/Idiom.cpp	vc6	??1tIdiom@@UAE@XZ
+0x005d3852	82	tIdiom::tIdiom(const std::string&)	Meta/Servers/Idiom.cpp	vc6	??0tIdiom@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z
+0x005d38a4	98	tIdiom::tIdiom(const tIdiom&)	Meta/Servers/Idiom.cpp	vc6	??0tIdiom@@QAE@ABV0@@Z
+0x005d3906	18	tIdiom::StreamOut(nDataStore::tOutput&) const	Meta/Servers/Idiom.cpp	vc6 guest	?StreamOut@tIdiom@@UBEXAAVtOutput@nDataStore@@@Z
+0x005d3918	18	tIdiom::StreamIn(nDataStore::tInput&)	Meta/Servers/Idiom.cpp	vc6 guest	?StreamIn@tIdiom@@UAEXAAVtInput@nDataStore@@@Z
+0x005d39b7	179	tIdiom::fn_005d39b7(int,const std::string&)	Meta/Servers/Idiom.cpp	partial	?fn_005d39b7@tIdiom@@QAEXHABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z
 0x005d913f	59	fn_005d913f_object::~fn_005d913f_object()	unsorted/fn_005D913F.cpp	vc6	??1fn_005d913f_object@@QAE@XZ
 0x005d917a	66	fn_005d913f_object::fn_005d913f_object(const fn_005d913f_object &)	unsorted/fn_005D913F.cpp	vc6	??0fn_005d913f_object@@QAE@ABV0@@Z
 0x005d91cc	52	fn_005d91cc_object::operator=(fn_0046de63_object *)	unsorted/fn_005D913F.cpp	vc6 guest	??4fn_005d91cc_object@@QAEPAVfn_0046de63_object@@PAV1@@Z
