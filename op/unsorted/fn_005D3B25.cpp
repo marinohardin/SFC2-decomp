@@ -1,6 +1,6 @@
 // Placeholder written by tools/units.py. Delete this block when the unit's first
 // function lands; the generator never touches a file with content.
-// Unit:      unsorted/tIdiom.cpp
-// Functions: 0x005d37d2 to 0x005d3918, 7 in op/UNITS.tsv
-// Evidence:  class (functions of this class outside every evidenced unit; original file unknown)
+// Unit:      unsorted/fn_005D3B25.cpp
+// Functions: 0x005d3b25 to 0x005d3b34, 2 in op/UNITS.tsv
+// Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
 // Profile:   game-release (harness/units.json)

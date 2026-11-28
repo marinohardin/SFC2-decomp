@@ -115,6 +115,66 @@ def test_a_game_copy_of_a_library_class_is_no_class_evidence(tmp_path):
     ]
 
 
+DOCK = r'F:\Projects\Taldren\Projects\SFC2_5\Meta\Servers\TestDock.cpp'
+RECORDED_FIXTURE = HEADER + '\n'.join([
+    # a class run, then two assert-path anchors of TestDock.cpp, then a function of its own
+    '00407000,16,tTestDock::tTestDock,,,rtti-class-recovery,,,,0,,function,',
+    '00407100,16,tTestDock::~tTestDock,,,rtti-class-recovery,,,,0,,function,',
+    f'00407200,16,FUN_00407200,,,default,{DOCK},assert-path,,0,,function,',
+    f'00407300,16,FUN_00407300,,,default,{DOCK},assert-path,,0,,function,',
+    '00407400,16,FUN_00407400,,,default,,,,0,,function,',
+    '00407500,16,FUN_00407500,,,default,,,,0,,function,',
+]) + '\n'
+
+
+def test_recorded_evidence_joins_functions_to_a_unit_the_exe_names(tmp_path):
+    p = tmp_path / 'functions.csv'
+    p.write_text(RECORDED_FIXTURE)
+    fns = units.read_functions(str(p))
+    without = [(r['unit'], r['first'], r['last'], r['functions'], r['evidence'])
+               for r in units.build(fns)]
+    assert without == [
+        ('unsorted/tTestDock.cpp', '0x00407000', '0x00407100', 2, 'class'),
+        ('Meta/Servers/TestDock.cpp', '0x00407200', '0x00407300', 2, 'assert-path'),
+        ('unsorted/fn_00407000.cpp', '0x00407400', '0x00407500', 2, 'page'),
+    ]
+    # One recorded anchor at each end is enough: the functions between anchors join the unit,
+    # which keeps its assert-path label; the function after the last anchor stays a page.
+    recorded = {0x00407000: 'Meta/Servers/TestDock.cpp', 0x00407400: 'Meta/Servers/TestDock.cpp'}
+    got = [(r['unit'], r['first'], r['last'], r['functions'], r['evidence'])
+           for r in units.build(fns, recorded=recorded)]
+    assert got == [
+        ('Meta/Servers/TestDock.cpp', '0x00407000', '0x00407400', 5, 'assert-path'),
+        ('unsorted/fn_00407000.cpp', '0x00407500', '0x00407500', 1, 'page'),
+    ]
+
+
+def test_recorded_evidence_never_makes_a_unit_of_its_own(tmp_path):
+    p = tmp_path / 'functions.csv'
+    p.write_text(RECORDED_FIXTURE)
+    fns = units.read_functions(str(p))
+    with pytest.raises(ValueError, match='Meta/Servers/Other.cpp, which no other evidence'):
+        units.build(fns, recorded={0x00407400: 'Meta/Servers/Other.cpp'})
+    with pytest.raises(ValueError, match='0x00407050, which is no function'):
+        units.build(fns, recorded={0x00407050: 'Meta/Servers/TestDock.cpp'})
+
+
+def test_the_recorded_table_is_read_with_its_comments_and_checked(tmp_path):
+    p = tmp_path / 'unit_evidence.tsv'
+    p.write_text('# a note\naddress\tunit\treason\n'
+                 '0x00407000\tMeta/Servers/TestDock.cpp\tcompiled with 0x00407200\n')
+    assert units.read_recorded(str(p)) == {0x00407000: 'Meta/Servers/TestDock.cpp'}
+    assert units.read_recorded(str(tmp_path / 'absent.tsv')) == {}
+    p.write_text('address\tunit\treason\n'
+                 '0x00407000\tMeta/Servers/TestDock.cpp\tone\n'
+                 '0x00407000\tMeta/Servers/TestDock.cpp\ttwo\n')
+    with pytest.raises(ValueError, match='listed twice'):
+        units.read_recorded(str(p))
+    p.write_text('address\tunit\treason\n0x00407000\tMeta/Servers/TestDock.cpp\t \n')
+    with pytest.raises(ValueError, match='gives no reason'):
+        units.read_recorded(str(p))
+
+
 BOUNDARY = HEADER + '\n'.join([
     # one unsorted page, 0x0060f000, with the end of the game's own code inside it at 0x0060f600
     '0060f500,16,FUN_0060f500,,,default,,,,0,,function,',

@@ -2284,9 +2284,8 @@ unsorted/fn_005D2576.cpp	0x005d2576	0x005d25e0	2	page	game-release
 unsorted/tInfoWatchdog.cpp	0x005d266a	0x005d275b	4	class	game-release	
 unsorted/fn_005D27BB.cpp	0x005d27bb	0x005d2ff1	15	page	game-release	
 unsorted/fn_005D3000.cpp	0x005d30c2	0x005d3794	12	page	game-release	
-unsorted/tIdiom.cpp	0x005d37d2	0x005d3918	7	class	game-release	
-Meta/Servers/Idiom.cpp	0x005d392a	0x005d39b7	2	assert-path	game-release	
-unsorted/fn_005D3A6A.cpp	0x005d3a6a	0x005d3b34	4	page	game-release	
+Meta/Servers/Idiom.cpp	0x005d37d2	0x005d3a78	11	assert-path	game-release	
+unsorted/fn_005D3B25.cpp	0x005d3b25	0x005d3b34	2	page	game-release	
 unsorted/tRelay.cpp	0x005d3b7c	0x005d3c14	4	class	game-release	
 unsorted/fn_005D3C8B.cpp	0x005d3c8b	0x005d3cc3	2	page	game-release	
 unsorted/tServerManager.cpp	0x005d41c8	0x005d41e4	2	class	game-release	
