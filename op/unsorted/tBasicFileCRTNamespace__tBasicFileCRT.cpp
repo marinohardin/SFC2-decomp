@@ -55,17 +55,6 @@ inline tBasicFileCRT::tBasicFileCRT()
 {
 }
 
-class tBasicFile;
-
-// FUNCTION: STARFLEETOP 0x0066d480
-// HYPOTHESIS: initialises the class with the module directory, then allocates one stream
-// object; the tBasicFile base is not declared in this unit, so the result is returned as is.
-tBasicFile* _NewBasicFileCRT()
-{
-    tBasicFileCRT::mInit(1);
-    return (tBasicFile*)new tBasicFileCRT;
-}
-
 // FUNCTION: STARFLEETOP 0x0066d1c0
 unsigned char tBasicFileCRT::mClose()
 {
@@ -217,3 +206,14 @@ void _DoneNewBasicFileCRT()
         tBasicFileCRT::fInitialized = 0;
 }
 
+class tBasicFile;
+
+// FUNCTION: STARFLEETOP 0x0066d480
+// The SDK's symbol places this factory at global scope, beside _InitNewBasicFileCRT.
+// HYPOTHESIS: initialises the class with the module directory, then allocates one stream
+// object; the tBasicFile base is not declared in this unit, so the result is returned as is.
+tBasicFile* _NewBasicFileCRT()
+{
+    tBasicFileCRT::mInit(1);
+    return (tBasicFile*)new tBasicFileCRT;
+}
