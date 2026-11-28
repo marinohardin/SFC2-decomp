@@ -3,9 +3,11 @@
 # Rows only ever go: a row that no longer occurs is a WARN asking for its removal. The one
 # exception is a row the owner approves as the original's own state: the basic_string rows of
 # SDK-profile units (/O2) are such, each copy compared with the copy the SDK's static libraries
-# carry for the same symbol and found identical.
+# carry for the same symbol and found identical. The vector<string> destructor rows (0x00402d42)
+# are the same kind: the /O2 copy is 96 bytes, the libraries carry that body, the exe only the 53-byte one.
 unit	symbol
 Common/CommandLineArgs.cpp	?_Grow@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAE_NI_N@Z
+Common/CommandLineArgs.cpp	??1?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@QAE@XZ
 Common/DataStore/Streamable.cpp	?_Freeze@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAEXXZ
 Common/DataStore/Streamable.cpp	?_Grow@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAE_NI_N@Z
 Common/DataStore/Streamable.cpp	?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@ABV12@II@Z
@@ -32,6 +34,7 @@ Common/Exceptions/Validate.cpp	?_Grow@?$basic_string@DU?$char_traits@D@std@@V?$a
 Common/Exceptions/Validate.cpp	?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@ABV12@II@Z
 Common/Log/LogStream.cpp	??0?$fpos@H@std@@QAE@J@Z
 Common/Log/LogStream.cpp	?_Grow@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAE_NI_N@Z
+Common/Settings.cpp	??1?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@QAE@XZ
 Common/Thread/Thread.cpp	??1tGuard@tOptex@@QAE@XZ
 Common/Thread/Thread.cpp	??1tOptex@@QAE@XZ
 Common/Thread/Thread.cpp	?_Grow@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAE_NI_N@Z
