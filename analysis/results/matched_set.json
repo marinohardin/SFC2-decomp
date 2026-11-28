@@ -18991,6 +18991,60 @@
    "exact": true,
    "recorded": "2026-11-28"
   },
+  "0x004dbec6": {
+   "name": "FUN_004dbec6",
+   "symbol": "_$E1",
+   "unit": "unsorted/fn_004DBEC6.cpp",
+   "size": 10,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-28"
+  },
+  "0x004dbed0": {
+   "name": "FUN_004dbed0",
+   "symbol": "_$E3",
+   "unit": "unsorted/fn_004DBEC6.cpp",
+   "size": 12,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-28"
+  },
+  "0x004dbfbd": {
+   "name": "FUN_004dbfbd",
+   "symbol": "_$E1",
+   "unit": "unsorted/fn_004DBFBD.cpp",
+   "size": 10,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-28"
+  },
+  "0x004dbfc7": {
+   "name": "FUN_004dbfc7",
+   "symbol": "_$E3",
+   "unit": "unsorted/fn_004DBFBD.cpp",
+   "size": 12,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-28"
+  },
+  "0x004dc0b4": {
+   "name": "FUN_004dc0b4",
+   "symbol": "_$E1",
+   "unit": "unsorted/fn_004DC000.cpp",
+   "size": 10,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-28"
+  },
+  "0x004dc0be": {
+   "name": "FUN_004dc0be",
+   "symbol": "_$E3",
+   "unit": "unsorted/fn_004DC000.cpp",
+   "size": 12,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-28"
+  },
   "0x004de035": {
    "name": "tNetMsg_kCreateDirect::~tNetMsg_kCreateDirect",
    "symbol": "?fn_004de035@tESGLance@@QAEXM@Z",
@@ -19593,6 +19647,114 @@
    "score": 100.0,
    "exact": true,
    "recorded": "2026-11-27"
+  },
+  "0x004e9328": {
+   "name": "FUN_004e9328",
+   "symbol": "_$E1",
+   "unit": "unsorted/fn_004E9328.cpp",
+   "size": 10,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-28"
+  },
+  "0x004e9332": {
+   "name": "FUN_004e9332",
+   "symbol": "_$E3",
+   "unit": "unsorted/fn_004E9328.cpp",
+   "size": 12,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-28"
+  },
+  "0x004e9404": {
+   "name": "FUN_004e9404",
+   "symbol": "_$E1",
+   "unit": "unsorted/fn_004E9404.cpp",
+   "size": 10,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-28"
+  },
+  "0x004e940e": {
+   "name": "FUN_004e940e",
+   "symbol": "_$E3",
+   "unit": "unsorted/fn_004E9404.cpp",
+   "size": 12,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-28"
+  },
+  "0x004e94e0": {
+   "name": "FUN_004e94e0",
+   "symbol": "_$E1",
+   "unit": "unsorted/fn_004E94E0.cpp",
+   "size": 10,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-28"
+  },
+  "0x004e94ea": {
+   "name": "FUN_004e94ea",
+   "symbol": "_$E3",
+   "unit": "unsorted/fn_004E94E0.cpp",
+   "size": 12,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-28"
+  },
+  "0x004e95fb": {
+   "name": "FUN_004e95fb",
+   "symbol": "_$E1",
+   "unit": "unsorted/fn_004E95FB.cpp",
+   "size": 10,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-28"
+  },
+  "0x004e9605": {
+   "name": "FUN_004e9605",
+   "symbol": "_$E3",
+   "unit": "unsorted/fn_004E95FB.cpp",
+   "size": 12,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-28"
+  },
+  "0x004e96d7": {
+   "name": "FUN_004e96d7",
+   "symbol": "_$E1",
+   "unit": "unsorted/fn_004E96D7.cpp",
+   "size": 10,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-28"
+  },
+  "0x004e96e1": {
+   "name": "FUN_004e96e1",
+   "symbol": "_$E3",
+   "unit": "unsorted/fn_004E96D7.cpp",
+   "size": 12,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-28"
+  },
+  "0x004e97b6": {
+   "name": "FUN_004e97b6",
+   "symbol": "_$E1",
+   "unit": "unsorted/fn_004E97B6.cpp",
+   "size": 10,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-28"
+  },
+  "0x004e97c0": {
+   "name": "FUN_004e97c0",
+   "symbol": "_$E3",
+   "unit": "unsorted/fn_004E97B6.cpp",
+   "size": 12,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-28"
   },
   "0x004ea379": {
    "name": "tNetMsg_kCreateSeeker::~tNetMsg_kCreateSeeker",
@@ -20755,6 +20917,15 @@
    "exact": true,
    "recorded": "2026-11-10"
   },
+  "0x0051819f": {
+   "name": "FUN_0051819f",
+   "symbol": "?fn_0051819f@tAIHETOfficer@@QAE_NXZ",
+   "unit": "unsorted/fn_00518000.cpp",
+   "size": 4,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-28"
+  },
   "0x0051dae7": {
    "name": "tAICaptain::tAICaptain",
    "symbol": "??0tAICaptain@@QAE@MHHH@Z",
@@ -21861,6 +22032,15 @@
    "score": 100.0,
    "exact": true,
    "recorded": "2026-11-17"
+  },
+  "0x00524109": {
+   "name": "FUN_00524109",
+   "symbol": "?fn_00524109@tPriorityPowerRequest@@QAEMXZ",
+   "unit": "unsorted/fn_00524109.cpp",
+   "size": 9,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-28"
   },
   "0x0053434b": {
    "name": "FUN_0053434b",
@@ -25066,6 +25246,24 @@
    "exact": true,
    "recorded": "2026-11-19"
   },
+  "0x00554ef9": {
+   "name": "FUN_00554ef9",
+   "symbol": "?fn_00554ef9@@YIEPBE@Z",
+   "unit": "unsorted/fn_00554EF9.cpp",
+   "size": 4,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-28"
+  },
+  "0x00555f85": {
+   "name": "FUN_00555f85",
+   "symbol": "?fn_00555f85@tSetPreparedMissionsIDRequest@nStoredProcedureArguments@@QBE_NXZ",
+   "unit": "unsorted/fn_00555F85.cpp",
+   "size": 4,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-28"
+  },
   "0x005596ed": {
    "name": "FUN_005596ed",
    "symbol": "?GetRepairRate@tRepairRates@@QAENUfRepairRateIter@@@Z",
@@ -25101,6 +25299,15 @@
    "score": 100.0,
    "exact": true,
    "recorded": "2026-11-19"
+  },
+  "0x0055b083": {
+   "name": "FUN_0055b083",
+   "symbol": "?fn_0055b083@@YIPAEPAE@Z",
+   "unit": "unsorted/fn_0055B000.cpp",
+   "size": 4,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-28"
   },
   "0x0055b087": {
    "name": "FUN_0055b087",
@@ -49563,6 +49770,15 @@
    "score": 99.996,
    "exact": false,
    "recorded": "2026-11-26"
+  },
+  "0x0070e240": {
+   "name": "tMapObjectPoint::tMapObjectPoint",
+   "symbol": "??0tMapObjectPoint@@QAE@XZ",
+   "unit": "unsorted/tMapObjectPoint.cpp",
+   "size": 16,
+   "score": 100.0,
+   "exact": true,
+   "recorded": "2026-11-28"
   },
   "0x0070e250": {
    "name": "tWaitForObject::tResult::tResult",
