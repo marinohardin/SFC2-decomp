@@ -1,6 +1,9 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/fn_004DBB16.cpp
-// Functions: 0x004dbb16 to 0x004dbb20, 2 in op/UNITS.tsv
-// Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
-// Profile:   game-release (harness/units.json)
+class tDroneRackD_Creator
+{
+public:
+    tDroneRackD_Creator();
+    virtual ~tDroneRackD_Creator();
+};
+
+// FUNCTION: STARFLEETOP 0x004dbb16
+tDroneRackD_Creator g_DroneRackD_Creator;
