@@ -1,6 +1,10 @@
-// Placeholder written by tools/units.py. Delete this block when the unit's first
-// function lands; the generator never touches a file with content.
-// Unit:      unsorted/fn_00524109.cpp
-// Functions: 0x00524109 to 0x00524109, 1 in op/UNITS.tsv
-// Evidence:  page (functions with no unit or class evidence, by 4 KB page; original file unknown)
-// Profile:   game-release (harness/units.json)
+#include "unsorted/tPriorityPowerRequest.h"
+
+// FUNCTION: STARFLEETOP 0x00524109
+float tPriorityPowerRequest::fn_00524109()
+{
+	float &power = *reinterpret_cast<float *>(fField04);
+	float requestedPower = power;
+	power = 0.0f;
+	return requestedPower;
+}
