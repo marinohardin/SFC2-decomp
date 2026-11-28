@@ -117,13 +117,21 @@ RTTI, globals and string literals, taken from the same relocation evidence.
 ### Rows withheld from the committed 2.5.5.2 evidence
 
 The two files the harness reads as evidence (`StarFleetOP_2552_sdklib_fuzzy.tsv` and `_fuzzy_data.tsv`)
-are the script's output minus the 91 rows (77 and 14) listed in `StarFleetOP_2552_sdklib_withheld.tsv`
+are the script's output minus the 9 rows (8 and 1) listed in `StarFleetOP_2552_sdklib_withheld.tsv`
 (columns `file` = `fuzzy` or `data`, `address`, `name`, `tier`, `score`, `reason`, `claimed_functions`).
-- `reason` = `claim` (90 rows): the claimed source in `op/` still refers to that address by a
-  placeholder symbol or another name, and a row there fails the claim's relocation check, which lowered
-  the score of 81 exact or partial functions (`harness/README.md`). The row is not wrong; the claim has
-  to be corrected first, then the row goes back. `claimed_functions` lists the claims that disagree.
-  Every row at those addresses is dropped, whatever its name.
+- `reason` = `claim` (8 rows): the claimed source in `op/` still refers to that address by a
+  placeholder symbol or another name, and a row there fails the claim's relocation check, which would
+  lower the claim's score (`harness/README.md`). The row is not wrong; the claim has to be corrected
+  first, then the row goes back. `claimed_functions` lists the claims that disagree. Every row at
+  those addresses is dropped, whatever its name. The claims that held the other 82 rows now use the
+  SDK's names, and those rows are back. The 8 left:
+  - `??0tView3DExt@@QAE@XZ` (0x6a9c60) and `??_7tSWView3D@@6B@` (0x7b8f38), for the constructor
+    0x69f3b0: the claim (7.66%) lacks the original's exception frame around the `tGLPixFmt` member,
+    so its relocations fall at other offsets than the exe's.
+  - `TraceErrorD3D`, `tD3DViewMgr::mGetDirectDraw`, `tGLPixFmt::operator==`, the `tDDSurface`
+    constructor and `tDDSurface::mSetDDSurface` (for 0x6a8930), and `tD3DViewMgr::tD3DBatch::mRealFlush`
+    (for 0x69e490): those claims reach them through stand-in classes, because `tD3DViewMgr` and
+    `tGLPixFmt` are declared only inside their own units; they need a shared header first.
 - `reason` = `wrong-placement` (1 row): `twDLLMgrBase::mDone` at 0x6b5c80, a fuzzy placement
   (score 0.708) that libmatch's exact match at 0x6b5ca0 contradicts.
 
