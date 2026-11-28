@@ -1,6 +1,6 @@
 {
  "schema": 3,
- "generated_at": "2026-11-28T12:55:18Z",
+ "generated_at": "2026-11-28T19:40:36Z",
  "text_bytes": 3751936,
  "inputs": {
   "functions_csv": {
@@ -41,7 +41,7 @@
   "matched_set": {
    "path": "analysis/results/matched_set.json",
    "present": true,
-   "sha256": "f96b8dba18abe6c5bc4366a9c4d0b9886509f5756dd62764eb910535e094e4dc"
+   "sha256": "cbf1888b95c247527b8b67b58e5640b481be6ccae5cd491b7c5d07c85ac73218"
   },
   "functional_set": {
    "path": "harness/functional_set.json",
@@ -51,7 +51,7 @@
   "manifest": {
    "path": "op/manifest.tsv",
    "present": true,
-   "sha256": "e84e701657a20579f7e13627380b030bfe57ebb9434804a3ee2890b09824028e"
+   "sha256": "c824d782d3a13e9519e303a94a4478d16a4647890e23ef231fc920912beb8564"
   }
  },
  "function_kinds": {
@@ -84,13 +84,13 @@
    "bytes": 3473841,
    "status": {
     "exact": {
-     "functions": 5157,
-     "pct_functions": 22.3527,
-     "function_bytes": 589294,
+     "functions": 5181,
+     "pct_functions": 22.4568,
+     "function_bytes": 589533,
      "funclet_bytes": 14122,
-     "bytes": 603416,
-     "pct_bytes": 17.3703,
-     "pct_text": 16.0828
+     "bytes": 603655,
+     "pct_bytes": 17.3772,
+     "pct_text": 16.0892
     },
     "functional": {
      "functions": 0,
@@ -120,13 +120,13 @@
      "pct_text": 0.0
     },
     "original-x86": {
-     "functions": 17452,
-     "pct_functions": 75.6447,
-     "function_bytes": 2548069,
+     "functions": 17428,
+     "pct_functions": 75.5407,
+     "function_bytes": 2547830,
      "funclet_bytes": 144442,
-     "bytes": 2692511,
-     "pct_bytes": 77.5082,
-     "pct_text": 71.7632
+     "bytes": 2692272,
+     "pct_bytes": 77.5013,
+     "pct_text": 71.7569
     }
    },
    "named": {
@@ -192,12 +192,12 @@
    "bytes": 3330800,
    "status": {
     "exact": {
-     "functions": 5156,
-     "pct_functions": 23.2629,
-     "function_bytes": 589266,
+     "functions": 5180,
+     "pct_functions": 23.3712,
+     "function_bytes": 589505,
      "funclet_bytes": 14122,
-     "bytes": 603388,
-     "pct_bytes": 18.1154
+     "bytes": 603627,
+     "pct_bytes": 18.1226
     },
     "functional": {
      "functions": 0,
@@ -224,12 +224,12 @@
      "pct_bytes": 0.0
     },
     "original-x86": {
-     "functions": 16546,
-     "pct_functions": 74.6526,
-     "function_bytes": 2413241,
+     "functions": 16522,
+     "pct_functions": 74.5443,
+     "function_bytes": 2413002,
      "funclet_bytes": 136257,
-     "bytes": 2549498,
-     "pct_bytes": 76.5431
+     "bytes": 2549259,
+     "pct_bytes": 76.5359
     }
    },
    "named": {
@@ -8297,6 +8297,30 @@
    "name": "FUN_004dbde5"
   },
   {
+   "address": "004dbec6",
+   "name": "FUN_004dbec6"
+  },
+  {
+   "address": "004dbed0",
+   "name": "FUN_004dbed0"
+  },
+  {
+   "address": "004dbfbd",
+   "name": "FUN_004dbfbd"
+  },
+  {
+   "address": "004dbfc7",
+   "name": "FUN_004dbfc7"
+  },
+  {
+   "address": "004dc0b4",
+   "name": "FUN_004dc0b4"
+  },
+  {
+   "address": "004dc0be",
+   "name": "FUN_004dc0be"
+  },
+  {
    "address": "004de035",
    "name": "tNetMsg_kCreateDirect::~tNetMsg_kCreateDirect"
   },
@@ -8543,6 +8567,54 @@
   {
    "address": "004e9257",
    "name": "FUN_004e9257"
+  },
+  {
+   "address": "004e9328",
+   "name": "FUN_004e9328"
+  },
+  {
+   "address": "004e9332",
+   "name": "FUN_004e9332"
+  },
+  {
+   "address": "004e9404",
+   "name": "FUN_004e9404"
+  },
+  {
+   "address": "004e940e",
+   "name": "FUN_004e940e"
+  },
+  {
+   "address": "004e94e0",
+   "name": "FUN_004e94e0"
+  },
+  {
+   "address": "004e94ea",
+   "name": "FUN_004e94ea"
+  },
+  {
+   "address": "004e95fb",
+   "name": "FUN_004e95fb"
+  },
+  {
+   "address": "004e9605",
+   "name": "FUN_004e9605"
+  },
+  {
+   "address": "004e96d7",
+   "name": "FUN_004e96d7"
+  },
+  {
+   "address": "004e96e1",
+   "name": "FUN_004e96e1"
+  },
+  {
+   "address": "004e97b6",
+   "name": "FUN_004e97b6"
+  },
+  {
+   "address": "004e97c0",
+   "name": "FUN_004e97c0"
   },
   {
    "address": "004ea379",
@@ -9021,6 +9093,10 @@
    "name": "tAIHelmOfficer::vfunction3"
   },
   {
+   "address": "0051819f",
+   "name": "FUN_0051819f"
+  },
+  {
    "address": "0051e09a",
    "name": "tAICaptain::vfunction18"
   },
@@ -9403,6 +9479,10 @@
   {
    "address": "00523ffd",
    "name": "FUN_00523ffd"
+  },
+  {
+   "address": "00524109",
+   "name": "FUN_00524109"
   },
   {
    "address": "0053434b",
@@ -10765,6 +10845,14 @@
    "name": "nStoredProcedureArguments::tUpdatePreparedMissionRequest::vfunction3"
   },
   {
+   "address": "00554ef9",
+   "name": "FUN_00554ef9"
+  },
+  {
+   "address": "00555f85",
+   "name": "FUN_00555f85"
+  },
+  {
    "address": "005596ed",
    "name": "FUN_005596ed"
   },
@@ -10779,6 +10867,10 @@
   {
    "address": "0055a1e2",
    "name": "FUN_0055a1e2"
+  },
+  {
+   "address": "0055b083",
+   "name": "FUN_0055b083"
   },
   {
    "address": "0055b087",
@@ -20571,6 +20663,10 @@
   {
    "address": "00709060",
    "name": "nDatabase::tFileDatabaseMgr::GetDBInfo"
+  },
+  {
+   "address": "0070e240",
+   "name": "tMapObjectPoint::tMapObjectPoint"
   },
   {
    "address": "0070e250",

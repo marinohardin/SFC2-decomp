@@ -2111,6 +2111,12 @@ address	size	symbol	source	modes	decorated
 0x004dbcf8	12	g_DroneRackF_Creator (atexit registration)	unsorted/fn_004DBCEE.cpp	vc6	
 0x004dbddb	10	g_DroneRackG_Creator (dynamic initializer)	unsorted/fn_004DBDDB.cpp	vc6	
 0x004dbde5	12	g_DroneRackG_Creator (atexit registration)	unsorted/fn_004DBDDB.cpp	vc6	
+0x004dbec6	10	g_DroneRackFighter1 (dynamic initializer)	unsorted/fn_004DBEC6.cpp	vc6	
+0x004dbed0	12	g_DroneRackFighter1 (atexit registration)	unsorted/fn_004DBEC6.cpp	vc6	
+0x004dbfbd	10	g_DroneRackFighter4 (dynamic initializer)	unsorted/fn_004DBFBD.cpp	vc6	
+0x004dbfc7	12	g_DroneRackFighter4 (atexit registration)	unsorted/fn_004DBFBD.cpp	vc6	
+0x004dc0b4	10	g_DroneRackMIRV_Creator (dynamic initializer)	unsorted/fn_004DC000.cpp	vc6	
+0x004dc0be	12	g_DroneRackMIRV_Creator (atexit registration)	unsorted/fn_004DC000.cpp	vc6	
 0x004de035	201	tESGLance::fn_004de035(float)	unsorted/fn_004DE000.cpp	vc6 guest	?fn_004de035@tESGLance@@QAEXM@Z
 0x004de200	10	g_0092ec98 (dynamic initializer)	unsorted/fn_004DE000.cpp	vc6	
 0x004de20a	12	g_0092ec98 (atexit registration)	unsorted/fn_004DE000.cpp	vc6	
@@ -2178,6 +2184,18 @@ address	size	symbol	source	modes	decorated
 0x004e8a69	480	tPlasmaLauncher::vfunction65(char)	unsorted/tPlasmaLauncher.cpp	partial	?vfunction65@tPlasmaLauncher@@UAEXD@Z
 0x004e924d	10	g_0092f0f0 (dynamic initializer)	unsorted/fn_004E9000.cpp	vc6	
 0x004e9257	12	g_0092f0f0 (atexit registration)	unsorted/fn_004E9000.cpp	vc6	
+0x004e9328	10	g_PlasmaS_Creator (dynamic initializer)	unsorted/fn_004E9328.cpp	vc6	
+0x004e9332	12	g_PlasmaS_Creator (atexit registration)	unsorted/fn_004E9328.cpp	vc6	
+0x004e9404	10	g_PlasmaG_Creator (dynamic initializer)	unsorted/fn_004E9404.cpp	vc6	
+0x004e940e	12	g_PlasmaG_Creator (atexit registration)	unsorted/fn_004E9404.cpp	vc6	
+0x004e94e0	10	g_PlasmaF_Creator (dynamic initializer)	unsorted/fn_004E94E0.cpp	vc6	
+0x004e94ea	12	g_PlasmaF_Creator (atexit registration)	unsorted/fn_004E94E0.cpp	vc6	
+0x004e95fb	10	g_PlasmaI_Creator (dynamic initializer)	unsorted/fn_004E95FB.cpp	vc6	
+0x004e9605	12	g_PlasmaI_Creator (atexit registration)	unsorted/fn_004E95FB.cpp	vc6	
+0x004e96d7	10	g_PlasmaX_Creator (dynamic initializer)	unsorted/fn_004E96D7.cpp	vc6	
+0x004e96e1	12	g_PlasmaX_Creator (atexit registration)	unsorted/fn_004E96D7.cpp	vc6	
+0x004e97b6	10	g_PlasmaE_Creator (dynamic initializer)	unsorted/fn_004E97B6.cpp	vc6	
+0x004e97c0	12	g_PlasmaE_Creator (atexit registration)	unsorted/fn_004E97B6.cpp	vc6	
 0x004ea379	141	tPlasmaDRackTube::fn_004ea379(int,int)	unsorted/fn_004EA000.cpp	vc6 guest	?fn_004ea379@tPlasmaDRackTube@@QAEXHH@Z
 0x004ea4cd	10	g_0092f168 (dynamic initializer)	unsorted/fn_004EA000.cpp	vc6	
 0x004ea4d7	12	g_0092f168 (atexit registration)	unsorted/fn_004EA000.cpp	vc6	
@@ -2307,6 +2325,7 @@ address	size	symbol	source	modes	decorated
 0x005169d6	10	tAIHelmOfficer::fn_005169d6(float)	unsorted/tAIHelmOfficer.cpp	vc6 guest	?fn_005169d6@tAIHelmOfficer@@QAEXM@Z
 0x005169e0	665	tAIHelmOfficer::fn_005169e0(int,int)	unsorted/tAIHelmOfficer.cpp	vc6 guest	?fn_005169e0@tAIHelmOfficer@@QAEXHH@Z
 0x00516c79	317	tAIHelmOfficer::vfunction3_for_tPriorityPowerRequest(int *,int,float)	unsorted/tAIHelmOfficer.cpp	vc6 guest	?vfunction3_for_tPriorityPowerRequest@tAIHelmOfficer@@UAEMPAHHM@Z
+0x0051819f	4	tAIHETOfficer::fn_0051819f()	unsorted/fn_00518000.cpp	vc6 guest	?fn_0051819f@tAIHETOfficer@@QAE_NXZ
 0x0051dae7	1459	tAICaptain::tAICaptain(float,int,int,int)	unsorted/tAICaptain.cpp	partial	??0tAICaptain@@QAE@MHHH@Z
 0x0051e09a	4	tAICaptain::vfunction18()	unsorted/tAICaptain.cpp	vc6 guest	?vfunction18@tAICaptain@@UAEHXZ
 0x0051e09e	28	tAICaptain::scalar_deleting_destructor(unsigned char)	unsorted/tAICaptain.cpp	vc6 guest	?scalar_deleting_destructor@tAICaptain@@QAEPAV1@E@Z
@@ -2430,6 +2449,7 @@ address	size	symbol	source	modes	decorated
 0x00523c41	24	tObject_005237dc::fn_00523c41(int)	unsorted/fn_00523000.cpp	vc6 guest	?fn_00523c41@tObject_005237dc@@QAEXH@Z
 0x00523c59	537	tObject_005237dc::fn_00523c59()	unsorted/fn_00523000.cpp	vc6 guest	?fn_00523c59@tObject_005237dc@@QAEXXZ
 0x00523ffd	147	tObject_005237dc::fn_00523ffd(float,bool)	unsorted/fn_00523000.cpp	vc6 guest	?fn_00523ffd@tObject_005237dc@@QAEXM_N@Z
+0x00524109	9	tPriorityPowerRequest::fn_00524109()	unsorted/fn_00524109.cpp	vc6 guest	?fn_00524109@tPriorityPowerRequest@@QAEMXZ
 0x0053434b	4	fn_0053434b_object::fn_0053434b() const	unsorted/fn_0053434B.cpp	vc6 guest	?fn_0053434b@fn_0053434b_object@@QBEJXZ
 0x00534391	10	g_00c2f3f8 (dynamic initializer)	unsorted/fn_0053434B.cpp	vc6	
 0x0053439b	12	g_00c2f3f8 (atexit registration)	unsorted/fn_0053434B.cpp	vc6	
@@ -2787,10 +2807,13 @@ address	size	symbol	source	modes	decorated
 0x00550e96	103	tKillPreparedMissionRequest::vfunction3(nDataStore::tInput&)	Meta/MetaDatabase/StoredProcedures/MissionProcedures/KillPreparedMissionRequest.cpp	vc6 guest	?vfunction3@tKillPreparedMissionRequest@@UAEXAAVtInput@nDataStore@@@Z
 0x005517de	121	tReadyToPlayRequest::vfunction3(nDataStore::tInput&)	Meta/MetaDatabase/StoredProcedures/MissionProcedures/ReadyToPlayRequest.cpp	vc6 guest	?vfunction3@tReadyToPlayRequest@@UAEXAAVtInput@nDataStore@@@Z
 0x00551a84	96	tUpdatePreparedMissionRequest::vfunction3(nDataStore::tInput&)	Meta/MetaDatabase/StoredProcedures/MissionProcedures/UpdatePreparedMissionRequest.cpp	vc6 guest	?vfunction3@tUpdatePreparedMissionRequest@@UAEXAAVtInput@nDataStore@@@Z
+0x00554ef9	4	fn_00554ef9(const unsigned char*)	unsorted/fn_00554EF9.cpp	vc6	?fn_00554ef9@@YIEPBE@Z
+0x00555f85	4	nStoredProcedureArguments::tSetPreparedMissionsIDRequest::fn_00555f85() const	unsorted/fn_00555F85.cpp	vc6 guest	?fn_00555f85@tSetPreparedMissionsIDRequest@nStoredProcedureArguments@@QBE_NXZ
 0x005596ed	77	tRepairRates::GetRepairRate(fRepairRateIter)	Meta/MetaDatabase/StoredProcedures/ShipProcedures/RepairShipsRequest.cpp	vc6 guest	?GetRepairRate@tRepairRates@@QAENUfRepairRateIter@@@Z
 0x0055a13a	84	tTradeInRates::fGetRate(const std::string&)	Meta/MetaDatabase/StoredProcedures/ShipProcedures/SellShipRequest.cpp	vc6 guest	?fGetRate@tTradeInRates@@QAENABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z
 0x0055a18e	84	tShipRepairRates::fGetRate(fShipRepairRateNode*)	Meta/MetaDatabase/StoredProcedures/ShipProcedures/SellShipRequest.cpp	vc6 guest	?fGetRate@tShipRepairRates@@QAENPAUfShipRepairRateNode@@@Z
 0x0055a1e2	84	tShipItemRates::fGetRateAddress(fShipRepairRateNode*)	Meta/MetaDatabase/StoredProcedures/ShipProcedures/SellShipRequest.cpp	vc6 guest	?fGetRateAddress@tShipItemRates@@QAEPANPAUfShipRepairRateNode@@@Z
+0x0055b083	4	fn_0055b083(unsigned char*)	unsorted/fn_0055B000.cpp	vc6	?fn_0055b083@@YIPAEPAE@Z
 0x0055b087	168	tShipNames::fn_0055b087(const std::string&)	Meta/MetaDatabase/StoredProcedures/ShipProcedures/TransactionUpdateStoresRequest.cpp	vc6 guest	?fn_0055b087@tShipNames@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV23@@Z
 0x0055b12f	84	tStoresItemRates::fGetRateAddress(fStoresRateNode*)	Meta/MetaDatabase/StoredProcedures/ShipProcedures/TransactionUpdateStoresRequest.cpp	vc6 guest	?fGetRateAddress@tStoresItemRates@@QAEPANPAUfStoresRateNode@@@Z
 0x0055b183	84	tStoresStates::fn_0055b183(fStoresStateNode*)	Meta/MetaDatabase/StoredProcedures/ShipProcedures/TransactionUpdateStoresRequest.cpp	vc6 guest	?fn_0055b183@tStoresStates@@QAEPAHPAUfStoresStateNode@@@Z
@@ -5509,6 +5532,7 @@ address	size	symbol	source	modes	decorated
 0x00709060	69	tFileDatabaseMgr::GetDBInfo(int32) const	Common/Database/FileDatabaseMgr.cpp	vc6 guest	?GetDBInfo@tFileDatabaseMgr@nDatabase@@UBEPBVtDatabaseInfo@12@J@Z
 0x007090b0	442	tFileDatabaseMgr::New(const tDatabaseInfo&)	Common/Database/FileDatabaseMgr.cpp	partial	?New@tFileDatabaseMgr@nDatabase@@UAEPAVtDatabase@2@ABVtDatabaseInfo@12@@Z
 0x00709270	770	tFileDatabaseMgr::Load(const tDatabaseInfo&)	Common/Database/FileDatabaseMgr.cpp	partial	?Load@tFileDatabaseMgr@nDatabase@@UAEPAVtDatabase@2@ABVtDatabaseInfo@12@@Z
+0x0070e240	16	tMapObjectPoint::tMapObjectPoint()	unsorted/tMapObjectPoint.cpp	vc6	??0tMapObjectPoint@@QAE@XZ
 0x0070e250	71	tWaitForObject::tResult::tResult(int32u)	Common/Thread/WaitForObject.cpp	vc6	??0tResult@tWaitForObject@@QAE@K@Z
 0x0070e2a0	7	tWaitForObject::tResult::TimedOut() const	Common/Thread/WaitForObject.cpp	vc6 guest	?TimedOut@tResult@tWaitForObject@@QBE_NXZ
 0x0070e2b0	7	tWaitForObject::tResult::Ready() const	Common/Thread/WaitForObject.cpp	vc6 guest	?Ready@tResult@tWaitForObject@@QBE_NXZ

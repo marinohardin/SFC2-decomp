@@ -8103,7 +8103,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00517edc	function	fn_00517edc		?fn_00517edc@tAIHelmOfficer@@QAEXPAVtObject_00525081@@@Z	callers		none
 0x00517f43	function	tAIHETOfficer::tAIHETOfficer	tAIHETOfficer				rtti
 0x00517f6e	function	fn_00517f6e	tAIHETOfficer				vtable
-0x0051819f	function	fn_0051819f					none
+0x0051819f	function	fn_0051819f	tAIHETOfficer	?fn_0051819f@tAIHETOfficer@@QAE_NXZ	claim		none
 0x005181db	function	tAIHitAndRunOfficer::tAIHitAndRunOfficer	tAIHitAndRunOfficer				rtti
 0x00518231	function	fn_00518231	tAIHitAndRunOfficer				vtable
 0x005183e6	function	fn_005183e6	tAIHitAndRunOfficer				vtable
@@ -8425,7 +8425,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00524090	function	fn_00524090					none
 0x005240ec	function	tEnergyRequest::tEnergyRequest	tEnergyRequest				rtti
 0x005240fa	function	fn_005240fa	tEnergyRequest				vtable
-0x00524109	function	fn_00524109		?fn_00524109@tPriorityPowerRequest@@QAEMXZ	callers		none
+0x00524109	function	fn_00524109	tPriorityPowerRequest	?fn_00524109@tPriorityPowerRequest@@QAEMXZ	claim		none
 0x00524112	function	tPriorityPowerRequest::tPriorityPowerRequest	tPriorityPowerRequest	??0tPriorityPowerRequest@@QAE@H@Z	callers		rtti
 0x00524136	function	fn_00524136					none
 0x0052416e	function	tShipCommand::tShipCommand	tShipCommand				rtti
@@ -10223,7 +10223,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00554ebc	function	nStoredProcedureArguments::tGetLoggedOnCharacterIDsRequest::scalar_deleting_destructor	nStoredProcedureArguments::tGetLoggedOnCharacterIDsRequest				rtti
 0x00554ed8	function	nStoredProcedureArguments::tGetLoggedOnCharacterIDsRequest::tGetLoggedOnCharacterIDsRequest	nStoredProcedureArguments::tGetLoggedOnCharacterIDsRequest				rtti
 0x00554eee	function	nStoredProcedureArguments::tGetLoggedOnCharacterIDsRequest::~tGetLoggedOnCharacterIDsRequest	nStoredProcedureArguments::tGetLoggedOnCharacterIDsRequest				rtti
-0x00554ef9	function	fn_00554ef9					none
+0x00554ef9	function	fn_00554ef9		?fn_00554ef9@@YIEPBE@Z	claim		none
 0x00554f1e	function	nStoredProcedureArguments::tGetNearbyLoggedOnCharactersRequest::tGetNearbyLoggedOnCharactersRequestResponse::tGetNearbyLoggedOnCharactersRequestResponse	nStoredProcedureArguments::tGetNearbyLoggedOnCharactersRequest::tGetNearbyLoggedOnCharactersRequestResponse				rtti
 0x00554f4a	function	nStoredProcedureArguments::tGetNearbyLoggedOnCharactersRequest::tGetNearbyLoggedOnCharactersRequestResponse::scalar_deleting_destructor	nStoredProcedureArguments::tGetNearbyLoggedOnCharactersRequest::tGetNearbyLoggedOnCharactersRequestResponse				fid
 0x00554f66	function	nStoredProcedureArguments::tGetNearbyLoggedOnCharactersRequest::tGetNearbyLoggedOnCharactersRequestResponse::~tGetNearbyLoggedOnCharactersRequestResponse	nStoredProcedureArguments::tGetNearbyLoggedOnCharactersRequest::tGetNearbyLoggedOnCharactersRequestResponse				fid
@@ -10294,7 +10294,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x00555e6b	function	nStoredProcedureArguments::tSetPreparedMissionsIDRequest::tSetPreparedMissionsIDRequest	nStoredProcedureArguments::tSetPreparedMissionsIDRequest				rtti
 0x00555f07	function	fn_00555f07	nStoredProcedureArguments::tSetPreparedMissionsIDRequest				vtable
 0x00555f4b	function	fn_00555f4b	nStoredProcedureArguments::tSetPreparedMissionsIDRequest				vtable
-0x00555f85	function	fn_00555f85					none
+0x00555f85	function	fn_00555f85	nStoredProcedureArguments::tSetPreparedMissionsIDRequest	?fn_00555f85@tSetPreparedMissionsIDRequest@nStoredProcedureArguments@@QBE_NXZ	claim		none
 0x00555faa	function	nStoredProcedureArguments::tBidRequest::tBidResponse::tBidResponse	nStoredProcedureArguments::tBidRequest::tBidResponse				rtti
 0x00556000	function	nStoredProcedureArguments::tBidRequest::tBidResponse::scalar_deleting_destructor	nStoredProcedureArguments::tBidRequest::tBidResponse				rtti
 0x0055601c	function	nStoredProcedureArguments::tBidRequest::tBidResponse::~tBidResponse	nStoredProcedureArguments::tBidRequest::tBidResponse				rtti
@@ -10519,7 +10519,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0055af53	function	nStoredProcedureArguments::tTransactionUpdateStoresRequest::~tTransactionUpdateStoresRequest	nStoredProcedureArguments::tTransactionUpdateStoresRequest				rtti
 0x0055afcd	function	fn_0055afcd	nStoredProcedureArguments::tTransactionUpdateStoresRequest				vtable
 0x0055b028	function	fn_0055b028	nStoredProcedureArguments::tTransactionUpdateStoresRequest				vtable
-0x0055b083	function	fn_0055b083					none
+0x0055b083	function	fn_0055b083		?fn_0055b083@@YIPAEPAE@Z	claim		none
 0x0055b087	function	fn_0055b087	tShipNames	?fn_0055b087@tShipNames@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV23@@Z	claim		none
 0x0055b12f	function	tStoresItemRates::fGetRateAddress	tStoresItemRates	?fGetRateAddress@tStoresItemRates@@QAEPANPAUfStoresRateNode@@@Z	claim		claim
 0x0055b183	function	fn_0055b183	tStoresStates	?fn_0055b183@tStoresStates@@QAEPAHPAUfStoresStateNode@@@Z	claim		none
@@ -20672,7 +20672,7 @@ address	kind	name	class	symbol	symbol_evidence	declaration	evidence
 0x0070e110	function	std::basic_istream<char,std::char_traits<char>_>::get	std::basic_istream<char,std::char_traits<char>_>	?get@?$basic_istream@DU?$char_traits@D@std@@@std@@QAEHXZ	mangled		mangled
 0x0070e1c7	function	fn_0070e1c7					none
 0x0070e1cd	function	fn_0070e1cd					none
-0x0070e240	function	fn_0070e240		??0iterator@tString@@QAE@XZ	callers		none
+0x0070e240	function	tMapObjectPoint::tMapObjectPoint	tMapObjectPoint	??0tMapObjectPoint@@QAE@XZ	claim		claim
 0x0070e250	function	tWaitForObject::tResult::tResult	tWaitForObject::tResult	??0tResult@tWaitForObject@@QAE@K@Z	claim		claim
 0x0070e2a0	function	tWaitForObject::tResult::TimedOut	tWaitForObject::tResult	?TimedOut@tResult@tWaitForObject@@QBE_NXZ	claim		claim
 0x0070e2b0	function	tWaitForObject::tResult::Ready	tWaitForObject::tResult	?Ready@tResult@tWaitForObject@@QBE_NXZ	claim		claim

@@ -1,8 +1,8 @@
 # Progress
 
-Written by `python3 scripts/progress.py --markdown`; do not edit by hand. Generated 2026-11-28T12:55:18Z.
+Written by `python3 scripts/progress.py --markdown`; do not edit by hand. Generated 2026-11-28T19:40:36Z.
 
-Progress: 16.08% exact, 0.00% functional, 4.74% partial, 0.00% lifted, 71.76% original x86 of .text (3,751,936 bytes); named: 15.66% real symbol, 46.39% with class, of 23,071 functions. Game-only: 18.12% exact, 0.00% functional, 5.34% partial of 3,330,800 bytes; 13.72% real symbol, 44.20% with class, of 22,164 functions.
+Progress: 16.09% exact, 0.00% functional, 4.74% partial, 0.00% lifted, 71.76% original x86 of .text (3,751,936 bytes); named: 15.66% real symbol, 46.39% with class, of 23,071 functions. Game-only: 18.12% exact, 0.00% functional, 5.34% partial of 3,330,800 bytes; 13.72% real symbol, 44.20% with class, of 22,164 functions.
 
 ## Code
 
@@ -10,11 +10,11 @@ One row per ordinary function; its bytes include the EH funclets its EH tables r
 
 | status | functions | bytes | of which funclets | % .text | % code | game fns | game bytes | % game code |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| exact | 5,157 | 603,416 | 14,122 | 16.08 | 17.37 | 5,156 | 603,388 | 18.12 |
+| exact | 5,181 | 603,655 | 14,122 | 16.09 | 17.38 | 5,180 | 603,627 | 18.12 |
 | functional | 0 | 0 | 0 | 0.00 | 0.00 | 0 | 0 | 0.00 |
 | partial | 462 | 177,914 | 8,977 | 4.74 | 5.12 | 462 | 177,914 | 5.34 |
 | lifted | 0 | 0 | 0 | 0.00 | 0.00 | 0 | 0 | 0.00 |
-| original-x86 | 17,452 | 2,692,511 | 144,442 | 71.76 | 77.51 | 16,546 | 2,549,498 | 76.54 |
+| original-x86 | 17,428 | 2,692,272 | 144,442 | 71.76 | 77.50 | 16,522 | 2,549,259 | 76.54 |
 | all | 23,071 | 3,473,841 | 167,541 | 92.59 | 100.00 | 22,164 | 3,330,800 | 100.00 |
 
 ## Names
@@ -54,3 +54,4 @@ Game-only leaves out the functions flagged as library code: crt 180, cryptopp 8,
 - 2026-11-26T17:37:36Z: exact 15.32%, functional 0.00%, partial 4.86%, lifted 0.00% of .text; real symbol 13.92%, with class 45.67% of 23,071 functions; game-only exact 17.25%, functional 0.00%, partial 5.47%
 - 2026-11-27T12:35:58Z: exact 16.02%, functional 0.00%, partial 4.77%, lifted 0.00% of .text; real symbol 14.03%, with class 45.69% of 23,071 functions; game-only exact 18.05%, functional 0.00%, partial 5.38%
 - 2026-11-28T12:55:18Z: exact 16.08%, functional 0.00%, partial 4.74%, lifted 0.00% of .text; real symbol 15.66%, with class 46.39% of 23,071 functions; game-only exact 18.12%, functional 0.00%, partial 5.34%
+- 2026-11-28T19:40:36Z: exact 16.09%, functional 0.00%, partial 4.74%, lifted 0.00% of .text; real symbol 15.66%, with class 46.39% of 23,071 functions; game-only exact 18.12%, functional 0.00%, partial 5.34%
